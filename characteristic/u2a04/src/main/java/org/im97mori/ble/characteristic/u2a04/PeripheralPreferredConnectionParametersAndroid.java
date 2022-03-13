@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PREFERRED
 public class PeripheralPreferredConnectionParametersAndroid extends PeripheralPreferredConnectionParameters implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<PeripheralPreferredConnectionParametersAndroid> CREATOR = new ByteArrayCreater<PeripheralPreferredConnectionParametersAndroid>() {
+    public static final ByteArrayCreator<PeripheralPreferredConnectionParametersAndroid> CREATOR = new ByteArrayCreator<PeripheralPreferredConnectionParametersAndroid>() {
 
         /**
          * {@inheritDoc}

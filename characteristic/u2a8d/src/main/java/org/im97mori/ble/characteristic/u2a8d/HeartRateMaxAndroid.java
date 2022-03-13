@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_MAX_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_MAX_CHARA
 public class HeartRateMaxAndroid extends HeartRateMax implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HeartRateMaxAndroid> CREATOR = new ByteArrayCreater<HeartRateMaxAndroid>() {
+    public static final ByteArrayCreator<HeartRateMaxAndroid> CREATOR = new ByteArrayCreator<HeartRateMaxAndroid>() {
 
         /**
          * {@inheritDoc}

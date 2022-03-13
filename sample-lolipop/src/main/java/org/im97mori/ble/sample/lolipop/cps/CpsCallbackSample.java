@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a5d.SensorLocationAndroid;
 import org.im97mori.ble.characteristic.u2a63.CyclingPowerMeasurementAndroid;
 import org.im97mori.ble.characteristic.u2a64.CyclingPowerVectorAndroid;
@@ -45,7 +45,7 @@ public class CpsCallbackSample extends CyclingPowerServiceMockCallback implement
         @NonNull
         @Override
         public CpsCallbackSample build() {
-            return new CpsCallbackSample(createMockData(), mSampleCallback);
+            return new CpsCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -53,8 +53,8 @@ public class CpsCallbackSample extends CyclingPowerServiceMockCallback implement
 
     private final SampleCallback mSampleCallback;
 
-    CpsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    CpsCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -76,9 +76,9 @@ public class CpsCallbackSample extends CyclingPowerServiceMockCallback implement
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TIME_ZONE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_ZONE_CHARACTERI
 public class TimeZoneAndroid extends TimeZone implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TimeZoneAndroid> CREATOR = new ByteArrayCreater<TimeZoneAndroid>() {
+    public static final ByteArrayCreator<TimeZoneAndroid> CREATOR = new ByteArrayCreator<TimeZoneAndroid>() {
 
         /**
          * {@inheritDoc}

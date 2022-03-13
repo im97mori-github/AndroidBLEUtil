@@ -31,10 +31,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param clientCharacteristicConfigurationAndroid {@link ClientCharacteristicConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -54,10 +54,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -80,10 +80,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -103,10 +103,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
     void onTemperatureMeasurementIndicateStartSuccess(@NonNull Integer taskId
@@ -124,10 +124,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -150,10 +150,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -173,10 +173,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
     void onTemperatureMeasurementIndicateStopSuccess(@NonNull Integer taskId
@@ -194,10 +194,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -220,10 +220,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -242,9 +242,9 @@ public interface HealthThermometerServiceCallback {
      *
      * @param bluetoothDevice               BLE device
      * @param serviceUUID                   service {@link UUID}
-     * @param serviceInstanceId             task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId             task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID            characteristic {@link UUID}
-     * @param characteristicInstanceId      task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId      task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param temperatureMeasurementAndroid {@link org.im97mori.ble.characteristic.u2a1c.TemperatureMeasurementAndroid}
      */
     void onTemperatureMeasurementIndicated(@NonNull BluetoothDevice bluetoothDevice
@@ -260,9 +260,9 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param temperatureTypeAndroid   {@link TemperatureTypeAndroid}
      * @param argument                 callback argument
      */
@@ -281,9 +281,9 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -305,9 +305,9 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -326,10 +326,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param clientCharacteristicConfigurationAndroid {@link ClientCharacteristicConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -349,10 +349,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -375,10 +375,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -398,10 +398,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
     void onIntermediateTemperatureNotificateStartSuccess(@NonNull Integer taskId
@@ -419,10 +419,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -445,10 +445,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -468,10 +468,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
     void onIntermediateTemperatureNotificateStopSuccess(@NonNull Integer taskId
@@ -489,10 +489,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -515,10 +515,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -537,9 +537,9 @@ public interface HealthThermometerServiceCallback {
      *
      * @param bluetoothDevice                BLE device
      * @param serviceUUID                    service {@link UUID}
-     * @param serviceInstanceId              task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId              task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID             characteristic {@link UUID}
-     * @param characteristicInstanceId       task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId       task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param intermediateTemperatureAndroid {@link org.im97mori.ble.characteristic.u2a1e.IntermediateTemperatureAndroid}
      */
     void onIntermediateTemperatureNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -555,9 +555,9 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                     task id
      * @param bluetoothDevice            BLE device
      * @param serviceUUID                service {@link UUID}
-     * @param serviceInstanceId          task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId          task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID         characteristic {@link UUID}
-     * @param characteristicInstanceId   task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId   task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param measurementIntervalAndroid {@link MeasurementIntervalAndroid}
      * @param argument                   callback argument
      */
@@ -576,9 +576,9 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -600,9 +600,9 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -621,9 +621,9 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                     task id
      * @param bluetoothDevice            BLE device
      * @param serviceUUID                service {@link UUID}
-     * @param serviceInstanceId          task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId          task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID         characteristic {@link UUID}
-     * @param characteristicInstanceId   task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId   task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param measurementIntervalAndroid {@link MeasurementIntervalAndroid}
      * @param argument                   callback argument
      */
@@ -642,9 +642,9 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -666,9 +666,9 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -687,10 +687,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param clientCharacteristicConfigurationAndroid {@link ClientCharacteristicConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -710,10 +710,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -736,10 +736,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -759,10 +759,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
     void onMeasurementIntervalIndicateStartSuccess(@NonNull Integer taskId
@@ -780,10 +780,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -806,10 +806,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -829,10 +829,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
     void onMeasurementIntervalIndicateStopSuccess(@NonNull Integer taskId
@@ -850,10 +850,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -876,10 +876,10 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -898,9 +898,9 @@ public interface HealthThermometerServiceCallback {
      *
      * @param bluetoothDevice            BLE device
      * @param serviceUUID                service {@link UUID}
-     * @param serviceInstanceId          task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId          task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID         characteristic {@link UUID}
-     * @param characteristicInstanceId   task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId   task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param measurementIntervalAndroid {@link org.im97mori.ble.characteristic.u2a21.MeasurementIntervalAndroid}
      */
     void onMeasurementIntervalIndicated(@NonNull BluetoothDevice bluetoothDevice
@@ -916,9 +916,9 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -937,9 +937,9 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -961,9 +961,9 @@ public interface HealthThermometerServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */

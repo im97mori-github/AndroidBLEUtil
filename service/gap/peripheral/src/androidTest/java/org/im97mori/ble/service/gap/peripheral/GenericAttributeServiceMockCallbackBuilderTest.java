@@ -10,7 +10,7 @@ import org.im97mori.ble.characteristic.u2a05.ServiceChanged;
 import org.im97mori.ble.characteristic.u2b29.ClientSupportedFeatures;
 import org.im97mori.ble.characteristic.u2b2a.DatabaseHash;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -30,7 +30,7 @@ import static org.junit.Assert.assertNull;
 import androidx.test.filters.RequiresDevice;
 import androidx.test.filters.SdkSuppress;
 
-public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
+public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
     @Test
     @RequiresDevice

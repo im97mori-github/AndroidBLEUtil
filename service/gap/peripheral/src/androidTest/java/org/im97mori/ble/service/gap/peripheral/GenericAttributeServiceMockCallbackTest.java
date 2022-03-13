@@ -23,10 +23,9 @@ import androidx.test.filters.RequiresDevice;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -36,13 +35,13 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class GenericAttributeServiceMockCallbackTest extends AbstractPeripherallTest {
+public class GenericAttributeServiceMockCallbackTest extends AbstractPeripheralTest {
 
     @Test
     public void test_onServiceAddSuccess_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
-        GenericAttributeServiceMockCallback genericAttributeServiceMockCallback = new GenericAttributeServiceMockCallback(new MockData(), false) {
+        GenericAttributeServiceMockCallback genericAttributeServiceMockCallback = new GenericAttributeServiceMockCallback(new ServiceData(), false) {
             @Override
             protected void updateGenericAttributeServiceStatus(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService) {
                 atomicBoolean.set(true);
@@ -69,7 +68,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripherall
         Bundle bundle = new Bundle();
         bundle.putParcelable("KEY_SERVICE_DATA", serviceData);
 
-        GenericAttributeServiceMockCallback genericAttributeServiceMockCallback = new GenericAttributeServiceMockCallback(new MockData(Collections.singletonList(serviceData)), false) {
+        GenericAttributeServiceMockCallback genericAttributeServiceMockCallback = new GenericAttributeServiceMockCallback(serviceData, false) {
             @Override
             protected void updateGenericAttributeServiceStatus(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService) {
                 atomicBoolean.set(true);
@@ -84,7 +83,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripherall
     public void test_onServiceRemoveSuccess_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
-        GenericAttributeServiceMockCallback genericAttributeServiceMockCallback = new GenericAttributeServiceMockCallback(new MockData(), false) {
+        GenericAttributeServiceMockCallback genericAttributeServiceMockCallback = new GenericAttributeServiceMockCallback(new ServiceData(), false) {
             @Override
             protected void updateGenericAttributeServiceStatus(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService) {
                 atomicBoolean.set(true);
@@ -112,7 +111,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripherall
         Bundle bundle = new Bundle();
         bundle.putParcelable("KEY_SERVICE_DATA", serviceData);
 
-        GenericAttributeServiceMockCallback genericAttributeServiceMockCallback = new GenericAttributeServiceMockCallback(new MockData(Collections.singletonList(serviceData)), false) {
+        GenericAttributeServiceMockCallback genericAttributeServiceMockCallback = new GenericAttributeServiceMockCallback(serviceData, false) {
             @Override
             protected void updateGenericAttributeServiceStatus(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService) {
                 atomicInteger.addAndGet(1);
@@ -129,7 +128,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripherall
     public void test_updateGenericAttributeServiceStatus_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
-        GenericAttributeServiceMockCallback genericAttributeServiceMockCallback = new GenericAttributeServiceMockCallback(new MockData(), false) {
+        GenericAttributeServiceMockCallback genericAttributeServiceMockCallback = new GenericAttributeServiceMockCallback(new ServiceData(), false) {
             @Override
             protected synchronized void startNotification(@Nullable Integer taskId, @NonNull BLEServerConnection bleServerConnection, @Nullable BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int descriptorInstanceId, long delay, @Nullable Integer notificationCount, @Nullable Bundle argument) {
                 atomicBoolean.set(true);
@@ -184,7 +183,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripherall
         Bundle bundle = new Bundle();
         bundle.putParcelable("KEY_SERVICE_DATA", serviceData);
 
-        GenericAttributeServiceMockCallback genericAttributeServiceMockCallback = new GenericAttributeServiceMockCallback(new MockData(Collections.singletonList(serviceData)), false) {
+        GenericAttributeServiceMockCallback genericAttributeServiceMockCallback = new GenericAttributeServiceMockCallback(serviceData, false) {
             @Override
             protected synchronized void startNotification(@Nullable Integer taskId, @NonNull BLEServerConnection bleServerConnection, @Nullable BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int descriptorInstanceId, long delay, @Nullable Integer notificationCount, @Nullable Bundle argument) {
                 atomicBoolean.set(true);
@@ -250,7 +249,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripherall
         Bundle bundle = new Bundle();
         bundle.putParcelable("KEY_SERVICE_DATA", serviceData);
 
-        GenericAttributeServiceMockCallback genericAttributeServiceMockCallback = new GenericAttributeServiceMockCallback(new MockData(Collections.singletonList(serviceData)), false) {
+        GenericAttributeServiceMockCallback genericAttributeServiceMockCallback = new GenericAttributeServiceMockCallback(serviceData, false) {
             @Override
             protected synchronized void startNotification(@Nullable Integer taskId, @NonNull BLEServerConnection bleServerConnection, @Nullable BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int descriptorInstanceId, long delay, @Nullable Integer notificationCount, @Nullable Bundle argument) {
                 atomicBoolean.set(true);

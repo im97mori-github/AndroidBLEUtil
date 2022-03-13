@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TX_POWER_LEVEL_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TX_POWER_LEVEL_CHARA
 public class TxPowerLevelAndroid extends TxPowerLevel implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TxPowerLevelAndroid> CREATOR = new ByteArrayCreater<TxPowerLevelAndroid>() {
+    public static final ByteArrayCreator<TxPowerLevelAndroid> CREATOR = new ByteArrayCreator<TxPowerLevelAndroid>() {
 
         /**
          * {@inheritDoc}

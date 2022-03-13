@@ -124,8 +124,8 @@
             android:id="@+id/is_digital_notificatable_0"
             android:title="@string/menu_is_digital_notificatable_0" />
         <item
-            android:id="@+id/is_digital_indicatable_0"
-            android:title="@string/menu_is_digital_indicatable_0" />
+            android:id="@+id/is_digital_indictable_0"
+            android:title="@string/menu_is_digital_indictable_0" />
         <item
             android:id="@+id/has_digital_characteristic_presentation_format_0"
             android:title="@string/menu_has_digital_characteristic_presentation_format_0" />
@@ -213,8 +213,8 @@
             android:id="@+id/is_digital_notificatable_1"
             android:title="@string/menu_is_digital_notificatable_1" />
         <item
-            android:id="@+id/is_digital_indicatable_1"
-            android:title="@string/menu_is_digital_indicatable_1" />
+            android:id="@+id/is_digital_indictable_1"
+            android:title="@string/menu_is_digital_indictable_1" />
         <item
             android:id="@+id/has_digital_characteristic_presentation_format_1"
             android:title="@string/menu_has_digital_characteristic_presentation_format_1" />
@@ -302,8 +302,8 @@
             android:id="@+id/is_analog_notificatable_0"
             android:title="@string/menu_is_analog_notificatable_0" />
         <item
-            android:id="@+id/is_analog_indicatable_0"
-            android:title="@string/menu_is_analog_indicatable_0" />
+            android:id="@+id/is_analog_indictable_0"
+            android:title="@string/menu_is_analog_indictable_0" />
         <item
             android:id="@+id/has_analog_characteristic_presentation_format_0"
             android:title="@string/menu_has_analog_characteristic_presentation_format_0" />
@@ -391,8 +391,8 @@
             android:id="@+id/is_analog_notificatable_1"
             android:title="@string/menu_is_analog_notificatable_1" />
         <item
-            android:id="@+id/is_analog_indicatable_1"
-            android:title="@string/menu_is_analog_indicatable_1" />
+            android:id="@+id/is_analog_indictable_1"
+            android:title="@string/menu_is_analog_indictable_1" />
         <item
             android:id="@+id/has_analog_characteristic_presentation_format_1"
             android:title="@string/menu_has_analog_characteristic_presentation_format_1" />
@@ -477,8 +477,8 @@
             android:id="@+id/is_aggregate_notificatable"
             android:title="@string/menu_is_aggregate_notificatable" />
         <item
-            android:id="@+id/is_aggregate_indicatable"
-            android:title="@string/menu_is_aggregate_indicatable" />
+            android:id="@+id/is_aggregate_indictable"
+            android:title="@string/menu_is_aggregate_indictable" />
         <item
             android:id="@+id/get_aggregate"
             android:title="@string/menu_get_aggregate" />

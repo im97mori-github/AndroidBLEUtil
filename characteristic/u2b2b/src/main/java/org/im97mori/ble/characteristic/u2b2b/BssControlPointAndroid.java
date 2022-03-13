@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BSS_CONTROL_POINT_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BSS_CONTROL_POINT_CH
 public class BssControlPointAndroid extends BssControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BssControlPointAndroid> CREATOR = new ByteArrayCreater<BssControlPointAndroid>() {
+    public static final ByteArrayCreator<BssControlPointAndroid> CREATOR = new ByteArrayCreator<BssControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

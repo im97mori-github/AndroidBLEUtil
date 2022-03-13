@@ -1,5 +1,10 @@
 package org.im97mori.ble.service.scps.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_INTERVAL_WINDOW_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_REFRESH_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.SCAN_PARAMETERS_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -15,7 +20,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a31.ScanRefresh;
 import org.im97mori.ble.characteristic.u2a4f.ScanIntervalWindow;
@@ -25,11 +29,6 @@ import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_INTERVAL_WINDOW_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_REFRESH_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ServiceUUID.SCAN_PARAMETERS_SERVICE;
 
 /**
  * Scan Parameters Service (Service UUID: 0x1813) for Peripheral
@@ -41,7 +40,7 @@ public class ScanParametersServiceMockCallback extends AbstractServiceMockCallba
      *
      * @param <T> subclass of {@link ScanParametersServiceMockCallback}
      */
-    public static class Builder<T extends ScanParametersServiceMockCallback> extends AbstractServiceMockCallback.Builder<ScanParametersServiceMockCallback> {
+    public static class Builder<T extends ScanParametersServiceMockCallback> extends AbstractServiceMockCallback.Builder<ScanParametersServiceMockCallback, ServiceData> {
 
         /**
          * Scan Interval Window data
@@ -116,8 +115,8 @@ public class ScanParametersServiceMockCallback extends AbstractServiceMockCallba
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Cycling Power Measurement notification count
-         * @param descriptorResponseCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -154,7 +153,7 @@ public class ScanParametersServiceMockCallback extends AbstractServiceMockCallba
          */
         @NonNull
         @Override
-        public MockData createMockData() {
+        public ServiceData createData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
             if (mScanIntervalWindowData == null) {
@@ -167,8 +166,7 @@ public class ScanParametersServiceMockCallback extends AbstractServiceMockCallba
                 characteristicList.add(mScanRefreshData);
             }
 
-            ServiceData serviceData = new ServiceData(SCAN_PARAMETERS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ServiceData(SCAN_PARAMETERS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
         }
 
         /**
@@ -177,7 +175,7 @@ public class ScanParametersServiceMockCallback extends AbstractServiceMockCallba
         @NonNull
         @Override
         public ScanParametersServiceMockCallback build() {
-            return new ScanParametersServiceMockCallback(createMockData(), false);
+            return new ScanParametersServiceMockCallback(createData(), false);
         }
 
     }
@@ -187,15 +185,7 @@ public class ScanParametersServiceMockCallback extends AbstractServiceMockCallba
      * @param isFallback fallback flag
      */
     public ScanParametersServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public ScanParametersServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

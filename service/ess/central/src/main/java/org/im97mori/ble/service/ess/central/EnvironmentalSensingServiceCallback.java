@@ -52,10 +52,10 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param clientCharacteristicConfigurationAndroid {@link ClientCharacteristicConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -75,10 +75,10 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -101,10 +101,10 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -124,10 +124,10 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
     void onDescriptorValueChangedIndicateStartSuccess(@NonNull Integer taskId
@@ -145,10 +145,10 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -171,10 +171,10 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -194,10 +194,10 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
     void onDescriptorValueChangedIndicateStopSuccess(@NonNull Integer taskId
@@ -215,10 +215,10 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -241,10 +241,10 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -263,9 +263,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice               BLE device
      * @param serviceUUID                   service {@link UUID}
-     * @param serviceInstanceId             task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId             task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID            characteristic {@link UUID}
-     * @param characteristicInstanceId      task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId      task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorValueChangedAndroid {@link DescriptorValueChangedAndroid}
      */
     void onDescriptorValueChangedIndicated(@NonNull BluetoothDevice bluetoothDevice
@@ -281,9 +281,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                       task id
      * @param bluetoothDevice              BLE device
      * @param serviceUUID                  service {@link UUID}
-     * @param serviceInstanceId            task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId            task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID           characteristic {@link UUID}
-     * @param characteristicInstanceId     task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId     task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                        characteristic index
      * @param apparentWindDirectionAndroid {@link ApparentWindDirectionAndroid}
      * @param argument                     callback argument
@@ -304,9 +304,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -330,9 +330,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -353,9 +353,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -374,9 +374,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -400,9 +400,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -421,9 +421,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -447,11 +447,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -472,11 +472,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -500,11 +500,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -525,11 +525,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -552,11 +552,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -582,11 +582,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -609,11 +609,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -636,11 +636,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -666,11 +666,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -693,11 +693,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -718,11 +718,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -746,11 +746,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -771,11 +771,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -796,11 +796,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -824,11 +824,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -849,11 +849,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -874,11 +874,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -902,11 +902,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -927,11 +927,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -952,11 +952,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -980,11 +980,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -1005,11 +1005,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -1030,11 +1030,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -1058,11 +1058,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -1082,9 +1082,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice              BLE device
      * @param serviceUUID                  service {@link UUID}
-     * @param serviceInstanceId            task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId            task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID           characteristic {@link UUID}
-     * @param characteristicInstanceId     task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId     task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param apparentWindDirectionAndroid {@link ApparentWindDirectionAndroid}
      */
     void onApparentWindDirectionNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -1101,9 +1101,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param apparentWindSpeedAndroid {@link ApparentWindSpeedAndroid}
      * @param argument                 callback argument
@@ -1124,9 +1124,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -1150,9 +1150,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -1173,9 +1173,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -1194,9 +1194,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -1220,9 +1220,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -1241,9 +1241,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -1267,11 +1267,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -1292,11 +1292,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -1320,11 +1320,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -1345,11 +1345,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -1372,11 +1372,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -1402,11 +1402,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -1429,11 +1429,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -1456,11 +1456,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -1486,11 +1486,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -1513,11 +1513,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -1538,11 +1538,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -1566,11 +1566,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -1591,11 +1591,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -1616,11 +1616,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -1644,11 +1644,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -1669,11 +1669,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -1694,11 +1694,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -1722,11 +1722,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -1747,11 +1747,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -1772,11 +1772,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -1800,11 +1800,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -1825,11 +1825,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -1850,11 +1850,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -1878,11 +1878,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -1902,9 +1902,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param apparentWindSpeedAndroid {@link ApparentWindSpeedAndroid}
      */
     void onApparentWindSpeedNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -1921,9 +1921,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param dewPointAndroid          {@link DewPointAndroid}
      * @param argument                 callback argument
@@ -1944,9 +1944,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -1970,9 +1970,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -1993,9 +1993,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -2014,9 +2014,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -2040,9 +2040,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -2061,9 +2061,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -2087,11 +2087,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -2112,11 +2112,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -2140,11 +2140,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -2165,11 +2165,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -2192,11 +2192,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -2222,11 +2222,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -2249,11 +2249,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -2276,11 +2276,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -2306,11 +2306,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -2333,11 +2333,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -2358,11 +2358,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -2386,11 +2386,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -2411,11 +2411,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -2436,11 +2436,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -2464,11 +2464,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -2489,11 +2489,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -2514,11 +2514,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -2542,11 +2542,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -2567,11 +2567,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -2592,11 +2592,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -2620,11 +2620,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -2645,11 +2645,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -2670,11 +2670,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -2698,11 +2698,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -2722,9 +2722,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param dewPointAndroid          {@link DewPointAndroid}
      */
     void onDewPointNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -2741,9 +2741,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param elevationAndroid         {@link ElevationAndroid}
      * @param argument                 callback argument
@@ -2764,9 +2764,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -2790,9 +2790,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -2813,9 +2813,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -2834,9 +2834,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -2860,9 +2860,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -2881,9 +2881,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -2907,11 +2907,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -2932,11 +2932,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -2960,11 +2960,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -2985,11 +2985,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -3012,11 +3012,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -3042,11 +3042,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -3069,11 +3069,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -3096,11 +3096,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -3126,11 +3126,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -3153,11 +3153,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -3178,11 +3178,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -3206,11 +3206,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -3231,11 +3231,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -3256,11 +3256,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -3284,11 +3284,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -3309,11 +3309,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -3334,11 +3334,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -3362,11 +3362,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -3387,11 +3387,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -3412,11 +3412,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -3440,11 +3440,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -3465,11 +3465,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -3490,11 +3490,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -3518,11 +3518,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -3542,9 +3542,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param elevationAndroid         {@link ElevationAndroid}
      */
     void onElevationNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -3561,9 +3561,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param gustFactorAndroid        {@link GustFactorAndroid}
      * @param argument                 callback argument
@@ -3584,9 +3584,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -3610,9 +3610,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -3633,9 +3633,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -3654,9 +3654,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -3680,9 +3680,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -3701,9 +3701,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -3727,11 +3727,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -3752,11 +3752,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -3780,11 +3780,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -3805,11 +3805,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -3832,11 +3832,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -3862,11 +3862,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -3889,11 +3889,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -3916,11 +3916,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -3946,11 +3946,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -3973,11 +3973,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -3998,11 +3998,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -4026,11 +4026,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -4051,11 +4051,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -4076,11 +4076,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -4104,11 +4104,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -4129,11 +4129,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -4154,11 +4154,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -4182,11 +4182,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -4207,11 +4207,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -4232,11 +4232,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -4260,11 +4260,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -4285,11 +4285,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -4310,11 +4310,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -4338,11 +4338,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -4362,9 +4362,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param gustFactorAndroid        {@link GustFactorAndroid}
      */
     void onGustFactorNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -4381,9 +4381,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param heatIndexAndroid         {@link HeatIndexAndroid}
      * @param argument                 callback argument
@@ -4404,9 +4404,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -4430,9 +4430,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -4453,9 +4453,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -4474,9 +4474,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -4500,9 +4500,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -4521,9 +4521,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -4547,11 +4547,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -4572,11 +4572,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -4600,11 +4600,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -4625,11 +4625,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -4652,11 +4652,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -4682,11 +4682,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -4709,11 +4709,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -4736,11 +4736,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -4766,11 +4766,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -4793,11 +4793,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -4818,11 +4818,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -4846,11 +4846,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -4871,11 +4871,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -4896,11 +4896,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -4924,11 +4924,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -4949,11 +4949,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -4974,11 +4974,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -5002,11 +5002,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -5027,11 +5027,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -5052,11 +5052,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -5080,11 +5080,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -5105,11 +5105,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -5130,11 +5130,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -5158,11 +5158,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -5182,9 +5182,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param heatIndexAndroid         {@link HeatIndexAndroid}
      */
     void onHeatIndexNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -5201,9 +5201,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param humidityAndroid          {@link HumidityAndroid}
      * @param argument                 callback argument
@@ -5224,9 +5224,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -5250,9 +5250,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -5273,9 +5273,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -5294,9 +5294,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -5320,9 +5320,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -5341,9 +5341,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -5367,11 +5367,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -5392,11 +5392,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -5420,11 +5420,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -5445,11 +5445,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -5472,11 +5472,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -5502,11 +5502,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -5529,11 +5529,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -5556,11 +5556,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -5586,11 +5586,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -5613,11 +5613,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -5638,11 +5638,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -5666,11 +5666,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -5691,11 +5691,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -5716,11 +5716,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -5744,11 +5744,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -5769,11 +5769,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -5794,11 +5794,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -5822,11 +5822,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -5847,11 +5847,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -5872,11 +5872,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -5900,11 +5900,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -5925,11 +5925,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -5950,11 +5950,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -5978,11 +5978,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -6002,9 +6002,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param humidityAndroid          {@link HumidityAndroid}
      */
     void onHumidityNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -6021,9 +6021,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param irradianceAndroid        {@link IrradianceAndroid}
      * @param argument                 callback argument
@@ -6044,9 +6044,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -6070,9 +6070,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -6093,9 +6093,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -6114,9 +6114,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -6140,9 +6140,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -6161,9 +6161,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -6187,11 +6187,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -6212,11 +6212,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -6240,11 +6240,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -6265,11 +6265,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -6292,11 +6292,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -6322,11 +6322,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -6349,11 +6349,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -6376,11 +6376,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -6406,11 +6406,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -6433,11 +6433,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -6458,11 +6458,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -6486,11 +6486,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -6511,11 +6511,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -6536,11 +6536,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -6564,11 +6564,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -6589,11 +6589,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -6614,11 +6614,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -6642,11 +6642,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -6667,11 +6667,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -6692,11 +6692,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -6720,11 +6720,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -6745,11 +6745,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -6770,11 +6770,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -6798,11 +6798,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -6822,9 +6822,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param irradianceAndroid        {@link IrradianceAndroid}
      */
     void onIrradianceNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -6841,9 +6841,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                     task id
      * @param bluetoothDevice            BLE device
      * @param serviceUUID                service {@link UUID}
-     * @param serviceInstanceId          task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId          task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID         characteristic {@link UUID}
-     * @param characteristicInstanceId   task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId   task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                      characteristic index
      * @param pollenConcentrationAndroid {@link PollenConcentrationAndroid}
      * @param argument                   callback argument
@@ -6864,9 +6864,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -6890,9 +6890,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -6913,9 +6913,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -6934,9 +6934,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -6960,9 +6960,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -6981,9 +6981,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -7007,11 +7007,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -7032,11 +7032,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -7060,11 +7060,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -7085,11 +7085,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -7112,11 +7112,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -7142,11 +7142,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -7169,11 +7169,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -7196,11 +7196,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -7226,11 +7226,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -7253,11 +7253,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -7278,11 +7278,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -7306,11 +7306,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -7331,11 +7331,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -7356,11 +7356,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -7384,11 +7384,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -7409,11 +7409,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -7434,11 +7434,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -7462,11 +7462,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -7487,11 +7487,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -7512,11 +7512,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -7540,11 +7540,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -7565,11 +7565,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -7590,11 +7590,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -7618,11 +7618,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -7642,9 +7642,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice            BLE device
      * @param serviceUUID                service {@link UUID}
-     * @param serviceInstanceId          task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId          task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID         characteristic {@link UUID}
-     * @param characteristicInstanceId   task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId   task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param pollenConcentrationAndroid {@link PollenConcentrationAndroid}
      */
     void onPollenConcentrationNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -7661,9 +7661,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param rainfallAndroid          {@link RainfallAndroid}
      * @param argument                 callback argument
@@ -7684,9 +7684,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -7710,9 +7710,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -7733,9 +7733,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -7754,9 +7754,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -7780,9 +7780,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -7801,9 +7801,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -7827,11 +7827,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -7852,11 +7852,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -7880,11 +7880,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -7905,11 +7905,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -7932,11 +7932,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -7962,11 +7962,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -7989,11 +7989,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -8016,11 +8016,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -8046,11 +8046,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -8073,11 +8073,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -8098,11 +8098,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -8126,11 +8126,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -8151,11 +8151,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -8176,11 +8176,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -8204,11 +8204,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -8229,11 +8229,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -8254,11 +8254,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -8282,11 +8282,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -8307,11 +8307,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -8332,11 +8332,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -8360,11 +8360,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -8385,11 +8385,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -8410,11 +8410,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -8438,11 +8438,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -8462,9 +8462,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param rainfallAndroid          {@link RainfallAndroid}
      */
     void onRainfallNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -8481,9 +8481,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param pressureAndroid          {@link PressureAndroid}
      * @param argument                 callback argument
@@ -8504,9 +8504,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -8530,9 +8530,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -8553,9 +8553,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -8574,9 +8574,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -8600,9 +8600,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -8621,9 +8621,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -8647,11 +8647,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -8672,11 +8672,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -8700,11 +8700,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -8725,11 +8725,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -8752,11 +8752,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -8782,11 +8782,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -8809,11 +8809,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -8836,11 +8836,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -8866,11 +8866,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -8893,11 +8893,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -8918,11 +8918,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -8946,11 +8946,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -8971,11 +8971,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -8996,11 +8996,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -9024,11 +9024,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -9049,11 +9049,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -9074,11 +9074,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -9102,11 +9102,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -9127,11 +9127,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -9152,11 +9152,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -9180,11 +9180,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -9205,11 +9205,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -9230,11 +9230,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -9258,11 +9258,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -9282,9 +9282,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param pressureAndroid          {@link PressureAndroid}
      */
     void onPressureNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -9301,9 +9301,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param temperatureAndroid       {@link TemperatureAndroid}
      * @param argument                 callback argument
@@ -9324,9 +9324,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -9350,9 +9350,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -9373,9 +9373,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -9394,9 +9394,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -9420,9 +9420,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -9441,9 +9441,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -9467,11 +9467,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -9492,11 +9492,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -9520,11 +9520,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -9545,11 +9545,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -9572,11 +9572,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -9602,11 +9602,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -9629,11 +9629,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -9656,11 +9656,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -9686,11 +9686,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -9713,11 +9713,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -9738,11 +9738,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -9766,11 +9766,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -9791,11 +9791,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -9816,11 +9816,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -9844,11 +9844,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -9869,11 +9869,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -9894,11 +9894,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -9922,11 +9922,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -9947,11 +9947,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -9972,11 +9972,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -10000,11 +10000,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -10025,11 +10025,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -10050,11 +10050,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -10078,11 +10078,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -10102,9 +10102,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param temperatureAndroid       {@link TemperatureAndroid}
      */
     void onTemperatureNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -10121,9 +10121,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param trueWindDirectionAndroid {@link TrueWindDirectionAndroid}
      * @param argument                 callback argument
@@ -10144,9 +10144,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -10170,9 +10170,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -10193,9 +10193,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -10214,9 +10214,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -10240,9 +10240,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -10261,9 +10261,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -10287,11 +10287,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -10312,11 +10312,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -10340,11 +10340,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -10365,11 +10365,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -10392,11 +10392,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -10422,11 +10422,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -10449,11 +10449,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -10476,11 +10476,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -10506,11 +10506,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -10533,11 +10533,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -10558,11 +10558,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -10586,11 +10586,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -10611,11 +10611,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -10636,11 +10636,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -10664,11 +10664,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -10689,11 +10689,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -10714,11 +10714,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -10742,11 +10742,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -10767,11 +10767,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -10792,11 +10792,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -10820,11 +10820,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -10845,11 +10845,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -10870,11 +10870,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -10898,11 +10898,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -10922,9 +10922,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param trueWindDirectionAndroid {@link TrueWindDirectionAndroid}
      */
     void onTrueWindDirectionNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -10941,9 +10941,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param trueWindSpeedAndroid     {@link TrueWindSpeedAndroid}
      * @param argument                 callback argument
@@ -10964,9 +10964,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -10990,9 +10990,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -11013,9 +11013,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -11034,9 +11034,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -11060,9 +11060,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -11081,9 +11081,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -11107,11 +11107,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -11132,11 +11132,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -11160,11 +11160,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -11185,11 +11185,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -11212,11 +11212,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -11242,11 +11242,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -11269,11 +11269,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -11296,11 +11296,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -11326,11 +11326,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -11353,11 +11353,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -11378,11 +11378,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -11406,11 +11406,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -11431,11 +11431,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -11456,11 +11456,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -11484,11 +11484,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -11509,11 +11509,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -11534,11 +11534,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -11562,11 +11562,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -11587,11 +11587,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -11612,11 +11612,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -11640,11 +11640,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -11665,11 +11665,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -11690,11 +11690,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -11718,11 +11718,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -11742,9 +11742,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param trueWindSpeedAndroid     {@link TrueWindSpeedAndroid}
      */
     void onTrueWindSpeedNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -11761,9 +11761,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param uvIndexAndroid           {@link UVIndexAndroid}
      * @param argument                 callback argument
@@ -11784,9 +11784,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -11810,9 +11810,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -11833,9 +11833,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -11854,9 +11854,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -11880,9 +11880,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -11901,9 +11901,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -11927,11 +11927,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -11952,11 +11952,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -11980,11 +11980,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -12005,11 +12005,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -12032,11 +12032,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -12062,11 +12062,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -12089,11 +12089,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -12116,11 +12116,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -12146,11 +12146,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -12173,11 +12173,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -12198,11 +12198,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -12226,11 +12226,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -12251,11 +12251,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -12276,11 +12276,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -12304,11 +12304,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -12329,11 +12329,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -12354,11 +12354,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -12382,11 +12382,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -12407,11 +12407,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -12432,11 +12432,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -12460,11 +12460,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -12485,11 +12485,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -12510,11 +12510,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -12538,11 +12538,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -12562,9 +12562,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param uvIndexAndroid           {@link UVIndexAndroid}
      */
     void onUVIndexNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -12581,9 +12581,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param windChillAndroid         {@link WindChillAndroid}
      * @param argument                 callback argument
@@ -12604,9 +12604,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -12630,9 +12630,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -12653,9 +12653,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -12674,9 +12674,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -12700,9 +12700,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -12721,9 +12721,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -12747,11 +12747,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -12772,11 +12772,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -12800,11 +12800,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -12825,11 +12825,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -12852,11 +12852,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -12882,11 +12882,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -12909,11 +12909,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -12936,11 +12936,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -12966,11 +12966,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -12993,11 +12993,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -13018,11 +13018,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -13046,11 +13046,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -13071,11 +13071,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -13096,11 +13096,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -13124,11 +13124,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -13149,11 +13149,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -13174,11 +13174,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -13202,11 +13202,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -13227,11 +13227,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -13252,11 +13252,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -13280,11 +13280,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -13305,11 +13305,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -13330,11 +13330,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -13358,11 +13358,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -13382,9 +13382,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param windChillAndroid         {@link WindChillAndroid}
      */
     void onWindChillNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -13401,9 +13401,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                         task id
      * @param bluetoothDevice                BLE device
      * @param serviceUUID                    service {@link UUID}
-     * @param serviceInstanceId              task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId              task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID             characteristic {@link UUID}
-     * @param characteristicInstanceId       task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId       task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                          characteristic index
      * @param barometricPressureTrendAndroid {@link BarometricPressureTrendAndroid}
      * @param argument                       callback argument
@@ -13424,9 +13424,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -13450,9 +13450,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -13473,9 +13473,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -13494,9 +13494,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -13520,9 +13520,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -13541,9 +13541,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -13567,11 +13567,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -13592,11 +13592,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -13620,11 +13620,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -13645,11 +13645,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -13672,11 +13672,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -13702,11 +13702,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -13729,11 +13729,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -13756,11 +13756,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -13786,11 +13786,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -13813,11 +13813,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -13838,11 +13838,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -13866,11 +13866,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -13891,11 +13891,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -13916,11 +13916,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -13944,11 +13944,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -13969,11 +13969,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -13994,11 +13994,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -14022,11 +14022,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -14047,11 +14047,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -14072,11 +14072,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -14100,11 +14100,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -14125,11 +14125,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -14150,11 +14150,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -14178,11 +14178,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -14202,9 +14202,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice                BLE device
      * @param serviceUUID                    service {@link UUID}
-     * @param serviceInstanceId              task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId              task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID             characteristic {@link UUID}
-     * @param characteristicInstanceId       task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId       task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param barometricPressureTrendAndroid {@link BarometricPressureTrendAndroid}
      */
     void onBarometricPressureTrendNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -14221,9 +14221,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                     task id
      * @param bluetoothDevice            BLE device
      * @param serviceUUID                service {@link UUID}
-     * @param serviceInstanceId          task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId          task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID         characteristic {@link UUID}
-     * @param characteristicInstanceId   task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId   task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                      characteristic index
      * @param magneticDeclinationAndroid {@link MagneticDeclinationAndroid}
      * @param argument                   callback argument
@@ -14244,9 +14244,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -14270,9 +14270,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -14293,9 +14293,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -14314,9 +14314,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -14340,9 +14340,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -14361,9 +14361,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -14387,11 +14387,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -14412,11 +14412,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -14440,11 +14440,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -14465,11 +14465,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -14492,11 +14492,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -14522,11 +14522,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -14549,11 +14549,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -14576,11 +14576,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -14606,11 +14606,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -14633,11 +14633,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -14658,11 +14658,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -14686,11 +14686,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -14711,11 +14711,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -14736,11 +14736,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -14764,11 +14764,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -14789,11 +14789,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -14814,11 +14814,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -14842,11 +14842,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -14867,11 +14867,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -14892,11 +14892,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -14920,11 +14920,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -14945,11 +14945,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -14970,11 +14970,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -14998,11 +14998,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -15022,9 +15022,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice            BLE device
      * @param serviceUUID                service {@link UUID}
-     * @param serviceInstanceId          task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId          task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID         characteristic {@link UUID}
-     * @param characteristicInstanceId   task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId   task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param magneticDeclinationAndroid {@link MagneticDeclinationAndroid}
      */
     void onMagneticDeclinationNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -15041,9 +15041,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                       task id
      * @param bluetoothDevice              BLE device
      * @param serviceUUID                  service {@link UUID}
-     * @param serviceInstanceId            task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId            task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID           characteristic {@link UUID}
-     * @param characteristicInstanceId     task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId     task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                        characteristic index
      * @param magneticFluxDensity2DAndroid {@link MagneticFluxDensity2DAndroid}
      * @param argument                     callback argument
@@ -15064,9 +15064,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -15090,9 +15090,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -15113,9 +15113,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -15134,9 +15134,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -15160,9 +15160,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -15181,9 +15181,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -15207,11 +15207,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -15232,11 +15232,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -15260,11 +15260,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -15285,11 +15285,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -15312,11 +15312,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -15342,11 +15342,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -15369,11 +15369,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -15396,11 +15396,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -15426,11 +15426,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -15453,11 +15453,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -15478,11 +15478,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -15506,11 +15506,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -15531,11 +15531,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -15556,11 +15556,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -15584,11 +15584,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -15609,11 +15609,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -15634,11 +15634,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -15662,11 +15662,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -15687,11 +15687,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -15712,11 +15712,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -15740,11 +15740,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -15765,11 +15765,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -15790,11 +15790,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -15818,11 +15818,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -15842,9 +15842,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice              BLE device
      * @param serviceUUID                  service {@link UUID}
-     * @param serviceInstanceId            task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId            task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID           characteristic {@link UUID}
-     * @param characteristicInstanceId     task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId     task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param magneticFluxDensity2DAndroid {@link MagneticFluxDensity2DAndroid}
      */
     void onMagneticFluxDensity2DNotified(@NonNull BluetoothDevice bluetoothDevice
@@ -15861,9 +15861,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                       task id
      * @param bluetoothDevice              BLE device
      * @param serviceUUID                  service {@link UUID}
-     * @param serviceInstanceId            task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId            task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID           characteristic {@link UUID}
-     * @param characteristicInstanceId     task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId     task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                        characteristic index
      * @param magneticFluxDensity3DAndroid {@link MagneticFluxDensity3DAndroid}
      * @param argument                     callback argument
@@ -15884,9 +15884,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
@@ -15910,9 +15910,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -15933,9 +15933,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -15954,9 +15954,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -15980,9 +15980,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param argument                 callback argument
      */
@@ -16001,9 +16001,9 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -16027,11 +16027,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                 task id
      * @param bluetoothDevice                        BLE device
      * @param serviceUUID                            service {@link UUID}
-     * @param serviceInstanceId                      task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                      task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                     characteristic {@link UUID}
-     * @param characteristicInstanceId               task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId               task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                  characteristic index
-     * @param descriptorInstanceId                   task target descriptor incetanceId
+     * @param descriptorInstanceId                   task target descriptor instance id
      * @param environmentalSensingMeasurementAndroid {@link EnvironmentalSensingMeasurementAndroid}
      * @param argument                               callback argument
      */
@@ -16052,11 +16052,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -16080,11 +16080,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -16105,11 +16105,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -16132,11 +16132,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
@@ -16162,11 +16162,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -16189,11 +16189,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                    task id
      * @param bluetoothDevice                           BLE device
      * @param serviceUUID                               service {@link UUID}
-     * @param serviceInstanceId                         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                        characteristic {@link UUID}
-     * @param characteristicInstanceId                  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex                       characteristic index
-     * @param descriptorInstanceId                      task target descriptor incetanceId
+     * @param descriptorInstanceId                      task target descriptor instance id
      * @param descriptorIndex                           descriptor index
      * @param environmentalSensingTriggerSettingAndroid {@link EnvironmentalSensingTriggerSettingAndroid}
      * @param argument                                  callback argument
@@ -16216,11 +16216,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
@@ -16246,11 +16246,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param characteristicIndex      characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param descriptorIndex          descriptor index
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
@@ -16273,11 +16273,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -16298,11 +16298,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -16326,11 +16326,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -16351,11 +16351,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                                   task id
      * @param bluetoothDevice                          BLE device
      * @param serviceUUID                              service {@link UUID}
-     * @param serviceInstanceId                        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                       characteristic {@link UUID}
-     * @param characteristicInstanceId                 task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                 task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                    characteristic index
-     * @param descriptorInstanceId                     task target descriptor incetanceId
+     * @param descriptorInstanceId                     task target descriptor instance id
      * @param environmentalSensingConfigurationAndroid {@link EnvironmentalSensingConfigurationAndroid}
      * @param argument                                 callback argument
      */
@@ -16376,11 +16376,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -16404,11 +16404,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -16429,11 +16429,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -16454,11 +16454,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -16482,11 +16482,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -16507,11 +16507,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                               task id
      * @param bluetoothDevice                      BLE device
      * @param serviceUUID                          service {@link UUID}
-     * @param serviceInstanceId                    task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                    task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                   characteristic {@link UUID}
-     * @param characteristicInstanceId             task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId             task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                                characteristic index
-     * @param descriptorInstanceId                 task target descriptor incetanceId
+     * @param descriptorInstanceId                 task target descriptor instance id
      * @param characteristicUserDescriptionAndroid {@link CharacteristicUserDescriptionAndroid}
      * @param argument                             callback argument
      */
@@ -16532,11 +16532,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -16560,11 +16560,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -16585,11 +16585,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param validRangeAndroid        {@link ValidRangeAndroid}
      * @param argument                 callback argument
      */
@@ -16610,11 +16610,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
@@ -16638,11 +16638,11 @@ public interface EnvironmentalSensingServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param index                    characteristic index
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -16662,9 +16662,9 @@ public interface EnvironmentalSensingServiceCallback {
      *
      * @param bluetoothDevice              BLE device
      * @param serviceUUID                  service {@link UUID}
-     * @param serviceInstanceId            task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId            task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID           characteristic {@link UUID}
-     * @param characteristicInstanceId     task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId     task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param magneticFluxDensity3DAndroid {@link MagneticFluxDensity3DAndroid}
      */
     void onMagneticFluxDensity3DNotified(@NonNull BluetoothDevice bluetoothDevice

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CLIENT_SUPPORTED_FEA
 public class ClientSupportedFeaturesAndroid extends ClientSupportedFeatures implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ClientSupportedFeaturesAndroid> CREATOR = new ByteArrayCreater<ClientSupportedFeaturesAndroid>() {
+    public static final ByteArrayCreator<ClientSupportedFeaturesAndroid> CREATOR = new ByteArrayCreator<ClientSupportedFeaturesAndroid>() {
 
         /**
          * {@inheritDoc}

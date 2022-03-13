@@ -12,7 +12,7 @@ import org.im97mori.ble.characteristic.u2a54.RSCFeature;
 import org.im97mori.ble.characteristic.u2a55.SCControlPoint;
 import org.im97mori.ble.characteristic.u2a5d.SensorLocation;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -33,7 +33,7 @@ import static org.junit.Assert.assertNull;
 import androidx.test.filters.RequiresDevice;
 import androidx.test.filters.SdkSuppress;
 
-public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
+public class RunningSpeedAndCadenceServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
     @Test
     @RequiresDevice

@@ -1,5 +1,10 @@
 package org.im97mori.ble.task;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 import android.os.HandlerThread;
@@ -10,24 +15,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.filters.RequiresDevice;
 
-import org.im97mori.ble.BLEServerCallbackDistributer;
+import org.im97mori.ble.BLEServerCallbackDistributor;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.BaseBLEServerCallback;
 import org.im97mori.ble.TaskHandler;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
 import java.util.Random;
 import java.util.UUID;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 @SuppressWarnings("ConstantConditions")
-public class NotificationTaskTest extends AbstractPeripherallTest {
+public class NotificationTaskTest extends AbstractPeripheralTest {
 
     @Test
     public void test_createInitialMessage_00001() {
@@ -122,7 +122,7 @@ public class NotificationTaskTest extends AbstractPeripherallTest {
                     , null
                     , false
                     , NotificationTask.TIMEOUT_MILLIS
-                    , BLEServerCallbackDistributer.wrapArgument(null, null));
+                    , BLEServerCallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -157,7 +157,7 @@ public class NotificationTaskTest extends AbstractPeripherallTest {
                     , mockTaskHandler
                     , null
                     , AddServiceTask.TIMEOUT_MILLIS
-                    , BLEServerCallbackDistributer.wrapArgument(null, null));
+                    , BLEServerCallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {

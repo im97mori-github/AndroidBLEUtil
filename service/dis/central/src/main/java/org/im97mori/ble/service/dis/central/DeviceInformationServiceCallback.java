@@ -34,9 +34,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                        task id
      * @param bluetoothDevice               BLE device
      * @param serviceUUID                   service {@link UUID}
-     * @param serviceInstanceId             task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId             task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID            characteristic {@link UUID}
-     * @param characteristicInstanceId      task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId      task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param manufacturerNameStringAndroid {@link ManufacturerNameStringAndroid}
      * @param argument                      callback argument
      */
@@ -55,9 +55,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -79,9 +79,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -100,9 +100,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param modelNumberStringAndroid {@link ModelNumberStringAndroid}
      * @param argument                 callback argument
      */
@@ -121,9 +121,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -145,9 +145,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -166,9 +166,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                    task id
      * @param bluetoothDevice           BLE device
      * @param serviceUUID               service {@link UUID}
-     * @param serviceInstanceId         task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId         task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID        characteristic {@link UUID}
-     * @param characteristicInstanceId  task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId  task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param serialNumberStringAndroid {@link SerialNumberStringAndroid}
      * @param argument                  callback argument
      */
@@ -187,9 +187,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -211,9 +211,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -232,9 +232,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                        task id
      * @param bluetoothDevice               BLE device
      * @param serviceUUID                   service {@link UUID}
-     * @param serviceInstanceId             task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId             task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID            characteristic {@link UUID}
-     * @param characteristicInstanceId      task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId      task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param hardwareRevisionStringAndroid {@link HardwareRevisionStringAndroid}
      * @param argument                      callback argument
      */
@@ -253,9 +253,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -277,9 +277,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -298,9 +298,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                        task id
      * @param bluetoothDevice               BLE device
      * @param serviceUUID                   service {@link UUID}
-     * @param serviceInstanceId             task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId             task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID            characteristic {@link UUID}
-     * @param characteristicInstanceId      task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId      task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param firmwareRevisionStringAndroid {@link FirmwareRevisionStringAndroid}
      * @param argument                      callback argument
      */
@@ -319,9 +319,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -343,9 +343,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -364,9 +364,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                        task id
      * @param bluetoothDevice               BLE device
      * @param serviceUUID                   service {@link UUID}
-     * @param serviceInstanceId             task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId             task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID            characteristic {@link UUID}
-     * @param characteristicInstanceId      task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId      task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param softwareRevisionStringAndroid {@link SoftwareRevisionStringAndroid}
      * @param argument                      callback argument
      */
@@ -385,9 +385,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -409,9 +409,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -430,9 +430,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param systemIdAndroid          {@link SystemIdAndroid}
      * @param argument                 callback argument
      */
@@ -451,9 +451,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -475,9 +475,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -496,9 +496,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                                                  task id
      * @param bluetoothDevice                                         BLE device
      * @param serviceUUID                                             service {@link UUID}
-     * @param serviceInstanceId                                       task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId                                       task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID                                      characteristic {@link UUID}
-     * @param characteristicInstanceId                                task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId                                task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param ieee_11073_20601_regulatoryCertificationDataListAndroid {@link IEEE_11073_20601_RegulatoryCertificationDataListAndroid}
      * @param argument                                                callback argument
      */
@@ -517,9 +517,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -541,9 +541,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
@@ -563,9 +563,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param pnpIdAndroid             {@link PnpIdAndroid}
      * @param argument                 callback argument
      */
@@ -584,9 +584,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
@@ -608,9 +608,9 @@ public interface DeviceInformationServiceCallback {
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */

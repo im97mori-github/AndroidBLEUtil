@@ -8,7 +8,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.UNREAD_ALERT_STATUS_
 import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
 import static org.im97mori.ble.constants.ErrorCode.COMMAND_NOT_SUPPORTED;
-import static org.im97mori.ble.constants.ServiceUUID.ALERT_NOTIFICATION_SERVICE;
 
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
@@ -28,7 +27,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.core.AlertCategoryIdBitMaskUtils;
 import org.im97mori.ble.characteristic.u2a44.AlertNotificationControlPoint;
@@ -40,7 +38,6 @@ import org.im97mori.ble.service.ans.AlertNotificationCategoryIdUtils;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 import org.im97mori.ble.task.NotificationTask;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -64,7 +61,7 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
      *
      * @param <T> subclass of {@link AlertNotificationServiceMockCallback}
      */
-    public static class Builder<T extends AlertNotificationServiceMockCallback> extends AbstractServiceMockCallback.Builder<AlertNotificationServiceMockCallback> {
+    public static class Builder<T extends AlertNotificationServiceMockCallback> extends AbstractServiceMockCallback.Builder<AlertNotificationServiceMockCallback, ServiceData> {
 
         /**
          * Supported New Alert Category data
@@ -129,7 +126,7 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
         }
 
         /**
-         * remove upported New Alert Category characteristic
+         * remove Supported New Alert Category characteristic
          *
          * @return {@link Builder} instance
          */
@@ -162,8 +159,8 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
          * @param highPrioritizedAlertTextStringInformation Text String Information:High Prioritized Alert
          * @param instantMessageAlertNumberOfNewAlert       Number of New Alert:Instant Message
          * @param instantMessageTextStringInformation       Text String Information:Instant Message
-         * @param descriptorResponseCode                    descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay                           descritptor response delay(millis)
+         * @param descriptorResponseCode                    descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay                           descriptor response delay(millis)
          * @param descriptorValue                           descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -292,8 +289,8 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
          * @param scheduleUnreadCount             Unread Count:Schedule
          * @param highPrioritizedAlertUnreadCount Unread Count:High Prioritized Alert
          * @param instantMessageAlertUnreadCount  Unread Count:Instant Message
-         * @param descriptorResponseCode          descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay                 descritptor response delay(millis)
+         * @param descriptorResponseCode          descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay                 descriptor response delay(millis)
          * @param descriptorValue                 descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -388,37 +385,28 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
          */
         @NonNull
         @Override
-        public MockData createMockData() {
-            List<CharacteristicData> characteristicList = new ArrayList<>();
-
+        public ServiceData createData() {
             if (mSupportedNewAlertCategory == null) {
                 throw new RuntimeException("no Supported New Alert Category data");
-            } else {
-                characteristicList.add(mSupportedNewAlertCategory);
             }
             if (mNewAlert == null) {
                 throw new RuntimeException("no New Alert data");
-            } else {
-                characteristicList.add(mNewAlert);
             }
             if (mSupportedUnreadAlertCategory == null) {
                 throw new RuntimeException("no Supported Unread Alert Category data");
-            } else {
-                characteristicList.add(mSupportedUnreadAlertCategory);
             }
             if (mUnreadAlertStatus == null) {
                 throw new RuntimeException("no Unread Alert Status data");
-            } else {
-                characteristicList.add(mUnreadAlertStatus);
             }
             if (mAlertNotificationControlPoint == null) {
                 throw new RuntimeException("no Alert Notification Control Point data");
-            } else {
-                characteristicList.add(mAlertNotificationControlPoint);
             }
 
-            ServiceData serviceData = new ServiceData(ALERT_NOTIFICATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new AlertNotificationServiceData(mSupportedNewAlertCategory
+                    , mNewAlert
+                    , mSupportedUnreadAlertCategory
+                    , mUnreadAlertStatus
+                    , mAlertNotificationControlPoint);
         }
 
         /**
@@ -427,7 +415,7 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
         @NonNull
         @Override
         public AlertNotificationServiceMockCallback build() {
-            return new AlertNotificationServiceMockCallback(createMockData(), false);
+            return new AlertNotificationServiceMockCallback(createData(), false);
         }
     }
 
@@ -442,19 +430,11 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
     private final Map<Integer, Boolean> mUnreadAlertEnableMap = new HashMap<>();
 
     /**
-     * @param serviceData   {@link ServiceData} instance
-     * @param isFallback fallback flag
+     * @param serviceData {@link ServiceData} instance
+     * @param isFallback  fallback flag
      */
     public AlertNotificationServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public AlertNotificationServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

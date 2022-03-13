@@ -5,8 +5,8 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
-import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
+import org.im97mori.ble.ByteArrayCreator;
+import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 
 /**
  * Indoor Bike Data (Characteristics UUID: 0x2AD2)
@@ -15,9 +15,9 @@ import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 public class IndoorBikeDataAndroid extends IndoorBikeData implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final MultiplePacketCreater<IndoorBikeDataAndroid, IndoorBikeDataPacketAndroid> CREATOR = new MultiplePacketCreater<IndoorBikeDataAndroid, IndoorBikeDataPacketAndroid>() {
+    public static final MultiplePacketCreator<IndoorBikeDataAndroid, IndoorBikeDataPacketAndroid> CREATOR = new MultiplePacketCreator<IndoorBikeDataAndroid, IndoorBikeDataPacketAndroid>() {
 
         /**
          * {@inheritDoc}

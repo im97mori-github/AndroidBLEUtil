@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a67.LocationAndSpeedAndroid;
 import org.im97mori.ble.characteristic.u2a68.NavigationAndroid;
 import org.im97mori.ble.characteristic.u2a69.PositionQualityAndroid;
@@ -45,7 +45,7 @@ public class LnsCallbackSample extends LocationAndNavigationServiceMockCallback 
         @NonNull
         @Override
         public LnsCallbackSample build() {
-            return new LnsCallbackSample(createMockData(), mSampleCallback);
+            return new LnsCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -53,8 +53,8 @@ public class LnsCallbackSample extends LocationAndNavigationServiceMockCallback 
 
     private final SampleCallback mSampleCallback;
 
-    LnsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    LnsCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -76,9 +76,9 @@ public class LnsCallbackSample extends LocationAndNavigationServiceMockCallback 
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

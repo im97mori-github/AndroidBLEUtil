@@ -5,7 +5,7 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,9 +21,9 @@ import java.util.UUID;
 public class CompleteListOf16BitServiceUUIDsAndroid extends CompleteListOf16BitServiceUUIDs implements AdvertisingDataInterfaceAndroid {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CompleteListOf16BitServiceUUIDsAndroid> CREATOR = new ByteArrayCreater<CompleteListOf16BitServiceUUIDsAndroid>() {
+    public static final ByteArrayCreator<CompleteListOf16BitServiceUUIDsAndroid> CREATOR = new ByteArrayCreator<CompleteListOf16BitServiceUUIDsAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -68,7 +68,7 @@ public class CompleteListOf16BitServiceUUIDsAndroid extends CompleteListOf16BitS
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
-     * @param length 1st octed of Advertising Data
+     * @param length 1st octet of Advertising Data
      */
     public CompleteListOf16BitServiceUUIDsAndroid(@NonNull byte[] data
             , int offset

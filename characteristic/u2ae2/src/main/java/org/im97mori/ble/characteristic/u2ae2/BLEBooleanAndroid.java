@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BOOLEAN_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BOOLEAN_CHARACTERIST
 public class BLEBooleanAndroid extends BLEBoolean implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BLEBooleanAndroid> CREATOR = new ByteArrayCreater<BLEBooleanAndroid>() {
+    public static final ByteArrayCreator<BLEBooleanAndroid> CREATOR = new ByteArrayCreator<BLEBooleanAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -25,7 +25,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformation;
@@ -33,10 +32,8 @@ import org.im97mori.ble.characteristic.u2a2b.CurrentTime;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -50,7 +47,7 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
      *
      * @param <T> subclass of {@link CurrentTimeServiceMockCallback}
      */
-    public static class Builder<T extends CurrentTimeServiceMockCallback> extends AbstractServiceMockCallback.Builder<CurrentTimeServiceMockCallback> {
+    public static class Builder<T extends CurrentTimeServiceMockCallback> extends AbstractServiceMockCallback.Builder<CurrentTimeServiceMockCallback, ServiceData> {
 
         /**
          * Current Time Measurement data
@@ -83,8 +80,8 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Intermediate Cuff Pressure notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -223,22 +220,13 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
          */
         @Override
         @NonNull
-        public MockData createMockData() {
-            List<CharacteristicData> characteristicList = new ArrayList<>();
-
+        public ServiceData createData() {
             if (mCurrentTimeData == null) {
                 throw new RuntimeException("no Current Time data");
-            } else {
-                characteristicList.add(mCurrentTimeData);
             }
-            if (mLocalTimeInformationData != null) {
-                characteristicList.add(mLocalTimeInformationData);
-            }
-            if (mReferenceTimeInformationData != null) {
-                characteristicList.add(mReferenceTimeInformationData);
-            }
-            ServiceData serviceData = new ServiceData(CURRENT_TIME_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new CurrentTimeServiceData(mCurrentTimeData
+                    , mLocalTimeInformationData
+                    , mReferenceTimeInformationData);
         }
 
         /**
@@ -247,25 +235,17 @@ public class CurrentTimeServiceMockCallback extends AbstractServiceMockCallback 
         @Override
         @NonNull
         public CurrentTimeServiceMockCallback build() {
-            return new CurrentTimeServiceMockCallback(createMockData(), false);
+            return new CurrentTimeServiceMockCallback(createData(), false);
         }
 
     }
 
     /**
-     * @param serviceData   {@link ServiceData} instance
-     * @param isFallback fallback flag
+     * @param serviceData {@link ServiceData} instance
+     * @param isFallback  fallback flag
      */
     public CurrentTimeServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public CurrentTimeServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

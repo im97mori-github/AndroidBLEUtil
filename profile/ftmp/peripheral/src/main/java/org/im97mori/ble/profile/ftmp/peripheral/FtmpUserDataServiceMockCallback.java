@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2acc.FitnessMachineFeature;
 import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
 
@@ -57,7 +57,7 @@ public class FtmpUserDataServiceMockCallback extends UserDataServiceMockCallback
         @NonNull
         @Override
         public FtmpUserDataServiceMockCallback build() {
-            return new FtmpUserDataServiceMockCallback(createMockData(), false, isUserDataRetentionFeatureSupported());
+            return new FtmpUserDataServiceMockCallback(createData(), false, isUserDataRetentionFeatureSupported());
         }
     }
 
@@ -67,12 +67,12 @@ public class FtmpUserDataServiceMockCallback extends UserDataServiceMockCallback
     protected final boolean mIsUserDataRetentionFeatureSupported;
 
     /**
-     * @param mockData                            {@link MockData} instance
+     * @param serviceData                            {@link ServiceData} instance
      * @param isFallback                          fallback flag
      * @param isUserDataRetentionFeatureSupported {@link FitnessMachineFeature#isFitnessMachineFeaturesUserDataRetentionSupported()}
      */
-    public FtmpUserDataServiceMockCallback(@NonNull MockData mockData, boolean isFallback, boolean isUserDataRetentionFeatureSupported) {
-        super(mockData, isFallback);
+    public FtmpUserDataServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback, boolean isUserDataRetentionFeatureSupported) {
+        super(serviceData, isFallback);
         mIsUserDataRetentionFeatureSupported = isUserDataRetentionFeatureSupported;
     }
 

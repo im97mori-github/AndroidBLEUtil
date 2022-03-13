@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SEDENTARY_INTERVAL_NOTIFICATION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SEDENTARY_INTERVAL_N
 public class SedentaryIntervalNotificationAndroid extends SedentaryIntervalNotification implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SedentaryIntervalNotificationAndroid> CREATOR = new ByteArrayCreater<SedentaryIntervalNotificationAndroid>() {
+    public static final ByteArrayCreator<SedentaryIntervalNotificationAndroid> CREATOR = new ByteArrayCreator<SedentaryIntervalNotificationAndroid>() {
 
         /**
          * {@inheritDoc}

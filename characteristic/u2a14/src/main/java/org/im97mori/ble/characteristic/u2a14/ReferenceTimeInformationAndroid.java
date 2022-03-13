@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.REFERENCE_TIME_INFORMATION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.REFERENCE_TIME_INFOR
 public class ReferenceTimeInformationAndroid extends ReferenceTimeInformation implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ReferenceTimeInformationAndroid> CREATOR = new ByteArrayCreater<ReferenceTimeInformationAndroid>() {
+    public static final ByteArrayCreator<ReferenceTimeInformationAndroid> CREATOR = new ByteArrayCreator<ReferenceTimeInformationAndroid>() {
 
         /**
          * {@inheritDoc}

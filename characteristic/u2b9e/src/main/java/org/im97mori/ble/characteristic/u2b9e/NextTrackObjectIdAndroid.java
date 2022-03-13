@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.NEXT_TRACK_OBJECT_ID_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.NEXT_TRACK_OBJECT_ID
 public class NextTrackObjectIdAndroid extends NextTrackObjectId implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<NextTrackObjectIdAndroid> CREATOR = new ByteArrayCreater<NextTrackObjectIdAndroid>() {
+    public static final ByteArrayCreator<NextTrackObjectIdAndroid> CREATOR = new ByteArrayCreator<NextTrackObjectIdAndroid>() {
 
         /**
          * {@inheritDoc}

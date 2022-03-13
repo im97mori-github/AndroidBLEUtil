@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
 public class ValidRangeAndroid extends ValidRange implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ValidRangeAndroid> CREATOR = new ByteArrayCreater<ValidRangeAndroid>() {
+    public static final ByteArrayCreator<ValidRangeAndroid> CREATOR = new ByteArrayCreator<ValidRangeAndroid>() {
 
         /**
          * {@inheritDoc}

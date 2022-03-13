@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.INCOMING_CALL_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.INCOMING_CALL_CHARAC
 public class IncomingCallAndroid extends IncomingCall implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<IncomingCallAndroid> CREATOR = new ByteArrayCreater<IncomingCallAndroid>() {
+    public static final ByteArrayCreator<IncomingCallAndroid> CREATOR = new ByteArrayCreator<IncomingCallAndroid>() {
 
         /**
          * {@inheritDoc}

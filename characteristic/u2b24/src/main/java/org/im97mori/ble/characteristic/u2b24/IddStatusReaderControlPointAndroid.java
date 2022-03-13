@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.IDD_STATUS_READER_CONTROL_POINT_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.IDD_STATUS_READER_CO
 public class IddStatusReaderControlPointAndroid extends IddStatusReaderControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<IddStatusReaderControlPointAndroid> CREATOR = new ByteArrayCreater<IddStatusReaderControlPointAndroid>() {
+    public static final ByteArrayCreator<IddStatusReaderControlPointAndroid> CREATOR = new ByteArrayCreator<IddStatusReaderControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

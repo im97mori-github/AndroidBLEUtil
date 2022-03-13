@@ -5,7 +5,7 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import java.util.List;
 
@@ -19,9 +19,9 @@ import java.util.List;
 public class FlagsAndroid extends Flags implements AdvertisingDataInterfaceAndroid {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<FlagsAndroid> CREATOR = new ByteArrayCreater<FlagsAndroid>() {
+    public static final ByteArrayCreator<FlagsAndroid> CREATOR = new ByteArrayCreator<FlagsAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -66,7 +66,7 @@ public class FlagsAndroid extends Flags implements AdvertisingDataInterfaceAndro
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
-     * @param length 1st octed of Advertising Data
+     * @param length 1st octet of Advertising Data
      */
     public FlagsAndroid(@NonNull byte[] data
             , int offset

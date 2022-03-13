@@ -5,8 +5,8 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
-import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
+import org.im97mori.ble.ByteArrayCreator;
+import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 
 /**
  * Cross Trainer Data (Characteristics UUID: 0x2ACE)
@@ -15,9 +15,9 @@ import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 public class CrossTrainerDataAndroid extends CrossTrainerData implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final MultiplePacketCreater<CrossTrainerDataAndroid, CrossTrainerDataPacketAndroid> CREATOR = new MultiplePacketCreater<CrossTrainerDataAndroid, CrossTrainerDataPacketAndroid>() {
+    public static final MultiplePacketCreator<CrossTrainerDataAndroid, CrossTrainerDataPacketAndroid> CREATOR = new MultiplePacketCreator<CrossTrainerDataAndroid, CrossTrainerDataPacketAndroid>() {
 
         /**
          * {@inheritDoc}

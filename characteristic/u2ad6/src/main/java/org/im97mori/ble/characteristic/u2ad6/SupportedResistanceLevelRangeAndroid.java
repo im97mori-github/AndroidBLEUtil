@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.ByteArrayInterface;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC;
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_RESISTANCE
 public class SupportedResistanceLevelRangeAndroid extends SupportedResistanceLevelRange implements ByteArrayInterface, Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SupportedResistanceLevelRangeAndroid> CREATOR = new ByteArrayCreater<SupportedResistanceLevelRangeAndroid>() {
+    public static final ByteArrayCreator<SupportedResistanceLevelRangeAndroid> CREATOR = new ByteArrayCreator<SupportedResistanceLevelRangeAndroid>() {
 
         /**
          * {@inheritDoc}

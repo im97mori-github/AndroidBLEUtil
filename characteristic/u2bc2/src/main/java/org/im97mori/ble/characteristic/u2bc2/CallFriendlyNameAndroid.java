@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CALL_FRIENDLY_NAME_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CALL_FRIENDLY_NAME_C
 public class CallFriendlyNameAndroid extends CallFriendlyName implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CallFriendlyNameAndroid> CREATOR = new ByteArrayCreater<CallFriendlyNameAndroid>() {
+    public static final ByteArrayCreator<CallFriendlyNameAndroid> CREATOR = new ByteArrayCreator<CallFriendlyNameAndroid>() {
 
         /**
          * {@inheritDoc}

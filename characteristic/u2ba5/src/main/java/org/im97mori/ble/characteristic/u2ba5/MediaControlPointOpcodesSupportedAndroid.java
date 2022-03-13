@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.MEDIA_CONTROL_POINT_OPCODES_SUPPORTED_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.MEDIA_CONTROL_POINT_
 public class MediaControlPointOpcodesSupportedAndroid extends MediaControlPointOpcodesSupported implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<MediaControlPointOpcodesSupportedAndroid> CREATOR = new ByteArrayCreater<MediaControlPointOpcodesSupportedAndroid>() {
+    public static final ByteArrayCreator<MediaControlPointOpcodesSupportedAndroid> CREATOR = new ByteArrayCreator<MediaControlPointOpcodesSupportedAndroid>() {
 
         /**
          * {@inheritDoc}

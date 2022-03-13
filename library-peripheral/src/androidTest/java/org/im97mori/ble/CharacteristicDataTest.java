@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import android.os.Parcel;
@@ -37,6 +38,8 @@ public class CharacteristicDataTest {
         assertEquals(result1.responseCode, result2.responseCode);
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
+        assertArrayEquals(result1.currentData, result2.currentData);
+        assertEquals(result1.temporaryData, result2.temporaryData);
         assertEquals(result1.notificationCount, result2.notificationCount);
     }
 
@@ -58,7 +61,26 @@ public class CharacteristicDataTest {
         assertEquals(result1.responseCode, result2.responseCode);
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
+        assertArrayEquals(result1.currentData, result2.currentData);
+        assertEquals(result1.temporaryData, result2.temporaryData);
         assertEquals(result1.notificationCount, result2.notificationCount);
+    }
+
+    @Test
+    public void test_constructor_00101() {
+        CharacteristicData result1 = new CharacteristicData();
+
+        assertNull(result1.uuid);
+        assertEquals(0, result1.property);
+        assertEquals(0, result1.permission);
+        assertNull(result1.descriptorDataList);
+        assertEquals(0, result1.responseCode);
+        assertEquals(0, result1.delay);
+        assertNull(result1.data);
+        assertNull(result1.currentData);
+        assertNotNull(result1.temporaryData);
+        assertTrue(result1.temporaryData.isEmpty());
+        assertEquals(-1, result1.notificationCount);
     }
 
     @Test
@@ -212,6 +234,15 @@ public class CharacteristicDataTest {
         int secondNotificationCount = 55;
         characteristicData.notificationCount = secondNotificationCount;
         assertEquals(secondNotificationCount, characteristicData.notificationCount);
+    }
+
+    @Test
+    public void test_getDescriptorDataList_00001() {
+        List<DescriptorData> descriptorDataList = new ArrayList<>();
+        descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));
+        CharacteristicData result1 = new CharacteristicData(UUID.randomUUID(), 1, 2, descriptorDataList, 3, 4, new byte[]{5, 6}, 7);
+
+        assertArrayEquals(descriptorDataList.toArray(), result1.getDescriptorDataList().toArray());
     }
 
     @Test

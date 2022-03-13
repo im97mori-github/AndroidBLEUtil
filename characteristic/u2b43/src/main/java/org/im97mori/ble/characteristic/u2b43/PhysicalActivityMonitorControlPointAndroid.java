@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.PHYSICAL_ACTIVITY_MONITOR_CONTROL_POINT_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.PHYSICAL_ACTIVITY_MO
 public class PhysicalActivityMonitorControlPointAndroid extends PhysicalActivityMonitorControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<PhysicalActivityMonitorControlPointAndroid> CREATOR = new ByteArrayCreater<PhysicalActivityMonitorControlPointAndroid>() {
+    public static final ByteArrayCreator<PhysicalActivityMonitorControlPointAndroid> CREATOR = new ByteArrayCreator<PhysicalActivityMonitorControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

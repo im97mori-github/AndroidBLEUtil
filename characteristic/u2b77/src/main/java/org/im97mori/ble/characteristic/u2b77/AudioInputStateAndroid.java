@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.AUDIO_INPUT_STATE_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.AUDIO_INPUT_STATE_CH
 public class AudioInputStateAndroid extends AudioInputState implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AudioInputStateAndroid> CREATOR = new ByteArrayCreater<AudioInputStateAndroid>() {
+    public static final ByteArrayCreator<AudioInputStateAndroid> CREATOR = new ByteArrayCreator<AudioInputStateAndroid>() {
 
         /**
          * {@inheritDoc}

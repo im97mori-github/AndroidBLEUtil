@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SLEEP_ACTIVITY_SUMMARY_DATA_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SLEEP_ACTIVITY_SUMMA
 public class SleepActivitySummaryDataAndroid extends SleepActivitySummaryData implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SleepActivitySummaryDataAndroid> CREATOR = new ByteArrayCreater<SleepActivitySummaryDataAndroid>() {
+    public static final ByteArrayCreator<SleepActivitySummaryDataAndroid> CREATOR = new ByteArrayCreator<SleepActivitySummaryDataAndroid>() {
 
         /**
          * {@inheritDoc}

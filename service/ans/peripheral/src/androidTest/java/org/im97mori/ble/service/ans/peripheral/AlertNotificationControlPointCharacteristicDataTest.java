@@ -1,5 +1,12 @@
 package org.im97mori.ble.service.ans.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
@@ -10,13 +17,6 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 public class AlertNotificationControlPointCharacteristicDataTest {
 
@@ -48,6 +48,18 @@ public class AlertNotificationControlPointCharacteristicDataTest {
         assertEquals(result1.disableUnreadAlertStatusNotificationResponseValue, result2.disableUnreadAlertStatusNotificationResponseValue);
         assertEquals(result1.notifyNewAlertImmediatelyResponseValue, result2.notifyNewAlertImmediatelyResponseValue);
         assertEquals(result1.notifyUnreadAlertStatusImmediatelyResponseValue, result2.notifyUnreadAlertStatusImmediatelyResponseValue);
+    }
+
+    @Test
+    public void test_constructor_00101() {
+        AlertNotificationControlPointCharacteristicData result1 = new AlertNotificationControlPointCharacteristicData();
+
+        assertEquals(0, result1.enableNewAlertNotificationResponseValue);
+        assertEquals(0, result1.enableUnreadAlertStatusNotificationResponseValue);
+        assertEquals(0, result1.disableNewAlertNotificationResponseValue);
+        assertEquals(0, result1.disableUnreadAlertStatusNotificationResponseValue);
+        assertEquals(0, result1.notifyNewAlertImmediatelyResponseValue);
+        assertEquals(0, result1.notifyUnreadAlertStatusImmediatelyResponseValue);
     }
 
     @Test

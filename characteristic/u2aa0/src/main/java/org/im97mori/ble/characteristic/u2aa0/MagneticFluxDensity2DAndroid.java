@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.MAGNETIC_FLUX_DENSIT
 public class MagneticFluxDensity2DAndroid extends MagneticFluxDensity2D implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<MagneticFluxDensity2DAndroid> CREATOR = new ByteArrayCreater<MagneticFluxDensity2DAndroid>() {
+    public static final ByteArrayCreator<MagneticFluxDensity2DAndroid> CREATOR = new ByteArrayCreator<MagneticFluxDensity2DAndroid>() {
 
         /**
          * {@inheritDoc}

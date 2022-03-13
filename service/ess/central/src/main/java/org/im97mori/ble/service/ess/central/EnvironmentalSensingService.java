@@ -370,10 +370,10 @@ public class EnvironmentalSensingService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
             for (BluetoothGattService bluetoothGattService : serviceList) {
                 if (ENVIRONMENTAL_SENSING_SERVICE.equals(bluetoothGattService.getUuid())) {
-                    BluetoothGattCharacteristic descriptorValueChangedbluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC);
-                    if (descriptorValueChangedbluetoothGattCharacteristic != null
-                            && BluetoothGattCharacteristic.PROPERTY_INDICATE == descriptorValueChangedbluetoothGattCharacteristic.getProperties()
-                            && descriptorValueChangedbluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
+                    BluetoothGattCharacteristic descriptorValueChangedBluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC);
+                    if (descriptorValueChangedBluetoothGattCharacteristic != null
+                            && BluetoothGattCharacteristic.PROPERTY_INDICATE == descriptorValueChangedBluetoothGattCharacteristic.getProperties()
+                            && descriptorValueChangedBluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
                         mIsDescriptorValueChangedCharacteristicSupported = true;
                     }
                     for (BluetoothGattCharacteristic bluetoothGattCharacteristic : bluetoothGattService.getCharacteristics()) {
@@ -670,7 +670,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
      * get characteristic index
      *
      * @param bluetoothGattCharacteristicList characteristic list
-     * @param characteristicInstanceId        task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId        task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @return characteristic index
      */
     @Nullable
@@ -844,7 +844,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
      * get descriptor index
      *
      * @param bluetoothGattDescriptorList descriptor list
-     * @param descriptorInstanceId        task target descriptor incetanceId
+     * @param descriptorInstanceId        task target descriptor instance id
      */
     @Nullable
     private Integer getDescriptorIndex(@Nullable List<BluetoothGattDescriptor> bluetoothGattDescriptorList, @Nullable Integer descriptorInstanceId) {

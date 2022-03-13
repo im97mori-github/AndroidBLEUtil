@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BR_EDR_HANDOVER_DATA_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BR_EDR_HANDOVER_DATA
 public class BrEdrHandoverDataAndroid extends BrEdrHandoverData implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BrEdrHandoverDataAndroid> CREATOR = new ByteArrayCreater<BrEdrHandoverDataAndroid>() {
+    public static final ByteArrayCreator<BrEdrHandoverDataAndroid> CREATOR = new ByteArrayCreator<BrEdrHandoverDataAndroid>() {
 
         /**
          * {@inheritDoc}

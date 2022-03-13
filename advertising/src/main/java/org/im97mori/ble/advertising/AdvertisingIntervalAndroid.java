@@ -5,7 +5,7 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * <p>
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class AdvertisingIntervalAndroid extends AdvertisingInterval implements AdvertisingDataInterfaceAndroid {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AdvertisingIntervalAndroid> CREATOR = new ByteArrayCreater<AdvertisingIntervalAndroid>() {
+    public static final ByteArrayCreator<AdvertisingIntervalAndroid> CREATOR = new ByteArrayCreator<AdvertisingIntervalAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -64,7 +64,7 @@ public class AdvertisingIntervalAndroid extends AdvertisingInterval implements A
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
-     * @param length 1st octed of Advertising Data
+     * @param length 1st octet of Advertising Data
      */
     public AdvertisingIntervalAndroid(@NonNull byte[] data
             , int offset

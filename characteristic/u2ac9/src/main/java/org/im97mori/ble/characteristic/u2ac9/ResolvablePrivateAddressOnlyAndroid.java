@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RESOLVABLE_PRIVATE_A
 public class ResolvablePrivateAddressOnlyAndroid extends ResolvablePrivateAddressOnly implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ResolvablePrivateAddressOnlyAndroid> CREATOR = new ByteArrayCreater<ResolvablePrivateAddressOnlyAndroid>() {
+    public static final ByteArrayCreator<ResolvablePrivateAddressOnlyAndroid> CREATOR = new ByteArrayCreator<ResolvablePrivateAddressOnlyAndroid>() {
 
         /**
          * {@inheritDoc}

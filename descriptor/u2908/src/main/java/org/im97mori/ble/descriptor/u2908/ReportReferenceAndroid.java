@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.DescriptorUUID.REPORT_REFERENCE_DESCRIPTOR;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.DescriptorUUID.REPORT_REFERENCE_DESCRIP
 public class ReportReferenceAndroid extends ReportReference implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ReportReferenceAndroid> CREATOR = new ByteArrayCreater<ReportReferenceAndroid>() {
+    public static final ByteArrayCreator<ReportReferenceAndroid> CREATOR = new ByteArrayCreator<ReportReferenceAndroid>() {
 
         /**
          * {@inheritDoc}

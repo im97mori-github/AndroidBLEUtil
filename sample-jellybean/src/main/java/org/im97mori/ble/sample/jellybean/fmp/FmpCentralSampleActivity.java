@@ -181,7 +181,7 @@ public class FmpCentralSampleActivity extends BaseActivity implements View.OnCli
     }
 
     @Override
-    public void onCallbacked(final Pair<String, String> log) {
+    public void onCallback(final Pair<String, String> log) {
         runOnUiThread(() -> {
             mAdapter.add(log);
             mListView.smoothScrollToPosition(mAdapter.getCount());

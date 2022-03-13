@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.HIGH_RESOLUTION_HEIGHT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HIGH_RESOLUTION_HEIG
 public class HighResolutionHeightAndroid extends HighResolutionHeight implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HighResolutionHeightAndroid> CREATOR = new ByteArrayCreater<HighResolutionHeightAndroid>() {
+    public static final ByteArrayCreator<HighResolutionHeightAndroid> CREATOR = new ByteArrayCreator<HighResolutionHeightAndroid>() {
 
         /**
          * {@inheritDoc}

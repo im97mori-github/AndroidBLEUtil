@@ -42,7 +42,7 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
      *
      * @param <T> subclass of {@link BatteryServiceMockCallback}
      */
-    public static class Builder<T extends BatteryServiceMockCallback> extends AbstractServiceMockCallback.Builder<BatteryServiceMockCallback> {
+    public static class Builder<T extends BatteryServiceMockCallback> extends AbstractServiceMockCallback.Builder<BatteryServiceMockCallback, MockData> {
 
         /**
          * Battery Level characteristic map
@@ -172,7 +172,7 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
          */
         @Override
         @NonNull
-        public MockData createMockData() {
+        public MockData createData() {
             List<ServiceData> serviceDataList = new ArrayList<>();
             int count = mCharacteristicDataMap.size();
             CharacteristicData characteristicData;
@@ -209,7 +209,7 @@ public class BatteryServiceMockCallback extends AbstractServiceMockCallback {
         @Override
         @NonNull
         public BatteryServiceMockCallback build() {
-            return new BatteryServiceMockCallback(createMockData(), false);
+            return new BatteryServiceMockCallback(createData(), false);
         }
 
     }

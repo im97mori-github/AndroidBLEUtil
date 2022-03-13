@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LOCATION_NAME_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LOCATION_NAME_CHARAC
 public class LocationNameAndroid extends LocationName implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LocationNameAndroid> CREATOR = new ByteArrayCreater<LocationNameAndroid>() {
+    public static final ByteArrayCreator<LocationNameAndroid> CREATOR = new ByteArrayCreator<LocationNameAndroid>() {
 
         /**
          * {@inheritDoc}

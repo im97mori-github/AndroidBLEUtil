@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_CONTRO
 public class CyclingPowerControlPointAndroid extends CyclingPowerControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CyclingPowerControlPointAndroid> CREATOR = new ByteArrayCreater<CyclingPowerControlPointAndroid>() {
+    public static final ByteArrayCreator<CyclingPowerControlPointAndroid> CREATOR = new ByteArrayCreator<CyclingPowerControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

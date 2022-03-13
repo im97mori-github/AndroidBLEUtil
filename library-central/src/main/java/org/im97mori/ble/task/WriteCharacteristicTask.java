@@ -104,9 +104,9 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      * create write characteristic success message
      *
      * @param serviceUUID              target service UUID
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       target characteristic UUID
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param values                   {@link BluetoothGattCharacteristic#getValue()}
      * @return write characteristic success {@link Message} instance
      */
@@ -128,9 +128,9 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      * create write characteristic error message
      *
      * @param serviceUUID              target service UUID
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       target characteristic UUID
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link android.bluetooth.BluetoothGattCallback#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      * @return write characteristic error {@link Message} instance
      */
@@ -169,7 +169,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
     private final UUID mServiceUUID;
 
     /**
-     * task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * task target service instance id {@link BluetoothGattService#getInstanceId()}
      */
     private Integer mServiceInstanceId;
 
@@ -179,7 +179,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
     private final UUID mCharacteristicUUID;
 
     /**
-     * task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      */
     private Integer mCharacteristicInstanceId;
 
@@ -201,16 +201,16 @@ public class WriteCharacteristicTask extends AbstractBLETask {
     /**
      * callback argument
      */
-    private final Bundle mArgumemnt;
+    private final Bundle mArgument;
 
     /**
      * @param bleConnection            task target {@link BLEConnection} instance
      * @param bluetoothGatt            task target {@link BluetoothGatt} instance
      * @param taskHandler              task target {@link TaskHandler} instance
      * @param serviceUUID              task target service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       task target characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param byteArray                task target data
      * @param writeType                one of {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}, {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}, {@link BluetoothGattCharacteristic#WRITE_TYPE_SIGNED}
      * @param timeout                  timeout(millis)
@@ -237,7 +237,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
         mByteArray = byteArray;
         mWriteType = writeType;
         mTimeout = timeout;
-        mArgumemnt = argument;
+        mArgument = argument;
     }
 
     /**
@@ -279,7 +279,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                         , mCharacteristicUUID
                         , mCharacteristicInstanceId
                         , mTimeout
-                        , mArgumemnt);
+                        , mArgument);
                 mCurrentProgress = nextProgress;
             } else if (PROGRESS_INIT.equals(mCurrentProgress)) {
                 // current:init, next:write characteristic start
@@ -341,7 +341,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                                     , mCharacteristicUUID
                                     , mCharacteristicInstanceId
                                     , STATUS_CHARACTERISTIC_NOT_FOUND
-                                    , mArgumemnt);
+                                    , mArgument);
                         } else {
                             nextProgress = PROGRESS_BUSY;
                             mBLEConnection.getBLECallback().onCharacteristicWriteFailed(getTaskId()
@@ -351,7 +351,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                                     , mCharacteristicUUID
                                     , mCharacteristicInstanceId
                                     , STATUS_WRITE_CHARACTERISTIC_NOT_FOUND
-                                    , mArgumemnt);
+                                    , mArgument);
                         }
                     }
                     mCurrentProgress = nextProgress;
@@ -369,7 +369,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                                 , mCharacteristicUUID
                                 , mCharacteristicInstanceId
                                 , value
-                                , mArgumemnt);
+                                , mArgument);
                     } else if (PROGRESS_CHARACTERISTIC_WRITE_ERROR.equals(nextProgress)) {
                         // current:write characteristic start, next:write characteristic error
                         mBLEConnection.getBLECallback().onCharacteristicWriteFailed(getTaskId()
@@ -379,7 +379,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                                 , mCharacteristicUUID
                                 , mCharacteristicInstanceId
                                 , bundle.getInt(KEY_STATUS)
-                                , mArgumemnt);
+                                , mArgument);
                     }
 
                     mCurrentProgress = PROGRESS_FINISHED;
@@ -414,7 +414,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                 , mCharacteristicUUID
                 , mCharacteristicInstanceId
                 , STATUS_CANCEL
-                , mArgumemnt);
+                , mArgument);
     }
 
 }

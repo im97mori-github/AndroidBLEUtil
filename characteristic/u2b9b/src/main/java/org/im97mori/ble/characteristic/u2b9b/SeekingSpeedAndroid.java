@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SEEKING_SPEED_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SEEKING_SPEED_CHARAC
 public class SeekingSpeedAndroid extends SeekingSpeed implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SeekingSpeedAndroid> CREATOR = new ByteArrayCreater<SeekingSpeedAndroid>() {
+    public static final ByteArrayCreator<SeekingSpeedAndroid> CREATOR = new ByteArrayCreator<SeekingSpeedAndroid>() {
 
         /**
          * {@inheritDoc}

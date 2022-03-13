@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CHROMATICITY_TOLERANCE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CHROMATICITY_TOLERAN
 public class ChromaticityToleranceAndroid extends ChromaticityTolerance implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ChromaticityToleranceAndroid> CREATOR = new ByteArrayCreater<ChromaticityToleranceAndroid>() {
+    public static final ByteArrayCreator<ChromaticityToleranceAndroid> CREATOR = new ByteArrayCreator<ChromaticityToleranceAndroid>() {
 
         /**
          * {@inheritDoc}

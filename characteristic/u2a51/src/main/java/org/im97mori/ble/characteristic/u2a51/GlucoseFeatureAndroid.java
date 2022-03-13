@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.GLUCOSE_FEATURE_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.GLUCOSE_FEATURE_CHAR
 public class GlucoseFeatureAndroid extends GlucoseFeature implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<GlucoseFeatureAndroid> CREATOR = new ByteArrayCreater<GlucoseFeatureAndroid>() {
+    public static final ByteArrayCreator<GlucoseFeatureAndroid> CREATOR = new ByteArrayCreator<GlucoseFeatureAndroid>() {
 
         /**
          * {@inheritDoc}

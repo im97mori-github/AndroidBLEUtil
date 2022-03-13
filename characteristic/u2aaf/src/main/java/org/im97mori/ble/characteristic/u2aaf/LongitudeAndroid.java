@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LONGITUDE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LONGITUDE_CHARACTERI
 public class LongitudeAndroid extends Longitude implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LongitudeAndroid> CREATOR = new ByteArrayCreater<LongitudeAndroid>() {
+    public static final ByteArrayCreator<LongitudeAndroid> CREATOR = new ByteArrayCreator<LongitudeAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_STATUS_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_STATUS_CHARACT
 public class AlertStatusAndroid extends AlertStatus implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AlertStatusAndroid> CREATOR = new ByteArrayCreater<AlertStatusAndroid>() {
+    public static final ByteArrayCreator<AlertStatusAndroid> CREATOR = new ByteArrayCreator<AlertStatusAndroid>() {
 
         /**
          * {@inheritDoc}

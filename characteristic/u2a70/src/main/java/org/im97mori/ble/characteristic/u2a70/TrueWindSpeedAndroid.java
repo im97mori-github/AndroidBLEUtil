@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TRUE_WIND_SPEED_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TRUE_WIND_SPEED_CHAR
 public class TrueWindSpeedAndroid extends TrueWindSpeed implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TrueWindSpeedAndroid> CREATOR = new ByteArrayCreater<TrueWindSpeedAndroid>() {
+    public static final ByteArrayCreator<TrueWindSpeedAndroid> CREATOR = new ByteArrayCreator<TrueWindSpeedAndroid>() {
 
         /**
          * {@inheritDoc}

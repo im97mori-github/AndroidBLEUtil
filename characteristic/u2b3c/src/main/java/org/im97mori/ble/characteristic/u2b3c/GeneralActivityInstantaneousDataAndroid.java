@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.GENERAL_ACTIVITY_INSTANTANEOUS_DATA_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.GENERAL_ACTIVITY_INS
 public class GeneralActivityInstantaneousDataAndroid extends GeneralActivityInstantaneousData implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<GeneralActivityInstantaneousDataAndroid> CREATOR = new ByteArrayCreater<GeneralActivityInstantaneousDataAndroid>() {
+    public static final ByteArrayCreator<GeneralActivityInstantaneousDataAndroid> CREATOR = new ByteArrayCreator<GeneralActivityInstantaneousDataAndroid>() {
 
         /**
          * {@inheritDoc}

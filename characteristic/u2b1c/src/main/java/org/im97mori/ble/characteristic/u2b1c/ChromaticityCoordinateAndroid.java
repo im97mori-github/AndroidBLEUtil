@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CHROMATICITY_COORDINATE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CHROMATICITY_COORDIN
 public class ChromaticityCoordinateAndroid extends ChromaticityCoordinate implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ChromaticityCoordinateAndroid> CREATOR = new ByteArrayCreater<ChromaticityCoordinateAndroid>() {
+    public static final ByteArrayCreator<ChromaticityCoordinateAndroid> CREATOR = new ByteArrayCreator<ChromaticityCoordinateAndroid>() {
 
         /**
          * {@inheritDoc}

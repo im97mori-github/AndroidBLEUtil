@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TIME_UPDATE_STATE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_UPDATE_STATE_CH
 public class TimeUpdateStateAndroid extends TimeUpdateState implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TimeUpdateStateAndroid> CREATOR = new ByteArrayCreater<TimeUpdateStateAndroid>() {
+    public static final ByteArrayCreator<TimeUpdateStateAndroid> CREATOR = new ByteArrayCreator<TimeUpdateStateAndroid>() {
 
         /**
          * {@inheritDoc}

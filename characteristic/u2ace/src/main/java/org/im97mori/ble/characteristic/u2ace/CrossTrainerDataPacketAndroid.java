@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CROSS_TRAINER_DATA_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CROSS_TRAINER_DATA_C
 public class CrossTrainerDataPacketAndroid extends CrossTrainerDataPacket implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CrossTrainerDataPacketAndroid> CREATOR = new ByteArrayCreater<CrossTrainerDataPacketAndroid>() {
+    public static final ByteArrayCreator<CrossTrainerDataPacketAndroid> CREATOR = new ByteArrayCreator<CrossTrainerDataPacketAndroid>() {
 
         /**
          * {@inheritDoc}

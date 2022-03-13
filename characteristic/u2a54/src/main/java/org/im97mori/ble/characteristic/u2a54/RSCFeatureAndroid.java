@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RSC_FEATURE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RSC_FEATURE_CHARACTE
 public class RSCFeatureAndroid extends RSCFeature implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<RSCFeatureAndroid> CREATOR = new ByteArrayCreater<RSCFeatureAndroid>() {
+    public static final ByteArrayCreator<RSCFeatureAndroid> CREATOR = new ByteArrayCreator<RSCFeatureAndroid>() {
 
         /**
          * {@inheritDoc}

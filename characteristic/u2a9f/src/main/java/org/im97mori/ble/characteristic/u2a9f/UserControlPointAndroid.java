@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.USER_CONTROL_POINT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.USER_CONTROL_POINT_C
 public class UserControlPointAndroid extends UserControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<UserControlPointAndroid> CREATOR = new ByteArrayCreater<UserControlPointAndroid>() {
+    public static final ByteArrayCreator<UserControlPointAndroid> CREATOR = new ByteArrayCreator<UserControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

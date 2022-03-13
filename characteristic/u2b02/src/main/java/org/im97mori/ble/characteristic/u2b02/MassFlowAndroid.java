@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.MASS_FLOW_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.MASS_FLOW_CHARACTERI
 public class MassFlowAndroid extends MassFlow implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<MassFlowAndroid> CREATOR = new ByteArrayCreater<MassFlowAndroid>() {
+    public static final ByteArrayCreator<MassFlowAndroid> CREATOR = new ByteArrayCreator<MassFlowAndroid>() {
 
         /**
          * {@inheritDoc}

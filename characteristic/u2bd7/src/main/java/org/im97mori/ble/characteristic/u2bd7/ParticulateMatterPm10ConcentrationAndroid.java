@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC;
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.PARTICULATE_MATTER_P
 public class ParticulateMatterPm10ConcentrationAndroid extends ParticulateMatterPm10Concentration implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ParticulateMatterPm10ConcentrationAndroid> CREATOR = new ByteArrayCreater<ParticulateMatterPm10ConcentrationAndroid>() {
+    public static final ByteArrayCreator<ParticulateMatterPm10ConcentrationAndroid> CREATOR = new ByteArrayCreator<ParticulateMatterPm10ConcentrationAndroid>() {
 
         /**
          * {@inheritDoc}

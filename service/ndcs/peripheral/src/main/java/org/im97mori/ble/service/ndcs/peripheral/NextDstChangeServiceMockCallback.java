@@ -1,5 +1,8 @@
 package org.im97mori.ble.service.ndcs.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.TIME_WITH_DST_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.NEXT_DST_CHANGE_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -12,7 +15,6 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a11.TimeWithDst;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
@@ -20,9 +22,6 @@ import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_WITH_DST_CHARACTERISTIC;
-import static org.im97mori.ble.constants.ServiceUUID.NEXT_DST_CHANGE_SERVICE;
 
 /**
  * Next DST Change Service (Service UUID: 0x1807) for Peripheral
@@ -34,7 +33,7 @@ public class NextDstChangeServiceMockCallback extends AbstractServiceMockCallbac
      *
      * @param <T> subclass of {@link NextDstChangeServiceMockCallback}
      */
-    public static class Builder<T extends NextDstChangeServiceMockCallback> extends AbstractServiceMockCallback.Builder<NextDstChangeServiceMockCallback> {
+    public static class Builder<T extends NextDstChangeServiceMockCallback> extends AbstractServiceMockCallback.Builder<NextDstChangeServiceMockCallback, ServiceData> {
 
         /**
          * Time with DST data
@@ -96,7 +95,7 @@ public class NextDstChangeServiceMockCallback extends AbstractServiceMockCallbac
          */
         @Override
         @NonNull
-        public MockData createMockData() {
+        public ServiceData createData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
             if (mTimeWithDstCharacteristicData == null) {
@@ -105,8 +104,7 @@ public class NextDstChangeServiceMockCallback extends AbstractServiceMockCallbac
                 characteristicList.add(mTimeWithDstCharacteristicData);
             }
 
-            ServiceData serviceData = new ServiceData(NEXT_DST_CHANGE_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ServiceData(NEXT_DST_CHANGE_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
         }
 
         /**
@@ -115,25 +113,17 @@ public class NextDstChangeServiceMockCallback extends AbstractServiceMockCallbac
         @Override
         @NonNull
         public NextDstChangeServiceMockCallback build() {
-            return new NextDstChangeServiceMockCallback(createMockData(), false);
+            return new NextDstChangeServiceMockCallback(createData(), false);
         }
 
     }
 
     /**
-     * @param serviceData   {@link ServiceData} instance
-     * @param isFallback fallback flag
+     * @param serviceData {@link ServiceData} instance
+     * @param isFallback  fallback flag
      */
     public NextDstChangeServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public NextDstChangeServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

@@ -54,9 +54,9 @@ public abstract class AbstractBLETask {
     private final Integer mTaskId = hashCode();
 
     /**
-     * create inital message
+     * create initial message
      *
-     * @return task's initlal {@link Message} instance
+     * @return task's initial {@link Message} instance
      */
     @NonNull
     public abstract Message createInitialMessage();

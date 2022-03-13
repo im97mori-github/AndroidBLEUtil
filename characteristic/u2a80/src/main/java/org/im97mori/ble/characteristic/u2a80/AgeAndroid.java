@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.AGE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.AGE_CHARACTERISTIC;
 public class AgeAndroid extends Age implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AgeAndroid> CREATOR = new ByteArrayCreater<AgeAndroid>() {
+    public static final ByteArrayCreator<AgeAndroid> CREATOR = new ByteArrayCreator<AgeAndroid>() {
 
         /**
          * {@inheritDoc}

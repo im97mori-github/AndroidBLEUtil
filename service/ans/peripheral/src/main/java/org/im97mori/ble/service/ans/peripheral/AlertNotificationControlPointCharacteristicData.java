@@ -84,6 +84,12 @@ public class AlertNotificationControlPointCharacteristicData extends Characteris
     public int notifyUnreadAlertStatusImmediatelyResponseValue;
 
     /**
+     * Constructor
+     */
+    public AlertNotificationControlPointCharacteristicData() {
+    }
+
+    /**
      * @param enableNewAlertNotificationResponseValue           characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Enable New Alert Notification response)
      * @param enableUnreadAlertStatusNotificationResponseValue  characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Enable Unread Alert Status Notification response)
      * @param disableNewAlertNotificationResponseValue          characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Disable New Alert Notification response)

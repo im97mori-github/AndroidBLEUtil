@@ -5,7 +5,7 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import java.util.List;
 
@@ -19,9 +19,9 @@ import java.util.List;
 public class ChannelMapUpdateIndicationAndroid extends ChannelMapUpdateIndication implements AdvertisingDataInterfaceAndroid {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ChannelMapUpdateIndicationAndroid> CREATOR = new ByteArrayCreater<ChannelMapUpdateIndicationAndroid>() {
+    public static final ByteArrayCreator<ChannelMapUpdateIndicationAndroid> CREATOR = new ByteArrayCreator<ChannelMapUpdateIndicationAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -76,7 +76,7 @@ public class ChannelMapUpdateIndicationAndroid extends ChannelMapUpdateIndicatio
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
-     * @param length 1st octed of Advertising Data
+     * @param length 1st octet of Advertising Data
      */
     public ChannelMapUpdateIndicationAndroid(@NonNull byte[] data
             , int offset

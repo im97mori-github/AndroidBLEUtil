@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SESSION_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SESSION_CHARACTERIST
 public class SessionAndroid extends Session implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SessionAndroid> CREATOR = new ByteArrayCreater<SessionAndroid>() {
+    public static final ByteArrayCreator<SessionAndroid> CREATOR = new ByteArrayCreator<SessionAndroid>() {
 
         /**
          * {@inheritDoc}

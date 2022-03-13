@@ -27,10 +27,10 @@
             android:id="@+id/read_system_id"
             android:title="@string/menu_read_system_id" />
         <item
-            android:id="@+id/start_indicate_blood_pressure_mesurement"
+            android:id="@+id/start_indicate_blood_pressure_measurement"
             android:title="@string/menu_indicate_blood_pressure_start" />
         <item
-            android:id="@+id/stop_indicate_blood_pressure_mesurement"
+            android:id="@+id/stop_indicate_blood_pressure_measurement"
             android:title="@string/menu_indicate_blood_pressure_stop" />
         <item
             android:id="@+id/has_intermediate_cuff_pressure"

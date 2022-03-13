@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ENERGY_IN_A_PERIOD_OF_DAY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ENERGY_IN_A_PERIOD_O
 public class EnergyInAPeriodOfDayAndroid extends EnergyInAPeriodOfDay implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<EnergyInAPeriodOfDayAndroid> CREATOR = new ByteArrayCreater<EnergyInAPeriodOfDayAndroid>() {
+    public static final ByteArrayCreator<EnergyInAPeriodOfDayAndroid> CREATOR = new ByteArrayCreator<EnergyInAPeriodOfDayAndroid>() {
 
         /**
          * {@inheritDoc}

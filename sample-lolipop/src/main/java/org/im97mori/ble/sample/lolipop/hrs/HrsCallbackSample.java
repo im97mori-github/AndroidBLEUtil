@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a37.HeartRateMeasurementAndroid;
 import org.im97mori.ble.characteristic.u2a38.BodySensorLocationAndroid;
 import org.im97mori.ble.characteristic.u2a39.HeartRateControlPointAndroid;
@@ -43,7 +43,7 @@ public class HrsCallbackSample extends HeartRateServiceMockCallback implements H
         @NonNull
         @Override
         public HrsCallbackSample build() {
-            return new HrsCallbackSample(createMockData(), mSampleCallback);
+            return new HrsCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -51,8 +51,8 @@ public class HrsCallbackSample extends HeartRateServiceMockCallback implements H
 
     private final SampleCallback mSampleCallback;
 
-    HrsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    HrsCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -74,9 +74,9 @@ public class HrsCallbackSample extends HeartRateServiceMockCallback implements H
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

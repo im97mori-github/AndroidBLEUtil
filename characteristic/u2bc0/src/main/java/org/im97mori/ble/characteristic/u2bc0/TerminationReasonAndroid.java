@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TERMINATION_REASON_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TERMINATION_REASON_C
 public class TerminationReasonAndroid extends TerminationReason implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TerminationReasonAndroid> CREATOR = new ByteArrayCreater<TerminationReasonAndroid>() {
+    public static final ByteArrayCreator<TerminationReasonAndroid> CREATOR = new ByteArrayCreator<TerminationReasonAndroid>() {
 
         /**
          * {@inheritDoc}

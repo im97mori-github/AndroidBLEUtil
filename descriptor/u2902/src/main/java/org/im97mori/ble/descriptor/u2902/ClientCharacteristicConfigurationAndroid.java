@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CO
 public class ClientCharacteristicConfigurationAndroid extends ClientCharacteristicConfiguration implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ClientCharacteristicConfigurationAndroid> CREATOR = new ByteArrayCreater<ClientCharacteristicConfigurationAndroid>() {
+    public static final ByteArrayCreator<ClientCharacteristicConfigurationAndroid> CREATOR = new ByteArrayCreator<ClientCharacteristicConfigurationAndroid>() {
 
         /**
          * {@inheritDoc}

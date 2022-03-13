@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.HIP_CIRCUMFERENCE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HIP_CIRCUMFERENCE_CH
 public class HipCircumferenceAndroid extends HipCircumference implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HipCircumferenceAndroid> CREATOR = new ByteArrayCreater<HipCircumferenceAndroid>() {
+    public static final ByteArrayCreator<HipCircumferenceAndroid> CREATOR = new ByteArrayCreator<HipCircumferenceAndroid>() {
 
         /**
          * {@inheritDoc}

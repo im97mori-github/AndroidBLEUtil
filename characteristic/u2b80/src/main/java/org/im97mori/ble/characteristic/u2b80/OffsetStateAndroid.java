@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.OFFSET_STATE_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.OFFSET_STATE_CHARACT
 public class OffsetStateAndroid extends OffsetState implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<OffsetStateAndroid> CREATOR = new ByteArrayCreater<OffsetStateAndroid>() {
+    public static final ByteArrayCreator<OffsetStateAndroid> CREATOR = new ByteArrayCreator<OffsetStateAndroid>() {
 
         /**
          * {@inheritDoc}

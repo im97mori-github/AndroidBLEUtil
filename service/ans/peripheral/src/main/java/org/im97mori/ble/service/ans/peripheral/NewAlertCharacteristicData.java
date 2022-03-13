@@ -169,6 +169,12 @@ public class NewAlertCharacteristicData extends CharacteristicData {
     public String instantMessageTextStringInformation;
 
     /**
+     * Constructor
+     */
+    public NewAlertCharacteristicData() {
+    }
+
+    /**
      * @param simpleAlertNumberOfNewAlert               Number of New Alert:Simple Alert
      * @param simpleAlertTextStringInformation          Text String Information:Alert
      * @param emailNumberOfNewAlert                     Number of New Alert:Email

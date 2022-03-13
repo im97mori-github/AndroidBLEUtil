@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.DIRECTORY_LISTING_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DIRECTORY_LISTING_CH
 public class DirectoryListingAndroid extends DirectoryListing implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<DirectoryListingAndroid> CREATOR = new ByteArrayCreater<DirectoryListingAndroid>() {
+    public static final ByteArrayCreator<DirectoryListingAndroid> CREATOR = new ByteArrayCreator<DirectoryListingAndroid>() {
 
         /**
          * {@inheritDoc}

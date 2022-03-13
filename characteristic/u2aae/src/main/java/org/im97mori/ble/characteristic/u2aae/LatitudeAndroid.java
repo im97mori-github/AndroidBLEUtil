@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LATITUDE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LATITUDE_CHARACTERIS
 public class LatitudeAndroid extends Latitude implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LatitudeAndroid> CREATOR = new ByteArrayCreater<LatitudeAndroid>() {
+    public static final ByteArrayCreator<LatitudeAndroid> CREATOR = new ByteArrayCreator<LatitudeAndroid>() {
 
         /**
          * {@inheritDoc}

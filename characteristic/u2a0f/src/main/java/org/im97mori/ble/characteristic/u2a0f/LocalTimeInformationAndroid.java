@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LOCAL_TIME_INFORMATION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LOCAL_TIME_INFORMATI
 public class LocalTimeInformationAndroid extends LocalTimeInformation implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LocalTimeInformationAndroid> CREATOR = new ByteArrayCreater<LocalTimeInformationAndroid>() {
+    public static final ByteArrayCreator<LocalTimeInformationAndroid> CREATOR = new ByteArrayCreator<LocalTimeInformationAndroid>() {
 
         /**
          * {@inheritDoc}

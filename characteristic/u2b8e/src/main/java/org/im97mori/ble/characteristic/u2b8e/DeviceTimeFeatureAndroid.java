@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_TIME_FEATURE_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_TIME_FEATURE_
 public class DeviceTimeFeatureAndroid extends DeviceTimeFeature implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<DeviceTimeFeatureAndroid> CREATOR = new ByteArrayCreater<DeviceTimeFeatureAndroid>() {
+    public static final ByteArrayCreator<DeviceTimeFeatureAndroid> CREATOR = new ByteArrayCreator<DeviceTimeFeatureAndroid>() {
 
         /**
          * {@inheritDoc}

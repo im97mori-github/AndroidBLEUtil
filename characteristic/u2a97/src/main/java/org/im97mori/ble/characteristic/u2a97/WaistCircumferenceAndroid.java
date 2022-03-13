@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.WAIST_CIRCUMFERENCE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.WAIST_CIRCUMFERENCE_
 public class WaistCircumferenceAndroid extends WaistCircumference implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<WaistCircumferenceAndroid> CREATOR = new ByteArrayCreater<WaistCircumferenceAndroid>() {
+    public static final ByteArrayCreator<WaistCircumferenceAndroid> CREATOR = new ByteArrayCreator<WaistCircumferenceAndroid>() {
 
         /**
          * {@inheritDoc}

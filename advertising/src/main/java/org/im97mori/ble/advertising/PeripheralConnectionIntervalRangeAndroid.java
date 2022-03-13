@@ -5,7 +5,7 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * <p>
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class PeripheralConnectionIntervalRangeAndroid extends PeripheralConnectionIntervalRange implements AdvertisingDataInterfaceAndroid {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<PeripheralConnectionIntervalRangeAndroid> CREATOR = new ByteArrayCreater<PeripheralConnectionIntervalRangeAndroid>() {
+    public static final ByteArrayCreator<PeripheralConnectionIntervalRangeAndroid> CREATOR = new ByteArrayCreator<PeripheralConnectionIntervalRangeAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -64,7 +64,7 @@ public class PeripheralConnectionIntervalRangeAndroid extends PeripheralConnecti
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
-     * @param length 1st octed of Advertising Data
+     * @param length 1st octet of Advertising Data
      */
     public PeripheralConnectionIntervalRangeAndroid(@NonNull byte[] data
             , int offset

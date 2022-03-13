@@ -78,6 +78,12 @@ public class UserControlPointCharacteristicData extends CharacteristicData {
     public int deleteUsersResponseValue;
 
     /**
+     * Constructor
+     */
+    public UserControlPointCharacteristicData() {
+    }
+
+    /**
      * @param property                     combination of
      *                                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
      *                                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_WRITE_NO_RESPONSE}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BOOT_KEYBOARD_INPUT_REPORT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BOOT_KEYBOARD_INPUT_
 public class BootKeyboardInputReportAndroid extends BootKeyboardInputReport implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BootKeyboardInputReportAndroid> CREATOR = new ByteArrayCreater<BootKeyboardInputReportAndroid>() {
+    public static final ByteArrayCreator<BootKeyboardInputReportAndroid> CREATOR = new ByteArrayCreator<BootKeyboardInputReportAndroid>() {
 
         /**
          * {@inheritDoc}

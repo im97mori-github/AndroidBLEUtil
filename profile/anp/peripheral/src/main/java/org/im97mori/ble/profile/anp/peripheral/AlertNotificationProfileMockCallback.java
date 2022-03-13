@@ -42,12 +42,12 @@ public class AlertNotificationProfileMockCallback extends AbstractProfileMockCal
 
         /**
          * @param context                                     {@link Context} instance
-         * @param deviceInformationServiceMockCallbackBuilder {@link org.im97mori.ble.service.ans.peripheral.AlertNotificationServiceMockCallback.Builder} instance
+         * @param alertNotificationServiceMockCallbackBuilder {@link org.im97mori.ble.service.ans.peripheral.AlertNotificationServiceMockCallback.Builder} instance
          */
         public Builder(@NonNull Context context
-                , @NonNull AlertNotificationServiceMockCallback.Builder<? extends AlertNotificationServiceMockCallback> deviceInformationServiceMockCallbackBuilder) {
+                , @NonNull AlertNotificationServiceMockCallback.Builder<? extends AlertNotificationServiceMockCallback> alertNotificationServiceMockCallbackBuilder) {
             mContext = context;
-            mAlertNotificationServiceMockCallbackBuilder = deviceInformationServiceMockCallbackBuilder;
+            mAlertNotificationServiceMockCallbackBuilder = alertNotificationServiceMockCallbackBuilder;
         }
 
         /**

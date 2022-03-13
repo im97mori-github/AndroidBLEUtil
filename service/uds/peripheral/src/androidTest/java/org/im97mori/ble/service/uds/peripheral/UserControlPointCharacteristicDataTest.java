@@ -92,6 +92,17 @@ public class UserControlPointCharacteristicDataTest {
     }
 
     @Test
+    public void test_constructor_00101() {
+        UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData();
+
+        assertEquals(0, result1.registerNewUserResponseValue);
+        assertEquals(0, result1.consentResponseValue);
+        assertEquals(0, result1.deleteUserDataResponseValue);
+        assertEquals(0, result1.listAllUsersResponseValue);
+        assertEquals(0, result1.deleteUsersResponseValue);
+    }
+
+    @Test
     public void test_setRegisterNewUserResponseValue_00001() {
         int firstRegisterNewUserResponseValue = 5;
         UserControlPointCharacteristicData result1 = new UserControlPointCharacteristicData(1

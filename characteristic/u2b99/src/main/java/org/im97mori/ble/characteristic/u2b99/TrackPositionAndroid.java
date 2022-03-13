@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TRACK_POSITION_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TRACK_POSITION_CHARA
 public class TrackPositionAndroid extends TrackPosition implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TrackPositionAndroid> CREATOR = new ByteArrayCreater<TrackPositionAndroid>() {
+    public static final ByteArrayCreator<TrackPositionAndroid> CREATOR = new ByteArrayCreator<TrackPositionAndroid>() {
 
         /**
          * {@inheritDoc}

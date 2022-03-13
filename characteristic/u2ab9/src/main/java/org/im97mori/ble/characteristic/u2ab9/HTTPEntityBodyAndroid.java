@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.HTTP_ENTITY_BODY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HTTP_ENTITY_BODY_CHA
 public class HTTPEntityBodyAndroid extends HTTPEntityBody implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HTTPEntityBodyAndroid> CREATOR = new ByteArrayCreater<HTTPEntityBodyAndroid>() {
+    public static final ByteArrayCreator<HTTPEntityBodyAndroid> CREATOR = new ByteArrayCreator<HTTPEntityBodyAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -5,7 +5,7 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * <p>
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class IndoorPositioningAndroid extends IndoorPositioning implements AdvertisingDataInterfaceAndroid {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<IndoorPositioningAndroid> CREATOR = new ByteArrayCreater<IndoorPositioningAndroid>() {
+    public static final ByteArrayCreator<IndoorPositioningAndroid> CREATOR = new ByteArrayCreator<IndoorPositioningAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -64,7 +64,7 @@ public class IndoorPositioningAndroid extends IndoorPositioning implements Adver
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
-     * @param length 1st octed of Advertising Data
+     * @param length 1st octet of Advertising Data
      */
     public IndoorPositioningAndroid(@NonNull byte[] data
             , int offset
@@ -76,8 +76,8 @@ public class IndoorPositioningAndroid extends IndoorPositioning implements Adver
      * Constructor from parameters
      *
      * @param indoorPositioningConfiguration Indoor Positioning Configuration
-     * @param globalCoorinatesLatitude       Global Coordinates (Latitude)
-     * @param globalCoorinatesLongitude      Global Coordinates (Longitude)
+     * @param globalCoordinatesLatitude       Global Coordinates (Latitude)
+     * @param globalCoordinatesLongitude      Global Coordinates (Longitude)
      * @param localCoordinatesNorth          Local Coordinates (North)
      * @param localCoordinatesEast           Local Coordinates (East)
      * @param txPower                        Tx Power
@@ -86,8 +86,8 @@ public class IndoorPositioningAndroid extends IndoorPositioning implements Adver
      * @param uncertainty                    Uncertainty
      */
     public IndoorPositioningAndroid(int indoorPositioningConfiguration
-            , int globalCoorinatesLatitude
-            , int globalCoorinatesLongitude
+            , int globalCoordinatesLatitude
+            , int globalCoordinatesLongitude
             , int localCoordinatesNorth
             , int localCoordinatesEast
             , int txPower
@@ -95,8 +95,8 @@ public class IndoorPositioningAndroid extends IndoorPositioning implements Adver
             , int altitude
             , int uncertainty) {
         super(indoorPositioningConfiguration
-                , globalCoorinatesLatitude
-                , globalCoorinatesLongitude
+                , globalCoordinatesLatitude
+                , globalCoordinatesLongitude
                 , localCoordinatesNorth
                 , localCoordinatesEast
                 , txPower

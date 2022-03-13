@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.OZONE_CONCENTRATION_CHARACTERISTIC;
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.OZONE_CONCENTRATION_
 public class OzoneConcentrationAndroid extends OzoneConcentration implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<OzoneConcentrationAndroid> CREATOR = new ByteArrayCreater<OzoneConcentrationAndroid>() {
+    public static final ByteArrayCreator<OzoneConcentrationAndroid> CREATOR = new ByteArrayCreator<OzoneConcentrationAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -306,7 +306,7 @@ public class GenericAttributeService extends AbstractCentralService {
     /**
      * check Database Hash Features characteristic
      *
-     * @return {@code true}:Database Hashs characteristic is exist, {@code false}:Database Hash characteristic is not exist or service not ready
+     * @return {@code true}:Database Hash characteristic is exist, {@code false}:Database Hash characteristic is not exist or service not ready
      */
     public boolean isDatabaseHashCharacteristicSupported() {
         return mIsDatabaseHashCharacteristicSupported;

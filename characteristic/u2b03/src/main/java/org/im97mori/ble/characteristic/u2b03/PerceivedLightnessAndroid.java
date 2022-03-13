@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.PERCEIVED_LIGHTNESS_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.PERCEIVED_LIGHTNESS_
 public class PerceivedLightnessAndroid extends PerceivedLightness implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<PerceivedLightnessAndroid> CREATOR = new ByteArrayCreater<PerceivedLightnessAndroid>() {
+    public static final ByteArrayCreator<PerceivedLightnessAndroid> CREATOR = new ByteArrayCreator<PerceivedLightnessAndroid>() {
 
         /**
          * {@inheritDoc}

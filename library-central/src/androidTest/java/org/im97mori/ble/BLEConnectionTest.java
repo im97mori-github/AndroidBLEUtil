@@ -107,7 +107,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -138,7 +138,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -169,7 +169,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -199,7 +199,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -230,7 +230,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -260,7 +260,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -290,7 +290,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -320,7 +320,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -376,7 +376,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -428,7 +428,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -458,7 +458,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -488,7 +488,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -518,7 +518,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -548,7 +548,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -578,7 +578,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -608,7 +608,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -638,7 +638,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -668,7 +668,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -698,7 +698,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -728,7 +728,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -759,7 +759,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -790,7 +790,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -821,7 +821,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -852,7 +852,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -883,7 +883,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -914,7 +914,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -974,7 +974,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1004,7 +1004,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1034,7 +1034,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1064,7 +1064,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1094,7 +1094,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1124,7 +1124,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1154,7 +1154,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1184,7 +1184,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1214,7 +1214,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1244,7 +1244,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1274,7 +1274,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1304,7 +1304,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1365,7 +1365,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1396,7 +1396,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1427,7 +1427,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1458,7 +1458,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1489,7 +1489,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1520,7 +1520,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1551,7 +1551,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1582,7 +1582,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1613,7 +1613,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1644,7 +1644,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1675,7 +1675,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1706,7 +1706,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1737,7 +1737,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1768,7 +1768,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1799,7 +1799,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1830,7 +1830,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1861,7 +1861,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1892,7 +1892,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1923,7 +1923,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1954,7 +1954,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -1985,7 +1985,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2016,7 +2016,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2047,7 +2047,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2078,7 +2078,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2109,7 +2109,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2140,7 +2140,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2171,7 +2171,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2202,7 +2202,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2233,7 +2233,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2264,7 +2264,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2295,7 +2295,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2326,7 +2326,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2357,7 +2357,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2388,7 +2388,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2419,7 +2419,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2450,7 +2450,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2481,7 +2481,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2512,7 +2512,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2543,7 +2543,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2574,7 +2574,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
         };
 
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2604,7 +2604,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2634,7 +2634,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2664,7 +2664,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
                 result.set(true);
             }
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
@@ -2696,7 +2696,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             }
 
         };
-        final Bundle argument = BLECallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLECallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {

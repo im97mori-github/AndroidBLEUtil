@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.INDOOR_POSITIONING_CONFIGURATION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.INDOOR_POSITIONING_C
 public class IndoorPositioningConfigurationAndroid extends IndoorPositioningConfiguration implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<IndoorPositioningConfigurationAndroid> CREATOR = new ByteArrayCreater<IndoorPositioningConfigurationAndroid>() {
+    public static final ByteArrayCreator<IndoorPositioningConfigurationAndroid> CREATOR = new ByteArrayCreator<IndoorPositioningConfigurationAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -5,8 +5,8 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
-import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
+import org.im97mori.ble.ByteArrayCreator;
+import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 
 /**
  * Stair Climber Data (Characteristics UUID: 0x2AD0)
@@ -15,9 +15,9 @@ import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 public class StairClimberDataAndroid extends StairClimberData implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final MultiplePacketCreater<StairClimberDataAndroid, StairClimberDataPacketAndroid> CREATOR = new MultiplePacketCreater<StairClimberDataAndroid, StairClimberDataPacketAndroid>() {
+    public static final MultiplePacketCreator<StairClimberDataAndroid, StairClimberDataPacketAndroid> CREATOR = new MultiplePacketCreator<StairClimberDataAndroid, StairClimberDataPacketAndroid>() {
 
         /**
          * {@inheritDoc}

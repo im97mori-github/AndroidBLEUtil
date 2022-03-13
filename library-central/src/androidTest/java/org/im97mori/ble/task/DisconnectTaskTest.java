@@ -12,7 +12,7 @@ import android.os.Message;
 import androidx.annotation.NonNull;
 import androidx.test.filters.RequiresDevice;
 
-import org.im97mori.ble.BLECallbackDistributer;
+import org.im97mori.ble.BLECallbackDistributor;
 import org.im97mori.ble.BaseBLECallback;
 import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
@@ -59,7 +59,7 @@ public class DisconnectTaskTest extends AbstractCentralTest {
         Message message = Message.obtain();
         message.setData(Bundle.EMPTY);
 
-        DisconnectTask task = new DisconnectTask(MOCK_BLE_CONNECTION, null, BLECallbackDistributer.wrapArgument(null, null));
+        DisconnectTask task = new DisconnectTask(MOCK_BLE_CONNECTION, null, BLECallbackDistributor.wrapArgument(null, null));
         task.cancel();
         assertTrue(task.doProcess(message));
     }
@@ -80,7 +80,7 @@ public class DisconnectTaskTest extends AbstractCentralTest {
         Message message = Message.obtain();
         message.setData(Bundle.EMPTY);
 
-        DisconnectTask task = new DisconnectTask(MOCK_BLE_CONNECTION, null, BLECallbackDistributer.wrapArgument(null, null));
+        DisconnectTask task = new DisconnectTask(MOCK_BLE_CONNECTION, null, BLECallbackDistributor.wrapArgument(null, null));
         task.cancel();
         assertTrue(task.doProcess(message));
         assertTrue(callback.result.get());

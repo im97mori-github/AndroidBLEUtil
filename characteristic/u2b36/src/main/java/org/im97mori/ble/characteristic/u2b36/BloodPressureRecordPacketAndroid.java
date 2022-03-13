@@ -9,7 +9,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * Blood Pressure Record packet (Characteristics UUID: 0x2B36)
@@ -18,9 +18,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class BloodPressureRecordPacketAndroid extends BloodPressureRecordPacket implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BloodPressureRecordPacketAndroid> CREATOR = new ByteArrayCreater<BloodPressureRecordPacketAndroid>() {
+    public static final ByteArrayCreator<BloodPressureRecordPacketAndroid> CREATOR = new ByteArrayCreator<BloodPressureRecordPacketAndroid>() {
 
         /**
          * {@inheritDoc}

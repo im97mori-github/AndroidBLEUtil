@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ADVERTISING_CONSTANT_TONE_EXTENSION_PHY_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ADVERTISING_CONSTANT
 public class AdvertisingConstantToneExtensionPhyAndroid extends AdvertisingConstantToneExtensionPhy implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AdvertisingConstantToneExtensionPhyAndroid> CREATOR = new ByteArrayCreater<AdvertisingConstantToneExtensionPhyAndroid>() {
+    public static final ByteArrayCreator<AdvertisingConstantToneExtensionPhyAndroid> CREATOR = new ByteArrayCreator<AdvertisingConstantToneExtensionPhyAndroid>() {
 
         /**
          * {@inheritDoc}

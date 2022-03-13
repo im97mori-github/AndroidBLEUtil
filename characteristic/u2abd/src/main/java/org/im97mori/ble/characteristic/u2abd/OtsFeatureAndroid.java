@@ -8,7 +8,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * OTS Feature (Characteristics UUID: 0x2ABD)
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class OtsFeatureAndroid extends OtsFeature implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<OtsFeatureAndroid> CREATOR = new ByteArrayCreater<OtsFeatureAndroid>() {
+    public static final ByteArrayCreator<OtsFeatureAndroid> CREATOR = new ByteArrayCreator<OtsFeatureAndroid>() {
 
         /**
          * {@inheritDoc}

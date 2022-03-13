@@ -93,8 +93,8 @@ public class AutomationIOService extends AbstractCentralService {
     private boolean mIsAggregateNotificatable;
 
     /**
-     * Aggregate characteristic indicatable flag
-     * {@code true}:Aggregate characteristic is indicatable, {@code false}:Aggregate characteristic is not indicatable or service not ready
+     * Aggregate characteristic indictable flag
+     * {@code true}:Aggregate characteristic is indictable, {@code false}:Aggregate characteristic is not indictable or service not ready
      */
     private boolean mIsAggregateIndicatable;
 
@@ -160,7 +160,7 @@ public class AutomationIOService extends AbstractCentralService {
      * get characteristic index
      *
      * @param characteristicList       {@link #mDigitalList} or {@link #mAnalogList}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @return characteristic index
      */
     @Nullable
@@ -820,10 +820,10 @@ public class AutomationIOService extends AbstractCentralService {
     }
 
     /**
-     * get Digital's indicatable status
+     * get Digital's indictable status
      *
      * @param index Digital Characteristic index
-     * @return {@code true}:target Digital Characteristic is indicatable, {@code false}:not indicatable
+     * @return {@code true}:target Digital Characteristic is indictable, {@code false}:not indictable
      */
     public synchronized boolean isDigitalIndicatable(int index) {
         return isCharacteristicPropertyEnabled(mDigitalList, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, index);
@@ -1048,10 +1048,10 @@ public class AutomationIOService extends AbstractCentralService {
     }
 
     /**
-     * get Analog's indicatable status
+     * get Analog's indictable status
      *
      * @param index Analog Characteristic index
-     * @return {@code true}:target Analog Characteristic is indicatable, {@code false}:not indicatable
+     * @return {@code true}:target Analog Characteristic is indictable, {@code false}:not indictable
      */
     public synchronized boolean isAnalogIndicatable(int index) {
         return isCharacteristicPropertyEnabled(mAnalogList, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, index);
@@ -1197,9 +1197,9 @@ public class AutomationIOService extends AbstractCentralService {
     }
 
     /**
-     * get Aggregate's indicatable status
+     * get Aggregate's indictable status
      *
-     * @return {@code true}:Aggregate characteristic is indicatable, {@code false}:Aggregate characteristic is not indicatable or service not ready
+     * @return {@code true}:Aggregate characteristic is indictable, {@code false}:Aggregate characteristic is not indictable or service not ready
      */
     public synchronized boolean isAggregateIndicatable() {
         return mIsAggregateIndicatable;

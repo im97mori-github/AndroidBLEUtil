@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TIME_SECOND_8_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_SECOND_8_CHARAC
 public class TimeSecond8Android extends TimeSecond8 implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TimeSecond8Android> CREATOR = new ByteArrayCreater<TimeSecond8Android>() {
+    public static final ByteArrayCreator<TimeSecond8Android> CREATOR = new ByteArrayCreator<TimeSecond8Android>() {
 
         /**
          * {@inheritDoc}

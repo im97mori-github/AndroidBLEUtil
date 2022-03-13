@@ -44,7 +44,7 @@ import java.util.UUID;
  */
 @SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class BLEServerConnection extends BluetoothGattServerCallback implements BLEServerCallbackDistributer.SubscriberInterface {
+public class BLEServerConnection extends BluetoothGattServerCallback implements BLEServerCallbackDistributor.SubscriberInterface {
 
     /**
      * Default(Minimum) MTU size
@@ -95,12 +95,12 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     protected TaskHandler mTaskHandler;
 
     /**
-     * {@link BLEServerCallbackDistributer} instance
+     * {@link BLEServerCallbackDistributor} instance
      */
-    protected BLEServerCallbackDistributer mBLEServerCallbackDistributer;
+    protected BLEServerCallbackDistributor mBLEServerCallbackDistributor;
 
     /**
-     * for {@link BLEServerCallbackDistributer.SubscriberInterface#getSubscriberCallbackList()}
+     * for {@link BLEServerCallbackDistributor.SubscriberInterface#getSubscriberCallbackList()}
      */
     protected final List<BLEServerCallback> mAttachedBLEServerCallbackList = new LinkedList<>();
 
@@ -115,7 +115,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
         } else {
             mBluetoothAdapter = mBluetoothManager.getAdapter();
         }
-        mBLEServerCallbackDistributer = new BLEServerCallbackDistributer(this);
+        mBLEServerCallbackDistributor = new BLEServerCallbackDistributor(this);
     }
 
     /**
@@ -142,7 +142,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
                     thread.start();
                     mTaskHandler = new TaskHandler(thread.getLooper());
 
-                    mBLEServerCallbackDistributer.onServerStarted();
+                    mBLEServerCallbackDistributor.onServerStarted();
 
                     for (BLEServerCallback bleServerCallback : mAttachedBLEServerCallbackList) {
                         bleServerCallback.setup(this);
@@ -163,7 +163,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
             mBluetoothGattServer.clearServices();
             mBluetoothGattServer.close();
             mBluetoothGattServer = null;
-            mBLEServerCallbackDistributer.onServerStopped();
+            mBLEServerCallbackDistributor.onServerStopped();
         }
 
         if (mTaskHandler != null) {
@@ -213,9 +213,9 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
             , int newState) {
         if (mBluetoothGattServer != null) {
             if (BluetoothProfile.STATE_CONNECTED == newState) {
-                mBLEServerCallbackDistributer.onDeviceConnected(this, device);
+                mBLEServerCallbackDistributor.onDeviceConnected(this, device);
             } else if (BluetoothProfile.STATE_DISCONNECTED == newState) {
-                mBLEServerCallbackDistributer.onDeviceDisconnected(this, device);
+                mBLEServerCallbackDistributor.onDeviceDisconnected(this, device);
             }
         }
     }
@@ -245,7 +245,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
             , int offset
             , @NonNull BluetoothGattCharacteristic characteristic) {
         if (mBluetoothGattServer != null) {
-            if (!mBLEServerCallbackDistributer.onCharacteristicReadRequest(this, device, requestId, offset, characteristic, true)) {
+            if (!mBLEServerCallbackDistributor.onCharacteristicReadRequest(this, device, requestId, offset, characteristic, true)) {
                 mBluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
             }
         }
@@ -264,7 +264,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
             , int offset
             , @NonNull byte[] value) {
         if (mBluetoothGattServer != null) {
-            if (!mBLEServerCallbackDistributer.onCharacteristicWriteRequest(this, device, requestId, characteristic, preparedWrite, responseNeeded, offset, value, true) && responseNeeded) {
+            if (!mBLEServerCallbackDistributor.onCharacteristicWriteRequest(this, device, requestId, characteristic, preparedWrite, responseNeeded, offset, value, true) && responseNeeded) {
                 mBluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
             }
         }
@@ -280,7 +280,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
             , int offset
             , @NonNull BluetoothGattDescriptor descriptor) {
         if (mBluetoothGattServer != null) {
-            if (!mBLEServerCallbackDistributer.onDescriptorReadRequest(this, device, requestId, offset, descriptor, true)) {
+            if (!mBLEServerCallbackDistributor.onDescriptorReadRequest(this, device, requestId, offset, descriptor, true)) {
                 mBluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
             }
         }
@@ -299,7 +299,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
             , int offset
             , @NonNull byte[] value) {
         if (mBluetoothGattServer != null) {
-            if (!mBLEServerCallbackDistributer.onDescriptorWriteRequest(this, device, requestId, descriptor, preparedWrite, responseNeeded, offset, value, true) && responseNeeded) {
+            if (!mBLEServerCallbackDistributor.onDescriptorWriteRequest(this, device, requestId, descriptor, preparedWrite, responseNeeded, offset, value, true) && responseNeeded) {
                 mBluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, offset, null);
             }
         }
@@ -314,7 +314,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
             , int requestId
             , boolean execute) {
         if (mBluetoothGattServer != null) {
-            if (!mBLEServerCallbackDistributer.onExecuteWrite(this, device, requestId, execute, true)) {
+            if (!mBLEServerCallbackDistributor.onExecuteWrite(this, device, requestId, execute, true)) {
                 mBluetoothGattServer.sendResponse(device, requestId, APPLICATION_ERROR_9F, 0, null);
             }
         }
@@ -342,7 +342,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     public synchronized void onMtuChanged(BluetoothDevice device, int mtu) {
         BLEPeripheralLogUtils.stackLog(device, mtu);
         if (mBluetoothGattServer != null) {
-            mBLEServerCallbackDistributer.onMtuChanged(device, mtu);
+            mBLEServerCallbackDistributor.onMtuChanged(device, mtu);
         }
     }
 
@@ -351,10 +351,10 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      */
     @NonNull
     public synchronized BLEServerCallback getBLEServerCallback() {
-        if (mBLEServerCallbackDistributer == null) {
-            mBLEServerCallbackDistributer = new BLEServerCallbackDistributer(this);
+        if (mBLEServerCallbackDistributor == null) {
+            mBLEServerCallbackDistributor = new BLEServerCallbackDistributor(this);
         }
-        return mBLEServerCallbackDistributer;
+        return mBLEServerCallbackDistributor;
     }
 
     /**
@@ -392,7 +392,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      * @param timeout              timeout(millis)
      * @param argument             callback argument
      * @param bleServerCallback    {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @Nullable
     public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService
@@ -405,7 +405,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
                     , mTaskHandler
                     , bluetoothGattService
                     , timeout
-                    , BLEServerCallbackDistributer.wrapArgument(argument, bleServerCallback));
+                    , BLEServerCallbackDistributor.wrapArgument(argument, bleServerCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -419,7 +419,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      * @param timeout              timeout(millis)
      * @param argument             callback argument
      * @param bleServerCallback    {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @Nullable
     public synchronized Integer createRemoveServiceTask(@NonNull BluetoothGattService bluetoothGattService
@@ -432,7 +432,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
                     , mTaskHandler
                     , bluetoothGattService
                     , timeout
-                    , BLEServerCallbackDistributer.wrapArgument(argument, bleServerCallback));
+                    , BLEServerCallbackDistributor.wrapArgument(argument, bleServerCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -444,16 +444,16 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      *
      * @param device                   task target {@link BluetoothDevice} instance
      * @param serviceUUID              task target service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       task target characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param byteArrayInterface       task target data class
      * @param isConfirm                {@code true}:indication, {@code false}:notification
      * @param timeout                  timeout(millis)
      * @param delay                    delay(millis)
      * @param argument                 callback argument
      * @param bleServerCallback        {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @Nullable
     public synchronized Integer createNotificationTask(@NonNull BluetoothDevice device
@@ -480,7 +480,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
                     , byteArrayInterface.getBytes()
                     , isConfirm
                     , timeout
-                    , BLEServerCallbackDistributer.wrapArgument(argument, bleServerCallback));
+                    , BLEServerCallbackDistributor.wrapArgument(argument, bleServerCallback));
             mTaskHandler.addTaskDelayed(task, delay);
             taskId = task.getTaskId();
         }
@@ -507,7 +507,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      * @param includeDeviceName flag for {@link android.bluetooth.le.AdvertiseData.Builder#setIncludeDeviceName(boolean)}
      * @param includeUUID       flag for {@link android.bluetooth.le.AdvertiseData.Builder#addServiceUuid(ParcelUuid)}
      * @param serviceUUID       UUID for {@link android.bluetooth.le.AdvertiseData.Builder#addServiceUuid(ParcelUuid)}
-     * @return {@code true}:advertising started, {@code false}:advertising not started(allready started)
+     * @return {@code true}:advertising started, {@code false}:advertising not started(already started)
      */
     @SuppressLint("MissingPermission")
     public synchronized boolean startAdvertising(boolean includeDeviceName, boolean includeUUID, @Nullable UUID serviceUUID) {
@@ -534,7 +534,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
                          */
                         @Override
                         public void onStartSuccess(AdvertiseSettings settingsInEffect) {
-                            mBLEServerCallbackDistributer.onAdvertisingStartSuccess(settingsInEffect);
+                            mBLEServerCallbackDistributor.onAdvertisingStartSuccess(settingsInEffect);
                         }
 
                         /**
@@ -544,7 +544,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
                         public void onStartFailure(int errorCode) {
                             synchronized (BLEServerConnection.this) {
                                 mAdvertiseCallback = null;
-                                mBLEServerCallbackDistributer.onAdvertisingStartFailed(errorCode);
+                                mBLEServerCallbackDistributor.onAdvertisingStartFailed(errorCode);
                             }
                         }
 
@@ -557,7 +557,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
         }
 
         if (!result) {
-            mBLEServerCallbackDistributer.onAdvertisingStartFailed(null);
+            mBLEServerCallbackDistributor.onAdvertisingStartFailed(null);
         }
 
         return result;
@@ -566,7 +566,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     /**
      * Advertising stop
      *
-     * @return {@code true}:advertising stopped, {@code false}:advertising not stopped(allready stopped)
+     * @return {@code true}:advertising stopped, {@code false}:advertising not stopped(already stopped)
      */
     @SuppressLint("MissingPermission")
     public synchronized boolean stopAdvertising() {
@@ -577,7 +577,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
             }
             mAdvertiseCallback = null;
             mBluetoothLeAdvertiser = null;
-            mBLEServerCallbackDistributer.onAdvertisingFinished();
+            mBLEServerCallbackDistributor.onAdvertisingFinished();
             result = true;
         }
         return result;

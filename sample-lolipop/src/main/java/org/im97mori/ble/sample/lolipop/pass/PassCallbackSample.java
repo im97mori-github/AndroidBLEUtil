@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a3f.AlertStatusAndroid;
 import org.im97mori.ble.characteristic.u2a40.RingerControlPointAndroid;
 import org.im97mori.ble.characteristic.u2a41.RingerSettingAndroid;
@@ -43,7 +43,7 @@ public class PassCallbackSample extends PhoneAlertStatusServiceMockCallback impl
         @NonNull
         @Override
         public PassCallbackSample build() {
-            return new PassCallbackSample(createMockData(), mSampleCallback);
+            return new PassCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -51,8 +51,8 @@ public class PassCallbackSample extends PhoneAlertStatusServiceMockCallback impl
 
     private final SampleCallback mSampleCallback;
 
-    PassCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    PassCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -74,9 +74,9 @@ public class PassCallbackSample extends PhoneAlertStatusServiceMockCallback impl
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

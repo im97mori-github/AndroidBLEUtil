@@ -8,7 +8,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * High Intensity Exercise Threshold (Characteristics UUID: 0x2B4D)
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class HighIntensityExerciseThresholdAndroid extends HighIntensityExerciseThreshold implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HighIntensityExerciseThresholdAndroid> CREATOR = new ByteArrayCreater<HighIntensityExerciseThresholdAndroid>() {
+    public static final ByteArrayCreator<HighIntensityExerciseThresholdAndroid> CREATOR = new ByteArrayCreator<HighIntensityExerciseThresholdAndroid>() {
 
         /**
          * {@inheritDoc}

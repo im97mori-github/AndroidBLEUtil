@@ -212,13 +212,13 @@ public class HealthThermometerProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see HealthThermometerService#stopIntermediateTemperaturNotification()
+     * @see HealthThermometerService#stopIntermediateTemperatureNotification()
      */
     @Nullable
-    public synchronized Integer stopIntermediateTemperaturNotification() {
+    public synchronized Integer stopIntermediateTemperatureNotification() {
         Integer taskId = null;
         if (mHealthThermometerService != null) {
-            taskId = mHealthThermometerService.stopIntermediateTemperaturNotification();
+            taskId = mHealthThermometerService.stopIntermediateTemperatureNotification();
         }
         return taskId;
     }
@@ -260,25 +260,25 @@ public class HealthThermometerProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see HealthThermometerService#startMeasurementIntervalInidication()
+     * @see HealthThermometerService#startMeasurementIntervalIndication()
      */
     @Nullable
-    public synchronized Integer startMeasurementIntervalInidication() {
+    public synchronized Integer startMeasurementIntervalIndication() {
         Integer taskId = null;
         if (mHealthThermometerService != null) {
-            taskId = mHealthThermometerService.startMeasurementIntervalInidication();
+            taskId = mHealthThermometerService.startMeasurementIntervalIndication();
         }
         return taskId;
     }
 
     /**
-     * @see HealthThermometerService#stopMeasurementIntervalInidication()
+     * @see HealthThermometerService#stopMeasurementIntervalIndication()
      */
     @Nullable
-    public synchronized Integer stopMeasurementIntervalInidication() {
+    public synchronized Integer stopMeasurementIntervalIndication() {
         Integer taskId = null;
         if (mHealthThermometerService != null) {
-            taskId = mHealthThermometerService.stopMeasurementIntervalInidication();
+            taskId = mHealthThermometerService.stopMeasurementIntervalIndication();
         }
         return taskId;
     }

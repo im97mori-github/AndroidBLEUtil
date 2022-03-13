@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a31.ScanRefreshAndroid;
 import org.im97mori.ble.characteristic.u2a4f.ScanIntervalWindowAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
@@ -42,7 +42,7 @@ public class ScpsCallbackSample extends ScanParametersServiceMockCallback implem
         @NonNull
         @Override
         public ScpsCallbackSample build() {
-            return new ScpsCallbackSample(createMockData(), mSampleCallback);
+            return new ScpsCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -50,8 +50,8 @@ public class ScpsCallbackSample extends ScanParametersServiceMockCallback implem
 
     private final SampleCallback mSampleCallback;
 
-    ScpsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    ScpsCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -73,9 +73,9 @@ public class ScpsCallbackSample extends ScanParametersServiceMockCallback implem
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

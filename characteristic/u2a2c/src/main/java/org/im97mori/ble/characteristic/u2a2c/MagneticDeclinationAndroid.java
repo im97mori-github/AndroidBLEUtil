@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.MAGNETIC_DECLINATION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.MAGNETIC_DECLINATION
 public class MagneticDeclinationAndroid extends MagneticDeclination implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<MagneticDeclinationAndroid> CREATOR = new ByteArrayCreater<MagneticDeclinationAndroid>() {
+    public static final ByteArrayCreator<MagneticDeclinationAndroid> CREATOR = new ByteArrayCreator<MagneticDeclinationAndroid>() {
 
         /**
          * {@inheritDoc}

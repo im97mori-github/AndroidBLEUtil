@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SOFTWARE_REVISION_STRING_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SOFTWARE_REVISION_ST
 public class SoftwareRevisionStringAndroid extends SoftwareRevisionString implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SoftwareRevisionStringAndroid> CREATOR = new ByteArrayCreater<SoftwareRevisionStringAndroid>() {
+    public static final ByteArrayCreator<SoftwareRevisionStringAndroid> CREATOR = new ByteArrayCreator<SoftwareRevisionStringAndroid>() {
 
         /**
          * {@inheritDoc}

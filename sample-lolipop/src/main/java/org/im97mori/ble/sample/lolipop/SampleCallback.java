@@ -4,5 +4,5 @@ import android.util.Pair;
 
 public interface SampleCallback {
 
-    void onCallbacked(Pair<String, String> log);
+    void onCallback(Pair<String, String> log);
 }

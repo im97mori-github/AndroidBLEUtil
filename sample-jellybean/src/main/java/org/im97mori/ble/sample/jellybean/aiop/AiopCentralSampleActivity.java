@@ -234,7 +234,7 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
             addRow("isDigitalWritableWithNoResponse", mAutomationIOProfile.isDigitalWritableWithNoResponse());
         } else if (R.id.is_digital_notificatable_0 == item.getItemId()) {
             addRow("isDigitalNotificatable", mAutomationIOProfile.isDigitalNotificatable());
-        } else if (R.id.is_digital_indicatable_0 == item.getItemId()) {
+        } else if (R.id.is_digital_indictable_0 == item.getItemId()) {
             addRow("isDigitalIndicatable", mAutomationIOProfile.isDigitalIndicatable());
         } else if (R.id.has_digital_characteristic_presentation_format_0 == item.getItemId()) {
             addRow("hasDigitalCharacteristicPresentationFormat", mAutomationIOProfile.hasDigitalCharacteristicPresentationFormat());
@@ -294,7 +294,7 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
             addRow("isDigitalWritableWithNoResponse", mAutomationIOProfile.isDigitalWritableWithNoResponse(1));
         } else if (R.id.is_digital_notificatable_1 == item.getItemId()) {
             addRow("isDigitalNotificatable", mAutomationIOProfile.isDigitalNotificatable(1));
-        } else if (R.id.is_digital_indicatable_1 == item.getItemId()) {
+        } else if (R.id.is_digital_indictable_1 == item.getItemId()) {
             addRow("isDigitalIndicatable", mAutomationIOProfile.isDigitalIndicatable(1));
         } else if (R.id.has_digital_characteristic_presentation_format_1 == item.getItemId()) {
             addRow("hasDigitalCharacteristicPresentationFormat", mAutomationIOProfile.hasDigitalCharacteristicPresentationFormat(1));
@@ -354,7 +354,7 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
             addRow("isAnalogWritableWithNoResponse", mAutomationIOProfile.isAnalogWritableWithNoResponse());
         } else if (R.id.is_analog_notificatable_0 == item.getItemId()) {
             addRow("isAnalogNotificatable", mAutomationIOProfile.isAnalogNotificatable());
-        } else if (R.id.is_analog_indicatable_0 == item.getItemId()) {
+        } else if (R.id.is_analog_indictable_0 == item.getItemId()) {
             addRow("isAnalogIndicatable", mAutomationIOProfile.isAnalogIndicatable());
         } else if (R.id.has_analog_characteristic_presentation_format_0 == item.getItemId()) {
             addRow("hasAnalogCharacteristicPresentationFormat", mAutomationIOProfile.hasAnalogCharacteristicPresentationFormat());
@@ -414,7 +414,7 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
             addRow("isAnalogWritableWithNoResponse", mAutomationIOProfile.isAnalogWritableWithNoResponse(1));
         } else if (R.id.is_analog_notificatable_1 == item.getItemId()) {
             addRow("isAnalogNotificatable", mAutomationIOProfile.isAnalogNotificatable(1));
-        } else if (R.id.is_analog_indicatable_1 == item.getItemId()) {
+        } else if (R.id.is_analog_indictable_1 == item.getItemId()) {
             addRow("isAnalogIndicatable", mAutomationIOProfile.isAnalogIndicatable(1));
         } else if (R.id.has_analog_characteristic_presentation_format_1 == item.getItemId()) {
             addRow("hasAnalogCharacteristicPresentationFormat", mAutomationIOProfile.hasAnalogCharacteristicPresentationFormat(1));
@@ -472,7 +472,7 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
             addRow("isAggregateReadable", mAutomationIOProfile.isAggregateReadable());
         } else if (R.id.is_aggregate_notificatable == item.getItemId()) {
             addRow("isAggregateNotificatable", mAutomationIOProfile.isAggregateNotificatable());
-        } else if (R.id.is_aggregate_indicatable == item.getItemId()) {
+        } else if (R.id.is_aggregate_indictable == item.getItemId()) {
             addRow("isAggregateIndicatable", mAutomationIOProfile.isAggregateIndicatable());
         } else if (R.id.get_aggregate == item.getItemId()) {
             mAutomationIOProfile.getAggregate();
@@ -538,7 +538,7 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
     }
 
     @Override
-    public void onCallbacked(final Pair<String, String> log) {
+    public void onCallback(final Pair<String, String> log) {
         runOnUiThread(() -> {
             mAdapter.add(log);
             mListView.smoothScrollToPosition(mAdapter.getCount());

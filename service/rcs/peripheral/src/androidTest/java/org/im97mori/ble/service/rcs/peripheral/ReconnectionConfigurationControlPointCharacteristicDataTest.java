@@ -3,8 +3,10 @@ package org.im97mori.ble.service.rcs.peripheral;
 import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -79,6 +81,7 @@ public class ReconnectionConfigurationControlPointCharacteristicDataTest {
         assertEquals(result1.getStoredValuesResultCodes, result2.getStoredValuesResultCodes);
         assertArrayEquals(result1.getStoredValuesOperand, result2.getStoredValuesOperand);
         assertEquals(result1.setWhiteListTimerResultCodes, result2.setWhiteListTimerResultCodes);
+        assertEquals(result1.getWhiteListTimerResultCodes, result2.getWhiteListTimerResultCodes);
         assertArrayEquals(result1.getWhiteListTimerOperand, result2.getWhiteListTimerOperand);
         assertEquals(result1.setAdvertisementConfigurationResultCodes, result2.setAdvertisementConfigurationResultCodes);
         assertEquals(result1.upgradeToLescOnlyResultCodes, result2.upgradeToLescOnlyResultCodes);
@@ -141,6 +144,7 @@ public class ReconnectionConfigurationControlPointCharacteristicDataTest {
         assertEquals(result1.getStoredValuesResultCodes, result2.getStoredValuesResultCodes);
         assertArrayEquals(result1.getStoredValuesOperand, result2.getStoredValuesOperand);
         assertEquals(result1.setWhiteListTimerResultCodes, result2.setWhiteListTimerResultCodes);
+        assertEquals(result1.getWhiteListTimerResultCodes, result2.getWhiteListTimerResultCodes);
         assertArrayEquals(result1.getWhiteListTimerOperand, result2.getWhiteListTimerOperand);
         assertEquals(result1.setAdvertisementConfigurationResultCodes, result2.setAdvertisementConfigurationResultCodes);
         assertEquals(result1.upgradeToLescOnlyResultCodes, result2.upgradeToLescOnlyResultCodes);
@@ -148,6 +152,33 @@ public class ReconnectionConfigurationControlPointCharacteristicDataTest {
         assertEquals(result1.limitedAccessResultCodes, result2.limitedAccessResultCodes);
         assertArrayEquals(result1.currentSetting, result2.currentSetting);
         assertEquals(result1.isRcFeaturesE2eCrcSupported, result2.isRcFeaturesE2eCrcSupported);
+    }
+
+    @Test
+    public void test_constructor_00101() {
+        ReconnectionConfigurationControlPointCharacteristicData result1 = new ReconnectionConfigurationControlPointCharacteristicData();
+
+        assertEquals(0, result1.enableDisconnectResultCodes);
+        assertEquals(0, result1.getActualCommunicationParametersResultCodes);
+        assertEquals(0, result1.proposeSettingsResultCodes);
+        assertEquals(0, result1.proposeSettingsError);
+        assertEquals(0, result1.activateStoredSettingsResultCodes);
+        assertEquals(0, result1.getMaxValuesResultCodes);
+        assertNull(result1.maxValues);
+        assertEquals(0, result1.getMinValuesResultCodes);
+        assertNull(result1.minValues);
+        assertEquals(0, result1.getStoredValuesResultCodes);
+        assertNull(result1.getStoredValuesOperand);
+        assertEquals(0, result1.setWhiteListTimerResultCodes);
+        assertEquals(0, result1.getWhiteListTimerResultCodes);
+        assertNull(result1.getWhiteListTimerOperand);
+        assertEquals(0, result1.setAdvertisementConfigurationResultCodes);
+        assertEquals(0, result1.upgradeToLescOnlyResultCodes);
+        assertEquals(0, result1.switchOobPairingResultCodes);
+        assertEquals(0, result1.limitedAccessResultCodes);
+        assertNull(result1.currentSetting);
+        assertFalse(result1.isRcFeaturesE2eCrcSupported);
+        assertNull(result1.highPriorityResponseData);
     }
 
     @Test
@@ -6904,6 +6935,7 @@ public class ReconnectionConfigurationControlPointCharacteristicDataTest {
         assertEquals(result1.getStoredValuesResultCodes, result2.getStoredValuesResultCodes);
         assertArrayEquals(result1.getStoredValuesOperand, result2.getStoredValuesOperand);
         assertEquals(result1.setWhiteListTimerResultCodes, result2.setWhiteListTimerResultCodes);
+        assertEquals(result1.getWhiteListTimerResultCodes, result2.getWhiteListTimerResultCodes);
         assertArrayEquals(result1.getWhiteListTimerOperand, result2.getWhiteListTimerOperand);
         assertEquals(result1.setAdvertisementConfigurationResultCodes, result2.setAdvertisementConfigurationResultCodes);
         assertEquals(result1.upgradeToLescOnlyResultCodes, result2.upgradeToLescOnlyResultCodes);
@@ -6968,6 +7000,7 @@ public class ReconnectionConfigurationControlPointCharacteristicDataTest {
         assertEquals(result1.getStoredValuesResultCodes, result2.getStoredValuesResultCodes);
         assertArrayEquals(result1.getStoredValuesOperand, result2.getStoredValuesOperand);
         assertEquals(result1.setWhiteListTimerResultCodes, result2.setWhiteListTimerResultCodes);
+        assertEquals(result1.getWhiteListTimerResultCodes, result2.getWhiteListTimerResultCodes);
         assertArrayEquals(result1.getWhiteListTimerOperand, result2.getWhiteListTimerOperand);
         assertEquals(result1.setAdvertisementConfigurationResultCodes, result2.setAdvertisementConfigurationResultCodes);
         assertEquals(result1.upgradeToLescOnlyResultCodes, result2.upgradeToLescOnlyResultCodes);

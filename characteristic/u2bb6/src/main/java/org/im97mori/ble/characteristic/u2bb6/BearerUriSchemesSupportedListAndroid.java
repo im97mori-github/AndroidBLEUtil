@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BEARER_URI_SCHEMES_SUPPORTED_LIST_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BEARER_URI_SCHEMES_S
 public class BearerUriSchemesSupportedListAndroid extends BearerUriSchemesSupportedList implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BearerUriSchemesSupportedListAndroid> CREATOR = new ByteArrayCreater<BearerUriSchemesSupportedListAndroid>() {
+    public static final ByteArrayCreator<BearerUriSchemesSupportedListAndroid> CREATOR = new ByteArrayCreator<BearerUriSchemesSupportedListAndroid>() {
 
         /**
          * {@inheritDoc}

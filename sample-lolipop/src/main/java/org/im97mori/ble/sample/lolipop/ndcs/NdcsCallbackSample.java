@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a11.TimeWithDstAndroid;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
 import org.im97mori.ble.service.ndcs.central.NextDstChangeServiceCallback;
@@ -40,7 +40,7 @@ public class NdcsCallbackSample extends NextDstChangeServiceMockCallback impleme
         @NonNull
         @Override
         public NdcsCallbackSample build() {
-            return new NdcsCallbackSample(createMockData(), mSampleCallback);
+            return new NdcsCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -48,8 +48,8 @@ public class NdcsCallbackSample extends NextDstChangeServiceMockCallback impleme
 
     private final SampleCallback mSampleCallback;
 
-    NdcsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    NdcsCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -71,9 +71,9 @@ public class NdcsCallbackSample extends NextDstChangeServiceMockCallback impleme
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

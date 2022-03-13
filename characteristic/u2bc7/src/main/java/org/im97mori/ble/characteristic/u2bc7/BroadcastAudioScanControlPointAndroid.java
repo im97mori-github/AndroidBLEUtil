@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BROADCAST_AUDIO_SCAN_CONTROL_POINT_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BROADCAST_AUDIO_SCAN
 public class BroadcastAudioScanControlPointAndroid extends BroadcastAudioScanControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BroadcastAudioScanControlPointAndroid> CREATOR = new ByteArrayCreater<BroadcastAudioScanControlPointAndroid>() {
+    public static final ByteArrayCreator<BroadcastAudioScanControlPointAndroid> CREATOR = new ByteArrayCreator<BroadcastAudioScanControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC;
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.NON_METHANE_VOLATILE
 public class NonMethaneVolatileOrganicCompoundsConcentrationAndroid extends NonMethaneVolatileOrganicCompoundsConcentration implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<NonMethaneVolatileOrganicCompoundsConcentrationAndroid> CREATOR = new ByteArrayCreater<NonMethaneVolatileOrganicCompoundsConcentrationAndroid>() {
+    public static final ByteArrayCreator<NonMethaneVolatileOrganicCompoundsConcentrationAndroid> CREATOR = new ByteArrayCreator<NonMethaneVolatileOrganicCompoundsConcentrationAndroid>() {
 
         /**
          * {@inheritDoc}

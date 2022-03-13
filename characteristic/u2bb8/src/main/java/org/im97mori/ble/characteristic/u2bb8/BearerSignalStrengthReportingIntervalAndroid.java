@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BEARER_SIGNAL_STRENGTH_REPORTING_INTERVAL_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BEARER_SIGNAL_STRENG
 public class BearerSignalStrengthReportingIntervalAndroid extends BearerSignalStrengthReportingInterval implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BearerSignalStrengthReportingIntervalAndroid> CREATOR = new ByteArrayCreater<BearerSignalStrengthReportingIntervalAndroid>() {
+    public static final ByteArrayCreator<BearerSignalStrengthReportingIntervalAndroid> CREATOR = new ByteArrayCreator<BearerSignalStrengthReportingIntervalAndroid>() {
 
         /**
          * {@inheritDoc}

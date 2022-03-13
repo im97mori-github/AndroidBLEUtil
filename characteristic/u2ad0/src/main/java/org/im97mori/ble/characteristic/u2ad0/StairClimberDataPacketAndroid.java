@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.STAIR_CLIMBER_DATA_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.STAIR_CLIMBER_DATA_C
 public class StairClimberDataPacketAndroid extends StairClimberDataPacket implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<StairClimberDataPacketAndroid> CREATOR = new ByteArrayCreater<StairClimberDataPacketAndroid>() {
+    public static final ByteArrayCreator<StairClimberDataPacketAndroid> CREATOR = new ByteArrayCreator<StairClimberDataPacketAndroid>() {
 
         /**
          * {@inheritDoc}

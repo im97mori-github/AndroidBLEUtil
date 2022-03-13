@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.HEAT_INDEX_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HEAT_INDEX_CHARACTER
 public class HeatIndexAndroid extends HeatIndex implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HeatIndexAndroid> CREATOR = new ByteArrayCreater<HeatIndexAndroid>() {
+    public static final ByteArrayCreator<HeatIndexAndroid> CREATOR = new ByteArrayCreator<HeatIndexAndroid>() {
 
         /**
          * {@inheritDoc}

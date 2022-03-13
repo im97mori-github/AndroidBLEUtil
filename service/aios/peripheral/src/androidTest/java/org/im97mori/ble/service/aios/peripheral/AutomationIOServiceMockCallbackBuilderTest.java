@@ -37,13 +37,13 @@ import org.im97mori.ble.descriptor.u2906.ValidRange;
 import org.im97mori.ble.descriptor.u2909.NumberOfDigitals;
 import org.im97mori.ble.descriptor.u290a.ValueTriggerSetting;
 import org.im97mori.ble.descriptor.u290e.TimeTriggerSetting;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
+public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
     @Test
     @RequiresDevice

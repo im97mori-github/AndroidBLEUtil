@@ -1,5 +1,8 @@
 package org.im97mori.ble.service.lls.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_LEVEL_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.LINK_LOSS_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -13,7 +16,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEPeripheralLogUtils;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
@@ -22,9 +24,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_LEVEL_CHARACTERISTIC;
-import static org.im97mori.ble.constants.ServiceUUID.LINK_LOSS_SERVICE;
 
 /**
  * Link Loss Service (Service UUID: 0x1803) for Peripheral
@@ -36,7 +35,7 @@ public class LinkLossServiceMockCallback extends AbstractServiceMockCallback {
      *
      * @param <T> subclass of {@link LinkLossServiceMockCallback}
      */
-    public static class Builder<T extends LinkLossServiceMockCallback> extends AbstractServiceMockCallback.Builder<LinkLossServiceMockCallback> {
+    public static class Builder<T extends LinkLossServiceMockCallback> extends AbstractServiceMockCallback.Builder<LinkLossServiceMockCallback, ServiceData> {
 
         /**
          * Alert Level data
@@ -106,7 +105,7 @@ public class LinkLossServiceMockCallback extends AbstractServiceMockCallback {
          */
         @Override
         @NonNull
-        public MockData createMockData() {
+        public ServiceData createData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
             if (mAlertLevelCharacteristicData == null) {
@@ -115,8 +114,7 @@ public class LinkLossServiceMockCallback extends AbstractServiceMockCallback {
                 characteristicList.add(mAlertLevelCharacteristicData);
             }
 
-            ServiceData serviceData = new ServiceData(LINK_LOSS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ServiceData(LINK_LOSS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
         }
 
         /**
@@ -125,7 +123,7 @@ public class LinkLossServiceMockCallback extends AbstractServiceMockCallback {
         @Override
         @NonNull
         public LinkLossServiceMockCallback build() {
-            return new LinkLossServiceMockCallback(createMockData(), false);
+            return new LinkLossServiceMockCallback(createData(), false);
         }
 
     }
@@ -135,15 +133,7 @@ public class LinkLossServiceMockCallback extends AbstractServiceMockCallback {
      * @param isFallback fallback flag
      */
     public LinkLossServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public LinkLossServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

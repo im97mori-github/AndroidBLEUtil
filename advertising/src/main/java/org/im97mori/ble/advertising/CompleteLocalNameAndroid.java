@@ -5,7 +5,7 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * <p>
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class CompleteLocalNameAndroid extends CompleteLocalName implements AdvertisingDataInterfaceAndroid {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CompleteLocalNameAndroid> CREATOR = new ByteArrayCreater<CompleteLocalNameAndroid>() {
+    public static final ByteArrayCreator<CompleteLocalNameAndroid> CREATOR = new ByteArrayCreator<CompleteLocalNameAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -64,7 +64,7 @@ public class CompleteLocalNameAndroid extends CompleteLocalName implements Adver
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
-     * @param length 1st octed of Advertising Data
+     * @param length 1st octet of Advertising Data
      */
     public CompleteLocalNameAndroid(@NonNull byte[] data
             , int offset

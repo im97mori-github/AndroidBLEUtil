@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_LAST_MODIFIED_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_LAST_MODIFIED
 public class ObjectLastModifiedAndroid extends ObjectLastModified implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ObjectLastModifiedAndroid> CREATOR = new ByteArrayCreater<ObjectLastModifiedAndroid>() {
+    public static final ByteArrayCreator<ObjectLastModifiedAndroid> CREATOR = new ByteArrayCreator<ObjectLastModifiedAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_FEATURE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_FEAT
 public class BondManagementFeaturesAndroid extends BondManagementFeatures implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BondManagementFeaturesAndroid> CREATOR = new ByteArrayCreater<BondManagementFeaturesAndroid>() {
+    public static final ByteArrayCreator<BondManagementFeaturesAndroid> CREATOR = new ByteArrayCreator<BondManagementFeaturesAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -49,12 +49,12 @@ public abstract class AbstractCentralService implements BLECallback {
 
     /**
      * Service Discovered flag
-     * {@code true}:{@link #onDiscoverServiceSuccess} callbacked, {@code false}] not callbacked
+     * {@code true}:{@link #onDiscoverServiceSuccess} Service Discovered, {@code false}] Service not Discovered
      */
     protected boolean mIsServiceDiscovered = false;
 
     /**
-     * availabled characteristics for check non mandatory characteristics
+     * available characteristics for check non mandatory characteristics
      */
     protected final Set<UUID> mAvailableCharacteristicSet = new HashSet<>();
 

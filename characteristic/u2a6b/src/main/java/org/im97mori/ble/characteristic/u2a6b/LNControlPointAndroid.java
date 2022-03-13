@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LN_CONTROL_POINT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LN_CONTROL_POINT_CHA
 public class LNControlPointAndroid extends LNControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LNControlPointAndroid> CREATOR = new ByteArrayCreater<LNControlPointAndroid>() {
+    public static final ByteArrayCreator<LNControlPointAndroid> CREATOR = new ByteArrayCreator<LNControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -5,7 +5,7 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import java.util.UUID;
 
@@ -19,9 +19,9 @@ import java.util.UUID;
 public class ServiceData16BitUUIDAndroid extends ServiceData16BitUUID implements AdvertisingDataInterfaceAndroid {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ServiceData16BitUUIDAndroid> CREATOR = new ByteArrayCreater<ServiceData16BitUUIDAndroid>() {
+    public static final ByteArrayCreator<ServiceData16BitUUIDAndroid> CREATOR = new ByteArrayCreator<ServiceData16BitUUIDAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -66,7 +66,7 @@ public class ServiceData16BitUUIDAndroid extends ServiceData16BitUUID implements
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
-     * @param length 1st octed of Advertising Data
+     * @param length 1st octet of Advertising Data
      */
     public ServiceData16BitUUIDAndroid(@NonNull byte[] data
             , int offset

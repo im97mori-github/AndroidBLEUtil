@@ -17,6 +17,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class BondManagementControlPointCharacteristicDataTest {
@@ -73,6 +74,30 @@ public class BondManagementControlPointCharacteristicDataTest {
         assertEquals(result1.deleteAllButTheActiveBondOnServerBrEdrAuthorizationCode, result2.deleteAllButTheActiveBondOnServerBrEdrAuthorizationCode);
         assertEquals(result1.deleteAllButTheActiveBondOnServerLeResponseCode, result2.deleteAllButTheActiveBondOnServerLeResponseCode);
         assertEquals(result1.deleteAllButTheActiveBondOnServerLeAuthorizationCode, result2.deleteAllButTheActiveBondOnServerLeAuthorizationCode);
+    }
+
+    @Test
+    public void test_constructor_00101() {
+        BondManagementControlPointCharacteristicData result1 = new BondManagementControlPointCharacteristicData();
+
+        assertEquals(0, result1.deleteBondOfRequestingDeviceBrEdrLeResponseCode);
+        assertNull(result1.deleteBondOfRequestingDeviceBrEdrLeAuthorizationCode);
+        assertEquals(0, result1.deleteBondOfRequestingDeviceBrEdrResponseCode);
+        assertNull(result1.deleteBondOfRequestingDeviceBrEdrAuthorizationCode);
+        assertEquals(0, result1.deleteBondOfRequestingDeviceLeResponseCode);
+        assertNull(result1.deleteBondOfRequestingDeviceLeAuthorizationCode);
+        assertEquals(0, result1.deleteAllBondsOnServerBrEdrLeResponseCode);
+        assertNull(result1.deleteAllBondsOnServerBrEdrLeAuthorizationCode);
+        assertEquals(0, result1.deleteAllBondsOnServerBrEdrResponseCode);
+        assertNull(result1.deleteAllBondsOnServerBrEdrAuthorizationCode);
+        assertEquals(0, result1.deleteAllBondsOnServerLeResponseCode);
+        assertNull(result1.deleteAllBondsOnServerLeAuthorizationCode);
+        assertEquals(0, result1.deleteAllButTheActiveBondOnServerBrEdrLeResponseCode);
+        assertNull(result1.deleteAllButTheActiveBondOnServerBrEdrLeAuthorizationCode);
+        assertEquals(0, result1.deleteAllButTheActiveBondOnServerBrEdrResponseCode);
+        assertNull(result1.deleteAllButTheActiveBondOnServerBrEdrAuthorizationCode);
+        assertEquals(0, result1.deleteAllButTheActiveBondOnServerLeResponseCode);
+        assertNull(result1.deleteAllButTheActiveBondOnServerLeAuthorizationCode);
     }
 
     @Test

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.WIND_CHILL_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.WIND_CHILL_CHARACTER
 public class WindChillAndroid extends WindChill implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<WindChillAndroid> CREATOR = new ByteArrayCreater<WindChillAndroid>() {
+    public static final ByteArrayCreator<WindChillAndroid> CREATOR = new ByteArrayCreator<WindChillAndroid>() {
 
         /**
          * {@inheritDoc}

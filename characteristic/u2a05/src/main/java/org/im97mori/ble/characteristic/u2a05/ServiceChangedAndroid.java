@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SERVICE_CHANGED_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SERVICE_CHANGED_CHAR
 public class ServiceChangedAndroid extends ServiceChanged implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ServiceChangedAndroid> CREATOR = new ByteArrayCreater<ServiceChangedAndroid>() {
+    public static final ByteArrayCreator<ServiceChangedAndroid> CREATOR = new ByteArrayCreator<ServiceChangedAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_NAME_CHARACTE
 public class DeviceNameAndroid extends DeviceName implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<DeviceNameAndroid> CREATOR = new ByteArrayCreater<DeviceNameAndroid>() {
+    public static final ByteArrayCreator<DeviceNameAndroid> CREATOR = new ByteArrayCreator<DeviceNameAndroid>() {
 
         /**
          * {@inheritDoc}

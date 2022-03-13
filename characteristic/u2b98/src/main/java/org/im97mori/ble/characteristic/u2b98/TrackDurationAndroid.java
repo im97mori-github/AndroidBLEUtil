@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TRACK_DURATION_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TRACK_DURATION_CHARA
 public class TrackDurationAndroid extends TrackDuration implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TrackDurationAndroid> CREATOR = new ByteArrayCreater<TrackDurationAndroid>() {
+    public static final ByteArrayCreator<TrackDurationAndroid> CREATOR = new ByteArrayCreator<TrackDurationAndroid>() {
 
         /**
          * {@inheritDoc}

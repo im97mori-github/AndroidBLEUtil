@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CURRENT_GROUP_OBJECT_ID_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CURRENT_GROUP_OBJECT
 public class CurrentGroupObjectIdAndroid extends CurrentGroupObjectId implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CurrentGroupObjectIdAndroid> CREATOR = new ByteArrayCreater<CurrentGroupObjectIdAndroid>() {
+    public static final ByteArrayCreator<CurrentGroupObjectIdAndroid> CREATOR = new ByteArrayCreator<CurrentGroupObjectIdAndroid>() {
 
         /**
          * {@inheritDoc}

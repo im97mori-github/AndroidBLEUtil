@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.IRRADIANCE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.IRRADIANCE_CHARACTER
 public class IrradianceAndroid extends Irradiance implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<IrradianceAndroid> CREATOR = new ByteArrayCreater<IrradianceAndroid>() {
+    public static final ByteArrayCreator<IrradianceAndroid> CREATOR = new ByteArrayCreator<IrradianceAndroid>() {
 
         /**
          * {@inheritDoc}

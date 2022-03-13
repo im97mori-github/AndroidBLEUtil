@@ -126,9 +126,9 @@ public class TaskHandler extends Handler {
                 cancelAllQueue();
             } else if (MESSAGE_TASK_CANCEL == msg.what) {
                 // cancel single task
-                Integer canceldTask = (Integer) msg.obj;
+                Integer canceledTask = (Integer) msg.obj;
 
-                if (mCurrentTask != null && canceldTask.equals(mCurrentTask.getTaskId())) {
+                if (mCurrentTask != null && canceledTask.equals(mCurrentTask.getTaskId())) {
                     mCurrentTask.cancel();
                     mCurrentTask = null;
                 }
@@ -136,7 +136,7 @@ public class TaskHandler extends Handler {
                 Iterator<AbstractBLETask> it = mQueue.iterator();
                 while (it.hasNext()) {
                     AbstractBLETask task = it.next();
-                    if (canceldTask.equals(task.getTaskId())) {
+                    if (canceledTask.equals(task.getTaskId())) {
                         it.remove();
                         break;
                     }
@@ -145,7 +145,7 @@ public class TaskHandler extends Handler {
                 it = mHighPriorityQueue.iterator();
                 while (it.hasNext()) {
                     AbstractBLETask task = it.next();
-                    if (canceldTask.equals(task.getTaskId())) {
+                    if (canceledTask.equals(task.getTaskId())) {
                         it.remove();
                         break;
                     }

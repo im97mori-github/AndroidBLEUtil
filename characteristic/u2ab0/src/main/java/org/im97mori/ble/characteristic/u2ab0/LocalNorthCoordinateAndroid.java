@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LOCAL_NORTH_COORDINATE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LOCAL_NORTH_COORDINA
 public class LocalNorthCoordinateAndroid extends LocalNorthCoordinate implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LocalNorthCoordinateAndroid> CREATOR = new ByteArrayCreater<LocalNorthCoordinateAndroid>() {
+    public static final ByteArrayCreator<LocalNorthCoordinateAndroid> CREATOR = new ByteArrayCreator<LocalNorthCoordinateAndroid>() {
 
         /**
          * {@inheritDoc}

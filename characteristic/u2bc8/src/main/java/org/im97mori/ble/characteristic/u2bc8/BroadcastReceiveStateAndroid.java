@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BROADCAST_RECEIVE_STATE_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BROADCAST_RECEIVE_ST
 public class BroadcastReceiveStateAndroid extends BroadcastReceiveState implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BroadcastReceiveStateAndroid> CREATOR = new ByteArrayCreater<BroadcastReceiveStateAndroid>() {
+    public static final ByteArrayCreator<BroadcastReceiveStateAndroid> CREATOR = new ByteArrayCreator<BroadcastReceiveStateAndroid>() {
 
         /**
          * {@inheritDoc}

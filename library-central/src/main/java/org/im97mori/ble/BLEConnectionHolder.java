@@ -34,7 +34,7 @@ public class BLEConnectionHolder {
      * add {@link BLEConnection} instance
      *
      * @param bleConnection {@link BLEConnection} instance
-     * @param force         {@code true}:overwrite current {@link BLEConnection} instance, {@code false}:dont overwrite
+     * @param force         {@code true}:overwrite current {@link BLEConnection} instance, {@code false}:don't overwrite
      * @return {@code true}:added, {@code false}:not added
      */
     public static synchronized boolean addInstance(@NonNull BLEConnection bleConnection, boolean force) {

@@ -158,7 +158,7 @@ public class BlpPeripheralSampleActivity extends BaseActivity implements View.On
     }
 
     @Override
-    public void onCallbacked(final Pair<String, String> log) {
+    public void onCallback(final Pair<String, String> log) {
         runOnUiThread(() -> {
             mAdapter.add(log);
             mListView.smoothScrollToPosition(mAdapter.getCount());

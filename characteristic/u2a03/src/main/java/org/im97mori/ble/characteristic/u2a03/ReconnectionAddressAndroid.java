@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_ADDRESS_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_ADDRESS
 public class ReconnectionAddressAndroid extends ReconnectionAddress implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ReconnectionAddressAndroid> CREATOR = new ByteArrayCreater<ReconnectionAddressAndroid>() {
+    public static final ByteArrayCreator<ReconnectionAddressAndroid> CREATOR = new ByteArrayCreator<ReconnectionAddressAndroid>() {
 
         /**
          * {@inheritDoc}

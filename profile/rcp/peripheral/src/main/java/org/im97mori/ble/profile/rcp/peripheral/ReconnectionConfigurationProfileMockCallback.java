@@ -49,7 +49,7 @@ public class ReconnectionConfigurationProfileMockCallback extends AbstractProfil
         protected final BondManagementServiceMockCallback.Builder<? extends BondManagementServiceMockCallback> mBondManagementServiceMockCallbackBuilder;
 
         /**
-         * flag for Bond Management Servic
+         * flag for Bond Management Service
          */
         protected boolean mNeedBondManagementService = false;
 

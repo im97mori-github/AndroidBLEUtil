@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SEARCH_RESULTS_OBJECT_ID_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SEARCH_RESULTS_OBJEC
 public class SearchResultsObjectIdAndroid extends SearchResultsObjectId implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SearchResultsObjectIdAndroid> CREATOR = new ByteArrayCreater<SearchResultsObjectIdAndroid>() {
+    public static final ByteArrayCreator<SearchResultsObjectIdAndroid> CREATOR = new ByteArrayCreator<SearchResultsObjectIdAndroid>() {
 
         /**
          * {@inheritDoc}

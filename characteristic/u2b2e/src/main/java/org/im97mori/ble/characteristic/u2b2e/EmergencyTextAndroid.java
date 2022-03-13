@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.EMERGENCY_TEXT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.EMERGENCY_TEXT_CHARA
 public class EmergencyTextAndroid extends EmergencyText implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<EmergencyTextAndroid> CREATOR = new ByteArrayCreater<EmergencyTextAndroid>() {
+    public static final ByteArrayCreator<EmergencyTextAndroid> CREATOR = new ByteArrayCreator<EmergencyTextAndroid>() {
 
         /**
          * {@inheritDoc}

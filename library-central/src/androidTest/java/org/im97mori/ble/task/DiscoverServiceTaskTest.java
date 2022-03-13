@@ -9,7 +9,7 @@ import android.os.Message;
 import androidx.annotation.NonNull;
 import androidx.test.filters.RequiresDevice;
 
-import org.im97mori.ble.BLECallbackDistributer;
+import org.im97mori.ble.BLECallbackDistributor;
 import org.im97mori.ble.BaseBLECallback;
 import org.im97mori.ble.TaskHandler;
 import org.im97mori.ble.test.central.AbstractCentralTest;
@@ -89,7 +89,7 @@ public class DiscoverServiceTaskTest extends AbstractCentralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            DiscoverServiceTask task = new DiscoverServiceTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, DiscoverServiceTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            DiscoverServiceTask task = new DiscoverServiceTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, DiscoverServiceTask.TIMEOUT_MILLIS, BLECallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -120,7 +120,7 @@ public class DiscoverServiceTaskTest extends AbstractCentralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            DiscoverServiceTask task = new DiscoverServiceTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, DiscoverServiceTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            DiscoverServiceTask task = new DiscoverServiceTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, DiscoverServiceTask.TIMEOUT_MILLIS, BLECallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());

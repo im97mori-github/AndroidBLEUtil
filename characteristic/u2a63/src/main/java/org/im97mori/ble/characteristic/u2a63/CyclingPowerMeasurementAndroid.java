@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_MEASUREMENT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_MEASUR
 public class CyclingPowerMeasurementAndroid extends CyclingPowerMeasurement implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CyclingPowerMeasurementAndroid> CREATOR = new ByteArrayCreater<CyclingPowerMeasurementAndroid>() {
+    public static final ByteArrayCreator<CyclingPowerMeasurementAndroid> CREATOR = new ByteArrayCreator<CyclingPowerMeasurementAndroid>() {
 
         /**
          * {@inheritDoc}

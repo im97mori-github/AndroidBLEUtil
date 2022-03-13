@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SOURCE_ASE_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SOURCE_ASE_CHARACTER
 public class SourceAseAndroid extends SourceAse implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SourceAseAndroid> CREATOR = new ByteArrayCreater<SourceAseAndroid>() {
+    public static final ByteArrayCreator<SourceAseAndroid> CREATOR = new ByteArrayCreator<SourceAseAndroid>() {
 
         /**
          * {@inheritDoc}

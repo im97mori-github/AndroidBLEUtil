@@ -8,7 +8,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * Four Zone Heart Rate Limits (Characteristics UUID: 0x2B4C)
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class FourZoneHeartRateLimitsAndroid extends FourZoneHeartRateLimits implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<FourZoneHeartRateLimitsAndroid> CREATOR = new ByteArrayCreater<FourZoneHeartRateLimitsAndroid>() {
+    public static final ByteArrayCreator<FourZoneHeartRateLimitsAndroid> CREATOR = new ByteArrayCreator<FourZoneHeartRateLimitsAndroid>() {
 
         /**
          * {@inheritDoc}

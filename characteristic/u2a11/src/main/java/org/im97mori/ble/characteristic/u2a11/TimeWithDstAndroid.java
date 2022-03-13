@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TIME_WITH_DST_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_WITH_DST_CHARAC
 public class TimeWithDstAndroid extends TimeWithDst implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TimeWithDstAndroid> CREATOR = new ByteArrayCreater<TimeWithDstAndroid>() {
+    public static final ByteArrayCreator<TimeWithDstAndroid> CREATOR = new ByteArrayCreator<TimeWithDstAndroid>() {
 
         /**
          * {@inheritDoc}

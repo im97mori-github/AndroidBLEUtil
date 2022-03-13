@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.AVERAGE_VOLTAGE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.AVERAGE_VOLTAGE_CHAR
 public class AverageVoltageAndroid extends AverageVoltage implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AverageVoltageAndroid> CREATOR = new ByteArrayCreater<AverageVoltageAndroid>() {
+    public static final ByteArrayCreator<AverageVoltageAndroid> CREATOR = new ByteArrayCreator<AverageVoltageAndroid>() {
 
         /**
          * {@inheritDoc}

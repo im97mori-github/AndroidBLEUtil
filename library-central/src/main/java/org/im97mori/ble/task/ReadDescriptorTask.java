@@ -116,11 +116,11 @@ public class ReadDescriptorTask extends AbstractBLETask {
      * create read descriptor success message
      *
      * @param serviceUUID              target service UUID
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       target characteristic UUID
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           target descriptor UUID
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param values                   {@link BluetoothGattDescriptor#getValue()}
      * @return read descriptor success {@link Message} instance
      */
@@ -144,11 +144,11 @@ public class ReadDescriptorTask extends AbstractBLETask {
      * create read descriptor finished message
      *
      * @param serviceUUID              target service UUID
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       target characteristic UUID
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           target descriptor UUID
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param status                   {@link android.bluetooth.BluetoothGattCallback#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
      * @return read descriptor error {@link Message} instance
      */
@@ -189,7 +189,7 @@ public class ReadDescriptorTask extends AbstractBLETask {
     private final UUID mServiceUUID;
 
     /**
-     * task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * task target service instance id {@link BluetoothGattService#getInstanceId()}
      */
     private Integer mServiceInstanceId;
 
@@ -199,7 +199,7 @@ public class ReadDescriptorTask extends AbstractBLETask {
     private final UUID mCharacteristicUUID;
 
     /**
-     * task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      */
     private Integer mCharacteristicInstanceId;
 
@@ -209,7 +209,7 @@ public class ReadDescriptorTask extends AbstractBLETask {
     private final UUID mDescriptorUUID;
 
     /**
-     * task target descriptor incetanceId
+     * task target descriptor instance id
      */
     private Integer mDescriptorInstanceId;
 
@@ -228,11 +228,11 @@ public class ReadDescriptorTask extends AbstractBLETask {
      * @param bluetoothGatt            task target {@link BluetoothGatt} instance
      * @param taskHandler              task target {@link TaskHandler} instance
      * @param serviceUUID              task target service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       task target characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           task target descriptor {@link UUID}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */

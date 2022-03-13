@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a06.AlertLevelAndroid;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
 import org.im97mori.ble.service.lls.central.LinkLossServiceCallback;
@@ -40,7 +40,7 @@ public class LlsCallbackSample extends LinkLossServiceMockCallback implements Li
         @NonNull
         @Override
         public LlsCallbackSample build() {
-            return new LlsCallbackSample(createMockData(), mSampleCallback);
+            return new LlsCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -48,8 +48,8 @@ public class LlsCallbackSample extends LinkLossServiceMockCallback implements Li
 
     private final SampleCallback mSampleCallback;
 
-    LlsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    LlsCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -71,9 +71,9 @@ public class LlsCallbackSample extends LinkLossServiceMockCallback implements Li
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

@@ -5,7 +5,7 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * <p>
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class UniformResourceIdentifierAndroid extends UniformResourceIdentifier implements AdvertisingDataInterfaceAndroid {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<UniformResourceIdentifierAndroid> CREATOR = new ByteArrayCreater<UniformResourceIdentifierAndroid>() {
+    public static final ByteArrayCreator<UniformResourceIdentifierAndroid> CREATOR = new ByteArrayCreator<UniformResourceIdentifierAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -64,7 +64,7 @@ public class UniformResourceIdentifierAndroid extends UniformResourceIdentifier 
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
-     * @param length 1st octed of Advertising Data
+     * @param length 1st octet of Advertising Data
      */
     public UniformResourceIdentifierAndroid(@NonNull byte[] data
             , int offset

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_THRESHOLD_AS
 public class DateOfThresholdAssessmentAndroid extends DateOfThresholdAssessment implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<DateOfThresholdAssessmentAndroid> CREATOR = new ByteArrayCreater<DateOfThresholdAssessmentAndroid>() {
+    public static final ByteArrayCreator<DateOfThresholdAssessmentAndroid> CREATOR = new ByteArrayCreator<DateOfThresholdAssessmentAndroid>() {
 
         /**
          * {@inheritDoc}

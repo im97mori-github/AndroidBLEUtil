@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SPORT_TYPE_FOR_AEROB
 public class SportTypeForAerobicAndAnaerobicThresholdsAndroid extends SportTypeForAerobicAndAnaerobicThresholds implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SportTypeForAerobicAndAnaerobicThresholdsAndroid> CREATOR = new ByteArrayCreater<SportTypeForAerobicAndAnaerobicThresholdsAndroid>() {
+    public static final ByteArrayCreator<SportTypeForAerobicAndAnaerobicThresholdsAndroid> CREATOR = new ByteArrayCreator<SportTypeForAerobicAndAnaerobicThresholdsAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_FEATURE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_FEAT
 public class FitnessMachineFeatureAndroid extends FitnessMachineFeature implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<FitnessMachineFeatureAndroid> CREATOR = new ByteArrayCreater<FitnessMachineFeatureAndroid>() {
+    public static final ByteArrayCreator<FitnessMachineFeatureAndroid> CREATOR = new ByteArrayCreator<FitnessMachineFeatureAndroid>() {
 
         /**
          * {@inheritDoc}

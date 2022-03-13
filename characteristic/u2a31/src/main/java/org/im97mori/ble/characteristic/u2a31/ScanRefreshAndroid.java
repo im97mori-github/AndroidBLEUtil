@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_REFRESH_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_REFRESH_CHARACT
 public class ScanRefreshAndroid extends ScanRefresh implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ScanRefreshAndroid> CREATOR = new ByteArrayCreater<ScanRefreshAndroid>() {
+    public static final ByteArrayCreator<ScanRefreshAndroid> CREATOR = new ByteArrayCreator<ScanRefreshAndroid>() {
 
         /**
          * {@inheritDoc}

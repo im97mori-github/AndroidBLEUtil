@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ELECTRIC_CURRENT_SPECIFICATION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ELECTRIC_CURRENT_SPE
 public class ElectricCurrentSpecificationAndroid extends ElectricCurrentSpecification implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ElectricCurrentSpecificationAndroid> CREATOR = new ByteArrayCreater<ElectricCurrentSpecificationAndroid>() {
+    public static final ByteArrayCreator<ElectricCurrentSpecificationAndroid> CREATOR = new ByteArrayCreator<ElectricCurrentSpecificationAndroid>() {
 
         /**
          * {@inheritDoc}

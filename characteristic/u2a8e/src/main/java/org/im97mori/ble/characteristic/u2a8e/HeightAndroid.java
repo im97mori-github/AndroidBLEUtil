@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.HEIGHT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HEIGHT_CHARACTERISTI
 public class HeightAndroid extends Height implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HeightAndroid> CREATOR = new ByteArrayCreater<HeightAndroid>() {
+    public static final ByteArrayCreator<HeightAndroid> CREATOR = new ByteArrayCreator<HeightAndroid>() {
 
         /**
          * {@inheritDoc}

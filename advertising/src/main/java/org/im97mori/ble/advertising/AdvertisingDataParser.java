@@ -613,7 +613,7 @@ public class AdvertisingDataParser {
         }
 
         /**
-         * @return All Manufacturer Specific Datas List
+         * @return All Manufacturer Specific Data List
          */
         @NonNull
         public List<ManufacturerSpecificDataAndroid> getManufacturerSpecificDataList() {

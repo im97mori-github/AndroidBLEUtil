@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
+import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 import org.im97mori.ble.characteristic.u2b37.RegisteredUser;
 
 /**
@@ -15,9 +15,9 @@ import org.im97mori.ble.characteristic.u2b37.RegisteredUser;
 public class FirstNameAndroid extends FirstName implements Parcelable {
 
     /**
-     * @see MultiplePacketCreater
+     * @see MultiplePacketCreator
      */
-    public static final MultiplePacketCreater<FirstNameAndroid, RegisteredUser> CREATOR = new MultiplePacketCreater<FirstNameAndroid, RegisteredUser>() {
+    public static final MultiplePacketCreator<FirstNameAndroid, RegisteredUser> CREATOR = new MultiplePacketCreator<FirstNameAndroid, RegisteredUser>() {
 
         /**
          * {@inheritDoc}

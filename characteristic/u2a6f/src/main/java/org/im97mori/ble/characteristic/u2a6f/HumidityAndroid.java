@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.HUMIDITY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HUMIDITY_CHARACTERIS
 public class HumidityAndroid extends Humidity implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HumidityAndroid> CREATOR = new ByteArrayCreater<HumidityAndroid>() {
+    public static final ByteArrayCreator<HumidityAndroid> CREATOR = new ByteArrayCreator<HumidityAndroid>() {
 
         /**
          * {@inheritDoc}

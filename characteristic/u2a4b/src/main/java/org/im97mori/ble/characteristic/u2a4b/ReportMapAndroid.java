@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.REPORT_MAP_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.REPORT_MAP_CHARACTER
 public class ReportMapAndroid extends ReportMap implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ReportMapAndroid> CREATOR = new ByteArrayCreater<ReportMapAndroid>() {
+    public static final ByteArrayCreator<ReportMapAndroid> CREATOR = new ByteArrayCreator<ReportMapAndroid>() {
 
         /**
          * {@inheritDoc}

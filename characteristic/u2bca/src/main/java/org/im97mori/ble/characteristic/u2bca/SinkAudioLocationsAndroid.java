@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SINK_AUDIO_LOCATIONS_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SINK_AUDIO_LOCATIONS
 public class SinkAudioLocationsAndroid extends SinkAudioLocations implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SinkAudioLocationsAndroid> CREATOR = new ByteArrayCreater<SinkAudioLocationsAndroid>() {
+    public static final ByteArrayCreator<SinkAudioLocationsAndroid> CREATOR = new ByteArrayCreator<SinkAudioLocationsAndroid>() {
 
         /**
          * {@inheritDoc}

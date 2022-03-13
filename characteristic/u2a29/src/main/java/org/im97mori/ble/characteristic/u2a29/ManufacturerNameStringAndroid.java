@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.MANUFACTURER_NAME_STRING_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.MANUFACTURER_NAME_ST
 public class ManufacturerNameStringAndroid extends ManufacturerNameString implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ManufacturerNameStringAndroid> CREATOR = new ByteArrayCreater<ManufacturerNameStringAndroid>() {
+    public static final ByteArrayCreator<ManufacturerNameStringAndroid> CREATOR = new ByteArrayCreator<ManufacturerNameStringAndroid>() {
 
         /**
          * {@inheritDoc}

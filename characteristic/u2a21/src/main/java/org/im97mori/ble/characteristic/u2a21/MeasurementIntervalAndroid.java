@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.MEASUREMENT_INTERVAL_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.MEASUREMENT_INTERVAL
 public class MeasurementIntervalAndroid extends MeasurementInterval implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<MeasurementIntervalAndroid> CREATOR = new ByteArrayCreater<MeasurementIntervalAndroid>() {
+    public static final ByteArrayCreator<MeasurementIntervalAndroid> CREATOR = new ByteArrayCreator<MeasurementIntervalAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -51,10 +51,10 @@
             android:title="@string/menu_indicate_reconnection_configuration_control_point_stop" />
         <item
             android:id="@+id/indicate_client_parameter_indication"
-            android:title="@string/menu_ndicate_client_parameter_indication" />
+            android:title="@string/menu_indicate_client_parameter_indication" />
         <item
-            android:id="@+id/read_bond_banagement_features"
-            android:title="@string/menu_read_bond_banagement_features" />
+            android:id="@+id/read_bond_management_features"
+            android:title="@string/menu_read_bond_management_features" />
         <item
             android:id="@+id/write_bond_management_control_point"
             android:title="@string/menu_write_bond_management_control_point" />

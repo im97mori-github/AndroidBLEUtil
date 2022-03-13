@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_CATEGORY_ID_BIT_MASK_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_CATEGORY_ID_BI
 public class AlertCategoryIdBitMaskAndroid extends AlertCategoryIdBitMask implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AlertCategoryIdBitMaskAndroid> CREATOR = new ByteArrayCreater<AlertCategoryIdBitMaskAndroid>() {
+    public static final ByteArrayCreator<AlertCategoryIdBitMaskAndroid> CREATOR = new ByteArrayCreator<AlertCategoryIdBitMaskAndroid>() {
 
         /**
          * {@inheritDoc}

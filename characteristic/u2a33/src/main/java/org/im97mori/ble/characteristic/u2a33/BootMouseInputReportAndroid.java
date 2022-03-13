@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BOOT_MOUSE_INPUT_REPORT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BOOT_MOUSE_INPUT_REP
 public class BootMouseInputReportAndroid extends BootMouseInputReport implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BootMouseInputReportAndroid> CREATOR = new ByteArrayCreater<BootMouseInputReportAndroid>() {
+    public static final ByteArrayCreator<BootMouseInputReportAndroid> CREATOR = new ByteArrayCreator<BootMouseInputReportAndroid>() {
 
         /**
          * {@inheritDoc}

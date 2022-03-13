@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.filters.RequiresDevice;
 
-import org.im97mori.ble.BLECallbackDistributer;
+import org.im97mori.ble.BLECallbackDistributor;
 import org.im97mori.ble.BaseBLECallback;
 import org.im97mori.ble.TaskHandler;
 import org.im97mori.ble.test.central.AbstractCentralTest;
@@ -123,7 +123,7 @@ public class ReadCharacteristicTaskTest extends AbstractCentralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ReadCharacteristicTask task = new ReadCharacteristicTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, null, null, null, null, ReadCharacteristicTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ReadCharacteristicTask task = new ReadCharacteristicTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, null, null, null, null, ReadCharacteristicTask.TIMEOUT_MILLIS, BLECallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -155,7 +155,7 @@ public class ReadCharacteristicTaskTest extends AbstractCentralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ReadCharacteristicTask task = new ReadCharacteristicTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, null, null, null, null, ReadCharacteristicTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ReadCharacteristicTask task = new ReadCharacteristicTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, null, null, null, null, ReadCharacteristicTask.TIMEOUT_MILLIS, BLECallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());

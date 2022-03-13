@@ -7,7 +7,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
+import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 
 /**
  * Blood Pressure Record (Characteristics UUID: 0x2B36)
@@ -16,9 +16,9 @@ import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 public class BloodPressureRecordAndroid extends BloodPressureRecord implements Parcelable {
 
     /**
-     * @see MultiplePacketCreater
+     * @see MultiplePacketCreator
      */
-    public static final MultiplePacketCreater<BloodPressureRecordAndroid, BloodPressureRecordPacketAndroid> CREATOR = new MultiplePacketCreater<BloodPressureRecordAndroid, BloodPressureRecordPacketAndroid>() {
+    public static final MultiplePacketCreator<BloodPressureRecordAndroid, BloodPressureRecordPacketAndroid> CREATOR = new MultiplePacketCreator<BloodPressureRecordAndroid, BloodPressureRecordPacketAndroid>() {
 
         /**
          * {@inheritDoc}

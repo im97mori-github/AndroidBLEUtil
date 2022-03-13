@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BEARER_UCI_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BEARER_UCI_CHARACTER
 public class BearerUciAndroid extends BearerUci implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BearerUciAndroid> CREATOR = new ByteArrayCreater<BearerUciAndroid>() {
+    public static final ByteArrayCreator<BearerUciAndroid> CREATOR = new ByteArrayCreator<BearerUciAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.HID_INFORMATION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HID_INFORMATION_CHAR
 public class HIDInformationAndroid extends HIDInformation implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HIDInformationAndroid> CREATOR = new ByteArrayCreater<HIDInformationAndroid>() {
+    public static final ByteArrayCreator<HIDInformationAndroid> CREATOR = new ByteArrayCreator<HIDInformationAndroid>() {
 
         /**
          * {@inheritDoc}

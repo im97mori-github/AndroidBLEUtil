@@ -137,7 +137,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
         if (result == null) {
             text = prefix + "\nnull";
         } else {
-            text = prefix + "\n" + result.toString();
+            text = prefix + "\n" + result;
         }
         mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
         mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -397,7 +397,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isFirstNameCharacteristicSupported\nnull";
             } else {
-                text = "isFirstNameCharacteristicSupported\n" + result.toString();
+                text = "isFirstNameCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -407,7 +407,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isWeightCharacteristicSupported\nnull";
             } else {
-                text = "isWeightCharacteristicSupported\n" + result.toString();
+                text = "isWeightCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -417,7 +417,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isGenderCharacteristicSupported\nnull";
             } else {
-                text = "isGenderCharacteristicSupported\n" + result.toString();
+                text = "isGenderCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -427,7 +427,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isHeightCharacteristicSupported\nnull";
             } else {
-                text = "isHeightCharacteristicSupported\n" + result.toString();
+                text = "isHeightCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -437,7 +437,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isAgeCharacteristicSupported\nnull";
             } else {
-                text = "isAgeCharacteristicSupported\n" + result.toString();
+                text = "isAgeCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -447,7 +447,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isDateOfBirthCharacteristicSupported\nnull";
             } else {
-                text = "isDateOfBirthCharacteristicSupported\n" + result.toString();
+                text = "isDateOfBirthCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -457,7 +457,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isHeartRateMaxCharacteristicSupported\nnull";
             } else {
-                text = "isHeartRateMaxCharacteristicSupported\n" + result.toString();
+                text = "isHeartRateMaxCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -467,7 +467,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isRestingHeartRateCharacteristicSupported\nnull";
             } else {
-                text = "isRestingHeartRateCharacteristicSupported\n" + result.toString();
+                text = "isRestingHeartRateCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -477,7 +477,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isMaximumRecommendedHeartRateCharacteristicSupported\nnull";
             } else {
-                text = "isMaximumRecommendedHeartRateCharacteristicSupported\n" + result.toString();
+                text = "isMaximumRecommendedHeartRateCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -487,7 +487,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isVO2MaxCharacteristicSupported\nnull";
             } else {
-                text = "isVO2MaxCharacteristicSupported\n" + result.toString();
+                text = "isVO2MaxCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -497,7 +497,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isLanguageCharacteristicSupported\nnull";
             } else {
-                text = "isLanguageCharacteristicSupported\n" + result.toString();
+                text = "isLanguageCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -507,7 +507,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isTwoZoneHeartRateLimitCharacteristicSupported\nnull";
             } else {
-                text = "isTwoZoneHeartRateLimitCharacteristicSupported\n" + result.toString();
+                text = "isTwoZoneHeartRateLimitCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -517,7 +517,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isThreeZoneHeartRateLimitsCharacteristicSupported\nnull";
             } else {
-                text = "isThreeZoneHeartRateLimitsCharacteristicSupported\n" + result.toString();
+                text = "isThreeZoneHeartRateLimitsCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -527,7 +527,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isFiveZoneHeartRateLimitsCharacteristicSupported\nnull";
             } else {
-                text = "isFiveZoneHeartRateLimitsCharacteristicSupported\n" + result.toString();
+                text = "isFiveZoneHeartRateLimitsCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -624,7 +624,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             if (result == null) {
                 text = "isDatabaseChangeIncrementCharacteristicNotifySupported\nnull";
             } else {
-                text = "isDatabaseChangeIncrementCharacteristicNotifySupported\n" + result.toString();
+                text = "isDatabaseChangeIncrementCharacteristicNotifySupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -705,7 +705,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
     }
 
     @Override
-    public void onCallbacked(final Pair<String, String> log) {
+    public void onCallback(final Pair<String, String> log) {
         runOnUiThread(() -> {
             mAdapter.add(log);
             mListView.smoothScrollToPosition(mAdapter.getCount());

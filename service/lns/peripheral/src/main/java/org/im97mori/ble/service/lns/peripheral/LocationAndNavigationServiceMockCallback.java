@@ -7,7 +7,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.NAVIGATION_CHARACTER
 import static org.im97mori.ble.constants.CharacteristicUUID.POSITION_QUALITY_CHARACTERISTIC;
 import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.constants.ServiceUUID.LOCATION_AND_NAVIGATION_SERVICE;
 
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
@@ -28,7 +27,6 @@ import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a67.LocationAndSpeed;
 import org.im97mori.ble.characteristic.u2a68.Navigation;
@@ -37,15 +35,13 @@ import org.im97mori.ble.characteristic.u2a6a.LNFeature;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 /**
- * Location and Navigation (Service UUID: 0x1819) for Peripheral
+ * Location and Navigation Service (Service UUID: 0x1819) for Peripheral
  */
 public class LocationAndNavigationServiceMockCallback extends AbstractServiceMockCallback {
 
@@ -54,7 +50,7 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
      *
      * @param <T> subclass of {@link LocationAndNavigationServiceMockCallback}
      */
-    public static class Builder<T extends LocationAndNavigationServiceMockCallback> extends AbstractServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback> {
+    public static class Builder<T extends LocationAndNavigationServiceMockCallback> extends AbstractServiceMockCallback.Builder<LocationAndNavigationServiceMockCallback, ServiceData> {
 
         /**
          * LN Feature data
@@ -136,8 +132,8 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Location and Speed notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -224,7 +220,7 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
          * @param selectRouteResponseValue                               characteristic response code (Select Route response)
          * @param setFixRateResponseValue                                characteristic response code (Set Fix Rate response)
          * @param setElevationResponseValue                              characteristic response code (Set Elevation response)
-         * @param descriptorResponseCode                                 descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorResponseCode                                 descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay                                        characteristic response delay(millis)
          * @param descriptorValue                                        descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -293,7 +289,7 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Navigation notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay            characteristic response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -331,19 +327,13 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
          */
         @NonNull
         @Override
-        public MockData createMockData() {
-            List<CharacteristicData> characteristicList = new ArrayList<>();
-
+        public ServiceData createData() {
             if (mLNFeature == null) {
                 throw new RuntimeException("no LN Feature data");
-            } else {
-                characteristicList.add(mLNFeature);
             }
 
             if (mLocationAndSpeed == null) {
                 throw new RuntimeException("no Location and Speed data");
-            } else {
-                characteristicList.add(mLocationAndSpeed);
             }
 
             LNFeature lnFeature = new LNFeature(mLNFeature.data);
@@ -359,19 +349,6 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
                         || lnFeature.isLNFeaturePositionStatusSupported()) {
                     throw new RuntimeException("no Position Quality data");
                 }
-            } else {
-                characteristicList.add(mPositionQuality);
-            }
-
-            if (mNavigation == null) {
-                if (lnFeature.isLNFeatureRemainingDistanceSupported()
-                        || lnFeature.isLNFeatureRemainingVerticalDistanceSupported()
-                        || lnFeature.isLNFeatureEstimatedTimeOfArrivalSupported()
-                        || lnFeature.isLNFeaturePositionStatusSupported()) {
-                    throw new RuntimeException("no Navigation data");
-                }
-            } else {
-                characteristicList.add(mNavigation);
             }
 
             if (mLNControlPoint == null) {
@@ -382,13 +359,22 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
                         || lnFeature.isLNFeatureElevationSettingSupported()) {
                     throw new RuntimeException("no LN Control Point data");
                 }
-            } else {
-                characteristicList.add(mLNControlPoint);
             }
 
+            if (mNavigation == null) {
+                if (lnFeature.isLNFeatureRemainingDistanceSupported()
+                        || lnFeature.isLNFeatureRemainingVerticalDistanceSupported()
+                        || lnFeature.isLNFeatureEstimatedTimeOfArrivalSupported()
+                        || lnFeature.isLNFeaturePositionStatusSupported()) {
+                    throw new RuntimeException("no Navigation data");
+                }
+            }
 
-            ServiceData serviceData = new ServiceData(LOCATION_AND_NAVIGATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new LocationAndNavigationServiceData(mLNFeature
+                    , mLocationAndSpeed
+                    , mPositionQuality
+                    , mLNControlPoint
+                    , mNavigation);
         }
 
         /**
@@ -397,25 +383,17 @@ public class LocationAndNavigationServiceMockCallback extends AbstractServiceMoc
         @NonNull
         @Override
         public LocationAndNavigationServiceMockCallback build() {
-            return new LocationAndNavigationServiceMockCallback(createMockData(), false);
+            return new LocationAndNavigationServiceMockCallback(createData(), false);
         }
 
     }
 
     /**
-     * @param serviceData   {@link ServiceData} instance
-     * @param isFallback fallback flag
+     * @param serviceData {@link ServiceData} instance
+     * @param isFallback  fallback flag
      */
     public LocationAndNavigationServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public LocationAndNavigationServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

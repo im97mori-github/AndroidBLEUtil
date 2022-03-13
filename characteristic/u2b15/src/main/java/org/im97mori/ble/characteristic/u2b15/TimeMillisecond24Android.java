@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TIME_MILLISECOND_24_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_MILLISECOND_24_
 public class TimeMillisecond24Android extends TimeMillisecond24 implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TimeMillisecond24Android> CREATOR = new ByteArrayCreater<TimeMillisecond24Android>() {
+    public static final ByteArrayCreator<TimeMillisecond24Android> CREATOR = new ByteArrayCreator<TimeMillisecond24Android>() {
 
         /**
          * {@inheritDoc}

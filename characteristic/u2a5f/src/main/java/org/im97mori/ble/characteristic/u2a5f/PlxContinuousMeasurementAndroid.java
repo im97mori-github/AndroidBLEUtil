@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.PLX_CONTINUOUS_MEASUREMENT_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.PLX_CONTINUOUS_MEASU
 public class PlxContinuousMeasurementAndroid extends PlxContinuousMeasurement implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<PlxContinuousMeasurementAndroid> CREATOR = new ByteArrayCreater<PlxContinuousMeasurementAndroid>() {
+    public static final ByteArrayCreator<PlxContinuousMeasurementAndroid> CREATOR = new ByteArrayCreator<PlxContinuousMeasurementAndroid>() {
 
         /**
          * {@inheritDoc}

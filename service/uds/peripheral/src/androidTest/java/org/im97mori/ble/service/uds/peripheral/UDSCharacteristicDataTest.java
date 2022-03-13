@@ -65,6 +65,17 @@ public class UDSCharacteristicDataTest {
     }
 
     @Test
+    public void test_constructor_00101() {
+        Throwable t = null;
+        try {
+            new UDSCharacteristicData();
+        } catch (Throwable e) {
+            t = e;
+        }
+        assertNull(t);
+    }
+
+    @Test
     public void test_setUuid_00001() {
         List<DescriptorData> descriptorDataList = new ArrayList<>();
         descriptorDataList.add(new DescriptorData(UUID.randomUUID(), 1, 2, 3, null));

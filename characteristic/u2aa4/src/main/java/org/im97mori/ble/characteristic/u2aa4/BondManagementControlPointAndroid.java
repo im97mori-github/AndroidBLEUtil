@@ -7,7 +7,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_CONT
 public class BondManagementControlPointAndroid extends BondManagementControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BondManagementControlPointAndroid> CREATOR = new ByteArrayCreater<BondManagementControlPointAndroid>() {
+    public static final ByteArrayCreator<BondManagementControlPointAndroid> CREATOR = new ByteArrayCreator<BondManagementControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

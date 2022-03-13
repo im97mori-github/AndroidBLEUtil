@@ -8,7 +8,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import java.util.UUID;
 
@@ -19,9 +19,9 @@ import java.util.UUID;
 public class PreferredUnitsAndroid extends PreferredUnits implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<PreferredUnitsAndroid> CREATOR = new ByteArrayCreater<PreferredUnitsAndroid>() {
+    public static final ByteArrayCreator<PreferredUnitsAndroid> CREATOR = new ByteArrayCreator<PreferredUnitsAndroid>() {
 
         /**
          * {@inheritDoc}

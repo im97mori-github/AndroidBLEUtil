@@ -8,7 +8,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * Appearance (Characteristics UUID: 0x2A01)
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class AppearanceAndroid extends Appearance implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AppearanceAndroid> CREATOR = new ByteArrayCreater<AppearanceAndroid>() {
+    public static final ByteArrayCreator<AppearanceAndroid> CREATOR = new ByteArrayCreator<AppearanceAndroid>() {
 
         /**
          * {@inheritDoc}

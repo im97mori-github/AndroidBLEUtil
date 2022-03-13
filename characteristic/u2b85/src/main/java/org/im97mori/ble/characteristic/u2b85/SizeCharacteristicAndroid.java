@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SIZE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SIZE_CHARACTERISTIC;
 public class SizeCharacteristicAndroid extends SizeCharacteristic implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SizeCharacteristicAndroid> CREATOR = new ByteArrayCreater<SizeCharacteristicAndroid>() {
+    public static final ByteArrayCreator<SizeCharacteristicAndroid> CREATOR = new ByteArrayCreator<SizeCharacteristicAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurementAndroid;
 import org.im97mori.ble.characteristic.u2a9e.WeightScaleFeatureAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
@@ -43,7 +43,7 @@ public class WspWssCallbackSample extends WspWeightScaleServiceMockCallback impl
         @NonNull
         @Override
         public WspWssCallbackSample build() {
-            return new WspWssCallbackSample(createMockData(), mSampleCallback, mUserDataServiceMockCallback);
+            return new WspWssCallbackSample(createData(), mSampleCallback, mUserDataServiceMockCallback);
         }
     }
 
@@ -51,8 +51,8 @@ public class WspWssCallbackSample extends WspWeightScaleServiceMockCallback impl
 
     private final SampleCallback mSampleCallback;
 
-    WspWssCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback, @Nullable UserDataServiceMockCallback userDataServiceMockCallback) {
-        super(mockData, false, userDataServiceMockCallback);
+    WspWssCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback, @Nullable UserDataServiceMockCallback userDataServiceMockCallback) {
+        super(serviceData, false, userDataServiceMockCallback);
         mSampleCallback = sampleCallback;
     }
 
@@ -74,9 +74,9 @@ public class WspWssCallbackSample extends WspWeightScaleServiceMockCallback impl
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

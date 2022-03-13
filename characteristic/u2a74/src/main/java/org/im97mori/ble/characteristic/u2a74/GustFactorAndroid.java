@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.GUST_FACTOR_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.GUST_FACTOR_CHARACTE
 public class GustFactorAndroid extends GustFactor implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<GustFactorAndroid> CREATOR = new ByteArrayCreater<GustFactorAndroid>() {
+    public static final ByteArrayCreator<GustFactorAndroid> CREATOR = new ByteArrayCreator<GustFactorAndroid>() {
 
         /**
          * {@inheritDoc}

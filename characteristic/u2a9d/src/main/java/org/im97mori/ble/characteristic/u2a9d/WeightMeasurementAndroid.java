@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_MEASUREMENT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_MEASUREMENT_C
 public class WeightMeasurementAndroid extends WeightMeasurement implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<WeightMeasurementAndroid> CREATOR = new ByteArrayCreater<WeightMeasurementAndroid>() {
+    public static final ByteArrayCreator<WeightMeasurementAndroid> CREATOR = new ByteArrayCreator<WeightMeasurementAndroid>() {
 
         /**
          * {@inheritDoc}

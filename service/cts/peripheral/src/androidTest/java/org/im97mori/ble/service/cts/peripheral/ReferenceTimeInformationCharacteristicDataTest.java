@@ -1,5 +1,11 @@
 package org.im97mori.ble.service.cts.peripheral;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import android.os.SystemClock;
 import android.text.format.DateUtils;
 
@@ -7,12 +13,6 @@ import com.google.gson.Gson;
 
 import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformation;
 import org.junit.Test;
-
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 public class ReferenceTimeInformationCharacteristicDataTest {
 
@@ -32,6 +32,13 @@ public class ReferenceTimeInformationCharacteristicDataTest {
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
         assertEquals(result1.notificationCount, result2.notificationCount);
+    }
+
+    @Test
+    public void test_constructor_00101() {
+        ReferenceTimeInformationCharacteristicData result1 = new ReferenceTimeInformationCharacteristicData();
+
+        assertEquals(0, result1.lastUpdate);
     }
 
     @Test

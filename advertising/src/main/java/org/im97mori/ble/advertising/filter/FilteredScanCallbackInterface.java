@@ -26,7 +26,7 @@ public interface FilteredScanCallbackInterface {
     /**
      * Filtered {@link FilteredScanCallback#onBatchScanResults(List)}
      *
-     * @param results      {@link FilteredScanCallback#onBatchScanResults(List)} 1st paramerter
+     * @param results      {@link FilteredScanCallback#onBatchScanResults(List)} 1st parameter
      * @param parseResults List of {@link org.im97mori.ble.advertising.AdvertisingDataParser.AdvertisingDataParseResult} instance, created from results
      */
     void onFilteredBatchScanResults(@NonNull List<ScanResult> results, @NonNull List<AdvertisingDataParser.AdvertisingDataParseResult> parseResults);

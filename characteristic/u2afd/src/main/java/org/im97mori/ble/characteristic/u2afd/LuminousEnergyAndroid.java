@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_ENERGY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_ENERGY_CHAR
 public class LuminousEnergyAndroid extends LuminousEnergy implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LuminousEnergyAndroid> CREATOR = new ByteArrayCreater<LuminousEnergyAndroid>() {
+    public static final ByteArrayCreator<LuminousEnergyAndroid> CREATOR = new ByteArrayCreator<LuminousEnergyAndroid>() {
 
         /**
          * {@inheritDoc}

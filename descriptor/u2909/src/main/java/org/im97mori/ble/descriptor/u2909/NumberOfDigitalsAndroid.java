@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.DescriptorUUID.NUMBER_OF_DIGITALS_DESCRIPTOR;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.DescriptorUUID.NUMBER_OF_DIGITALS_DESCR
 public class NumberOfDigitalsAndroid extends NumberOfDigitals implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<NumberOfDigitalsAndroid> CREATOR = new ByteArrayCreater<NumberOfDigitalsAndroid>() {
+    public static final ByteArrayCreator<NumberOfDigitalsAndroid> CREATOR = new ByteArrayCreator<NumberOfDigitalsAndroid>() {
 
         /**
          * {@inheritDoc}

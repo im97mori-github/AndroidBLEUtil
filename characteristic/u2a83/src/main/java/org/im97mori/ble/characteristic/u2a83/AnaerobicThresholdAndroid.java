@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_THRESHOLD_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_THRESHOLD_
 public class AnaerobicThresholdAndroid extends AnaerobicThreshold implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AnaerobicThresholdAndroid> CREATOR = new ByteArrayCreater<AnaerobicThresholdAndroid>() {
+    public static final ByteArrayCreator<AnaerobicThresholdAndroid> CREATOR = new ByteArrayCreator<AnaerobicThresholdAndroid>() {
 
         /**
          * {@inheritDoc}

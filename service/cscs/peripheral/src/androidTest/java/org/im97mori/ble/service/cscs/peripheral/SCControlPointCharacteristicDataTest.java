@@ -87,6 +87,17 @@ public class SCControlPointCharacteristicDataTest {
     }
 
     @Test
+    public void test_constructor_00101() {
+        SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData();
+
+        assertEquals(0, result1.setCumulativeValueResponseValue);
+        assertEquals(0, result1.updateSensorLocationResponseValue);
+        assertEquals(0, result1.requestSupportedSensorLocationsResponseValue);
+        assertNull(result1.requestSupportedSensorLocationsResponseParameter);
+        assertNull(result1.highPriorityResponseData);
+    }
+
+    @Test
     public void test_setCumulativeValueResponseValue_00001() {
         int firstSetCumulativeValueResponseValue = 3;
         SCControlPointCharacteristicData result1 = new SCControlPointCharacteristicData(new ArrayList<>()

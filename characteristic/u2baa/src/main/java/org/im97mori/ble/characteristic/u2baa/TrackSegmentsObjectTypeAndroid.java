@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TRACK_SEGMENTS_OBJECT_TYPE_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TRACK_SEGMENTS_OBJEC
 public class TrackSegmentsObjectTypeAndroid extends TrackSegmentsObjectType implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TrackSegmentsObjectTypeAndroid> CREATOR = new ByteArrayCreater<TrackSegmentsObjectTypeAndroid>() {
+    public static final ByteArrayCreator<TrackSegmentsObjectTypeAndroid> CREATOR = new ByteArrayCreator<TrackSegmentsObjectTypeAndroid>() {
 
         /**
          * {@inheritDoc}

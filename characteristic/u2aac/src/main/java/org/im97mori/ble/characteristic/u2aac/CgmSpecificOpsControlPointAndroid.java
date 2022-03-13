@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CGM_SPECIFIC_OPS_CONTROL_POINT_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CGM_SPECIFIC_OPS_CON
 public class CgmSpecificOpsControlPointAndroid extends CgmSpecificOpsControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CgmSpecificOpsControlPointAndroid> CREATOR = new ByteArrayCreater<CgmSpecificOpsControlPointAndroid>() {
+    public static final ByteArrayCreator<CgmSpecificOpsControlPointAndroid> CREATOR = new ByteArrayCreator<CgmSpecificOpsControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

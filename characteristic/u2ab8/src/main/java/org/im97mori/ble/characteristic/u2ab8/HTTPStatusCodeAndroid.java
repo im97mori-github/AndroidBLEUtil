@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.HTTP_STATUS_CODE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HTTP_STATUS_CODE_CHA
 public class HTTPStatusCodeAndroid extends HTTPStatusCode implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HTTPStatusCodeAndroid> CREATOR = new ByteArrayCreater<HTTPStatusCodeAndroid>() {
+    public static final ByteArrayCreator<HTTPStatusCodeAndroid> CREATOR = new ByteArrayCreator<HTTPStatusCodeAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.PNP_ID_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.PNP_ID_CHARACTERISTI
 public class PnpIdAndroid extends PnpId implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<PnpIdAndroid> CREATOR = new ByteArrayCreater<PnpIdAndroid>() {
+    public static final ByteArrayCreator<PnpIdAndroid> CREATOR = new ByteArrayCreator<PnpIdAndroid>() {
 
         /**
          * {@inheritDoc}

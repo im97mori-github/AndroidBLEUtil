@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.IDD_ANNUNCIATION_STATUS_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.IDD_ANNUNCIATION_STA
 public class IddAnnunciationStatusAndroid extends IddAnnunciationStatus implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<IddAnnunciationStatusAndroid> CREATOR = new ByteArrayCreater<IddAnnunciationStatusAndroid>() {
+    public static final ByteArrayCreator<IddAnnunciationStatusAndroid> CREATOR = new ByteArrayCreator<IddAnnunciationStatusAndroid>() {
 
         /**
          * {@inheritDoc}

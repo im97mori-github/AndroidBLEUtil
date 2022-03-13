@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LOCK_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LOCK_CHARACTERISTIC;
 public class LockCharacteristicAndroid extends LockCharacteristic implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LockCharacteristicAndroid> CREATOR = new ByteArrayCreater<LockCharacteristicAndroid>() {
+    public static final ByteArrayCreator<LockCharacteristicAndroid> CREATOR = new ByteArrayCreator<LockCharacteristicAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -81,7 +82,7 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
      * {@link DescriptorData} list
      */
     @SerializedName("descriptor_data_list")
-    public List<DescriptorData> descriptorDataList = new ArrayList<>();
+    public List<DescriptorData> descriptorDataList;
 
     /**
      * response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
@@ -172,6 +173,13 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
             temporaryData.put(Integer.parseInt(key), bundle.getByteArray(key));
         }
         notificationCount = in.readInt();
+    }
+
+    /**
+     * @return {@link #descriptorDataList}
+     */
+    public List<DescriptorData> getDescriptorDataList() {
+        return descriptorDataList;
     }
 
     /**
@@ -278,10 +286,10 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
      */
     @Override
     public int hashCode() {
-        int hashCode = uuid.hashCode()
+        int hashCode = Objects.hashCode(uuid)
                 ^ Integer.valueOf(property).hashCode()
                 ^ Integer.valueOf(permission).hashCode()
-                ^ Arrays.hashCode(descriptorDataList.toArray())
+                ^ Objects.hashCode(descriptorDataList)
                 ^ Integer.valueOf(responseCode).hashCode()
                 ^ Long.valueOf(delay).hashCode()
                 ^ Arrays.hashCode(data)
@@ -302,10 +310,10 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
         boolean result = false;
         if (obj instanceof CharacteristicData) {
             CharacteristicData target = (CharacteristicData) obj;
-            result = uuid.equals(target.uuid)
+            result = Objects.equals(uuid, target.uuid)
                     && property == target.property
                     && permission == target.permission
-                    && Arrays.equals(descriptorDataList.toArray(), target.descriptorDataList.toArray())
+                    && Objects.equals(descriptorDataList, target.descriptorDataList)
                     && responseCode == target.responseCode
                     && delay == target.delay
                     && Arrays.equals(data, target.data)

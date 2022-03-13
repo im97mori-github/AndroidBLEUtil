@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.IDD_HISTORY_DATA_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.IDD_HISTORY_DATA_CHA
 public class IddHistoryDataAndroid extends IddHistoryData implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<IddHistoryDataAndroid> CREATOR = new ByteArrayCreater<IddHistoryDataAndroid>() {
+    public static final ByteArrayCreator<IddHistoryDataAndroid> CREATOR = new ByteArrayCreator<IddHistoryDataAndroid>() {
 
         /**
          * {@inheritDoc}

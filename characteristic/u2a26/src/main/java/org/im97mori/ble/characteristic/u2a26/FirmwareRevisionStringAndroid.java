@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.FIRMWARE_REVISION_STRING_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.FIRMWARE_REVISION_ST
 public class FirmwareRevisionStringAndroid extends FirmwareRevisionString implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<FirmwareRevisionStringAndroid> CREATOR = new ByteArrayCreater<FirmwareRevisionStringAndroid>() {
+    public static final ByteArrayCreator<FirmwareRevisionStringAndroid> CREATOR = new ByteArrayCreator<FirmwareRevisionStringAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BODY_SENSOR_LOCATION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BODY_SENSOR_LOCATION
 public class BodySensorLocationAndroid extends BodySensorLocation implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BodySensorLocationAndroid> CREATOR = new ByteArrayCreater<BodySensorLocationAndroid>() {
+    public static final ByteArrayCreator<BodySensorLocationAndroid> CREATOR = new ByteArrayCreator<BodySensorLocationAndroid>() {
 
         /**
          * {@inheritDoc}

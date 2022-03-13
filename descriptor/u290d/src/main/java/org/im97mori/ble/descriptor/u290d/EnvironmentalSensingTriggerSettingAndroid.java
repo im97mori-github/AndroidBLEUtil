@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.DescriptorUUID.ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.DescriptorUUID.ENVIRONMENTAL_SENSING_TR
 public class EnvironmentalSensingTriggerSettingAndroid extends EnvironmentalSensingTriggerSetting implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<EnvironmentalSensingTriggerSettingAndroid> CREATOR = new ByteArrayCreater<EnvironmentalSensingTriggerSettingAndroid>() {
+    public static final ByteArrayCreator<EnvironmentalSensingTriggerSettingAndroid> CREATOR = new ByteArrayCreator<EnvironmentalSensingTriggerSettingAndroid>() {
 
         /**
          * {@inheritDoc}

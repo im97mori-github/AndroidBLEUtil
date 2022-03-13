@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.MESH_PROXY_DATA_OUT_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.MESH_PROXY_DATA_OUT_
 public class MeshProxyDataOutAndroid extends MeshProxyDataOut implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<MeshProxyDataOutAndroid> CREATOR = new ByteArrayCreater<MeshProxyDataOutAndroid>() {
+    public static final ByteArrayCreator<MeshProxyDataOutAndroid> CREATOR = new ByteArrayCreator<MeshProxyDataOutAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.DATE_TIME_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DATE_TIME_CHARACTERI
 public class DateTimeAndroid extends DateTime implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<DateTimeAndroid> CREATOR = new ByteArrayCreater<DateTimeAndroid>() {
+    public static final ByteArrayCreator<DateTimeAndroid> CREATOR = new ByteArrayCreator<DateTimeAndroid>() {
 
         /**
          * {@inheritDoc}

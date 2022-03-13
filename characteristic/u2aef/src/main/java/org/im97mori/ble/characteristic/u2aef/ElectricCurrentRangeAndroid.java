@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ELECTRIC_CURRENT_RANGE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ELECTRIC_CURRENT_RAN
 public class ElectricCurrentRangeAndroid extends ElectricCurrentRange implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ElectricCurrentRangeAndroid> CREATOR = new ByteArrayCreater<ElectricCurrentRangeAndroid>() {
+    public static final ByteArrayCreator<ElectricCurrentRangeAndroid> CREATOR = new ByteArrayCreator<ElectricCurrentRangeAndroid>() {
 
         /**
          * {@inheritDoc}

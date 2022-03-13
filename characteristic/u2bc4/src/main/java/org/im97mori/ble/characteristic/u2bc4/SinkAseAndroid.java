@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SINK_ASE_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SINK_ASE_CHARACTERIS
 public class SinkAseAndroid extends SinkAse implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SinkAseAndroid> CREATOR = new ByteArrayCreater<SinkAseAndroid>() {
+    public static final ByteArrayCreator<SinkAseAndroid> CREATOR = new ByteArrayCreator<SinkAseAndroid>() {
 
         /**
          * {@inheritDoc}

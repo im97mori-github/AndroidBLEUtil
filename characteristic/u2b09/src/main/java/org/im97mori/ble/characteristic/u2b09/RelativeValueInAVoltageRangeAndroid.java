@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_VALUE_IN_A_VOLTAGE_RANGE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_VALUE_IN_A_
 public class RelativeValueInAVoltageRangeAndroid extends RelativeValueInAVoltageRange implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<RelativeValueInAVoltageRangeAndroid> CREATOR = new ByteArrayCreater<RelativeValueInAVoltageRangeAndroid>() {
+    public static final ByteArrayCreator<RelativeValueInAVoltageRangeAndroid> CREATOR = new ByteArrayCreator<RelativeValueInAVoltageRangeAndroid>() {
 
         /**
          * {@inheritDoc}

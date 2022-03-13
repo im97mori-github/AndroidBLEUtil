@@ -108,6 +108,12 @@ public class UnreadAlertStatusCharacteristicData extends CharacteristicData {
     public int instantMessageAlertUnreadCount;
 
     /**
+     * Constructor
+     */
+    public UnreadAlertStatusCharacteristicData() {
+    }
+
+    /**
      * @param simpleAlertUnreadCount          Unread Count:Simple Alert
      * @param emailUnreadCount                Unread Count:Email
      * @param newsUnreadCount                 Unread Count:News

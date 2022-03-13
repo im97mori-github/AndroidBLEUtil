@@ -8,7 +8,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * Blood Pressure Feature (Characteristics UUID: 0x2A49)
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class BloodPressureFeatureAndroid extends BloodPressureFeature implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BloodPressureFeatureAndroid> CREATOR = new ByteArrayCreater<BloodPressureFeatureAndroid>() {
+    public static final ByteArrayCreator<BloodPressureFeatureAndroid> CREATOR = new ByteArrayCreator<BloodPressureFeatureAndroid>() {
 
         /**
          * {@inheritDoc}

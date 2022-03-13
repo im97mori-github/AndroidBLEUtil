@@ -23,16 +23,13 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2aa4.BondManagementControlPoint;
 import org.im97mori.ble.characteristic.u2aa5.BondManagementFeatures;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -47,12 +44,12 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
      *
      * @param <T> subclass of {@link BondManagementServiceMockCallback}
      */
-    public static class Builder<T extends BondManagementServiceMockCallback> extends AbstractServiceMockCallback.Builder<BondManagementServiceMockCallback> {
+    public static class Builder<T extends BondManagementServiceMockCallback> extends AbstractServiceMockCallback.Builder<BondManagementServiceMockCallback, ServiceData> {
 
         /**
          * Bond Management Control Point data
          */
-        protected BondManagementControlPointCharacteristicData mBondManagementControlPointCharacteristicData;
+        protected BondManagementControlPointCharacteristicData mBondManagementControlPointData;
 
         /**
          * Bond Management Feature data
@@ -103,7 +100,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
                 , @Nullable String deleteAllButTheActiveBondOnServerBrEdrAuthorizationCode
                 , int deleteAllButTheActiveBondOnServerLeResponseCode
                 , @Nullable String deleteAllButTheActiveBondOnServerLeAuthorizationCode) {
-            mBondManagementControlPointCharacteristicData = new BondManagementControlPointCharacteristicData(delay
+            mBondManagementControlPointData = new BondManagementControlPointCharacteristicData(delay
                     , deleteBondOfRequestingDeviceBrEdrLeResponseCode
                     , deleteBondOfRequestingDeviceBrEdrLeAuthorizationCode
                     , deleteBondOfRequestingDeviceBrEdrResponseCode
@@ -132,7 +129,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
          */
         @NonNull
         public Builder<T> removeBondManagementControlPoint() {
-            mBondManagementControlPointCharacteristicData = null;
+            mBondManagementControlPointData = null;
             return this;
         }
 
@@ -189,52 +186,46 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
          */
         @NonNull
         @Override
-        public MockData createMockData() {
-            List<CharacteristicData> characteristicList = new ArrayList<>();
-
+        public ServiceData createData() {
             if (mBondManagementFeaturesData == null) {
                 throw new RuntimeException("no Bond Management Feature data");
-            } else {
-                characteristicList.add(mBondManagementFeaturesData);
             }
 
-            if (mBondManagementControlPointCharacteristicData == null) {
+            if (mBondManagementControlPointData == null) {
                 throw new RuntimeException("no Bond Management Control Point data");
             } else {
                 Pattern pattern = Pattern.compile("[1-9]+");
-                if (mBondManagementControlPointCharacteristicData.deleteBondOfRequestingDeviceBrEdrLeAuthorizationCode != null
-                        && !pattern.matcher(mBondManagementControlPointCharacteristicData.deleteBondOfRequestingDeviceBrEdrLeAuthorizationCode).matches()) {
+                if (mBondManagementControlPointData.deleteBondOfRequestingDeviceBrEdrLeAuthorizationCode != null
+                        && !pattern.matcher(mBondManagementControlPointData.deleteBondOfRequestingDeviceBrEdrLeAuthorizationCode).matches()) {
                     throw new RuntimeException("Delete bond of requesting device (BR/EDR and LE)'s Authorization Code is not digit");
-                } else if (mBondManagementControlPointCharacteristicData.deleteBondOfRequestingDeviceBrEdrAuthorizationCode != null
-                        && !pattern.matcher(mBondManagementControlPointCharacteristicData.deleteBondOfRequestingDeviceBrEdrAuthorizationCode).matches()) {
+                } else if (mBondManagementControlPointData.deleteBondOfRequestingDeviceBrEdrAuthorizationCode != null
+                        && !pattern.matcher(mBondManagementControlPointData.deleteBondOfRequestingDeviceBrEdrAuthorizationCode).matches()) {
                     throw new RuntimeException("Delete bond of requesting device (BR/EDR transport only)'s Authorization Code is not digit");
-                } else if (mBondManagementControlPointCharacteristicData.deleteBondOfRequestingDeviceLeAuthorizationCode != null
-                        && !pattern.matcher(mBondManagementControlPointCharacteristicData.deleteBondOfRequestingDeviceLeAuthorizationCode).matches()) {
+                } else if (mBondManagementControlPointData.deleteBondOfRequestingDeviceLeAuthorizationCode != null
+                        && !pattern.matcher(mBondManagementControlPointData.deleteBondOfRequestingDeviceLeAuthorizationCode).matches()) {
                     throw new RuntimeException("Delete bond of requesting device (LE transport only)'s Authorization Code is not digit");
-                } else if (mBondManagementControlPointCharacteristicData.deleteAllBondsOnServerBrEdrLeAuthorizationCode != null
-                        && !pattern.matcher(mBondManagementControlPointCharacteristicData.deleteAllBondsOnServerBrEdrLeAuthorizationCode).matches()) {
+                } else if (mBondManagementControlPointData.deleteAllBondsOnServerBrEdrLeAuthorizationCode != null
+                        && !pattern.matcher(mBondManagementControlPointData.deleteAllBondsOnServerBrEdrLeAuthorizationCode).matches()) {
                     throw new RuntimeException("Delete all bonds on server (BR/EDR and LE)'s Authorization Code is not digit");
-                } else if (mBondManagementControlPointCharacteristicData.deleteAllBondsOnServerBrEdrAuthorizationCode != null
-                        && !pattern.matcher(mBondManagementControlPointCharacteristicData.deleteAllBondsOnServerBrEdrAuthorizationCode).matches()) {
+                } else if (mBondManagementControlPointData.deleteAllBondsOnServerBrEdrAuthorizationCode != null
+                        && !pattern.matcher(mBondManagementControlPointData.deleteAllBondsOnServerBrEdrAuthorizationCode).matches()) {
                     throw new RuntimeException("Delete all bonds on server (BR/EDR transport only)'s Authorization Code is not digit");
-                } else if (mBondManagementControlPointCharacteristicData.deleteAllBondsOnServerLeAuthorizationCode != null
-                        && !pattern.matcher(mBondManagementControlPointCharacteristicData.deleteAllBondsOnServerLeAuthorizationCode).matches()) {
+                } else if (mBondManagementControlPointData.deleteAllBondsOnServerLeAuthorizationCode != null
+                        && !pattern.matcher(mBondManagementControlPointData.deleteAllBondsOnServerLeAuthorizationCode).matches()) {
                     throw new RuntimeException("Delete all bonds on server (LE transport only)'s Authorization Code is not digit");
-                } else if (mBondManagementControlPointCharacteristicData.deleteAllButTheActiveBondOnServerBrEdrLeAuthorizationCode != null
-                        && !pattern.matcher(mBondManagementControlPointCharacteristicData.deleteAllButTheActiveBondOnServerBrEdrLeAuthorizationCode).matches()) {
+                } else if (mBondManagementControlPointData.deleteAllButTheActiveBondOnServerBrEdrLeAuthorizationCode != null
+                        && !pattern.matcher(mBondManagementControlPointData.deleteAllButTheActiveBondOnServerBrEdrLeAuthorizationCode).matches()) {
                     throw new RuntimeException("Delete all but the active bond on server (BR/EDR and LE)'s Authorization Code is not digit");
-                } else if (mBondManagementControlPointCharacteristicData.deleteAllButTheActiveBondOnServerBrEdrAuthorizationCode != null
-                        && !pattern.matcher(mBondManagementControlPointCharacteristicData.deleteAllButTheActiveBondOnServerBrEdrAuthorizationCode).matches()) {
+                } else if (mBondManagementControlPointData.deleteAllButTheActiveBondOnServerBrEdrAuthorizationCode != null
+                        && !pattern.matcher(mBondManagementControlPointData.deleteAllButTheActiveBondOnServerBrEdrAuthorizationCode).matches()) {
                     throw new RuntimeException("Delete all but the active bond on server (BR/EDR transport only)'s Authorization Code");
-                } else if (mBondManagementControlPointCharacteristicData.deleteAllButTheActiveBondOnServerLeAuthorizationCode != null
-                        && !pattern.matcher(mBondManagementControlPointCharacteristicData.deleteAllButTheActiveBondOnServerLeAuthorizationCode).matches()) {
+                } else if (mBondManagementControlPointData.deleteAllButTheActiveBondOnServerLeAuthorizationCode != null
+                        && !pattern.matcher(mBondManagementControlPointData.deleteAllButTheActiveBondOnServerLeAuthorizationCode).matches()) {
                     throw new RuntimeException("Delete all but the active bond on server (LE transport only)'s Authorization Code");
                 }
-                characteristicList.add(mBondManagementControlPointCharacteristicData);
             }
 
-            ServiceData serviceData = new ServiceData(BOND_MANAGEMENT_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new BondManagementServiceData(mBondManagementFeaturesData, mBondManagementControlPointData);
         }
 
         /**
@@ -243,7 +234,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
         @NonNull
         @Override
         public BondManagementServiceMockCallback build() {
-            return new BondManagementServiceMockCallback(createMockData(), false);
+            return new BondManagementServiceMockCallback(createData(), false);
         }
 
     }
@@ -253,15 +244,7 @@ public class BondManagementServiceMockCallback extends AbstractServiceMockCallba
      * @param isFallback fallback flag
      */
     public BondManagementServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public BondManagementServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

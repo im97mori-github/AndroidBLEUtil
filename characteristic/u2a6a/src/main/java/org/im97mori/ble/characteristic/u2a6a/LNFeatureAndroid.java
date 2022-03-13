@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LN_FEATURE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LN_FEATURE_CHARACTER
 public class LNFeatureAndroid extends LNFeature implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LNFeatureAndroid> CREATOR = new ByteArrayCreater<LNFeatureAndroid>() {
+    public static final ByteArrayCreator<LNFeatureAndroid> CREATOR = new ByteArrayCreator<LNFeatureAndroid>() {
 
         /**
          * {@inheritDoc}

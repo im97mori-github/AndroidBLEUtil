@@ -4,6 +4,8 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import android.os.Parcel;
@@ -31,6 +33,8 @@ public class DescriptorDataTest {
         assertEquals(result1.responseCode, result2.responseCode);
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
+        assertArrayEquals(result1.currentData, result2.currentData);
+        assertEquals(result1.temporaryData, result2.temporaryData);
     }
 
     @Test
@@ -45,6 +49,22 @@ public class DescriptorDataTest {
         assertEquals(result1.responseCode, result2.responseCode);
         assertEquals(result1.delay, result2.delay);
         assertArrayEquals(result1.data, result2.data);
+        assertArrayEquals(result1.currentData, result2.currentData);
+        assertEquals(result1.temporaryData, result2.temporaryData);
+    }
+
+    @Test
+    public void test_constructor_00101() {
+        DescriptorData result1 = new DescriptorData();
+
+        assertNull(result1.uuid);
+        assertEquals(0, result1.permission);
+        assertEquals(0, result1.responseCode);
+        assertEquals(0, result1.delay);
+        assertNull(result1.data);
+        assertNull(result1.currentData);
+        assertNotNull(result1.temporaryData);
+        assertTrue(result1.temporaryData.isEmpty());
     }
 
     @Test

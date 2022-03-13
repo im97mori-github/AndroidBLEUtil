@@ -29,7 +29,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.callback.NotificationData;
 import org.im97mori.ble.characteristic.u2a1c.TemperatureMeasurement;
@@ -57,7 +56,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
      *
      * @param <T> subclass of {@link HealthThermometerServiceMockCallback}
      */
-    public static class Builder<T extends HealthThermometerServiceMockCallback> extends AbstractServiceMockCallback.Builder<HealthThermometerServiceMockCallback> {
+    public static class Builder<T extends HealthThermometerServiceMockCallback> extends AbstractServiceMockCallback.Builder<HealthThermometerServiceMockCallback, ServiceData> {
 
         /**
          * Temperature Measurement data
@@ -93,8 +92,8 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
          * @param characteristicResponseCode characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @param descriptorResponseCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -181,8 +180,8 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          TIntermediate Temperature notification count
-         * @param descriptorResponseCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -238,13 +237,13 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
          * @param measurementIntervalResponseCode               characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param measurementIntervalDelay                      characteristic response delay(millis)
          * @param measurementIntervalValue                      characteristic data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @param isMeasurementIntervalIndicatable              indicatable flag for Measurement Interval characteristic
+         * @param isMeasurementIntervalIndicatable              indictable flag for Measurement Interval characteristic
          * @param isMeasurementIntervalWritable                 writable flag for Measurement Interval characteristic
-         * @param clientCharacteristicConfigurationResponseCode Client Characteristic Configuration descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param clientCharacteristicConfigurationDelay        Client Characteristic Configuration descritptor response delay(millis)
+         * @param clientCharacteristicConfigurationResponseCode Client Characteristic Configuration descriptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param clientCharacteristicConfigurationDelay        Client Characteristic Configuration descriptor response delay(millis)
          * @param clientCharacteristicConfigurationValue        Client Characteristic Configuration descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @param validRangeResponseCode                        Valid Range descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param validRangeDelay                               Valid Range descritptor response delay(millis)
+         * @param validRangeResponseCode                        Valid Range descriptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param validRangeDelay                               Valid Range descriptor response delay(millis)
          * @param validRangeValue                               Valid Range descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -299,7 +298,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
          */
         @NonNull
         @Override
-        public MockData createMockData() {
+        public ServiceData createData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
             if (mTemperatureMeasurement == null) {
@@ -337,8 +336,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
                 characteristicList.add(mMeasurementInterval);
             }
 
-            ServiceData serviceData = new ServiceData(HEALTH_THERMOMETER_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ServiceData(HEALTH_THERMOMETER_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
         }
 
         /**
@@ -347,7 +345,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
         @NonNull
         @Override
         public HealthThermometerServiceMockCallback build() {
-            return new HealthThermometerServiceMockCallback(createMockData(), false);
+            return new HealthThermometerServiceMockCallback(createData(), false);
         }
 
     }
@@ -357,15 +355,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
      * @param isFallback fallback flag
      */
     public HealthThermometerServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public HealthThermometerServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

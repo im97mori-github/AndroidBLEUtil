@@ -142,7 +142,7 @@ public class NotificationTask extends AbstractBLETask {
     private final UUID mServiceUUID;
 
     /**
-     * task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * task target service instance id {@link BluetoothGattService#getInstanceId()}
      */
     private final int mServiceInstanceId;
 
@@ -152,7 +152,7 @@ public class NotificationTask extends AbstractBLETask {
     private final UUID mCharacteristicUUID;
 
     /**
-     * task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      */
     private final int mCharacteristicInstanceId;
 
@@ -182,9 +182,9 @@ public class NotificationTask extends AbstractBLETask {
      * @param bluetoothDevice          BLE device
      * @param taskHandler              task target {@link TaskHandler} instance
      * @param serviceUUID              task target service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       task target characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param byteArray                task target data
      * @param isConfirm                {@code true}:indication, {@code false}:notification
      * @param timeout                  timeout(millis)

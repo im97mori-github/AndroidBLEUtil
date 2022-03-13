@@ -1,5 +1,11 @@
 package org.im97mori.ble.service.gap.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_HASH_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SERVICE_CHANGED_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.GENERIC_ATTRIBUTE_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -15,7 +21,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a05.ServiceChanged;
 import org.im97mori.ble.characteristic.u2b29.ClientSupportedFeatures;
@@ -31,12 +36,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_HASH_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SERVICE_CHANGED_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ServiceUUID.GENERIC_ATTRIBUTE_SERVICE;
-
 /**
  * Generic Attribute Service (Service UUID: 0x1801) for Peripheral
  * (not work)
@@ -48,7 +47,7 @@ public class GenericAttributeServiceMockCallback extends AbstractServiceMockCall
      *
      * @param <T> subclass of {@link GenericAttributeServiceMockCallback}
      */
-    public static class Builder<T extends GenericAttributeServiceMockCallback> extends AbstractServiceMockCallback.Builder<GenericAttributeServiceMockCallback> {
+    public static class Builder<T extends GenericAttributeServiceMockCallback> extends AbstractServiceMockCallback.Builder<GenericAttributeServiceMockCallback, ServiceData> {
 
         /**
          * Service Changed data
@@ -80,8 +79,8 @@ public class GenericAttributeServiceMockCallback extends AbstractServiceMockCall
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Intermediate Cuff Pressure notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -214,7 +213,7 @@ public class GenericAttributeServiceMockCallback extends AbstractServiceMockCall
          */
         @Override
         @NonNull
-        public MockData createMockData() {
+        public ServiceData createData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
             if (mServiceChangedData != null) {
@@ -231,8 +230,7 @@ public class GenericAttributeServiceMockCallback extends AbstractServiceMockCall
             if (mDatabaseHashData != null) {
                 characteristicList.add(mDatabaseHashData);
             }
-            ServiceData serviceData = new ServiceData(GENERIC_ATTRIBUTE_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ServiceData(GENERIC_ATTRIBUTE_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
         }
 
         /**
@@ -241,7 +239,7 @@ public class GenericAttributeServiceMockCallback extends AbstractServiceMockCall
         @Override
         @NonNull
         public GenericAttributeServiceMockCallback build() {
-            return new GenericAttributeServiceMockCallback(createMockData(), false);
+            return new GenericAttributeServiceMockCallback(createData(), false);
         }
 
     }
@@ -251,15 +249,7 @@ public class GenericAttributeServiceMockCallback extends AbstractServiceMockCall
      * @param isFallback fallback flag
      */
     public GenericAttributeServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public GenericAttributeServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

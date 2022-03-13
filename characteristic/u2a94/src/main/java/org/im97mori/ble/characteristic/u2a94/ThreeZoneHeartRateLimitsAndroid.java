@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.THREE_ZONE_HEART_RAT
 public class ThreeZoneHeartRateLimitsAndroid extends ThreeZoneHeartRateLimits implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ThreeZoneHeartRateLimitsAndroid> CREATOR = new ByteArrayCreater<ThreeZoneHeartRateLimitsAndroid>() {
+    public static final ByteArrayCreator<ThreeZoneHeartRateLimitsAndroid> CREATOR = new ByteArrayCreator<ThreeZoneHeartRateLimitsAndroid>() {
 
         /**
          * {@inheritDoc}

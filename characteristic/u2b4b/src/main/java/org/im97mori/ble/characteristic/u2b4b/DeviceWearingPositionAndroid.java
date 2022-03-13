@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_WEARING_POSITION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_WEARING_POSIT
 public class DeviceWearingPositionAndroid extends DeviceWearingPosition implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<DeviceWearingPositionAndroid> CREATOR = new ByteArrayCreater<DeviceWearingPositionAndroid>() {
+    public static final ByteArrayCreator<DeviceWearingPositionAndroid> CREATOR = new ByteArrayCreator<DeviceWearingPositionAndroid>() {
 
         /**
          * {@inheritDoc}

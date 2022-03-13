@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BLOOD_PRESSURE_MEASU
 public class BloodPressureMeasurementAndroid extends BloodPressureMeasurement implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BloodPressureMeasurementAndroid> CREATOR = new ByteArrayCreater<BloodPressureMeasurementAndroid>() {
+    public static final ByteArrayCreator<BloodPressureMeasurementAndroid> CREATOR = new ByteArrayCreator<BloodPressureMeasurementAndroid>() {
 
         /**
          * {@inheritDoc}

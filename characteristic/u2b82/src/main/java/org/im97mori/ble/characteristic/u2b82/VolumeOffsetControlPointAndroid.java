@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.VOLUME_OFFSET_CONTROL_POINT_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.VOLUME_OFFSET_CONTRO
 public class VolumeOffsetControlPointAndroid extends VolumeOffsetControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<VolumeOffsetControlPointAndroid> CREATOR = new ByteArrayCreater<VolumeOffsetControlPointAndroid>() {
+    public static final ByteArrayCreator<VolumeOffsetControlPointAndroid> CREATOR = new ByteArrayCreator<VolumeOffsetControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

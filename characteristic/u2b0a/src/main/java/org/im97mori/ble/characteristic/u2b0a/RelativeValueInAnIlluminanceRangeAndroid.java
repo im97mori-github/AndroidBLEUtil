@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_VALUE_IN_AN_ILLUMINANCE_RANGE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_VALUE_IN_AN
 public class RelativeValueInAnIlluminanceRangeAndroid extends RelativeValueInAnIlluminanceRange implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<RelativeValueInAnIlluminanceRangeAndroid> CREATOR = new ByteArrayCreater<RelativeValueInAnIlluminanceRangeAndroid>() {
+    public static final ByteArrayCreator<RelativeValueInAnIlluminanceRangeAndroid> CREATOR = new ByteArrayCreator<RelativeValueInAnIlluminanceRangeAndroid>() {
 
         /**
          * {@inheritDoc}

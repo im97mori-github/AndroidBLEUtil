@@ -25,7 +25,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a3f.AlertStatus;
 import org.im97mori.ble.characteristic.u2a40.RingerControlPoint;
@@ -50,7 +49,7 @@ public class PhoneAlertStatusServiceMockCallback extends AbstractServiceMockCall
      *
      * @param <T> subclass of {@link PhoneAlertStatusServiceMockCallback}
      */
-    public static class Builder<T extends PhoneAlertStatusServiceMockCallback> extends AbstractServiceMockCallback.Builder<PhoneAlertStatusServiceMockCallback> {
+    public static class Builder<T extends PhoneAlertStatusServiceMockCallback> extends AbstractServiceMockCallback.Builder<PhoneAlertStatusServiceMockCallback, ServiceData> {
 
         /**
          * Alert Status data
@@ -82,8 +81,8 @@ public class PhoneAlertStatusServiceMockCallback extends AbstractServiceMockCall
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Cycling Power Measurement notification count
-         * @param descriptorResponseCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -130,8 +129,8 @@ public class PhoneAlertStatusServiceMockCallback extends AbstractServiceMockCall
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Cycling Power Measurement notification count
-         * @param descriptorResponseCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -216,7 +215,7 @@ public class PhoneAlertStatusServiceMockCallback extends AbstractServiceMockCall
          */
         @NonNull
         @Override
-        public MockData createMockData() {
+        public ServiceData createData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
             if (mAlertStatusData == null) {
@@ -237,8 +236,7 @@ public class PhoneAlertStatusServiceMockCallback extends AbstractServiceMockCall
                 characteristicList.add(mRingerControlPointData);
             }
 
-            ServiceData serviceData = new ServiceData(PHONE_ALERT_STATUS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ServiceData(PHONE_ALERT_STATUS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
         }
 
         /**
@@ -247,7 +245,7 @@ public class PhoneAlertStatusServiceMockCallback extends AbstractServiceMockCall
         @NonNull
         @Override
         public PhoneAlertStatusServiceMockCallback build() {
-            return new PhoneAlertStatusServiceMockCallback(createMockData(), false);
+            return new PhoneAlertStatusServiceMockCallback(createData(), false);
         }
 
     }
@@ -257,15 +255,7 @@ public class PhoneAlertStatusServiceMockCallback extends AbstractServiceMockCall
      * @param isFallback fallback flag
      */
     public PhoneAlertStatusServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public PhoneAlertStatusServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

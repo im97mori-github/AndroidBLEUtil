@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.AMMONIA_CONCENTRATION_CHARACTERISTIC;
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.AMMONIA_CONCENTRATIO
 public class AmmoniaConcentrationAndroid extends AmmoniaConcentration implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AmmoniaConcentrationAndroid> CREATOR = new ByteArrayCreater<AmmoniaConcentrationAndroid>() {
+    public static final ByteArrayCreator<AmmoniaConcentrationAndroid> CREATOR = new ByteArrayCreator<AmmoniaConcentrationAndroid>() {
 
         /**
          * {@inheritDoc}

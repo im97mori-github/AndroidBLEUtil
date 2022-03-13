@@ -1,5 +1,16 @@
 package org.im97mori.ble.service.dis.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.FIRMWARE_REVISION_STRING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HARDWARE_REVISION_STRING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.MANUFACTURER_NAME_STRING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.MODEL_NUMBER_STRING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.PNP_ID_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SERIAL_NUMBER_STRING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SOFTWARE_REVISION_STRING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SYSTEM_ID_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -12,7 +23,6 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a23.SystemId;
 import org.im97mori.ble.characteristic.u2a24.ModelNumberString;
@@ -29,17 +39,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.FIRMWARE_REVISION_STRING_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.HARDWARE_REVISION_STRING_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.MANUFACTURER_NAME_STRING_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.MODEL_NUMBER_STRING_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.PNP_ID_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SERIAL_NUMBER_STRING_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SOFTWARE_REVISION_STRING_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SYSTEM_ID_CHARACTERISTIC;
-import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
-
 /**
  * Device Information Service (Service UUID: 0x180A) for Peripheral
  */
@@ -50,7 +49,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
      *
      * @param <T> subclass of {@link DeviceInformationServiceMockCallback}
      */
-    public static class Builder<T extends DeviceInformationServiceMockCallback> extends AbstractServiceMockCallback.Builder<DeviceInformationServiceMockCallback> {
+    public static class Builder<T extends DeviceInformationServiceMockCallback> extends AbstractServiceMockCallback.Builder<DeviceInformationServiceMockCallback, ServiceData> {
 
         /**
          * Manufacturer Name String data
@@ -591,7 +590,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
          */
         @Override
         @NonNull
-        public MockData createMockData() {
+        public ServiceData createData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
             if (mManufacturerNameStringCharacteristicData != null) {
@@ -621,8 +620,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
             if (mPnpIdCharacteristicData != null) {
                 characteristicList.add(mPnpIdCharacteristicData);
             }
-            ServiceData serviceData = new ServiceData(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ServiceData(DEVICE_INFORMATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
         }
 
         /**
@@ -631,7 +629,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
         @Override
         @NonNull
         public DeviceInformationServiceMockCallback build() {
-            return new DeviceInformationServiceMockCallback(createMockData(), false);
+            return new DeviceInformationServiceMockCallback(createData(), false);
         }
 
     }
@@ -641,15 +639,7 @@ public class DeviceInformationServiceMockCallback extends AbstractServiceMockCal
      * @param isFallback fallback flag
      */
     public DeviceInformationServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public DeviceInformationServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

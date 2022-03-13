@@ -8,18 +8,18 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
- * object actioncontrol point (Characteristics UUID: 0x2AC5)
+ * object action control point (Characteristics UUID: 0x2AC5)
  */
 @SuppressWarnings({"WeakerAccess"})
 public class ObjectActionControlPointAndroid extends ObjectActionControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ObjectActionControlPointAndroid> CREATOR = new ByteArrayCreater<ObjectActionControlPointAndroid>() {
+    public static final ByteArrayCreator<ObjectActionControlPointAndroid> CREATOR = new ByteArrayCreator<ObjectActionControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -18,10 +18,10 @@
             android:id="@+id/read_model_number"
             android:title="@string/menu_read_model_number" />
         <item
-            android:id="@+id/start_indicate_blood_pressure_mesurement"
+            android:id="@+id/start_indicate_blood_pressure_measurement"
             android:title="@string/menu_indicate_blood_pressure_start" />
         <item
-            android:id="@+id/stop_indicate_blood_pressure_mesurement"
+            android:id="@+id/stop_indicate_blood_pressure_measurement"
             android:title="@string/menu_indicate_blood_pressure_stop" />
         <item
             android:id="@+id/start_notificate_intermediate_cuff_pressure"

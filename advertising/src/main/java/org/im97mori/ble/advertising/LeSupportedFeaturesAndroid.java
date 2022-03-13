@@ -5,7 +5,7 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import java.util.List;
 
@@ -20,9 +20,9 @@ import java.util.List;
 public class LeSupportedFeaturesAndroid extends LeSupportedFeatures implements AdvertisingDataInterfaceAndroid {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LeSupportedFeaturesAndroid> CREATOR = new ByteArrayCreater<LeSupportedFeaturesAndroid>() {
+    public static final ByteArrayCreator<LeSupportedFeaturesAndroid> CREATOR = new ByteArrayCreator<LeSupportedFeaturesAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -67,7 +67,7 @@ public class LeSupportedFeaturesAndroid extends LeSupportedFeatures implements A
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
-     * @param length 1st octed of Advertising Data
+     * @param length 1st octet of Advertising Data
      */
     public LeSupportedFeaturesAndroid(@NonNull byte[] data
             , int offset

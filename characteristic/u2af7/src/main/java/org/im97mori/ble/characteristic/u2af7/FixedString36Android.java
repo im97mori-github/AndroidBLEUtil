@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.FIXED_STRING_36_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.FIXED_STRING_36_CHAR
 public class FixedString36Android extends FixedString36 implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<FixedString36Android> CREATOR = new ByteArrayCreater<FixedString36Android>() {
+    public static final ByteArrayCreator<FixedString36Android> CREATOR = new ByteArrayCreator<FixedString36Android>() {
 
         /**
          * {@inheritDoc}

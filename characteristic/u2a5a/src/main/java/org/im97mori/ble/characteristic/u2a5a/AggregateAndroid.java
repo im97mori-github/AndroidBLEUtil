@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.AGGREGATE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.AGGREGATE_CHARACTERI
 public class AggregateAndroid extends Aggregate implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AggregateAndroid> CREATOR = new ByteArrayCreater<AggregateAndroid>() {
+    public static final ByteArrayCreator<AggregateAndroid> CREATOR = new ByteArrayCreator<AggregateAndroid>() {
 
         /**
          * {@inheritDoc}

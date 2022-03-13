@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TRACK_CHANGED_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TRACK_CHANGED_CHARAC
 public class TrackChangedAndroid extends TrackChanged implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TrackChangedAndroid> CREATOR = new ByteArrayCreater<TrackChangedAndroid>() {
+    public static final ByteArrayCreator<TrackChangedAndroid> CREATOR = new ByteArrayCreator<TrackChangedAndroid>() {
 
         /**
          * {@inheritDoc}

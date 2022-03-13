@@ -65,8 +65,8 @@ public class HealthThermometerService extends AbstractCentralService {
     private boolean mIsMeasurementIntervalCharacteristicSupported;
 
     /**
-     * Measurement Interval characteristic indicatable flag
-     * {@code true}:Measurement Interval characteristic is indicatable, {@code false}:Measurement Interval characteristic is not indicatable or service not ready
+     * Measurement Interval characteristic indictable flag
+     * {@code true}:Measurement Interval characteristic is indictable, {@code false}:Measurement Interval characteristic is not indictable or service not ready
      */
     private boolean mIsMeasurementIntervalCharacteristicIndicateSupported;
 
@@ -407,9 +407,9 @@ public class HealthThermometerService extends AbstractCentralService {
     }
 
     /**
-     * Measurement Interval characteristic indicatable flag
+     * Measurement Interval characteristic indictable flag
      * <p>
-     * {@code true}:Measurement Interval characteristic is indicatable, {@code false}:Measurement Interval characteristic is not indicatable or service not ready
+     * {@code true}:Measurement Interval characteristic is indictable, {@code false}:Measurement Interval characteristic is not indictable or service not ready
      */
     public boolean isMeasurementIntervalCharacteristicIndicateSupported() {
         return mIsMeasurementIntervalCharacteristicIndicateSupported;
@@ -541,7 +541,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * @see HealthThermometerServiceCallback#onIntermediateTemperatureNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
-    public synchronized Integer stopIntermediateTemperaturNotification() {
+    public synchronized Integer stopIntermediateTemperatureNotification() {
         Integer taskId = null;
         if (isStarted() && isIntermediateTemperatureCharacteristicSupported()) {
             Bundle bundle = new Bundle();
@@ -611,7 +611,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * @see HealthThermometerServiceCallback#onMeasurementIntervalIndicateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
-    public synchronized Integer startMeasurementIntervalInidication() {
+    public synchronized Integer startMeasurementIntervalIndication() {
         Integer taskId = null;
         if (isStarted() && isMeasurementIntervalCharacteristicIndicateSupported()) {
             Bundle bundle = new Bundle();
@@ -630,7 +630,7 @@ public class HealthThermometerService extends AbstractCentralService {
      * @see HealthThermometerServiceCallback#onMeasurementIntervalIndicateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
-    public synchronized Integer stopMeasurementIntervalInidication() {
+    public synchronized Integer stopMeasurementIntervalIndication() {
         Integer taskId = null;
         if (isStarted() && isMeasurementIntervalCharacteristicIndicateSupported()) {
             Bundle bundle = new Bundle();

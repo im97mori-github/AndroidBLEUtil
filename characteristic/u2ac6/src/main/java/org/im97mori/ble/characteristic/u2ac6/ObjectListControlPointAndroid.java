@@ -8,7 +8,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * object list control point (Characteristics UUID: 0x2AC6)
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class ObjectListControlPointAndroid extends ObjectListControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ObjectListControlPointAndroid> CREATOR = new ByteArrayCreater<ObjectListControlPointAndroid>() {
+    public static final ByteArrayCreator<ObjectListControlPointAndroid> CREATOR = new ByteArrayCreator<ObjectListControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_POWER_RANGE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_POWER_RANG
 public class SupportedPowerRangeAndroid extends SupportedPowerRange implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SupportedPowerRangeAndroid> CREATOR = new ByteArrayCreater<SupportedPowerRangeAndroid>() {
+    public static final ByteArrayCreator<SupportedPowerRangeAndroid> CREATOR = new ByteArrayCreator<SupportedPowerRangeAndroid>() {
 
         /**
          * {@inheritDoc}

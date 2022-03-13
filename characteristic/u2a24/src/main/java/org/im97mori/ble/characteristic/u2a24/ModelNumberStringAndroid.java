@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.MODEL_NUMBER_STRING_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.MODEL_NUMBER_STRING_
 public class ModelNumberStringAndroid extends ModelNumberString implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ModelNumberStringAndroid> CREATOR = new ByteArrayCreater<ModelNumberStringAndroid>() {
+    public static final ByteArrayCreator<ModelNumberStringAndroid> CREATOR = new ByteArrayCreator<ModelNumberStringAndroid>() {
 
         /**
          * {@inheritDoc}

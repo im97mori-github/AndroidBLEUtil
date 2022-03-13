@@ -69,6 +69,13 @@ public class FitnessMachineStatusCharacteristicDataTest {
     }
 
     @Test
+    public void test_constructor_00101() {
+        FitnessMachineStatusCharacteristicData result1 = new FitnessMachineStatusCharacteristicData();
+
+        assertEquals(0, result1.spinDownStatusValue);
+    }
+
+    @Test
     public void test_setSpinDownStatusValue_00001() {
         int firstSpinDownStatusValue = 1;
         FitnessMachineStatusCharacteristicData result1 = new FitnessMachineStatusCharacteristicData(new ArrayList<>()

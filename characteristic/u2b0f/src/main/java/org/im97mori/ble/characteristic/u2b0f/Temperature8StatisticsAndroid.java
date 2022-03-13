@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_8_STATISTICS_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_8_STATIS
 public class Temperature8StatisticsAndroid extends Temperature8Statistics implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<Temperature8StatisticsAndroid> CREATOR = new ByteArrayCreater<Temperature8StatisticsAndroid>() {
+    public static final ByteArrayCreator<Temperature8StatisticsAndroid> CREATOR = new ByteArrayCreator<Temperature8StatisticsAndroid>() {
 
         /**
          * {@inheritDoc}

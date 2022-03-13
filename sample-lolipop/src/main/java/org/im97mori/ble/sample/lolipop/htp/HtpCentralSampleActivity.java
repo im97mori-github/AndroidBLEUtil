@@ -134,7 +134,7 @@ public class HtpCentralSampleActivity extends BaseActivity implements View.OnCli
         } else if (R.id.start_notify_intermediate_temperature == item.getItemId()) {
             mHealthThermometerProfile.startIntermediateTemperatureNotification();
         } else if (R.id.stop_notify_intermediate_temperature == item.getItemId()) {
-            mHealthThermometerProfile.stopIntermediateTemperaturNotification();
+            mHealthThermometerProfile.stopIntermediateTemperatureNotification();
         } else if (R.id.read_measurement_interval == item.getItemId()) {
             mHealthThermometerProfile.getMeasurementInterval();
         } else if (R.id.write_measurement_interval_0 == item.getItemId()) {
@@ -146,9 +146,9 @@ public class HtpCentralSampleActivity extends BaseActivity implements View.OnCli
         } else if (R.id.write_measurement_interval_10 == item.getItemId()) {
             mHealthThermometerProfile.setMeasurementInterval(new MeasurementInterval(10));
         } else if (R.id.start_indicate_measurement_interval == item.getItemId()) {
-            mHealthThermometerProfile.startMeasurementIntervalInidication();
+            mHealthThermometerProfile.startMeasurementIntervalIndication();
         } else if (R.id.stop_indicate_measurement_interval == item.getItemId()) {
-            mHealthThermometerProfile.stopMeasurementIntervalInidication();
+            mHealthThermometerProfile.stopMeasurementIntervalIndication();
         } else if (R.id.read_measurement_interval_valid_range == item.getItemId()) {
             mHealthThermometerProfile.getMeasurementIntervalValidRange();
         }
@@ -204,7 +204,7 @@ public class HtpCentralSampleActivity extends BaseActivity implements View.OnCli
     }
 
     @Override
-    public void onCallbacked(final Pair<String, String> log) {
+    public void onCallback(final Pair<String, String> log) {
         runOnUiThread(() -> {
             mAdapter.add(log);
             mListView.smoothScrollToPosition(mAdapter.getCount());

@@ -50,6 +50,12 @@ public class UDSCharacteristicData extends CharacteristicData {
     private final Map<Integer, CharacteristicData> userDataMap = new HashMap<>();
 
     /**
+     * Constructor
+     */
+    public UDSCharacteristicData() {
+    }
+
+    /**
      * @see CharacteristicData#CharacteristicData(UUID, int, int, List, int, long, byte[], int)
      */
     public UDSCharacteristicData(@NonNull UUID uuid, int property, int permission, @NonNull List<DescriptorData> descriptorDataList, int responseCode, long delay, @Nullable byte[] data, int notificationCount) {

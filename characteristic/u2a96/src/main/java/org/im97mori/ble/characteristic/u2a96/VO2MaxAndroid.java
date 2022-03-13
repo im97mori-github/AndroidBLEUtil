@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.VO2_MAX_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.VO2_MAX_CHARACTERIST
 public class VO2MaxAndroid extends VO2Max implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<VO2MaxAndroid> CREATOR = new ByteArrayCreater<VO2MaxAndroid>() {
+    public static final ByteArrayCreator<VO2MaxAndroid> CREATOR = new ByteArrayCreator<VO2MaxAndroid>() {
 
         /**
          * {@inheritDoc}

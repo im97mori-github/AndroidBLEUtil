@@ -5,8 +5,8 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
-import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
+import org.im97mori.ble.ByteArrayCreator;
+import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 
 /**
  * Rower Data (Characteristics UUID: 0x2AD1)
@@ -15,9 +15,9 @@ import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 public class RowerDataAndroid extends RowerData implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final MultiplePacketCreater<RowerDataAndroid, RowerDataPacketAndroid> CREATOR = new MultiplePacketCreater<RowerDataAndroid, RowerDataPacketAndroid>() {
+    public static final MultiplePacketCreator<RowerDataAndroid, RowerDataPacketAndroid> CREATOR = new MultiplePacketCreator<RowerDataAndroid, RowerDataPacketAndroid>() {
 
         /**
          * {@inheritDoc}

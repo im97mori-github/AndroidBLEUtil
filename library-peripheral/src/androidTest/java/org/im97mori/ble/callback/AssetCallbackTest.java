@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -25,7 +25,7 @@ import java.util.List;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class AssetCallbackTest extends AbstractPeripherallTest {
+public class AssetCallbackTest extends AbstractPeripheralTest {
 
     static class InnerAssetCallback extends AssetCallback {
 

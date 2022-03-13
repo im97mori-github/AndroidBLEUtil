@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.VOLUME_FLOW_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.VOLUME_FLOW_CHARACTE
 public class VolumeFlowAndroid extends VolumeFlow implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<VolumeFlowAndroid> CREATOR = new ByteArrayCreater<VolumeFlowAndroid>() {
+    public static final ByteArrayCreator<VolumeFlowAndroid> CREATOR = new ByteArrayCreator<VolumeFlowAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.PRESSURE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.PRESSURE_CHARACTERIS
 public class PressureAndroid extends Pressure implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<PressureAndroid> CREATOR = new ByteArrayCreater<PressureAndroid>() {
+    public static final ByteArrayCreator<PressureAndroid> CREATOR = new ByteArrayCreator<PressureAndroid>() {
 
         /**
          * {@inheritDoc}

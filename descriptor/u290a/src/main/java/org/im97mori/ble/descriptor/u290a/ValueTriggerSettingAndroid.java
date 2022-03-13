@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.DescriptorUUID.VALUE_TRIGGER_SETTING_DESCRIPTOR;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.DescriptorUUID.VALUE_TRIGGER_SETTING_DE
 public class ValueTriggerSettingAndroid extends ValueTriggerSetting implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ValueTriggerSettingAndroid> CREATOR = new ByteArrayCreater<ValueTriggerSettingAndroid>() {
+    public static final ByteArrayCreator<ValueTriggerSettingAndroid> CREATOR = new ByteArrayCreator<ValueTriggerSettingAndroid>() {
 
         /**
          * {@inheritDoc}

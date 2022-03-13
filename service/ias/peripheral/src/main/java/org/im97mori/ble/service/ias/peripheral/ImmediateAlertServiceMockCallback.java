@@ -1,5 +1,8 @@
 package org.im97mori.ble.service.ias.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_LEVEL_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.IMMEDIATE_ALERT_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -13,7 +16,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEPeripheralLogUtils;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
@@ -22,9 +24,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_LEVEL_CHARACTERISTIC;
-import static org.im97mori.ble.constants.ServiceUUID.IMMEDIATE_ALERT_SERVICE;
 
 /**
  * Immediate Alert Service (Service UUID: 0x1802) for Peripheral
@@ -36,7 +35,7 @@ public class ImmediateAlertServiceMockCallback extends AbstractServiceMockCallba
      *
      * @param <T> subclass of {@link ImmediateAlertServiceMockCallback}
      */
-    public static class Builder<T extends ImmediateAlertServiceMockCallback> extends AbstractServiceMockCallback.Builder<ImmediateAlertServiceMockCallback> {
+    public static class Builder<T extends ImmediateAlertServiceMockCallback> extends AbstractServiceMockCallback.Builder<ImmediateAlertServiceMockCallback, ServiceData> {
 
         /**
          * Alert Level data
@@ -106,7 +105,7 @@ public class ImmediateAlertServiceMockCallback extends AbstractServiceMockCallba
          */
         @Override
         @NonNull
-        public MockData createMockData() {
+        public ServiceData createData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
             if (mAlertLevelCharacteristicData == null) {
@@ -115,8 +114,7 @@ public class ImmediateAlertServiceMockCallback extends AbstractServiceMockCallba
                 characteristicList.add(mAlertLevelCharacteristicData);
             }
 
-            ServiceData serviceData = new ServiceData(IMMEDIATE_ALERT_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ServiceData(IMMEDIATE_ALERT_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
         }
 
         /**
@@ -125,7 +123,7 @@ public class ImmediateAlertServiceMockCallback extends AbstractServiceMockCallba
         @Override
         @NonNull
         public ImmediateAlertServiceMockCallback build() {
-            return new ImmediateAlertServiceMockCallback(createMockData(), false);
+            return new ImmediateAlertServiceMockCallback(createData(), false);
         }
 
     }
@@ -135,15 +133,7 @@ public class ImmediateAlertServiceMockCallback extends AbstractServiceMockCallba
      * @param isFallback fallback flag
      */
     public ImmediateAlertServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public ImmediateAlertServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

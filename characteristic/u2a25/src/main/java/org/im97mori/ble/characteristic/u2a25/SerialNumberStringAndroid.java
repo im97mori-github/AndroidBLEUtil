@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SERIAL_NUMBER_STRING_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SERIAL_NUMBER_STRING
 public class SerialNumberStringAndroid extends SerialNumberString implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SerialNumberStringAndroid> CREATOR = new ByteArrayCreater<SerialNumberStringAndroid>() {
+    public static final ByteArrayCreator<SerialNumberStringAndroid> CREATOR = new ByteArrayCreator<SerialNumberStringAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -70,9 +70,9 @@ public class RcpCallbackSample implements ReconnectionConfigurationProfileCallba
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 
@@ -129,9 +129,9 @@ public class RcpCallbackSample implements ReconnectionConfigurationProfileCallba
     public void onRCSettingsReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull RCSettingsAndroid rcSettingsAndroid, @Nullable Bundle argument) {
         byte[] data = rcSettingsAndroid.getBytes();
         int crc = BLEUtils.createUInt16(data, 3);
-        int calculatecCrc = BLEUtils.createCrc(data, 0, 3);
+        int calculatedCrc = BLEUtils.createCrc(data, 0, 3);
 
-        callback(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, crc, calculatecCrc, Arrays.toString(rcSettingsAndroid.getBytes()));
+        callback(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, crc, calculatedCrc, Arrays.toString(rcSettingsAndroid.getBytes()));
     }
 
     @Override
@@ -193,9 +193,9 @@ public class RcpCallbackSample implements ReconnectionConfigurationProfileCallba
     public void onRCSettingsNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull RCSettingsAndroid rcSettingsAndroid) {
         byte[] data = rcSettingsAndroid.getBytes();
         int crc = BLEUtils.createUInt16(data, 3);
-        int calculatecCrc = BLEUtils.createCrc(data, 0, 3);
+        int calculatedCrc = BLEUtils.createCrc(data, 0, 3);
 
-        callback(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, crc, calculatecCrc, Arrays.toString(rcSettingsAndroid.getBytes()));
+        callback(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, crc, calculatedCrc, Arrays.toString(rcSettingsAndroid.getBytes()));
     }
 
     @Override

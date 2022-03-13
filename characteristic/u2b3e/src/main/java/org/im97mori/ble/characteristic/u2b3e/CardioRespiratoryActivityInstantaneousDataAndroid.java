@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CARDIO_RESPIRATORY_ACTIVITY_INSTANTANEOUS_DATA_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CARDIO_RESPIRATORY_A
 public class CardioRespiratoryActivityInstantaneousDataAndroid extends CardioRespiratoryActivityInstantaneousData implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CardioRespiratoryActivityInstantaneousDataAndroid> CREATOR = new ByteArrayCreater<CardioRespiratoryActivityInstantaneousDataAndroid>() {
+    public static final ByteArrayCreator<CardioRespiratoryActivityInstantaneousDataAndroid> CREATOR = new ByteArrayCreator<CardioRespiratoryActivityInstantaneousDataAndroid>() {
 
         /**
          * {@inheritDoc}

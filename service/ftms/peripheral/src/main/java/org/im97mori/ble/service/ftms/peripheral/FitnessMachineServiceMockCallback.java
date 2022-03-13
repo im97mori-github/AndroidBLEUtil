@@ -39,7 +39,6 @@ import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.core.CrossTrainerDataUtils;
 import org.im97mori.ble.characteristic.core.IndoorBikeDataUtils;
@@ -71,10 +70,8 @@ import org.im97mori.ble.characteristic.u2ada.FitnessMachineStatus;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -88,7 +85,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
      *
      * @param <T> subclass of {@link FitnessMachineServiceMockCallback}
      */
-    public static class Builder<T extends FitnessMachineServiceMockCallback> extends AbstractServiceMockCallback.Builder<FitnessMachineServiceMockCallback> {
+    public static class Builder<T extends FitnessMachineServiceMockCallback> extends AbstractServiceMockCallback.Builder<FitnessMachineServiceMockCallback, ServiceData> {
 
         /**
          * Fitness Machine Feature data
@@ -228,8 +225,8 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Cycling Power Measurement notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -276,8 +273,8 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Cycling Power Measurement notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -324,8 +321,8 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Cycling Power Measurement notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -372,8 +369,8 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Cycling Power Measurement notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -420,8 +417,8 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Cycling Power Measurement notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -468,8 +465,8 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Cycling Power Measurement notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -516,8 +513,8 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Cycling Power Measurement notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -793,8 +790,8 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
          * add Fitness Machine Control Point characteristic
          *
          * @param characteristicDelay                            characteristic response delay(millis)
-         * @param descriptorResponseCode                         descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay                                descritptor response delay(millis)
+         * @param descriptorResponseCode                         descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay                                descriptor response delay(millis)
          * @param descriptorValue                                descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param requestControlResultCode                       characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Request Control result)
          * @param resetResultCode                                characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Reset result)
@@ -810,9 +807,9 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
          * @param setTargetedNumberOfStridesResultCode           characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Number of Strides result)
          * @param setTargetedDistanceResultCode                  characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Distance result)
          * @param setTargetedTrainingTimeResultCode              characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Training Time result)
-         * @param setTargetedTimeInTwoHeartRateZonesResultCode   characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Timein Two Heart Rate Zones result)
-         * @param setTargetedTimeInThreeHeartRateZonesResultCode characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Timein Three Heart Rate Zones result)
-         * @param setTargetedTimeInFiveHeartRateZonesResultCode  characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Timein Five Heart Rate Zones result)
+         * @param setTargetedTimeInTwoHeartRateZonesResultCode   characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Time in Two Heart Rate Zones result)
+         * @param setTargetedTimeInThreeHeartRateZonesResultCode characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Time in Three Heart Rate Zones result)
+         * @param setTargetedTimeInFiveHeartRateZonesResultCode  characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Targeted Time in Five Heart Rate Zones result)
          * @param setIndoorBikeSimulationParametersResultCode    characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Indoor Bike Simulation Parameters result)
          * @param setWheelCircumferenceResultCode                characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Set Wheel Circumference result)
          * @param spinDownControlResultCode                      characteristic result code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Spin Down Control result)
@@ -893,8 +890,8 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
          * add Fitness Machine Status characteristic
          *
          * @param spinDownStatusValue    Spin Down Status Value
-         * @param descriptorResponseCode descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay        descritptor response delay(millis)
+         * @param descriptorResponseCode descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay        descriptor response delay(millis)
          * @param descriptorValue        descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -928,13 +925,9 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
          */
         @NonNull
         @Override
-        public MockData createMockData() {
-            List<CharacteristicData> characteristicList = new ArrayList<>();
-
+        public ServiceData createData() {
             if (mFitnessMachineFeatureData == null) {
                 throw new RuntimeException("no Fitness Machine Feature data");
-            } else {
-                characteristicList.add(mFitnessMachineFeatureData);
             }
 
             FitnessMachineFeature fitnessMachineFeature = new FitnessMachineFeature(mFitnessMachineFeatureData.getBytes());
@@ -977,7 +970,6 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                 if (fitnessMachineFeature.isFitnessMachineFeaturesForceOnBeltAndPowerOutputNotSupported() && TreadmillDataUtils.isFlagsForceOnBeltAndPowerOutputPresent(treadmillData.getFlags())) {
                     throw new RuntimeException("Force on Belt and Power Output not Supported");
                 }
-                characteristicList.add(mTreadmillDataData);
             }
 
             if (mCrossTrainerDataData != null) {
@@ -1024,7 +1016,6 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                 if (fitnessMachineFeature.isFitnessMachineFeaturesRemainingTimeNotSupported() && CrossTrainerDataUtils.isFlagsRemainingTimePresent(crossTrainerData.getFlags())) {
                     throw new RuntimeException("Remaining Time not Supported");
                 }
-                characteristicList.add(mCrossTrainerDataData);
             }
 
             if (mStepClimberDataData != null) {
@@ -1053,7 +1044,6 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                 if (fitnessMachineFeature.isFitnessMachineFeaturesRemainingTimeNotSupported() && StepClimberDataUtils.isFlagsRemainingTimePresent(stepClimberData.getFlags())) {
                     throw new RuntimeException("Remaining Time not Supported");
                 }
-                characteristicList.add(mStepClimberDataData);
             }
 
             if (mStairClimberDataData != null) {
@@ -1085,7 +1075,6 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                 if (fitnessMachineFeature.isFitnessMachineFeaturesRemainingTimeNotSupported() && StairClimberDataUtils.isFlagsRemainingTimePresent(stairClimberData.getFlags())) {
                     throw new RuntimeException("Remaining Time not Supported");
                 }
-                characteristicList.add(mStairClimberDataData);
             }
 
             if (mRowerDataData != null) {
@@ -1126,7 +1115,6 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                 if (fitnessMachineFeature.isFitnessMachineFeaturesRemainingTimeNotSupported() && RowerDataUtils.isFlagsRemainingTimePresent(rowerData.getFlags())) {
                     throw new RuntimeException("Remaining Time not Supported");
                 }
-                characteristicList.add(mRowerDataData);
             }
 
             if (mIndoorBikeDataData != null) {
@@ -1167,55 +1155,36 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                 if (fitnessMachineFeature.isFitnessMachineFeaturesRemainingTimeNotSupported() && IndoorBikeDataUtils.isFlagsRemainingTimePresent(indoorBikeData.getFlags())) {
                     throw new RuntimeException("Remaining Time not Supported");
                 }
-                characteristicList.add(mIndoorBikeDataData);
-            }
-
-            if (mTrainingStatusData != null) {
-                characteristicList.add(mTrainingStatusData);
             }
 
             if (mSupportedSpeedRangeData == null) {
                 if (fitnessMachineFeature.isTargetSettingFeaturesSpeedTargetSettingSupported()) {
                     throw new RuntimeException("no Supported Speed Range data");
                 }
-            } else {
-                characteristicList.add(mSupportedSpeedRangeData);
             }
 
             if (mSupportedInclinationRangeData == null) {
                 if (fitnessMachineFeature.isTargetSettingFeaturesInclinationTargetSettingSupported()) {
                     throw new RuntimeException("no Supported Inclination Range data");
                 }
-            } else {
-                characteristicList.add(mSupportedInclinationRangeData);
             }
 
             if (mSupportedResistanceLevelRangeData == null) {
                 if (fitnessMachineFeature.isTargetSettingFeaturesResistanceTargetSettingSupported()) {
                     throw new RuntimeException("no Supported Resistance Level Range data");
                 }
-            } else {
-                characteristicList.add(mSupportedResistanceLevelRangeData);
             }
 
             if (mSupportedPowerRangeData == null) {
                 if (fitnessMachineFeature.isTargetSettingFeaturesPowerTargetSettingSupported()) {
                     throw new RuntimeException("no Supported Power Range data");
                 }
-            } else {
-                characteristicList.add(mSupportedPowerRangeData);
             }
 
             if (mSupportedHeartRateRangeData == null) {
                 if (fitnessMachineFeature.isTargetSettingFeaturesHeartRateTargetSettingSupported()) {
                     throw new RuntimeException("no Supported Heart Rate Range data");
                 }
-            } else {
-                characteristicList.add(mSupportedHeartRateRangeData);
-            }
-
-            if (mFitnessMachineControlPointData != null) {
-                characteristicList.add(mFitnessMachineControlPointData);
             }
 
             if (mFitnessMachineStatusData == null) {
@@ -1228,13 +1197,24 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
                         && FitnessMachineStatus.SPIN_DOWN_STATUS_ERROR != mFitnessMachineStatusData.spinDownStatusValue
                         && FitnessMachineStatus.SPIN_DOWN_STATUS_STOP_PEDALING != mFitnessMachineStatusData.spinDownStatusValue) {
                     throw new RuntimeException("Spin Down Status not matched");
-                } else {
-                    characteristicList.add(mFitnessMachineStatusData);
                 }
             }
 
-            ServiceData serviceData = new ServiceData(FITNESS_MACHINE_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new FitnessMachineServiceData(mFitnessMachineFeatureData
+                    , mTreadmillDataData
+                    , mCrossTrainerDataData
+                    , mStepClimberDataData
+                    , mStairClimberDataData
+                    , mRowerDataData
+                    , mIndoorBikeDataData
+                    , mTrainingStatusData
+                    , mSupportedSpeedRangeData
+                    , mSupportedInclinationRangeData
+                    , mSupportedResistanceLevelRangeData
+                    , mSupportedPowerRangeData
+                    , mSupportedHeartRateRangeData
+                    , mFitnessMachineControlPointData
+                    , mFitnessMachineStatusData);
         }
 
         /**
@@ -1243,7 +1223,7 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
         @NonNull
         @Override
         public FitnessMachineServiceMockCallback build() {
-            return new FitnessMachineServiceMockCallback(createMockData(), false);
+            return new FitnessMachineServiceMockCallback(createData(), false);
         }
 
     }
@@ -1251,19 +1231,11 @@ public class FitnessMachineServiceMockCallback extends AbstractServiceMockCallba
     protected BluetoothDevice mCurrentControlDevice;
 
     /**
-     * @param serviceData   {@link ServiceData} instance
-     * @param isFallback fallback flag
+     * @param serviceData {@link ServiceData} instance
+     * @param isFallback  fallback flag
      */
     public FitnessMachineServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public FitnessMachineServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

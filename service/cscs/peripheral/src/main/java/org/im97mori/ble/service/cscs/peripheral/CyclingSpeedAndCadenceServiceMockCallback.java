@@ -27,7 +27,6 @@ import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a55.SCControlPoint;
 import org.im97mori.ble.characteristic.u2a5b.CSCMeasurement;
@@ -36,10 +35,8 @@ import org.im97mori.ble.characteristic.u2a5d.SensorLocation;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -53,7 +50,7 @@ public class CyclingSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
      *
      * @param <T> subclass of {@link CyclingSpeedAndCadenceServiceMockCallback}
      */
-    public static class Builder<T extends CyclingSpeedAndCadenceServiceMockCallback> extends AbstractServiceMockCallback.Builder<CyclingSpeedAndCadenceServiceMockCallback> {
+    public static class Builder<T extends CyclingSpeedAndCadenceServiceMockCallback> extends AbstractServiceMockCallback.Builder<CyclingSpeedAndCadenceServiceMockCallback, ServiceData> {
 
         /**
          * CSC Feature data
@@ -73,7 +70,7 @@ public class CyclingSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
         /**
          * SC Control Point data
          */
-        protected SCControlPointCharacteristicData mSCControlPointCharacteristicData;
+        protected SCControlPointCharacteristicData mSCControlPointData;
 
         /**
          * @see #addCSCFeature(byte[])
@@ -138,8 +135,8 @@ public class CyclingSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Cycling Power Measurement notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -224,8 +221,8 @@ public class CyclingSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
          *
          * @param characteristicResponseCode                       characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay                              characteristic response delay(millis)
-         * @param descriptorResponseCode                           descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay                                  descritptor response delay(millis)
+         * @param descriptorResponseCode                           descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay                                  descriptor response delay(millis)
          * @param descriptorValue                                  descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param setCumulativeValueResponseValue                  characteristic response code (Set Cumulative Value response)
          * @param updateSensorLocationResponseValue                characteristic response code (Update Sensor Location response)
@@ -243,7 +240,7 @@ public class CyclingSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
                 , int updateSensorLocationResponseValue
                 , int requestSupportedSensorLocationsResponseValue
                 , @NonNull byte[] requestSupportedSensorLocationsResponseParameter) {
-            mSCControlPointCharacteristicData = new SCControlPointCharacteristicData(Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
+            mSCControlPointData = new SCControlPointCharacteristicData(Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE
                     , descriptorResponseCode
                     , descriptorDelay
@@ -264,7 +261,7 @@ public class CyclingSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
          */
         @NonNull
         public Builder<T> removeSCControlPoint() {
-            mSCControlPointCharacteristicData = null;
+            mSCControlPointData = null;
             return this;
         }
 
@@ -273,13 +270,9 @@ public class CyclingSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
          */
         @NonNull
         @Override
-        public MockData createMockData() {
-            List<CharacteristicData> characteristicList = new ArrayList<>();
-
+        public ServiceData createData() {
             if (mCSCFeatureData == null) {
                 throw new RuntimeException("no CSC Feature data");
-            } else {
-                characteristicList.add(mCSCFeatureData);
             }
             CSCFeature cscFeature = new CSCFeature(mCSCFeatureData.getBytes());
 
@@ -293,27 +286,24 @@ public class CyclingSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
                 if (cscFeature.isCscFeatureCrankRevolutionDataSupportedNotSupported() && cscMeasurement.isFlagsCrankRevolutionDataPresent()) {
                     throw new RuntimeException("Crank Revolution Data not Supported");
                 }
-                characteristicList.add(mCSCMeasurementData);
             }
 
             if (mSensorLocationData == null) {
                 if (cscFeature.isCscFeatureMultipleSensorLocationsSupportedSupported()) {
                     throw new RuntimeException("no Sensor Location data");
                 }
-            } else {
-                characteristicList.add(mSensorLocationData);
             }
 
-            if (mSCControlPointCharacteristicData == null) {
+            if (mSCControlPointData == null) {
                 if (cscFeature.isCscFeatureWheelRevolutionDataSupported() || cscFeature.isCscFeatureMultipleSensorLocationsSupportedSupported()) {
                     throw new RuntimeException("no SC Control Point data");
                 }
-            } else {
-                characteristicList.add(mSCControlPointCharacteristicData);
             }
 
-            ServiceData serviceData = new ServiceData(CYCLING_SPEED_AND_CADENCE_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new CyclingSpeedAndCadenceServiceData(mCSCFeatureData
+                    , mCSCMeasurementData
+                    , mSensorLocationData
+                    , mSCControlPointData);
         }
 
         /**
@@ -322,25 +312,17 @@ public class CyclingSpeedAndCadenceServiceMockCallback extends AbstractServiceMo
         @NonNull
         @Override
         public CyclingSpeedAndCadenceServiceMockCallback build() {
-            return new CyclingSpeedAndCadenceServiceMockCallback(createMockData(), false);
+            return new CyclingSpeedAndCadenceServiceMockCallback(createData(), false);
         }
 
     }
 
     /**
-     * @param serviceData   {@link ServiceData} instance
-     * @param isFallback fallback flag
+     * @param serviceData {@link ServiceData} instance
+     * @param isFallback  fallback flag
      */
     public CyclingSpeedAndCadenceServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public CyclingSpeedAndCadenceServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

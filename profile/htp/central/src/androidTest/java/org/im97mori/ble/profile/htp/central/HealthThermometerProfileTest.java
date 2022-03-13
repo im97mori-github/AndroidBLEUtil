@@ -422,21 +422,21 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_stopIntermediateTemperaturNotification_00001() {
+    public void test_stopIntermediateTemperatureNotification_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(healthThermometerProfile.stopIntermediateTemperaturNotification());
+        assertNull(healthThermometerProfile.stopIntermediateTemperatureNotification());
     }
 
     @Test
     @RequiresDevice
-    public void test_stopIntermediateTemperaturNotification_00002() {
+    public void test_stopIntermediateTemperatureNotification_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
                         @Override
-                        public synchronized Integer stopIntermediateTemperaturNotification() {
+                        public synchronized Integer stopIntermediateTemperatureNotification() {
                             return 1;
                         }
                     };
@@ -444,7 +444,7 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
             }
         };
         healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(healthThermometerProfile.stopIntermediateTemperaturNotification());
+        assertNotNull(healthThermometerProfile.stopIntermediateTemperatureNotification());
         healthThermometerProfile.disconnect();
     }
 
@@ -534,21 +534,21 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_startMeasurementIntervalInidication_00001() {
+    public void test_startMeasurementIntervalIndication_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(healthThermometerProfile.startMeasurementIntervalInidication());
+        assertNull(healthThermometerProfile.startMeasurementIntervalIndication());
     }
 
     @Test
     @RequiresDevice
-    public void test_startMeasurementIntervalInidication_00002() {
+    public void test_startMeasurementIntervalIndication_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
                         @Override
-                        public synchronized Integer startMeasurementIntervalInidication() {
+                        public synchronized Integer startMeasurementIntervalIndication() {
                             return 1;
                         }
                     };
@@ -556,27 +556,27 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
             }
         };
         healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(healthThermometerProfile.startMeasurementIntervalInidication());
+        assertNotNull(healthThermometerProfile.startMeasurementIntervalIndication());
         healthThermometerProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_stopMeasurementIntervalInidication_00001() {
+    public void test_stopMeasurementIntervalIndication_00001() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback());
-        assertNull(healthThermometerProfile.stopMeasurementIntervalInidication());
+        assertNull(healthThermometerProfile.stopMeasurementIntervalIndication());
     }
 
     @Test
     @RequiresDevice
-    public void test_stopMeasurementIntervalInidication_00002() {
+    public void test_stopMeasurementIntervalIndication_00002() {
         HealthThermometerProfile healthThermometerProfile = new HealthThermometerProfile(ApplicationProvider.getApplicationContext(), new BaseHealthThermometerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mHealthThermometerService == null) {
                     mHealthThermometerService = new HealthThermometerService(mBLEConnection, mHealthThermometerProfileCallback, null) {
                         @Override
-                        public synchronized Integer stopMeasurementIntervalInidication() {
+                        public synchronized Integer stopMeasurementIntervalIndication() {
                             return 1;
                         }
                     };
@@ -584,7 +584,7 @@ public class HealthThermometerProfileTest extends AbstractCentralTest {
             }
         };
         healthThermometerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(healthThermometerProfile.stopMeasurementIntervalInidication());
+        assertNotNull(healthThermometerProfile.stopMeasurementIntervalIndication());
         healthThermometerProfile.disconnect();
     }
 

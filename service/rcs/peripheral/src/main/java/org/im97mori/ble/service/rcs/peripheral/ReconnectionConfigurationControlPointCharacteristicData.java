@@ -184,6 +184,12 @@ public class ReconnectionConfigurationControlPointCharacteristicData extends Cha
     public transient byte[] highPriorityResponseData;
 
     /**
+     * Constructor
+     */
+    public ReconnectionConfigurationControlPointCharacteristicData() {
+    }
+
+    /**
      * @param descriptorDataList                          {@link DescriptorData} list
      * @param responseCode                                response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
      * @param delay                                       response delay(millis)
@@ -280,6 +286,7 @@ public class ReconnectionConfigurationControlPointCharacteristicData extends Cha
         getStoredValuesResultCodes = in.readInt();
         getStoredValuesOperand = in.createByteArray();
         setWhiteListTimerResultCodes = in.readInt();
+        getWhiteListTimerResultCodes = in.readInt();
         getWhiteListTimerOperand = in.createByteArray();
         setAdvertisementConfigurationResultCodes = in.readInt();
         upgradeToLescOnlyResultCodes = in.readInt();
@@ -493,6 +500,7 @@ public class ReconnectionConfigurationControlPointCharacteristicData extends Cha
         dest.writeInt(getStoredValuesResultCodes);
         dest.writeByteArray(getStoredValuesOperand);
         dest.writeInt(setWhiteListTimerResultCodes);
+        dest.writeInt(getWhiteListTimerResultCodes);
         dest.writeByteArray(getWhiteListTimerOperand);
         dest.writeInt(setAdvertisementConfigurationResultCodes);
         dest.writeInt(upgradeToLescOnlyResultCodes);

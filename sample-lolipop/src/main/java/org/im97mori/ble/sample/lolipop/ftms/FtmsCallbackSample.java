@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2acc.FitnessMachineFeatureAndroid;
 import org.im97mori.ble.characteristic.u2acd.TreadmillDataAndroid;
 import org.im97mori.ble.characteristic.u2ace.CrossTrainerDataAndroid;
@@ -55,7 +55,7 @@ public class FtmsCallbackSample extends FitnessMachineServiceMockCallback implem
         @NonNull
         @Override
         public FtmsCallbackSample build() {
-            return new FtmsCallbackSample(createMockData(), mSampleCallback);
+            return new FtmsCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -63,8 +63,8 @@ public class FtmsCallbackSample extends FitnessMachineServiceMockCallback implem
 
     private final SampleCallback mSampleCallback;
 
-    FtmsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    FtmsCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -86,9 +86,9 @@ public class FtmsCallbackSample extends FitnessMachineServiceMockCallback implem
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.PLX_SPOT_CHECK_MEASUREMENT_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.PLX_SPOT_CHECK_MEASU
 public class PlxSpotCheckMeasurementAndroid extends PlxSpotCheckMeasurement implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<PlxSpotCheckMeasurementAndroid> CREATOR = new ByteArrayCreater<PlxSpotCheckMeasurementAndroid>() {
+    public static final ByteArrayCreator<PlxSpotCheckMeasurementAndroid> CREATOR = new ByteArrayCreator<PlxSpotCheckMeasurementAndroid>() {
 
         /**
          * {@inheritDoc}

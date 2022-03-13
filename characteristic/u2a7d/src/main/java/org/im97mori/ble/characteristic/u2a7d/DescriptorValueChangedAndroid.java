@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DESCRIPTOR_VALUE_CHA
 public class DescriptorValueChangedAndroid extends DescriptorValueChanged implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<DescriptorValueChangedAndroid> CREATOR = new ByteArrayCreater<DescriptorValueChangedAndroid>() {
+    public static final ByteArrayCreator<DescriptorValueChangedAndroid> CREATOR = new ByteArrayCreator<DescriptorValueChangedAndroid>() {
 
         /**
          * {@inheritDoc}

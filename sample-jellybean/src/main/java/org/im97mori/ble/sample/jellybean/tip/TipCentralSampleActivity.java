@@ -126,7 +126,7 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "hasNextDstChangeService\nnull";
             } else {
-                text = "hasNextDstChangeService\n" + result.toString();
+                text = "hasNextDstChangeService\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -137,7 +137,7 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "hasReferenceTimeUpdateService\nnull";
             } else {
-                text = "hasReferenceTimeUpdateService\n" + result.toString();
+                text = "hasReferenceTimeUpdateService\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -150,7 +150,7 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isCurrentTimeCharacteristicWritable\nnull";
             } else {
-                text = "isCurrentTimeCharacteristicWritable\n" + result.toString();
+                text = "isCurrentTimeCharacteristicWritable\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -175,7 +175,7 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isLocalTimeInformationCharacteristicSupported\nnull";
             } else {
-                text = "isLocalTimeInformationCharacteristicSupported\n" + result.toString();
+                text = "isLocalTimeInformationCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -187,7 +187,7 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isLocalTimeInformationCharacteristicWritable\nnull";
             } else {
-                text = "isLocalTimeInformationCharacteristicWritable\n" + result.toString();
+                text = "isLocalTimeInformationCharacteristicWritable\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -199,7 +199,7 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isReferenceTimeInformationCharacteristicSupported\nnull";
             } else {
-                text = "isReferenceTimeInformationCharacteristicSupported\n" + result.toString();
+                text = "isReferenceTimeInformationCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -264,7 +264,7 @@ public class TipCentralSampleActivity extends BaseActivity implements View.OnCli
     }
 
     @Override
-    public void onCallbacked(final Pair<String, String> log) {
+    public void onCallback(final Pair<String, String> log) {
         runOnUiThread(() -> {
             mAdapter.add(log);
             mListView.smoothScrollToPosition(mAdapter.getCount());

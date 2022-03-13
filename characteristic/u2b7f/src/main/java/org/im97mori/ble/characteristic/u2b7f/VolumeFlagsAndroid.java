@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.VOLUME_FLAGS_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.VOLUME_FLAGS_CHARACT
 public class VolumeFlagsAndroid extends VolumeFlags implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<VolumeFlagsAndroid> CREATOR = new ByteArrayCreater<VolumeFlagsAndroid>() {
+    public static final ByteArrayCreator<VolumeFlagsAndroid> CREATOR = new ByteArrayCreator<VolumeFlagsAndroid>() {
 
         /**
          * {@inheritDoc}

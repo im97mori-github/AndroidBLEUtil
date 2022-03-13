@@ -58,7 +58,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.core.UserIndexUtils;
 import org.im97mori.ble.characteristic.u2a7e.AerobicHeartRateLowerLimit;
@@ -114,7 +113,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
 
     /**
-     * User Data Characterisitc UUID set
+     * User Data Characteristic UUID set
      */
     public static final Set<UUID> UDS_CHARACTERISTIC_SET;
 
@@ -166,167 +165,167 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
      *
      * @param <T> subclass of {@link UserDataServiceMockCallback}
      */
-    public static class Builder<T extends UserDataServiceMockCallback> extends AbstractServiceMockCallback.Builder<UserDataServiceMockCallback> {
+    public static class Builder<T extends UserDataServiceMockCallback> extends AbstractServiceMockCallback.Builder<UserDataServiceMockCallback, ServiceData> {
 
         /**
          * First Name data
          */
-        protected UDSCharacteristicData mFirstNameCharacteristicData;
+        protected UDSCharacteristicData mFirstNameData;
 
         /**
          * Last Name data
          */
-        protected UDSCharacteristicData mLastNameCharacteristicData;
+        protected UDSCharacteristicData mLastNameData;
 
         /**
          * Email Address data
          */
-        protected UDSCharacteristicData mEmailAddressCharacteristicData;
+        protected UDSCharacteristicData mEmailAddressData;
 
         /**
          * Age data
          */
-        protected UDSCharacteristicData mAgeCharacteristicData;
+        protected UDSCharacteristicData mAgeData;
 
         /**
          * Date of Birth data
          */
-        protected UDSCharacteristicData mDateOfBirthCharacteristicData;
+        protected UDSCharacteristicData mDateOfBirthData;
 
         /**
          * Gender data
          */
-        protected UDSCharacteristicData mGenderCharacteristicData;
+        protected UDSCharacteristicData mGenderData;
 
         /**
          * Weight data
          */
-        protected UDSCharacteristicData mWeightCharacteristicData;
+        protected UDSCharacteristicData mWeightData;
 
         /**
          * Height data
          */
-        protected UDSCharacteristicData mHeightCharacteristicData;
+        protected UDSCharacteristicData mHeightData;
 
         /**
          * VO2 Max data
          */
-        protected UDSCharacteristicData mVO2MaxCharacteristicData;
+        protected UDSCharacteristicData mVO2MaxData;
 
         /**
          * Heart Rate Max data
          */
-        protected UDSCharacteristicData mHeartRateMaxCharacteristicData;
+        protected UDSCharacteristicData mHeartRateMaxData;
 
         /**
          * Resting Heart Rate data
          */
-        protected UDSCharacteristicData mRestingHeartRateCharacteristicData;
+        protected UDSCharacteristicData mRestingHeartRateData;
 
         /**
          * Maximum Recommended Heart Rate data
          */
-        protected UDSCharacteristicData mMaximumRecommendedHeartRateCharacteristicData;
+        protected UDSCharacteristicData mMaximumRecommendedHeartRateData;
 
         /**
          * Aerobic Threshold data
          */
-        protected UDSCharacteristicData mAerobicThresholdCharacteristicData;
+        protected UDSCharacteristicData mAerobicThresholdData;
 
         /**
          * Anaerobic Threshold data
          */
-        protected UDSCharacteristicData mAnaerobicThresholdCharacteristicData;
+        protected UDSCharacteristicData mAnaerobicThresholdData;
 
         /**
          * Sport Type for Aerobic and Anaerobic Thresholds data
          */
-        protected UDSCharacteristicData mSportTypeForAerobicAndAnaerobicThresholdsCharacteristicData;
+        protected UDSCharacteristicData mSportTypeForAerobicAndAnaerobicThresholdsData;
 
         /**
          * Date of Threshold Assessment data
          */
-        protected UDSCharacteristicData mDateOfThresholdAssessmentCharacteristicData;
+        protected UDSCharacteristicData mDateOfThresholdAssessmentData;
 
         /**
          * Waist Circumference data
          */
-        protected UDSCharacteristicData mWaistCircumferenceCharacteristicData;
+        protected UDSCharacteristicData mWaistCircumferenceData;
 
         /**
          * Hip Circumference data
          */
-        protected UDSCharacteristicData mHipCircumferenceCharacteristicData;
+        protected UDSCharacteristicData mHipCircumferenceData;
 
         /**
          * Fat Burn Heart Rate Lower Limit data
          */
-        protected UDSCharacteristicData mFatBurnHeartRateLowerLimitCharacteristicData;
+        protected UDSCharacteristicData mFatBurnHeartRateLowerLimitData;
 
         /**
          * Fat Burn Heart Rate Upper Limit data
          */
-        protected UDSCharacteristicData mFatBurnHeartRateUpperLimitCharacteristicData;
+        protected UDSCharacteristicData mFatBurnHeartRateUpperLimitData;
 
         /**
          * Aerobic Heart Rate Lower Limit data
          */
-        protected UDSCharacteristicData mAerobicHeartRateLowerLimitCharacteristicData;
+        protected UDSCharacteristicData mAerobicHeartRateLowerLimitData;
 
         /**
          * Aerobic Heart Rate Upper Limit data
          */
-        protected UDSCharacteristicData mAerobicHeartRateUpperLimitCharacteristicData;
+        protected UDSCharacteristicData mAerobicHeartRateUpperLimitData;
 
         /**
          * Anaerobic Heart Rate Lower Limit data
          */
-        protected UDSCharacteristicData mAnaerobicHeartRateLowerLimitCharacteristicData;
+        protected UDSCharacteristicData mAnaerobicHeartRateLowerLimitData;
 
         /**
          * Anaerobic Heart Rate Upper Limit data
          */
-        protected UDSCharacteristicData mAnaerobicHeartRateUpperLimitCharacteristicData;
+        protected UDSCharacteristicData mAnaerobicHeartRateUpperLimitData;
 
         /**
          * Five Zone Heart Rate Limits data
          */
-        protected UDSCharacteristicData mFiveZoneHeartRateLimitsCharacteristicData;
+        protected UDSCharacteristicData mFiveZoneHeartRateLimitsData;
 
         /**
          * Three Zone Heart Rate Limits data
          */
-        protected UDSCharacteristicData mThreeZoneHeartRateLimitsCharacteristicData;
+        protected UDSCharacteristicData mThreeZoneHeartRateLimitsData;
 
         /**
          * Two Zone Heart Rate Limit data
          */
-        protected UDSCharacteristicData mTwoZoneHeartRateLimitCharacteristicData;
+        protected UDSCharacteristicData mTwoZoneHeartRateLimitData;
 
         /**
          * Language data
          */
-        protected UDSCharacteristicData mLanguageCharacteristicData;
+        protected UDSCharacteristicData mLanguageData;
 
         /**
          * Database Change Increment data
          */
-        protected CharacteristicData mDatabaseChangeIncrementCharacteristicData;
+        protected CharacteristicData mDatabaseChangeIncrementData;
 
         /**
          * User Index data
          */
-        protected CharacteristicData mUserIndexCharacteristicData;
-
-        /**
-         * Registered User data
-         */
-        protected CharacteristicData mRegisteredUserCharacteristicData;
+        protected CharacteristicData mUserIndexData;
 
         /**
          * User Control Point data
          */
-        protected UserControlPointCharacteristicData mUserControlPointCharacteristicData;
+        protected UserControlPointCharacteristicData mUserControlPointData;
+
+        /**
+         * Registered User data
+         */
+        protected CharacteristicData mRegisteredUserData;
 
         /**
          * @see #addFirstName(FirstName)
@@ -364,7 +363,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addFirstName(int responseCode, long delay, @NonNull byte[] value) {
-            mFirstNameCharacteristicData = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
+            mFirstNameData = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -382,7 +381,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeFirstName() {
-            mFirstNameCharacteristicData = null;
+            mFirstNameData = null;
             return this;
         }
 
@@ -422,7 +421,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addLastName(int responseCode, long delay, @NonNull byte[] value) {
-            mLastNameCharacteristicData = new UDSCharacteristicData(LAST_NAME_CHARACTERISTIC
+            mLastNameData = new UDSCharacteristicData(LAST_NAME_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -440,7 +439,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeLastName() {
-            mLastNameCharacteristicData = null;
+            mLastNameData = null;
             return this;
         }
 
@@ -480,7 +479,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addEmailAddress(int responseCode, long delay, @NonNull byte[] value) {
-            mEmailAddressCharacteristicData = new UDSCharacteristicData(EMAIL_ADDRESS_CHARACTERISTIC
+            mEmailAddressData = new UDSCharacteristicData(EMAIL_ADDRESS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -498,7 +497,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeEmailAddress() {
-            mEmailAddressCharacteristicData = null;
+            mEmailAddressData = null;
             return this;
         }
 
@@ -538,7 +537,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addAge(int responseCode, long delay, @NonNull byte[] value) {
-            mAgeCharacteristicData = new UDSCharacteristicData(AGE_CHARACTERISTIC
+            mAgeData = new UDSCharacteristicData(AGE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -556,7 +555,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeAge() {
-            mAgeCharacteristicData = null;
+            mAgeData = null;
             return this;
         }
 
@@ -596,7 +595,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addDateOfBirth(int responseCode, long delay, @NonNull byte[] value) {
-            mDateOfBirthCharacteristicData = new UDSCharacteristicData(DATE_OF_BIRTH_CHARACTERISTIC
+            mDateOfBirthData = new UDSCharacteristicData(DATE_OF_BIRTH_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -614,7 +613,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeDateOfBirth() {
-            mDateOfBirthCharacteristicData = null;
+            mDateOfBirthData = null;
             return this;
         }
 
@@ -654,7 +653,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addGender(int responseCode, long delay, @NonNull byte[] value) {
-            mGenderCharacteristicData = new UDSCharacteristicData(GENDER_CHARACTERISTIC
+            mGenderData = new UDSCharacteristicData(GENDER_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -672,7 +671,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeGender() {
-            mGenderCharacteristicData = null;
+            mGenderData = null;
             return this;
         }
 
@@ -712,7 +711,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addWeight(int responseCode, long delay, @NonNull byte[] value) {
-            mWeightCharacteristicData = new UDSCharacteristicData(WEIGHT_CHARACTERISTIC
+            mWeightData = new UDSCharacteristicData(WEIGHT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -730,7 +729,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeWeight() {
-            mWeightCharacteristicData = null;
+            mWeightData = null;
             return this;
         }
 
@@ -770,7 +769,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addHeight(int responseCode, long delay, @NonNull byte[] value) {
-            mHeightCharacteristicData = new UDSCharacteristicData(HEIGHT_CHARACTERISTIC
+            mHeightData = new UDSCharacteristicData(HEIGHT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -788,7 +787,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeHeight() {
-            mHeightCharacteristicData = null;
+            mHeightData = null;
             return this;
         }
 
@@ -828,7 +827,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addVO2Max(int responseCode, long delay, @NonNull byte[] value) {
-            mVO2MaxCharacteristicData = new UDSCharacteristicData(VO2_MAX_CHARACTERISTIC
+            mVO2MaxData = new UDSCharacteristicData(VO2_MAX_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -846,7 +845,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeVO2Max() {
-            mVO2MaxCharacteristicData = null;
+            mVO2MaxData = null;
             return this;
         }
 
@@ -886,7 +885,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addHeartRateMax(int responseCode, long delay, @NonNull byte[] value) {
-            mHeartRateMaxCharacteristicData = new UDSCharacteristicData(HEART_RATE_MAX_CHARACTERISTIC
+            mHeartRateMaxData = new UDSCharacteristicData(HEART_RATE_MAX_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -904,7 +903,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeHeartRateMax() {
-            mHeartRateMaxCharacteristicData = null;
+            mHeartRateMaxData = null;
             return this;
         }
 
@@ -944,7 +943,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addRestingHeartRate(int responseCode, long delay, @NonNull byte[] value) {
-            mRestingHeartRateCharacteristicData = new UDSCharacteristicData(RESTING_HEART_RATE_CHARACTERISTIC
+            mRestingHeartRateData = new UDSCharacteristicData(RESTING_HEART_RATE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -962,7 +961,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeRestingHeartRate() {
-            mRestingHeartRateCharacteristicData = null;
+            mRestingHeartRateData = null;
             return this;
         }
 
@@ -1002,7 +1001,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addMaximumRecommendedHeartRate(int responseCode, long delay, @NonNull byte[] value) {
-            mMaximumRecommendedHeartRateCharacteristicData = new UDSCharacteristicData(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC
+            mMaximumRecommendedHeartRateData = new UDSCharacteristicData(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1020,7 +1019,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeMaximumRecommendedHeartRate() {
-            mMaximumRecommendedHeartRateCharacteristicData = null;
+            mMaximumRecommendedHeartRateData = null;
             return this;
         }
 
@@ -1060,7 +1059,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addAerobicThreshold(int responseCode, long delay, @NonNull byte[] value) {
-            mAerobicThresholdCharacteristicData = new UDSCharacteristicData(AEROBIC_THRESHOLD_CHARACTERISTIC
+            mAerobicThresholdData = new UDSCharacteristicData(AEROBIC_THRESHOLD_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1078,7 +1077,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeAerobicThreshold() {
-            mAerobicThresholdCharacteristicData = null;
+            mAerobicThresholdData = null;
             return this;
         }
 
@@ -1118,7 +1117,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addAnaerobicThreshold(int responseCode, long delay, @NonNull byte[] value) {
-            mAnaerobicThresholdCharacteristicData = new UDSCharacteristicData(ANAEROBIC_THRESHOLD_CHARACTERISTIC
+            mAnaerobicThresholdData = new UDSCharacteristicData(ANAEROBIC_THRESHOLD_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1136,7 +1135,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeAnaerobicThreshold() {
-            mAnaerobicThresholdCharacteristicData = null;
+            mAnaerobicThresholdData = null;
             return this;
         }
 
@@ -1176,7 +1175,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addSportTypeForAerobicAndAnaerobicThresholds(int responseCode, long delay, @NonNull byte[] value) {
-            mSportTypeForAerobicAndAnaerobicThresholdsCharacteristicData = new UDSCharacteristicData(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC
+            mSportTypeForAerobicAndAnaerobicThresholdsData = new UDSCharacteristicData(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1194,7 +1193,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeSportTypeForAerobicAndAnaerobicThresholds() {
-            mSportTypeForAerobicAndAnaerobicThresholdsCharacteristicData = null;
+            mSportTypeForAerobicAndAnaerobicThresholdsData = null;
             return this;
         }
 
@@ -1234,7 +1233,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addDateOfThresholdAssessment(int responseCode, long delay, @NonNull byte[] value) {
-            mDateOfThresholdAssessmentCharacteristicData = new UDSCharacteristicData(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC
+            mDateOfThresholdAssessmentData = new UDSCharacteristicData(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1252,7 +1251,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeDateOfThresholdAssessment() {
-            mDateOfThresholdAssessmentCharacteristicData = null;
+            mDateOfThresholdAssessmentData = null;
             return this;
         }
 
@@ -1292,7 +1291,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addWaistCircumference(int responseCode, long delay, @NonNull byte[] value) {
-            mWaistCircumferenceCharacteristicData = new UDSCharacteristicData(WAIST_CIRCUMFERENCE_CHARACTERISTIC
+            mWaistCircumferenceData = new UDSCharacteristicData(WAIST_CIRCUMFERENCE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1310,7 +1309,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeWaistCircumference() {
-            mWaistCircumferenceCharacteristicData = null;
+            mWaistCircumferenceData = null;
             return this;
         }
 
@@ -1350,7 +1349,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addHipCircumference(int responseCode, long delay, @NonNull byte[] value) {
-            mHipCircumferenceCharacteristicData = new UDSCharacteristicData(HIP_CIRCUMFERENCE_CHARACTERISTIC
+            mHipCircumferenceData = new UDSCharacteristicData(HIP_CIRCUMFERENCE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1368,7 +1367,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeHipCircumference() {
-            mHipCircumferenceCharacteristicData = null;
+            mHipCircumferenceData = null;
             return this;
         }
 
@@ -1408,7 +1407,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addFatBurnHeartRateLowerLimit(int responseCode, long delay, @NonNull byte[] value) {
-            mFatBurnHeartRateLowerLimitCharacteristicData = new UDSCharacteristicData(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC
+            mFatBurnHeartRateLowerLimitData = new UDSCharacteristicData(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1426,7 +1425,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeFatBurnHeartRateLowerLimit() {
-            mFatBurnHeartRateLowerLimitCharacteristicData = null;
+            mFatBurnHeartRateLowerLimitData = null;
             return this;
         }
 
@@ -1466,7 +1465,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addFatBurnHeartRateUpperLimit(int responseCode, long delay, @NonNull byte[] value) {
-            mFatBurnHeartRateUpperLimitCharacteristicData = new UDSCharacteristicData(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC
+            mFatBurnHeartRateUpperLimitData = new UDSCharacteristicData(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1484,7 +1483,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeFatBurnHeartRateUpperLimit() {
-            mFatBurnHeartRateUpperLimitCharacteristicData = null;
+            mFatBurnHeartRateUpperLimitData = null;
             return this;
         }
 
@@ -1524,7 +1523,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addAerobicHeartRateLowerLimit(int responseCode, long delay, @NonNull byte[] value) {
-            mAerobicHeartRateLowerLimitCharacteristicData = new UDSCharacteristicData(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC
+            mAerobicHeartRateLowerLimitData = new UDSCharacteristicData(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1542,7 +1541,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeAerobicHeartRateLowerLimit() {
-            mAerobicHeartRateLowerLimitCharacteristicData = null;
+            mAerobicHeartRateLowerLimitData = null;
             return this;
         }
 
@@ -1582,7 +1581,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addAerobicHeartRateUpperLimit(int responseCode, long delay, @NonNull byte[] value) {
-            mAerobicHeartRateUpperLimitCharacteristicData = new UDSCharacteristicData(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC
+            mAerobicHeartRateUpperLimitData = new UDSCharacteristicData(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1600,7 +1599,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeAerobicHeartRateUpperLimit() {
-            mAerobicHeartRateUpperLimitCharacteristicData = null;
+            mAerobicHeartRateUpperLimitData = null;
             return this;
         }
 
@@ -1640,7 +1639,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addAnaerobicHeartRateLowerLimit(int responseCode, long delay, @NonNull byte[] value) {
-            mAnaerobicHeartRateLowerLimitCharacteristicData = new UDSCharacteristicData(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC
+            mAnaerobicHeartRateLowerLimitData = new UDSCharacteristicData(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1658,7 +1657,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeAnaerobicHeartRateLowerLimit() {
-            mAnaerobicHeartRateLowerLimitCharacteristicData = null;
+            mAnaerobicHeartRateLowerLimitData = null;
             return this;
         }
 
@@ -1698,7 +1697,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addAnaerobicHeartRateUpperLimit(int responseCode, long delay, @NonNull byte[] value) {
-            mAnaerobicHeartRateUpperLimitCharacteristicData = new UDSCharacteristicData(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC
+            mAnaerobicHeartRateUpperLimitData = new UDSCharacteristicData(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1716,7 +1715,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeAnaerobicHeartRateUpperLimit() {
-            mAnaerobicHeartRateUpperLimitCharacteristicData = null;
+            mAnaerobicHeartRateUpperLimitData = null;
             return this;
         }
 
@@ -1756,7 +1755,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addFiveZoneHeartRateLimits(int responseCode, long delay, @NonNull byte[] value) {
-            mFiveZoneHeartRateLimitsCharacteristicData = new UDSCharacteristicData(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC
+            mFiveZoneHeartRateLimitsData = new UDSCharacteristicData(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1774,7 +1773,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeFiveZoneHeartRateLimits() {
-            mFiveZoneHeartRateLimitsCharacteristicData = null;
+            mFiveZoneHeartRateLimitsData = null;
             return this;
         }
 
@@ -1814,7 +1813,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addThreeZoneHeartRateLimits(int responseCode, long delay, @NonNull byte[] value) {
-            mThreeZoneHeartRateLimitsCharacteristicData = new UDSCharacteristicData(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC
+            mThreeZoneHeartRateLimitsData = new UDSCharacteristicData(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1832,7 +1831,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeThreeZoneHeartRateLimits() {
-            mThreeZoneHeartRateLimitsCharacteristicData = null;
+            mThreeZoneHeartRateLimitsData = null;
             return this;
         }
 
@@ -1872,7 +1871,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addTwoZoneHeartRateLimit(int responseCode, long delay, @NonNull byte[] value) {
-            mTwoZoneHeartRateLimitCharacteristicData = new UDSCharacteristicData(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC
+            mTwoZoneHeartRateLimitData = new UDSCharacteristicData(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1890,7 +1889,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeTwoZoneHeartRateLimit() {
-            mTwoZoneHeartRateLimitCharacteristicData = null;
+            mTwoZoneHeartRateLimitData = null;
             return this;
         }
 
@@ -1930,7 +1929,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addLanguage(int responseCode, long delay, @NonNull byte[] value) {
-            mLanguageCharacteristicData = new UDSCharacteristicData(LANGUAGE_CHARACTERISTIC
+            mLanguageData = new UDSCharacteristicData(LANGUAGE_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE
                     , BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.emptyList()
@@ -1948,7 +1947,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeLanguage() {
-            mLanguageCharacteristicData = null;
+            mLanguageData = null;
             return this;
         }
 
@@ -1966,8 +1965,8 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          * @param characteristicResponseCode characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
          * @param isNotificatable            notificatable flag for Database Change Increment characteristic
-         * @param descriptorResponseCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -1980,7 +1979,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 property |= BluetoothGattCharacteristic.PROPERTY_NOTIFY;
                 descriptorDataList.add(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, descriptorResponseCode, descriptorDelay, descriptorValue));
             }
-            mDatabaseChangeIncrementCharacteristicData = new CharacteristicData(DATABASE_CHANGE_INCREMENT_CHARACTERISTIC
+            mDatabaseChangeIncrementData = new CharacteristicData(DATABASE_CHANGE_INCREMENT_CHARACTERISTIC
                     , property
                     , permission
                     , descriptorDataList
@@ -1999,7 +1998,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeDatabaseChangeIncrement() {
-            mDatabaseChangeIncrementCharacteristicData = null;
+            mDatabaseChangeIncrementData = null;
             return this;
         }
 
@@ -2020,7 +2019,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> addUserIndex(int responseCode, long delay) {
-            mUserIndexCharacteristicData = new CharacteristicData(USER_INDEX_CHARACTERISTIC
+            mUserIndexData = new CharacteristicData(USER_INDEX_CHARACTERISTIC
                     , BluetoothGattCharacteristic.PROPERTY_READ
                     , BluetoothGattCharacteristic.PERMISSION_READ
                     , Collections.emptyList()
@@ -2038,53 +2037,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeUserIndex() {
-            mUserIndexCharacteristicData = null;
-            return this;
-        }
-
-        /**
-         * @see #addRegisteredUser(int, long, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> addRegisteredUser(@NonNull ClientCharacteristicConfiguration clientCharacteristicConfiguration) {
-            return addRegisteredUser(BluetoothGatt.GATT_SUCCESS, 0, 0, 0, clientCharacteristicConfiguration.getBytes());
-        }
-
-        /**
-         * add Registered User characteristic
-         *
-         * @param characteristicResponseCode characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param characteristicDelay        characteristic response delay(millis)
-         * @param descriptorResponseCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
-         * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> addRegisteredUser(int characteristicResponseCode, long characteristicDelay, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
-            mRegisteredUserCharacteristicData = new CharacteristicData(REGISTERED_USER_CHARACTERISTIC
-                    , BluetoothGattCharacteristic.PROPERTY_INDICATE
-                    , 0
-                    , Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
-                    , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE
-                    , descriptorResponseCode
-                    , descriptorDelay
-                    , descriptorValue))
-                    , characteristicResponseCode
-                    , characteristicDelay
-                    , new byte[0] // variable
-                    , 0);
-            return this;
-        }
-
-        /**
-         * remove Registered User characteristic
-         *
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeRegisteredUser() {
-            mRegisteredUserCharacteristicData = null;
+            mUserIndexData = null;
             return this;
         }
 
@@ -2097,8 +2050,8 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          * @param deleteUserDataResponseValue  characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Delete User Data response)
          * @param listAllUsersResponseValue    characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(List All Users response)
          * @param deleteUsersResponseValue     characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Delete Users response)
-         * @param descriptorResponseCode       descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay              descritptor response delay(millis)
+         * @param descriptorResponseCode       descriptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay              descriptor response delay(millis)
          * @param descriptorValue              descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -2112,7 +2065,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                 , int descriptorResponseCode
                 , long descriptorDelay
                 , @NonNull byte[] descriptorValue) {
-            mUserControlPointCharacteristicData = new UserControlPointCharacteristicData(BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE
+            mUserControlPointData = new UserControlPointCharacteristicData(BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE
                     , BluetoothGattCharacteristic.PERMISSION_WRITE
                     , Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE
@@ -2135,7 +2088,54 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         public Builder<T> removeUserControlPoint() {
-            mUserControlPointCharacteristicData = null;
+            mUserControlPointData = null;
+            return this;
+        }
+
+
+        /**
+         * @see #addRegisteredUser(int, long, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addRegisteredUser(@NonNull ClientCharacteristicConfiguration clientCharacteristicConfiguration) {
+            return addRegisteredUser(BluetoothGatt.GATT_SUCCESS, 0, 0, 0, clientCharacteristicConfiguration.getBytes());
+        }
+
+        /**
+         * add Registered User characteristic
+         *
+         * @param characteristicResponseCode characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param characteristicDelay        characteristic response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
+         * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addRegisteredUser(int characteristicResponseCode, long characteristicDelay, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            mRegisteredUserData = new CharacteristicData(REGISTERED_USER_CHARACTERISTIC
+                    , BluetoothGattCharacteristic.PROPERTY_INDICATE
+                    , 0
+                    , Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
+                    , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE
+                    , descriptorResponseCode
+                    , descriptorDelay
+                    , descriptorValue))
+                    , characteristicResponseCode
+                    , characteristicDelay
+                    , new byte[0] // variable
+                    , 0);
+            return this;
+        }
+
+        /**
+         * remove Registered User characteristic
+         *
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeRegisteredUser() {
+            mRegisteredUserData = null;
             return this;
         }
 
@@ -2144,180 +2144,89 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          */
         @Override
         @NonNull
-        public MockData createMockData() {
-            List<CharacteristicData> characteristicList = new ArrayList<>();
-
-            if (mFirstNameCharacteristicData == null
-                    && mLastNameCharacteristicData == null
-                    && mEmailAddressCharacteristicData == null
-                    && mAgeCharacteristicData == null
-                    && mDateOfBirthCharacteristicData == null
-                    && mGenderCharacteristicData == null
-                    && mWeightCharacteristicData == null
-                    && mHeightCharacteristicData == null
-                    && mVO2MaxCharacteristicData == null
-                    && mHeartRateMaxCharacteristicData == null
-                    && mRestingHeartRateCharacteristicData == null
-                    && mMaximumRecommendedHeartRateCharacteristicData == null
-                    && mAerobicThresholdCharacteristicData == null
-                    && mAnaerobicThresholdCharacteristicData == null
-                    && mSportTypeForAerobicAndAnaerobicThresholdsCharacteristicData == null
-                    && mDateOfThresholdAssessmentCharacteristicData == null
-                    && mWaistCircumferenceCharacteristicData == null
-                    && mHipCircumferenceCharacteristicData == null
-                    && mFatBurnHeartRateLowerLimitCharacteristicData == null
-                    && mFatBurnHeartRateUpperLimitCharacteristicData == null
-                    && mAerobicHeartRateLowerLimitCharacteristicData == null
-                    && mAerobicHeartRateUpperLimitCharacteristicData == null
-                    && mAnaerobicHeartRateLowerLimitCharacteristicData == null
-                    && mAnaerobicHeartRateUpperLimitCharacteristicData == null
-                    && mFiveZoneHeartRateLimitsCharacteristicData == null
-                    && mThreeZoneHeartRateLimitsCharacteristicData == null
-                    && mTwoZoneHeartRateLimitCharacteristicData == null
-                    && mLanguageCharacteristicData == null) {
+        public ServiceData createData() {
+            if (mFirstNameData == null
+                    && mLastNameData == null
+                    && mEmailAddressData == null
+                    && mAgeData == null
+                    && mDateOfBirthData == null
+                    && mGenderData == null
+                    && mWeightData == null
+                    && mHeightData == null
+                    && mVO2MaxData == null
+                    && mHeartRateMaxData == null
+                    && mRestingHeartRateData == null
+                    && mMaximumRecommendedHeartRateData == null
+                    && mAerobicThresholdData == null
+                    && mAnaerobicThresholdData == null
+                    && mSportTypeForAerobicAndAnaerobicThresholdsData == null
+                    && mDateOfThresholdAssessmentData == null
+                    && mWaistCircumferenceData == null
+                    && mHipCircumferenceData == null
+                    && mFatBurnHeartRateLowerLimitData == null
+                    && mFatBurnHeartRateUpperLimitData == null
+                    && mAerobicHeartRateLowerLimitData == null
+                    && mAerobicHeartRateUpperLimitData == null
+                    && mAnaerobicHeartRateLowerLimitData == null
+                    && mAnaerobicHeartRateUpperLimitData == null
+                    && mFiveZoneHeartRateLimitsData == null
+                    && mThreeZoneHeartRateLimitsData == null
+                    && mTwoZoneHeartRateLimitData == null
+                    && mLanguageData == null) {
                 throw new RuntimeException("At least one UDS Characteristic shall be exposed");
             }
 
-            if (mFirstNameCharacteristicData != null) {
-                characteristicList.add(mFirstNameCharacteristicData);
-            }
-
-            if (mLastNameCharacteristicData != null) {
-                characteristicList.add(mLastNameCharacteristicData);
-            }
-
-            if (mEmailAddressCharacteristicData != null) {
-                characteristicList.add(mEmailAddressCharacteristicData);
-            }
-
-            if (mAgeCharacteristicData != null) {
-                characteristicList.add(mAgeCharacteristicData);
-            }
-
-            if (mDateOfBirthCharacteristicData != null) {
-                characteristicList.add(mDateOfBirthCharacteristicData);
-            }
-
-            if (mGenderCharacteristicData != null) {
-                characteristicList.add(mGenderCharacteristicData);
-            }
-
-            if (mWeightCharacteristicData != null) {
-                characteristicList.add(mWeightCharacteristicData);
-            }
-
-            if (mHeightCharacteristicData != null) {
-                characteristicList.add(mHeightCharacteristicData);
-            }
-
-            if (mVO2MaxCharacteristicData != null) {
-                characteristicList.add(mVO2MaxCharacteristicData);
-            }
-
-            if (mHeartRateMaxCharacteristicData != null) {
-                characteristicList.add(mHeartRateMaxCharacteristicData);
-            }
-
-            if (mRestingHeartRateCharacteristicData != null) {
-                characteristicList.add(mRestingHeartRateCharacteristicData);
-            }
-
-            if (mMaximumRecommendedHeartRateCharacteristicData != null) {
-                characteristicList.add(mMaximumRecommendedHeartRateCharacteristicData);
-            }
-
-            if (mAerobicThresholdCharacteristicData != null) {
-                characteristicList.add(mAerobicThresholdCharacteristicData);
-            }
-
-            if (mAnaerobicThresholdCharacteristicData != null) {
-                characteristicList.add(mAnaerobicThresholdCharacteristicData);
-            }
-
-            if (mSportTypeForAerobicAndAnaerobicThresholdsCharacteristicData != null) {
-                characteristicList.add(mSportTypeForAerobicAndAnaerobicThresholdsCharacteristicData);
-            }
-
-            if (mDateOfThresholdAssessmentCharacteristicData != null) {
-                characteristicList.add(mDateOfThresholdAssessmentCharacteristicData);
-            }
-
-            if (mWaistCircumferenceCharacteristicData != null) {
-                characteristicList.add(mWaistCircumferenceCharacteristicData);
-            }
-
-            if (mHipCircumferenceCharacteristicData != null) {
-                characteristicList.add(mHipCircumferenceCharacteristicData);
-            }
-
-            if (mFatBurnHeartRateLowerLimitCharacteristicData != null) {
-                characteristicList.add(mFatBurnHeartRateLowerLimitCharacteristicData);
-            }
-
-            if (mFatBurnHeartRateUpperLimitCharacteristicData != null) {
-                characteristicList.add(mFatBurnHeartRateUpperLimitCharacteristicData);
-            }
-
-            if (mAerobicHeartRateLowerLimitCharacteristicData != null) {
-                characteristicList.add(mAerobicHeartRateLowerLimitCharacteristicData);
-            }
-
-            if (mAerobicHeartRateUpperLimitCharacteristicData != null) {
-                characteristicList.add(mAerobicHeartRateUpperLimitCharacteristicData);
-            }
-
-            if (mAnaerobicHeartRateLowerLimitCharacteristicData != null) {
-                characteristicList.add(mAnaerobicHeartRateLowerLimitCharacteristicData);
-            }
-
-            if (mAnaerobicHeartRateUpperLimitCharacteristicData != null) {
-                characteristicList.add(mAnaerobicHeartRateUpperLimitCharacteristicData);
-            }
-
-            if (mFiveZoneHeartRateLimitsCharacteristicData != null) {
-                characteristicList.add(mFiveZoneHeartRateLimitsCharacteristicData);
-            }
-
-            if (mThreeZoneHeartRateLimitsCharacteristicData != null) {
-                characteristicList.add(mThreeZoneHeartRateLimitsCharacteristicData);
-            }
-
-            if (mTwoZoneHeartRateLimitCharacteristicData != null) {
-                characteristicList.add(mTwoZoneHeartRateLimitCharacteristicData);
-            }
-
-            if (mLanguageCharacteristicData != null) {
-                characteristicList.add(mLanguageCharacteristicData);
-            }
-
-            if (mDatabaseChangeIncrementCharacteristicData == null) {
+            if (mDatabaseChangeIncrementData == null) {
                 throw new RuntimeException("no Database Change Increment data");
-            } else {
-                characteristicList.add(mDatabaseChangeIncrementCharacteristicData);
             }
 
-            if (mUserIndexCharacteristicData == null) {
+            if (mUserIndexData == null) {
                 throw new RuntimeException("no User Index data");
-            } else {
-                characteristicList.add(mUserIndexCharacteristicData);
             }
 
-            if (mUserControlPointCharacteristicData == null) {
+            if (mUserControlPointData == null) {
                 throw new RuntimeException("no User Control Point data");
-            } else {
-                characteristicList.add(mUserControlPointCharacteristicData);
             }
 
-            if (UserControlPoint.RESPONSE_VALUE_SUCCESS == mUserControlPointCharacteristicData.listAllUsersResponseValue) {
-                if (mRegisteredUserCharacteristicData == null) {
+            if (UserControlPoint.RESPONSE_VALUE_SUCCESS == mUserControlPointData.listAllUsersResponseValue) {
+                if (mRegisteredUserData == null) {
                     throw new RuntimeException("no Registered User data");
-                } else {
-                    characteristicList.add(mRegisteredUserCharacteristicData);
                 }
             }
 
-            ServiceData serviceData = new ServiceData(USER_DATA_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new UserDataServiceData(mFirstNameData
+                    , mLastNameData
+                    , mEmailAddressData
+                    , mAgeData
+                    , mDateOfBirthData
+                    , mGenderData
+                    , mWeightData
+                    , mHeightData
+                    , mVO2MaxData
+                    , mHeartRateMaxData
+                    , mRestingHeartRateData
+                    , mMaximumRecommendedHeartRateData
+                    , mAerobicThresholdData
+                    , mAnaerobicThresholdData
+                    , mSportTypeForAerobicAndAnaerobicThresholdsData
+                    , mDateOfThresholdAssessmentData
+                    , mWaistCircumferenceData
+                    , mHipCircumferenceData
+                    , mFatBurnHeartRateLowerLimitData
+                    , mFatBurnHeartRateUpperLimitData
+                    , mAerobicHeartRateLowerLimitData
+                    , mAerobicHeartRateUpperLimitData
+                    , mAnaerobicHeartRateLowerLimitData
+                    , mAnaerobicHeartRateUpperLimitData
+                    , mFiveZoneHeartRateLimitsData
+                    , mThreeZoneHeartRateLimitsData
+                    , mTwoZoneHeartRateLimitData
+                    , mLanguageData
+                    , mDatabaseChangeIncrementData
+                    , mUserIndexData
+                    , mUserControlPointData
+                    , mRegisteredUserData
+            );
         }
 
         /**
@@ -2326,7 +2235,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
         @Override
         @NonNull
         public UserDataServiceMockCallback build() {
-            return new UserDataServiceMockCallback(createMockData(), false);
+            return new UserDataServiceMockCallback(createData(), false);
         }
 
     }
@@ -2357,19 +2266,11 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
     protected RegisteredUserIndicationData mRegisteredUserIndicationData;
 
     /**
-     * @param serviceData   {@link ServiceData} instance
-     * @param isFallback fallback flag
+     * @param serviceData {@link ServiceData} instance
+     * @param isFallback  fallback flag
      */
     public UserDataServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public UserDataServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**
@@ -2861,25 +2762,25 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                                                 , now + LIST_ALL_USERS_INDICATION_TIMEOUT
                                                                 , mUserMap.size() * mConnectedDeviceMap.size());
 
-                                                        StringBuilder registerdUserName = new StringBuilder();
+                                                        StringBuilder registeredUserName = new StringBuilder();
                                                         for (int userIndex : mUserMap.keySet()) {
-                                                            registerdUserName.setLength(0);
+                                                            registeredUserName.setLength(0);
                                                             if (firstNameData != null) {
                                                                 CharacteristicData userFirstNameData = firstNameData.getUserData(userIndex);
                                                                 if (userFirstNameData != null) {
-                                                                    registerdUserName.append(new FirstName(new RegisteredUser(userFirstNameData.getBytes())).getFirstName());
+                                                                    registeredUserName.append(new FirstName(new RegisteredUser(userFirstNameData.getBytes())).getFirstName());
                                                                 }
                                                             }
                                                             if (lastNameData != null) {
-                                                                if (registerdUserName.length() != 0) {
-                                                                    registerdUserName.append(' ');
+                                                                if (registeredUserName.length() != 0) {
+                                                                    registeredUserName.append(' ');
                                                                 }
                                                                 CharacteristicData userLastNameData = lastNameData.getUserData(userIndex);
                                                                 if (userLastNameData != null) {
-                                                                    registerdUserName.append(new FirstName(new RegisteredUser(userLastNameData.getBytes())).getFirstName());
+                                                                    registeredUserName.append(new FirstName(new RegisteredUser(userLastNameData.getBytes())).getFirstName());
                                                                 }
                                                             }
-                                                            byte[] nameData = registerdUserName.toString().getBytes();
+                                                            byte[] nameData = registeredUserName.toString().getBytes();
                                                             if (nameData.length == 0) {
                                                                 registeredUserData.currentData = new RegisteredUser(RegisteredUser.SEGMENTATION_HEADER_FIRST_SEGMENT_TRUE | RegisteredUser.SEGMENTATION_HEADER_LAST_SEGMENT_TRUE
                                                                         , RegisteredUser.FLAGS_REGISTERED_USER_NAME_PRESENT_FALSE | RegisteredUser.FLAGS_USER_NAME_TRUNCATED_FALSE
@@ -2892,7 +2793,7 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
                                                                         , nameData).getBytes();
                                                             } else {
                                                                 // truncate user name
-                                                                // no multi message implemantation
+                                                                // no multi message implementation
 
                                                                 registeredUserData.currentData = new RegisteredUser(RegisteredUser.SEGMENTATION_HEADER_FIRST_SEGMENT_TRUE | RegisteredUser.SEGMENTATION_HEADER_LAST_SEGMENT_TRUE
                                                                         , RegisteredUser.FLAGS_REGISTERED_USER_NAME_PRESENT_TRUE | RegisteredUser.FLAGS_USER_NAME_TRUNCATED_TRUE

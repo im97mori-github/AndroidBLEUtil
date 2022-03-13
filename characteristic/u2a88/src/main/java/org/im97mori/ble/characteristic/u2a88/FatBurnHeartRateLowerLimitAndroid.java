@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.FAT_BURN_HEART_RATE_
 public class FatBurnHeartRateLowerLimitAndroid extends FatBurnHeartRateLowerLimit implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<FatBurnHeartRateLowerLimitAndroid> CREATOR = new ByteArrayCreater<FatBurnHeartRateLowerLimitAndroid>() {
+    public static final ByteArrayCreator<FatBurnHeartRateLowerLimitAndroid> CREATOR = new ByteArrayCreator<FatBurnHeartRateLowerLimitAndroid>() {
 
         /**
          * {@inheritDoc}

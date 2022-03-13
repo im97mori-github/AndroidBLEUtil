@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.UNSPECIFIED_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.UNSPECIFIED_CHARACTE
 public class UnspecifiedAndroid extends Unspecified implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<UnspecifiedAndroid> CREATOR = new ByteArrayCreater<UnspecifiedAndroid>() {
+    public static final ByteArrayCreator<UnspecifiedAndroid> CREATOR = new ByteArrayCreator<UnspecifiedAndroid>() {
 
         /**
          * {@inheritDoc}

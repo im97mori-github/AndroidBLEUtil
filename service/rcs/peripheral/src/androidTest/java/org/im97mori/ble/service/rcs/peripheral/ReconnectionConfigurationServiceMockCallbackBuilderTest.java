@@ -11,7 +11,7 @@ import org.im97mori.ble.characteristic.u2b1d.RCFeature;
 import org.im97mori.ble.characteristic.u2b1e.RCSettings;
 import org.im97mori.ble.characteristic.u2b1f.ReconnectionConfigurationControlPoint;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -32,7 +32,7 @@ import androidx.test.filters.RequiresDevice;
 import androidx.test.filters.SdkSuppress;
 
 @SuppressWarnings("ConstantConditions")
-public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
+public class ReconnectionConfigurationServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
     @Test
     @RequiresDevice

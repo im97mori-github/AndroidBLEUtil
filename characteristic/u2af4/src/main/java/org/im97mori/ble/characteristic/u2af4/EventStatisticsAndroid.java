@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.EVENT_STATISTICS_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.EVENT_STATISTICS_CHA
 public class EventStatisticsAndroid extends EventStatistics implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<EventStatisticsAndroid> CREATOR = new ByteArrayCreater<EventStatisticsAndroid>() {
+    public static final ByteArrayCreator<EventStatisticsAndroid> CREATOR = new ByteArrayCreator<EventStatisticsAndroid>() {
 
         /**
          * {@inheritDoc}

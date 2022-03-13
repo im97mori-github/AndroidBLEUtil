@@ -22,6 +22,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class FitnessMachineControlPointCharacteristicDataTest {
@@ -153,6 +154,35 @@ public class FitnessMachineControlPointCharacteristicDataTest {
         assertEquals(result1.spinDownControlResultCode, result2.spinDownControlResultCode);
         assertArrayEquals(result1.spinDownControlResultParameter, result2.spinDownControlResultParameter);
         assertEquals(result1.setTargetedCadenceResultCode, result2.setTargetedCadenceResultCode);
+    }
+
+    @Test
+    public void test_constructor_00101() {
+        FitnessMachineControlPointCharacteristicData result1 = new FitnessMachineControlPointCharacteristicData();
+
+        assertEquals(0, result1.requestControlResultCode);
+        assertEquals(0, result1.resetResultCode);
+        assertEquals(0, result1.setTargetSpeedResultCode);
+        assertEquals(0, result1.setTargetInclinationResultCode);
+        assertEquals(0, result1.setTargetResistanceLevelResultCode);
+        assertEquals(0, result1.setTargetPowerResultCode);
+        assertEquals(0, result1.setTargetHeartRateResultCode);
+        assertEquals(0, result1.startOrResumeResultCode);
+        assertEquals(0, result1.stopOrPauseResultCode);
+        assertEquals(0, result1.setTargetedExpendedEnergyResultCode);
+        assertEquals(0, result1.setTargetedNumberOfStepsResultCode);
+        assertEquals(0, result1.setTargetedNumberOfStridesResultCode);
+        assertEquals(0, result1.setTargetedDistanceResultCode);
+        assertEquals(0, result1.setTargetedTrainingTimeResultCode);
+        assertEquals(0, result1.setTargetedTimeInTwoHeartRateZonesResultCode);
+        assertEquals(0, result1.setTargetedTimeInThreeHeartRateZonesResultCode);
+        assertEquals(0, result1.setTargetedTimeInFiveHeartRateZonesResultCode);
+        assertEquals(0, result1.setIndoorBikeSimulationParametersResultCode);
+        assertEquals(0, result1.setWheelCircumferenceResultCode);
+        assertEquals(0, result1.spinDownControlResultCode);
+        assertNull(result1.spinDownControlResultParameter);
+        assertEquals(0, result1.setTargetedCadenceResultCode);
+        assertNull(result1.highPriorityResponseData);
     }
 
     @Test

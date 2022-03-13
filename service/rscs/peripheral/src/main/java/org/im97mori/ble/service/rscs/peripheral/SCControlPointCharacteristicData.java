@@ -85,6 +85,12 @@ public class SCControlPointCharacteristicData extends CharacteristicData {
     public transient byte[] highPriorityResponseData;
 
     /**
+     * Constructor
+     */
+    public SCControlPointCharacteristicData() {
+    }
+
+    /**
      * @param descriptorDataList                               {@link DescriptorData} list
      * @param delay                                            response delay(millis)
      * @param setCumulativeValueResponseValue                  characteristic response code (Set Cumulative Value response)

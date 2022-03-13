@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
+import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 
 /**
  * Treadmill Data (Characteristics UUID: 0x2ACD)
@@ -14,9 +14,9 @@ import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 public class TreadmillDataAndroid extends TreadmillData implements Parcelable {
 
     /**
-     * @see MultiplePacketCreater
+     * @see MultiplePacketCreator
      */
-    public static final MultiplePacketCreater<TreadmillDataAndroid, TreadmillDataPacketAndroid> CREATOR = new MultiplePacketCreater<TreadmillDataAndroid, TreadmillDataPacketAndroid>() {
+    public static final MultiplePacketCreator<TreadmillDataAndroid, TreadmillDataPacketAndroid> CREATOR = new MultiplePacketCreator<TreadmillDataAndroid, TreadmillDataPacketAndroid>() {
 
         /**
          * {@inheritDoc}

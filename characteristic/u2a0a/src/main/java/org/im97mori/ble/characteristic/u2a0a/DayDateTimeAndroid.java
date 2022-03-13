@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.DAY_DATE_TIME_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DAY_DATE_TIME_CHARAC
 public class DayDateTimeAndroid extends DayDateTime implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<DayDateTimeAndroid> CREATOR = new ByteArrayCreater<DayDateTimeAndroid>() {
+    public static final ByteArrayCreator<DayDateTimeAndroid> CREATOR = new ByteArrayCreator<DayDateTimeAndroid>() {
 
         /**
          * {@inheritDoc}

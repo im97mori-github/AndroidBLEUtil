@@ -25,7 +25,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a37.HeartRateMeasurement;
 import org.im97mori.ble.characteristic.u2a38.BodySensorLocation;
@@ -49,7 +48,7 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
      *
      * @param <T> subclass of {@link HeartRateServiceMockCallback}
      */
-    public static class Builder<T extends HeartRateServiceMockCallback> extends AbstractServiceMockCallback.Builder<HeartRateServiceMockCallback> {
+    public static class Builder<T extends HeartRateServiceMockCallback> extends AbstractServiceMockCallback.Builder<HeartRateServiceMockCallback, ServiceData> {
 
         /**
          * Heart Rate Measurement data
@@ -81,8 +80,8 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Heart Rate Measurement notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -199,7 +198,7 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
          */
         @NonNull
         @Override
-        public MockData createMockData() {
+        public ServiceData createData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
             if (mHeartRateMeasurementData == null) {
@@ -221,8 +220,7 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
                 }
             }
 
-            ServiceData serviceData = new ServiceData(HEART_RATE_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ServiceData(HEART_RATE_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
         }
 
         /**
@@ -231,25 +229,17 @@ public class HeartRateServiceMockCallback extends AbstractServiceMockCallback {
         @NonNull
         @Override
         public HeartRateServiceMockCallback build() {
-            return new HeartRateServiceMockCallback(createMockData(), false);
+            return new HeartRateServiceMockCallback(createData(), false);
         }
 
     }
 
     /**
-     * @param serviceData   {@link ServiceData} instance
-     * @param isFallback fallback flag
+     * @param serviceData {@link ServiceData} instance
+     * @param isFallback  fallback flag
      */
     public HeartRateServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public HeartRateServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

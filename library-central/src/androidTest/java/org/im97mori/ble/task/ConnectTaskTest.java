@@ -9,7 +9,7 @@ import android.os.Message;
 import androidx.annotation.NonNull;
 import androidx.test.filters.RequiresDevice;
 
-import org.im97mori.ble.BLECallbackDistributer;
+import org.im97mori.ble.BLECallbackDistributor;
 import org.im97mori.ble.BaseBLECallback;
 import org.im97mori.ble.TaskHandler;
 import org.im97mori.ble.test.central.AbstractCentralTest;
@@ -94,7 +94,7 @@ public class ConnectTaskTest extends AbstractCentralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ConnectTask task = new ConnectTask(MOCK_BLE_CONNECTION, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ConnectTask task = new ConnectTask(MOCK_BLE_CONNECTION, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, BLECallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -117,7 +117,7 @@ public class ConnectTaskTest extends AbstractCentralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ConnectTask task = new ConnectTask(MOCK_BLE_CONNECTION, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ConnectTask task = new ConnectTask(MOCK_BLE_CONNECTION, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, BLECallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -149,7 +149,7 @@ public class ConnectTaskTest extends AbstractCentralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            ConnectTask task = new ConnectTask(MOCK_BLE_CONNECTION, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            ConnectTask task = new ConnectTask(MOCK_BLE_CONNECTION, mockTaskHandler, false, ConnectTask.TIMEOUT_MILLIS, BLECallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());

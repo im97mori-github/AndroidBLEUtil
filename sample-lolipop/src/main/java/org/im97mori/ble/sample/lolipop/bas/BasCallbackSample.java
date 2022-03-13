@@ -42,7 +42,7 @@ public class BasCallbackSample extends BatteryServiceMockCallback implements Bat
         @NonNull
         @Override
         public BasCallbackSample build() {
-            return new BasCallbackSample(createMockData(), mSampleCallback);
+            return new BasCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -73,9 +73,9 @@ public class BasCallbackSample extends BatteryServiceMockCallback implements Bat
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

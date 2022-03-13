@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TIME_EXPONENTIAL_8_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_EXPONENTIAL_8_C
 public class TimeExponential8Android extends TimeExponential8 implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TimeExponential8Android> CREATOR = new ByteArrayCreater<TimeExponential8Android>() {
+    public static final ByteArrayCreator<TimeExponential8Android> CREATOR = new ByteArrayCreator<TimeExponential8Android>() {
 
         /**
          * {@inheritDoc}

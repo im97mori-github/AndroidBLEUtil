@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.COUNTRY_CODE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.COUNTRY_CODE_CHARACT
 public class CountryCodeAndroid extends CountryCode implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CountryCodeAndroid> CREATOR = new ByteArrayCreater<CountryCodeAndroid>() {
+    public static final ByteArrayCreator<CountryCodeAndroid> CREATOR = new ByteArrayCreator<CountryCodeAndroid>() {
 
         /**
          * {@inheritDoc}

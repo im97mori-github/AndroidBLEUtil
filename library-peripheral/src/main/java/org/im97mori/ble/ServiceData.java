@@ -9,9 +9,8 @@ import androidx.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -61,7 +60,7 @@ public class ServiceData implements Parcelable {
      * {@link CharacteristicData} list
      */
     @SerializedName("characteristic_data_list")
-    public List<CharacteristicData> characteristicDataList = new ArrayList<>();
+    public List<CharacteristicData> characteristicDataList;
 
     /**
      * Constructor
@@ -92,6 +91,13 @@ public class ServiceData implements Parcelable {
     }
 
     /**
+     * @return {@link #characteristicDataList}
+     */
+    public List<CharacteristicData> getCharacteristicDataList() {
+        return characteristicDataList;
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -115,7 +121,9 @@ public class ServiceData implements Parcelable {
      */
     @Override
     public int hashCode() {
-        return uuid.hashCode() ^ Integer.valueOf(type).hashCode() ^ Arrays.hashCode(characteristicDataList.toArray());
+        return Objects.hashCode(uuid)
+                ^ Integer.valueOf(type).hashCode()
+                ^ Objects.hashCode(characteristicDataList);
     }
 
     /**
@@ -126,7 +134,9 @@ public class ServiceData implements Parcelable {
         boolean result = false;
         if (obj instanceof ServiceData) {
             ServiceData target = (ServiceData) obj;
-            result = uuid.equals(target.uuid) && type == target.type && Arrays.equals(characteristicDataList.toArray(), target.characteristicDataList.toArray());
+            result = Objects.equals(uuid, target.uuid)
+                    && type == target.type
+                    && Objects.equals(characteristicDataList, target.characteristicDataList);
         }
         return result;
     }

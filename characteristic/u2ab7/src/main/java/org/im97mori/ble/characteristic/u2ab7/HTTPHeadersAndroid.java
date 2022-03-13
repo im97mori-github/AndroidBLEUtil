@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.HTTP_HEADERS_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HTTP_HEADERS_CHARACT
 public class HTTPHeadersAndroid extends HTTPHeaders implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HTTPHeadersAndroid> CREATOR = new ByteArrayCreater<HTTPHeadersAndroid>() {
+    public static final ByteArrayCreator<HTTPHeadersAndroid> CREATOR = new ByteArrayCreator<HTTPHeadersAndroid>() {
 
         /**
          * {@inheritDoc}

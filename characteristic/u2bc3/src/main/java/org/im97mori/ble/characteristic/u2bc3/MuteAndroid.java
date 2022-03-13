@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.MUTE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.MUTE_CHARACTERISTIC;
 public class MuteAndroid extends Mute implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<MuteAndroid> CREATOR = new ByteArrayCreater<MuteAndroid>() {
+    public static final ByteArrayCreator<MuteAndroid> CREATOR = new ByteArrayCreator<MuteAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.DAY_OF_WEEK_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DAY_OF_WEEK_CHARACTE
 public class DayOfWeekAndroid extends DayOfWeek implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<DayOfWeekAndroid> CREATOR = new ByteArrayCreater<DayOfWeekAndroid>() {
+    public static final ByteArrayCreator<DayOfWeekAndroid> CREATOR = new ByteArrayCreator<DayOfWeekAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TREADMILL_DATA_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TREADMILL_DATA_CHARA
 public class TreadmillDataPacketAndroid extends TreadmillDataPacket implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TreadmillDataPacketAndroid> CREATOR = new ByteArrayCreater<TreadmillDataPacketAndroid>() {
+    public static final ByteArrayCreator<TreadmillDataPacketAndroid> CREATOR = new ByteArrayCreator<TreadmillDataPacketAndroid>() {
 
         /**
          * {@inheritDoc}

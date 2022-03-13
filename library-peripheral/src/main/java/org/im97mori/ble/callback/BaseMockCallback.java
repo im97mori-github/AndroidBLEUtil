@@ -35,6 +35,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -126,9 +127,9 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      * @param isFallback   fallback flag
      */
     public BaseMockCallback(@NonNull List<MockData> mockDataList, boolean isFallback) {
-        mMockData = new MockData();
+        mMockData = new MockData(new LinkedList<>());
         for (MockData mockData : mockDataList) {
-            mMockData.serviceDataList.addAll(mockData.serviceDataList);
+            mMockData.serviceDataList.addAll(mockData.getServiceDataList());
         }
         mIsFallback = isFallback;
     }
@@ -147,9 +148,9 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         BluetoothGattDescriptor bluetoothGattDescriptor;
         Bundle bundle;
 
-        for (ServiceData serviceData : mMockData.serviceDataList) {
+        for (ServiceData serviceData : mMockData.getServiceDataList()) {
             bluetoothGattService = new BluetoothGattService(serviceData.uuid, serviceData.type);
-            for (CharacteristicData characteristicData : serviceData.characteristicDataList) {
+            for (CharacteristicData characteristicData : serviceData.getCharacteristicDataList()) {
                 characteristicData.currentData = null;
                 characteristicData.temporaryData.clear();
                 bluetoothGattCharacteristic = new BluetoothGattCharacteristic(
@@ -157,7 +158,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                         , characteristicData.property
                         , characteristicData.permission);
                 bluetoothGattCharacteristic.setValue(characteristicData.getBytes());
-                for (DescriptorData descriptorData : characteristicData.descriptorDataList) {
+                for (DescriptorData descriptorData : characteristicData.getDescriptorDataList()) {
                     bluetoothGattDescriptor = new BluetoothGattDescriptor(descriptorData.uuid
                             , descriptorData.permission);
                     bluetoothGattDescriptor.setValue(descriptorData.data);
@@ -639,9 +640,9 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      * @param bleServerConnection      {@link BLEServerConnection} instance
      * @param device                   BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param argument                 callback argument
      */
     protected synchronized void repeatNotification(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @Nullable Bundle argument) {

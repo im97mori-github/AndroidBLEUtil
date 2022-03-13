@@ -94,8 +94,8 @@ public class BatteryService extends AbstractCentralService {
     /**
      * get service index
      *
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @return service index
      */
     @Nullable

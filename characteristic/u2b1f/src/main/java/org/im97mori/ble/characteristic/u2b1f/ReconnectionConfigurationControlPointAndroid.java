@@ -7,7 +7,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC;
 
@@ -19,9 +19,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_CONFIGU
 public class ReconnectionConfigurationControlPointAndroid extends ReconnectionConfigurationControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ReconnectionConfigurationControlPointAndroid> CREATOR = new ByteArrayCreater<ReconnectionConfigurationControlPointAndroid>() {
+    public static final ByteArrayCreator<ReconnectionConfigurationControlPointAndroid> CREATOR = new ByteArrayCreator<ReconnectionConfigurationControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

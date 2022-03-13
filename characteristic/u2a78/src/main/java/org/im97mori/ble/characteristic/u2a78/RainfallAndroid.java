@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RAINFALL_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RAINFALL_CHARACTERIS
 public class RainfallAndroid extends Rainfall implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<RainfallAndroid> CREATOR = new ByteArrayCreater<RainfallAndroid>() {
+    public static final ByteArrayCreator<RainfallAndroid> CREATOR = new ByteArrayCreator<RainfallAndroid>() {
 
         /**
          * {@inheritDoc}

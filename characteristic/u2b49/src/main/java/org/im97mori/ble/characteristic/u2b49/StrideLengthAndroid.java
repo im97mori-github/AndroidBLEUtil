@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.STRIDE_LENGTH_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.STRIDE_LENGTH_CHARAC
 public class StrideLengthAndroid extends StrideLength implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<StrideLengthAndroid> CREATOR = new ByteArrayCreater<StrideLengthAndroid>() {
+    public static final ByteArrayCreator<StrideLengthAndroid> CREATOR = new ByteArrayCreator<StrideLengthAndroid>() {
 
         /**
          * {@inheritDoc}

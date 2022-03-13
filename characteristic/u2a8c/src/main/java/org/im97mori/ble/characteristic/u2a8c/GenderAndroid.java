@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.GENDER_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.GENDER_CHARACTERISTI
 public class GenderAndroid extends Gender implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<GenderAndroid> CREATOR = new ByteArrayCreater<GenderAndroid>() {
+    public static final ByteArrayCreator<GenderAndroid> CREATOR = new ByteArrayCreator<GenderAndroid>() {
 
         /**
          * {@inheritDoc}

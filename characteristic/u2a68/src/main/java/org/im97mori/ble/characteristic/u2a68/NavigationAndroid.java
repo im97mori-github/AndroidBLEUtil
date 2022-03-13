@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.NAVIGATION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.NAVIGATION_CHARACTER
 public class NavigationAndroid extends Navigation implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<NavigationAndroid> CREATOR = new ByteArrayCreater<NavigationAndroid>() {
+    public static final ByteArrayCreator<NavigationAndroid> CREATOR = new ByteArrayCreator<NavigationAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TIME_CHANGE_LOG_DATA_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_CHANGE_LOG_DATA
 public class TimeChangeLogDataAndroid extends TimeChangeLogData implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TimeChangeLogDataAndroid> CREATOR = new ByteArrayCreater<TimeChangeLogDataAndroid>() {
+    public static final ByteArrayCreator<TimeChangeLogDataAndroid> CREATOR = new ByteArrayCreator<TimeChangeLogDataAndroid>() {
 
         /**
          * {@inheritDoc}

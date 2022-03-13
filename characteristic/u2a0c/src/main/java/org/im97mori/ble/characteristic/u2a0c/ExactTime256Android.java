@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.EXACT_TIME_256_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.EXACT_TIME_256_CHARA
 public class ExactTime256Android extends ExactTime256 implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ExactTime256Android> CREATOR = new ByteArrayCreater<ExactTime256Android>() {
+    public static final ByteArrayCreator<ExactTime256Android> CREATOR = new ByteArrayCreator<ExactTime256Android>() {
 
         /**
          * {@inheritDoc}

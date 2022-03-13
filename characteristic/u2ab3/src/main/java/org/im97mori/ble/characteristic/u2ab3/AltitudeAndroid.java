@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ALTITUDE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ALTITUDE_CHARACTERIS
 public class AltitudeAndroid extends Altitude implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AltitudeAndroid> CREATOR = new ByteArrayCreater<AltitudeAndroid>() {
+    public static final ByteArrayCreator<AltitudeAndroid> CREATOR = new ByteArrayCreator<AltitudeAndroid>() {
 
         /**
          * {@inheritDoc}

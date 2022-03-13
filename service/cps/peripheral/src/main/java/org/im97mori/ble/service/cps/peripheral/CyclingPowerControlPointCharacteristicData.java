@@ -206,6 +206,12 @@ public class CyclingPowerControlPointCharacteristicData extends CharacteristicDa
     public transient byte[] highPriorityResponseData;
 
     /**
+     * Constructor
+     */
+    public CyclingPowerControlPointCharacteristicData() {
+    }
+
+    /**
      * @param descriptorDataList                                            {@link DescriptorData} list
      * @param responseCode                                                  response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
      * @param delay                                                         response delay(millis)

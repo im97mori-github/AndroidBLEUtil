@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_FIRST_CREATED_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_FIRST_CREATED
 public class ObjectFirstCreatedAndroid extends ObjectFirstCreated implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ObjectFirstCreatedAndroid> CREATOR = new ByteArrayCreater<ObjectFirstCreatedAndroid>() {
+    public static final ByteArrayCreator<ObjectFirstCreatedAndroid> CREATOR = new ByteArrayCreator<ObjectFirstCreatedAndroid>() {
 
         /**
          * {@inheritDoc}

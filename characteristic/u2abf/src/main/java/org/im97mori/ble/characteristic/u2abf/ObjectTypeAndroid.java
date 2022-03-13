@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import java.util.UUID;
 
@@ -19,9 +19,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_TYPE_CHARACTE
 public class ObjectTypeAndroid extends ObjectType implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ObjectTypeAndroid> CREATOR = new ByteArrayCreater<ObjectTypeAndroid>() {
+    public static final ByteArrayCreator<ObjectTypeAndroid> CREATOR = new ByteArrayCreator<ObjectTypeAndroid>() {
 
         /**
          * {@inheritDoc}

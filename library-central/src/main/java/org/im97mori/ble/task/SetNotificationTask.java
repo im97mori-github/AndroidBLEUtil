@@ -69,7 +69,7 @@ public class SetNotificationTask extends AbstractBLETask {
     private final UUID mServiceUUID;
 
     /**
-     * task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * task target service instance id {@link BluetoothGattService#getInstanceId()}
      */
     private Integer mServiceInstanceId;
 
@@ -79,29 +79,29 @@ public class SetNotificationTask extends AbstractBLETask {
     private final UUID mCharacteristicUUID;
 
     /**
-     * task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      */
     private Integer mCharacteristicInstanceId;
 
     /**
-     * {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd paramater
+     * {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd parameter
      */
     private final boolean mNotificationStatus;
 
     /**
      * callback argument
      */
-    private final Bundle mArgumemnt;
+    private final Bundle mArgument;
 
     /**
      * @param bleConnection            task target {@link BLEConnection} instance
      * @param bluetoothGatt            task target {@link BluetoothGatt} instance
      * @param taskHandler              task target {@link TaskHandler} instance
      * @param serviceUUID              task target service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       task target characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param notificationStatus       {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd paramater
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param notificationStatus       {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd parameter
      * @param argument                 callback argument
      */
     public SetNotificationTask(@NonNull BLEConnection bleConnection
@@ -121,7 +121,7 @@ public class SetNotificationTask extends AbstractBLETask {
         mCharacteristicUUID = characteristicUUID;
         mCharacteristicInstanceId = characteristicInstanceId;
         mNotificationStatus = notificationStatus;
-        mArgumemnt = argument;
+        mArgument = argument;
     }
 
     /**
@@ -197,7 +197,7 @@ public class SetNotificationTask extends AbstractBLETask {
                                 , mCharacteristicUUID
                                 , mCharacteristicInstanceId
                                 , mNotificationStatus
-                                , mArgumemnt);
+                                , mArgument);
                     } else {
                         nextProgress = PROGRESS_BUSY;
                         mBLEConnection.getBLECallback().onSetNotificationFailed(getTaskId()
@@ -208,7 +208,7 @@ public class SetNotificationTask extends AbstractBLETask {
                                 , mCharacteristicInstanceId
                                 , mNotificationStatus
                                 , STATUS_CHARACTERISTIC_NOT_FOUND
-                                , mArgumemnt);
+                                , mArgument);
                     }
                 }
                 mCurrentProgress = nextProgress;
@@ -241,7 +241,7 @@ public class SetNotificationTask extends AbstractBLETask {
                 , mCharacteristicInstanceId
                 , mNotificationStatus
                 , STATUS_CANCEL
-                , mArgumemnt);
+                , mArgument);
     }
 
 }

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BATTERY_LEVEL_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BATTERY_LEVEL_CHARAC
 public class BatteryLevelAndroid extends BatteryLevel implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BatteryLevelAndroid> CREATOR = new ByteArrayCreater<BatteryLevelAndroid>() {
+    public static final ByteArrayCreator<BatteryLevelAndroid> CREATOR = new ByteArrayCreator<BatteryLevelAndroid>() {
 
         /**
          * {@inheritDoc}

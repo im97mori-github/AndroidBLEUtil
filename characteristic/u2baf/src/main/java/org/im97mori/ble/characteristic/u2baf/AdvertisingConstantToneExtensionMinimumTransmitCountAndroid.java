@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ADVERTISING_CONSTANT_TONE_EXTENSION_MINIMUM_TRANSMIT_COUNT_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ADVERTISING_CONSTANT
 public class AdvertisingConstantToneExtensionMinimumTransmitCountAndroid extends AdvertisingConstantToneExtensionMinimumTransmitCount implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AdvertisingConstantToneExtensionMinimumTransmitCountAndroid> CREATOR = new ByteArrayCreater<AdvertisingConstantToneExtensionMinimumTransmitCountAndroid>() {
+    public static final ByteArrayCreator<AdvertisingConstantToneExtensionMinimumTransmitCountAndroid> CREATOR = new ByteArrayCreator<AdvertisingConstantToneExtensionMinimumTransmitCountAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a07.TxPowerLevelAndroid;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
 import org.im97mori.ble.service.tps.central.TxPowerServiceCallback;
@@ -40,7 +40,7 @@ public class TpsCallbackSample extends TxPowerServiceMockCallback implements TxP
         @NonNull
         @Override
         public TpsCallbackSample build() {
-            return new TpsCallbackSample(createMockData(), mSampleCallback);
+            return new TpsCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -48,8 +48,8 @@ public class TpsCallbackSample extends TxPowerServiceMockCallback implements TxP
 
     private final SampleCallback mSampleCallback;
 
-    TpsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    TpsCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -71,9 +71,9 @@ public class TpsCallbackSample extends TxPowerServiceMockCallback implements TxP
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CALL_CONTROL_POINT_OPTIONAL_OPCODES_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CALL_CONTROL_POINT_O
 public class CallControlPointOptionalOpcodesAndroid extends CallControlPointOptionalOpcodes implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CallControlPointOptionalOpcodesAndroid> CREATOR = new ByteArrayCreater<CallControlPointOptionalOpcodesAndroid>() {
+    public static final ByteArrayCreator<CallControlPointOptionalOpcodesAndroid> CREATOR = new ByteArrayCreator<CallControlPointOptionalOpcodesAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.GENERIC_LEVEL_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.GENERIC_LEVEL_CHARAC
 public class GenericLevelAndroid extends GenericLevel implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<GenericLevelAndroid> CREATOR = new ByteArrayCreater<GenericLevelAndroid>() {
+    public static final ByteArrayCreator<GenericLevelAndroid> CREATOR = new ByteArrayCreator<GenericLevelAndroid>() {
 
         /**
          * {@inheritDoc}

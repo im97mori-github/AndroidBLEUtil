@@ -119,7 +119,7 @@ public class RscpCentralSampleActivity extends BaseActivity implements View.OnCl
         if (result == null) {
             text = prefix + "\nnull";
         } else {
-            text = prefix + "\n" + result.toString();
+            text = prefix + "\n" + result;
         }
         mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
         mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -246,7 +246,7 @@ public class RscpCentralSampleActivity extends BaseActivity implements View.OnCl
     }
 
     @Override
-    public void onCallbacked(final Pair<String, String> log) {
+    public void onCallback(final Pair<String, String> log) {
         runOnUiThread(() -> {
             mAdapter.add(log);
             mListView.smoothScrollToPosition(mAdapter.getCount());

@@ -8,7 +8,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * object size (Characteristics UUID: 0x2AC0)
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class ObjectSizeAndroid extends ObjectSize implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ObjectSizeAndroid> CREATOR = new ByteArrayCreater<ObjectSizeAndroid>() {
+    public static final ByteArrayCreator<ObjectSizeAndroid> CREATOR = new ByteArrayCreator<ObjectSizeAndroid>() {
 
         /**
          * {@inheritDoc}

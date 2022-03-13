@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_RUNTIME_IN_A_CURRENT_RANGE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_RUNTIME_IN_
 public class RelativeRuntimeInACurrentRangeAndroid extends RelativeRuntimeInACurrentRange implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<RelativeRuntimeInACurrentRangeAndroid> CREATOR = new ByteArrayCreater<RelativeRuntimeInACurrentRangeAndroid>() {
+    public static final ByteArrayCreator<RelativeRuntimeInACurrentRangeAndroid> CREATOR = new ByteArrayCreator<RelativeRuntimeInACurrentRangeAndroid>() {
 
         /**
          * {@inheritDoc}

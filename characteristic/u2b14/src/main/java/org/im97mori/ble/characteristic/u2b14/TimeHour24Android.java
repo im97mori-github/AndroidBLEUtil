@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TIME_HOUR_24_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_HOUR_24_CHARACT
 public class TimeHour24Android extends TimeHour24 implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TimeHour24Android> CREATOR = new ByteArrayCreater<TimeHour24Android>() {
+    public static final ByteArrayCreator<TimeHour24Android> CREATOR = new ByteArrayCreator<TimeHour24Android>() {
 
         /**
          * {@inheritDoc}

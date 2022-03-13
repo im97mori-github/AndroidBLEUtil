@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SYSTEM_ID_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SYSTEM_ID_CHARACTERI
 public class SystemIdAndroid extends SystemId implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SystemIdAndroid> CREATOR = new ByteArrayCreater<SystemIdAndroid>() {
+    public static final ByteArrayCreator<SystemIdAndroid> CREATOR = new ByteArrayCreator<SystemIdAndroid>() {
 
         /**
          * {@inheritDoc}

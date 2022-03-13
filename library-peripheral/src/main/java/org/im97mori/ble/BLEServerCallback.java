@@ -160,9 +160,9 @@ public interface BLEServerCallback {
      * @param bleServerConnection      {@link BLEServerConnection} instance
      * @param device                   BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param value                    {@link BluetoothGattDescriptor#ENABLE_NOTIFICATION_VALUE}
      *                                 {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}
      *                                 {@link BluetoothGattDescriptor#DISABLE_NOTIFICATION_VALUE}
@@ -178,9 +178,9 @@ public interface BLEServerCallback {
      * @param bleServerConnection      {@link BLEServerConnection} instance
      * @param device                   BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link org.im97mori.ble.task.NotificationTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.NotificationTask#STATUS_CHARACTERISTIC_NOT_FOUND}
      *                                 {@link org.im97mori.ble.task.NotificationTask#STATUS_NOTIFY_CHARACTERISTIC_CHANGED}
@@ -196,9 +196,9 @@ public interface BLEServerCallback {
      * @param bleServerConnection      {@link BLEServerConnection} instance
      * @param device                   BLE device
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      * @see org.im97mori.ble.task.NotificationTask

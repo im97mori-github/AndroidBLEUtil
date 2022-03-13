@@ -6,7 +6,7 @@ import android.os.Parcel;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * <p>
@@ -18,9 +18,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class BigInfoAndroid extends BigInfo implements AdvertisingDataInterfaceAndroid {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BigInfoAndroid> CREATOR = new ByteArrayCreater<BigInfoAndroid>() {
+    public static final ByteArrayCreator<BigInfoAndroid> CREATOR = new ByteArrayCreator<BigInfoAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -65,7 +65,7 @@ public class BigInfoAndroid extends BigInfo implements AdvertisingDataInterfaceA
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
-     * @param length 1st octed of Advertising Data
+     * @param length 1st octet of Advertising Data
      */
     public BigInfoAndroid(@NonNull byte[] data
             , int offset

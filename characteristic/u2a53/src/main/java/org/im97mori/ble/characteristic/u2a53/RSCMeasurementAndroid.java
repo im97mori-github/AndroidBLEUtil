@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RSC_MEASUREMENT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RSC_MEASUREMENT_CHAR
 public class RSCMeasurementAndroid extends RSCMeasurement implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<RSCMeasurementAndroid> CREATOR = new ByteArrayCreater<RSCMeasurementAndroid>() {
+    public static final ByteArrayCreator<RSCMeasurementAndroid> CREATOR = new ByteArrayCreator<RSCMeasurementAndroid>() {
 
         /**
          * {@inheritDoc}

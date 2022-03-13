@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BEARER_TECHNOLOGY_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BEARER_TECHNOLOGY_CH
 public class BearerTechnologyAndroid extends BearerTechnology implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BearerTechnologyAndroid> CREATOR = new ByteArrayCreater<BearerTechnologyAndroid>() {
+    public static final ByteArrayCreator<BearerTechnologyAndroid> CREATOR = new ByteArrayCreator<BearerTechnologyAndroid>() {
 
         /**
          * {@inheritDoc}

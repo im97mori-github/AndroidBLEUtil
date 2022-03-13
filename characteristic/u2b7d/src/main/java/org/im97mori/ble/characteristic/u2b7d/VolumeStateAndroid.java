@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.VOLUME_STATE_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.VOLUME_STATE_CHARACT
 public class VolumeStateAndroid extends VolumeState implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<VolumeStateAndroid> CREATOR = new ByteArrayCreater<VolumeStateAndroid>() {
+    public static final ByteArrayCreator<VolumeStateAndroid> CREATOR = new ByteArrayCreator<VolumeStateAndroid>() {
 
         /**
          * {@inheritDoc}

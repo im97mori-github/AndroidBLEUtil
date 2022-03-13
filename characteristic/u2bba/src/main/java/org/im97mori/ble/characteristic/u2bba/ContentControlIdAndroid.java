@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CONTENT_CONTROL_ID_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CONTENT_CONTROL_ID_C
 public class ContentControlIdAndroid extends ContentControlId implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ContentControlIdAndroid> CREATOR = new ByteArrayCreater<ContentControlIdAndroid>() {
+    public static final ByteArrayCreator<ContentControlIdAndroid> CREATOR = new ByteArrayCreator<ContentControlIdAndroid>() {
 
         /**
          * {@inheritDoc}

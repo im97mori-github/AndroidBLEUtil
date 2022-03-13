@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RC_SETTINGS_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RC_SETTINGS_CHARACTE
 public class RCSettingsAndroid extends RCSettings implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<RCSettingsAndroid> CREATOR = new ByteArrayCreater<RCSettingsAndroid>() {
+    public static final ByteArrayCreator<RCSettingsAndroid> CREATOR = new ByteArrayCreator<RCSettingsAndroid>() {
 
         /**
          * {@inheritDoc}

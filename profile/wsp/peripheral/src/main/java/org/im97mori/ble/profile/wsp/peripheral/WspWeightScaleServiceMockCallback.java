@@ -1,5 +1,8 @@
 package org.im97mori.ble.profile.wsp.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_MEASUREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
@@ -12,7 +15,7 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.callback.NotificationData;
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurement;
 import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
@@ -22,9 +25,6 @@ import org.im97mori.ble.task.NotificationTask;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_MEASUREMENT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 
 /**
  * Weight Scale Profile specific {@link WeightScaleServiceMockCallback}
@@ -71,7 +71,7 @@ public class WspWeightScaleServiceMockCallback extends WeightScaleServiceMockCal
             if (mUserDataServiceMockCallback == null) {
                 throw new RuntimeException("no UserDataServiceMockCallback instance");
             }
-            return new WspWeightScaleServiceMockCallback(createMockData(), false, mUserDataServiceMockCallback);
+            return new WspWeightScaleServiceMockCallback(createData(), false, mUserDataServiceMockCallback);
         }
 
     }
@@ -79,13 +79,13 @@ public class WspWeightScaleServiceMockCallback extends WeightScaleServiceMockCal
     private final UserDataServiceMockCallback mUserDataServiceMockCallback;
 
     /**
-     * @param mockData                    {@link MockData} instance
+     * @param serviceData                 {@link ServiceData} instance
      * @param isFallback                  fallback flag
      * @param userDataServiceMockCallback set if multiple user supported
-     * @see WeightScaleServiceMockCallback#WeightScaleServiceMockCallback(MockData, boolean)
+     * @see WeightScaleServiceMockCallback#WeightScaleServiceMockCallback(ServiceData, boolean)
      */
-    public WspWeightScaleServiceMockCallback(@NonNull MockData mockData, boolean isFallback, @Nullable UserDataServiceMockCallback userDataServiceMockCallback) {
-        super(mockData, isFallback);
+    public WspWeightScaleServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback, @Nullable UserDataServiceMockCallback userDataServiceMockCallback) {
+        super(serviceData, isFallback);
         mUserDataServiceMockCallback = userDataServiceMockCallback;
     }
 

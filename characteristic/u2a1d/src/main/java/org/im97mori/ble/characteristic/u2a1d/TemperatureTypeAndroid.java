@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_TYPE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_TYPE_CHA
 public class TemperatureTypeAndroid extends TemperatureType implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TemperatureTypeAndroid> CREATOR = new ByteArrayCreater<TemperatureTypeAndroid>() {
+    public static final ByteArrayCreator<TemperatureTypeAndroid> CREATOR = new ByteArrayCreator<TemperatureTypeAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a2c.MagneticDeclinationAndroid;
 import org.im97mori.ble.characteristic.u2a6c.ElevationAndroid;
 import org.im97mori.ble.characteristic.u2a6d.PressureAndroid;
@@ -67,8 +67,7 @@ public class EssCallbackSample extends EnvironmentalSensingServiceMockCallback i
         @NonNull
         @Override
         public EssCallbackSample build() {
-            return new EssCallbackSample(createMockData()
-                    , mSampleCallback);
+            return new EssCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -77,10 +76,9 @@ public class EssCallbackSample extends EnvironmentalSensingServiceMockCallback i
 
     private final SampleCallback mSampleCallback;
 
-    EssCallbackSample(@NonNull MockData mockData
+    EssCallbackSample(@NonNull ServiceData serviceData
             , SampleCallback sampleCallback) {
-        super(mockData
-                , false);
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -102,10 +100,10 @@ public class EssCallbackSample extends EnvironmentalSensingServiceMockCallback i
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now
+            mSampleCallback.onCallback(Pair.create(now
                     , stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now
+            mSampleCallback.onCallback(Pair.create(now
                     , stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n"
                             , logs)));
         }

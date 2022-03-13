@@ -8,7 +8,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * object properties (Characteristics UUID: 0x2AC4)
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class ObjectPropertiesAndroid extends ObjectProperties implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ObjectPropertiesAndroid> CREATOR = new ByteArrayCreater<ObjectPropertiesAndroid>() {
+    public static final ByteArrayCreator<ObjectPropertiesAndroid> CREATOR = new ByteArrayCreator<ObjectPropertiesAndroid>() {
 
         /**
          * {@inheritDoc}

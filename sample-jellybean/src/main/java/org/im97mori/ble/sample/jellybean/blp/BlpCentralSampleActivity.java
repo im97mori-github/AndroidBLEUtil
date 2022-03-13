@@ -125,9 +125,9 @@ public class BlpCentralSampleActivity extends BaseActivity implements View.OnCli
             mBloodPressureProfile.getManufacturerNameString();
         } else if (R.id.read_model_number == item.getItemId()) {
             mBloodPressureProfile.getModelNumberString();
-        } else if (R.id.start_indicate_blood_pressure_mesurement == item.getItemId()) {
+        } else if (R.id.start_indicate_blood_pressure_measurement == item.getItemId()) {
             mBloodPressureProfile.startBloodPressureMeasurementIndication();
-        } else if (R.id.stop_indicate_blood_pressure_mesurement == item.getItemId()) {
+        } else if (R.id.stop_indicate_blood_pressure_measurement == item.getItemId()) {
             mBloodPressureProfile.stopBloodPressureMeasurementIndication();
         } else if (R.id.start_notificate_intermediate_cuff_pressure == item.getItemId()) {
             mBloodPressureProfile.startIntermediateCuffPressureNotification();
@@ -189,7 +189,7 @@ public class BlpCentralSampleActivity extends BaseActivity implements View.OnCli
     }
 
     @Override
-    public void onCallbacked(final Pair<String, String> log) {
+    public void onCallback(final Pair<String, String> log) {
         runOnUiThread(() -> {
             mAdapter.add(log);
             mListView.smoothScrollToPosition(mAdapter.getCount());

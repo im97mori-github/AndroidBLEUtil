@@ -104,9 +104,9 @@ public class ReadCharacteristicTask extends AbstractBLETask {
      * create read characteristic success message
      *
      * @param serviceUUID              target service UUID
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       target characteristic UUID
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param values                   {@link BluetoothGattCharacteristic#getValue()}
      * @return read characteristic success {@link Message} instance
      */
@@ -128,9 +128,9 @@ public class ReadCharacteristicTask extends AbstractBLETask {
      * create read characteristic error message
      *
      * @param serviceUUID              target service UUID
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       target characteristic UUID
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link android.bluetooth.BluetoothGattCallback#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
      * @return read characteristic error {@link Message} instance
      */
@@ -169,7 +169,7 @@ public class ReadCharacteristicTask extends AbstractBLETask {
     private final UUID mServiceUUID;
 
     /**
-     * task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * task target service instance id {@link BluetoothGattService#getInstanceId()}
      */
     private Integer mServiceInstanceId;
 
@@ -179,7 +179,7 @@ public class ReadCharacteristicTask extends AbstractBLETask {
     private final UUID mCharacteristicUUID;
 
     /**
-     * task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      */
     private Integer mCharacteristicInstanceId;
 
@@ -198,9 +198,9 @@ public class ReadCharacteristicTask extends AbstractBLETask {
      * @param bluetoothGatt            task target {@link BluetoothGatt} instance
      * @param taskHandler              task target {@link TaskHandler} instance
      * @param serviceUUID              task target service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       task target characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */

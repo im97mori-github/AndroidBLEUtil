@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.UNREAD_ALERT_STATUS_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.UNREAD_ALERT_STATUS_
 public class UnreadAlertStatusAndroid extends UnreadAlertStatus implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<UnreadAlertStatusAndroid> CREATOR = new ByteArrayCreater<UnreadAlertStatusAndroid>() {
+    public static final ByteArrayCreator<UnreadAlertStatusAndroid> CREATOR = new ByteArrayCreator<UnreadAlertStatusAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -1,5 +1,9 @@
 package org.im97mori.ble.service.rtus.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TIME_UPDATE_STATE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.REFERENCE_TIME_UPDATE_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -13,7 +17,6 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a16.TimeUpdateControlPoint;
 import org.im97mori.ble.characteristic.u2a17.TimeUpdateState;
@@ -22,10 +25,6 @@ import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_UPDATE_STATE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.ServiceUUID.REFERENCE_TIME_UPDATE_SERVICE;
 
 /**
  * Reference Time Update Service (Service UUID: 0x1806) for Peripheral
@@ -37,7 +36,7 @@ public class ReferenceTimeUpdateServiceMockCallback extends AbstractServiceMockC
      *
      * @param <T> subclass of {@link ReferenceTimeUpdateServiceMockCallback}
      */
-    public static class Builder<T extends ReferenceTimeUpdateServiceMockCallback> extends AbstractServiceMockCallback.Builder<ReferenceTimeUpdateServiceMockCallback> {
+    public static class Builder<T extends ReferenceTimeUpdateServiceMockCallback> extends AbstractServiceMockCallback.Builder<ReferenceTimeUpdateServiceMockCallback, ServiceData> {
 
         /**
          * Time Update Control Point data
@@ -134,7 +133,7 @@ public class ReferenceTimeUpdateServiceMockCallback extends AbstractServiceMockC
          */
         @Override
         @NonNull
-        public MockData createMockData() {
+        public ServiceData createData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
             if (mTimeUpdateControlPointData == null) {
@@ -148,8 +147,7 @@ public class ReferenceTimeUpdateServiceMockCallback extends AbstractServiceMockC
                 characteristicList.add(mTimeUpdateStateData);
             }
 
-            ServiceData serviceData = new ServiceData(REFERENCE_TIME_UPDATE_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ServiceData(REFERENCE_TIME_UPDATE_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
         }
 
         /**
@@ -158,7 +156,7 @@ public class ReferenceTimeUpdateServiceMockCallback extends AbstractServiceMockC
         @Override
         @NonNull
         public ReferenceTimeUpdateServiceMockCallback build() {
-            return new ReferenceTimeUpdateServiceMockCallback(createMockData(), false);
+            return new ReferenceTimeUpdateServiceMockCallback(createData(), false);
         }
 
     }
@@ -168,15 +166,7 @@ public class ReferenceTimeUpdateServiceMockCallback extends AbstractServiceMockC
      * @param isFallback fallback flag
      */
     public ReferenceTimeUpdateServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public ReferenceTimeUpdateServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

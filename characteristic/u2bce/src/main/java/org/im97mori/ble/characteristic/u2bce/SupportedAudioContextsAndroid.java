@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_AUDIO_CONTEXTS_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_AUDIO_CONT
 public class SupportedAudioContextsAndroid extends SupportedAudioContexts implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SupportedAudioContextsAndroid> CREATOR = new ByteArrayCreater<SupportedAudioContextsAndroid>() {
+    public static final ByteArrayCreator<SupportedAudioContextsAndroid> CREATOR = new ByteArrayCreator<SupportedAudioContextsAndroid>() {
 
         /**
          * {@inheritDoc}

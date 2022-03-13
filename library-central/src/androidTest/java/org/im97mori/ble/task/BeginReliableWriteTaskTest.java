@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.filters.RequiresDevice;
 
-import org.im97mori.ble.BLECallbackDistributer;
+import org.im97mori.ble.BLECallbackDistributor;
 import org.im97mori.ble.BaseBLECallback;
 import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
@@ -48,7 +48,7 @@ public class BeginReliableWriteTaskTest extends AbstractCentralTest {
         Message message = Message.obtain();
         message.setData(Bundle.EMPTY);
 
-        BeginReliableWriteTask task = new BeginReliableWriteTask(MOCK_BLE_CONNECTION, null, BLECallbackDistributer.wrapArgument(null, null));
+        BeginReliableWriteTask task = new BeginReliableWriteTask(MOCK_BLE_CONNECTION, null, BLECallbackDistributor.wrapArgument(null, null));
         task.cancel();
         assertTrue(task.doProcess(message));
     }
@@ -68,7 +68,7 @@ public class BeginReliableWriteTaskTest extends AbstractCentralTest {
         Message message = Message.obtain();
         message.setData(Bundle.EMPTY);
 
-        BeginReliableWriteTask task = new BeginReliableWriteTask(MOCK_BLE_CONNECTION, null, BLECallbackDistributer.wrapArgument(null, null));
+        BeginReliableWriteTask task = new BeginReliableWriteTask(MOCK_BLE_CONNECTION, null, BLECallbackDistributor.wrapArgument(null, null));
         task.cancel();
         assertTrue(task.doProcess(message));
         assertTrue(callback.result.get());

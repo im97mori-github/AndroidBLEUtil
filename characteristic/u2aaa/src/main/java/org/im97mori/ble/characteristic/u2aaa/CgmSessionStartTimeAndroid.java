@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CGM_SESSION_START_TIME_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CGM_SESSION_START_TI
 public class CgmSessionStartTimeAndroid extends CgmSessionStartTime implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CgmSessionStartTimeAndroid> CREATOR = new ByteArrayCreater<CgmSessionStartTimeAndroid>() {
+    public static final ByteArrayCreator<CgmSessionStartTimeAndroid> CREATOR = new ByteArrayCreator<CgmSessionStartTimeAndroid>() {
 
         /**
          * {@inheritDoc}

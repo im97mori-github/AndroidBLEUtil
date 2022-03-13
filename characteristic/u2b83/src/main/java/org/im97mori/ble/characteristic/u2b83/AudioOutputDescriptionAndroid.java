@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.AUDIO_OUTPUT_DESCRIPTION_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.AUDIO_OUTPUT_DESCRIP
 public class AudioOutputDescriptionAndroid extends AudioOutputDescription implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AudioOutputDescriptionAndroid> CREATOR = new ByteArrayCreater<AudioOutputDescriptionAndroid>() {
+    public static final ByteArrayCreator<AudioOutputDescriptionAndroid> CREATOR = new ByteArrayCreator<AudioOutputDescriptionAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -94,7 +94,7 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
     /**
      * get this bluetooth profile's {@link BondedDeviceDatabaseHelper}
      *
-     * @return this bluetooth profile's {@link BondedDeviceDatabaseHelper} or {@code null} if profile dont need bond
+     * @return this bluetooth profile's {@link BondedDeviceDatabaseHelper} or {@code null} if profile don't need bond
      */
     @Nullable
     public abstract BondedDeviceDatabaseHelper getDatabaseHelper();
@@ -148,12 +148,12 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
      */
     @Nullable
     public synchronized Set<BluetoothDevice> getBondedDevices() {
-        Set<BluetoothDevice> bondedDeviesSet = null;
+        Set<BluetoothDevice> bondedDevicesSet = null;
         BondedDeviceDatabaseHelper bondedDeviceDatabaseHelper = getDatabaseHelper();
         if (bondedDeviceDatabaseHelper != null) {
-            bondedDeviesSet = bondedDeviceDatabaseHelper.getBondedDevices();
+            bondedDevicesSet = bondedDeviceDatabaseHelper.getBondedDevices();
         }
-        return bondedDeviesSet;
+        return bondedDevicesSet;
     }
 
     /**
@@ -173,7 +173,7 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
     /**
      * check connection status
      *
-     * @return {@code true}:{@link BLEConnection} has connected {@link BluetoothGatt}, {@code false}:dont have connected {@link BluetoothGatt}
+     * @return {@code true}:{@link BLEConnection} has connected {@link BluetoothGatt}, {@code false}:don't have connected {@link BluetoothGatt}
      */
     public synchronized boolean isConnected() {
         return mBLEConnection != null && mBLEConnection.isConnected();
@@ -183,7 +183,7 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
      * connect to target {@link BluetoothDevice}(reuse {@link BLEConnection} instance on {@link BLEConnectionHolder})
      *
      * @param bluetoothDevice connect target {@link BluetoothDevice}
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      * @see #createServices()
      */
     public synchronized Integer connect(@NonNull BluetoothDevice bluetoothDevice) {
@@ -266,7 +266,7 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
      * find Profile device
      *
      * @param argument callback argument
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @Nullable
     public synchronized Integer findDevices(@Nullable Bundle argument) {
@@ -298,7 +298,7 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
      * @param filteredScanCallback profile specific filter {@link FilteredScanCallback} instance
      * @param timeout              timeout(millis)
      * @param argument             callback argument
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Nullable
@@ -320,7 +320,7 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
      * @param filteredLeScanCallback profile specific filter {@link FilteredLeScanCallback} instance
      * @param timeout                timeout(millis)
      * @param argument               callback argument
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @Nullable
     public synchronized Integer scanDevice(@NonNull FilteredLeScanCallback filteredLeScanCallback
@@ -339,7 +339,7 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
      * @param bluetoothDevice bond target {@link BluetoothDevice} instance
      * @param timeout         timeout(millis)
      * @param argument        callback argument
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Nullable

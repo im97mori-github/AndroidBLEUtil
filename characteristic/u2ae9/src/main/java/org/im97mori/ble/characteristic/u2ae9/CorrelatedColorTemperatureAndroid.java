@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CORRELATED_COLOR_TEMPERATURE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CORRELATED_COLOR_TEM
 public class CorrelatedColorTemperatureAndroid extends CorrelatedColorTemperature implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CorrelatedColorTemperatureAndroid> CREATOR = new ByteArrayCreater<CorrelatedColorTemperatureAndroid>() {
+    public static final ByteArrayCreator<CorrelatedColorTemperatureAndroid> CREATOR = new ByteArrayCreator<CorrelatedColorTemperatureAndroid>() {
 
         /**
          * {@inheritDoc}

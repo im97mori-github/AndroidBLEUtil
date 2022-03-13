@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RINGER_CONTROL_POINT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RINGER_CONTROL_POINT
 public class RingerControlPointAndroid extends RingerControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<RingerControlPointAndroid> CREATOR = new ByteArrayCreater<RingerControlPointAndroid>() {
+    public static final ByteArrayCreator<RingerControlPointAndroid> CREATOR = new ByteArrayCreator<RingerControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

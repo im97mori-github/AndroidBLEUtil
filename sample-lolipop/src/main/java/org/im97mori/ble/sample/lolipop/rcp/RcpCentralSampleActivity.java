@@ -132,7 +132,7 @@ public class RcpCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "hasBondManagementService\nnull";
             } else {
-                text = "hasBondManagementService\n" + result.toString();
+                text = "hasBondManagementService\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -143,7 +143,7 @@ public class RcpCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isRCSettingsCharacteristicSupported\nnull";
             } else {
-                text = "isRCSettingsCharacteristicSupported\n" + result.toString();
+                text = "isRCSettingsCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -154,7 +154,7 @@ public class RcpCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isRCSettingsCharacteristicNotifySupported\nnull";
             } else {
-                text = "isRCSettingsCharacteristicNotifySupported\n" + result.toString();
+                text = "isRCSettingsCharacteristicNotifySupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -165,7 +165,7 @@ public class RcpCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isReconnectionConfigurationControlPointCharacteristicSupported\nnull";
             } else {
-                text = "isReconnectionConfigurationControlPointCharacteristicSupported\n" + result.toString();
+                text = "isReconnectionConfigurationControlPointCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -213,7 +213,7 @@ public class RcpCentralSampleActivity extends BaseActivity implements View.OnCli
             byteBuffer.putShort((short) BLEUtils.createCrc(data, 0, data.length));
             data = byteBuffer.array();
             mReconnectionConfigurationProfile.setReconnectionConfigurationControlPoint(new ReconnectionConfigurationControlPoint(data));
-        } else if (R.id.read_bond_banagement_features == item.getItemId()) {
+        } else if (R.id.read_bond_management_features == item.getItemId()) {
             mReconnectionConfigurationProfile.getBondManagementFeatures();
         } else if (R.id.write_bond_management_control_point == item.getItemId()) {
             mReconnectionConfigurationProfile.setBondManagementControlPoint(
@@ -272,7 +272,7 @@ public class RcpCentralSampleActivity extends BaseActivity implements View.OnCli
     }
 
     @Override
-    public void onCallbacked(final Pair<String, String> log) {
+    public void onCallback(final Pair<String, String> log) {
         runOnUiThread(() -> {
             mAdapter.add(log);
             mListView.smoothScrollToPosition(mAdapter.getCount());

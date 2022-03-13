@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a07.TxPowerLevel;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
@@ -34,7 +33,7 @@ public class TxPowerServiceMockCallback extends AbstractServiceMockCallback {
      *
      * @param <T> subclass of {@link TxPowerServiceMockCallback}
      */
-    public static class Builder<T extends TxPowerServiceMockCallback> extends AbstractServiceMockCallback.Builder<TxPowerServiceMockCallback> {
+    public static class Builder<T extends TxPowerServiceMockCallback> extends AbstractServiceMockCallback.Builder<TxPowerServiceMockCallback, ServiceData> {
 
         /**
          * Tx Power Level data
@@ -104,7 +103,7 @@ public class TxPowerServiceMockCallback extends AbstractServiceMockCallback {
          */
         @Override
         @NonNull
-        public MockData createMockData() {
+        public ServiceData createData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
             if (mTxPowerLevelCharacteristicData == null) {
@@ -113,8 +112,7 @@ public class TxPowerServiceMockCallback extends AbstractServiceMockCallback {
                 characteristicList.add(mTxPowerLevelCharacteristicData);
             }
 
-            ServiceData serviceData = new ServiceData(TX_POWER_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ServiceData(TX_POWER_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
         }
 
         /**
@@ -123,7 +121,7 @@ public class TxPowerServiceMockCallback extends AbstractServiceMockCallback {
         @Override
         @NonNull
         public TxPowerServiceMockCallback build() {
-            return new TxPowerServiceMockCallback(createMockData(), false);
+            return new TxPowerServiceMockCallback(createData(), false);
         }
 
     }
@@ -133,15 +131,7 @@ public class TxPowerServiceMockCallback extends AbstractServiceMockCallback {
      * @param isFallback fallback flag
      */
     public TxPowerServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public TxPowerServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

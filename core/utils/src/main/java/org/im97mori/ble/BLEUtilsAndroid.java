@@ -42,7 +42,7 @@ public class BLEUtilsAndroid extends BLEUtils {
     }
 
     /**
-     * convinience method for {@link BluetoothAdapter#enable()}
+     * convenience method for {@link BluetoothAdapter#enable()}
      *
      * @return return value of {@link BluetoothAdapter#enable()} or {@code false}:no bluetooth feature
      */
@@ -60,7 +60,7 @@ public class BLEUtilsAndroid extends BLEUtils {
     }
 
     /**
-     * convinience method for {@link BluetoothAdapter#disable()}
+     * convenience method for {@link BluetoothAdapter#disable()}
      *
      * @return return value of {@link BluetoothAdapter#disable()} or {@code false}:no bluetooth feature
      */
@@ -78,7 +78,7 @@ public class BLEUtilsAndroid extends BLEUtils {
     }
 
     /**
-     * convinience method for get descriptor's instance id
+     * convenience method for get descriptor's instance id
      *
      * @param bluetoothGattDescriptor {@link BluetoothGattDescriptor} instance
      * @return descriptor instance id(like {@link BluetoothGattService#getInstanceId()} or {@link BluetoothGattCharacteristic#getInstanceId()})

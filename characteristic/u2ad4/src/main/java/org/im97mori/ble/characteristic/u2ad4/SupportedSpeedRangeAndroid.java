@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_SPEED_RANGE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_SPEED_RANG
 public class SupportedSpeedRangeAndroid extends SupportedSpeedRange implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SupportedSpeedRangeAndroid> CREATOR = new ByteArrayCreater<SupportedSpeedRangeAndroid>() {
+    public static final ByteArrayCreator<SupportedSpeedRangeAndroid> CREATOR = new ByteArrayCreator<SupportedSpeedRangeAndroid>() {
 
         /**
          * {@inheritDoc}

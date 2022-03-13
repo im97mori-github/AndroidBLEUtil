@@ -1,5 +1,13 @@
 package org.im97mori.ble.service.lns.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.LN_CONTROL_POINT_CHARACTERISTIC;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import android.os.Parcel;
 
 import com.google.gson.Gson;
@@ -14,13 +22,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.LN_CONTROL_POINT_CHARACTERISTIC;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 public class LNControlPointCharacteristicDataTest {
 
@@ -110,6 +111,22 @@ public class LNControlPointCharacteristicDataTest {
         assertEquals(result1.selectRouteResponseValue, result2.selectRouteResponseValue);
         assertEquals(result1.setFixRateResponseValue, result2.setFixRateResponseValue);
         assertEquals(result1.setElevationResponseValue, result2.setElevationResponseValue);
+    }
+
+    @Test
+    public void test_constructor_00101() {
+        LNControlPointCharacteristicData result1 = new LNControlPointCharacteristicData();
+
+        assertEquals(0, result1.setCumulativeValueResponseValue);
+        assertEquals(0, result1.maskLocationAndSpeedCharacteristicContentResponseValue);
+        assertEquals(0, result1.navigationControlResponseValue);
+        assertEquals(0, result1.requestNumberOfRoutesResponseValue);
+        assertNull(result1.requestNumberOfRoutesResponseParameter);
+        assertEquals(0, result1.requestNameOfRouteResponseValue);
+        assertNull(result1.requestNameOfRouteResponseParameter);
+        assertEquals(0, result1.selectRouteResponseValue);
+        assertEquals(0, result1.setFixRateResponseValue);
+        assertEquals(0, result1.setElevationResponseValue);
     }
 
     @Test

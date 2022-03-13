@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_L
 public class AerobicHeartRateLowerLimitAndroid extends AerobicHeartRateLowerLimit implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AerobicHeartRateLowerLimitAndroid> CREATOR = new ByteArrayCreater<AerobicHeartRateLowerLimitAndroid>() {
+    public static final ByteArrayCreator<AerobicHeartRateLowerLimitAndroid> CREATOR = new ByteArrayCreator<AerobicHeartRateLowerLimitAndroid>() {
 
         /**
          * {@inheritDoc}

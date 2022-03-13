@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.filters.RequiresDevice;
 
-import org.im97mori.ble.BLECallbackDistributer;
+import org.im97mori.ble.BLECallbackDistributor;
 import org.im97mori.ble.BaseBLECallback;
 import org.im97mori.ble.TaskHandler;
 import org.im97mori.ble.test.central.AbstractCentralTest;
@@ -57,7 +57,7 @@ public class AbortReliableWriteTaskTest extends AbstractCentralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            AbortReliableWriteTask task = new AbortReliableWriteTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, AbortReliableWriteTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            AbortReliableWriteTask task = new AbortReliableWriteTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, AbortReliableWriteTask.TIMEOUT_MILLIS, BLECallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -89,7 +89,7 @@ public class AbortReliableWriteTaskTest extends AbstractCentralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            AbortReliableWriteTask task = new AbortReliableWriteTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, AbortReliableWriteTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            AbortReliableWriteTask task = new AbortReliableWriteTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, AbortReliableWriteTask.TIMEOUT_MILLIS, BLECallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_VALUE_IN_A_TEMPERATURE_RANGE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_VALUE_IN_A_
 public class RelativeValueInATemperatureRangeAndroid extends RelativeValueInATemperatureRange implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<RelativeValueInATemperatureRangeAndroid> CREATOR = new ByteArrayCreater<RelativeValueInATemperatureRangeAndroid>() {
+    public static final ByteArrayCreator<RelativeValueInATemperatureRangeAndroid> CREATOR = new ByteArrayCreator<RelativeValueInATemperatureRangeAndroid>() {
 
         /**
          * {@inheritDoc}

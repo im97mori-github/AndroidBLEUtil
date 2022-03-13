@@ -13,7 +13,7 @@ import org.im97mori.ble.characteristic.u2a28.SoftwareRevisionString;
 import org.im97mori.ble.characteristic.u2a29.ManufacturerNameString;
 import org.im97mori.ble.characteristic.u2a2a.IEEE_11073_20601_RegulatoryCertificationDataList;
 import org.im97mori.ble.characteristic.u2a50.PnpId;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -37,7 +37,7 @@ import static org.junit.Assert.assertTrue;
 import androidx.test.filters.RequiresDevice;
 import androidx.test.filters.SdkSuppress;
 
-public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
+public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
     @Test
     @RequiresDevice

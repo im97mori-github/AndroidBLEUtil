@@ -1,48 +1,5 @@
 package org.im97mori.ble.service.uds.peripheral;
 
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattDescriptor;
-import android.bluetooth.BluetoothGattService;
-import android.os.Build;
-
-import org.im97mori.ble.MockData;
-import org.im97mori.ble.characteristic.u2a7e.AerobicHeartRateLowerLimit;
-import org.im97mori.ble.characteristic.u2a7f.AerobicThreshold;
-import org.im97mori.ble.characteristic.u2a80.Age;
-import org.im97mori.ble.characteristic.u2a81.AnaerobicHeartRateLowerLimit;
-import org.im97mori.ble.characteristic.u2a82.AnaerobicHeartRateUpperLimit;
-import org.im97mori.ble.characteristic.u2a83.AnaerobicThreshold;
-import org.im97mori.ble.characteristic.u2a84.AerobicHeartRateUpperLimit;
-import org.im97mori.ble.characteristic.u2a85.DateOfBirth;
-import org.im97mori.ble.characteristic.u2a86.DateOfThresholdAssessment;
-import org.im97mori.ble.characteristic.u2a87.EmailAddress;
-import org.im97mori.ble.characteristic.u2a88.FatBurnHeartRateLowerLimit;
-import org.im97mori.ble.characteristic.u2a89.FatBurnHeartRateUpperLimit;
-import org.im97mori.ble.characteristic.u2a8a.FirstName;
-import org.im97mori.ble.characteristic.u2a8b.FiveZoneHeartRateLimits;
-import org.im97mori.ble.characteristic.u2a8c.Gender;
-import org.im97mori.ble.characteristic.u2a8d.HeartRateMax;
-import org.im97mori.ble.characteristic.u2a8e.Height;
-import org.im97mori.ble.characteristic.u2a8f.HipCircumference;
-import org.im97mori.ble.characteristic.u2a90.LastName;
-import org.im97mori.ble.characteristic.u2a91.MaximumRecommendedHeartRate;
-import org.im97mori.ble.characteristic.u2a92.RestingHeartRate;
-import org.im97mori.ble.characteristic.u2a93.SportTypeForAerobicAndAnaerobicThresholds;
-import org.im97mori.ble.characteristic.u2a94.ThreeZoneHeartRateLimits;
-import org.im97mori.ble.characteristic.u2a95.TwoZoneHeartRateLimit;
-import org.im97mori.ble.characteristic.u2a96.VO2Max;
-import org.im97mori.ble.characteristic.u2a97.WaistCircumference;
-import org.im97mori.ble.characteristic.u2a98.Weight;
-import org.im97mori.ble.characteristic.u2a9f.UserControlPoint;
-import org.im97mori.ble.characteristic.u2aa2.Language;
-import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
-import org.im97mori.ble.test.BLETestUtilsAndroid;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
-import org.junit.Test;
-
-import java.util.LinkedList;
-import java.util.List;
-
 import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_THRESHOLD_CHARACTERISTIC;
@@ -84,11 +41,54 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothGattService;
+import android.os.Build;
+
 import androidx.test.filters.RequiresDevice;
 import androidx.test.filters.SdkSuppress;
 
+import org.im97mori.ble.ServiceData;
+import org.im97mori.ble.characteristic.u2a7e.AerobicHeartRateLowerLimit;
+import org.im97mori.ble.characteristic.u2a7f.AerobicThreshold;
+import org.im97mori.ble.characteristic.u2a80.Age;
+import org.im97mori.ble.characteristic.u2a81.AnaerobicHeartRateLowerLimit;
+import org.im97mori.ble.characteristic.u2a82.AnaerobicHeartRateUpperLimit;
+import org.im97mori.ble.characteristic.u2a83.AnaerobicThreshold;
+import org.im97mori.ble.characteristic.u2a84.AerobicHeartRateUpperLimit;
+import org.im97mori.ble.characteristic.u2a85.DateOfBirth;
+import org.im97mori.ble.characteristic.u2a86.DateOfThresholdAssessment;
+import org.im97mori.ble.characteristic.u2a87.EmailAddress;
+import org.im97mori.ble.characteristic.u2a88.FatBurnHeartRateLowerLimit;
+import org.im97mori.ble.characteristic.u2a89.FatBurnHeartRateUpperLimit;
+import org.im97mori.ble.characteristic.u2a8a.FirstName;
+import org.im97mori.ble.characteristic.u2a8b.FiveZoneHeartRateLimits;
+import org.im97mori.ble.characteristic.u2a8c.Gender;
+import org.im97mori.ble.characteristic.u2a8d.HeartRateMax;
+import org.im97mori.ble.characteristic.u2a8e.Height;
+import org.im97mori.ble.characteristic.u2a8f.HipCircumference;
+import org.im97mori.ble.characteristic.u2a90.LastName;
+import org.im97mori.ble.characteristic.u2a91.MaximumRecommendedHeartRate;
+import org.im97mori.ble.characteristic.u2a92.RestingHeartRate;
+import org.im97mori.ble.characteristic.u2a93.SportTypeForAerobicAndAnaerobicThresholds;
+import org.im97mori.ble.characteristic.u2a94.ThreeZoneHeartRateLimits;
+import org.im97mori.ble.characteristic.u2a95.TwoZoneHeartRateLimit;
+import org.im97mori.ble.characteristic.u2a96.VO2Max;
+import org.im97mori.ble.characteristic.u2a97.WaistCircumference;
+import org.im97mori.ble.characteristic.u2a98.Weight;
+import org.im97mori.ble.characteristic.u2a9f.UserControlPoint;
+import org.im97mori.ble.characteristic.u2aa2.Language;
+import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
+import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
+import org.junit.Test;
+
+import java.util.LinkedList;
+import java.util.List;
+
 @SuppressWarnings("ConstantConditions")
-public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
+public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
     @Test
     @RequiresDevice
@@ -7094,7 +7094,7 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_hasNoConsent_00001() {
-        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
+        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new ServiceData(), false);
 
         assertTrue(userDataServiceMockCallback.hasNoConsent(BLETestUtilsAndroid.MOCK_DEVICE_0, null));
     }
@@ -7103,7 +7103,7 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_hasNoConsent_00002() {
-        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
+        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new ServiceData(), false);
 
         Integer userIndex = 1;
         assertTrue(userDataServiceMockCallback.hasNoConsent(BLETestUtilsAndroid.MOCK_DEVICE_0, userIndex));
@@ -7113,7 +7113,7 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_hasNoConsent_00003() {
-        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
+        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new ServiceData(), false);
 
         Integer userIndex = 1;
         userDataServiceMockCallback.setConsent(BLETestUtilsAndroid.MOCK_DEVICE_1, 2);
@@ -7124,7 +7124,7 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_hasNoConsent_00004() {
-        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
+        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new ServiceData(), false);
 
         Integer userIndex = 1;
         userDataServiceMockCallback.setConsent(BLETestUtilsAndroid.MOCK_DEVICE_0, 2);
@@ -7135,7 +7135,7 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_hasNoConsent_00005() {
-        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
+        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new ServiceData(), false);
 
         Integer userIndex = 1;
         userDataServiceMockCallback.setConsent(BLETestUtilsAndroid.MOCK_DEVICE_1, userIndex);
@@ -7146,7 +7146,7 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripherallT
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_hasNoConsent_00006() {
-        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new MockData(), false);
+        ConsentTestUserDataServiceMockCallback userDataServiceMockCallback = new ConsentTestUserDataServiceMockCallback(new ServiceData(), false);
 
         Integer userIndex = 1;
         userDataServiceMockCallback.setConsent(BLETestUtilsAndroid.MOCK_DEVICE_0, userIndex);

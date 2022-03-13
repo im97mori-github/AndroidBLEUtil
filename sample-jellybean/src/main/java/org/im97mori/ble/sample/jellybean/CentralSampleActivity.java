@@ -349,7 +349,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
             mBleConnection.createReadCharacteristicTask(SAMPLE_PRIMARY_SERVICE_1
                     , SAMPLE_READABLE_CHARACTERISTIC
                     , ReadCharacteristicTask.TIMEOUT_MILLIS);
-        } else if (R.id.write_characteristc == item.getItemId()) {
+        } else if (R.id.write_characteristic == item.getItemId()) {
             mBleConnection.createWriteCharacteristicTask(SAMPLE_PRIMARY_SERVICE_1
                     , SAMPLE_WRITABLE_CHARACTERISTIC
                     , () -> new byte[]{0x00, 0x00, 0x00, 0x00, 0x00}
@@ -509,14 +509,14 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     }
                 }
             }.start();
-        } else if (R.id.write_characteristc_reliable == item.getItemId()) {
+        } else if (R.id.write_characteristic_reliable == item.getItemId()) {
             mBleConnection.createBeginReliableWriteTask(null, null);
             mBleConnection.createWriteCharacteristicTask(SAMPLE_PRIMARY_SERVICE_1
                     , SAMPLE_WRITABLE_CHARACTERISTIC
                     , () -> new byte[]{0x00, 0x00, 0x00, 0x00, 0x00}
                     , WriteCharacteristicTask.TIMEOUT_MILLIS);
             mBleConnection.createExecuteReliableWriteTask(ExecuteReliableWriteTask.TIMEOUT_MILLIS, null, null);
-        } else if (R.id.write_characteristc_reliable_abort == item.getItemId()) {
+        } else if (R.id.write_characteristic_reliable_abort == item.getItemId()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 mBleConnection.createBeginReliableWriteTask(null, null);
                 mBleConnection.createWriteCharacteristicTask(SAMPLE_PRIMARY_SERVICE_1
@@ -633,7 +633,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                         , Objects.requireNonNull(result.getServiceInstanceId())
                                         , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
                                         , Objects.requireNonNull(result.getCharacteristicInstanceId())
-                                        , result.getNotifiationStatus()
+                                        , result.getNotificationStatus()
                                         , result.getArgument());
                             } else if (RESULT_FAILED == result.getResultCode()) {
                                 mBLECallbackSample.onSetNotificationFailed(0
@@ -642,7 +642,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                         , result.getServiceInstanceId()
                                         , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
                                         , result.getServiceInstanceId()
-                                        , result.getNotifiationStatus()
+                                        , result.getNotificationStatus()
                                         , result.getStatus()
                                         , result.getArgument());
                             }
@@ -684,7 +684,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                         , Objects.requireNonNull(result.getServiceInstanceId())
                                         , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
                                         , Objects.requireNonNull(result.getCharacteristicInstanceId())
-                                        , result.getNotifiationStatus()
+                                        , result.getNotificationStatus()
                                         , result.getArgument());
                             } else if (RESULT_FAILED == result.getResultCode()) {
                                 mBLECallbackSample.onSetNotificationFailed(0
@@ -693,7 +693,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                         , result.getServiceInstanceId()
                                         , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
                                         , result.getServiceInstanceId()
-                                        , result.getNotifiationStatus()
+                                        , result.getNotificationStatus()
                                         , result.getStatus()
                                         , result.getArgument());
                             }
@@ -836,7 +836,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
     }
 
     @Override
-    public void onCallbacked(final Pair<String, String> log) {
+    public void onCallback(final Pair<String, String> log) {
         runOnUiThread(() -> {
             mAdapter.add(log);
             mListView.smoothScrollToPosition(mAdapter.getCount());

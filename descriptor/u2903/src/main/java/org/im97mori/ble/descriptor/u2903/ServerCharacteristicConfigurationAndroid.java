@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.DescriptorUUID.SERVER_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 
@@ -27,9 +27,9 @@ public class ServerCharacteristicConfigurationAndroid extends ServerCharacterist
     public static final int PROPERTIES_BROADCASTS_ENABLED = 0x01;
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ServerCharacteristicConfigurationAndroid> CREATOR = new ByteArrayCreater<ServerCharacteristicConfigurationAndroid>() {
+    public static final ByteArrayCreator<ServerCharacteristicConfigurationAndroid> CREATOR = new ByteArrayCreator<ServerCharacteristicConfigurationAndroid>() {
 
         /**
          * {@inheritDoc}

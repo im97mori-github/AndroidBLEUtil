@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_CHANGE_INCREMENT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_CHANGE_INCR
 public class DatabaseChangeIncrementAndroid extends DatabaseChangeIncrement implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<DatabaseChangeIncrementAndroid> CREATOR = new ByteArrayCreater<DatabaseChangeIncrementAndroid>() {
+    public static final ByteArrayCreator<DatabaseChangeIncrementAndroid> CREATOR = new ByteArrayCreator<DatabaseChangeIncrementAndroid>() {
 
         /**
          * {@inheritDoc}

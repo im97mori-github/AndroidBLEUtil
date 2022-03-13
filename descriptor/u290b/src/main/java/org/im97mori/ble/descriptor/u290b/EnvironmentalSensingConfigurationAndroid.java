@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.DescriptorUUID.ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.DescriptorUUID.ENVIRONMENTAL_SENSING_CO
 public class EnvironmentalSensingConfigurationAndroid extends EnvironmentalSensingConfiguration implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<EnvironmentalSensingConfigurationAndroid> CREATOR = new ByteArrayCreater<EnvironmentalSensingConfigurationAndroid>() {
+    public static final ByteArrayCreator<EnvironmentalSensingConfigurationAndroid> CREATOR = new ByteArrayCreator<EnvironmentalSensingConfigurationAndroid>() {
 
         /**
          * {@inheritDoc}

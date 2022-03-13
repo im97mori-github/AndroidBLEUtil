@@ -5,7 +5,7 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * <p>
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class AppearanceAndroid extends Appearance implements AdvertisingDataInterfaceAndroid {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AppearanceAndroid> CREATOR = new ByteArrayCreater<AppearanceAndroid>() {
+    public static final ByteArrayCreator<AppearanceAndroid> CREATOR = new ByteArrayCreator<AppearanceAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -64,7 +64,7 @@ public class AppearanceAndroid extends Appearance implements AdvertisingDataInte
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
-     * @param length 1st octed of Advertising Data
+     * @param length 1st octet of Advertising Data
      */
     public AppearanceAndroid(@NonNull byte[] data
             , int offset

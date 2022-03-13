@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.PROTOCOL_MODE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.PROTOCOL_MODE_CHARAC
 public class ProtocolModeAndroid extends ProtocolMode implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ProtocolModeAndroid> CREATOR = new ByteArrayCreater<ProtocolModeAndroid>() {
+    public static final ByteArrayCreator<ProtocolModeAndroid> CREATOR = new ByteArrayCreator<ProtocolModeAndroid>() {
 
         /**
          * {@inheritDoc}

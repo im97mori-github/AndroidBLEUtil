@@ -12,7 +12,6 @@ import static org.im97mori.ble.constants.DescriptorUUID.TIME_TRIGGER_SETTING_DES
 import static org.im97mori.ble.constants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
 import static org.im97mori.ble.constants.DescriptorUUID.VALUE_TRIGGER_SETTING_DESCRIPTOR;
 import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
-import static org.im97mori.ble.constants.ServiceUUID.AUTOMATION_IO_SERVICE;
 
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
@@ -36,7 +35,6 @@ import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.ByteArrayInterface;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.callback.NotificationData;
 import org.im97mori.ble.characteristic.core.AutomationIoUtils;
@@ -76,12 +74,12 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
      *
      * @param <T> subclass of {@link AutomationIOServiceMockCallback}
      */
-    public static class Builder<T extends AutomationIOServiceMockCallback> extends AbstractServiceMockCallback.Builder<AutomationIOServiceMockCallback> {
+    public static class Builder<T extends AutomationIOServiceMockCallback> extends AbstractServiceMockCallback.Builder<AutomationIOServiceMockCallback, ServiceData> {
 
         /**
          * Digital characteristic map
          */
-        protected final Map<Integer, CharacteristicData> mDigitalMap = new HashMap<>();
+        protected final Map<Integer, DigitalCharacteristicData> mDigitalMap = new HashMap<>();
 
         /**
          * Digital characteristic Client Characteristic Configuration descriptor map
@@ -832,12 +830,13 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
          */
         @NonNull
         @Override
-        public MockData createMockData() {
+        public ServiceData createData() {
             if (mDigitalMap.isEmpty() && mAnalogMap.isEmpty()) {
                 throw new RuntimeException("Digital and Analog Characteristic not found");
             }
 
             List<CharacteristicData> characteristicDataList = new ArrayList<>();
+            List<DigitalCharacteristicData> digitalCharacteristicDataList = new ArrayList<>();
 
             boolean isNotificatable;
             boolean isIndicatable;
@@ -864,6 +863,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
             }
 
             CharacteristicData characteristicData;
+            DigitalCharacteristicData digitalCharacteristicData;
             DescriptorData descriptorData;
 
             List<CharacteristicPresentationFormat> characteristicPresentationFormatList = new LinkedList<>();
@@ -871,15 +871,15 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
             List<Integer> keyList = new ArrayList<>(mDigitalMap.keySet());
             Collections.sort(keyList);
             for (Integer index : keyList) {
-                characteristicData = mDigitalMap.get(index);
+                digitalCharacteristicData = mDigitalMap.get(index);
 
-                if (characteristicData != null) {
-                    isNotificatable = (characteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0;
-                    isIndicatable = (characteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0;
+                if (digitalCharacteristicData != null) {
+                    isNotificatable = (digitalCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0;
+                    isIndicatable = (digitalCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0;
                     if (isNotificatable && isIndicatable) {
                         throw new RuntimeException("The Indicate and Notify properties shall not be permitted simultaneously for Digital characteristic. index:" + index);
                     } else if (isNotificatable || isIndicatable) {
-                        if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_READ) == 0) {
+                        if ((digitalCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_READ) == 0) {
                             throw new RuntimeException("Indicate or Notify property shall be supported only if the Read property is supported for the characteristic. index:" + index);
                         } else if (isAggregateNotificatable) {
                             throw new RuntimeException("The Indicate and Notify properties are excluded for the Digital characteristic if the Aggregate characteristic is supported. index:" + index);
@@ -888,7 +888,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                         if (descriptorData == null) {
                             descriptorData = new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
                         }
-                        characteristicData.descriptorDataList.add(descriptorData);
+                        digitalCharacteristicData.descriptorDataList.add(descriptorData);
                     }
 
                     descriptorData = mDigitalCharacteristicPresentationFormatMap.get(index);
@@ -898,29 +898,29 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                         if (BLEUtils.createUInt16(new CharacteristicPresentationFormat(descriptorData.getBytes()).getDescription(), 0) == 0) {
                             throw new RuntimeException("Description values from 0x0001 and upwards shall be used to uniquely identify each Digital characteristic. index:" + index);
                         } else {
-                            characteristicData.descriptorDataList.add(descriptorData);
+                            digitalCharacteristicData.descriptorDataList.add(descriptorData);
                             characteristicPresentationFormatList.add(new CharacteristicPresentationFormat(descriptorData.getBytes()));
                         }
                     }
 
                     descriptorData = mDigitalCharacteristicExtendedPropertiesMap.get(index);
                     if (descriptorData != null) {
-                        characteristicData.descriptorDataList.add(descriptorData);
+                        digitalCharacteristicData.descriptorDataList.add(descriptorData);
                     }
 
                     descriptorData = mDigitalCharacteristicUserDescriptionMap.get(index);
                     if (descriptorData != null) {
-                        characteristicData.descriptorDataList.add(descriptorData);
+                        digitalCharacteristicData.descriptorDataList.add(descriptorData);
                     }
 
                     if (isNotificatable || isIndicatable || isAggregateNotificatable) {
                         descriptorData = mDigitalValueTriggerSettingMap.get(index);
                         if (descriptorData != null) {
-                            characteristicData.descriptorDataList.add(descriptorData);
+                            digitalCharacteristicData.descriptorDataList.add(descriptorData);
 
                             descriptorData = mDigitalTimeTriggerSettingMap.get(index);
                             if (descriptorData != null) {
-                                characteristicData.descriptorDataList.add(descriptorData);
+                                digitalCharacteristicData.descriptorDataList.add(descriptorData);
                             }
                         }
                     }
@@ -931,14 +931,14 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                     } else {
                         NumberOfDigitals numberOfDigitals = new NumberOfDigitals(descriptorData.getBytes());
                         int bits = numberOfDigitals.getNoOfDigitals() * 2;
-                        if (bits <= characteristicData.data.length * 8) {
-                            characteristicData.data = AutomationIOServiceMockCallback.sanitizeDigitalData(characteristicData.data, numberOfDigitals.getNoOfDigitals());
-                            characteristicData.descriptorDataList.add(descriptorData);
+                        if (bits <= digitalCharacteristicData.data.length * 8) {
+                            digitalCharacteristicData.data = AutomationIOServiceMockCallback.sanitizeDigitalData(digitalCharacteristicData.data, numberOfDigitals.getNoOfDigitals());
+                            digitalCharacteristicData.descriptorDataList.add(descriptorData);
                         } else {
                             throw new RuntimeException("Data size not match. index:" + index);
                         }
 
-                        characteristicDataList.add(characteristicData);
+                        digitalCharacteristicDataList.add(digitalCharacteristicData);
                     }
                 }
             }
@@ -1049,7 +1049,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                 throw new RuntimeException("Description values from 0x0001 and upwards shall be used to uniquely identify each Analog characteristic");
             }
 
-            return new MockData(Collections.singletonList(new ServiceData(AUTOMATION_IO_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicDataList)));
+            return new AutomationIOServiceData(characteristicDataList, digitalCharacteristicDataList);
         }
 
         /**
@@ -1058,7 +1058,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
         @NonNull
         @Override
         public AutomationIOServiceMockCallback build() {
-            return new AutomationIOServiceMockCallback(createMockData(), false);
+            return new AutomationIOServiceMockCallback(createData(), false);
         }
 
     }
@@ -1096,15 +1096,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
      * @param isFallback fallback flag
      */
     public AutomationIOServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public AutomationIOServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**
@@ -1218,9 +1210,9 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                     DescriptorData descriptorData = descriptorDataMap.get(descriptorPair);
                                     if (descriptorData != null) {
                                         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(descriptorData.getBytes());
-                                        boolean isCountup = false;
+                                        boolean isCount = false;
                                         if (valueTriggerSetting.isNone0()) {
-                                            isCountup = true;
+                                            isCount = true;
                                         } else if (valueTriggerSetting.isBitMask4()) {
                                             byte[] checkTarget = characteristicData.getBytes();
                                             byte[] lastBits = new byte[checkTarget.length];
@@ -1232,9 +1224,9 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                             for (int i = 0; i < checkTarget.length; i++) {
                                                 currentBits[i] = (byte) (checkTarget[i] & valueTriggerSetting.getValueBitMask()[i]);
                                             }
-                                            isCountup = Arrays.equals(lastBits, currentBits);
+                                            isCount = Arrays.equals(lastBits, currentBits);
                                         }
-                                        if (isCountup) {
+                                        if (isCount) {
                                             Integer count = mUpdateCountMap.get(characteristicKeyPair);
                                             if (count == null) {
                                                 count = -1;
@@ -1321,7 +1313,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                     DescriptorData valueTriggerDescriptorData = descriptorDataMap.get(descriptorPair);
                                     if (valueTriggerDescriptorData != null) {
                                         ValueTriggerSetting valueTriggerSetting = new ValueTriggerSetting(valueTriggerDescriptorData.getBytes());
-                                        boolean isCountup = false;
+                                        boolean isCount = false;
                                         Analog lastAnalogData = new Analog(characteristicData.getBytes());
                                         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR);
                                         CharacteristicPresentationFormat characteristicPresentationFormat = null;
@@ -1340,39 +1332,39 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                         int lastAnalogValue = (int) AutomationIoUtils.getAnalogWithFormat(lastAnalogData.getAnalog(), characteristicPresentationFormat, 0);
                                         int currentAnalogValue = (int) AutomationIoUtils.getAnalogWithFormat(Arrays.copyOfRange(value, offset, value.length), characteristicPresentationFormat, 0);
                                         if (valueTriggerSetting.isNone0()) {
-                                            isCountup = true;
+                                            isCount = true;
                                         } else if (valueTriggerSetting.isAnalog1()) {
                                             int boundary = valueTriggerSetting.getValueAnalog();
                                             if (lastAnalogValue == boundary && (currentAnalogValue < boundary || currentAnalogValue > boundary)) {
-                                                isCountup = true;
+                                                isCount = true;
                                             }
                                         } else if (valueTriggerSetting.isAnalog2()) {
                                             int boundary = valueTriggerSetting.getValueAnalog();
                                             if (lastAnalogValue == boundary && (currentAnalogValue < boundary || currentAnalogValue > boundary)
                                                     || currentAnalogValue == boundary && (lastAnalogValue < boundary || lastAnalogValue > boundary)) {
-                                                isCountup = true;
+                                                isCount = true;
                                             }
                                         } else if (valueTriggerSetting.isAnalog3()) {
                                             int boundary = valueTriggerSetting.getValueAnalog();
                                             if (lastAnalogValue < boundary && currentAnalogValue > boundary) {
-                                                isCountup = true;
+                                                isCount = true;
                                             }
                                         } else if (valueTriggerSetting.isAnalogInterval5()) {
                                             int boundaryOne = valueTriggerSetting.getValueAnalogOne();
                                             int boundaryTwo = valueTriggerSetting.getValueAnalogTwo();
                                             if ((lastAnalogValue < boundaryOne && lastAnalogValue > boundaryTwo)
                                                     && (currentAnalogValue > boundaryOne || currentAnalogValue < boundaryTwo)) {
-                                                isCountup = true;
+                                                isCount = true;
                                             }
                                         } else if (valueTriggerSetting.isAnalogInterval6()) {
                                             int boundaryOne = valueTriggerSetting.getValueAnalogOne();
                                             int boundaryTwo = valueTriggerSetting.getValueAnalogTwo();
                                             if ((lastAnalogValue == boundaryOne || lastAnalogValue == boundaryTwo)
                                                     && (currentAnalogValue != boundaryOne || currentAnalogValue != boundaryTwo)) {
-                                                isCountup = true;
+                                                isCount = true;
                                             }
                                         }
-                                        if (isCountup) {
+                                        if (isCount) {
                                             Integer count = mUpdateCountMap.get(characteristicKeyPair);
                                             if (count == null) {
                                                 count = -1;
@@ -1521,7 +1513,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
     }
 
     /**
-     * create Aggreate data
+     * create Aggregate data
      *
      * @param characteristicMap characteristic map
      * @return Aggregate data {@link ByteArrayInterface} instance

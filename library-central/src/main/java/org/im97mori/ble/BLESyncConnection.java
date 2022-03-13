@@ -61,7 +61,7 @@ public class BLESyncConnection implements BLECallback {
     private static final long NOT_AVAILABLE_LOCK_ID = 0;
 
     /**
-     * unique lock id generetor
+     * unique lock id generator
      */
     protected static final AtomicLong LOCK_ID_GENERATOR = new AtomicLong(NOT_AVAILABLE_LOCK_ID);
 
@@ -166,7 +166,7 @@ public class BLESyncConnection implements BLECallback {
         private final UUID mServiceUUID;
 
         /**
-         * task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+         * task target service instance id {@link BluetoothGattService#getInstanceId()}
          */
         private final Integer mServiceInstanceId;
 
@@ -176,7 +176,7 @@ public class BLESyncConnection implements BLECallback {
         private final UUID mCharacteristicUUID;
 
         /**
-         * task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+         * task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
          */
         private final Integer mCharacteristicInstanceId;
 
@@ -186,7 +186,7 @@ public class BLESyncConnection implements BLECallback {
         private final UUID mDescriptorUUID;
 
         /**
-         * task target descriptor incetanceId
+         * task target descriptor instance id
          */
         private final Integer mDescriptorInstanceId;
 
@@ -254,11 +254,11 @@ public class BLESyncConnection implements BLECallback {
          * @param resultCode               one of {@link #RESULT_SUCCESS}, {@link #RESULT_FAILED}, {@link #RESULT_TIMEOUT}
          * @param serviceList              service list from {@link BluetoothGatt#getServices()}
          * @param serviceUUID              task target service {@link UUID}
-         * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+         * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
          * @param characteristicUUID       task target characteristic {@link UUID}
-         * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+         * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
          * @param descriptorUUID           task target descriptor {@link UUID}
-         * @param descriptorInstanceId     task target descriptor incetanceId
+         * @param descriptorInstanceId     task target descriptor instance id
          * @param mtu                      new mtu from {@link BLEConnection#onMtuChanged(BluetoothGatt, int, int)} 2nd argument
          * @param txPhy                    {@link android.bluetooth.BluetoothGattCallback#onPhyRead(BluetoothGatt, int, int, int)} 2nd argument or {@link android.bluetooth.BluetoothGattCallback#onPhyUpdate(BluetoothGatt, int, int, int)} 2nd argument
          * @param rxPhy                    {@link android.bluetooth.BluetoothGattCallback#onPhyRead(BluetoothGatt, int, int, int)} 3rd argument or {@link android.bluetooth.BluetoothGattCallback#onPhyUpdate(BluetoothGatt, int, int, int)} 3rd argument
@@ -339,7 +339,7 @@ public class BLESyncConnection implements BLECallback {
         }
 
         /**
-         * @return task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+         * @return task target service instance id {@link BluetoothGattService#getInstanceId()}
          */
         @Nullable
         public Integer getServiceInstanceId() {
@@ -355,7 +355,7 @@ public class BLESyncConnection implements BLECallback {
         }
 
         /**
-         * @return task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+         * @return task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
          */
         @Nullable
         public Integer getCharacteristicInstanceId() {
@@ -371,7 +371,7 @@ public class BLESyncConnection implements BLECallback {
         }
 
         /**
-         * @return task target descriptor incetanceId
+         * @return task target descriptor instance id
          */
         @Nullable
         public Integer getDescriptorInstanceId() {
@@ -416,7 +416,7 @@ public class BLESyncConnection implements BLECallback {
         /**
          * new notification status {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd parameter
          */
-        public boolean getNotifiationStatus() {
+        public boolean getNotificationStatus() {
             return mNotificationStatus;
         }
 
@@ -476,7 +476,7 @@ public class BLESyncConnection implements BLECallback {
     protected final Map<Long, BLEResult> mResultMap = Collections.synchronizedMap(new LinkedHashMap<>());
 
     /**
-     * notification(indication) listner map
+     * notification(indication) listener map
      */
     protected final Map<Pair<Pair<UUID, Integer>, Pair<UUID, Integer>>, List<List<byte[]>>> mNotificationListenerMap = new LinkedHashMap<>();
 
@@ -732,9 +732,9 @@ public class BLESyncConnection implements BLECallback {
      * Create read characteristic task with synchronous
      *
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param taskTimeout              timeout include waiting time in queue, taskTimeout must greater equal bleTimeout
      * @param bleTimeout               ble response timeout(millis)
      * @param argument                 callback argument
@@ -792,7 +792,7 @@ public class BLESyncConnection implements BLECallback {
     }
 
     /**
-     * instant read characterisitc task
+     * instant read characterisitic task
      *
      * @see #createReadCharacteristicTask(UUID, Integer, UUID, Integer, long, long, Bundle, boolean)
      */
@@ -827,9 +827,9 @@ public class BLESyncConnection implements BLECallback {
      * Create write characteristic task with synchronous
      *
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param byteArrayInterface       write data
      * @param writeType                one of {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}, {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}, {@link BluetoothGattCharacteristic#WRITE_TYPE_SIGNED}
      * @param taskTimeout              timeout include waiting time in queue, taskTimeout must greater equal bleTimeout
@@ -928,11 +928,11 @@ public class BLESyncConnection implements BLECallback {
      * Create read descriptor task with synchronous
      *
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           descriptor {@link UUID}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param taskTimeout              timeout include waiting time in queue, taskTimeout must greater equal bleTimeout
      * @param bleTimeout               ble response timeout(millis)
      * @param argument                 callback argument
@@ -1029,11 +1029,11 @@ public class BLESyncConnection implements BLECallback {
      * Create write descriptor task with synchronous
      *
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           descriptor {@link UUID}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param byteArrayInterface       write data
      * @param taskTimeout              timeout include waiting time in queue, taskTimeout must greater equal bleTimeout
      * @param bleTimeout               ble response timeout(millis)
@@ -1427,7 +1427,7 @@ public class BLESyncConnection implements BLECallback {
     }
 
     /**
-     * instant equest mtu task
+     * instant request mtu task
      *
      * @see #createRequestMtuTask(int, long, long, Bundle, boolean)
      */
@@ -1517,7 +1517,7 @@ public class BLESyncConnection implements BLECallback {
     }
 
     /**
-     * Create begin reliable wrie task with synchronous
+     * Create begin reliable write task with synchronous
      *
      * @param taskTimeout timeout include waiting time in queue, taskTimeout must greater equal bleTimeout
      * @param argument    callback argument
@@ -1561,7 +1561,7 @@ public class BLESyncConnection implements BLECallback {
     }
 
     /**
-     * instant begin reliable wrie task
+     * instant begin reliable write task
      *
      * @see #createBeginReliableWriteTask(long, Bundle, boolean)
      */
@@ -1580,7 +1580,7 @@ public class BLESyncConnection implements BLECallback {
     }
 
     /**
-     * Create execute reliable wrie task with synchronous
+     * Create execute reliable write task with synchronous
      *
      * @param taskTimeout timeout include waiting time in queue, taskTimeout must greater equal bleTimeout
      * @param bleTimeout  ble response timeout(millis)
@@ -1628,7 +1628,7 @@ public class BLESyncConnection implements BLECallback {
     }
 
     /**
-     * instant execute reliable wrie task
+     * instant execute reliable write task
      *
      * @see #createExecuteReliableWriteTask(long, long, Bundle, boolean)
      */
@@ -1648,7 +1648,7 @@ public class BLESyncConnection implements BLECallback {
     }
 
     /**
-     * Create abort reliable wrie task with synchronous
+     * Create abort reliable write task with synchronous
      *
      * @param taskTimeout timeout include waiting time in queue, taskTimeout must greater equal bleTimeout
      * @param bleTimeout  ble response timeout(millis)
@@ -1697,7 +1697,7 @@ public class BLESyncConnection implements BLECallback {
     }
 
     /**
-     * instant abort reliable wrie task
+     * instant abort reliable write task
      *
      * @see #createExecuteReliableWriteTask(long, long, Bundle, boolean)
      */
@@ -1721,7 +1721,7 @@ public class BLESyncConnection implements BLECallback {
      * Create set notification task with synchronous
      *
      * @param taskTimeout     timeout include waiting time in queue, taskTimeout must greater equal bleTimeout
-     * @param setNotification {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd paramater
+     * @param setNotification {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd parameter
      * @param argument        callback argument
      * @param isBroadcast     {@code true}:task result is communicated to all attached callbacks, {@code false}:the task result is communicated to the specified callback
      * @return {@code null}:BLE not connected, {@link BLEResult}:connected
@@ -2472,18 +2472,18 @@ public class BLESyncConnection implements BLECallback {
         Bundle wrappedArgument = new Bundle();
         wrappedArgument.putBundle(KEY_WRAPPED, argument);
         wrappedArgument.putLong(KEY_RESULT, key);
-        return BLECallbackDistributer.wrapArgument(wrappedArgument, bleSyncConnection);
+        return BLECallbackDistributor.wrapArgument(wrappedArgument, bleSyncConnection);
     }
 
     /**
      * get key from wrappedArgument
      *
-     * @param wrappedArgument {@link BLECallbackDistributer#wrapArgument(Bundle, BLECallback)}
+     * @param wrappedArgument {@link BLECallbackDistributor#wrapArgument(Bundle, BLECallback)}
      * @return key
      */
     private long getKey(@NonNull Bundle wrappedArgument) {
         long key = 0;
-        Bundle unwrappedArgument = wrappedArgument.getBundle(BLECallbackDistributer.KEY_WRAPPED_ARGUMENT);
+        Bundle unwrappedArgument = wrappedArgument.getBundle(BLECallbackDistributor.KEY_WRAPPED_ARGUMENT);
         if (unwrappedArgument != null) {
             key = unwrappedArgument.getLong(KEY_RESULT);
         }

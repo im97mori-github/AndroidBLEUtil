@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a55.SCControlPointAndroid;
 import org.im97mori.ble.characteristic.u2a5b.CSCMeasurementAndroid;
 import org.im97mori.ble.characteristic.u2a5c.CSCFeatureAndroid;
@@ -44,7 +44,7 @@ public class CscsCallbackSample extends CyclingSpeedAndCadenceServiceMockCallbac
         @NonNull
         @Override
         public CscsCallbackSample build() {
-            return new CscsCallbackSample(createMockData(), mSampleCallback);
+            return new CscsCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -52,8 +52,8 @@ public class CscsCallbackSample extends CyclingSpeedAndCadenceServiceMockCallbac
 
     private final SampleCallback mSampleCallback;
 
-    CscsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    CscsCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -75,9 +75,9 @@ public class CscsCallbackSample extends CyclingSpeedAndCadenceServiceMockCallbac
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

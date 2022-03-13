@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TIME_ACCURACY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_ACCURACY_CHARAC
 public class TimeAccuracyAndroid extends TimeAccuracy implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TimeAccuracyAndroid> CREATOR = new ByteArrayCreater<TimeAccuracyAndroid>() {
+    public static final ByteArrayCreator<TimeAccuracyAndroid> CREATOR = new ByteArrayCreator<TimeAccuracyAndroid>() {
 
         /**
          * {@inheritDoc}

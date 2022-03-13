@@ -135,19 +135,19 @@ public class FitnessMachineControlPointCharacteristicData extends Characteristic
     public int setTargetedTrainingTimeResultCode;
 
     /**
-     * characteristic result code (Set Targeted Timein Two Heart Rate Zones result)
+     * characteristic result code (Set Targeted Time in Two Heart Rate Zones result)
      */
     @SerializedName("set_targeted_time_in_two_heart_rate_zones_result_code")
     public int setTargetedTimeInTwoHeartRateZonesResultCode;
 
     /**
-     * characteristic result code (Set Targeted Timein Three Heart Rate Zones result)
+     * characteristic result code (Set Targeted Time in Three Heart Rate Zones result)
      */
     @SerializedName("set_targeted_time_in_three_heart_rate_zones_result_code")
     public int setTargetedTimeInThreeHeartRateZonesResultCode;
 
     /**
-     * characteristic result code (Set Targeted Timein Five Heart Rate Zones result)
+     * characteristic result code (Set Targeted Time in Five Heart Rate Zones result)
      */
     @SerializedName("set_targeted_time_in_five_heart_rate_zones_result_code")
     public int setTargetedTimeInFiveHeartRateZonesResultCode;
@@ -188,6 +188,12 @@ public class FitnessMachineControlPointCharacteristicData extends Characteristic
     public transient byte[] highPriorityResponseData;
 
     /**
+     * Constructor
+     */
+    public FitnessMachineControlPointCharacteristicData() {
+    }
+
+    /**
      * @param descriptorDataList                             {@link DescriptorData} list
      * @param delay                                          response delay(millis)
      * @param requestControlResultCode                       characteristic result code (Request Control result)
@@ -204,9 +210,9 @@ public class FitnessMachineControlPointCharacteristicData extends Characteristic
      * @param setTargetedNumberOfStridesResultCode           characteristic result code (Set Targeted Number of Strides result)
      * @param setTargetedDistanceResultCode                  characteristic result code (Set Targeted Distance result)
      * @param setTargetedTrainingTimeResultCode              characteristic result code (Set Targeted Training Time result)
-     * @param setTargetedTimeInTwoHeartRateZonesResultCode   characteristic result code (Set Targeted Timein Two Heart Rate Zones result)
-     * @param setTargetedTimeInThreeHeartRateZonesResultCode characteristic result code (Set Targeted Timein Three Heart Rate Zones result)
-     * @param setTargetedTimeInFiveHeartRateZonesResultCode  characteristic result code (Set Targeted Timein Five Heart Rate Zones result)
+     * @param setTargetedTimeInTwoHeartRateZonesResultCode   characteristic result code (Set Targeted Time in Two Heart Rate Zones result)
+     * @param setTargetedTimeInThreeHeartRateZonesResultCode characteristic result code (Set Targeted Time in Three Heart Rate Zones result)
+     * @param setTargetedTimeInFiveHeartRateZonesResultCode  characteristic result code (Set Targeted Time in Five Heart Rate Zones result)
      * @param setIndoorBikeSimulationParametersResultCode    characteristic result code (Set Indoor Bike Simulation Parameters result)
      * @param setWheelCircumferenceResultCode                characteristic result code (Set Wheel Circumference result)
      * @param spinDownControlResultCode                      characteristic result code (Spin Down Control result)

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.POWER_SPECIFICATION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.POWER_SPECIFICATION_
 public class PowerSpecificationAndroid extends PowerSpecification implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<PowerSpecificationAndroid> CREATOR = new ByteArrayCreater<PowerSpecificationAndroid>() {
+    public static final ByteArrayCreator<PowerSpecificationAndroid> CREATOR = new ByteArrayCreator<PowerSpecificationAndroid>() {
 
         /**
          * {@inheritDoc}

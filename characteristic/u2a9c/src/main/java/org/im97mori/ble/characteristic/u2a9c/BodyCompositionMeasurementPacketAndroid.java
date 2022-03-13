@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BODY_COMPOSITION_MEA
 public class BodyCompositionMeasurementPacketAndroid extends BodyCompositionMeasurementPacket implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BodyCompositionMeasurementPacketAndroid> CREATOR = new ByteArrayCreater<BodyCompositionMeasurementPacketAndroid>() {
+    public static final ByteArrayCreator<BodyCompositionMeasurementPacketAndroid> CREATOR = new ByteArrayCreator<BodyCompositionMeasurementPacketAndroid>() {
 
         /**
          * {@inheritDoc}

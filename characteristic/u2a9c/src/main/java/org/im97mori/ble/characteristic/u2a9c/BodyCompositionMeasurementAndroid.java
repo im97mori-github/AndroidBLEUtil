@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
+import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 
 /**
  * Body Composition Measurement (Characteristics UUID: 0x2A9C)
@@ -14,9 +14,9 @@ import org.im97mori.ble.characteristic.core.MultiplePacketCreater;
 public class BodyCompositionMeasurementAndroid extends BodyCompositionMeasurement implements Parcelable {
 
     /**
-     * @see MultiplePacketCreater
+     * @see MultiplePacketCreator
      */
-    public static final MultiplePacketCreater<BodyCompositionMeasurementAndroid, BodyCompositionMeasurementPacketAndroid> CREATOR = new MultiplePacketCreater<BodyCompositionMeasurementAndroid, BodyCompositionMeasurementPacketAndroid>() {
+    public static final MultiplePacketCreator<BodyCompositionMeasurementAndroid, BodyCompositionMeasurementPacketAndroid> CREATOR = new MultiplePacketCreator<BodyCompositionMeasurementAndroid, BodyCompositionMeasurementPacketAndroid>() {
 
         /**
          * {@inheritDoc}

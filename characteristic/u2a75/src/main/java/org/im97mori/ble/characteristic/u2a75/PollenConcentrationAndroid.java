@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.POLLEN_CONCENTRATION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.POLLEN_CONCENTRATION
 public class PollenConcentrationAndroid extends PollenConcentration implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<PollenConcentrationAndroid> CREATOR = new ByteArrayCreater<PollenConcentrationAndroid>() {
+    public static final ByteArrayCreator<PollenConcentrationAndroid> CREATOR = new ByteArrayCreator<PollenConcentrationAndroid>() {
 
         /**
          * {@inheritDoc}

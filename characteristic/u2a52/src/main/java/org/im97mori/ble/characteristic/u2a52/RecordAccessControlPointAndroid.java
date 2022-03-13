@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RECORD_ACCESS_CONTROL_POINT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RECORD_ACCESS_CONTRO
 public class RecordAccessControlPointAndroid extends RecordAccessControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<RecordAccessControlPointAndroid> CREATOR = new ByteArrayCreater<RecordAccessControlPointAndroid>() {
+    public static final ByteArrayCreator<RecordAccessControlPointAndroid> CREATOR = new ByteArrayCreator<RecordAccessControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

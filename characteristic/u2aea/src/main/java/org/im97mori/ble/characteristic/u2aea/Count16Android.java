@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.COUNT_16_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.COUNT_16_CHARACTERIS
 public class Count16Android extends Count16 implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<Count16Android> CREATOR = new ByteArrayCreater<Count16Android>() {
+    public static final ByteArrayCreator<Count16Android> CREATOR = new ByteArrayCreator<Count16Android>() {
 
         /**
          * {@inheritDoc}

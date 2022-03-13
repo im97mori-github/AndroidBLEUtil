@@ -7,7 +7,7 @@ import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a16.TimeUpdateControlPoint;
 import org.im97mori.ble.characteristic.u2a17.TimeUpdateState;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -25,7 +25,7 @@ import static org.junit.Assert.assertNull;
 import androidx.test.filters.RequiresDevice;
 import androidx.test.filters.SdkSuppress;
 
-public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
+public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
     @Test
     @RequiresDevice

@@ -143,7 +143,7 @@ public class SetPreferredPhyTask extends AbstractBLETask {
     /**
      * callback argument
      */
-    private final Bundle mArgumemnt;
+    private final Bundle mArgument;
 
     /**
      * @param bleConnection task target {@link BLEConnection} instance
@@ -170,7 +170,7 @@ public class SetPreferredPhyTask extends AbstractBLETask {
         mRxPhy = rxPhy;
         mPhyOptions = phyOptions;
         mTimeout = timeout;
-        mArgumemnt = argument;
+        mArgument = argument;
     }
 
     /**
@@ -202,7 +202,7 @@ public class SetPreferredPhyTask extends AbstractBLETask {
                 mBLEConnection.getBLECallback().onSetPreferredPhyTimeout(getTaskId()
                         , mBLEConnection.getBluetoothDevice()
                         , mTimeout
-                        , mArgumemnt);
+                        , mArgument);
                 mCurrentProgress = nextProgress;
             } else if (PROGRESS_INIT.equals(mCurrentProgress)) {
                 if (message.obj == this && PROGRESS_SET_PREFERRED_PHY_START.equals(nextProgress)) {
@@ -221,13 +221,13 @@ public class SetPreferredPhyTask extends AbstractBLETask {
                             , bundle.getInt(KEY_TX_PHY)
                             , bundle.getInt(KEY_RX_PHY)
                             , bundle.getInt(KEY_PHY_OPTIONS)
-                            , mArgumemnt);
+                            , mArgument);
                 } else if (PROGRESS_SET_PREFERRED_PHY_ERROR.equals(nextProgress)) {
                     // current:set preferred phy start, next:set preferred phy error
                     mBLEConnection.getBLECallback().onSetPreferredPhyFailed(getTaskId()
                             , mBLEConnection.getBluetoothDevice()
                             , bundle.getInt(KEY_STATUS)
-                            , mArgumemnt);
+                            , mArgument);
                 }
 
                 mCurrentProgress = PROGRESS_FINISHED;
@@ -257,7 +257,7 @@ public class SetPreferredPhyTask extends AbstractBLETask {
         mBLEConnection.getBLECallback().onSetPreferredPhyFailed(getTaskId()
                 , mBLEConnection.getBluetoothDevice()
                 , STATUS_CANCEL
-                , mArgumemnt);
+                , mArgument);
     }
 
 }

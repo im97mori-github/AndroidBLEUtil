@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_EXPOSURE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_EXPOSURE_CH
 public class LuminousExposureAndroid extends LuminousExposure implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LuminousExposureAndroid> CREATOR = new ByteArrayCreater<LuminousExposureAndroid>() {
+    public static final ByteArrayCreator<LuminousExposureAndroid> CREATOR = new ByteArrayCreator<LuminousExposureAndroid>() {
 
         /**
          * {@inheritDoc}

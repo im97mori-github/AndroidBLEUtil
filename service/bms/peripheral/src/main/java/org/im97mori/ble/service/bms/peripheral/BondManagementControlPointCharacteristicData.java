@@ -156,6 +156,12 @@ public class BondManagementControlPointCharacteristicData extends Characteristic
     public String deleteAllButTheActiveBondOnServerLeAuthorizationCode;
 
     /**
+     * Constructor
+     */
+    public BondManagementControlPointCharacteristicData() {
+    }
+
+    /**
      * @param delay                                                     response delay(millis)
      * @param deleteBondOfRequestingDeviceBrEdrLeResponseCode           response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter(Delete bond of requesting device (BR/EDR and LE) response)
      * @param deleteBondOfRequestingDeviceBrEdrLeAuthorizationCode      Delete bond of requesting device (BR/EDR and LE)'s Authorization Code

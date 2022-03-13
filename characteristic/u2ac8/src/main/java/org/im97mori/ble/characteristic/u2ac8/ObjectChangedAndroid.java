@@ -8,7 +8,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * object changed (Characteristics UUID: 0x2AC8)
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class ObjectChangedAndroid extends ObjectChanged implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ObjectChangedAndroid> CREATOR = new ByteArrayCreater<ObjectChangedAndroid>() {
+    public static final ByteArrayCreator<ObjectChangedAndroid> CREATOR = new ByteArrayCreator<ObjectChangedAndroid>() {
 
         /**
          * {@inheritDoc}

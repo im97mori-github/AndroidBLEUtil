@@ -5,7 +5,7 @@ import android.bluetooth.BluetoothGattService;
 import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -20,7 +20,7 @@ import static org.junit.Assert.assertNotNull;
 import androidx.test.filters.RequiresDevice;
 import androidx.test.filters.SdkSuppress;
 
-public class ImmediateAlertServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
+public class ImmediateAlertServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
     @Test
     @RequiresDevice

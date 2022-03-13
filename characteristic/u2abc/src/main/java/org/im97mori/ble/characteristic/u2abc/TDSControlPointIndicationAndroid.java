@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TDS_CONTROL_POINT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TDS_CONTROL_POINT_CH
 public class TDSControlPointIndicationAndroid extends TDSControlPointIndication implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TDSControlPointIndicationAndroid> CREATOR = new ByteArrayCreater<TDSControlPointIndicationAndroid>() {
+    public static final ByteArrayCreator<TDSControlPointIndicationAndroid> CREATOR = new ByteArrayCreator<TDSControlPointIndicationAndroid>() {
 
         /**
          * {@inheritDoc}

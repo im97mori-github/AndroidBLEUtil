@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TIME_SECOND_16_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_SECOND_16_CHARA
 public class TimeSecond16Android extends TimeSecond16 implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TimeSecond16Android> CREATOR = new ByteArrayCreater<TimeSecond16Android>() {
+    public static final ByteArrayCreator<TimeSecond16Android> CREATOR = new ByteArrayCreator<TimeSecond16Android>() {
 
         /**
          * {@inheritDoc}

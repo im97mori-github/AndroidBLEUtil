@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.NEW_ALERT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.NEW_ALERT_CHARACTERI
 public class NewAlertAndroid extends NewAlert implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<NewAlertAndroid> CREATOR = new ByteArrayCreater<NewAlertAndroid>() {
+    public static final ByteArrayCreator<NewAlertAndroid> CREATOR = new ByteArrayCreator<NewAlertAndroid>() {
 
         /**
          * {@inheritDoc}

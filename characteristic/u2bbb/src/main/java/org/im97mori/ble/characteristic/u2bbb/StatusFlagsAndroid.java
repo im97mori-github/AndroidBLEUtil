@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.STATUS_FLAGS_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.STATUS_FLAGS_CHARACT
 public class StatusFlagsAndroid extends StatusFlags implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<StatusFlagsAndroid> CREATOR = new ByteArrayCreater<StatusFlagsAndroid>() {
+    public static final ByteArrayCreator<StatusFlagsAndroid> CREATOR = new ByteArrayCreator<StatusFlagsAndroid>() {
 
         /**
          * {@inheritDoc}

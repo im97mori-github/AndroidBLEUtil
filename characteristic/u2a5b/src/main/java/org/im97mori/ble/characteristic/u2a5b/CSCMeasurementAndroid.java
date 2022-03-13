@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CSC_MEASUREMENT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CSC_MEASUREMENT_CHAR
 public class CSCMeasurementAndroid extends CSCMeasurement implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CSCMeasurementAndroid> CREATOR = new ByteArrayCreater<CSCMeasurementAndroid>() {
+    public static final ByteArrayCreator<CSCMeasurementAndroid> CREATOR = new ByteArrayCreator<CSCMeasurementAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.DescriptorUUID.TIME_TRIGGER_SETTING_DESCRIPTOR;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.DescriptorUUID.TIME_TRIGGER_SETTING_DES
 public class TimeTriggerSettingAndroid extends TimeTriggerSetting implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TimeTriggerSettingAndroid> CREATOR = new ByteArrayCreater<TimeTriggerSettingAndroid>() {
+    public static final ByteArrayCreator<TimeTriggerSettingAndroid> CREATOR = new ByteArrayCreator<TimeTriggerSettingAndroid>() {
 
         /**
          * {@inheritDoc}

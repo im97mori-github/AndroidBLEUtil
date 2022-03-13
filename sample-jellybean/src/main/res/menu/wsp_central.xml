@@ -32,11 +32,11 @@
             android:id="@+id/read_weight_scale_feature"
             android:title="@string/menu_read_weight_scale_feature" />
         <item
-            android:id="@+id/start_indicate_weight_mesurement"
-            android:title="@string/menu_indicate_weight_mesurement_start" />
+            android:id="@+id/start_indicate_weight_measurement"
+            android:title="@string/menu_indicate_weight_measurement_start" />
         <item
-            android:id="@+id/stop_indicate_weight_mesurement"
-            android:title="@string/menu_indicate_weight_mesurement_stop" />
+            android:id="@+id/stop_indicate_weight_measurement"
+            android:title="@string/menu_indicate_weight_measurement_stop" />
     </group>
     <group android:id="@+id/body_composition_service" android:visible="false"
         tools:ignore="UnusedIds">

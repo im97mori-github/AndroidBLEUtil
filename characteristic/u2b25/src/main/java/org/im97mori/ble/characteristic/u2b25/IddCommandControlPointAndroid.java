@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.IDD_COMMAND_CONTROL_POINT_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.IDD_COMMAND_CONTROL_
 public class IddCommandControlPointAndroid extends IddCommandControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<IddCommandControlPointAndroid> CREATOR = new ByteArrayCreater<IddCommandControlPointAndroid>() {
+    public static final ByteArrayCreator<IddCommandControlPointAndroid> CREATOR = new ByteArrayCreator<IddCommandControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SERVER_SUPPORTED_FEATURES_CHARACTERISTIC;
 
@@ -19,9 +19,9 @@ import java.util.List;
 public class ServerSupportedFeaturesAndroid extends ServerSupportedFeatures implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ServerSupportedFeaturesAndroid> CREATOR = new ByteArrayCreater<ServerSupportedFeaturesAndroid>() {
+    public static final ByteArrayCreator<ServerSupportedFeaturesAndroid> CREATOR = new ByteArrayCreator<ServerSupportedFeaturesAndroid>() {
 
         /**
          * {@inheritDoc}

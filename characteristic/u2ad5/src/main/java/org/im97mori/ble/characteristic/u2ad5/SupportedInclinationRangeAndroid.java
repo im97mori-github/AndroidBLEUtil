@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_INCLINATION_RANGE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_INCLINATIO
 public class SupportedInclinationRangeAndroid extends SupportedInclinationRange implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SupportedInclinationRangeAndroid> CREATOR = new ByteArrayCreater<SupportedInclinationRangeAndroid>() {
+    public static final ByteArrayCreator<SupportedInclinationRangeAndroid> CREATOR = new ByteArrayCreator<SupportedInclinationRangeAndroid>() {
 
         /**
          * {@inheritDoc}

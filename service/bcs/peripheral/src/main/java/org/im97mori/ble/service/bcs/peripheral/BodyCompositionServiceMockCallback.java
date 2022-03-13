@@ -1,5 +1,10 @@
 package org.im97mori.ble.service.bcs.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.BODY_COMPOSITION_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.BODY_COMPOSITION_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -14,7 +19,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a9b.BodyCompositionFeature;
 import org.im97mori.ble.characteristic.u2a9c.BodyCompositionMeasurement;
@@ -24,11 +28,6 @@ import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.BODY_COMPOSITION_FEATURE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.BODY_COMPOSITION_MEASUREMENT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ServiceUUID.BODY_COMPOSITION_SERVICE;
 
 /**
  * Body Composition Service (Service UUID: 0x181B) for Peripheral
@@ -40,7 +39,7 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
      *
      * @param <T> subclass of {@link BodyCompositionServiceMockCallback}
      */
-    public static class Builder<T extends BodyCompositionServiceMockCallback> extends AbstractServiceMockCallback.Builder<BodyCompositionServiceMockCallback> {
+    public static class Builder<T extends BodyCompositionServiceMockCallback> extends AbstractServiceMockCallback.Builder<BodyCompositionServiceMockCallback, ServiceData> {
 
         /**
          * Body Composition Feature data
@@ -115,8 +114,8 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          Intermediate Cuff Pressure notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -153,7 +152,7 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
          */
         @Override
         @NonNull
-        public MockData createMockData() {
+        public ServiceData createData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
             if (mBodyCompositionFeatureData == null) {
@@ -166,8 +165,7 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
             } else {
                 characteristicList.add(mBodyCompositionMeasurementData);
             }
-            ServiceData serviceData = new ServiceData(BODY_COMPOSITION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ServiceData(BODY_COMPOSITION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
         }
 
         /**
@@ -176,7 +174,7 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
         @Override
         @NonNull
         public BodyCompositionServiceMockCallback build() {
-            return new BodyCompositionServiceMockCallback(createMockData(), false);
+            return new BodyCompositionServiceMockCallback(createData(), false);
         }
 
     }
@@ -186,15 +184,7 @@ public class BodyCompositionServiceMockCallback extends AbstractServiceMockCallb
      * @param isFallback fallback flag
      */
     public BodyCompositionServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public BodyCompositionServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

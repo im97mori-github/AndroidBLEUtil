@@ -134,7 +134,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "hasBodyCompositionService\nnull";
             } else {
-                text = "hasBodyCompositionService\n" + result.toString();
+                text = "hasBodyCompositionService\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -145,7 +145,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "hasUserDataService\nnull";
             } else {
-                text = "hasUserDataService\n" + result.toString();
+                text = "hasUserDataService\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -156,7 +156,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "hasBatteryService\nnull";
             } else {
-                text = "hasBatteryService\n" + result.toString();
+                text = "hasBatteryService\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -167,16 +167,16 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "hasCurrentTimeService\nnull";
             } else {
-                text = "hasCurrentTimeService\n" + result.toString();
+                text = "hasCurrentTimeService\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
             updateLayout();
         } else if (R.id.read_weight_scale_feature == item.getItemId()) {
             mWeightScaleProfile.getWeightScaleFeature();
-        } else if (R.id.start_indicate_weight_mesurement == item.getItemId()) {
+        } else if (R.id.start_indicate_weight_measurement == item.getItemId()) {
             mWeightScaleProfile.startWeightMeasurementIndication();
-        } else if (R.id.stop_indicate_weight_mesurement == item.getItemId()) {
+        } else if (R.id.stop_indicate_weight_measurement == item.getItemId()) {
             mWeightScaleProfile.stopWeightMeasurementIndication();
         } else if (R.id.read_manufacturer_name == item.getItemId()) {
             mWeightScaleProfile.getManufacturerNameString();
@@ -188,7 +188,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "hasSystemId\nnull";
             } else {
-                text = "hasSystemId\n" + result.toString();
+                text = "hasSystemId\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -202,7 +202,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isCurrentTimeCharacteristicWritable\nnull";
             } else {
-                text = "isCurrentTimeCharacteristicWritable\n" + result.toString();
+                text = "isCurrentTimeCharacteristicWritable\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -227,7 +227,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isLocalTimeInformationCharacteristicSupported\nnull";
             } else {
-                text = "isLocalTimeInformationCharacteristicSupported\n" + result.toString();
+                text = "isLocalTimeInformationCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -239,7 +239,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isLocalTimeInformationCharacteristicWritable\nnull";
             } else {
-                text = "isLocalTimeInformationCharacteristicWritable\n" + result.toString();
+                text = "isLocalTimeInformationCharacteristicWritable\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -251,7 +251,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isReferenceTimeInformationCharacteristicSupported\nnull";
             } else {
-                text = "isReferenceTimeInformationCharacteristicSupported\n" + result.toString();
+                text = "isReferenceTimeInformationCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -265,7 +265,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isAgeCharacteristicSupported\nnull";
             } else {
-                text = "isAgeCharacteristicSupported\n" + result.toString();
+                text = "isAgeCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -322,7 +322,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isDatabaseChangeIncrementCharacteristicNotifySupported\nnull";
             } else {
-                text = "isDatabaseChangeIncrementCharacteristicNotifySupported\n" + result.toString();
+                text = "isDatabaseChangeIncrementCharacteristicNotifySupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -346,7 +346,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isDateOfBirthCharacteristicSupported\nnull";
             } else {
-                text = "isDateOfBirthCharacteristicSupported\n" + result.toString();
+                text = "isDateOfBirthCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -360,7 +360,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isFirstNameCharacteristicSupported\nnull";
             } else {
-                text = "isFirstNameCharacteristicSupported\n" + result.toString();
+                text = "isFirstNameCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
         } else if (R.id.read_first_name == item.getItemId()) {
@@ -376,7 +376,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isHeightCharacteristicSupported\nnull";
             } else {
-                text = "isHeightCharacteristicSupported\n" + result.toString();
+                text = "isHeightCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -390,7 +390,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             if (result == null) {
                 text = "isGenderCharacteristicSupported\nnull";
             } else {
-                text = "isGenderCharacteristicSupported\n" + result.toString();
+                text = "isGenderCharacteristicSupported\n" + result;
             }
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
@@ -453,7 +453,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
     }
 
     @Override
-    public void onCallbacked(final Pair<String, String> log) {
+    public void onCallback(final Pair<String, String> log) {
         runOnUiThread(() -> {
             mAdapter.add(log);
             mListView.smoothScrollToPosition(mAdapter.getCount());

@@ -6,16 +6,16 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.REGISTERED_USER_CHARACTERISTIC;
 
 public class RegisteredUserAndroid extends RegisteredUser implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<RegisteredUserAndroid> CREATOR = new ByteArrayCreater<RegisteredUserAndroid>() {
+    public static final ByteArrayCreator<RegisteredUserAndroid> CREATOR = new ByteArrayCreator<RegisteredUserAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -7,7 +7,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TRAINING_STATUS_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TRAINING_STATUS_CHAR
 public class TrainingStatusAndroid extends TrainingStatus implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TrainingStatusAndroid> CREATOR = new ByteArrayCreater<TrainingStatusAndroid>() {
+    public static final ByteArrayCreator<TrainingStatusAndroid> CREATOR = new ByteArrayCreator<TrainingStatusAndroid>() {
 
         /**
          * {@inheritDoc}

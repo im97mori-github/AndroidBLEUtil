@@ -10,7 +10,7 @@ import org.im97mori.ble.characteristic.u2a37.HeartRateMeasurement;
 import org.im97mori.ble.characteristic.u2a38.BodySensorLocation;
 import org.im97mori.ble.characteristic.u2a39.HeartRateControlPoint;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -30,7 +30,7 @@ import static org.junit.Assert.assertNull;
 import androidx.test.filters.RequiresDevice;
 import androidx.test.filters.SdkSuppress;
 
-public class HeartRateServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
+public class HeartRateServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
     @Test
     @RequiresDevice

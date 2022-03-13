@@ -1,17 +1,17 @@
 package org.im97mori.ble.profile.wsp.peripheral;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import android.bluetooth.BluetoothGattDescriptor;
 
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurement;
 import org.im97mori.ble.characteristic.u2a9e.WeightScaleFeature;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 public class WspWeightScaleServiceMockCallbackBuilderTest {
 
@@ -40,7 +40,7 @@ public class WspWeightScaleServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             new WspWeightScaleServiceMockCallback.Builder<>()
-                    .setUserDataServiceMockCallback(new UserDataServiceMockCallback(new MockData(), false))
+                    .setUserDataServiceMockCallback(new UserDataServiceMockCallback(new ServiceData(), false))
                     .addWeightScaleFeature(new WeightScaleFeature(false
                             , false
                             , false
@@ -60,7 +60,7 @@ public class WspWeightScaleServiceMockCallbackBuilderTest {
         Exception exception = null;
         try {
             new WspWeightScaleServiceMockCallback.Builder<>()
-                    .setUserDataServiceMockCallback(new UserDataServiceMockCallback(new MockData(), false))
+                    .setUserDataServiceMockCallback(new UserDataServiceMockCallback(new ServiceData(), false))
                     .removeUserDataServiceMockCallback()
                     .build();
         } catch (RuntimeException e) {

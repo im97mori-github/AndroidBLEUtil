@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ROWER_DATA_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ROWER_DATA_CHARACTER
 public class RowerDataPacketAndroid extends RowerDataPacket implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<RowerDataPacketAndroid> CREATOR = new ByteArrayCreater<RowerDataPacketAndroid>() {
+    public static final ByteArrayCreator<RowerDataPacketAndroid> CREATOR = new ByteArrayCreator<RowerDataPacketAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.HANDEDNESS_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HANDEDNESS_CHARACTER
 public class HandednessAndroid extends Handedness implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HandednessAndroid> CREATOR = new ByteArrayCreater<HandednessAndroid>() {
+    public static final ByteArrayCreator<HandednessAndroid> CREATOR = new ByteArrayCreator<HandednessAndroid>() {
 
         /**
          * {@inheritDoc}

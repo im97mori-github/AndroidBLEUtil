@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SOURCE_PAC_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SOURCE_PAC_CHARACTER
 public class SourcePacAndroid extends SourcePac implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SourcePacAndroid> CREATOR = new ByteArrayCreater<SourcePacAndroid>() {
+    public static final ByteArrayCreator<SourcePacAndroid> CREATOR = new ByteArrayCreator<SourcePacAndroid>() {
 
         /**
          * {@inheritDoc}

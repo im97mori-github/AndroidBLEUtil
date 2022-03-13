@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.DescriptorUUID.COMPLETE_BR_EDR_TRANSPORT_BLOCK_DATA_DESCRIPTOR;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.DescriptorUUID.COMPLETE_BR_EDR_TRANSPOR
 public class CompleteBrEdrTransportBlockDataAndroid extends CompleteBrEdrTransportBlockData implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CompleteBrEdrTransportBlockDataAndroid> CREATOR = new ByteArrayCreater<CompleteBrEdrTransportBlockDataAndroid>() {
+    public static final ByteArrayCreator<CompleteBrEdrTransportBlockDataAndroid> CREATOR = new ByteArrayCreator<CompleteBrEdrTransportBlockDataAndroid>() {
 
         /**
          * {@inheritDoc}

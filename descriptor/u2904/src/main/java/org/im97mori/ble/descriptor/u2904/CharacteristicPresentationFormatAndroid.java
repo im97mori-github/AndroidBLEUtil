@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_PRESENTAT
 public class CharacteristicPresentationFormatAndroid extends CharacteristicPresentationFormat implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CharacteristicPresentationFormatAndroid> CREATOR = new ByteArrayCreater<CharacteristicPresentationFormatAndroid>() {
+    public static final ByteArrayCreator<CharacteristicPresentationFormatAndroid> CREATOR = new ByteArrayCreator<CharacteristicPresentationFormatAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.HTTPS_SECURITY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HTTPS_SECURITY_CHARA
 public class HTTPSSecurityAndroid extends HTTPSSecurity implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HTTPSSecurityAndroid> CREATOR = new ByteArrayCreater<HTTPSSecurityAndroid>() {
+    public static final ByteArrayCreator<HTTPSSecurityAndroid> CREATOR = new ByteArrayCreator<HTTPSSecurityAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_USER_DESC
 public class CharacteristicUserDescriptionAndroid extends CharacteristicUserDescription implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CharacteristicUserDescriptionAndroid> CREATOR = new ByteArrayCreater<CharacteristicUserDescriptionAndroid>() {
+    public static final ByteArrayCreator<CharacteristicUserDescriptionAndroid> CREATOR = new ByteArrayCreator<CharacteristicUserDescriptionAndroid>() {
 
         /**
          * {@inheritDoc}

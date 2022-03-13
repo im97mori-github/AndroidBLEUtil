@@ -54,6 +54,12 @@ public class FitnessMachineStatusCharacteristicData extends CharacteristicData {
     public int spinDownStatusValue;
 
     /**
+     * Constructor
+     */
+    public FitnessMachineStatusCharacteristicData() {
+    }
+
+    /**
      * @param descriptorDataList  {@link DescriptorData} list
      * @param spinDownStatusValue Spin Down Status Value
      */

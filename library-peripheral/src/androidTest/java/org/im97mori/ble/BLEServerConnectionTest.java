@@ -15,7 +15,7 @@ import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -27,13 +27,13 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings({"ConstantConditions", "BusyWait"})
-public class BLEServerConnectionTest extends AbstractPeripherallTest {
+public class BLEServerConnectionTest extends AbstractPeripheralTest {
 
     private static final long SLEEP_DURATION = 50;
 
     private static abstract class MockBLETask extends AbstractBLETask {
 
-        final AtomicBoolean isProccesing = new AtomicBoolean(true);
+        final AtomicBoolean isProcessing = new AtomicBoolean(true);
 
         @NonNull
         @Override
@@ -60,7 +60,7 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
 
             MOCK_BLE_SERVER_CONNECTION.addTask(task);
 
-            while (task.isProccesing.get()) {
+            while (task.isProcessing.get()) {
                 try {
                     Thread.sleep(SLEEP_DURATION);
                 } catch (InterruptedException e) {
@@ -199,13 +199,13 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
 
         };
 
-        final Bundle argument = BLEServerCallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLEServerCallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_SERVER_CONNECTION.getBLEServerCallback().onServiceAddSuccess(getTaskId(), MOCK_BLE_SERVER_CONNECTION, null, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
 
@@ -237,12 +237,12 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
 
         };
 
-        final Bundle argument = BLEServerCallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLEServerCallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_SERVER_CONNECTION.getBLEServerCallback().onServiceAddSuccess(getTaskId(), MOCK_BLE_SERVER_CONNECTION, null, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -271,13 +271,13 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
 
         };
 
-        final Bundle argument = BLEServerCallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLEServerCallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_SERVER_CONNECTION.getBLEServerCallback().onServiceAddFailed(getTaskId(), MOCK_BLE_SERVER_CONNECTION, null, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
 
@@ -307,12 +307,12 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
 
         };
 
-        final Bundle argument = BLEServerCallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLEServerCallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_SERVER_CONNECTION.getBLEServerCallback().onServiceAddFailed(getTaskId(), MOCK_BLE_SERVER_CONNECTION, null, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -341,13 +341,13 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
 
         };
 
-        final Bundle argument = BLEServerCallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLEServerCallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_SERVER_CONNECTION.getBLEServerCallback().onServiceAddTimeout(getTaskId(), MOCK_BLE_SERVER_CONNECTION, null, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
 
@@ -377,12 +377,12 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
 
         };
 
-        final Bundle argument = BLEServerCallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLEServerCallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_SERVER_CONNECTION.getBLEServerCallback().onServiceAddTimeout(getTaskId(), MOCK_BLE_SERVER_CONNECTION, null, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -501,13 +501,13 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
 
         };
 
-        final Bundle argument = BLEServerCallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLEServerCallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_SERVER_CONNECTION.getBLEServerCallback().onNotificationSuccess(getTaskId(), MOCK_BLE_SERVER_CONNECTION, null, null, 0, null, 1, null, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
 
@@ -537,12 +537,12 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
 
         };
 
-        final Bundle argument = BLEServerCallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLEServerCallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_SERVER_CONNECTION.getBLEServerCallback().onNotificationSuccess(getTaskId(), MOCK_BLE_SERVER_CONNECTION, null, null, 0, null, 1, null, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -571,13 +571,13 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
 
         };
 
-        final Bundle argument = BLEServerCallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLEServerCallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_SERVER_CONNECTION.getBLEServerCallback().onNotificationFailed(getTaskId(), MOCK_BLE_SERVER_CONNECTION, null, null, 0, null, 1, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
 
@@ -607,12 +607,12 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
 
         };
 
-        final Bundle argument = BLEServerCallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLEServerCallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_SERVER_CONNECTION.getBLEServerCallback().onNotificationFailed(getTaskId(), MOCK_BLE_SERVER_CONNECTION, null, null, 0, null, 1, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -641,13 +641,13 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
 
         };
 
-        final Bundle argument = BLEServerCallbackDistributer.wrapArgument(null, null);
+        final Bundle argument = BLEServerCallbackDistributor.wrapArgument(null, null);
         MockBLETask task = new MockBLETask() {
 
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_SERVER_CONNECTION.getBLEServerCallback().onNotificationTimeout(getTaskId(), MOCK_BLE_SERVER_CONNECTION, null, null, 0, null, 1, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
 
@@ -677,12 +677,12 @@ public class BLEServerConnectionTest extends AbstractPeripherallTest {
 
         };
 
-        final Bundle argument = BLEServerCallbackDistributer.wrapArgument(null, firstCallback);
+        final Bundle argument = BLEServerCallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_SERVER_CONNECTION.getBLEServerCallback().onNotificationTimeout(getTaskId(), MOCK_BLE_SERVER_CONNECTION, null, null, 0, null, 1, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };

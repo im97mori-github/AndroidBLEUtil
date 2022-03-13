@@ -5691,7 +5691,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_stopIntermediateTemperaturNotification_000001() {
+    public void test_stopIntermediateTemperatureNotification_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
         assertNull(healthThermometerService.startIntermediateTemperatureNotification());
@@ -5699,7 +5699,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_stopIntermediateTemperaturNotification_000002() {
+    public void test_stopIntermediateTemperatureNotification_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
             @Override
@@ -5709,12 +5709,12 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
 
         };
 
-        assertNull(healthThermometerService.stopIntermediateTemperaturNotification());
+        assertNull(healthThermometerService.stopIntermediateTemperatureNotification());
     }
 
     @Test
     @RequiresDevice
-    public void test_stopIntermediateTemperaturNotification_000003() {
+    public void test_stopIntermediateTemperatureNotification_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
@@ -5726,12 +5726,12 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
 
         };
 
-        assertNull(healthThermometerService.stopIntermediateTemperaturNotification());
+        assertNull(healthThermometerService.stopIntermediateTemperatureNotification());
     }
 
     @Test
     @RequiresDevice
-    public void test_stopIntermediateTemperaturNotification_000004() {
+    public void test_stopIntermediateTemperatureNotification_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
@@ -5748,7 +5748,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
 
         };
 
-        Integer taskId = healthThermometerService.stopIntermediateTemperaturNotification();
+        Integer taskId = healthThermometerService.stopIntermediateTemperatureNotification();
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId);
     }
@@ -5951,15 +5951,15 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_startMeasurementIntervalInidication_000001() {
+    public void test_startMeasurementIntervalIndication_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
-        assertNull(healthThermometerService.startMeasurementIntervalInidication());
+        assertNull(healthThermometerService.startMeasurementIntervalIndication());
     }
 
     @Test
     @RequiresDevice
-    public void test_startMeasurementIntervalInidication_000002() {
+    public void test_startMeasurementIntervalIndication_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
             @Override
@@ -5969,12 +5969,12 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
 
         };
 
-        assertNull(healthThermometerService.startMeasurementIntervalInidication());
+        assertNull(healthThermometerService.startMeasurementIntervalIndication());
     }
 
     @Test
     @RequiresDevice
-    public void test_startMeasurementIntervalInidication_000003() {
+    public void test_startMeasurementIntervalIndication_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
@@ -5986,12 +5986,12 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
 
         };
 
-        assertNull(healthThermometerService.startMeasurementIntervalInidication());
+        assertNull(healthThermometerService.startMeasurementIntervalIndication());
     }
 
     @Test
     @RequiresDevice
-    public void test_startMeasurementIntervalInidication_000004() {
+    public void test_startMeasurementIntervalIndication_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
@@ -6008,22 +6008,22 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
 
         };
 
-        Integer taskId = healthThermometerService.startMeasurementIntervalInidication();
+        Integer taskId = healthThermometerService.startMeasurementIntervalIndication();
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId);
     }
 
     @Test
     @RequiresDevice
-    public void test_stopMeasurementIntervalInidication_000001() {
+    public void test_stopMeasurementIntervalIndication_000001() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null);
 
-        assertNull(healthThermometerService.stopMeasurementIntervalInidication());
+        assertNull(healthThermometerService.stopMeasurementIntervalIndication());
     }
 
     @Test
     @RequiresDevice
-    public void test_stopMeasurementIntervalInidication_000002() {
+    public void test_stopMeasurementIntervalIndication_000002() {
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
 
             @Override
@@ -6033,12 +6033,12 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
 
         };
 
-        assertNull(healthThermometerService.stopMeasurementIntervalInidication());
+        assertNull(healthThermometerService.stopMeasurementIntervalIndication());
     }
 
     @Test
     @RequiresDevice
-    public void test_stopMeasurementIntervalInidication_000003() {
+    public void test_stopMeasurementIntervalIndication_000003() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
@@ -6050,12 +6050,12 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
 
         };
 
-        assertNull(healthThermometerService.stopMeasurementIntervalInidication());
+        assertNull(healthThermometerService.stopMeasurementIntervalIndication());
     }
 
     @Test
     @RequiresDevice
-    public void test_stopMeasurementIntervalInidication_000004() {
+    public void test_stopMeasurementIntervalIndication_000004() {
         final Integer originalTaskId = 1;
         MOCK_BLE_CONNECTION.setCreateWriteDescriptorTaskId(originalTaskId);
         HealthThermometerService healthThermometerService = new HealthThermometerService(MOCK_BLE_CONNECTION, new MockHealthThermometerServiceCallback(), null) {
@@ -6072,7 +6072,7 @@ public class HealthThermometerServiceTest extends AbstractCentralTest {
 
         };
 
-        Integer taskId = healthThermometerService.stopMeasurementIntervalInidication();
+        Integer taskId = healthThermometerService.stopMeasurementIntervalIndication();
         assertNotNull(taskId);
         assertEquals(originalTaskId, taskId);
     }

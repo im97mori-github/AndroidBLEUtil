@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_HASH_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_HASH_CHARAC
 public class DatabaseHashAndroid extends DatabaseHash implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<DatabaseHashAndroid> CREATOR = new ByteArrayCreater<DatabaseHashAndroid>() {
+    public static final ByteArrayCreator<DatabaseHashAndroid> CREATOR = new ByteArrayCreator<DatabaseHashAndroid>() {
 
         /**
          * {@inheritDoc}

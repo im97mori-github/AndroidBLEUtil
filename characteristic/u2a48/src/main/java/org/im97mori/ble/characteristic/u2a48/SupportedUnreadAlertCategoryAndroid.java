@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_UNREAD_ALE
 public class SupportedUnreadAlertCategoryAndroid extends SupportedUnreadAlertCategory implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SupportedUnreadAlertCategoryAndroid> CREATOR = new ByteArrayCreater<SupportedUnreadAlertCategoryAndroid>() {
+    public static final ByteArrayCreator<SupportedUnreadAlertCategoryAndroid> CREATOR = new ByteArrayCreator<SupportedUnreadAlertCategoryAndroid>() {
 
         /**
          * {@inheritDoc}

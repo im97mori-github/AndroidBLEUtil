@@ -1,5 +1,13 @@
 package org.im97mori.ble.service.ans.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.NEW_ALERT_CHARACTERISTIC;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
@@ -13,13 +21,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.NEW_ALERT_CHARACTERISTIC;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 public class NewAlertCharacteristicDataTest {
 
@@ -79,6 +80,32 @@ public class NewAlertCharacteristicDataTest {
         assertEquals(result1.highPrioritizedAlertTextStringInformation, result2.highPrioritizedAlertTextStringInformation);
         assertEquals(result1.instantMessageAlertNumberOfNewAlert, result2.instantMessageAlertNumberOfNewAlert);
         assertEquals(result1.instantMessageTextStringInformation, result2.instantMessageTextStringInformation);
+    }
+
+    @Test
+    public void test_constructor_00101() {
+        NewAlertCharacteristicData result1 = new NewAlertCharacteristicData();
+
+        assertEquals(0, result1.simpleAlertNumberOfNewAlert);
+        assertNull(result1.simpleAlertTextStringInformation);
+        assertEquals(0, result1.emailNumberOfNewAlert);
+        assertNull(result1.emailTextStringInformation);
+        assertEquals(0, result1.newsNumberOfNewAlert);
+        assertNull(result1.newsTextStringInformation);
+        assertEquals(0, result1.callNumberOfNewAlert);
+        assertNull(result1.callTextStringInformation);
+        assertEquals(0, result1.missedCallNumberOfNewAlert);
+        assertNull(result1.missedCallTextStringInformation);
+        assertEquals(0, result1.smsMmsNumberOfNewAlert);
+        assertNull(result1.smsMmsTextStringInformation);
+        assertEquals(0, result1.voiceMailNumberOfNewAlert);
+        assertNull(result1.voiceMailTextStringInformation);
+        assertEquals(0, result1.scheduleNumberOfNewAlert);
+        assertNull(result1.scheduleTextStringInformation);
+        assertEquals(0, result1.highPrioritizedAlertNumberOfNewAlert);
+        assertNull(result1.highPrioritizedAlertTextStringInformation);
+        assertEquals(0, result1.instantMessageAlertNumberOfNewAlert);
+        assertNull(result1.instantMessageTextStringInformation);
     }
 
     @Test

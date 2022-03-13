@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.AVERAGE_CURRENT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.AVERAGE_CURRENT_CHAR
 public class AverageCurrentAndroid extends AverageCurrent implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AverageCurrentAndroid> CREATOR = new ByteArrayCreater<AverageCurrentAndroid>() {
+    public static final ByteArrayCreator<AverageCurrentAndroid> CREATOR = new ByteArrayCreator<AverageCurrentAndroid>() {
 
         /**
          * {@inheritDoc}

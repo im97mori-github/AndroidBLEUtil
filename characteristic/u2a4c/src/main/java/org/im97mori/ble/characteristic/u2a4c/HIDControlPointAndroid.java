@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.HID_CONTROL_POINT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HID_CONTROL_POINT_CH
 public class HIDControlPointAndroid extends HIDControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HIDControlPointAndroid> CREATOR = new ByteArrayCreater<HIDControlPointAndroid>() {
+    public static final ByteArrayCreator<HIDControlPointAndroid> CREATOR = new ByteArrayCreator<HIDControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

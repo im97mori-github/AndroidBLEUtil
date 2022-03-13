@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.FLOOR_NUMBER_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.FLOOR_NUMBER_CHARACT
 public class FloorNumberAndroid extends FloorNumber implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<FloorNumberAndroid> CREATOR = new ByteArrayCreater<FloorNumberAndroid>() {
+    public static final ByteArrayCreator<FloorNumberAndroid> CREATOR = new ByteArrayCreator<FloorNumberAndroid>() {
 
         /**
          * {@inheritDoc}

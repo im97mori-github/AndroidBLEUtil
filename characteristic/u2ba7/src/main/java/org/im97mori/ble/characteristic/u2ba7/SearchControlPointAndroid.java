@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SEARCH_CONTROL_POINT_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SEARCH_CONTROL_POINT
 public class SearchControlPointAndroid extends SearchControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SearchControlPointAndroid> CREATOR = new ByteArrayCreater<SearchControlPointAndroid>() {
+    public static final ByteArrayCreator<SearchControlPointAndroid> CREATOR = new ByteArrayCreator<SearchControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

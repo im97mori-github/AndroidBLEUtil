@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "org.im97mori.ble.sample.jellybean"
-        minSdkVersion 18
+        minSdkVersion globalMinSdkVersion
         targetSdkVersion globalTargetSdkVersion
         versionCode 1
         versionName "1.0"

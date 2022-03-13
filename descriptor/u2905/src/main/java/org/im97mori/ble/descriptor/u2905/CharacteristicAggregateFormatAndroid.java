@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_AGGREGATE_FORMAT_DESCRIPTOR;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_AGGREGATE
 public class CharacteristicAggregateFormatAndroid extends CharacteristicAggregateFormat implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CharacteristicAggregateFormatAndroid> CREATOR = new ByteArrayCreater<CharacteristicAggregateFormatAndroid>() {
+    public static final ByteArrayCreator<CharacteristicAggregateFormatAndroid> CREATOR = new ByteArrayCreator<CharacteristicAggregateFormatAndroid>() {
 
         /**
          * {@inheritDoc}

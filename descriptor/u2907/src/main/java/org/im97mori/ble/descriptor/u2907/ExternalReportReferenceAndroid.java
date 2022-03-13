@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import java.util.UUID;
 
@@ -19,9 +19,9 @@ import static org.im97mori.ble.constants.DescriptorUUID.EXTERNAL_REPORT_REFERENC
 public class ExternalReportReferenceAndroid extends ExternalReportReference implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ExternalReportReferenceAndroid> CREATOR = new ByteArrayCreater<ExternalReportReferenceAndroid>() {
+    public static final ByteArrayCreator<ExternalReportReferenceAndroid> CREATOR = new ByteArrayCreator<ExternalReportReferenceAndroid>() {
 
         /**
          * {@inheritDoc}

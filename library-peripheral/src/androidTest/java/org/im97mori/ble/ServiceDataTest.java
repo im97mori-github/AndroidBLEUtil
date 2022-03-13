@@ -15,6 +15,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class ServiceDataTest {
@@ -50,6 +51,15 @@ public class ServiceDataTest {
     }
 
     @Test
+    public void test_constructor_00101() {
+        ServiceData result1 = new ServiceData();
+
+        assertNull(result1.uuid);
+        assertEquals(0, result1.type);
+        assertNull(result1.characteristicDataList);
+    }
+
+    @Test
     public void test_setUuid_00001() {
         List<CharacteristicData> characteristicDataList = new ArrayList<>();
         characteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5));
@@ -79,17 +89,13 @@ public class ServiceDataTest {
 
 
     @Test
-    public void test_setCharacteristicDataList_00001() {
+    public void test_getCharacteristicDataList_00001() {
         List<CharacteristicData> firstCharacteristicDataList = new ArrayList<>();
         firstCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 1, 2, new ArrayList<>(), 3, 4, null, 5));
 
         ServiceData serviceData = new ServiceData(UUID.randomUUID(), 1, firstCharacteristicDataList);
-        assertArrayEquals(firstCharacteristicDataList.toArray(), serviceData.characteristicDataList.toArray());
-
-        List<CharacteristicData> secondCharacteristicDataList = new ArrayList<>();
-        secondCharacteristicDataList.add(new CharacteristicData(UUID.randomUUID(), 11, 22, new ArrayList<>(), 33, 44, null, 5));
-        serviceData.characteristicDataList = secondCharacteristicDataList;
-        assertArrayEquals(secondCharacteristicDataList.toArray(), serviceData.characteristicDataList.toArray());
+        serviceData.characteristicDataList = firstCharacteristicDataList;
+        assertArrayEquals(firstCharacteristicDataList.toArray(), serviceData.getCharacteristicDataList().toArray());
     }
 
     @Test

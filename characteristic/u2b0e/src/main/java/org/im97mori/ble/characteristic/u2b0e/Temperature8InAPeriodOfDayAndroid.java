@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_8_IN_A_PERIOD_OF_DAY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_8_IN_A_P
 public class Temperature8InAPeriodOfDayAndroid extends Temperature8InAPeriodOfDay implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<Temperature8InAPeriodOfDayAndroid> CREATOR = new ByteArrayCreater<Temperature8InAPeriodOfDayAndroid>() {
+    public static final ByteArrayCreator<Temperature8InAPeriodOfDayAndroid> CREATOR = new ByteArrayCreator<Temperature8InAPeriodOfDayAndroid>() {
 
         /**
          * {@inheritDoc}

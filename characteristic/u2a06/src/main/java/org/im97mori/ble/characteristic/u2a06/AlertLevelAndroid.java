@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_LEVEL_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_LEVEL_CHARACTE
 public class AlertLevelAndroid extends AlertLevel implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AlertLevelAndroid> CREATOR = new ByteArrayCreater<AlertLevelAndroid>() {
+    public static final ByteArrayCreator<AlertLevelAndroid> CREATOR = new ByteArrayCreator<AlertLevelAndroid>() {
 
         /**
          * {@inheritDoc}

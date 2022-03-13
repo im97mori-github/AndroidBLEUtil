@@ -108,7 +108,7 @@ public class ConnectTask extends AbstractBLETask {
 
 
     /**
-     * {@code true}:try 512octed mtu setting, {@code false}:no mtu setting
+     * {@code true}:try 512 octet mtu setting, {@code false}:no mtu setting
      */
     private final boolean mNeedMtuSetting;
 
@@ -131,7 +131,7 @@ public class ConnectTask extends AbstractBLETask {
     /**
      * @param bleConnection  task target {@link BLEConnection} instance
      * @param taskHandler    task target {@link TaskHandler} instance
-     * @param needMtuSetting {@code true}:try 512octed mtu setting, {@code false}:no mtu setting
+     * @param needMtuSetting {@code true}:try 512octet mtu setting, {@code false}:no mtu setting
      * @param timeout        timeout(millis)
      * @param argument       callback argument
      */

@@ -170,6 +170,38 @@ public class CyclingPowerControlPointCharacteristicDataTest {
     }
 
     @Test
+    public void test_constructor_00101() {
+        CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData();
+
+        assertEquals(0, result1.setCumulativeValueResponseValue);
+        assertEquals(0, result1.updateSensorLocationResponseValue);
+        assertEquals(0, result1.requestSupportedSensorLocationsResponseValue);
+        assertNull(result1.requestSupportedSensorLocationsResponseParameter);
+        assertEquals(0, result1.setCrankLengthResponseValue);
+        assertEquals(0, result1.requestCrankLengthResponseValue);
+        assertNull(result1.requestCrankLengthResponseParameter);
+        assertEquals(0, result1.setChainLengthResponseValue);
+        assertEquals(0, result1.requestChainLengthResponseValue);
+        assertNull(result1.requestChainLengthResponseParameter);
+        assertEquals(0, result1.setChainWeightResponseValue);
+        assertEquals(0, result1.requestChainWeightResponseValue);
+        assertNull(result1.requestChainWeightResponseParameter);
+        assertEquals(0, result1.setSpanLengthResponseValue);
+        assertEquals(0, result1.requestSpanLengthResponseValue);
+        assertNull(result1.requestSpanLengthResponseParameter);
+        assertEquals(0, result1.startOffsetCompensationResponseValue);
+        assertNull(result1.startOffsetCompensationResponseParameter);
+        assertEquals(0, result1.maskCyclingPowerMeasurementCharacteristicContentResponseValue);
+        assertEquals(0, result1.requestSamplingRateResponseValue);
+        assertNull(result1.requestSamplingRateResponseParameter);
+        assertEquals(0, result1.requestFactoryCalibrationDateResponseValue);
+        assertNull(result1.requestFactoryCalibrationDateResponseParameter);
+        assertEquals(0, result1.startEnhancedOffsetCompensationResponseValue);
+        assertNull(result1.startEnhancedOffsetCompensationResponseParameter);
+        assertNull(result1.highPriorityResponseData);
+    }
+
+    @Test
     public void test_setCumulativeValueResponseValue_00001() {
         int firstSetCumulativeValueResponseValue = 3;
         CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(new ArrayList<>()

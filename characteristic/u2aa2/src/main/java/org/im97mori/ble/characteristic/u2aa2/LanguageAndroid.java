@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LANGUAGE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LANGUAGE_CHARACTERIS
 public class LanguageAndroid extends Language implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LanguageAndroid> CREATOR = new ByteArrayCreater<LanguageAndroid>() {
+    public static final ByteArrayCreator<LanguageAndroid> CREATOR = new ByteArrayCreator<LanguageAndroid>() {
 
         /**
          * {@inheritDoc}

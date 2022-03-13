@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC;
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SULFUR_HEXAFLUORIDE_
 public class SulfurHexafluorideConcentrationAndroid extends SulfurHexafluorideConcentration implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SulfurHexafluorideConcentrationAndroid> CREATOR = new ByteArrayCreater<SulfurHexafluorideConcentrationAndroid>() {
+    public static final ByteArrayCreator<SulfurHexafluorideConcentrationAndroid> CREATOR = new ByteArrayCreator<SulfurHexafluorideConcentrationAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_SCALE_FEATURE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_SCALE_FEATURE
 public class WeightScaleFeatureAndroid extends WeightScaleFeature implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<WeightScaleFeatureAndroid> CREATOR = new ByteArrayCreater<WeightScaleFeatureAndroid>() {
+    public static final ByteArrayCreator<WeightScaleFeatureAndroid> CREATOR = new ByteArrayCreator<WeightScaleFeatureAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -66,7 +66,7 @@ public class WeightScaleFeatureAndroid extends WeightScaleFeature implements Par
      * @param isTimeStampSupported                              {@code true}:{@link #WEIGHT_SCALE_FEATURE_TIME_STAMP_SUPPORTED_TRUE}, {@code false}:{@link #WEIGHT_SCALE_FEATURE_TIME_STAMP_SUPPORTED_FALSE}
      * @param isMultipleUsersSupported                          {@code true}:{@link #WEIGHT_SCALE_FEATURE_MULTIPLE_USERS_SUPPORTED_TRUE}, {@code false}:{@link #WEIGHT_SCALE_FEATURE_MULTIPLE_USERS_SUPPORTED_FALSE}
      * @param isBmiSupported                                    {@code true}:{@link #WEIGHT_SCALE_FEATURE_BMI_SUPPORTED_TRUE}, {@code false}:{@link #WEIGHT_SCALE_FEATURE_BMI_SUPPORTED_FALSE}
-     * @param weightScaleFeatureWeightMeasurmentResolutionFlag  one of {@link #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED}
+     * @param weightScaleFeatureWeightMeasurementResolutionFlag  one of {@link #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_NOT_SPECIFIED}
      *                                                          {@link #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_5KG_OR_1LB}
      *                                                          {@link #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_2KG_OR_0_5LB}
      *                                                          {@link #WEIGHT_SCALE_FEATURE_WEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_1KG_OR_0_2LB}
@@ -79,8 +79,8 @@ public class WeightScaleFeatureAndroid extends WeightScaleFeature implements Par
      *                                                          {@link #WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_005METER_OR_0_5INCH}
      *                                                          {@link #WEIGHT_SCALE_FEATURE_HEIGHT_MEASUREMENT_RESOLUTION_RESOLUTION_OF_0_001METER_OR_0_1INCH}
      */
-    public WeightScaleFeatureAndroid(boolean isTimeStampSupported, boolean isMultipleUsersSupported, boolean isBmiSupported, int weightScaleFeatureWeightMeasurmentResolutionFlag, int weightScaleFeatureHeightMeasurementResolutionFlag) {
-        super(isTimeStampSupported, isMultipleUsersSupported, isBmiSupported, weightScaleFeatureWeightMeasurmentResolutionFlag, weightScaleFeatureHeightMeasurementResolutionFlag);
+    public WeightScaleFeatureAndroid(boolean isTimeStampSupported, boolean isMultipleUsersSupported, boolean isBmiSupported, int weightScaleFeatureWeightMeasurementResolutionFlag, int weightScaleFeatureHeightMeasurementResolutionFlag) {
+        super(isTimeStampSupported, isMultipleUsersSupported, isBmiSupported, weightScaleFeatureWeightMeasurementResolutionFlag, weightScaleFeatureHeightMeasurementResolutionFlag);
     }
 
     /**

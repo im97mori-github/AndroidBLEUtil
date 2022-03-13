@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_INTERVAL_WINDOW_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_INTERVAL_WINDOW
 public class ScanIntervalWindowAndroid extends ScanIntervalWindow implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ScanIntervalWindowAndroid> CREATOR = new ByteArrayCreater<ScanIntervalWindowAndroid>() {
+    public static final ByteArrayCreator<ScanIntervalWindowAndroid> CREATOR = new ByteArrayCreator<ScanIntervalWindowAndroid>() {
 
         /**
          * {@inheritDoc}

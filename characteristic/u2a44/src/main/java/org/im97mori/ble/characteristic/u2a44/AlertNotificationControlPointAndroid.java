@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_NOTIFICATION_C
 public class AlertNotificationControlPointAndroid extends AlertNotificationControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AlertNotificationControlPointAndroid> CREATOR = new ByteArrayCreater<AlertNotificationControlPointAndroid>() {
+    public static final ByteArrayCreator<AlertNotificationControlPointAndroid> CREATOR = new ByteArrayCreator<AlertNotificationControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

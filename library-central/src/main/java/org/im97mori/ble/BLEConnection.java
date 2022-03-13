@@ -47,7 +47,7 @@ import java.util.UUID;
  * <p>
  * Asynchronous
  */
-public class BLEConnection extends BluetoothGattCallback implements BLECallbackDistributer.SubscriberInterface {
+public class BLEConnection extends BluetoothGattCallback implements BLECallbackDistributor.SubscriberInterface {
 
     /**
      * BLE device
@@ -70,24 +70,24 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     protected TaskHandler mTaskHandler;
 
     /**
-     * for {@link BLECallbackDistributer.SubscriberInterface#getSubscriberCallbackSet()}
+     * for {@link BLECallbackDistributor.SubscriberInterface#getSubscriberCallbackSet()}
      */
     protected final Set<BLECallback> mAttachedBLECallbackSet = new HashSet<>();
 
     /**
-     * {@link BLECallbackDistributer} instance
+     * {@link BLECallbackDistributor} instance
      */
-    protected BLECallbackDistributer mBLECallbackDistributer;
+    protected BLECallbackDistributor mBLECallbackDistributor;
 
     /**
      * @param context                {@link Context} instance
      * @param bluetoothDevice        BLE device
-     * @param bleCallbackDistributer distributer instance
+     * @param bleCallbackDistributor distributor instance
      */
-    public BLEConnection(@NonNull Context context, @NonNull BluetoothDevice bluetoothDevice, @Nullable BLECallbackDistributer bleCallbackDistributer) {
+    public BLEConnection(@NonNull Context context, @NonNull BluetoothDevice bluetoothDevice, @Nullable BLECallbackDistributor bleCallbackDistributor) {
         mContext = context.getApplicationContext();
         mBluetoothDevice = bluetoothDevice;
-        mBLECallbackDistributer = bleCallbackDistributer;
+        mBLECallbackDistributor = bleCallbackDistributor;
     }
 
     /**
@@ -171,11 +171,11 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * if already connected, do not anything
      * </p>
      *
-     * @param needMtuSetting {@code true}:try 512octed mtu setting, {@code false}:no mtu setting
+     * @param needMtuSetting {@code true}:try 512octet mtu setting, {@code false}:no mtu setting
      * @param timeout        timeout(millis)
      * @param argument       callback argument
      * @param bleCallback    {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @Nullable
     public synchronized Integer connect(boolean needMtuSetting
@@ -186,7 +186,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         if (mBluetoothGatt == null) {
             start();
 
-            ConnectTask task = new ConnectTask(this, mTaskHandler, needMtuSetting, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            ConnectTask task = new ConnectTask(this, mTaskHandler, needMtuSetting, timeout, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -199,7 +199,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param timeout     timeout(millis)
      * @param argument    callback argument
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @SuppressWarnings("unused")
     @Nullable
@@ -209,7 +209,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         Integer taskId = null;
         BluetoothGatt bluetoothGatt = mBluetoothGatt;
         if (bluetoothGatt != null) {
-            DiscoverServiceTask task = new DiscoverServiceTask(this, bluetoothGatt, mTaskHandler, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            DiscoverServiceTask task = new DiscoverServiceTask(this, bluetoothGatt, mTaskHandler, timeout, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -223,7 +223,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param timeout     timeout(millis)
      * @param argument    callback argument
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @SuppressWarnings("unused")
     @Nullable
@@ -235,7 +235,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         Integer taskId = null;
         BluetoothGatt bluetoothGatt = mBluetoothGatt;
         if (bluetoothGatt != null) {
-            RequestMtuTask task = new RequestMtuTask(this, bluetoothGatt, mTaskHandler, mtu, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            RequestMtuTask task = new RequestMtuTask(this, bluetoothGatt, mTaskHandler, mtu, timeout, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -261,7 +261,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      *
      * @param argument    callback argument
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @Nullable
     public synchronized Integer quit(@Nullable Bundle argument
@@ -270,7 +270,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         if (isConnected()) {
             mTaskHandler.clearTask();
 
-            DisconnectTask task = new DisconnectTask(this, mBluetoothGatt, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            DisconnectTask task = new DisconnectTask(this, mBluetoothGatt, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -312,7 +312,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     }
 
     /**
-     * Callback at connected and service discover successed
+     * Callback at connected and service discover success
      *
      * @param taskId        task id
      * @param bluetoothGatt Connected {@link BluetoothGatt}
@@ -421,16 +421,16 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      */
     @NonNull
     public synchronized BLECallback getBLECallback() {
-        if (mBLECallbackDistributer == null) {
-            mBLECallbackDistributer = new BLECallbackDistributer(this);
+        if (mBLECallbackDistributor == null) {
+            mBLECallbackDistributor = new BLECallbackDistributor(this);
         }
-        return mBLECallbackDistributer;
+        return mBLECallbackDistributor;
     }
 
     /**
      * check connection status
      *
-     * @return {@code true}:{@link BLEConnection} has connected {@link BluetoothGatt}, {@code false}:dont have connected {@link BluetoothGatt}
+     * @return {@code true}:{@link BLEConnection} has connected {@link BluetoothGatt}, {@code false}:don't have connected {@link BluetoothGatt}
      */
     public boolean isConnected() {
         return mBluetoothGatt != null;
@@ -456,7 +456,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
                 // disconnected
 
                 // add disconnect task
-                DisconnectTask task = new DisconnectTask(this, gatt, status, BLECallbackDistributer.wrapArgument(null, null));
+                DisconnectTask task = new DisconnectTask(this, gatt, status, BLECallbackDistributor.wrapArgument(null, null));
                 mTaskHandler.addTask(task);
             }
         }
@@ -501,7 +501,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
                 mTaskHandler.sendProcessingMessage(ReadCharacteristicTask.createReadCharacteristicErrorMessage(service.getUuid(), service.getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), status));
             }
 
-            // if characteristic / descriptor callbacked, clear busy status
+            // if characteristic / descriptor callback, clear busy status
             mTaskHandler.clearBusy();
         } catch (Exception e) {
             BLELogUtils.stackLog(e);
@@ -527,7 +527,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
                 mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicErrorMessage(service.getUuid(), service.getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), status));
             }
 
-            // if characteristic / descriptor callbacked, clear busy status
+            // if characteristic / descriptor callback, clear busy status
             mTaskHandler.clearBusy();
         } catch (Exception e) {
             BLELogUtils.stackLog(e);
@@ -573,13 +573,13 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
                     ClientCharacteristicConfigurationAndroid clientCharacteristicConfiguration = new ClientCharacteristicConfigurationAndroid(descriptor);
                     gatt.setCharacteristicNotification(descriptor.getCharacteristic(), clientCharacteristicConfiguration.isPropertiesNotificationsEnabled() || clientCharacteristicConfiguration.isPropertiesIndicationsEnabled());
                 }
-                // read decriptor task finished
+                // read descriptor task finished
                 mTaskHandler.sendProcessingMessage(ReadDescriptorTask.createReadDescriptorSuccessMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, BLEUtilsAndroid.getDescriptorInstanceId(descriptor), descriptor.getValue()));
             } else {
                 mTaskHandler.sendProcessingMessage(ReadDescriptorTask.createReadDescriptorErrorMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, BLEUtilsAndroid.getDescriptorInstanceId(descriptor), status));
             }
 
-            // if characteristic / descriptor callbacked, clear busy status
+            // if characteristic / descriptor callback, clear busy status
             mTaskHandler.clearBusy();
         } catch (Exception e) {
             BLELogUtils.stackLog(e);
@@ -603,13 +603,13 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             BluetoothGattService service = characteristic.getService();
             UUID descriptorUUID = descriptor.getUuid();
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                // write decriptor task finished
+                // write descriptor task finished
                 mTaskHandler.sendProcessingMessage(WriteDescriptorTask.createWriteDescriptorSuccessMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, BLEUtilsAndroid.getDescriptorInstanceId(descriptor), descriptor.getValue()));
             } else {
                 mTaskHandler.sendProcessingMessage(WriteDescriptorTask.createWriteDescriptorErrorMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, BLEUtilsAndroid.getDescriptorInstanceId(descriptor), status));
             }
 
-            // if characteristic / descriptor callbacked, clear busy status
+            // if characteristic / descriptor callback, clear busy status
             mTaskHandler.clearBusy();
         } catch (Exception e) {
             BLELogUtils.stackLog(e);
@@ -763,13 +763,13 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * Create read characteristic task
      *
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      * @param bleCallback              {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @Nullable
     public synchronized Integer createReadCharacteristicTask(@NonNull UUID serviceUUID
@@ -782,7 +782,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         Integer taskId = null;
         BluetoothGatt bluetoothGatt = mBluetoothGatt;
         if (bluetoothGatt != null) {
-            ReadCharacteristicTask task = new ReadCharacteristicTask(this, bluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            ReadCharacteristicTask task = new ReadCharacteristicTask(this, bluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -818,9 +818,9 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * Create write characteristic task
      *
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param byteArrayInterface       write data
      * @param writeType                {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}
      *                                 {@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}
@@ -828,7 +828,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      * @param bleCallback              {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @Nullable
     public synchronized Integer createWriteCharacteristicTask(@NonNull UUID serviceUUID
@@ -842,7 +842,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (isConnected()) {
-            WriteCharacteristicTask task = new WriteCharacteristicTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, byteArrayInterface.getBytes(), writeType, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            WriteCharacteristicTask task = new WriteCharacteristicTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, byteArrayInterface.getBytes(), writeType, timeout, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -865,15 +865,15 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * Create read descriptor task
      *
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           descriptor {@link UUID}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      * @param bleCallback              {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @Nullable
     public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID
@@ -887,7 +887,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (isConnected()) {
-            ReadDescriptorTask task = new ReadDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            ReadDescriptorTask task = new ReadDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -911,16 +911,16 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * Create write descriptor task
      *
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           descriptor {@link UUID}
-     * @param descriptorInstanceId     task target descriptor incetanceId
+     * @param descriptorInstanceId     task target descriptor instance id
      * @param byteArrayInterface       write data
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      * @param bleCallback              {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @Nullable
     public synchronized Integer createWriteDescriptorTask(@NonNull UUID serviceUUID
@@ -935,7 +935,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (isConnected()) {
-            WriteDescriptorTask task = new WriteDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, byteArrayInterface.getBytes(), timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            WriteDescriptorTask task = new WriteDescriptorTask(this, mBluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, byteArrayInterface.getBytes(), timeout, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -948,7 +948,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param timeout     timeout(millis)
      * @param argument    callback argument
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @SuppressWarnings("unused")
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -958,7 +958,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (isConnected()) {
-            ReadPhyTask task = new ReadPhyTask(this, mBluetoothGatt, mTaskHandler, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            ReadPhyTask task = new ReadPhyTask(this, mBluetoothGatt, mTaskHandler, timeout, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -974,7 +974,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param timeout     timeout(millis)
      * @param argument    callback argument
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @SuppressWarnings("unused")
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -987,7 +987,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (isConnected()) {
-            SetPreferredPhyTask task = new SetPreferredPhyTask(this, mBluetoothGatt, mTaskHandler, txPhy, rxPhy, phyOptions, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            SetPreferredPhyTask task = new SetPreferredPhyTask(this, mBluetoothGatt, mTaskHandler, txPhy, rxPhy, phyOptions, timeout, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -1000,7 +1000,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param timeout     timeout(millis)
      * @param argument    callback argument
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @SuppressWarnings("unused")
     @Nullable
@@ -1009,7 +1009,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (isConnected()) {
-            ReadRemoteRssiTask task = new ReadRemoteRssiTask(this, mBluetoothGatt, mTaskHandler, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            ReadRemoteRssiTask task = new ReadRemoteRssiTask(this, mBluetoothGatt, mTaskHandler, timeout, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -1017,11 +1017,11 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     }
 
     /**
-     * Create begin reliablw rite task
+     * Create begin reliable write task
      *
      * @param argument    callback argument
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @SuppressWarnings("unused")
     @Nullable
@@ -1029,7 +1029,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (isConnected()) {
-            BeginReliableWriteTask task = new BeginReliableWriteTask(this, mBluetoothGatt, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            BeginReliableWriteTask task = new BeginReliableWriteTask(this, mBluetoothGatt, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -1042,7 +1042,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param timeout     timeout(millis)
      * @param argument    callback argument
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @SuppressWarnings("unused")
     @Nullable
@@ -1051,7 +1051,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (isConnected()) {
-            ExecuteReliableWriteTask task = new ExecuteReliableWriteTask(this, mBluetoothGatt, mTaskHandler, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            ExecuteReliableWriteTask task = new ExecuteReliableWriteTask(this, mBluetoothGatt, mTaskHandler, timeout, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -1064,7 +1064,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * @param timeout     timeout(millis)
      * @param argument    callback argument
      * @param bleCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @SuppressWarnings("unused")
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -1073,7 +1073,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             , @Nullable BLECallback bleCallback) {
         Integer taskId = null;
         if (isConnected()) {
-            AbortReliableWriteTask task = new AbortReliableWriteTask(this, mBluetoothGatt, mTaskHandler, timeout, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            AbortReliableWriteTask task = new AbortReliableWriteTask(this, mBluetoothGatt, mTaskHandler, timeout, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }
@@ -1084,13 +1084,13 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * Create set notification task
      *
      * @param serviceUUID              service {@link UUID}
-     * @param serviceInstanceId        task target service incetanceId {@link BluetoothGattService#getInstanceId()}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
-     * @param characteristicInstanceId task target characteristic incetanceId {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param notificationStatus       {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd paramater
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param notificationStatus       {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd parameter
      * @param argument                 callback argument
      * @param bleCallback              {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
-     * @return task id. if {@code null} returned, task was not registed
+     * @return task id. if {@code null} returned, task was not registered
      */
     @SuppressWarnings("unused")
     @Nullable
@@ -1104,7 +1104,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         Integer taskId = null;
         BluetoothGatt bluetoothGatt = mBluetoothGatt;
         if (bluetoothGatt != null) {
-            SetNotificationTask task = new SetNotificationTask(this, bluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, notificationStatus, BLECallbackDistributer.wrapArgument(argument, bleCallback));
+            SetNotificationTask task = new SetNotificationTask(this, bluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, notificationStatus, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }

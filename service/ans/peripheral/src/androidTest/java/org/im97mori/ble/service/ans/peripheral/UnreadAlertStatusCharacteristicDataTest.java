@@ -19,6 +19,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class UnreadAlertStatusCharacteristicDataTest {
@@ -59,6 +60,22 @@ public class UnreadAlertStatusCharacteristicDataTest {
         assertEquals(result1.scheduleUnreadCount, result2.scheduleUnreadCount);
         assertEquals(result1.highPrioritizedAlertUnreadCount, result2.highPrioritizedAlertUnreadCount);
         assertEquals(result1.instantMessageAlertUnreadCount, result2.instantMessageAlertUnreadCount);
+    }
+
+    @Test
+    public void test_constructor_00101() {
+        UnreadAlertStatusCharacteristicData result1 = new UnreadAlertStatusCharacteristicData();
+
+        assertEquals(0, result1.simpleAlertUnreadCount);
+        assertEquals(0, result1.emailUnreadCount);
+        assertEquals(0, result1.newsUnreadCount);
+        assertEquals(0, result1.callUnreadCount);
+        assertEquals(0, result1.missedCallUnreadCount);
+        assertEquals(0, result1.smsMmsUnreadCount);
+        assertEquals(0, result1.voiceMailUnreadCount);
+        assertEquals(0, result1.scheduleUnreadCount);
+        assertEquals(0, result1.highPrioritizedAlertUnreadCount);
+        assertEquals(0, result1.instantMessageAlertUnreadCount);
     }
 
     @Test

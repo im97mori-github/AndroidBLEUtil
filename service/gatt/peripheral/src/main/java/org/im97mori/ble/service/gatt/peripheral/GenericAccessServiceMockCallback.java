@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a00.DeviceName;
 import org.im97mori.ble.characteristic.u2a01.Appearance;
@@ -46,7 +45,7 @@ public class GenericAccessServiceMockCallback extends AbstractServiceMockCallbac
      *
      * @param <T> subclass of {@link GenericAccessServiceMockCallback}
      */
-    public static class Builder<T extends GenericAccessServiceMockCallback> extends AbstractServiceMockCallback.Builder<GenericAccessServiceMockCallback> {
+    public static class Builder<T extends GenericAccessServiceMockCallback> extends AbstractServiceMockCallback.Builder<GenericAccessServiceMockCallback, ServiceData> {
 
         /**
          * Device Name data
@@ -428,7 +427,7 @@ public class GenericAccessServiceMockCallback extends AbstractServiceMockCallbac
          */
         @Override
         @NonNull
-        public MockData createMockData() {
+        public ServiceData createData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
             if (mDeviceNameData == null) {
@@ -463,8 +462,7 @@ public class GenericAccessServiceMockCallback extends AbstractServiceMockCallbac
                 characteristicList.add(mPeripheralPrivacyFlagData);
             }
 
-            ServiceData serviceData = new ServiceData(GENERIC_ACCESS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ServiceData(GENERIC_ACCESS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
         }
 
         /**
@@ -473,25 +471,17 @@ public class GenericAccessServiceMockCallback extends AbstractServiceMockCallbac
         @Override
         @NonNull
         public GenericAccessServiceMockCallback build() {
-            return new GenericAccessServiceMockCallback(createMockData(), false);
+            return new GenericAccessServiceMockCallback(createData(), false);
         }
 
     }
 
     /**
-     * @param serviceData   {@link ServiceData} instance
-     * @param isFallback fallback flag
+     * @param serviceData {@link ServiceData} instance
+     * @param isFallback  fallback flag
      */
     public GenericAccessServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public GenericAccessServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

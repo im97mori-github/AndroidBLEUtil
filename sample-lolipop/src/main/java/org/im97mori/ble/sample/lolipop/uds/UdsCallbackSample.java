@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a7e.AerobicHeartRateLowerLimitAndroid;
 import org.im97mori.ble.characteristic.u2a7f.AerobicThresholdAndroid;
 import org.im97mori.ble.characteristic.u2a80.AgeAndroid;
@@ -72,7 +72,7 @@ public class UdsCallbackSample extends UserDataServiceMockCallback implements Us
         @NonNull
         @Override
         public UdsCallbackSample build() {
-            return new UdsCallbackSample(createMockData(), mSampleCallback);
+            return new UdsCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -80,8 +80,8 @@ public class UdsCallbackSample extends UserDataServiceMockCallback implements Us
 
     private final SampleCallback mSampleCallback;
 
-    UdsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    UdsCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -103,9 +103,9 @@ public class UdsCallbackSample extends UserDataServiceMockCallback implements Us
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

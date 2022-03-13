@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ENERGY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ENERGY_CHARACTERISTI
 public class EnergyAndroid extends Energy implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<EnergyAndroid> CREATOR = new ByteArrayCreater<EnergyAndroid>() {
+    public static final ByteArrayCreator<EnergyAndroid> CREATOR = new ByteArrayCreator<EnergyAndroid>() {
 
         /**
          * {@inheritDoc}

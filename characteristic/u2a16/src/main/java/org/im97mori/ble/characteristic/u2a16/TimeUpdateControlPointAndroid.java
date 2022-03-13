@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_UPDATE_CONTROL_
 public class TimeUpdateControlPointAndroid extends TimeUpdateControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TimeUpdateControlPointAndroid> CREATOR = new ByteArrayCreater<TimeUpdateControlPointAndroid>() {
+    public static final ByteArrayCreator<TimeUpdateControlPointAndroid> CREATOR = new ByteArrayCreator<TimeUpdateControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.UV_INDEX_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.UV_INDEX_CHARACTERIS
 public class UVIndexAndroid extends UVIndex implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<UVIndexAndroid> CREATOR = new ByteArrayCreater<UVIndexAndroid>() {
+    public static final ByteArrayCreator<UVIndexAndroid> CREATOR = new ByteArrayCreator<UVIndexAndroid>() {
 
         /**
          * {@inheritDoc}

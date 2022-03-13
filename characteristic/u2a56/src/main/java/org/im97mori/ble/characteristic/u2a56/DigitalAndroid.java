@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.DIGITAL_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DIGITAL_CHARACTERIST
 public class DigitalAndroid extends Digital implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<DigitalAndroid> CREATOR = new ByteArrayCreater<DigitalAndroid>() {
+    public static final ByteArrayCreator<DigitalAndroid> CREATOR = new ByteArrayCreator<DigitalAndroid>() {
 
         /**
          * {@inheritDoc}

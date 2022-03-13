@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.PLAYING_ORDERS_SUPPORTED_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.PLAYING_ORDERS_SUPPO
 public class PlayingOrdersSupportedAndroid extends PlayingOrdersSupported implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<PlayingOrdersSupportedAndroid> CREATOR = new ByteArrayCreater<PlayingOrdersSupportedAndroid>() {
+    public static final ByteArrayCreator<PlayingOrdersSupportedAndroid> CREATOR = new ByteArrayCreator<PlayingOrdersSupportedAndroid>() {
 
         /**
          * {@inheritDoc}

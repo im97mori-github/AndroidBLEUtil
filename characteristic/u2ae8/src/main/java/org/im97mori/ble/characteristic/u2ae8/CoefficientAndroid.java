@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.COEFFICIENT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.COEFFICIENT_CHARACTE
 public class CoefficientAndroid extends Coefficient implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CoefficientAndroid> CREATOR = new ByteArrayCreater<CoefficientAndroid>() {
+    public static final ByteArrayCreator<CoefficientAndroid> CREATOR = new ByteArrayCreator<CoefficientAndroid>() {
 
         /**
          * {@inheritDoc}

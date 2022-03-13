@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.UNCERTAINTY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.UNCERTAINTY_CHARACTE
 public class UncertaintyAndroid extends Uncertainty implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<UncertaintyAndroid> CREATOR = new ByteArrayCreater<UncertaintyAndroid>() {
+    public static final ByteArrayCreator<UncertaintyAndroid> CREATOR = new ByteArrayCreator<UncertaintyAndroid>() {
 
         /**
          * {@inheritDoc}

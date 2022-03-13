@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CENTRAL_ADDRESS_RESO
 public class CentralAddressResolutionAndroid extends CentralAddressResolution implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CentralAddressResolutionAndroid> CREATOR = new ByteArrayCreater<CentralAddressResolutionAndroid>() {
+    public static final ByteArrayCreator<CentralAddressResolutionAndroid> CREATOR = new ByteArrayCreator<CentralAddressResolutionAndroid>() {
 
         /**
          * {@inheritDoc}

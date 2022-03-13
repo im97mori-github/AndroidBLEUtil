@@ -8,7 +8,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
 /**
@@ -18,9 +18,9 @@ import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 public class CarbonMonoxideConcentrationAndroid extends CarbonMonoxideConcentration implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CarbonMonoxideConcentrationAndroid> CREATOR = new ByteArrayCreater<CarbonMonoxideConcentrationAndroid>() {
+    public static final ByteArrayCreator<CarbonMonoxideConcentrationAndroid> CREATOR = new ByteArrayCreator<CarbonMonoxideConcentrationAndroid>() {
 
         /**
          * {@inheritDoc}

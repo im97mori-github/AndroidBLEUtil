@@ -54,11 +54,11 @@ public class ChannelMapUpdateIndicationFilter implements AdvertisingDataFilter<A
                     }
                 }
                 if (result) {
-                    List<Integer> expextUnusedPhyChannelList = mExpect.getUnusedPhyChannelList();
+                    List<Integer> expectUnusedPhyChannelList = mExpect.getUnusedPhyChannelList();
                     List<Integer> actualUnusedPhyChannelList = actual.getUnusedPhyChannelList();
-                    if (expextUnusedPhyChannelList.size() == actualUnusedPhyChannelList.size()) {
-                        for (int i = 0; i < expextUnusedPhyChannelList.size(); i++) {
-                            if (!expextUnusedPhyChannelList.get(i).equals(actualUnusedPhyChannelList.get(i))) {
+                    if (expectUnusedPhyChannelList.size() == actualUnusedPhyChannelList.size()) {
+                        for (int i = 0; i < expectUnusedPhyChannelList.size(); i++) {
+                            if (!expectUnusedPhyChannelList.get(i).equals(actualUnusedPhyChannelList.get(i))) {
                                 result = false;
                                 break;
                             }

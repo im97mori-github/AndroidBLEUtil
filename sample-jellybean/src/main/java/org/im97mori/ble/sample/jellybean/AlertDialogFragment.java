@@ -13,13 +13,13 @@ import androidx.fragment.app.DialogFragment;
 @SuppressWarnings({"WeakerAccess", "RedundantSuppression"})
 public class AlertDialogFragment extends DialogFragment implements DialogInterface.OnClickListener {
 
-    private static final String KEY_MESSSAGE = "KEY_MESSSAGE";
+    private static final String KEY_MESSAGE = "KEY_MESSAGE";
     private static final String KEY_ARGUMENT = "KEY_ARGUMENT";
 
     public static AlertDialogFragment createInstance(@NonNull String message, @Nullable Bundle argument) {
         AlertDialogFragment alertDialogFragment = new AlertDialogFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(KEY_MESSSAGE, message);
+        bundle.putString(KEY_MESSAGE, message);
         if (argument != null) {
             bundle.putBundle(KEY_ARGUMENT, argument);
         }
@@ -42,7 +42,7 @@ public class AlertDialogFragment extends DialogFragment implements DialogInterfa
         if (context instanceof AlertDialogFragmentCallback) {
             mAlertDialogFragmentCallback = (AlertDialogFragmentCallback) context;
         } else {
-            throw new ClassCastException(context.toString()
+            throw new ClassCastException(context
                     + " must implement "
                     + AlertDialogFragmentCallback.class.getCanonicalName());
         }
@@ -62,7 +62,7 @@ public class AlertDialogFragment extends DialogFragment implements DialogInterfa
         builder.setNegativeButton(android.R.string.cancel, this);
         Bundle argument = getArguments();
         if (argument != null) {
-            builder.setMessage(argument.getString(KEY_MESSSAGE));
+            builder.setMessage(argument.getString(KEY_MESSAGE));
         }
         return builder.create();
     }

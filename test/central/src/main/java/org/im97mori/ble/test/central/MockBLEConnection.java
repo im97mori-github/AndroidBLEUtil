@@ -1,5 +1,6 @@
 package org.im97mori.ble.test.central;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -25,7 +26,7 @@ public class MockBLEConnection extends BLEConnection {
 
     protected Integer mCreateWriteCharacteristicTaskId;
 
-    protected Integer mCreateReadDescriptorticTaskId;
+    protected Integer mCreateReadDescriptorTaskId;
 
     protected Integer mCreateWriteDescriptorTaskId;
 
@@ -58,8 +59,8 @@ public class MockBLEConnection extends BLEConnection {
         mCreateWriteCharacteristicTaskId = createWriteCharacteristicTaskId;
     }
 
-    public void setCreateReadDescriptorTaskId(@Nullable Integer createReadDescriptorticTaskId) {
-        mCreateReadDescriptorticTaskId = createReadDescriptorticTaskId;
+    public void setCreateReadDescriptorTaskId(@Nullable Integer createReadDescriptorTaskId) {
+        mCreateReadDescriptorTaskId = createReadDescriptorTaskId;
     }
 
     public void setCreateWriteDescriptorTaskId(@Nullable Integer createWriteDescriptorTaskId) {
@@ -167,14 +168,15 @@ public class MockBLEConnection extends BLEConnection {
     @Override
     public synchronized Integer createReadDescriptorTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer result;
-        if (mCreateReadDescriptorticTaskId == null) {
+        if (mCreateReadDescriptorTaskId == null) {
             result = super.createReadDescriptorTask(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorUUID, descriptorInstanceId, timeout, argument, bleCallback);
         } else {
-            result = mCreateReadDescriptorticTaskId;
+            result = mCreateReadDescriptorTaskId;
         }
         return result;
     }
 
+    @SuppressLint("MissingPermission")
     public synchronized void quitTaskHandler() {
         if (mBluetoothGatt != null) {
             mBluetoothGatt.close();

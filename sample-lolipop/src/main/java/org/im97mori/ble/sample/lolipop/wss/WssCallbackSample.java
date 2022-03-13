@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurementAndroid;
 import org.im97mori.ble.characteristic.u2a9e.WeightScaleFeatureAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
@@ -42,7 +42,7 @@ public class WssCallbackSample extends WeightScaleServiceMockCallback implements
         @NonNull
         @Override
         public WssCallbackSample build() {
-            return new WssCallbackSample(createMockData(), mSampleCallback);
+            return new WssCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -50,8 +50,8 @@ public class WssCallbackSample extends WeightScaleServiceMockCallback implements
 
     private final SampleCallback mSampleCallback;
 
-    WssCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    WssCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -73,9 +73,9 @@ public class WssCallbackSample extends WeightScaleServiceMockCallback implements
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a16.TimeUpdateControlPointAndroid;
 import org.im97mori.ble.characteristic.u2a17.TimeUpdateStateAndroid;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
@@ -41,7 +41,7 @@ public class RtusCallbackSample extends ReferenceTimeUpdateServiceMockCallback i
         @NonNull
         @Override
         public RtusCallbackSample build() {
-            return new RtusCallbackSample(createMockData(), mSampleCallback);
+            return new RtusCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -49,8 +49,8 @@ public class RtusCallbackSample extends ReferenceTimeUpdateServiceMockCallback i
 
     private final SampleCallback mSampleCallback;
 
-    RtusCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    RtusCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -72,9 +72,9 @@ public class RtusCallbackSample extends ReferenceTimeUpdateServiceMockCallback i
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

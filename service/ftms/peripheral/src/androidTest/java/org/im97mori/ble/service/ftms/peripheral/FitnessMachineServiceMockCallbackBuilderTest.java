@@ -28,7 +28,7 @@ import org.im97mori.ble.characteristic.u2ad8.SupportedPowerRange;
 import org.im97mori.ble.characteristic.u2ad9.FitnessMachineControlPoint;
 import org.im97mori.ble.characteristic.u2ada.FitnessMachineStatus;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -60,7 +60,7 @@ import static org.junit.Assert.assertNull;
 import androidx.test.filters.RequiresDevice;
 import androidx.test.filters.SdkSuppress;
 
-public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeripherallTest {
+public class FitnessMachineServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
     @Test
     @RequiresDevice

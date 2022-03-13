@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_BIRTH_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_BIRTH_CHARAC
 public class DateOfBirthAndroid extends DateOfBirth implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<DateOfBirthAndroid> CREATOR = new ByteArrayCreater<DateOfBirthAndroid>() {
+    public static final ByteArrayCreator<DateOfBirthAndroid> CREATOR = new ByteArrayCreator<DateOfBirthAndroid>() {
 
         /**
          * {@inheritDoc}

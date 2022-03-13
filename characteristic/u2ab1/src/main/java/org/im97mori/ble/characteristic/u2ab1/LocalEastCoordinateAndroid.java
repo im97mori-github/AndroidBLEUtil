@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LOCAL_EAST_COORDINATE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LOCAL_EAST_COORDINAT
 public class LocalEastCoordinateAndroid extends LocalEastCoordinate implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LocalEastCoordinateAndroid> CREATOR = new ByteArrayCreater<LocalEastCoordinateAndroid>() {
+    public static final ByteArrayCreator<LocalEastCoordinateAndroid> CREATOR = new ByteArrayCreator<LocalEastCoordinateAndroid>() {
 
         /**
          * {@inheritDoc}

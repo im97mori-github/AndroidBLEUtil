@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_CONTROL_POINT_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_CONTROL_P
 public class HeartRateControlPointAndroid extends HeartRateControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<HeartRateControlPointAndroid> CREATOR = new ByteArrayCreater<HeartRateControlPointAndroid>() {
+    public static final ByteArrayCreator<HeartRateControlPointAndroid> CREATOR = new ByteArrayCreator<HeartRateControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

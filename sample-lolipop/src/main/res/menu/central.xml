@@ -34,7 +34,7 @@
         android:id="@+id/read_characteristic"
         android:title="@string/menu_read_characteristic" />
     <item
-        android:id="@+id/write_characteristc"
+        android:id="@+id/write_characteristic"
         android:title="@string/menu_write_characteristic" />
     <item
         android:id="@+id/read_descriptor"
@@ -63,13 +63,13 @@
         android:title="@string/menu_write_notification_sync" />
 
     <item
-        android:id="@+id/write_characteristc_reliable"
+        android:id="@+id/write_characteristic_reliable"
         android:title="@string/menu_write_characteristic_reliable" />
     <item
-        android:id="@+id/write_characteristc_reliable_2"
+        android:id="@+id/write_characteristic_reliable_2"
         android:title="@string/menu_write_characteristic_reliable_2" />
     <item
-        android:id="@+id/write_characteristc_reliable_abort"
+        android:id="@+id/write_characteristic_reliable_abort"
         android:title="@string/menu_write_characteristic_reliable_abort" />
     <item
         android:id="@+id/read_multi_instance_characteristic"

@@ -8,7 +8,6 @@ import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_80;
 import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_81;
 import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
 import static org.im97mori.ble.constants.ErrorCode.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR_IMPROPERLY_CONFIGURED;
-import static org.im97mori.ble.constants.ServiceUUID.RECONNECTION_CONFIGURATION_SERVICE;
 
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
@@ -30,7 +29,6 @@ import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.callback.NotificationData;
 import org.im97mori.ble.characteristic.u2b1d.RCFeature;
@@ -41,7 +39,6 @@ import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -63,7 +60,7 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
      *
      * @param <T> subclass of {@link ReconnectionConfigurationServiceMockCallback}
      */
-    public static class Builder<T extends ReconnectionConfigurationServiceMockCallback> extends AbstractServiceMockCallback.Builder<ReconnectionConfigurationServiceMockCallback> {
+    public static class Builder<T extends ReconnectionConfigurationServiceMockCallback> extends AbstractServiceMockCallback.Builder<ReconnectionConfigurationServiceMockCallback, ServiceData> {
 
         /**
          * RC Feature data
@@ -144,8 +141,8 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          RC Settings notification count
-         * @param descriptorResponseCode     descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -197,7 +194,7 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
          *
          * @param characteristicResponseCode                  response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay                         characteristic response delay(millis)
-         * @param descriptorResponseCode                      descritptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorResponseCode                      descriptor response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay                             descriptor response delay(millis)
          * @param descriptorValue                             descriptor data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param enableDisconnectResultCodes                 characteristic response codes (Enable Disconnect response)
@@ -218,7 +215,7 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
          * @param upgradeToLescOnlyResultCodes                characteristic response codes (Upgrade to LESC Only response)
          * @param switchOobPairingResultCodes                 characteristic response codes (Switch OOB Pairing response)
          * @param limitedAccessResultCodes                    characteristic response codes (Limited Access response)
-         * @param currentSetting                              cuuurent setting
+         * @param currentSetting                              current setting
          * @param isRcFeaturesE2eCrcSupported                 crc support flag
          * @return {@link Builder} instance
          */
@@ -294,9 +291,7 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
          */
         @NonNull
         @Override
-        public MockData createMockData() {
-            List<CharacteristicData> characteristicList = new ArrayList<>();
-
+        public ServiceData createData() {
             RCFeature rcFeature;
             if (mRCFeatureData == null) {
                 throw new RuntimeException("no RC Feature data");
@@ -307,7 +302,6 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
                         || rcFeature.getE2eCrc() != BLEUtils.createCrc(rcFeature.getRcFeatures(), 0, rcFeature.getRcFeatures().length))) {
                     throw new RuntimeException("RC Feature CRC not matched");
                 }
-                characteristicList.add(mRCFeatureData);
             }
 
             if (mRCSettingsData == null) {
@@ -386,8 +380,6 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
                         }
                     }
                 }
-
-                characteristicList.add(mRCSettingsData);
             }
 
             if (mReconnectionConfigurationControlPointData == null) {
@@ -581,12 +573,11 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
                         && (currentWhiteListTimer < minWhiteListTimer || currentWhiteListTimer > maxWhiteListTimer)) {
                     throw new RuntimeException("White List Timer is Out of Range");
                 }
-
-                characteristicList.add(mReconnectionConfigurationControlPointData);
             }
 
-            ServiceData serviceData = new ServiceData(RECONNECTION_CONFIGURATION_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ReconnectionConfigurationServiceData(mRCFeatureData
+                    , mRCSettingsData
+                    , mReconnectionConfigurationControlPointData);
         }
 
         /**
@@ -595,25 +586,17 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
         @NonNull
         @Override
         public ReconnectionConfigurationServiceMockCallback build() {
-            return new ReconnectionConfigurationServiceMockCallback(createMockData(), false);
+            return new ReconnectionConfigurationServiceMockCallback(createData(), false);
         }
 
     }
 
     /**
-     * @param serviceData   {@link ServiceData} instance
-     * @param isFallback fallback flag
+     * @param serviceData {@link ServiceData} instance
+     * @param isFallback  fallback flag
      */
     public ReconnectionConfigurationServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public ReconnectionConfigurationServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

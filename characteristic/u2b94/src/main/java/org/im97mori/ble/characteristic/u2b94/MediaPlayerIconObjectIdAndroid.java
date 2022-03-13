@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.MEDIA_PLAYER_ICON_OBJECT_ID_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.MEDIA_PLAYER_ICON_OB
 public class MediaPlayerIconObjectIdAndroid extends MediaPlayerIconObjectId implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<MediaPlayerIconObjectIdAndroid> CREATOR = new ByteArrayCreater<MediaPlayerIconObjectIdAndroid>() {
+    public static final ByteArrayCreator<MediaPlayerIconObjectIdAndroid> CREATOR = new ByteArrayCreator<MediaPlayerIconObjectIdAndroid>() {
 
         /**
          * {@inheritDoc}

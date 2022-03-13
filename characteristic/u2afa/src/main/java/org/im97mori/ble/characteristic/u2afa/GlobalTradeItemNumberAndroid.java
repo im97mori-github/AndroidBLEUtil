@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.GLOBAL_TRADE_ITEM_NUMBER_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.GLOBAL_TRADE_ITEM_NU
 public class GlobalTradeItemNumberAndroid extends GlobalTradeItemNumber implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<GlobalTradeItemNumberAndroid> CREATOR = new ByteArrayCreater<GlobalTradeItemNumberAndroid>() {
+    public static final ByteArrayCreator<GlobalTradeItemNumberAndroid> CREATOR = new ByteArrayCreator<GlobalTradeItemNumberAndroid>() {
 
         /**
          * {@inheritDoc}

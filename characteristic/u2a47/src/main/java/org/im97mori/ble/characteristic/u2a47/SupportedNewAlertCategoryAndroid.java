@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_NEW_ALERT_
 public class SupportedNewAlertCategoryAndroid extends SupportedNewAlertCategory implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SupportedNewAlertCategoryAndroid> CREATOR = new ByteArrayCreater<SupportedNewAlertCategoryAndroid>() {
+    public static final ByteArrayCreator<SupportedNewAlertCategoryAndroid> CREATOR = new ByteArrayCreator<SupportedNewAlertCategoryAndroid>() {
 
         /**
          * {@inheritDoc}

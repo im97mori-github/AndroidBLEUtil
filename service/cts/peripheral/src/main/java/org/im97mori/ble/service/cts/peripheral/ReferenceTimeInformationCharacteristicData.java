@@ -54,6 +54,12 @@ public class ReferenceTimeInformationCharacteristicData extends CharacteristicDa
     public long lastUpdate;
 
     /**
+     * Constructor
+     */
+    public ReferenceTimeInformationCharacteristicData() {
+    }
+
+    /**
      * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
      * @param delay        response delay(millis)
      * @param data         data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter

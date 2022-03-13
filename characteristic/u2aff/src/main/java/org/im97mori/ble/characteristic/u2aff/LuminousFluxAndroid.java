@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_FLUX_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_FLUX_CHARAC
 public class LuminousFluxAndroid extends LuminousFlux implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LuminousFluxAndroid> CREATOR = new ByteArrayCreater<LuminousFluxAndroid>() {
+    public static final ByteArrayCreator<LuminousFluxAndroid> CREATOR = new ByteArrayCreator<LuminousFluxAndroid>() {
 
         /**
          * {@inheritDoc}

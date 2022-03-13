@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a1c.TemperatureMeasurementAndroid;
 import org.im97mori.ble.characteristic.u2a1d.TemperatureTypeAndroid;
 import org.im97mori.ble.characteristic.u2a1e.IntermediateTemperatureAndroid;
@@ -45,7 +45,7 @@ public class HtsCallbackSample extends HealthThermometerServiceMockCallback impl
         @NonNull
         @Override
         public HtsCallbackSample build() {
-            return new HtsCallbackSample(createMockData(), mSampleCallback);
+            return new HtsCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -53,8 +53,8 @@ public class HtsCallbackSample extends HealthThermometerServiceMockCallback impl
 
     private final SampleCallback mSampleCallback;
 
-    HtsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    HtsCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -76,9 +76,9 @@ public class HtsCallbackSample extends HealthThermometerServiceMockCallback impl
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

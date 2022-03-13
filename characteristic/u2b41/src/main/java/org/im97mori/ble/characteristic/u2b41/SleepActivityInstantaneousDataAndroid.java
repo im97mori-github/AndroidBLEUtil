@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SLEEP_ACTIVITY_INSTANTANEOUS_DATA_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SLEEP_ACTIVITY_INSTA
 public class SleepActivityInstantaneousDataAndroid extends SleepActivityInstantaneousData implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SleepActivityInstantaneousDataAndroid> CREATOR = new ByteArrayCreater<SleepActivityInstantaneousDataAndroid>() {
+    public static final ByteArrayCreator<SleepActivityInstantaneousDataAndroid> CREATOR = new ByteArrayCreator<SleepActivityInstantaneousDataAndroid>() {
 
         /**
          * {@inheritDoc}

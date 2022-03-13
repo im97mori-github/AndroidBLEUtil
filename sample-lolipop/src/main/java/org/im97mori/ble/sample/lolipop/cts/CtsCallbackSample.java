@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformationAndroid;
 import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformationAndroid;
 import org.im97mori.ble.characteristic.u2a2b.CurrentTimeAndroid;
@@ -43,7 +43,7 @@ public class CtsCallbackSample extends CurrentTimeServiceMockCallback implements
         @NonNull
         @Override
         public CtsCallbackSample build() {
-            return new CtsCallbackSample(createMockData(), mSampleCallback);
+            return new CtsCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -51,8 +51,8 @@ public class CtsCallbackSample extends CurrentTimeServiceMockCallback implements
 
     private final SampleCallback mSampleCallback;
 
-    CtsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    CtsCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -74,9 +74,9 @@ public class CtsCallbackSample extends CurrentTimeServiceMockCallback implements
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

@@ -5,7 +5,7 @@ import android.os.ParcelUuid;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.AdvertisingInterval;
 import org.im97mori.ble.advertising.AdvertisingIntervalLong;
@@ -119,7 +119,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Advertising Interval data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addAdvertisingIntervalFilter(@NonNull byte[] data) {
@@ -156,7 +156,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Advertising Interval data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addAdvertisingIntervalLongFilter(@NonNull byte[] data) {
@@ -193,7 +193,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Appearance data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addAppearanceFilter(@NonNull byte[] data) {
@@ -230,7 +230,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Appearance data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addBigInfoFilter(@NonNull byte[] data) {
@@ -267,7 +267,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Channel Map Update Indication data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addChannelMapUpdateIndicationFilter(@NonNull byte[] data) {
@@ -304,7 +304,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Complete List of 16-bit Service Class UUIDs data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addCompleteListOf16BitServiceUUIDsFilter(@NonNull byte[] data) {
@@ -353,7 +353,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Complete List of 32-bit Service Class UUIDs data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addCompleteListOf32BitServiceUUIDsFilter(@NonNull byte[] data) {
@@ -402,7 +402,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Complete List of 128-bit Service Class UUIDs data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addCompleteListOf128BitServiceUUIDsFilter(@NonNull byte[] data) {
@@ -451,7 +451,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Complete Local Name UUIDs data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addCompleteLocalNameFilter(@NonNull byte[] data) {
@@ -488,7 +488,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Flags data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addFlagsFilter(@NonNull byte[] data) {
@@ -525,7 +525,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Incomplete List of 16-bit Service Class UUIDs data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addIncompleteListOf16BitServiceUUIDsFilter(@NonNull byte[] data) {
@@ -574,7 +574,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Incomplete List of 32-bit Service Class UUIDs data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addIncompleteListOf32BitServiceUUIDsFilter(@NonNull byte[] data) {
@@ -623,7 +623,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Incomplete List of 128-bit Service Class UUIDs data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addIncompleteListOf128BitServiceUUIDsFilter(@NonNull byte[] data) {
@@ -672,7 +672,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Indoor Positioning data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addIndoorPositioningFilter(@NonNull byte[] data) {
@@ -709,7 +709,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data LE Supported Features data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addLeSupportedFeaturesFilter(@NonNull byte[] data) {
@@ -746,7 +746,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data List of 16-bit Service Solicitation UUIDs data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addListOf16BitServiceSolicitationUUIDsFilter(@NonNull byte[] data) {
@@ -795,7 +795,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data List of 32-bit Service Solicitation UUIDs data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addListOf32BitServiceSolicitationUUIDsFilter(@NonNull byte[] data) {
@@ -844,7 +844,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data List of 128-bit Service Solicitation UUIDs data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addListOf128BitServiceSolicitationUUIDsFilter(@NonNull byte[] data) {
@@ -894,7 +894,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @param data    Manufacturer Specific Data data array
      * @param bitmask bitmask for filter
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      * @see android.bluetooth.le.ScanFilter.Builder#setManufacturerData(int, byte[], byte[])
      */
     @NonNull
@@ -951,7 +951,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @param data        Public Target Address data array
      * @param bitmaskList bitmask for filter
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addPublicTargetAddressFilter(@NonNull byte[] data, @Nullable List<byte[]> bitmaskList) {
@@ -989,7 +989,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Random Target Address array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addRandomTargetAddressFilter(@NonNull byte[] data, @Nullable List<byte[]> bitmaskList) {
@@ -1028,7 +1028,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @param data    Service Data - 16-bit UUID array
      * @param bitmask bitmask for filter
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      * @see android.bluetooth.le.ScanFilter.Builder#setServiceData(ParcelUuid, byte[], byte[])
      */
     @NonNull
@@ -1085,7 +1085,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @param data    Service Data - 32-bit UUID array
      * @param bitmask bitmask for filter
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      * @see android.bluetooth.le.ScanFilter.Builder#setServiceData(ParcelUuid, byte[], byte[])
      */
     @NonNull
@@ -1142,7 +1142,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      * @param data    Service Data - 128-bit UUID array
      * @param bitmask bitmask for filter
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      * @see android.bluetooth.le.ScanFilter.Builder#setServiceData(ParcelUuid, byte[], byte[])
      */
     @NonNull
@@ -1198,7 +1198,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Shortened Local Name array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addShortenedLocalNameFilter(@NonNull byte[] data) {
@@ -1235,7 +1235,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Peripheral Connection Interval Range array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addPeripheralConnectionIntervalRangeFilter(@NonNull byte[] data) {
@@ -1284,7 +1284,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Transport Discovery Data data array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addTransportDiscoveryDataFilter(@NonNull byte[] data) {
@@ -1321,7 +1321,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data Tx Power Level array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addTxPowerLevelFilter(@NonNull byte[] data) {
@@ -1370,7 +1370,7 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
      *
      * @param data URI array
      * @return myself
-     * @see ByteArrayCreater#createFromByteArray(byte[])
+     * @see ByteArrayCreator#createFromByteArray(byte[])
      */
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addUniformResourceIdentifier(@NonNull byte[] data) {

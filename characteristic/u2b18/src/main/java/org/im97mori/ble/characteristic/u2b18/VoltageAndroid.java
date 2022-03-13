@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.VOLTAGE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.VOLTAGE_CHARACTERIST
 public class VoltageAndroid extends Voltage implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<VoltageAndroid> CREATOR = new ByteArrayCreater<VoltageAndroid>() {
+    public static final ByteArrayCreator<VoltageAndroid> CREATOR = new ByteArrayCreator<VoltageAndroid>() {
 
         /**
          * {@inheritDoc}

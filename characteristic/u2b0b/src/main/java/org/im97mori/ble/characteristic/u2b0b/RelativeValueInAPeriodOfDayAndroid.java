@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_VALUE_IN_A_PERIOD_OF_DAY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_VALUE_IN_A_
 public class RelativeValueInAPeriodOfDayAndroid extends RelativeValueInAPeriodOfDay implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<RelativeValueInAPeriodOfDayAndroid> CREATOR = new ByteArrayCreater<RelativeValueInAPeriodOfDayAndroid>() {
+    public static final ByteArrayCreator<RelativeValueInAPeriodOfDayAndroid> CREATOR = new ByteArrayCreator<RelativeValueInAPeriodOfDayAndroid>() {
 
         /**
          * {@inheritDoc}

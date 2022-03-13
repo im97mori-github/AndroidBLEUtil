@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.RINGER_SETTING_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.RINGER_SETTING_CHARA
 public class RingerSettingAndroid extends RingerSetting implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<RingerSettingAndroid> CREATOR = new ByteArrayCreater<RingerSettingAndroid>() {
+    public static final ByteArrayCreator<RingerSettingAndroid> CREATOR = new ByteArrayCreator<RingerSettingAndroid>() {
 
         /**
          * {@inheritDoc}

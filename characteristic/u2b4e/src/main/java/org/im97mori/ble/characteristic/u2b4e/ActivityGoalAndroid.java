@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ACTIVITY_GOAL_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ACTIVITY_GOAL_CHARAC
 public class ActivityGoalAndroid extends ActivityGoal implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ActivityGoalAndroid> CREATOR = new ByteArrayCreater<ActivityGoalAndroid>() {
+    public static final ByteArrayCreator<ActivityGoalAndroid> CREATOR = new ByteArrayCreator<ActivityGoalAndroid>() {
 
         /**
          * {@inheritDoc}

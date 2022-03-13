@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_FLOAT;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.INTERMEDIATE_TEMPERATURE_CHARACTERISTIC;
@@ -19,9 +19,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.INTERMEDIATE_TEMPERA
 public class IntermediateTemperatureAndroid extends IntermediateTemperature implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<IntermediateTemperatureAndroid> CREATOR = new ByteArrayCreater<IntermediateTemperatureAndroid>() {
+    public static final ByteArrayCreator<IntermediateTemperatureAndroid> CREATOR = new ByteArrayCreator<IntermediateTemperatureAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -1,5 +1,9 @@
 package org.im97mori.ble.callback;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
@@ -15,7 +19,7 @@ import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
-import org.im97mori.ble.test.peripheral.AbstractPeripherallTest;
+import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -25,12 +29,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 @SuppressWarnings("ConstantConditions")
-public class BaseMockCallbackTest extends AbstractPeripherallTest {
+public class BaseMockCallbackTest extends AbstractPeripheralTest {
 
     static class BaseMockCallbackInner extends BaseMockCallback {
         /**
@@ -449,14 +449,14 @@ public class BaseMockCallbackTest extends AbstractPeripherallTest {
     @Test
     public void test_isFallback_001() {
         boolean isFallback = true;
-        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(new MockData(), isFallback);
+        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(new MockData(Collections.emptyList()), isFallback);
         assertEquals(isFallback, baseMockCallback.isFallback());
     }
 
     @Test
     public void test_isFallback_002() {
         boolean isFallback = false;
-        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(new MockData(), isFallback);
+        BaseMockCallbackInner baseMockCallback = new BaseMockCallbackInner(new MockData(Collections.emptyList()), isFallback);
         assertEquals(isFallback, baseMockCallback.isFallback());
     }
 

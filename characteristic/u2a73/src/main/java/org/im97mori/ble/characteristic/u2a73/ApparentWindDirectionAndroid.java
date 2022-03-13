@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.APPARENT_WIND_DIRECTION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.APPARENT_WIND_DIRECT
 public class ApparentWindDirectionAndroid extends ApparentWindDirection implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ApparentWindDirectionAndroid> CREATOR = new ByteArrayCreater<ApparentWindDirectionAndroid>() {
+    public static final ByteArrayCreator<ApparentWindDirectionAndroid> CREATOR = new ByteArrayCreator<ApparentWindDirectionAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -1,5 +1,10 @@
 package org.im97mori.ble.service.wss.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_MEASUREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_SCALE_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.WEIGHT_SCALE_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
@@ -15,7 +20,6 @@ import androidx.annotation.Nullable;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.DescriptorData;
-import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurement;
 import org.im97mori.ble.characteristic.u2a9e.WeightScaleFeature;
@@ -25,11 +29,6 @@ import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_MEASUREMENT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_SCALE_FEATURE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ServiceUUID.WEIGHT_SCALE_SERVICE;
 
 /**
  * Weight Scale Service (Service UUID: 0x181D) for Peripheral
@@ -41,7 +40,7 @@ public class WeightScaleServiceMockCallback extends AbstractServiceMockCallback 
      *
      * @param <T> subclass of {@link WeightScaleServiceMockCallback}
      */
-    public static class Builder<T extends WeightScaleServiceMockCallback> extends AbstractServiceMockCallback.Builder<WeightScaleServiceMockCallback> {
+    public static class Builder<T extends WeightScaleServiceMockCallback> extends AbstractServiceMockCallback.Builder<WeightScaleServiceMockCallback, ServiceData> {
 
         /**
          * Weight Scale Feature data
@@ -118,8 +117,8 @@ public class WeightScaleServiceMockCallback extends AbstractServiceMockCallback 
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @param notificationCount          notification / indication count
-         * @param descriptorResponseCode     descritptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
-         * @param descriptorDelay            descritptor response delay(millis)
+         * @param descriptorResponseCode     descriptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
+         * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
@@ -156,7 +155,7 @@ public class WeightScaleServiceMockCallback extends AbstractServiceMockCallback 
          */
         @Override
         @NonNull
-        public MockData createMockData() {
+        public ServiceData createData() {
             List<CharacteristicData> characteristicList = new ArrayList<>();
 
             if (mWeightScaleFeatureCharacteristicData == null) {
@@ -181,8 +180,7 @@ public class WeightScaleServiceMockCallback extends AbstractServiceMockCallback 
                 }
             }
 
-            ServiceData serviceData = new ServiceData(WEIGHT_SCALE_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
-            return new MockData(Collections.singletonList(serviceData));
+            return new ServiceData(WEIGHT_SCALE_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);
         }
 
         /**
@@ -191,7 +189,7 @@ public class WeightScaleServiceMockCallback extends AbstractServiceMockCallback 
         @Override
         @NonNull
         public WeightScaleServiceMockCallback build() {
-            return new WeightScaleServiceMockCallback(createMockData(), false);
+            return new WeightScaleServiceMockCallback(createData(), false);
         }
 
     }
@@ -201,15 +199,7 @@ public class WeightScaleServiceMockCallback extends AbstractServiceMockCallback 
      * @param isFallback fallback flag
      */
     public WeightScaleServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
-        super(new MockData(Collections.singletonList(serviceData)), isFallback);
-    }
-
-    /**
-     * @param mockData   {@link MockData} instance
-     * @param isFallback fallback flag
-     */
-    public WeightScaleServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+        super(serviceData, isFallback);
     }
 
     /**

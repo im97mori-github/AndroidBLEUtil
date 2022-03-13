@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.GAIN_SETTINGS_ATTRIBUTE_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.GAIN_SETTINGS_ATTRIB
 public class GainSettingsAttributeAndroid extends GainSettingsAttribute implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<GainSettingsAttributeAndroid> CREATOR = new ByteArrayCreater<GainSettingsAttributeAndroid>() {
+    public static final ByteArrayCreator<GainSettingsAttributeAndroid> CREATOR = new ByteArrayCreator<GainSettingsAttributeAndroid>() {
 
         /**
          * {@inheritDoc}

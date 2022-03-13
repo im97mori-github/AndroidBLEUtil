@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ELEVATION_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.ELEVATION_CHARACTERI
 public class ElevationAndroid extends Elevation implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ElevationAndroid> CREATOR = new ByteArrayCreater<ElevationAndroid>() {
+    public static final ByteArrayCreator<ElevationAndroid> CREATOR = new ByteArrayCreator<ElevationAndroid>() {
 
         /**
          * {@inheritDoc}

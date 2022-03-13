@@ -8,7 +8,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * object list filter (Characteristics UUID: 0x2AC7)
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class ObjectListFilterAndroid extends ObjectListFilter implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ObjectListFilterAndroid> CREATOR = new ByteArrayCreater<ObjectListFilterAndroid>() {
+    public static final ByteArrayCreator<ObjectListFilterAndroid> CREATOR = new ByteArrayCreator<ObjectListFilterAndroid>() {
 
         /**
          * {@inheritDoc}

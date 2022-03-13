@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CALL_STATE_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CALL_STATE_CHARACTER
 public class CallStateAndroid extends CallState implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CallStateAndroid> CREATOR = new ByteArrayCreater<CallStateAndroid>() {
+    public static final ByteArrayCreator<CallStateAndroid> CREATOR = new ByteArrayCreator<CallStateAndroid>() {
 
         /**
          * {@inheritDoc}

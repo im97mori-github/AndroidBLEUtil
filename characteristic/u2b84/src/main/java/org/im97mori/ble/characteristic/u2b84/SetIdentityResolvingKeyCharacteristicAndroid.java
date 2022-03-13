@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.SET_IDENTITY_RESOLVING_KEY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.SET_IDENTITY_RESOLVI
 public class SetIdentityResolvingKeyCharacteristicAndroid extends SetIdentityResolvingKeyCharacteristic implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<SetIdentityResolvingKeyCharacteristicAndroid> CREATOR = new ByteArrayCreater<SetIdentityResolvingKeyCharacteristicAndroid>() {
+    public static final ByteArrayCreator<SetIdentityResolvingKeyCharacteristicAndroid> CREATOR = new ByteArrayCreator<SetIdentityResolvingKeyCharacteristicAndroid>() {
 
         /**
          * {@inheritDoc}

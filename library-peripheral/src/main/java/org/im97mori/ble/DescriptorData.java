@@ -21,6 +21,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -238,7 +239,7 @@ public class DescriptorData implements Parcelable, ByteArrayInterface {
      */
     @Override
     public int hashCode() {
-        int hashCode = uuid.hashCode()
+        int hashCode = Objects.hashCode(uuid)
                 ^ Integer.valueOf(permission).hashCode()
                 ^ Integer.valueOf(responseCode).hashCode()
                 ^ Long.valueOf(delay).hashCode()
@@ -259,7 +260,7 @@ public class DescriptorData implements Parcelable, ByteArrayInterface {
         boolean result = false;
         if (obj instanceof DescriptorData) {
             DescriptorData target = (DescriptorData) obj;
-            result = uuid.equals(target.uuid)
+            result = Objects.equals(uuid, target.uuid)
                     && permission == target.permission
                     && responseCode == target.responseCode
                     && delay == target.delay

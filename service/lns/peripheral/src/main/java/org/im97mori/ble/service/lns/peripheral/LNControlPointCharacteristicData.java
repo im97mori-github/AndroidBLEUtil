@@ -109,6 +109,12 @@ public class LNControlPointCharacteristicData extends CharacteristicData {
     public int setElevationResponseValue;
 
     /**
+     * Constructor
+     */
+    public LNControlPointCharacteristicData() {
+    }
+
+    /**
      * @param property                                               combination of
      *                                                               {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
      *                                                               {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_WRITE_NO_RESPONSE}

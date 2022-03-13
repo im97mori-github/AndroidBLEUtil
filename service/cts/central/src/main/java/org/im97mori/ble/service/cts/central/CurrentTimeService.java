@@ -57,7 +57,7 @@ public class CurrentTimeService extends AbstractCentralService {
 
     /**
      * Local Time Information characteristic writable flag
-     * {@code true}:Local Time Informationcharacteristic is writable, {@code false}:Local Time Information characteristic is not writable or service not ready
+     * {@code true}:Local Time Information characteristic is writable, {@code false}:Local Time Information characteristic is not writable or service not ready
      */
     private boolean mIsLocalTimeInformationCharacteristicWritable;
 

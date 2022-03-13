@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TIME_DECIHOUR_8_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_DECIHOUR_8_CHAR
 public class TimeDecihour8Android extends TimeDecihour8 implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TimeDecihour8Android> CREATOR = new ByteArrayCreater<TimeDecihour8Android>() {
+    public static final ByteArrayCreator<TimeDecihour8Android> CREATOR = new ByteArrayCreator<TimeDecihour8Android>() {
 
         /**
          * {@inheritDoc}

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.URI_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.URI_CHARACTERISTIC;
 public class URIAndroid extends URI implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<URIAndroid> CREATOR = new ByteArrayCreater<URIAndroid>() {
+    public static final ByteArrayCreator<URIAndroid> CREATOR = new ByteArrayCreator<URIAndroid>() {
 
         /**
          * {@inheritDoc}

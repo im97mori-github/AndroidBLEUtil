@@ -5,7 +5,7 @@ import android.os.Parcel;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 /**
  * <p>
@@ -17,9 +17,9 @@ import org.im97mori.ble.ByteArrayCreater;
 public class ManufacturerSpecificDataAndroid extends ManufacturerSpecificData implements AdvertisingDataInterfaceAndroid {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<ManufacturerSpecificDataAndroid> CREATOR = new ByteArrayCreater<ManufacturerSpecificDataAndroid>() {
+    public static final ByteArrayCreator<ManufacturerSpecificDataAndroid> CREATOR = new ByteArrayCreator<ManufacturerSpecificDataAndroid>() {
 
         /**
          * {@inheritDoc}
@@ -64,7 +64,7 @@ public class ManufacturerSpecificDataAndroid extends ManufacturerSpecificData im
      *
      * @param data   byte array from {@link ScanRecord#getBytes()}
      * @param offset data offset
-     * @param length 1st octed of Advertising Data
+     * @param length 1st octet of Advertising Data
      */
     public ManufacturerSpecificDataAndroid(@NonNull byte[] data
             , int offset

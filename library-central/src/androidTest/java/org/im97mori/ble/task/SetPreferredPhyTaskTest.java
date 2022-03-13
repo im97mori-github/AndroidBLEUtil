@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.filters.RequiresDevice;
 
-import org.im97mori.ble.BLECallbackDistributer;
+import org.im97mori.ble.BLECallbackDistributor;
 import org.im97mori.ble.BaseBLECallback;
 import org.im97mori.ble.TaskHandler;
 import org.im97mori.ble.test.central.AbstractCentralTest;
@@ -92,7 +92,7 @@ public class SetPreferredPhyTaskTest extends AbstractCentralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            SetPreferredPhyTask task = new SetPreferredPhyTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, 0, 0, 0, SetPreferredPhyTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            SetPreferredPhyTask task = new SetPreferredPhyTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, 0, 0, 0, SetPreferredPhyTask.TIMEOUT_MILLIS, BLECallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -124,7 +124,7 @@ public class SetPreferredPhyTaskTest extends AbstractCentralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            SetPreferredPhyTask task = new SetPreferredPhyTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, 0, 0, 0, SetPreferredPhyTask.TIMEOUT_MILLIS, BLECallbackDistributer.wrapArgument(null, null));
+            SetPreferredPhyTask task = new SetPreferredPhyTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, 0, 0, 0, SetPreferredPhyTask.TIMEOUT_MILLIS, BLECallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.POSITION_QUALITY_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.POSITION_QUALITY_CHA
 public class PositionQualityAndroid extends PositionQuality implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<PositionQualityAndroid> CREATOR = new ByteArrayCreater<PositionQualityAndroid>() {
+    public static final ByteArrayCreator<PositionQualityAndroid> CREATOR = new ByteArrayCreator<PositionQualityAndroid>() {
 
         /**
          * {@inheritDoc}

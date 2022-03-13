@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.LOCATION_AND_SPEED_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LOCATION_AND_SPEED_C
 public class LocationAndSpeedAndroid extends LocationAndSpeed implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<LocationAndSpeedAndroid> CREATOR = new ByteArrayCreater<LocationAndSpeedAndroid>() {
+    public static final ByteArrayCreator<LocationAndSpeedAndroid> CREATOR = new ByteArrayCreator<LocationAndSpeedAndroid>() {
 
         /**
          * {@inheritDoc}

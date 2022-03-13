@@ -94,15 +94,8 @@
 
     <string name="menu_read_manufacturer_name">Read Manufacturer Name</string>
     <string name="menu_read_model_number">Read Model Number</string>
-    <string name="menu_read_serial_number">Read Serial Number</string>
-    <string name="menu_read_hardware_revision">Read Hardware Revision</string>
-    <string name="menu_read_firmware_revision">Read Firmware Revision</string>
-    <string name="menu_read_software_revision">Read Software Revision</string>
     <string name="menu_read_system_id">Read System ID</string>
-    <string name="menu_read_ieee_11073_20601_regulatory_certification_data_list">Read IEEE 11073 20601 RegulatoryCertificationDataList</string>
-    <string name="menu_read_pnp_id">Read Pnp ID</string>
 
-    <string name="menu_read_battery_level">Read Battery Level</string>
     <string name="menu_read_battery_level_1">Read Battery Level(1)</string>
     <string name="menu_read_battery_level_2">Read Battery Level(2)</string>
     <string name="menu_notify_battery_level_start">Notify Battery Level start</string>
@@ -171,8 +164,8 @@
     <string name="menu_has_user_data_service">Has User Data Service</string>
     <string name="menu_has_battery_service">Has Battery Service</string>
     <string name="menu_has_current_time_service">Has Current Time Service</string>
-    <string name="menu_indicate_weight_mesurement_start">Indicate Weight Measurement start</string>
-    <string name="menu_indicate_weight_mesurement_stop">Indicate Weight Measurement stop</string>
+    <string name="menu_indicate_weight_measurement_start">Indicate Weight Measurement start</string>
+    <string name="menu_indicate_weight_measurement_stop">Indicate Weight Measurement stop</string>
     <string name="menu_read_weight_scale_feature">Read Weight Scale Feature</string>
     <string name="menu_has_system_id">Has System ID</string>
     <string name="menu_has_intermediate_cuff_pressure">Has Intermediate Cuff Pressure</string>
@@ -256,7 +249,7 @@
     <string name="menu_is_digital_writable_0">D Writable(0)</string>
     <string name="menu_is_digital_writable_with_no_response_0">D WritableWNR(0)</string>
     <string name="menu_is_digital_notificatable_0">D Notificatable(0)</string>
-    <string name="menu_is_digital_indicatable_0">D Indicatable(0)</string>
+    <string name="menu_is_digital_indictable_0">D Indicatable(0)</string>
     <string name="menu_has_digital_characteristic_presentation_format_0">Has D CPF(0)</string>
     <string name="menu_has_digital_characteristic_user_description_0">Has D CUD(0)</string>
     <string name="menu_is_digital_characteristic_user_description_writable_0">D CUD Writable(0)</string>
@@ -285,7 +278,7 @@
     <string name="menu_is_digital_writable_1">D Writable(1)</string>
     <string name="menu_is_digital_writable_with_no_response_1">D WritableWNR(1)</string>
     <string name="menu_is_digital_notificatable_1">D Notificatable(1)</string>
-    <string name="menu_is_digital_indicatable_1">D Indicatable(1)</string>
+    <string name="menu_is_digital_indictable_1">D Indicatable(1)</string>
     <string name="menu_has_digital_characteristic_presentation_format_1">Has D CPF(1)</string>
     <string name="menu_has_digital_characteristic_user_description_1">Has D CUD(1)</string>
     <string name="menu_is_digital_characteristic_user_description_writable_1">D CUD Writable(1)</string>
@@ -314,7 +307,7 @@
     <string name="menu_is_analog_writable_0">A Writable(0)</string>
     <string name="menu_is_analog_writable_with_no_response_0">A WritableWNR(0)</string>
     <string name="menu_is_analog_notificatable_0">A Notificatable(0)</string>
-    <string name="menu_is_analog_indicatable_0">A Indicatable(0)</string>
+    <string name="menu_is_analog_indictable_0">A Indicatable(0)</string>
     <string name="menu_has_analog_characteristic_presentation_format_0">Has A CPF(0)</string>
     <string name="menu_has_analog_characteristic_user_description_0">Has A CUD(0)</string>
     <string name="menu_is_analog_characteristic_user_description_writable_0">A CUA Writable(0)</string>
@@ -343,7 +336,7 @@
     <string name="menu_is_analog_writable_1">A Writable(1)</string>
     <string name="menu_is_analog_writable_with_no_response_1">A WritableWNR(1)</string>
     <string name="menu_is_analog_notificatable_1">A Notificatable(1)</string>
-    <string name="menu_is_analog_indicatable_1">A Indicatable(1)</string>
+    <string name="menu_is_analog_indictable_1">A Indicatable(1)</string>
     <string name="menu_has_analog_characteristic_presentation_format_1">Has A CPF(1)</string>
     <string name="menu_has_analog_characteristic_user_description_1">Has A CUD(1)</string>
     <string name="menu_is_analog_characteristic_user_description_writable_1">A CUA Writable(1)</string>
@@ -371,7 +364,7 @@
     <string name="menu_is_aggregate_supported">Is Aggregate Supported</string>
     <string name="menu_is_aggregate_readable">Is Aggregate Readable</string>
     <string name="menu_is_aggregate_notificatable">Is Aggregate Notificatable</string>
-    <string name="menu_is_aggregate_indicatable">Is Aggregate Indicatable</string>
+    <string name="menu_is_aggregate_indictable">Is Aggregate Indicatable</string>
     <string name="menu_get_aggregate">Get Aggregate</string>
     <string name="menu_get_aggregate_client_characteristic_configuration">Get Aggregate Client Characteristic Configuration</string>
     <string name="menu_start_aggregate_notification">Start Aggregate Notification</string>
@@ -532,7 +525,7 @@
     <string name="menu_is_stair_climber_data_characteristic_supported">Has Stair Climber Data</string>
     <string name="menu_is_rower_data_characteristic_supported">Has Rower Data</string>
     <string name="menu_is_indoor_bike_data_characteristic_supported">Has Indoor Bike Data</string>
-    <string name="menu_is_training_status_characteristic_supported">Has Traning Status</string>
+    <string name="menu_is_training_status_characteristic_supported">Has Training Status</string>
     <string name="menu_is_supported_speed_range_characteristic_supported">Has Supported Speed Range</string>
     <string name="menu_is_supported_inclination_range_characteristic_supported">Has Supported Inclination Range</string>
     <string name="menu_is_supported_resistance_level_range_characteristic_supported">Has Supported Resistance Level Range</string>
@@ -1408,8 +1401,8 @@
     <string name="menu_get_reconnection_configuration_control_point_characteristic_configuration">Read RCCP Client Characteristic Configuration</string>
     <string name="menu_indicate_reconnection_configuration_control_point_start">Indicate RCCP start</string>
     <string name="menu_indicate_reconnection_configuration_control_point_stop">Indicate RCCP stop</string>
-    <string name="menu_ndicate_client_parameter_indication">Indicate Client Parameter Indication</string>
-    <string name="menu_read_bond_banagement_features">Read Bond Management Features</string>
+    <string name="menu_indicate_client_parameter_indication">Indicate Client Parameter Indication</string>
+    <string name="menu_read_bond_management_features">Read Bond Management Features</string>
     <string name="menu_write_bond_management_control_point">Write Bond Management Control Point</string>
 
     <string name="menu_clear">Clear</string>

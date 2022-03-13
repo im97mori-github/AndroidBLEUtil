@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.AUDIO_INPUT_CONTROL_POINT_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.AUDIO_INPUT_CONTROL_
 public class AudioInputControlPointAndroid extends AudioInputControlPoint implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AudioInputControlPointAndroid> CREATOR = new ByteArrayCreater<AudioInputControlPointAndroid>() {
+    public static final ByteArrayCreator<AudioInputControlPointAndroid> CREATOR = new ByteArrayCreator<AudioInputControlPointAndroid>() {
 
         /**
          * {@inheritDoc}

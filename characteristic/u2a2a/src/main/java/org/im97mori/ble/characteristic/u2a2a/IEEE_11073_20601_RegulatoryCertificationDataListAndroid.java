@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_CHARACTERISTIC;
 
@@ -19,9 +19,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.IEEE_11073_20601_REG
 public class IEEE_11073_20601_RegulatoryCertificationDataListAndroid extends IEEE_11073_20601_RegulatoryCertificationDataList implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<IEEE_11073_20601_RegulatoryCertificationDataListAndroid> CREATOR = new ByteArrayCreater<IEEE_11073_20601_RegulatoryCertificationDataListAndroid>() {
+    public static final ByteArrayCreator<IEEE_11073_20601_RegulatoryCertificationDataListAndroid> CREATOR = new ByteArrayCreator<IEEE_11073_20601_RegulatoryCertificationDataListAndroid>() {
 
         /**
          * {@inheritDoc}

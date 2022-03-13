@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.INCOMING_CALL_TARGET_BEARER_URI_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.INCOMING_CALL_TARGET
 public class IncomingCallTargetBearerUriAndroid extends IncomingCallTargetBearerUri implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<IncomingCallTargetBearerUriAndroid> CREATOR = new ByteArrayCreater<IncomingCallTargetBearerUriAndroid>() {
+    public static final ByteArrayCreator<IncomingCallTargetBearerUriAndroid> CREATOR = new ByteArrayCreator<IncomingCallTargetBearerUriAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2b1d.RCFeatureAndroid;
 import org.im97mori.ble.characteristic.u2b1e.RCSettingsAndroid;
 import org.im97mori.ble.characteristic.u2b1f.ReconnectionConfigurationControlPointAndroid;
@@ -43,7 +43,7 @@ public class RcsCallbackSample extends ReconnectionConfigurationServiceMockCallb
         @NonNull
         @Override
         public RcsCallbackSample build() {
-            return new RcsCallbackSample(createMockData(), mSampleCallback);
+            return new RcsCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -51,8 +51,8 @@ public class RcsCallbackSample extends ReconnectionConfigurationServiceMockCallb
 
     private final SampleCallback mSampleCallback;
 
-    RcsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    RcsCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -74,9 +74,9 @@ public class RcsCallbackSample extends ReconnectionConfigurationServiceMockCallb
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

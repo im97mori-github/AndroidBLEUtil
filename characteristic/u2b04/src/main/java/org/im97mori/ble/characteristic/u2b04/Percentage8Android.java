@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.PERCENTAGE_8_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.PERCENTAGE_8_CHARACT
 public class Percentage8Android extends Percentage8 implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<Percentage8Android> CREATOR = new ByteArrayCreater<Percentage8Android>() {
+    public static final ByteArrayCreator<Percentage8Android> CREATOR = new ByteArrayCreator<Percentage8Android>() {
 
         /**
          * {@inheritDoc}

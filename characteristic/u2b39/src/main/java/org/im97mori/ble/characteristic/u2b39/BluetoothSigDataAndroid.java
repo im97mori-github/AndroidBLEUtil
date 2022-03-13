@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.BLUETOOTH_SIG_DATA_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.BLUETOOTH_SIG_DATA_C
 public class BluetoothSigDataAndroid extends BluetoothSigData implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<BluetoothSigDataAndroid> CREATOR = new ByteArrayCreater<BluetoothSigDataAndroid>() {
+    public static final ByteArrayCreator<BluetoothSigDataAndroid> CREATOR = new ByteArrayCreator<BluetoothSigDataAndroid>() {
 
         /**
          * {@inheritDoc}

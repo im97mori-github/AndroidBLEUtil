@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CIE13_3_1995_COLOR_RENDERING_INDEX_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CIE13_3_1995_COLOR_R
 public class Cie13_3_1995ColorRenderingIndexAndroid extends Cie13_3_1995ColorRenderingIndex implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<Cie13_3_1995ColorRenderingIndexAndroid> CREATOR = new ByteArrayCreater<Cie13_3_1995ColorRenderingIndexAndroid>() {
+    public static final ByteArrayCreator<Cie13_3_1995ColorRenderingIndexAndroid> CREATOR = new ByteArrayCreator<Cie13_3_1995ColorRenderingIndexAndroid>() {
 
         /**
          * {@inheritDoc}

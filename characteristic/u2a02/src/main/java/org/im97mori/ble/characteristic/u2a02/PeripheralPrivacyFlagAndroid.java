@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PRIVACY_F
 public class PeripheralPrivacyFlagAndroid extends PeripheralPrivacyFlag implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<PeripheralPrivacyFlagAndroid> CREATOR = new ByteArrayCreater<PeripheralPrivacyFlagAndroid>() {
+    public static final ByteArrayCreator<PeripheralPrivacyFlagAndroid> CREATOR = new ByteArrayCreator<PeripheralPrivacyFlagAndroid>() {
 
         /**
          * {@inheritDoc}

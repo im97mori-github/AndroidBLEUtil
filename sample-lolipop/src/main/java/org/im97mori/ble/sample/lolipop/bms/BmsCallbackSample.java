@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLECallback;
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2aa4.BondManagementControlPointAndroid;
 import org.im97mori.ble.characteristic.u2aa5.BondManagementFeaturesAndroid;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
@@ -41,7 +41,7 @@ public class BmsCallbackSample extends BondManagementServiceMockCallback impleme
         @NonNull
         @Override
         public BmsCallbackSample build() {
-            return new BmsCallbackSample(createMockData(), mSampleCallback);
+            return new BmsCallbackSample(createData(), mSampleCallback);
         }
     }
 
@@ -49,8 +49,8 @@ public class BmsCallbackSample extends BondManagementServiceMockCallback impleme
 
     private final SampleCallback mSampleCallback;
 
-    BmsCallbackSample(@NonNull MockData mockData, SampleCallback sampleCallback) {
-        super(mockData, false);
+    BmsCallbackSample(@NonNull ServiceData serviceData, SampleCallback sampleCallback) {
+        super(serviceData, false);
         mSampleCallback = sampleCallback;
     }
 
@@ -72,9 +72,9 @@ public class BmsCallbackSample extends BondManagementServiceMockCallback impleme
             format.notifyAll();
         }
         if (logs.length == 0) {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName()));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName()));
         } else {
-            mSampleCallback.onCallbacked(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
+            mSampleCallback.onCallback(Pair.create(now, stackTraceElementArray[index].getMethodName() + '\n' + TextUtils.join("\n", logs)));
         }
     }
 

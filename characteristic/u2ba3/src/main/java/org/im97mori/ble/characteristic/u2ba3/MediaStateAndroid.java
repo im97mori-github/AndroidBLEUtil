@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.MEDIA_STATE_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.MEDIA_STATE_CHARACTE
 public class MediaStateAndroid extends MediaState implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<MediaStateAndroid> CREATOR = new ByteArrayCreater<MediaStateAndroid>() {
+    public static final ByteArrayCreator<MediaStateAndroid> CREATOR = new ByteArrayCreator<MediaStateAndroid>() {
 
         /**
          * {@inheritDoc}

@@ -4,12 +4,12 @@ import android.bluetooth.BluetoothDevice;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.MockData;
+import org.im97mori.ble.ServiceData;
 
 class ConsentTestUserDataServiceMockCallback extends UserDataServiceMockCallback {
 
-    public ConsentTestUserDataServiceMockCallback(@NonNull MockData mockData, boolean isFallback) {
-        super(mockData, isFallback);
+    public ConsentTestUserDataServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
+        super(serviceData, isFallback);
     }
 
     public void setConsent(@NonNull BluetoothDevice bluetoothDevice, @NonNull Integer userIndex) {

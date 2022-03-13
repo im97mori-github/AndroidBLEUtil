@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_EXTENDED_
 public class CharacteristicExtendedPropertiesAndroid extends CharacteristicExtendedProperties implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CharacteristicExtendedPropertiesAndroid> CREATOR = new ByteArrayCreater<CharacteristicExtendedPropertiesAndroid>() {
+    public static final ByteArrayCreator<CharacteristicExtendedPropertiesAndroid> CREATOR = new ByteArrayCreator<CharacteristicExtendedPropertiesAndroid>() {
 
         /**
          * {@inheritDoc}

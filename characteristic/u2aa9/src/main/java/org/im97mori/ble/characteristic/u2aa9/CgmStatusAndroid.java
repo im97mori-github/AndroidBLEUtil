@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CGM_STATUS_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CGM_STATUS_CHARACTER
 public class CgmStatusAndroid extends CgmStatus implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CgmStatusAndroid> CREATOR = new ByteArrayCreater<CgmStatusAndroid>() {
+    public static final ByteArrayCreator<CgmStatusAndroid> CREATOR = new ByteArrayCreator<CgmStatusAndroid>() {
 
         /**
          * {@inheritDoc}

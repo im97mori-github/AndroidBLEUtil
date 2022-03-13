@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CURRENT_TIME_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CURRENT_TIME_CHARACT
 public class CurrentTimeAndroid extends CurrentTime implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CurrentTimeAndroid> CREATOR = new ByteArrayCreater<CurrentTimeAndroid>() {
+    public static final ByteArrayCreator<CurrentTimeAndroid> CREATOR = new ByteArrayCreator<CurrentTimeAndroid>() {
 
         /**
          * {@inheritDoc}

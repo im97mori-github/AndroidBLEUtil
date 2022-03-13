@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.TIME_SOURCE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TIME_SOURCE_CHARACTE
 public class TimeSourceAndroid extends TimeSource implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<TimeSourceAndroid> CREATOR = new ByteArrayCreater<TimeSourceAndroid>() {
+    public static final ByteArrayCreator<TimeSourceAndroid> CREATOR = new ByteArrayCreator<TimeSourceAndroid>() {
 
         /**
          * {@inheritDoc}

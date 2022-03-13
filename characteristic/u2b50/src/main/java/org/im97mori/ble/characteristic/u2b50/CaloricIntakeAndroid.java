@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.CALORIC_INTAKE_CHARACTERISTIC;
 
@@ -17,9 +17,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.CALORIC_INTAKE_CHARA
 public class CaloricIntakeAndroid extends CaloricIntake implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<CaloricIntakeAndroid> CREATOR = new ByteArrayCreater<CaloricIntakeAndroid>() {
+    public static final ByteArrayCreator<CaloricIntakeAndroid> CREATOR = new ByteArrayCreator<CaloricIntakeAndroid>() {
 
         /**
          * {@inheritDoc}

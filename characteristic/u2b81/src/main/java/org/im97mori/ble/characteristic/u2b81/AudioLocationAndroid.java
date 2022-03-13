@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-import org.im97mori.ble.ByteArrayCreater;
+import org.im97mori.ble.ByteArrayCreator;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.AUDIO_LOCATION_CHARACTERISTIC;
 
@@ -18,9 +18,9 @@ import static org.im97mori.ble.constants.CharacteristicUUID.AUDIO_LOCATION_CHARA
 public class AudioLocationAndroid extends AudioLocation implements Parcelable {
 
     /**
-     * @see ByteArrayCreater
+     * @see ByteArrayCreator
      */
-    public static final ByteArrayCreater<AudioLocationAndroid> CREATOR = new ByteArrayCreater<AudioLocationAndroid>() {
+    public static final ByteArrayCreator<AudioLocationAndroid> CREATOR = new ByteArrayCreator<AudioLocationAndroid>() {
 
         /**
          * {@inheritDoc}
