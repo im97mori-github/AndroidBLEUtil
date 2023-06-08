@@ -43,7 +43,6 @@ import android.os.Parcel;
 
 import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.TransportDiscoveryServiceUtils;
-import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.constants.AppearanceValues;
 import org.im97mori.ble.constants.Scheme;
 import org.junit.Test;

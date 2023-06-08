@@ -25,8 +25,10 @@ android {
     publishing {
         singleVariant("release") {
             withSourcesJar()
+            withJavadocJar()
         }
     }
+    namespace 'org.im97mori.ble.descriptor.u290a'
 }
 
 dependencies {

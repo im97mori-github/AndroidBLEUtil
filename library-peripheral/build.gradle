@@ -31,8 +31,11 @@ android {
     publishing {
         singleVariant("release") {
             withSourcesJar()
+            withJavadocJar()
         }
     }
+    namespace 'org.im97mori.ble.peripheral'
+    testNamespace 'org.im97mori.ble.peripheral.test'
 }
 
 dependencies {
@@ -41,6 +44,7 @@ dependencies {
     api apiAdvertisingAndroid
     api apiHandler
     api gson
+    androidTestImplementation 'androidx.test:rules:1.5.0'
     coreLibraryDesugaring desugar
     androidTestImplementation apiTestPeripheral
 }

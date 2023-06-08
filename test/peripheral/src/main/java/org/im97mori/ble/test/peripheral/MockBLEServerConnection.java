@@ -1,6 +1,7 @@
 package org.im97mori.ble.test.peripheral;
 
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -46,7 +47,12 @@ public class MockBLEServerConnection extends BLEServerConnection {
             mCreateAddServiceTaskBluetoothGattServiceList.add(bluetoothGattService);
         }
         if (mCreateAddServiceTaskServiceDataList != null && argument != null) {
-            ServiceData serviceData = argument.getParcelable("KEY_SERVICE_DATA");
+            ServiceData serviceData;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                serviceData = argument.getParcelable("KEY_SERVICE_DATA", ServiceData.class);
+            } else {
+                serviceData = argument.getParcelable("KEY_SERVICE_DATA");
+            }
             mCreateAddServiceTaskServiceDataList.add(serviceData);
         }
         return super.createAddServiceTask(bluetoothGattService, timeout, argument, bleServerCallback);

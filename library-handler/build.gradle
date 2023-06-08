@@ -25,8 +25,11 @@ android {
     publishing {
         singleVariant("release") {
             withSourcesJar()
+            withJavadocJar()
         }
     }
+    namespace 'org.im97mori.ble.handler'
+    testNamespace 'org.im97mori.ble.handler.test'
 }
 
 dependencies {

@@ -1,3 +1,2 @@
 <manifest xmlns:tools="http://schemas.android.com/tools"
-    package="org.im97mori.ble.profile"
     tools:overrideLibrary="org.im97mori.ble.profile.aiop.peripheral" />

@@ -29,8 +29,10 @@ android {
     publishing {
         singleVariant("release") {
             withSourcesJar()
+            withJavadocJar()
         }
     }
+    namespace 'org.im97mori.ble.service.bms.peripheral'
 }
 
 dependencies {

@@ -29,8 +29,11 @@ android {
     publishing {
         singleVariant("release") {
             withSourcesJar()
+            withJavadocJar()
         }
     }
+    namespace 'org.im97mori.ble.profile.peripheral'
+    testNamespace 'org.im97mori.ble.profile.peripheral.test'
 }
 
 dependencies {

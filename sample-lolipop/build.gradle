@@ -15,6 +15,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    namespace 'org.im97mori.ble.sample.lolipop'
 }
 
 dependencies {

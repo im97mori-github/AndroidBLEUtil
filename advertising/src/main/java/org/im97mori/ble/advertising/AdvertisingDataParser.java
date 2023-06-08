@@ -39,6 +39,8 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.constants.DataType;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -189,7 +191,9 @@ public class AdvertisingDataParser {
              */
             @Override
             public AdvertisingDataParseResult createFromParcel(Parcel in) {
-                return new AdvertisingDataParseResult(in);
+                byte[] data = new byte[in.readInt()];
+                in.readByteArray(data);
+                return new Builder(true).build().parse(data);
             }
 
             /**
@@ -442,22 +446,6 @@ public class AdvertisingDataParser {
         }
 
         /**
-         * Constructor from {@link Parcel}
-         *
-         * @param in Parcel
-         */
-        private AdvertisingDataParseResult(@NonNull Parcel in) {
-            int size = in.readInt();
-            List<AdvertisingDataInterfaceAndroid> list = new ArrayList<>();
-            for (int i = 0; i < size; i++) {
-                AdvertisingDataInterfaceAndroid data = in.readParcelable(this.getClass().getClassLoader());
-                list.add(data);
-            }
-            mResultList = Collections.unmodifiableList(list);
-            toMember();
-        }
-
-        /**
          * {@inheritDoc}
          */
         @Override
@@ -470,10 +458,16 @@ public class AdvertisingDataParser {
          */
         @Override
         public void writeToParcel(@NonNull Parcel dest, int flags) {
-            dest.writeInt(mResultList.size());
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             for (AdvertisingDataInterfaceAndroid data : mResultList) {
-                dest.writeParcelable(data, flags);
+                try {
+                    byteArrayOutputStream.write(data.getBytes());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
+            dest.writeInt(byteArrayOutputStream.size());
+            dest.writeByteArray(byteArrayOutputStream.toByteArray());
         }
 
         /**
@@ -924,10 +918,8 @@ public class AdvertisingDataParser {
                 } else if (data instanceof BigInfoAndroid) {
                     mBigInfo = (BigInfoAndroid) data;
                 }
-
             }
         }
-
     }
 
     /**
