@@ -44,7 +44,6 @@ dependencies {
     api apiAdvertisingAndroid
     api apiHandler
     api gson
-    androidTestImplementation 'androidx.test:rules:1.5.0'
     coreLibraryDesugaring desugar
     androidTestImplementation apiTestPeripheral
 }
@@ -53,7 +52,7 @@ publishing {
     publications {
         release(MavenPublication) {
             groupId = myGroupId
-            artifactId = target['artifactId']
+            artifactId = target['artifactId'].toString()
             version = uploadVersion
 
             afterEvaluate {

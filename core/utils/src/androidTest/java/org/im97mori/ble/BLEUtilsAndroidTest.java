@@ -19,7 +19,9 @@ import android.os.ParcelUuid;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.filters.RequiresDevice;
 import androidx.test.filters.SdkSuppress;
+import androidx.test.rule.GrantPermissionRule;
 
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -28,6 +30,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class BLEUtilsAndroidTest {
+
+    @Rule
+    public GrantPermissionRule mRuntimePermissionRule = GrantPermissionRule
+            .grant(android.Manifest.permission.BLUETOOTH_CONNECT);
 
     @Test
     @RequiresDevice

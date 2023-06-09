@@ -1,12 +1,15 @@
 package org.im97mori.ble.profile.peripheral;
 
+import android.Manifest;
 import android.bluetooth.le.AdvertiseSettings;
 
 import androidx.annotation.NonNull;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.filters.RequiresDevice;
+import androidx.test.rule.GrantPermissionRule;
 
 import org.im97mori.ble.BLEServerConnection;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -18,6 +21,10 @@ import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
 public class AbstractProfileMockCallbackTest {
+
+    @Rule
+    public GrantPermissionRule mRuntimePermissionRule = GrantPermissionRule
+            .grant(Manifest.permission.BLUETOOTH_ADVERTISE, android.Manifest.permission.BLUETOOTH_CONNECT);
 
     @Test
     public void test_constructor_00001() {

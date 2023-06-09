@@ -6,11 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.test.filters.RequiresDevice;
 import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.rule.GrantPermissionRule;
 
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.Set;
@@ -21,6 +23,10 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 public class BondedDeviceDatabaseHelperTest {
+
+    @Rule
+    public GrantPermissionRule mRuntimePermissionRule = GrantPermissionRule
+            .grant(android.Manifest.permission.BLUETOOTH_CONNECT);
 
     private static BaseBondedDeviceDatabaseHelper DATABASE_HELPER;
 

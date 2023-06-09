@@ -34,7 +34,7 @@ public class IndexActivity extends Activity implements AdapterView.OnItemClickLi
 
         private final LayoutInflater mLayoutInflater;
 
-        IndexAdapter(Context context, List<ActivityInfo> list) {
+        private IndexAdapter(Context context, List<ActivityInfo> list) {
             super(context, 0, list);
             mLayoutInflater = LayoutInflater.from(context);
         }

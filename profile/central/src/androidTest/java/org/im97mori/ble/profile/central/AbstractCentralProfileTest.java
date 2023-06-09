@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.filters.RequiresDevice;
 import androidx.test.filters.SdkSuppress;
+import androidx.test.rule.GrantPermissionRule;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -36,6 +37,7 @@ import org.im97mori.ble.service.gatt.central.GenericAccessService;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.im97mori.ble.test.central.MockBLEConnection;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.List;
@@ -43,6 +45,10 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AbstractCentralProfileTest extends AbstractCentralTest {
+
+    @Rule
+    public GrantPermissionRule mRuntimePermissionRule = GrantPermissionRule
+            .grant(android.Manifest.permission.BLUETOOTH_CONNECT);
 
     @Override
     public void tearDown() {

@@ -44,7 +44,7 @@ publishing {
     publications {
         release(MavenPublication) {
             groupId = myGroupId
-            artifactId = target['artifactId']
+            artifactId = target['artifactId'].toString()
             version = uploadVersion
 
             afterEvaluate {

@@ -1,5 +1,6 @@
 package org.im97mori.ble;
 
+import android.Manifest;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
@@ -12,10 +13,12 @@ import android.os.Message;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.filters.RequiresDevice;
+import androidx.test.rule.GrantPermissionRule;
 
 import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -28,6 +31,10 @@ import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings({"ConstantConditions", "BusyWait"})
 public class BLEServerConnectionTest extends AbstractPeripheralTest {
+
+    @Rule
+    public GrantPermissionRule mRuntimePermissionRule = GrantPermissionRule
+            .grant(Manifest.permission.BLUETOOTH_ADVERTISE, android.Manifest.permission.BLUETOOTH_CONNECT);
 
     private static final long SLEEP_DURATION = 50;
 

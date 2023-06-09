@@ -110,7 +110,7 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
             super(context
                     , isWspUdsSupported ? new WspWssCallbackSample.Builder(sampleCallback) : new WssCallbackSample.Builder(sampleCallback)
                     , new DisCallbackSample.Builder(sampleCallback)
-                    , isUdsSupported ? isWspUdsSupported ? new UdsCallbackSample.Builder(sampleCallback) : new UdsCallbackSample.Builder(sampleCallback) : null
+                    , isUdsSupported ? new UdsCallbackSample.Builder(sampleCallback) : null
                     , isBasSupported ? new BasCallbackSample.Builder(sampleCallback) : null
                     , isCtsSupported ? new CtsCallbackSample.Builder(sampleCallback) : null);
             mSampleCallback = sampleCallback;

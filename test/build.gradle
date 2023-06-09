@@ -33,13 +33,14 @@ dependencies {
     api target['baseModule']
     api androidxTestRunner
     api androidxTestCore
+    api androidxTestRules
 }
 
 publishing {
     publications {
         release(MavenPublication) {
             groupId = myGroupId
-            artifactId = target['artifactId']
+            artifactId = target['artifactId'].toString()
             version = uploadVersion
 
             afterEvaluate {

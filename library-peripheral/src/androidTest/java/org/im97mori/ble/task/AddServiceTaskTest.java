@@ -14,18 +14,24 @@ import android.os.Message;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.test.filters.RequiresDevice;
+import androidx.test.rule.GrantPermissionRule;
 
 import org.im97mori.ble.BLEServerCallbackDistributor;
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.BaseBLEServerCallback;
 import org.im97mori.ble.TaskHandler;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.Random;
 
 @SuppressWarnings("ConstantConditions")
 public class AddServiceTaskTest extends AbstractPeripheralTest {
+
+    @Rule
+    public GrantPermissionRule mRuntimePermissionRule = GrantPermissionRule
+            .grant(android.Manifest.permission.BLUETOOTH_CONNECT);
 
     @Test
     @RequiresDevice

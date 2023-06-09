@@ -11,13 +11,13 @@ buildscript {
     }
 }
 
-allprojects {
-    gradle.projectsEvaluated {
-        tasks.withType(JavaCompile) {
-            options.compilerArgs << "-Xlint:deprecation"
-        }
-    }
-}
+//allprojects {
+//    gradle.projectsEvaluated {
+//        tasks.withType(JavaCompile) {
+//            options.compilerArgs << "-Xlint:deprecation"
+//        }
+//    }
+//}
 
 task clean(type: Delete) {
     delete rootProject.buildDir
@@ -117,6 +117,7 @@ ext.apiTestCentral = "${myGroupId}:${testCentral.artifactId}:${loadVersion}"
 ext.androidxAnnotation = 'androidx.annotation:annotation:1.6.0'
 ext.androidxTestRunner = 'androidx.test:runner:1.5.2'
 ext.androidxTestCore = 'androidx.test:core:1.5.0'
+ext.androidxTestRules = 'androidx.test:rules:1.5.0'
 ext.stackLog = 'org.im97mori:stacklog:0.0.2'
 ext.gson = 'com.google.code.gson:gson:2.9.0'
 ext.junit = 'junit:junit:4.13.2'
@@ -133,6 +134,7 @@ dependencies {
     checkExtraLibraryVersion 'androidx.annotation:annotation:1.6.0'
     checkExtraLibraryVersion 'androidx.test:runner:1.5.2'
     checkExtraLibraryVersion 'androidx.test:core:1.5.0'
+    checkExtraLibraryVersion 'androidx.test:rules:1.5.0'
     checkExtraLibraryVersion 'org.im97mori:stacklog:0.0.2'
     checkExtraLibraryVersion 'com.google.code.gson:gson:2.9.0'
     checkExtraLibraryVersion 'junit:junit:4.13.2'

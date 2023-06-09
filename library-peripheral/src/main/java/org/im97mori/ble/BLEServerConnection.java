@@ -5,7 +5,6 @@ import static android.bluetooth.le.AdvertiseSettings.ADVERTISE_TX_POWER_HIGH;
 import static org.im97mori.ble.constants.ErrorCode.APPLICATION_ERROR_9F;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -21,7 +20,6 @@ import android.bluetooth.le.AdvertiseData;
 import android.bluetooth.le.AdvertiseSettings;
 import android.bluetooth.le.BluetoothLeAdvertiser;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.ParcelUuid;
@@ -43,7 +41,6 @@ import java.util.UUID;
  * BLE Connection(peripheral role)
  */
 @SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
-@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class BLEServerConnection extends BluetoothGattServerCallback implements BLEServerCallbackDistributor.SubscriberInterface {
 
     /**
