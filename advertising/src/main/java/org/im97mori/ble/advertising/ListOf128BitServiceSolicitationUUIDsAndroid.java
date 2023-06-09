@@ -15,7 +15,7 @@ import java.util.UUID;
  * <p>
  * List of 128-bit Service Solicitation UUIDs
  * <p>
- * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
+ * <a href="https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/">generic-access-profile</a>
  * </p>
  */
 public class ListOf128BitServiceSolicitationUUIDsAndroid extends ListOf128BitServiceSolicitationUUIDs implements AdvertisingDataInterfaceAndroid {

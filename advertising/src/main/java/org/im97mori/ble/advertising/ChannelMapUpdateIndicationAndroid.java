@@ -13,7 +13,7 @@ import java.util.List;
  * <p>
  * Channel Map Update Indication
  * <p>
- * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
+ * <a href="https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/">generic-access-profile</a>
  * </p>
  */
 public class ChannelMapUpdateIndicationAndroid extends ChannelMapUpdateIndication implements AdvertisingDataInterfaceAndroid {
@@ -64,8 +64,8 @@ public class ChannelMapUpdateIndicationAndroid extends ChannelMapUpdateIndicatio
     /**
      * Constructor from parameters
      *
-     * @param chmList	ChM list
-     * @param instant	Instant
+     * @param chmList ChM list
+     * @param instant Instant
      */
     public ChannelMapUpdateIndicationAndroid(@NonNull List<Integer> chmList, int instant) {
         super(chmList, instant);

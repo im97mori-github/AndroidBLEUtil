@@ -13,7 +13,7 @@ import java.util.List;
  * <p>
  * LE Supported Features
  * <p>
- * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
+ * <a href="https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/">generic-access-profile</a>
  * Core Specification v5.1 Vol 6 Part B 4.6
  * </p>
  */

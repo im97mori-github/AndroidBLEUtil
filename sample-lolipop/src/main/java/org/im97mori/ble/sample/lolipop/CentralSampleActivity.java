@@ -515,7 +515,6 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     , SAMPLE_WRITE_CHARACTERISTIC_RELIABLE
                     , ReadCharacteristicTask.TIMEOUT_MILLIS);
             mBleConnection.createBeginReliableWriteTask(null, null);
-            //noinspection NullableProblems
             mBleConnection.createWriteCharacteristicTask(SAMPLE_PRIMARY_SERVICE_1
                     , SAMPLE_WRITE_CHARACTERISTIC_RELIABLE
                     , dataString::getBytes

@@ -13,7 +13,7 @@ import java.util.UUID;
  * <p>
  * Service Data - 16-bit UUID
  * <p>
- * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
+ * <a href="https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/">generic-access-profile</a>
  * </p>
  */
 public class ServiceData16BitUUIDAndroid extends ServiceData16BitUUID implements AdvertisingDataInterfaceAndroid {

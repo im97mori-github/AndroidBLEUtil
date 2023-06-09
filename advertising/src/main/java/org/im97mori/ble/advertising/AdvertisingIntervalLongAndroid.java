@@ -11,7 +11,7 @@ import org.im97mori.ble.ByteArrayCreator;
  * <p>
  * Advertising Interval - long
  * <p>
- * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
+ * <a href="https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/">generic-access-profile</a>
  * </p>
  */
 public class AdvertisingIntervalLongAndroid extends AdvertisingIntervalLong implements AdvertisingDataInterfaceAndroid {
@@ -75,7 +75,7 @@ public class AdvertisingIntervalLongAndroid extends AdvertisingIntervalLong impl
     /**
      * Constructor from parameters
      *
-     * @param isUInt32 {@code true}:4 octets, {@code false}:3 octets
+     * @param isUInt32                {@code true}:4 octets, {@code false}:3 octets
      * @param advertisingIntervalLong Advertising Interval - long
      */
     public AdvertisingIntervalLongAndroid(boolean isUInt32, long advertisingIntervalLong) {

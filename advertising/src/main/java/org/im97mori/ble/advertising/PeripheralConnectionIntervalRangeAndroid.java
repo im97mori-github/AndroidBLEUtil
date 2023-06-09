@@ -11,7 +11,7 @@ import org.im97mori.ble.ByteArrayCreator;
  * <p>
  * Peripheral Connection Interval Range(Slave Connection Interval Range)
  * <p>
- * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
+ * <a href="https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/">generic-access-profile</a>
  * </p>
  */
 public class PeripheralConnectionIntervalRangeAndroid extends PeripheralConnectionIntervalRange implements AdvertisingDataInterfaceAndroid {

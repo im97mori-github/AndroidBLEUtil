@@ -13,7 +13,7 @@ import java.util.List;
  * <p>
  * Transport Discovery Data
  * <p>
- * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
+ * <a href="https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/">generic-access-profile</a>
  * </p>
  */
 public class TransportDiscoveryDataAndroid extends TransportDiscoveryData implements AdvertisingDataInterfaceAndroid {

@@ -13,7 +13,7 @@ import java.util.List;
  * <p>
  * Flags
  * <p>
- * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
+ * <a href="https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/">generic-access-profile</a>
  * </p>
  */
 public class FlagsAndroid extends Flags implements AdvertisingDataInterfaceAndroid {

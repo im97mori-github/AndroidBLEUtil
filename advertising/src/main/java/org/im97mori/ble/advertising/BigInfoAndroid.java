@@ -12,7 +12,7 @@ import org.im97mori.ble.ByteArrayCreator;
  * <p>
  * BIGInfo
  * <p>
- * https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
+ * <a href="https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/">generic-access-profile</a>
  * </p>
  */
 public class BigInfoAndroid extends BigInfo implements AdvertisingDataInterfaceAndroid {
