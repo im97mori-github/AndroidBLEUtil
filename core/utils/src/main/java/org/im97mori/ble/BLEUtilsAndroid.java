@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Parcel;
 import android.util.Log;
 
+import androidx.annotation.DeprecatedSinceApi;
 import androidx.annotation.NonNull;
 
 import org.im97mori.stacklog.LogUtils;
@@ -47,6 +48,7 @@ public class BLEUtilsAndroid extends BLEUtils {
      * @return return value of {@link BluetoothAdapter#enable()} or {@code false}:no bluetooth feature
      */
     @SuppressLint("MissingPermission")
+    @DeprecatedSinceApi(api = Build.VERSION_CODES.TIRAMISU)
     public static boolean bluetoothEnable(@NonNull Context context) {
         boolean result = false;
         BluetoothManager bluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
@@ -65,6 +67,7 @@ public class BLEUtilsAndroid extends BLEUtils {
      * @return return value of {@link BluetoothAdapter#disable()} or {@code false}:no bluetooth feature
      */
     @SuppressLint("MissingPermission")
+    @DeprecatedSinceApi(api = Build.VERSION_CODES.TIRAMISU)
     public static boolean bluetoothDisable(@NonNull Context context) {
         boolean result = false;
         BluetoothManager bluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
