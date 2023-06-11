@@ -110,14 +110,32 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     protected boolean hasPermission() {
         boolean result = true;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (PackageManager.PERMISSION_DENIED == checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT)
+                    || PackageManager.PERMISSION_DENIED == checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN)
+                    || PackageManager.PERMISSION_DENIED == checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                result = false;
+                if (shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH_CONNECT)
+                        || shouldShowRequestPermissionRationale(Manifest.permission.BLUETOOTH_SCAN)
+                        || shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    if (mFragmentManager.findFragmentByTag(FRAGMENT_TAG_ALERT_DIALOG) == null) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString(KEY_MODE, MODE_PERMISSION);
+                        AlertDialogFragment fragment = AlertDialogFragment.createInstance(getString(R.string.permission_message), bundle);
+                        fragment.show(mFragmentManager, FRAGMENT_TAG_ALERT_DIALOG);
+                    }
+                } else {
+                    requestPermissions(new String[]{Manifest.permission.BLUETOOTH_CONNECT
+                            , Manifest.permission.BLUETOOTH_SCAN
+                            , Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION_LOCATION);
+                }
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             if (PackageManager.PERMISSION_DENIED == checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
-                    || PackageManager.PERMISSION_DENIED == checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-                    || PackageManager.PERMISSION_DENIED == checkSelfPermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION)) {
+                    || PackageManager.PERMISSION_DENIED == checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)) {
                 result = false;
                 if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)
-                        || shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)
-                        || shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_BACKGROUND_LOCATION)) {
+                        || shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
                     if (mFragmentManager.findFragmentByTag(FRAGMENT_TAG_ALERT_DIALOG) == null) {
                         Bundle bundle = new Bundle();
                         bundle.putString(KEY_MODE, MODE_PERMISSION);
