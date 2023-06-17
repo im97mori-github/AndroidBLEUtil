@@ -8,27 +8,27 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SESSION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.PHYSICAL_ACTIVITY_SESSION_DESCRIPTOR_CHARACTERISTIC;
 
 /**
  * Session (Characteristics UUID: 0x2B45)
  */
 // TODO
 @SuppressWarnings({"WeakerAccess"})
-public class SessionAndroid extends Session implements Parcelable {
+public class PhysicalActivitySessionDescriptorAndroid extends PhysicalActivitySessionDescriptor implements Parcelable {
 
     /**
      * @see ByteArrayCreator
      */
-    public static final ByteArrayCreator<SessionAndroid> CREATOR = new ByteArrayCreator<SessionAndroid>() {
+    public static final ByteArrayCreator<PhysicalActivitySessionDescriptorAndroid> CREATOR = new ByteArrayCreator<PhysicalActivitySessionDescriptorAndroid>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public SessionAndroid createFromParcel(@NonNull Parcel in) {
-            return new SessionAndroid(in);
+        public PhysicalActivitySessionDescriptorAndroid createFromParcel(@NonNull Parcel in) {
+            return new PhysicalActivitySessionDescriptorAndroid(in);
         }
 
         /**
@@ -36,18 +36,18 @@ public class SessionAndroid extends Session implements Parcelable {
          */
         @Override
         @NonNull
-        public SessionAndroid[] newArray(int size) {
-            return new SessionAndroid[size];
+        public PhysicalActivitySessionDescriptorAndroid[] newArray(int size) {
+            return new PhysicalActivitySessionDescriptorAndroid[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public SessionAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SESSION_CHARACTERISTIC, 0, 0);
+        public PhysicalActivitySessionDescriptorAndroid createFromByteArray(@NonNull byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PHYSICAL_ACTIVITY_SESSION_DESCRIPTOR_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new SessionAndroid(bluetoothGattCharacteristic);
+            return new PhysicalActivitySessionDescriptorAndroid(bluetoothGattCharacteristic);
         }
 
     };
@@ -57,7 +57,7 @@ public class SessionAndroid extends Session implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B45
      */
-    public SessionAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public PhysicalActivitySessionDescriptorAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
     }
 
@@ -66,7 +66,7 @@ public class SessionAndroid extends Session implements Parcelable {
      *
      * @param in Parcel
      */
-    private SessionAndroid(@NonNull Parcel in) {
+    private PhysicalActivitySessionDescriptorAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }

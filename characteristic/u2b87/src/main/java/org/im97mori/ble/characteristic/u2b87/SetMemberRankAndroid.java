@@ -8,26 +8,26 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.RANK_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SET_MEMBER_RANK_CHARACTERISTIC;
 
 /**
- * Rank Characteristic (Characteristics UUID: 0x2B87)
+ * Set Member Rank (Characteristics UUID: 0x2B87)
  */
 @SuppressWarnings({"WeakerAccess"})
-public class RankCharacteristicAndroid extends RankCharacteristic implements Parcelable {
+public class SetMemberRankAndroid extends SetMemberRank implements Parcelable {
 
     /**
      * @see ByteArrayCreator
      */
-    public static final ByteArrayCreator<RankCharacteristicAndroid> CREATOR = new ByteArrayCreator<RankCharacteristicAndroid>() {
+    public static final ByteArrayCreator<SetMemberRankAndroid> CREATOR = new ByteArrayCreator<SetMemberRankAndroid>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public RankCharacteristicAndroid createFromParcel(@NonNull Parcel in) {
-            return new RankCharacteristicAndroid(in);
+        public SetMemberRankAndroid createFromParcel(@NonNull Parcel in) {
+            return new SetMemberRankAndroid(in);
         }
 
         /**
@@ -35,18 +35,18 @@ public class RankCharacteristicAndroid extends RankCharacteristic implements Par
          */
         @Override
         @NonNull
-        public RankCharacteristicAndroid[] newArray(int size) {
-            return new RankCharacteristicAndroid[size];
+        public SetMemberRankAndroid[] newArray(int size) {
+            return new SetMemberRankAndroid[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public RankCharacteristicAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RANK_CHARACTERISTIC, 0, 0);
+        public SetMemberRankAndroid createFromByteArray(@NonNull byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SET_MEMBER_RANK_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new RankCharacteristicAndroid(bluetoothGattCharacteristic);
+            return new SetMemberRankAndroid(bluetoothGattCharacteristic);
         }
 
     };
@@ -56,7 +56,7 @@ public class RankCharacteristicAndroid extends RankCharacteristic implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B87
      */
-    public RankCharacteristicAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public SetMemberRankAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
     }
 
@@ -65,7 +65,7 @@ public class RankCharacteristicAndroid extends RankCharacteristic implements Par
      *
      * @param setMemberRank Set Member Rank
      */
-    public RankCharacteristicAndroid(int setMemberRank) {
+    public SetMemberRankAndroid(int setMemberRank) {
         super(setMemberRank);
     }
 
@@ -74,7 +74,7 @@ public class RankCharacteristicAndroid extends RankCharacteristic implements Par
      *
      * @param in Parcel
      */
-    private RankCharacteristicAndroid(@NonNull Parcel in) {
+    private SetMemberRankAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }

@@ -21,7 +21,7 @@ import org.robolectric.annotation.Config;
 		// required to access final members on androidx.loader.content.ModernAsyncTask
 		"androidx.loader.content"}
 		, sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class SizeCharacteristicAndroidTest extends TestBase {
+public class CoordinatedSetSizeAndroidAndroidTest extends TestBase {
 
 	//@formatter:off
     private static final byte[] data_00001;
@@ -39,7 +39,7 @@ public class SizeCharacteristicAndroidTest extends TestBase {
 		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
 		bluetoothGattCharacteristic.setValue(data);
 
-		SizeCharacteristicAndroid result1 = new SizeCharacteristicAndroid(bluetoothGattCharacteristic);
+		CoordinatedSetSizeAndroid result1 = new CoordinatedSetSizeAndroid(bluetoothGattCharacteristic);
 		assertEquals(BLEUtils.createUInt8(data, 0), result1.getCoordinatedSetSize());
 	}
 
@@ -47,7 +47,7 @@ public class SizeCharacteristicAndroidTest extends TestBase {
 	public void test_constructor_00101() {
 		int coordinatedSetSize = 2;
 
-		SizeCharacteristicAndroid result1 = new SizeCharacteristicAndroid(coordinatedSetSize);
+		CoordinatedSetSizeAndroid result1 = new CoordinatedSetSizeAndroid(coordinatedSetSize);
 		assertEquals(coordinatedSetSize, result1.getCoordinatedSetSize());
 	}
 
@@ -58,11 +58,11 @@ public class SizeCharacteristicAndroidTest extends TestBase {
 		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
 		bluetoothGattCharacteristic.setValue(data);
 
-		SizeCharacteristicAndroid result1 = new SizeCharacteristicAndroid(bluetoothGattCharacteristic);
+		CoordinatedSetSizeAndroid result1 = new CoordinatedSetSizeAndroid(bluetoothGattCharacteristic);
 		Parcel parcel = Parcel.obtain();
 		result1.writeToParcel(parcel, 0);
 		parcel.setDataPosition(0);
-		SizeCharacteristicAndroid result2 = SizeCharacteristicAndroid.CREATOR.createFromParcel(parcel);
+		CoordinatedSetSizeAndroid result2 = CoordinatedSetSizeAndroid.CREATOR.createFromParcel(parcel);
 		assertEquals(result1.getCoordinatedSetSize(), result2.getCoordinatedSetSize());
 	}
 
@@ -73,7 +73,7 @@ public class SizeCharacteristicAndroidTest extends TestBase {
 		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
 		bluetoothGattCharacteristic.setValue(data);
 
-		SizeCharacteristicAndroid result1 = new SizeCharacteristicAndroid(bluetoothGattCharacteristic);
+		CoordinatedSetSizeAndroid result1 = new CoordinatedSetSizeAndroid(bluetoothGattCharacteristic);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -84,8 +84,8 @@ public class SizeCharacteristicAndroidTest extends TestBase {
 		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
 		bluetoothGattCharacteristic.setValue(data);
 
-		SizeCharacteristicAndroid result1 = new SizeCharacteristicAndroid(bluetoothGattCharacteristic);
-		SizeCharacteristicAndroid result2 = SizeCharacteristicAndroid.CREATOR.createFromByteArray(data);
+		CoordinatedSetSizeAndroid result1 = new CoordinatedSetSizeAndroid(bluetoothGattCharacteristic);
+		CoordinatedSetSizeAndroid result2 = CoordinatedSetSizeAndroid.CREATOR.createFromByteArray(data);
 		assertArrayEquals(result1.getBytes(), result2.getBytes());
 	}
 

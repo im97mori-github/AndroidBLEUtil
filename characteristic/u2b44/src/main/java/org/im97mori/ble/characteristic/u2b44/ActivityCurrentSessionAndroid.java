@@ -8,27 +8,27 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CURRENT_SESSION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ACTIVITY_CURRENT_SESSION_CHARACTERISTIC;
 
 /**
- * Current Session (Characteristics UUID: 0x2B44)
+ * Activity Current Session (Characteristics UUID: 0x2B44)
  */
 // TODO
 @SuppressWarnings({"WeakerAccess"})
-public class CurrentSessionAndroid extends CurrentSession implements Parcelable {
+public class ActivityCurrentSessionAndroid extends ActivityCurrentSession implements Parcelable {
 
     /**
      * @see ByteArrayCreator
      */
-    public static final ByteArrayCreator<CurrentSessionAndroid> CREATOR = new ByteArrayCreator<CurrentSessionAndroid>() {
+    public static final ByteArrayCreator<ActivityCurrentSessionAndroid> CREATOR = new ByteArrayCreator<ActivityCurrentSessionAndroid>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public CurrentSessionAndroid createFromParcel(@NonNull Parcel in) {
-            return new CurrentSessionAndroid(in);
+        public ActivityCurrentSessionAndroid createFromParcel(@NonNull Parcel in) {
+            return new ActivityCurrentSessionAndroid(in);
         }
 
         /**
@@ -36,18 +36,18 @@ public class CurrentSessionAndroid extends CurrentSession implements Parcelable 
          */
         @Override
         @NonNull
-        public CurrentSessionAndroid[] newArray(int size) {
-            return new CurrentSessionAndroid[size];
+        public ActivityCurrentSessionAndroid[] newArray(int size) {
+            return new ActivityCurrentSessionAndroid[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public CurrentSessionAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CURRENT_SESSION_CHARACTERISTIC, 0, 0);
+        public ActivityCurrentSessionAndroid createFromByteArray(@NonNull byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ACTIVITY_CURRENT_SESSION_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new CurrentSessionAndroid(bluetoothGattCharacteristic);
+            return new ActivityCurrentSessionAndroid(bluetoothGattCharacteristic);
         }
 
     };
@@ -57,7 +57,7 @@ public class CurrentSessionAndroid extends CurrentSession implements Parcelable 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B44
      */
-    public CurrentSessionAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public ActivityCurrentSessionAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
     }
 
@@ -66,7 +66,7 @@ public class CurrentSessionAndroid extends CurrentSession implements Parcelable 
      *
      * @param in Parcel
      */
-    private CurrentSessionAndroid(@NonNull Parcel in) {
+    private ActivityCurrentSessionAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }

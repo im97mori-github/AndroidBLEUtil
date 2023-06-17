@@ -8,26 +8,26 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SIZE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.COORDINATED_SET_SIZE_CHARACTERISTIC;
 
 /**
- * Size Characteristic (Characteristics UUID: 0x2B85)
+ * Coordinated Set Size (Characteristics UUID: 0x2B85)
  */
 @SuppressWarnings({"WeakerAccess"})
-public class SizeCharacteristicAndroid extends SizeCharacteristic implements Parcelable {
+public class CoordinatedSetSizeAndroid extends CoordinatedSetSize implements Parcelable {
 
     /**
      * @see ByteArrayCreator
      */
-    public static final ByteArrayCreator<SizeCharacteristicAndroid> CREATOR = new ByteArrayCreator<SizeCharacteristicAndroid>() {
+    public static final ByteArrayCreator<CoordinatedSetSizeAndroid> CREATOR = new ByteArrayCreator<CoordinatedSetSizeAndroid>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public SizeCharacteristicAndroid createFromParcel(@NonNull Parcel in) {
-            return new SizeCharacteristicAndroid(in);
+        public CoordinatedSetSizeAndroid createFromParcel(@NonNull Parcel in) {
+            return new CoordinatedSetSizeAndroid(in);
         }
 
         /**
@@ -35,18 +35,18 @@ public class SizeCharacteristicAndroid extends SizeCharacteristic implements Par
          */
         @Override
         @NonNull
-        public SizeCharacteristicAndroid[] newArray(int size) {
-            return new SizeCharacteristicAndroid[size];
+        public CoordinatedSetSizeAndroid[] newArray(int size) {
+            return new CoordinatedSetSizeAndroid[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public SizeCharacteristicAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SIZE_CHARACTERISTIC, 0, 0);
+        public CoordinatedSetSizeAndroid createFromByteArray(@NonNull byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(COORDINATED_SET_SIZE_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new SizeCharacteristicAndroid(bluetoothGattCharacteristic);
+            return new CoordinatedSetSizeAndroid(bluetoothGattCharacteristic);
         }
 
     };
@@ -56,7 +56,7 @@ public class SizeCharacteristicAndroid extends SizeCharacteristic implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B85
      */
-    public SizeCharacteristicAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public CoordinatedSetSizeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
     }
 
@@ -65,7 +65,7 @@ public class SizeCharacteristicAndroid extends SizeCharacteristic implements Par
      *
      * @param coordinatedSetSize Coordinated Set Size
      */
-    public SizeCharacteristicAndroid(int coordinatedSetSize) {
+    public CoordinatedSetSizeAndroid(int coordinatedSetSize) {
         super(coordinatedSetSize);
     }
 
@@ -74,7 +74,7 @@ public class SizeCharacteristicAndroid extends SizeCharacteristic implements Par
      *
      * @param in Parcel
      */
-    private SizeCharacteristicAndroid(@NonNull Parcel in) {
+    private CoordinatedSetSizeAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }
