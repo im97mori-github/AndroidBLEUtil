@@ -19,7 +19,7 @@ project/build.gradle
 
 project/module/build.gradle
 
-    def version = '0.8.7'
+    def version = '0.8.8'
     dependencies {
         // Core package(Constants + Utility)
         implementation "org.im97mori:ble-core-android:${version}"

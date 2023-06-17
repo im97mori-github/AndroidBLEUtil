@@ -21,7 +21,7 @@ import org.robolectric.annotation.Config;
 		// required to access final members on androidx.loader.content.ModernAsyncTask
 		"androidx.loader.content"}
 		, sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class RankCharacteristicAndroidTest extends TestBase {
+public class SetMemberRankAndroidTest extends TestBase {
 
 	//@formatter:off
     private static final byte[] data_00001;
@@ -39,7 +39,7 @@ public class RankCharacteristicAndroidTest extends TestBase {
 		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
 		bluetoothGattCharacteristic.setValue(data);
 
-		RankCharacteristicAndroid result1 = new RankCharacteristicAndroid(bluetoothGattCharacteristic);
+		SetMemberRankAndroid result1 = new SetMemberRankAndroid(bluetoothGattCharacteristic);
 		assertEquals(BLEUtils.createUInt8(data, 0), result1.getSetMemberRank());
 	}
 
@@ -47,7 +47,7 @@ public class RankCharacteristicAndroidTest extends TestBase {
 	public void test_constructor_00101() {
 		int setMemberLock = 1;
 
-		RankCharacteristicAndroid result1 = new RankCharacteristicAndroid(setMemberLock);
+		SetMemberRankAndroid result1 = new SetMemberRankAndroid(setMemberLock);
 		assertEquals(setMemberLock, result1.getSetMemberRank());
 	}
 
@@ -58,11 +58,11 @@ public class RankCharacteristicAndroidTest extends TestBase {
 		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
 		bluetoothGattCharacteristic.setValue(data);
 
-		RankCharacteristicAndroid result1 = new RankCharacteristicAndroid(bluetoothGattCharacteristic);
+		SetMemberRankAndroid result1 = new SetMemberRankAndroid(bluetoothGattCharacteristic);
 		Parcel parcel = Parcel.obtain();
 		result1.writeToParcel(parcel, 0);
 		parcel.setDataPosition(0);
-		RankCharacteristicAndroid result2 = RankCharacteristicAndroid.CREATOR.createFromParcel(parcel);
+		SetMemberRankAndroid result2 = SetMemberRankAndroid.CREATOR.createFromParcel(parcel);
 		assertEquals(result1.getSetMemberRank(), result2.getSetMemberRank());
 	}
 
@@ -73,7 +73,7 @@ public class RankCharacteristicAndroidTest extends TestBase {
 		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
 		bluetoothGattCharacteristic.setValue(data);
 
-		RankCharacteristicAndroid result1 = new RankCharacteristicAndroid(bluetoothGattCharacteristic);
+		SetMemberRankAndroid result1 = new SetMemberRankAndroid(bluetoothGattCharacteristic);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -84,8 +84,8 @@ public class RankCharacteristicAndroidTest extends TestBase {
 		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
 		bluetoothGattCharacteristic.setValue(data);
 
-		RankCharacteristicAndroid result1 = new RankCharacteristicAndroid(bluetoothGattCharacteristic);
-		RankCharacteristicAndroid result2 = RankCharacteristicAndroid.CREATOR.createFromByteArray(data);
+		SetMemberRankAndroid result1 = new SetMemberRankAndroid(bluetoothGattCharacteristic);
+		SetMemberRankAndroid result2 = SetMemberRankAndroid.CREATOR.createFromByteArray(data);
 		assertArrayEquals(result1.getBytes(), result2.getBytes());
 	}
 

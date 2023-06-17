@@ -8,26 +8,26 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.LOCK_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SET_MEMBER_LOCK_CHARACTERISTIC;
 
 /**
- * Lock Characteristic (Characteristics UUID: 0x2B86)
+ * Set Member Lock (Characteristics UUID: 0x2B86)
  */
 @SuppressWarnings({"WeakerAccess"})
-public class LockCharacteristicAndroid extends LockCharacteristic implements Parcelable {
+public class SetMemberLockAndroid extends SetMemberLock implements Parcelable {
 
     /**
      * @see ByteArrayCreator
      */
-    public static final ByteArrayCreator<LockCharacteristicAndroid> CREATOR = new ByteArrayCreator<LockCharacteristicAndroid>() {
+    public static final ByteArrayCreator<SetMemberLockAndroid> CREATOR = new ByteArrayCreator<SetMemberLockAndroid>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public LockCharacteristicAndroid createFromParcel(@NonNull Parcel in) {
-            return new LockCharacteristicAndroid(in);
+        public SetMemberLockAndroid createFromParcel(@NonNull Parcel in) {
+            return new SetMemberLockAndroid(in);
         }
 
         /**
@@ -35,18 +35,18 @@ public class LockCharacteristicAndroid extends LockCharacteristic implements Par
          */
         @Override
         @NonNull
-        public LockCharacteristicAndroid[] newArray(int size) {
-            return new LockCharacteristicAndroid[size];
+        public SetMemberLockAndroid[] newArray(int size) {
+            return new SetMemberLockAndroid[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public LockCharacteristicAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LOCK_CHARACTERISTIC, 0, 0);
+        public SetMemberLockAndroid createFromByteArray(@NonNull byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SET_MEMBER_LOCK_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new LockCharacteristicAndroid(bluetoothGattCharacteristic);
+            return new SetMemberLockAndroid(bluetoothGattCharacteristic);
         }
 
     };
@@ -56,7 +56,7 @@ public class LockCharacteristicAndroid extends LockCharacteristic implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B86
      */
-    public LockCharacteristicAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public SetMemberLockAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
     }
 
@@ -65,7 +65,7 @@ public class LockCharacteristicAndroid extends LockCharacteristic implements Par
      *
      * @param setMemberLock Set Member Lock
      */
-    public LockCharacteristicAndroid(int setMemberLock) {
+    public SetMemberLockAndroid(int setMemberLock) {
         super(setMemberLock);
     }
 
@@ -74,7 +74,7 @@ public class LockCharacteristicAndroid extends LockCharacteristic implements Par
      *
      * @param in Parcel
      */
-    private LockCharacteristicAndroid(@NonNull Parcel in) {
+    private SetMemberLockAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }

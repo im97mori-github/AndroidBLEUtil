@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CHROMATICITYIN_CCT_AND_DUV_VALUES_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.CHROMATICITY_IN_CCT_AND_DUV_VALUES_CHARACTERISTIC;
 
 /**
  * Chromaticity In CCT And Duv Values (Characteristics UUID: 0x2AE5)
@@ -44,7 +44,7 @@ public class ChromaticityInCctAndDuvValuesAndroid extends ChromaticityInCctAndDu
          */
         @NonNull
         public ChromaticityInCctAndDuvValuesAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CHROMATICITYIN_CCT_AND_DUV_VALUES_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CHROMATICITY_IN_CCT_AND_DUV_VALUES_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new ChromaticityInCctAndDuvValuesAndroid(bluetoothGattCharacteristic);
         }

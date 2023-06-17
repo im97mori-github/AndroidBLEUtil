@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CIE13_3_1995_COLOR_RENDERING_INDEX_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.CIE_13_3_1995_COLOR_RENDERING_INDEX_CHARACTERISTIC;
 
 /**
  * CIE 13.3-1995 Color Rendering Index (Characteristics UUID: 0x2AE7)
@@ -44,7 +44,7 @@ public class Cie13_3_1995ColorRenderingIndexAndroid extends Cie13_3_1995ColorRen
          */
         @NonNull
         public Cie13_3_1995ColorRenderingIndexAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CIE13_3_1995_COLOR_RENDERING_INDEX_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CIE_13_3_1995_COLOR_RENDERING_INDEX_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new Cie13_3_1995ColorRenderingIndexAndroid(bluetoothGattCharacteristic);
         }

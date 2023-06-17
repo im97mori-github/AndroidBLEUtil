@@ -31,8 +31,8 @@ ext.globalPeripheralMinSdkVersion = 21
 ext.globalTargetSdkVersion = 33
 
 ext.myGroupId = 'org.im97mori'
-ext.loadVersion = '0.8.7'
-ext.uploadVersion = '0.8.7'
+ext.loadVersion = '0.8.8'
+ext.uploadVersion = '0.8.8'
 
 ext.coreUtilsAndroid = [
         artifactId  : 'ble-core-utils-android'

@@ -8,27 +8,27 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.OFFSET_STATE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.VOLUME_OFFSET_STATE_CHARACTERISTIC;
 
 /**
- * Offset State (Characteristics UUID: 0x2B80)
+ * Volume Offset State (Characteristics UUID: 0x2B80)
  */
 // TODO
 @SuppressWarnings({"WeakerAccess"})
-public class OffsetStateAndroid extends OffsetState implements Parcelable {
+public class VolumeOffsetStateAndroid extends VolumeOffsetState implements Parcelable {
 
     /**
      * @see ByteArrayCreator
      */
-    public static final ByteArrayCreator<OffsetStateAndroid> CREATOR = new ByteArrayCreator<OffsetStateAndroid>() {
+    public static final ByteArrayCreator<VolumeOffsetStateAndroid> CREATOR = new ByteArrayCreator<VolumeOffsetStateAndroid>() {
 
         /**
          * {@inheritDoc}
          */
         @Override
         @NonNull
-        public OffsetStateAndroid createFromParcel(@NonNull Parcel in) {
-            return new OffsetStateAndroid(in);
+        public VolumeOffsetStateAndroid createFromParcel(@NonNull Parcel in) {
+            return new VolumeOffsetStateAndroid(in);
         }
 
         /**
@@ -36,18 +36,18 @@ public class OffsetStateAndroid extends OffsetState implements Parcelable {
          */
         @Override
         @NonNull
-        public OffsetStateAndroid[] newArray(int size) {
-            return new OffsetStateAndroid[size];
+        public VolumeOffsetStateAndroid[] newArray(int size) {
+            return new VolumeOffsetStateAndroid[size];
         }
 
         /**
          * {@inheritDoc}
          */
         @NonNull
-        public OffsetStateAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(OFFSET_STATE_CHARACTERISTIC, 0, 0);
+        public VolumeOffsetStateAndroid createFromByteArray(@NonNull byte[] values) {
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(VOLUME_OFFSET_STATE_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
-            return new OffsetStateAndroid(bluetoothGattCharacteristic);
+            return new VolumeOffsetStateAndroid(bluetoothGattCharacteristic);
         }
 
     };
@@ -57,7 +57,7 @@ public class OffsetStateAndroid extends OffsetState implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B80
      */
-    public OffsetStateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
+    public VolumeOffsetStateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
     }
 
@@ -66,7 +66,7 @@ public class OffsetStateAndroid extends OffsetState implements Parcelable {
      *
      * @param in Parcel
      */
-    private OffsetStateAndroid(@NonNull Parcel in) {
+    private VolumeOffsetStateAndroid(@NonNull Parcel in) {
         //noinspection ConstantConditions
         super(in.createByteArray());
     }
