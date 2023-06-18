@@ -2,6 +2,7 @@ package org.im97mori.ble.service.gatt.peripheral;
 
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.os.Build;
 
@@ -11,6 +12,9 @@ import org.im97mori.ble.characteristic.u2a02.PeripheralPrivacyFlag;
 import org.im97mori.ble.characteristic.u2a04.PeripheralPreferredConnectionParameters;
 import org.im97mori.ble.characteristic.u2aa6.CentralAddressResolution;
 import org.im97mori.ble.characteristic.u2ac9.ResolvablePrivateAddressOnly;
+import org.im97mori.ble.characteristic.u2b88.EncryptedDataKeyMaterial;
+import org.im97mori.ble.characteristic.u2bf5.LeGattSecurityLevels;
+import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
@@ -20,6 +24,8 @@ import java.util.List;
 import static org.im97mori.ble.constants.CharacteristicUUID.APPEARANCE_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ENCRYPTED_DATA_KEY_MATERIAL_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LE_GATT_SECURITY_LEVELS_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_ADDRESS_CHARACTERISTIC;
@@ -148,8 +154,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DEVICE_NAME_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
-        assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
         assertArrayEquals(bluetoothGattCharacteristic.getValue(), deviceName.getBytes());
     }
 
@@ -823,6 +827,225 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
                     .addAppearance(new Appearance(new byte[]{0, 1}))
                     .addPeripheralPrivacyFlag(new PeripheralPrivacyFlag(data))
                     .removePeripheralPrivacyFlag()
+                    .build();
+        } catch (RuntimeException e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_addEncryptedDataKeyMaterial_00001() {
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
+        GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
+        builder.addDeviceName(new DeviceName("deviceName"));
+        builder.addAppearance(new Appearance(new byte[]{0, 1}));
+        GenericAccessServiceMockCallback callback = builder.build();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
+
+        assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(ENCRYPTED_DATA_KEY_MATERIAL_CHARACTERISTIC);
+        assertNull(bluetoothGattCharacteristic);
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_addEncryptedDataKeyMaterial_00002() {
+        byte[] data = new byte[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23};
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
+        GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
+        builder.addDeviceName(new DeviceName("deviceName"));
+        builder.addAppearance(new Appearance(new byte[]{0, 1}));
+
+        EncryptedDataKeyMaterial encryptedDataKeyMaterial = new EncryptedDataKeyMaterial(data);
+        byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_INDICATION_VALUE;
+        ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
+
+        builder.addEncryptedDataKeyMaterial(encryptedDataKeyMaterial, clientCharacteristicConfiguration);
+        GenericAccessServiceMockCallback callback = builder.build();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
+
+        assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(ENCRYPTED_DATA_KEY_MATERIAL_CHARACTERISTIC);
+        assertNotNull(bluetoothGattCharacteristic);
+        assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
+        assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
+        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_addEncryptedDataKeyMaterial_00003() {
+        byte[] data = new byte[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23};
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
+        GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
+        builder.addDeviceName(new DeviceName("deviceName"));
+        builder.addAppearance(new Appearance(new byte[]{0, 1}));
+
+        EncryptedDataKeyMaterial encryptedDataKeyMaterial = new EncryptedDataKeyMaterial(data);
+        byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_INDICATION_VALUE;
+        ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
+
+        builder.addEncryptedDataKeyMaterial(BluetoothGatt.GATT_SUCCESS, 0, encryptedDataKeyMaterial.getBytes(), -1, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes());
+        GenericAccessServiceMockCallback callback = builder.build();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
+
+        assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(ENCRYPTED_DATA_KEY_MATERIAL_CHARACTERISTIC);
+        assertNotNull(bluetoothGattCharacteristic);
+        assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
+        assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
+        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_removeEncryptedDataKeyMaterial_00001() {
+        byte[] data = new byte[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23};
+
+        EncryptedDataKeyMaterial encryptedDataKeyMaterial = new EncryptedDataKeyMaterial(data);
+        byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_INDICATION_VALUE;
+        ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
+
+        Exception exception = null;
+        try {
+            new GenericAccessServiceMockCallback.Builder<>()
+                    .addDeviceName(new DeviceName("deviceName"))
+                    .addAppearance(new Appearance(new byte[]{0, 1}))
+                    .addEncryptedDataKeyMaterial(encryptedDataKeyMaterial, clientCharacteristicConfiguration)
+                    .removeEncryptedDataKeyMaterial()
+                    .build();
+        } catch (RuntimeException e) {
+            exception = e;
+        }
+
+        assertNull(exception);
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_addLeGattSecurityLevels_00001() {
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
+        GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
+        builder.addDeviceName(new DeviceName("deviceName"));
+        builder.addAppearance(new Appearance(new byte[]{0, 1}));
+        GenericAccessServiceMockCallback callback = builder.build();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
+
+        assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(LE_GATT_SECURITY_LEVELS_CHARACTERISTIC);
+        assertNull(bluetoothGattCharacteristic);
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_addLeGattSecurityLevels_00002() {
+        byte[] data = new byte[]{0};
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
+        GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
+        builder.addDeviceName(new DeviceName("deviceName"));
+        builder.addAppearance(new Appearance(new byte[]{0, 1}));
+        builder.addLeGattSecurityLevels(new LeGattSecurityLevels(data));
+        GenericAccessServiceMockCallback callback = builder.build();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
+
+        assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(LE_GATT_SECURITY_LEVELS_CHARACTERISTIC);
+        assertNotNull(bluetoothGattCharacteristic);
+        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_addLeGattSecurityLevels_00003() {
+        byte[] data = new byte[]{0};
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
+        GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
+        builder.addDeviceName(new DeviceName("deviceName"));
+        builder.addAppearance(new Appearance(new byte[]{0, 1}));
+        builder.addLeGattSecurityLevels(data);
+        GenericAccessServiceMockCallback callback = builder.build();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
+
+        assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(LE_GATT_SECURITY_LEVELS_CHARACTERISTIC);
+        assertNotNull(bluetoothGattCharacteristic);
+        assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
+        assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
+        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_addLeGattSecurityLevels_00004() {
+        byte[] data = new byte[]{0};
+        final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
+        MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
+        GenericAccessServiceMockCallback.Builder<GenericAccessServiceMockCallback> builder = new GenericAccessServiceMockCallback.Builder<>();
+        builder.addDeviceName(new DeviceName("deviceName"));
+        builder.addAppearance(new Appearance(new byte[]{0, 1}));
+        builder.addLeGattSecurityLevels(BluetoothGatt.GATT_SUCCESS, 0, data);
+        GenericAccessServiceMockCallback callback = builder.build();
+        callback.setup(MOCK_BLE_SERVER_CONNECTION);
+        assertEquals(1, bluetoothGattServiceList.size());
+        BluetoothGattService bluetoothGattService = bluetoothGattServiceList.get(0);
+
+
+        assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(LE_GATT_SECURITY_LEVELS_CHARACTERISTIC);
+        assertNotNull(bluetoothGattCharacteristic);
+        assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
+        assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
+        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
+    public void test_removeLeGattSecurityLevels_00001() {
+        byte[] data = new byte[]{0};
+
+        Exception exception = null;
+        try {
+            new GenericAccessServiceMockCallback.Builder<>()
+                    .addDeviceName(new DeviceName("deviceName"))
+                    .addAppearance(new Appearance(new byte[]{0, 1}))
+                    .addLeGattSecurityLevels(new LeGattSecurityLevels(data))
+                    .removeLeGattSecurityLevels()
                     .build();
         } catch (RuntimeException e) {
             exception = e;

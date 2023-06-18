@@ -73,6 +73,7 @@ import org.im97mori.ble.characteristic.u2ada.FitnessMachineStatusAndroid;
 import org.im97mori.ble.characteristic.u2b29.ClientSupportedFeaturesAndroid;
 import org.im97mori.ble.characteristic.u2b2a.DatabaseHashAndroid;
 import org.im97mori.ble.characteristic.u2b37.RegisteredUserAndroid;
+import org.im97mori.ble.characteristic.u2bf5.LeGattSecurityLevelsAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 
 import java.util.List;
@@ -2313,6 +2314,21 @@ public class BaseFitnessMachineProfileCallback implements FitnessMachineProfileC
 
     @Override
     public void onPeripheralPrivacyFlagWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+
+    }
+
+    @Override
+    public void onLeGattSecurityLevelsReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull LeGattSecurityLevelsAndroid leGattSecurityLevelsAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onLeGattSecurityLevelsReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onLeGattSecurityLevelsReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle bundle) {
 
     }
 }

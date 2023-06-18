@@ -79,6 +79,7 @@ import org.im97mori.ble.characteristic.u2ada.FitnessMachineStatusAndroid;
 import org.im97mori.ble.characteristic.u2b29.ClientSupportedFeaturesAndroid;
 import org.im97mori.ble.characteristic.u2b2a.DatabaseHashAndroid;
 import org.im97mori.ble.characteristic.u2b37.RegisteredUserAndroid;
+import org.im97mori.ble.characteristic.u2bf5.LeGattSecurityLevelsAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 import org.im97mori.ble.profile.ftmp.central.FitnessMachineProfileCallback;
 import org.im97mori.ble.sample.jellybean.SampleCallback;
@@ -2420,4 +2421,18 @@ public class FtmpCallbackSample implements FitnessMachineProfileCallback {
         callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
     }
 
+    @Override
+    public void onLeGattSecurityLevelsReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull LeGattSecurityLevelsAndroid leGattSecurityLevelsAndroid, @Nullable Bundle bundle) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, Arrays.toString(leGattSecurityLevelsAndroid.getBytes()));
+    }
+
+    @Override
+    public void onLeGattSecurityLevelsReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle bundle) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status);
+    }
+
+    @Override
+    public void onLeGattSecurityLevelsReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle bundle) {
+        callback(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout);
+    }
 }

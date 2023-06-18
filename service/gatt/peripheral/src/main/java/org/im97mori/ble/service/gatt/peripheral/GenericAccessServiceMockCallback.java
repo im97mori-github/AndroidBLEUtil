@@ -3,6 +3,7 @@ package org.im97mori.ble.service.gatt.peripheral;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.bluetooth.le.AdvertiseSettings;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.CharacteristicData;
+import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.characteristic.u2a00.DeviceName;
 import org.im97mori.ble.characteristic.u2a01.Appearance;
@@ -19,6 +21,9 @@ import org.im97mori.ble.characteristic.u2a02.PeripheralPrivacyFlag;
 import org.im97mori.ble.characteristic.u2a04.PeripheralPreferredConnectionParameters;
 import org.im97mori.ble.characteristic.u2aa6.CentralAddressResolution;
 import org.im97mori.ble.characteristic.u2ac9.ResolvablePrivateAddressOnly;
+import org.im97mori.ble.characteristic.u2b88.EncryptedDataKeyMaterial;
+import org.im97mori.ble.characteristic.u2bf5.LeGattSecurityLevels;
+import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
 
 import java.util.ArrayList;
@@ -28,10 +33,13 @@ import java.util.List;
 import static org.im97mori.ble.constants.CharacteristicUUID.APPEARANCE_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ENCRYPTED_DATA_KEY_MATERIAL_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LE_GATT_SECURITY_LEVELS_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_ADDRESS_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.constants.ServiceUUID.GENERIC_ACCESS_SERVICE;
 
 /**
@@ -81,6 +89,16 @@ public class GenericAccessServiceMockCallback extends AbstractServiceMockCallbac
          * Peripheral Privacy Flag data
          */
         protected CharacteristicData mPeripheralPrivacyFlagData;
+
+        /**
+         * Encrypted Data Key Material data
+         */
+        protected CharacteristicData mEncryptedDataKeyMaterialData;
+
+        /**
+         * LE GATT Security Levels data
+         */
+        protected CharacteristicData mLeGattSecurityLevelsData;
 
         /**
          * @see #addDeviceName(byte[])
@@ -423,6 +441,98 @@ public class GenericAccessServiceMockCallback extends AbstractServiceMockCallbac
         }
 
         /**
+         * @see #addEncryptedDataKeyMaterial(int, long, byte[], int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addEncryptedDataKeyMaterial(@NonNull EncryptedDataKeyMaterial encryptedDataKeyMaterial, @NonNull ClientCharacteristicConfiguration clientCharacteristicConfiguration) {
+            return addEncryptedDataKeyMaterial(BluetoothGatt.GATT_SUCCESS, 0, encryptedDataKeyMaterial.getBytes(), -1, BluetoothGatt.GATT_SUCCESS, 0, clientCharacteristicConfiguration.getBytes());
+        }
+
+        /**
+         * add Encrypted Data Key Material characteristic
+         *
+         * @param responseCode response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addEncryptedDataKeyMaterial(int responseCode, long delay, @NonNull byte[] value, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            mEncryptedDataKeyMaterialData = new CharacteristicData(ENCRYPTED_DATA_KEY_MATERIAL_CHARACTERISTIC
+                    , BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE
+                    , BluetoothGattCharacteristic.PERMISSION_READ
+                    , Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
+                    , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE
+                    , descriptorResponseCode
+                    , descriptorDelay
+                    , descriptorValue))
+                    , responseCode
+                    , delay
+                    , value
+                    , notificationCount);
+            return this;
+        }
+
+        /**
+         * remove Encrypted Data Key Material characteristic
+         *
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeEncryptedDataKeyMaterial() {
+            mEncryptedDataKeyMaterialData = null;
+            return this;
+        }
+
+        /**
+         * @see #addLeGattSecurityLevels(byte[])
+         */
+        @NonNull
+        public Builder<T> addLeGattSecurityLevels(@NonNull LeGattSecurityLevels leGattSecurityLevels) {
+            return addLeGattSecurityLevels(leGattSecurityLevels.getBytes());
+        }
+
+        /**
+         * @see #addLeGattSecurityLevels(int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addLeGattSecurityLevels(@NonNull byte[] value) {
+            return addLeGattSecurityLevels(BluetoothGatt.GATT_SUCCESS, 0, value);
+        }
+
+        /**
+         * add LE GATT Security Levels characteristic
+         *
+         * @param responseCode response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addLeGattSecurityLevels(int responseCode, long delay, @NonNull byte[] value) {
+            mLeGattSecurityLevelsData = new CharacteristicData(LE_GATT_SECURITY_LEVELS_CHARACTERISTIC
+                    , BluetoothGattCharacteristic.PROPERTY_READ
+                    , BluetoothGattCharacteristic.PERMISSION_READ
+                    , Collections.emptyList()
+                    , responseCode
+                    , delay
+                    , value
+                    , 0);
+            return this;
+        }
+
+        /**
+         * remove LE GATT Security Levels characteristic
+         *
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeLeGattSecurityLevels() {
+            mLeGattSecurityLevelsData = null;
+            return this;
+        }
+
+        /**
          * {@inheritDoc}
          */
         @Override
@@ -460,6 +570,14 @@ public class GenericAccessServiceMockCallback extends AbstractServiceMockCallbac
 
             if (mPeripheralPrivacyFlagData != null) {
                 characteristicList.add(mPeripheralPrivacyFlagData);
+            }
+
+            if (mEncryptedDataKeyMaterialData != null) {
+                characteristicList.add(mEncryptedDataKeyMaterialData);
+            }
+
+            if (mLeGattSecurityLevelsData != null) {
+                characteristicList.add(mLeGattSecurityLevelsData);
             }
 
             return new ServiceData(GENERIC_ACCESS_SERVICE, BluetoothGattService.SERVICE_TYPE_PRIMARY, characteristicList);

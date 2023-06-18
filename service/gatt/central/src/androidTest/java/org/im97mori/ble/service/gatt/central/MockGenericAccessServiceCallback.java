@@ -13,6 +13,7 @@ import org.im97mori.ble.characteristic.u2a03.ReconnectionAddressAndroid;
 import org.im97mori.ble.characteristic.u2a04.PeripheralPreferredConnectionParametersAndroid;
 import org.im97mori.ble.characteristic.u2aa6.CentralAddressResolutionAndroid;
 import org.im97mori.ble.characteristic.u2ac9.ResolvablePrivateAddressOnlyAndroid;
+import org.im97mori.ble.characteristic.u2bf5.LeGattSecurityLevelsAndroid;
 
 import java.util.UUID;
 
@@ -165,6 +166,21 @@ class MockGenericAccessServiceCallback implements GenericAccessServiceCallback {
 
     @Override
     public void onPeripheralPrivacyFlagWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+
+    }
+
+    @Override
+    public void onLeGattSecurityLevelsReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull LeGattSecurityLevelsAndroid leGattSecurityLevelsAndroid, @Nullable Bundle argument) {
+
+    }
+
+    @Override
+    public void onLeGattSecurityLevelsReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+
+    }
+
+    @Override
+    public void onLeGattSecurityLevelsReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
 
     }
 }

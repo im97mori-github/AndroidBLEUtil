@@ -20,6 +20,7 @@ import org.im97mori.ble.characteristic.u2a03.ReconnectionAddressAndroid;
 import org.im97mori.ble.characteristic.u2a04.PeripheralPreferredConnectionParametersAndroid;
 import org.im97mori.ble.characteristic.u2aa6.CentralAddressResolutionAndroid;
 import org.im97mori.ble.characteristic.u2ac9.ResolvablePrivateAddressOnlyAndroid;
+import org.im97mori.ble.characteristic.u2bf5.LeGattSecurityLevelsAndroid;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
@@ -31,6 +32,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static org.im97mori.ble.constants.CharacteristicUUID.APPEARANCE_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LE_GATT_SECURITY_LEVELS_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_ADDRESS_CHARACTERISTIC;
@@ -478,6 +480,57 @@ public class GenericAccessServiceTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
+    public void test_onDiscoverServiceSuccess_00801() {
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, new MockGenericAccessServiceCallback(), null);
+        genericAccessService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.emptyList(), null);
+
+        assertFalse(genericAccessService.isLeGattSecurityLevelsCharacteristicSupported());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_onDiscoverServiceSuccess_00802() {
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, new MockGenericAccessServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(DEVICE_INFORMATION_SERVICE, 0);
+        genericAccessService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+
+        assertFalse(genericAccessService.isLeGattSecurityLevelsCharacteristicSupported());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_onDiscoverServiceSuccess_00803() {
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, new MockGenericAccessServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
+        genericAccessService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+
+        assertFalse(genericAccessService.isLeGattSecurityLevelsCharacteristicSupported());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_onDiscoverServiceSuccess_00804() {
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, new MockGenericAccessServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LE_GATT_SECURITY_LEVELS_CHARACTERISTIC, 0, 0));
+        genericAccessService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+
+        assertFalse(genericAccessService.isLeGattSecurityLevelsCharacteristicSupported());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_onDiscoverServiceSuccess_00805() {
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, new MockGenericAccessServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(LE_GATT_SECURITY_LEVELS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        genericAccessService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+
+        assertTrue(genericAccessService.isLeGattSecurityLevelsCharacteristicSupported());
+    }
+
+    @Test
+    @RequiresDevice
     public void test_onCharacteristicReadSuccess_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -669,6 +722,39 @@ public class GenericAccessServiceTest extends AbstractCentralTest {
                 assertEquals(originalCharacteristicUUID, characteristicUUID);
                 assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
                 assertArrayEquals(originalValues, peripheralPrivacyFlagAndroid.getBytes());
+                assertEquals(originalBundle, argument);
+                isCalled.set(true);
+            }
+
+        };
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, mockGenericAccessServiceCallback, null);
+        genericAccessService.onCharacteristicReadSuccess(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalValues, originalBundle);
+
+        assertTrue(isCalled.get());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_onCharacteristicReadSuccess_00007() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
+        final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = LE_GATT_SECURITY_LEVELS_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final byte[] originalValues = new byte[]{LeGattSecurityLevelsAndroid.LE_SECURITY_MODE_1, LeGattSecurityLevelsAndroid.LE_SECURITY_MODE_1_LEVEL_1};
+        final Bundle originalBundle = new Bundle();
+        MockGenericAccessServiceCallback mockGenericAccessServiceCallback = new MockGenericAccessServiceCallback() {
+            @Override
+            public void onLeGattSecurityLevelsReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull LeGattSecurityLevelsAndroid leGattSecurityLevelsAndroid, @Nullable Bundle argument) {
+                assertEquals(originalTaskId, taskId);
+                assertEquals(originalBluetoothDevice, bluetoothDevice);
+                assertEquals(originalServiceUUID, serviceUUID);
+                assertEquals(originalServiceInstanceId, serviceInstanceId);
+                assertEquals(originalCharacteristicUUID, characteristicUUID);
+                assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertArrayEquals(originalValues, leGattSecurityLevelsAndroid.getBytes());
                 assertEquals(originalBundle, argument);
                 isCalled.set(true);
             }
@@ -886,6 +972,39 @@ public class GenericAccessServiceTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
+    public void test_onCharacteristicReadFailed_00007() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
+        final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = LE_GATT_SECURITY_LEVELS_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final int originalStatus = 4;
+        final Bundle originalBundle = new Bundle();
+        MockGenericAccessServiceCallback mockGenericAccessServiceCallback = new MockGenericAccessServiceCallback() {
+            @Override
+            public void onLeGattSecurityLevelsReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument) {
+                assertEquals(originalTaskId, taskId);
+                assertEquals(originalBluetoothDevice, bluetoothDevice);
+                assertEquals(originalServiceUUID, serviceUUID);
+                assertEquals(originalServiceInstanceId, serviceInstanceId);
+                assertEquals(originalCharacteristicUUID, characteristicUUID);
+                assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalStatus, status);
+                assertEquals(originalBundle, argument);
+                isCalled.set(true);
+            }
+
+        };
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, mockGenericAccessServiceCallback, null);
+        genericAccessService.onCharacteristicReadFailed(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalStatus, originalBundle);
+
+        assertTrue(isCalled.get());
+    }
+
+    @Test
+    @RequiresDevice
     public void test_onCharacteristicReadTimeout_00001() {
         final AtomicBoolean isCalled = new AtomicBoolean(false);
         final Integer originalTaskId = 1;
@@ -1070,6 +1189,40 @@ public class GenericAccessServiceTest extends AbstractCentralTest {
 
             @Override
             public void onPeripheralPrivacyFlagReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+                assertEquals(originalTaskId, taskId);
+                assertEquals(originalBluetoothDevice, bluetoothDevice);
+                assertEquals(originalServiceUUID, serviceUUID);
+                assertEquals(originalServiceInstanceId, serviceInstanceId);
+                assertEquals(originalCharacteristicUUID, characteristicUUID);
+                assertEquals(originalCharacteristicInstanceId, characteristicInstanceId);
+                assertEquals(originalTimeout, timeout);
+                assertEquals(originalBundle, argument);
+                isCalled.set(true);
+            }
+
+        };
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, mockGenericAccessServiceCallback, null);
+        genericAccessService.onCharacteristicReadTimeout(originalTaskId, originalBluetoothDevice, originalServiceUUID, originalServiceInstanceId, originalCharacteristicUUID, originalCharacteristicInstanceId, originalTimeout, originalBundle);
+
+        assertTrue(isCalled.get());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_onCharacteristicReadTimeout_00007() {
+        final AtomicBoolean isCalled = new AtomicBoolean(false);
+        final Integer originalTaskId = 1;
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
+        final UUID originalServiceUUID = GENERIC_ACCESS_SERVICE;
+        final Integer originalServiceInstanceId = 2;
+        final UUID originalCharacteristicUUID = LE_GATT_SECURITY_LEVELS_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+        final long originalTimeout = 4;
+        final Bundle originalBundle = new Bundle();
+        MockGenericAccessServiceCallback mockGenericAccessServiceCallback = new MockGenericAccessServiceCallback() {
+
+            @Override
+            public void onLeGattSecurityLevelsReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument) {
                 assertEquals(originalTaskId, taskId);
                 assertEquals(originalBluetoothDevice, bluetoothDevice);
                 assertEquals(originalServiceUUID, serviceUUID);
@@ -1762,6 +1915,39 @@ public class GenericAccessServiceTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
+    public void test_isLeGattSecurityLevelsCharacteristicSupported_00001() {
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, new MockGenericAccessServiceCallback(), null);
+
+        assertFalse(genericAccessService.isLeGattSecurityLevelsCharacteristicSupported());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_isLeGattSecurityLevelsCharacteristicSupported_00002() {
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, new MockGenericAccessServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LE_GATT_SECURITY_LEVELS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
+        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
+        genericAccessService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+
+        assertTrue(genericAccessService.isLeGattSecurityLevelsCharacteristicSupported());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_isLeGattSecurityLevelsCharacteristicSupported_00003() {
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, new MockGenericAccessServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(GENERIC_ACCESS_SERVICE, 0);
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LE_GATT_SECURITY_LEVELS_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0);
+        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
+        genericAccessService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        genericAccessService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
+
+        assertFalse(genericAccessService.isLeGattSecurityLevelsCharacteristicSupported());
+    }
+
+    @Test
+    @RequiresDevice
     public void test_getDeviceName_00001() {
         GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, new MockGenericAccessServiceCallback(), null);
 
@@ -2380,4 +2566,70 @@ public class GenericAccessServiceTest extends AbstractCentralTest {
         assertEquals(originalTaskId, taskId);
     }
 
+    @Test
+    @RequiresDevice
+    public void test_getLeGattSecurityLevels_00001() {
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, new MockGenericAccessServiceCallback(), null);
+
+        assertNull(genericAccessService.getLeGattSecurityLevels());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_getLeGattSecurityLevels_00002() {
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, new MockGenericAccessServiceCallback(), null) {
+
+            @Override
+            public boolean isStarted() {
+                return true;
+            }
+
+        };
+
+        assertNull(genericAccessService.getLeGattSecurityLevels());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_getLeGattSecurityLevels_00003() {
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, new MockGenericAccessServiceCallback(), null) {
+
+            @Override
+            public boolean isLeGattSecurityLevelsCharacteristicSupported() {
+                return true;
+            }
+
+            @Override
+            public boolean isStarted() {
+                return true;
+            }
+
+        };
+
+        assertNull(genericAccessService.getLeGattSecurityLevels());
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_getLeGattSecurityLevels_00004() {
+        final Integer originalTaskId = 1;
+        MOCK_BLE_CONNECTION.setCreateReadCharacteristicTaskId(originalTaskId);
+        GenericAccessService genericAccessService = new GenericAccessService(MOCK_BLE_CONNECTION, new MockGenericAccessServiceCallback(), null) {
+
+            @Override
+            public boolean isLeGattSecurityLevelsCharacteristicSupported() {
+                return true;
+            }
+
+            @Override
+            public boolean isStarted() {
+                return true;
+            }
+
+        };
+
+        Integer taskId = genericAccessService.getLeGattSecurityLevels();
+        assertNotNull(taskId);
+        assertEquals(originalTaskId, taskId);
+    }
 }

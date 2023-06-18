@@ -17,6 +17,7 @@ import org.im97mori.ble.characteristic.u2a03.ReconnectionAddressAndroid;
 import org.im97mori.ble.characteristic.u2a04.PeripheralPreferredConnectionParametersAndroid;
 import org.im97mori.ble.characteristic.u2aa6.CentralAddressResolutionAndroid;
 import org.im97mori.ble.characteristic.u2ac9.ResolvablePrivateAddressOnlyAndroid;
+import org.im97mori.ble.characteristic.u2bf5.LeGattSecurityLevelsAndroid;
 
 import java.util.UUID;
 
@@ -685,4 +686,69 @@ public interface GenericAccessServiceCallback {
             , long timeout
             , @Nullable Bundle argument);
 
+    /**
+     * Read LE GATT Security Levels success callback
+     *
+     * @param taskId                      task id
+     * @param bluetoothDevice             BLE device
+     * @param serviceUUID                 service {@link UUID}
+     * @param serviceInstanceId           task target service instance id {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID          characteristic {@link UUID}
+     * @param characteristicInstanceId    task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param leGattSecurityLevelsAndroid {@link LeGattSecurityLevelsAndroid}
+     * @param argument                    callback argument
+     */
+    void onLeGattSecurityLevelsReadSuccess(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @NonNull Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @NonNull Integer characteristicInstanceId
+            , @NonNull LeGattSecurityLevelsAndroid leGattSecurityLevelsAndroid
+            , @Nullable Bundle argument);
+
+    /**
+     * Read LE GATT Security Levels error callback
+     *
+     * @param taskId                   task id
+     * @param bluetoothDevice          BLE device
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param status                   {@link BLEConnection#onCharacteristicRead(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link org.im97mori.ble.task.ReadCharacteristicTask#STATUS_READ_CHARACTERISTIC_FAILED}
+     * @param argument                 callback argument
+     */
+    void onLeGattSecurityLevelsReadFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
+            , int status
+            , @Nullable Bundle argument);
+
+    /**
+     * Read LE GATT Security Levels timeout callback
+     *
+     * @param taskId                   task id
+     * @param bluetoothDevice          BLE device
+     * @param serviceUUID              service {@link UUID}
+     * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
+     * @param characteristicUUID       characteristic {@link UUID}
+     * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
+     * @param timeout                  timeout(millis)
+     * @param argument                 callback argument
+     */
+    void onLeGattSecurityLevelsReadTimeout(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
+            , long timeout
+            , @Nullable Bundle argument);
 }

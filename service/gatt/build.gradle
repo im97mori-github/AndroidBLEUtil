@@ -43,6 +43,8 @@ dependencies {
     api "${myGroupId}:${characteristicU2a04Android.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2aa6Android.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2ac9Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2b88Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2bf5Android.artifactId}:${loadVersion}"
 }
 
 publishing {

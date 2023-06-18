@@ -21,6 +21,7 @@ import org.im97mori.ble.characteristic.u2a03.ReconnectionAddressAndroid;
 import org.im97mori.ble.characteristic.u2a04.PeripheralPreferredConnectionParametersAndroid;
 import org.im97mori.ble.characteristic.u2aa6.CentralAddressResolutionAndroid;
 import org.im97mori.ble.characteristic.u2ac9.ResolvablePrivateAddressOnlyAndroid;
+import org.im97mori.ble.characteristic.u2bf5.LeGattSecurityLevelsAndroid;
 import org.im97mori.ble.service.central.AbstractCentralService;
 import org.im97mori.ble.task.ReadCharacteristicTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
@@ -31,6 +32,7 @@ import java.util.UUID;
 import static org.im97mori.ble.constants.CharacteristicUUID.APPEARANCE_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_NAME_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.LE_GATT_SECURITY_LEVELS_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_ADDRESS_CHARACTERISTIC;
@@ -96,6 +98,12 @@ public class GenericAccessService extends AbstractCentralService {
     private boolean mIsPeripheralPrivacyFlagCharacteristicWritable;
 
     /**
+     * LE GATT Security Levels characteristic flag
+     * {@code true}:LE GATT Security Levels characteristic is exist, {@code false}:LE GATT Security Levels characteristic is not exist or service not ready
+     */
+    private boolean mIsLeGattSecurityLevelsCharacteristicSupported;
+
+    /**
      * @param bleConnection                {@link BLEConnection} instance
      * @param genericAccessServiceCallback {@link GenericAccessServiceCallback} instance
      * @param bleCallback                  {@link BLECallback} instance(optional)
@@ -119,6 +127,7 @@ public class GenericAccessService extends AbstractCentralService {
             mIsReconnectionAddressCharacteristicSupported = false;
             mIsPeripheralPrivacyFlagCharacteristicSupported = false;
             mIsPeripheralPrivacyFlagCharacteristicWritable = false;
+            mIsLeGattSecurityLevelsCharacteristicSupported = false;
         }
         super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
     }
@@ -163,6 +172,10 @@ public class GenericAccessService extends AbstractCentralService {
                             mIsPeripheralPrivacyFlagCharacteristicWritable = true;
                         }
                     }
+                    bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(LE_GATT_SECURITY_LEVELS_CHARACTERISTIC);
+                    if (bluetoothGattCharacteristic != null && (BluetoothGattCharacteristic.PROPERTY_READ == bluetoothGattCharacteristic.getProperties())) {
+                        mIsLeGattSecurityLevelsCharacteristicSupported = true;
+                    }
                 }
             }
         }
@@ -187,6 +200,8 @@ public class GenericAccessService extends AbstractCentralService {
                 mGenericAccessServiceCallback.onResolvablePrivateAddressOnlyReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, ResolvablePrivateAddressOnlyAndroid.CREATOR.createFromByteArray(values), argument);
             } else if (PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC.equals(characteristicUUID)) {
                 mGenericAccessServiceCallback.onPeripheralPrivacyFlagReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, PeripheralPrivacyFlagAndroid.CREATOR.createFromByteArray(values), argument);
+            } else if (LE_GATT_SECURITY_LEVELS_CHARACTERISTIC.equals(characteristicUUID)) {
+                mGenericAccessServiceCallback.onLeGattSecurityLevelsReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, LeGattSecurityLevelsAndroid.CREATOR.createFromByteArray(values), argument);
             }
         }
         super.onCharacteristicReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, values, argument);
@@ -210,6 +225,8 @@ public class GenericAccessService extends AbstractCentralService {
                 mGenericAccessServiceCallback.onResolvablePrivateAddressOnlyReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
             } else if (PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC.equals(characteristicUUID)) {
                 mGenericAccessServiceCallback.onPeripheralPrivacyFlagReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
+            } else if (LE_GATT_SECURITY_LEVELS_CHARACTERISTIC.equals(characteristicUUID)) {
+                mGenericAccessServiceCallback.onLeGattSecurityLevelsReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
             }
         }
         super.onCharacteristicReadFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, status, argument);
@@ -233,6 +250,8 @@ public class GenericAccessService extends AbstractCentralService {
                 mGenericAccessServiceCallback.onResolvablePrivateAddressOnlyReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
             } else if (PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC.equals(characteristicUUID)) {
                 mGenericAccessServiceCallback.onPeripheralPrivacyFlagReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
+            } else if (LE_GATT_SECURITY_LEVELS_CHARACTERISTIC.equals(characteristicUUID)) {
+                mGenericAccessServiceCallback.onLeGattSecurityLevelsReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
             }
         }
         super.onCharacteristicReadTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, timeout, argument);
@@ -365,6 +384,15 @@ public class GenericAccessService extends AbstractCentralService {
      */
     public boolean isPeripheralPrivacyFlagCharacteristicWritable() {
         return mIsPeripheralPrivacyFlagCharacteristicWritable;
+    }
+
+    /**
+     * check LE GATT Security Levels characteristic
+     *
+     * @return {@code true}:LE GATT Security Levels characteristic is exist, {@code false}:LE GATT Security Levels characteristic is not exist or service not ready
+     */
+    public boolean isLeGattSecurityLevelsCharacteristicSupported() {
+        return mIsLeGattSecurityLevelsCharacteristicSupported;
     }
 
     /**
@@ -537,4 +565,20 @@ public class GenericAccessService extends AbstractCentralService {
         return taskId;
     }
 
+    /**
+     * getLE GATT Security Levels Parameters
+     *
+     * @return task id. if {@code null} returned, service is not ready
+     * @see GenericAccessServiceCallback#onLeGattSecurityLevelsReadSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, LeGattSecurityLevelsAndroid, Bundle)
+     * @see GenericAccessServiceCallback#onLeGattSecurityLevelsReadFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, int, Bundle)
+     * @see GenericAccessServiceCallback#onLeGattSecurityLevelsReadTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, long, Bundle)
+     */
+    @Nullable
+    public synchronized Integer getLeGattSecurityLevels() {
+        Integer taskId = null;
+        if (isStarted() && isLeGattSecurityLevelsCharacteristicSupported()) {
+            taskId = mBLEConnection.createReadCharacteristicTask(GENERIC_ACCESS_SERVICE, null, LE_GATT_SECURITY_LEVELS_CHARACTERISTIC, null, ReadCharacteristicTask.TIMEOUT_MILLIS, null, this);
+        }
+        return taskId;
+    }
 }
