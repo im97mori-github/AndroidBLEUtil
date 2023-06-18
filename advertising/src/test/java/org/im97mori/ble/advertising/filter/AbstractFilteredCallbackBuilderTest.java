@@ -9,6 +9,7 @@ import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_128_BIT_SERVI
 import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.COMPLETE_LOCAL_NAME_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.ENCRYPTED_ADVERTISING_DATA_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.FLAGS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
@@ -19,6 +20,7 @@ import static org.im97mori.ble.constants.DataType.LIST_OF_128_BIT_SERVICE_SOLICI
 import static org.im97mori.ble.constants.DataType.LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.PERIODIC_ADVERTISING_RESPONSE_TIMING_INFORMATION_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.PUBLIC_TARGET_ADDRESS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.RANDOM_TARGET_ADDRESS_DATA_TYPE;
@@ -48,6 +50,7 @@ import org.im97mori.ble.advertising.CompleteListOf128BitServiceUUIDsAndroid;
 import org.im97mori.ble.advertising.CompleteListOf16BitServiceUUIDsAndroid;
 import org.im97mori.ble.advertising.CompleteListOf32BitServiceUUIDsAndroid;
 import org.im97mori.ble.advertising.CompleteLocalNameAndroid;
+import org.im97mori.ble.advertising.EncryptedDataAndroid;
 import org.im97mori.ble.advertising.FlagsAndroid;
 import org.im97mori.ble.advertising.IncompleteListOf128BitServiceUUIDsAndroid;
 import org.im97mori.ble.advertising.IncompleteListOf16BitServiceUUIDsAndroid;
@@ -58,6 +61,8 @@ import org.im97mori.ble.advertising.ListOf128BitServiceSolicitationUUIDsAndroid;
 import org.im97mori.ble.advertising.ListOf16BitServiceSolicitationUUIDsAndroid;
 import org.im97mori.ble.advertising.ListOf32BitServiceSolicitationUUIDsAndroid;
 import org.im97mori.ble.advertising.ManufacturerSpecificDataAndroid;
+import org.im97mori.ble.advertising.PeriodicAdvertisingResponseTimingInformation;
+import org.im97mori.ble.advertising.PeriodicAdvertisingResponseTimingInformationAndroid;
 import org.im97mori.ble.advertising.PeripheralConnectionIntervalRangeAndroid;
 import org.im97mori.ble.advertising.PublicTargetAddressAndroid;
 import org.im97mori.ble.advertising.RandomTargetAddressAndroid;
@@ -289,16 +294,16 @@ public class AbstractFilteredCallbackBuilderTest {
     @Test
     public void addBigInfoFilterTest_001() {
         byte[] data = new byte[35];
-        data[ 0] = 34;
-        data[ 1] = BIG_INFO_DATA_TYPE;
-        data[ 2] = 0b00000000;
-        data[ 3] = 0b00000000;
-        data[ 4] = 0b00000000;
-        data[ 5] = 0b00000000;
-        data[ 6] = 0b00000000;
-        data[ 7] = 0b00000000;
-        data[ 8] = 0b00000000;
-        data[ 9] = 0b00000000;
+        data[0] = 34;
+        data[1] = BIG_INFO_DATA_TYPE;
+        data[2] = 0b00000000;
+        data[3] = 0b00000000;
+        data[4] = 0b00000000;
+        data[5] = 0b00000000;
+        data[6] = 0b00000000;
+        data[7] = 0b00000000;
+        data[8] = 0b00000000;
+        data[9] = 0b00000000;
         data[10] = 0b00000000;
         data[11] = 0b00000000;
         data[12] = 0b00000000;
@@ -334,16 +339,16 @@ public class AbstractFilteredCallbackBuilderTest {
     @Test
     public void addBigInfoFilterTest_002() {
         byte[] data = new byte[35];
-        data[ 0] = 34;
-        data[ 1] = BIG_INFO_DATA_TYPE;
-        data[ 2] = 0b00000000;
-        data[ 3] = 0b00000000;
-        data[ 4] = 0b00000000;
-        data[ 5] = 0b00000000;
-        data[ 6] = 0b00000000;
-        data[ 7] = 0b00000000;
-        data[ 8] = 0b00000000;
-        data[ 9] = 0b00000000;
+        data[0] = 34;
+        data[1] = BIG_INFO_DATA_TYPE;
+        data[2] = 0b00000000;
+        data[3] = 0b00000000;
+        data[4] = 0b00000000;
+        data[5] = 0b00000000;
+        data[6] = 0b00000000;
+        data[7] = 0b00000000;
+        data[8] = 0b00000000;
+        data[9] = 0b00000000;
         data[10] = 0b00000000;
         data[11] = 0b00000000;
         data[12] = 0b00000000;
@@ -377,18 +382,18 @@ public class AbstractFilteredCallbackBuilderTest {
     }
 
     @Test
-    public void addaddBigInfoFilterTest_003() {
+    public void addBigInfoFilterTest_003() {
         byte[] data = new byte[35];
-        data[ 0] = 34;
-        data[ 1] = BIG_INFO_DATA_TYPE;
-        data[ 2] = 0b00000000;
-        data[ 3] = 0b00000000;
-        data[ 4] = 0b00000000;
-        data[ 5] = 0b00000000;
-        data[ 6] = 0b00000000;
-        data[ 7] = 0b00000000;
-        data[ 8] = 0b00000000;
-        data[ 9] = 0b00000000;
+        data[0] = 34;
+        data[1] = BIG_INFO_DATA_TYPE;
+        data[2] = 0b00000000;
+        data[3] = 0b00000000;
+        data[4] = 0b00000000;
+        data[5] = 0b00000000;
+        data[6] = 0b00000000;
+        data[7] = 0b00000000;
+        data[8] = 0b00000000;
+        data[9] = 0b00000000;
         data[10] = 0b00000000;
         data[11] = 0b00000000;
         data[12] = 0b00000000;
@@ -2037,4 +2042,170 @@ public class AbstractFilteredCallbackBuilderTest {
         assertTrue(result.get(0) instanceof UniformResourceIdentifierFilter);
     }
 
+    @Test
+    public void addEncryptedData_001() {
+        byte[] data = new byte[12];
+        data[0] = 11;
+        data[1] = ENCRYPTED_ADVERTISING_DATA_DATA_TYPE;
+        data[2] = 1;
+        data[3] = 2;
+        data[4] = 3;
+        data[5] = 4;
+        data[6] = 5;
+        data[7] = 6;
+        data[8] = 7;
+        data[9] = 8;
+        data[10] = 9;
+        data[11] = 10;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addEncryptedData(data).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof EncryptedDataFilter);
+    }
+
+    @Test
+    public void addEncryptedData_002() {
+        byte[] data = new byte[12];
+        data[0] = 11;
+        data[1] = ENCRYPTED_ADVERTISING_DATA_DATA_TYPE;
+        data[2] = 1;
+        data[3] = 2;
+        data[4] = 3;
+        data[5] = 4;
+        data[6] = 5;
+        data[7] = 6;
+        data[8] = 7;
+        data[9] = 8;
+        data[10] = 9;
+        data[11] = 10;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addEncryptedData(data, 0, 11).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof EncryptedDataFilter);
+    }
+
+    @Test
+    public void addEncryptedData_003() {
+        byte[] data = new byte[12];
+        data[0] = 11;
+        data[1] = ENCRYPTED_ADVERTISING_DATA_DATA_TYPE;
+        data[2] = 1;
+        data[3] = 2;
+        data[4] = 3;
+        data[5] = 4;
+        data[6] = 5;
+        data[7] = 6;
+        data[8] = 7;
+        data[9] = 8;
+        data[10] = 9;
+        data[11] = 10;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addEncryptedData(EncryptedDataAndroid.CREATOR.createFromByteArray(data)).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof EncryptedDataFilter);
+    }
+
+    @Test
+    public void addEncryptedData_004() {
+        byte[] data = new byte[12];
+        data[0] = 11;
+        data[1] = ENCRYPTED_ADVERTISING_DATA_DATA_TYPE;
+        data[2] = 1;
+        data[3] = 2;
+        data[4] = 3;
+        data[5] = 4;
+        data[6] = 5;
+        data[7] = 6;
+        data[8] = 7;
+        data[9] = 8;
+        data[10] = 9;
+        data[11] = 10;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addEncryptedData(Collections.singletonList(EncryptedDataAndroid.CREATOR.createFromByteArray(data))).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof EncryptedDataFilter);
+    }
+
+    @Test
+    public void addPeriodicAdvertisingResponseTimingInformation_001() {
+        byte[] data = new byte[10];
+        data[0] = 9;
+        data[1] = PERIODIC_ADVERTISING_RESPONSE_TIMING_INFORMATION_DATA_TYPE;
+        data[2] = 1;
+        data[3] = 2;
+        data[4] = 3;
+        data[5] = 4;
+        data[6] = 0x01;
+        data[7] = 0x06;
+        data[8] = 0x01;
+        data[9] = 0x02;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addPeriodicAdvertisingResponseTimingInformation(data).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof PeriodicAdvertisingResponseTimingInformationFilter);
+    }
+
+    @Test
+    public void addPeriodicAdvertisingResponseTimingInformation_002() {
+        byte[] data = new byte[10];
+        data[0] = 9;
+        data[1] = PERIODIC_ADVERTISING_RESPONSE_TIMING_INFORMATION_DATA_TYPE;
+        data[2] = 1;
+        data[3] = 2;
+        data[4] = 3;
+        data[5] = 4;
+        data[6] = 0x01;
+        data[7] = 0x06;
+        data[8] = 0x01;
+        data[9] = 0x02;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addPeriodicAdvertisingResponseTimingInformation(data, 0, 9).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof PeriodicAdvertisingResponseTimingInformationFilter);
+    }
+
+    @Test
+    public void addPeriodicAdvertisingResponseTimingInformation_003() {
+        byte[] data = new byte[10];
+        data[0] = 9;
+        data[1] = PERIODIC_ADVERTISING_RESPONSE_TIMING_INFORMATION_DATA_TYPE;
+        data[2] = 1;
+        data[3] = 2;
+        data[4] = 3;
+        data[5] = 4;
+        data[6] = 0x01;
+        data[7] = 0x06;
+        data[8] = 0x01;
+        data[9] = 0x02;
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addPeriodicAdvertisingResponseTimingInformation(PeriodicAdvertisingResponseTimingInformationAndroid.CREATOR.createFromByteArray(data)).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof PeriodicAdvertisingResponseTimingInformationFilter);
+    }
+
+    @Test
+    public void addPeriodicAdvertisingResponseTimingInformation_004() {
+        byte[] data = new byte[10];
+        data[0] = 9;
+        data[1] = PERIODIC_ADVERTISING_RESPONSE_TIMING_INFORMATION_DATA_TYPE;
+        data[2] = 1;
+        data[3] = 2;
+        data[4] = 3;
+        data[5] = 4;
+        data[6] = 0x01;
+        data[7] = 0x06;
+        data[8] = 0x01;
+        data[9] = 0x02;
+
+        MockFilteredCallbackBuilder builder = new MockFilteredCallbackBuilder();
+        List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>> result = builder.addPeriodicAdvertisingResponseTimingInformation(Collections.singletonList(PeriodicAdvertisingResponseTimingInformationAndroid.CREATOR.createFromByteArray(data))).build();
+        assertEquals(1, result.size());
+        assertTrue(result.get(0) instanceof PeriodicAdvertisingResponseTimingInformationFilter);
+    }
 }

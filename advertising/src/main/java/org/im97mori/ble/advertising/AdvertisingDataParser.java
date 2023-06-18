@@ -9,6 +9,7 @@ import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_128_BIT_SERVI
 import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.COMPLETE_LIST_OF_32_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.COMPLETE_LOCAL_NAME_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.ENCRYPTED_ADVERTISING_DATA_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.FLAGS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.INCOMPLETE_LIST_OF_128_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.INCOMPLETE_LIST_OF_16_BIT_SERVICE_CLASS_UUIDS_DATA_TYPE;
@@ -19,6 +20,7 @@ import static org.im97mori.ble.constants.DataType.LIST_OF_128_BIT_SERVICE_SOLICI
 import static org.im97mori.ble.constants.DataType.LIST_OF_16_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.LIST_OF_32_BIT_SERVICE_SOLICITATION_UUIDS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.MANUFACTURER_SPECIFIC_DATA_DATA_TYPE;
+import static org.im97mori.ble.constants.DataType.PERIODIC_ADVERTISING_RESPONSE_TIMING_INFORMATION_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.PERIPHERAL_CONNECTION_INTERVAL_RANGE_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.PUBLIC_TARGET_ADDRESS_DATA_TYPE;
 import static org.im97mori.ble.constants.DataType.RANDOM_TARGET_ADDRESS_DATA_TYPE;
@@ -97,6 +99,8 @@ public class AdvertisingDataParser {
             set.add(LE_SUPPORTED_FEATURES_DATA_TYPE);
             set.add(CHANNEL_MAP_UPDATE_INDICATION_DATA_TYPE);
             set.add(BIG_INFO_DATA_TYPE);
+            set.add(ENCRYPTED_ADVERTISING_DATA_DATA_TYPE);
+            set.add(PERIODIC_ADVERTISING_RESPONSE_TIMING_INFORMATION_DATA_TYPE);
 
             ALL_SET_DATA_TYPE = Collections.unmodifiableSet(Collections.synchronizedSet(set));
         }
@@ -434,6 +438,26 @@ public class AdvertisingDataParser {
          * BIGInfo
          */
         private BigInfoAndroid mBigInfo;
+
+        /**
+         * Latest Encrypted Data
+         */
+        private EncryptedDataAndroid mEncryptedData;
+
+        /**
+         * Encrypted Data List
+         */
+        private final List<EncryptedDataAndroid> mEncryptedDataList = new ArrayList<>();
+
+        /**
+         * Periodic Advertising Response Timing Information
+         */
+        private PeriodicAdvertisingResponseTimingInformationAndroid mPeriodicAdvertisingResponseTimingInformation;
+
+        /**
+         * Periodic Advertising Response Timing Information List
+         */
+        private final List<PeriodicAdvertisingResponseTimingInformationAndroid> mPeriodicAdvertisingResponseTimingInformationList = new ArrayList<>();
 
         /**
          * Constructor from {@link #parse(byte[], int, int)}
@@ -839,6 +863,38 @@ public class AdvertisingDataParser {
         }
 
         /**
+         * @return Latest Encrypted Data
+         */
+        @Nullable
+        public EncryptedDataAndroid getEncryptedData() {
+            return mEncryptedData;
+        }
+
+        /**
+         * @return All Encrypted Data List
+         */
+        @NonNull
+        public List<EncryptedDataAndroid> getEncryptedDataList() {
+            return mEncryptedDataList;
+        }
+
+        /**
+         * @return Latest Periodic Advertising Response Timing Information
+         */
+        @Nullable
+        public PeriodicAdvertisingResponseTimingInformationAndroid getPeriodicAdvertisingResponseTimingInformation() {
+            return mPeriodicAdvertisingResponseTimingInformation;
+        }
+
+        /**
+         * @return All Periodic Advertising Response Timing Information List
+         */
+        @NonNull
+        public List<PeriodicAdvertisingResponseTimingInformationAndroid> getPeriodicAdvertisingResponseTimingInformationList() {
+            return mPeriodicAdvertisingResponseTimingInformationList;
+        }
+
+        /**
          * list to member
          */
         private void toMember() {
@@ -917,6 +973,12 @@ public class AdvertisingDataParser {
                     mChannelMapUpdateIndication = (ChannelMapUpdateIndicationAndroid) data;
                 } else if (data instanceof BigInfoAndroid) {
                     mBigInfo = (BigInfoAndroid) data;
+                } else if (data instanceof EncryptedDataAndroid) {
+                    mEncryptedData = (EncryptedDataAndroid) data;
+                    mEncryptedDataList.add(mEncryptedData);
+                } else if (data instanceof PeriodicAdvertisingResponseTimingInformationAndroid) {
+                    mPeriodicAdvertisingResponseTimingInformation = (PeriodicAdvertisingResponseTimingInformationAndroid) data;
+                    mPeriodicAdvertisingResponseTimingInformationList.add(mPeriodicAdvertisingResponseTimingInformation);
                 }
             }
         }
@@ -1021,6 +1083,10 @@ public class AdvertisingDataParser {
                         resultList.add(new ChannelMapUpdateIndicationAndroid(data, i, dataLength));
                     } else if (BIG_INFO_DATA_TYPE == dataType) {
                         resultList.add(new BigInfoAndroid(data, i, dataLength));
+                    } else if (ENCRYPTED_ADVERTISING_DATA_DATA_TYPE == dataType) {
+                        resultList.add(new EncryptedDataAndroid(data, i, dataLength));
+                    } else if (PERIODIC_ADVERTISING_RESPONSE_TIMING_INFORMATION_DATA_TYPE == dataType) {
+                        resultList.add(new PeriodicAdvertisingResponseTimingInformationAndroid(data, i, dataLength));
                     }
                 }
                 i += dataLength;

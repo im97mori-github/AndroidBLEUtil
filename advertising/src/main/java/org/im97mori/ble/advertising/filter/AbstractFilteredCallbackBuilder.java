@@ -16,6 +16,7 @@ import org.im97mori.ble.advertising.CompleteListOf128BitServiceUUIDs;
 import org.im97mori.ble.advertising.CompleteListOf16BitServiceUUIDs;
 import org.im97mori.ble.advertising.CompleteListOf32BitServiceUUIDs;
 import org.im97mori.ble.advertising.CompleteLocalName;
+import org.im97mori.ble.advertising.EncryptedData;
 import org.im97mori.ble.advertising.Flags;
 import org.im97mori.ble.advertising.IncompleteListOf128BitServiceUUIDs;
 import org.im97mori.ble.advertising.IncompleteListOf16BitServiceUUIDs;
@@ -26,6 +27,7 @@ import org.im97mori.ble.advertising.ListOf128BitServiceSolicitationUUIDs;
 import org.im97mori.ble.advertising.ListOf16BitServiceSolicitationUUIDs;
 import org.im97mori.ble.advertising.ListOf32BitServiceSolicitationUUIDs;
 import org.im97mori.ble.advertising.ManufacturerSpecificData;
+import org.im97mori.ble.advertising.PeriodicAdvertisingResponseTimingInformation;
 import org.im97mori.ble.advertising.PeripheralConnectionIntervalRange;
 import org.im97mori.ble.advertising.PublicTargetAddress;
 import org.im97mori.ble.advertising.RandomTargetAddress;
@@ -1411,6 +1413,104 @@ public abstract class AbstractFilteredCallbackBuilder<T> {
     @NonNull
     public AbstractFilteredCallbackBuilder<T> addUniformResourceIdentifier(@NonNull List<? extends UniformResourceIdentifier> expectList) {
         mFilterList.add(new UniformResourceIdentifierFilter(expectList));
+        return this;
+    }
+
+    /**
+     * add Encrypted Data filter
+     *
+     * @param data Encrypted Data array
+     * @return myself
+     * @see ByteArrayCreator#createFromByteArray(byte[])
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addEncryptedData(@NonNull byte[] data) {
+        return addEncryptedData(data, 0, data.length);
+    }
+
+    /**
+     * add Encrypted Data filter
+     *
+     * @param data   {@link EncryptedData#EncryptedData(byte[], int, int)} 1st parameter
+     * @param offset {@link EncryptedData#EncryptedData(byte[], int, int)} 2nd parameter
+     * @param length {@link EncryptedData#EncryptedData(byte[], int, int)} 3rd parameter
+     * @return myself
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addEncryptedData(@NonNull byte[] data, int offset, int length) {
+        return addEncryptedData(new EncryptedData(data, offset, length));
+    }
+
+    /**
+     * add Encrypted Data filter
+     *
+     * @param expect {@link UniformResourceIdentifier} instance
+     * @return myself
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addEncryptedData(@NonNull EncryptedData expect) {
+        mFilterList.add(new EncryptedDataFilter(expect));
+        return this;
+    }
+
+    /**
+     * add Encrypted Data filter
+     *
+     * @param expectList {@link EncryptedData} instance
+     * @return myself
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addEncryptedData(@NonNull List<? extends EncryptedData> expectList) {
+        mFilterList.add(new EncryptedDataFilter(expectList));
+        return this;
+    }
+
+    /**
+     * add Periodic Advertising Response Timing Information filter
+     *
+     * @param data Encrypted Data array
+     * @return myself
+     * @see ByteArrayCreator#createFromByteArray(byte[])
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addPeriodicAdvertisingResponseTimingInformation(@NonNull byte[] data) {
+        return addPeriodicAdvertisingResponseTimingInformation(data, 0, data.length);
+    }
+
+    /**
+     * add Periodic Advertising Response Timing Information filter
+     *
+     * @param data   {@link PeriodicAdvertisingResponseTimingInformation#PeriodicAdvertisingResponseTimingInformation(byte[], int, int)} 1st parameter
+     * @param offset {@link PeriodicAdvertisingResponseTimingInformation#PeriodicAdvertisingResponseTimingInformation(byte[], int, int)} 2nd parameter
+     * @param length {@link PeriodicAdvertisingResponseTimingInformation#PeriodicAdvertisingResponseTimingInformation(byte[], int, int)} 3rd parameter
+     * @return myself
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addPeriodicAdvertisingResponseTimingInformation(@NonNull byte[] data, int offset, int length) {
+        return addPeriodicAdvertisingResponseTimingInformation(new PeriodicAdvertisingResponseTimingInformation(data, offset, length));
+    }
+
+    /**
+     * add Periodic Advertising Response Timing Information filter
+     *
+     * @param expect {@link PeriodicAdvertisingResponseTimingInformation} instance
+     * @return myself
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addPeriodicAdvertisingResponseTimingInformation(@NonNull PeriodicAdvertisingResponseTimingInformation expect) {
+        mFilterList.add(new PeriodicAdvertisingResponseTimingInformationFilter(expect));
+        return this;
+    }
+
+    /**
+     * add Periodic Advertising Response Timing Information filter
+     *
+     * @param expectList {@link PeriodicAdvertisingResponseTimingInformation} instance
+     * @return myself
+     */
+    @NonNull
+    public AbstractFilteredCallbackBuilder<T> addPeriodicAdvertisingResponseTimingInformation(@NonNull List<? extends PeriodicAdvertisingResponseTimingInformation> expectList) {
+        mFilterList.add(new PeriodicAdvertisingResponseTimingInformationFilter(expectList));
         return this;
     }
 
