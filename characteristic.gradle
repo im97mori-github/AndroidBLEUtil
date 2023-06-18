@@ -1637,6 +1637,11 @@ ext.characteristicU2b87Android = [
         , baseModule       : "${myGroupId}:ble-characteristic-u2b87:${loadVersion}"
 ]
 
+ext.characteristicU2b88Android = [
+        artifactId         : "ble-characteristic-u2b88-android"
+        , baseModule       : "${myGroupId}:ble-characteristic-u2b88:${loadVersion}"
+]
+
 ext.characteristicU2b8eAndroid = [
         artifactId         : "ble-characteristic-u2b8e-android"
         , baseModule       : "${myGroupId}:ble-characteristic-u2b8e:${loadVersion}"
@@ -2010,6 +2015,11 @@ ext.characteristicU2bd8Android = [
 ext.characteristicU2bd9Android = [
         artifactId         : "ble-characteristic-u2bd9-android"
         , baseModule       : "${myGroupId}:ble-characteristic-u2bd9:${loadVersion}"
+]
+
+ext.characteristicU2bf5Android = [
+        artifactId         : "ble-characteristic-u2bf5-android"
+        , baseModule       : "${myGroupId}:ble-characteristic-u2bf5:${loadVersion}"
 ]
 
 ext.characteristicAndroid = [
