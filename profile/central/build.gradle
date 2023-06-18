@@ -17,12 +17,17 @@ android {
     }
 
     buildTypes {
+        staging {
+            minifyEnabled false
+        }
         release {
             minifyEnabled false
         }
     }
 
     publishing {
+        singleVariant("staging") {
+        }
         singleVariant("release") {
             withSourcesJar()
             withJavadocJar()
@@ -48,7 +53,11 @@ publishing {
             version = uploadVersion
 
             afterEvaluate {
-                from components.release
+                if (staging) {
+                    from components.staging
+                } else {
+                    from components.release
+                }
             }
 
             pom {
