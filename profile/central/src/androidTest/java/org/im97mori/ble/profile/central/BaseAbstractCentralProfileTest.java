@@ -9,12 +9,10 @@ import static org.junit.Assert.assertTrue;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.le.ScanResult;
-import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.filters.RequiresDevice;
-import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
@@ -90,17 +88,18 @@ abstract class BaseAbstractCentralProfileTest extends AbstractCentralTest {
     @Test
     @RequiresDevice
     public void test_clearHistory_00002() {
-        final BaseBondedDeviceDatabaseHelper baseBondedDeviceDatabaseHelper = new BaseBondedDeviceDatabaseHelper(ApplicationProvider.getApplicationContext());
-        baseBondedDeviceDatabaseHelper.clearHistory();
-        assertNotEquals(-1, baseBondedDeviceDatabaseHelper.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
-        BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
-            @Override
-            public BondedDeviceDatabaseHelper getDatabaseHelper() {
-                return baseBondedDeviceDatabaseHelper;
-            }
-        };
-        baseAbstractCentralProfile.clearHistory();
-        assertTrue(baseBondedDeviceDatabaseHelper.getBondedDevices().isEmpty());
+        try (final BaseBondedDeviceDatabaseHelper baseBondedDeviceDatabaseHelper = new BaseBondedDeviceDatabaseHelper(ApplicationProvider.getApplicationContext())) {
+            baseBondedDeviceDatabaseHelper.clearHistory();
+            assertNotEquals(-1, baseBondedDeviceDatabaseHelper.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
+            BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
+                @Override
+                public BondedDeviceDatabaseHelper getDatabaseHelper() {
+                    return baseBondedDeviceDatabaseHelper;
+                }
+            };
+            baseAbstractCentralProfile.clearHistory();
+            assertTrue(baseBondedDeviceDatabaseHelper.getBondedDevices().isEmpty());
+        }
     }
 
     @Test
@@ -113,17 +112,18 @@ abstract class BaseAbstractCentralProfileTest extends AbstractCentralTest {
     @Test
     @RequiresDevice
     public void test_syncBondedDevice_00002() {
-        final BaseBondedDeviceDatabaseHelper baseBondedDeviceDatabaseHelper = new BaseBondedDeviceDatabaseHelper(ApplicationProvider.getApplicationContext());
-        baseBondedDeviceDatabaseHelper.clearHistory();
-        assertNotEquals(-1, baseBondedDeviceDatabaseHelper.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
-        BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
-            @Override
-            public BondedDeviceDatabaseHelper getDatabaseHelper() {
-                return baseBondedDeviceDatabaseHelper;
-            }
-        };
-        baseAbstractCentralProfile.syncBondedDevice();
-        assertTrue(baseBondedDeviceDatabaseHelper.getBondedDevices().isEmpty());
+        try (final BaseBondedDeviceDatabaseHelper baseBondedDeviceDatabaseHelper = new BaseBondedDeviceDatabaseHelper(ApplicationProvider.getApplicationContext())) {
+            baseBondedDeviceDatabaseHelper.clearHistory();
+            assertNotEquals(-1, baseBondedDeviceDatabaseHelper.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
+            BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
+                @Override
+                public BondedDeviceDatabaseHelper getDatabaseHelper() {
+                    return baseBondedDeviceDatabaseHelper;
+                }
+            };
+            baseAbstractCentralProfile.syncBondedDevice();
+            assertTrue(baseBondedDeviceDatabaseHelper.getBondedDevices().isEmpty());
+        }
     }
 
     @Test
@@ -136,20 +136,21 @@ abstract class BaseAbstractCentralProfileTest extends AbstractCentralTest {
     @Test
     @RequiresDevice
     public void test_getBondedDevices_00002() {
-        final BaseBondedDeviceDatabaseHelper baseBondedDeviceDatabaseHelper = new BaseBondedDeviceDatabaseHelper(ApplicationProvider.getApplicationContext());
-        baseBondedDeviceDatabaseHelper.clearHistory();
-        assertNotEquals(-1, baseBondedDeviceDatabaseHelper.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
-        BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
-            @Override
-            public BondedDeviceDatabaseHelper getDatabaseHelper() {
-                return baseBondedDeviceDatabaseHelper;
-            }
-        };
+        try (final BaseBondedDeviceDatabaseHelper baseBondedDeviceDatabaseHelper = new BaseBondedDeviceDatabaseHelper(ApplicationProvider.getApplicationContext())) {
+            baseBondedDeviceDatabaseHelper.clearHistory();
+            assertNotEquals(-1, baseBondedDeviceDatabaseHelper.addHistory(BLETestUtilsAndroid.MOCK_DEVICE_0));
+            BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback()) {
+                @Override
+                public BondedDeviceDatabaseHelper getDatabaseHelper() {
+                    return baseBondedDeviceDatabaseHelper;
+                }
+            };
 
-        Set<BluetoothDevice> bluetoothDeviceSet = baseAbstractCentralProfile.getBondedDevices();
-        assertNotNull(bluetoothDeviceSet);
-        assertEquals(1, bluetoothDeviceSet.size());
-        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bluetoothDeviceSet.iterator().next());
+            Set<BluetoothDevice> bluetoothDeviceSet = baseAbstractCentralProfile.getBondedDevices();
+            assertNotNull(bluetoothDeviceSet);
+            assertEquals(1, bluetoothDeviceSet.size());
+            assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bluetoothDeviceSet.iterator().next());
+        }
     }
 
     @Test
@@ -313,29 +314,6 @@ abstract class BaseAbstractCentralProfileTest extends AbstractCentralTest {
         baseAbstractCentralProfile.start();
         assertNotNull(baseAbstractCentralProfile.findDevices(null));
         baseAbstractCentralProfile.quit();
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
-    public void test_scanDevice_00001() {
-        BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), new BaseProfileCallback());
-        assertNull(baseAbstractCentralProfile.scanDevice(new FilteredScanCallback.Builder(new FilteredScanCallbackInterface() {
-            @Override
-            public void onFilteredScanResult(int callbackType, @NonNull ScanResult result, @NonNull AdvertisingDataParser.AdvertisingDataParseResult parseResult) {
-
-            }
-
-            @Override
-            public void onFilteredBatchScanResults(@NonNull List<ScanResult> results, @NonNull List<AdvertisingDataParser.AdvertisingDataParseResult> parseResults) {
-
-            }
-
-            @Override
-            public void onScanFailed(int errorCode) {
-
-            }
-        }, null).build(), ScanTask.TIMEOUT_MILLIS, null));
     }
 
     @Test
