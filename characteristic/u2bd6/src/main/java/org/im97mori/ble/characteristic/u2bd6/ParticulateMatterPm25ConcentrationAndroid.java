@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.PARTICULATE_MATTER_PM25_CONCENTRATION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC;
 
 /**
  * Particulate Matter - PM2.5 Concentration (Characteristics UUID: 0x2BD6)
@@ -45,7 +45,7 @@ public class ParticulateMatterPm25ConcentrationAndroid extends ParticulateMatter
          */
         @NonNull
         public ParticulateMatterPm25ConcentrationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PARTICULATE_MATTER_PM25_CONCENTRATION_CHARACTERISTIC, 0, 0);
+            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, 0, 0);
             bluetoothGattCharacteristic.setValue(values);
             return new ParticulateMatterPm25ConcentrationAndroid(bluetoothGattCharacteristic);
         }

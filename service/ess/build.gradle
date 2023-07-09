@@ -62,6 +62,17 @@ dependencies {
     api "${myGroupId}:${characteristicU2aa0Android.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2aa1Android.artifactId}:${loadVersion}"
     api "${myGroupId}:${characteristicU2aa3Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2bcfAndroid.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2bd0Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2bd1Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2bd2Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2bd3Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2bd4Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2bd5Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2bd6Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2bd7Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2bd8Android.artifactId}:${loadVersion}"
+    api "${myGroupId}:${characteristicU2bd9Android.artifactId}:${loadVersion}"
 }
 
 publishing {

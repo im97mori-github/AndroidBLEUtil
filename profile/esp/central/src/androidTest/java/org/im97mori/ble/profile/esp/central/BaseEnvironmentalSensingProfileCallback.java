@@ -48,6 +48,17 @@ import org.im97mori.ble.characteristic.u2aa6.CentralAddressResolutionAndroid;
 import org.im97mori.ble.characteristic.u2ac9.ResolvablePrivateAddressOnlyAndroid;
 import org.im97mori.ble.characteristic.u2b29.ClientSupportedFeaturesAndroid;
 import org.im97mori.ble.characteristic.u2b2a.DatabaseHashAndroid;
+import org.im97mori.ble.characteristic.u2bcf.AmmoniaConcentrationAndroid;
+import org.im97mori.ble.characteristic.u2bd0.CarbonMonoxideConcentrationAndroid;
+import org.im97mori.ble.characteristic.u2bd1.MethaneConcentrationAndroid;
+import org.im97mori.ble.characteristic.u2bd2.NitrogenDioxideConcentrationAndroid;
+import org.im97mori.ble.characteristic.u2bd3.NonMethaneVolatileOrganicCompoundsConcentrationAndroid;
+import org.im97mori.ble.characteristic.u2bd4.OzoneConcentrationAndroid;
+import org.im97mori.ble.characteristic.u2bd5.ParticulateMatterPm1ConcentrationAndroid;
+import org.im97mori.ble.characteristic.u2bd6.ParticulateMatterPm25ConcentrationAndroid;
+import org.im97mori.ble.characteristic.u2bd7.ParticulateMatterPm10ConcentrationAndroid;
+import org.im97mori.ble.characteristic.u2bd8.SulfurDioxideConcentrationAndroid;
+import org.im97mori.ble.characteristic.u2bd9.SulfurHexafluorideConcentrationAndroid;
 import org.im97mori.ble.characteristic.u2bf5.LeGattSecurityLevelsAndroid;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescriptionAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
@@ -560,6 +571,166 @@ public class BaseEnvironmentalSensingProfileCallback implements EnvironmentalSen
 
     @Override
     public void onDescriptorValueChangedIndicated(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull DescriptorValueChangedAndroid descriptorValueChangedAndroid) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull AmmoniaConcentrationAndroid ammoniaConcentrationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationNotifyStartSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationNotifyStartFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationNotifyStopSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationNotifyStopFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingMeasurementReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingMeasurementAndroid environmentalSensingMeasurementAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingMeasurementReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingMeasurementReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingTriggerSettingReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingTriggerSettingReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingTriggerSettingReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingTriggerSettingWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingTriggerSettingWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingTriggerSettingWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingConfigurationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingConfigurationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingConfigurationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingConfigurationWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingConfigurationWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationEnvironmentalSensingConfigurationWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationCharacteristicUserDescriptionReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationCharacteristicUserDescriptionReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationCharacteristicUserDescriptionReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationCharacteristicUserDescriptionWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationCharacteristicUserDescriptionWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationCharacteristicUserDescriptionWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationValidRangeReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull ValidRangeAndroid validRangeAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationValidRangeReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationValidRangeReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onAmmoniaConcentrationNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer, @NonNull UUID uuid1, @NonNull Integer integer1, @Nullable Integer integer2, @NonNull AmmoniaConcentrationAndroid ammoniaConcentrationAndroid) {
 
     }
 
@@ -2164,6 +2335,326 @@ public class BaseEnvironmentalSensingProfileCallback implements EnvironmentalSen
     }
 
     @Override
+    public void onSulfurDioxideConcentrationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull SulfurDioxideConcentrationAndroid sulfurDioxideConcentrationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationNotifyStartSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationNotifyStartFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationNotifyStopSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationNotifyStopFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingMeasurementReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingMeasurementAndroid environmentalSensingMeasurementAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingMeasurementReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingMeasurementReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingTriggerSettingReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingTriggerSettingReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingTriggerSettingReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingTriggerSettingWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingTriggerSettingWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingTriggerSettingWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingConfigurationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingConfigurationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingConfigurationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingConfigurationWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingConfigurationWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationEnvironmentalSensingConfigurationWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationCharacteristicUserDescriptionReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationCharacteristicUserDescriptionReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationCharacteristicUserDescriptionReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationCharacteristicUserDescriptionWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationCharacteristicUserDescriptionWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationCharacteristicUserDescriptionWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationValidRangeReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull ValidRangeAndroid validRangeAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationValidRangeReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationValidRangeReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurDioxideConcentrationNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer, @NonNull UUID uuid1, @NonNull Integer integer1, @Nullable Integer integer2, @NonNull SulfurDioxideConcentrationAndroid sulfurDioxideConcentrationAndroid) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull SulfurHexafluorideConcentrationAndroid sulfurHexafluorideConcentrationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationNotifyStartSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationNotifyStartFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationNotifyStopSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationNotifyStopFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingMeasurementReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingMeasurementAndroid environmentalSensingMeasurementAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingMeasurementReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingMeasurementReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingTriggerSettingReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingTriggerSettingReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingTriggerSettingReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingTriggerSettingWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingTriggerSettingWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingTriggerSettingWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingConfigurationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingConfigurationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingConfigurationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingConfigurationWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingConfigurationWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationEnvironmentalSensingConfigurationWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationCharacteristicUserDescriptionReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationCharacteristicUserDescriptionReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationCharacteristicUserDescriptionReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationCharacteristicUserDescriptionWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationCharacteristicUserDescriptionWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationCharacteristicUserDescriptionWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationValidRangeReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull ValidRangeAndroid validRangeAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationValidRangeReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationValidRangeReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSulfurHexafluorideConcentrationNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer, @NonNull UUID uuid1, @NonNull Integer integer1, @Nullable Integer integer2, @NonNull SulfurHexafluorideConcentrationAndroid sulfurHexafluorideConcentrationAndroid) {
+
+    }
+
+    @Override
     public void onPressureReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull PressureAndroid pressureAndroid, @Nullable Bundle argument) {
 
     }
@@ -3284,6 +3775,166 @@ public class BaseEnvironmentalSensingProfileCallback implements EnvironmentalSen
     }
 
     @Override
+    public void onCarbonMonoxideConcentrationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull CarbonMonoxideConcentrationAndroid carbonMonoxideConcentrationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationNotifyStartSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationNotifyStartFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationNotifyStopSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationNotifyStopFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingMeasurementReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingMeasurementAndroid environmentalSensingMeasurementAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingMeasurementReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingMeasurementReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingTriggerSettingReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingTriggerSettingReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingTriggerSettingReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingTriggerSettingWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingTriggerSettingWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingTriggerSettingWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingConfigurationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingConfigurationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingConfigurationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingConfigurationWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingConfigurationWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationEnvironmentalSensingConfigurationWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationCharacteristicUserDescriptionReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationCharacteristicUserDescriptionReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationCharacteristicUserDescriptionReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationCharacteristicUserDescriptionWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationCharacteristicUserDescriptionWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationCharacteristicUserDescriptionWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationValidRangeReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull ValidRangeAndroid validRangeAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationValidRangeReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationValidRangeReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onCarbonMonoxideConcentrationNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer, @NonNull UUID uuid1, @NonNull Integer integer1, @Nullable Integer integer2, @NonNull CarbonMonoxideConcentrationAndroid carbonMonoxideConcentrationAndroid) {
+
+    }
+
+    @Override
     public void onMagneticDeclinationReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull MagneticDeclinationAndroid magneticDeclinationAndroid, @Nullable Bundle argument) {
 
     }
@@ -3760,6 +4411,1126 @@ public class BaseEnvironmentalSensingProfileCallback implements EnvironmentalSen
 
     @Override
     public void onMagneticFluxDensity3DNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull MagneticFluxDensity3DAndroid magneticFluxDensity3DAndroid) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull MethaneConcentrationAndroid methaneConcentrationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationNotifyStartSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationNotifyStartFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationNotifyStopSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationNotifyStopFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingMeasurementReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingMeasurementAndroid environmentalSensingMeasurementAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingMeasurementReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingMeasurementReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingTriggerSettingReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingTriggerSettingReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingTriggerSettingReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingTriggerSettingWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingTriggerSettingWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingTriggerSettingWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingConfigurationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingConfigurationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingConfigurationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingConfigurationWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingConfigurationWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationEnvironmentalSensingConfigurationWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationCharacteristicUserDescriptionReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationCharacteristicUserDescriptionReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationCharacteristicUserDescriptionReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationCharacteristicUserDescriptionWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationCharacteristicUserDescriptionWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationCharacteristicUserDescriptionWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationValidRangeReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull ValidRangeAndroid validRangeAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationValidRangeReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationValidRangeReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onMethaneConcentrationNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer, @NonNull UUID uuid1, @NonNull Integer integer1, @Nullable Integer integer2, @NonNull MethaneConcentrationAndroid methaneConcentrationAndroid) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull NitrogenDioxideConcentrationAndroid nitrogenDioxideConcentrationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationNotifyStartSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationNotifyStartFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationNotifyStopSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationNotifyStopFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingMeasurementReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingMeasurementAndroid environmentalSensingMeasurementAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingMeasurementReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingMeasurementReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingTriggerSettingReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingTriggerSettingReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingTriggerSettingReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingTriggerSettingWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingTriggerSettingWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingTriggerSettingWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingConfigurationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingConfigurationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingConfigurationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingConfigurationWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingConfigurationWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationEnvironmentalSensingConfigurationWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationCharacteristicUserDescriptionReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationCharacteristicUserDescriptionReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationCharacteristicUserDescriptionReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationCharacteristicUserDescriptionWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationCharacteristicUserDescriptionWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationCharacteristicUserDescriptionWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationValidRangeReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull ValidRangeAndroid validRangeAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationValidRangeReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationValidRangeReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNitrogenDioxideConcentrationNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer, @NonNull UUID uuid1, @NonNull Integer integer1, @Nullable Integer integer2, @NonNull NitrogenDioxideConcentrationAndroid nitrogenDioxideConcentrationAndroid) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull NonMethaneVolatileOrganicCompoundsConcentrationAndroid nonMethaneVolatileOrganicCompoundsConcentrationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationNotifyStartSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationNotifyStartFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationNotifyStopSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationNotifyStopFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingMeasurementReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingMeasurementAndroid environmentalSensingMeasurementAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingMeasurementReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingMeasurementReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingTriggerSettingReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingTriggerSettingReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingTriggerSettingReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingTriggerSettingWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingTriggerSettingWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingTriggerSettingWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingConfigurationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingConfigurationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingConfigurationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingConfigurationWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingConfigurationWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationEnvironmentalSensingConfigurationWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationCharacteristicUserDescriptionReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationCharacteristicUserDescriptionReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationCharacteristicUserDescriptionReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationCharacteristicUserDescriptionWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationCharacteristicUserDescriptionWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationCharacteristicUserDescriptionWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationValidRangeReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull ValidRangeAndroid validRangeAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationValidRangeReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationValidRangeReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onNonMethaneVolatileOrganicCompoundsConcentrationNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer, @NonNull UUID uuid1, @NonNull Integer integer1, @Nullable Integer integer2, @NonNull NonMethaneVolatileOrganicCompoundsConcentrationAndroid nonMethaneVolatileOrganicCompoundsConcentrationAndroid) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull OzoneConcentrationAndroid ozoneConcentrationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationNotifyStartSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationNotifyStartFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationNotifyStopSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationNotifyStopFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingMeasurementReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingMeasurementAndroid environmentalSensingMeasurementAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingMeasurementReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingMeasurementReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingTriggerSettingReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingTriggerSettingReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingTriggerSettingReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingTriggerSettingWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingTriggerSettingWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingTriggerSettingWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingConfigurationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingConfigurationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingConfigurationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingConfigurationWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingConfigurationWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationEnvironmentalSensingConfigurationWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationCharacteristicUserDescriptionReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationCharacteristicUserDescriptionReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationCharacteristicUserDescriptionReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationCharacteristicUserDescriptionWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationCharacteristicUserDescriptionWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationCharacteristicUserDescriptionWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationValidRangeReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull ValidRangeAndroid validRangeAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationValidRangeReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationValidRangeReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onOzoneConcentrationNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer, @NonNull UUID uuid1, @NonNull Integer integer1, @Nullable Integer integer2, @NonNull OzoneConcentrationAndroid ozoneConcentrationAndroid) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull ParticulateMatterPm10ConcentrationAndroid particulateMatterPm10ConcentrationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationNotifyStartSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationNotifyStartFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationNotifyStopSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationNotifyStopFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingMeasurementReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingMeasurementAndroid environmentalSensingMeasurementAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingMeasurementReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingMeasurementReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingTriggerSettingReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingTriggerSettingReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingTriggerSettingReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingTriggerSettingWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingTriggerSettingWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingTriggerSettingWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingConfigurationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingConfigurationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingConfigurationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingConfigurationWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingConfigurationWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationEnvironmentalSensingConfigurationWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationCharacteristicUserDescriptionReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationCharacteristicUserDescriptionReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationCharacteristicUserDescriptionReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationCharacteristicUserDescriptionWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationCharacteristicUserDescriptionWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationCharacteristicUserDescriptionWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationValidRangeReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull ValidRangeAndroid validRangeAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationValidRangeReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationValidRangeReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm10ConcentrationNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer, @NonNull UUID uuid1, @NonNull Integer integer1, @Nullable Integer integer2, @NonNull ParticulateMatterPm10ConcentrationAndroid particulateMatterPm10ConcentrationAndroid) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull ParticulateMatterPm1ConcentrationAndroid particulateMatterPm1ConcentrationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationNotifyStartSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationNotifyStartFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationNotifyStopSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationNotifyStopFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingMeasurementReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingMeasurementAndroid environmentalSensingMeasurementAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingMeasurementReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingMeasurementReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingTriggerSettingReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingTriggerSettingReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingTriggerSettingReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingTriggerSettingWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingTriggerSettingWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingTriggerSettingWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingConfigurationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingConfigurationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingConfigurationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingConfigurationWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingConfigurationWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationEnvironmentalSensingConfigurationWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationCharacteristicUserDescriptionReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationCharacteristicUserDescriptionReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationCharacteristicUserDescriptionReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationCharacteristicUserDescriptionWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationCharacteristicUserDescriptionWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationCharacteristicUserDescriptionWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationValidRangeReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull ValidRangeAndroid validRangeAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationValidRangeReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationValidRangeReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm1ConcentrationNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer, @NonNull UUID uuid1, @NonNull Integer integer1, @Nullable Integer integer2, @NonNull ParticulateMatterPm1ConcentrationAndroid particulateMatterPm1ConcentrationAndroid) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull ParticulateMatterPm25ConcentrationAndroid particulateMatterPm25ConcentrationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationNotifyStartSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationNotifyStartFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationNotifyStopSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationNotifyStopFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingMeasurementReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingMeasurementAndroid environmentalSensingMeasurementAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingMeasurementReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingMeasurementReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingTriggerSettingReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingTriggerSettingReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingTriggerSettingReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingTriggerSettingWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @Nullable Integer integer5, @NonNull EnvironmentalSensingTriggerSettingAndroid environmentalSensingTriggerSettingAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingTriggerSettingWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingTriggerSettingWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, @Nullable Integer integer5, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingConfigurationReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingConfigurationReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingConfigurationReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingConfigurationWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull EnvironmentalSensingConfigurationAndroid environmentalSensingConfigurationAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingConfigurationWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationEnvironmentalSensingConfigurationWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationCharacteristicUserDescriptionReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationCharacteristicUserDescriptionReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationCharacteristicUserDescriptionReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationCharacteristicUserDescriptionWriteSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull CharacteristicUserDescriptionAndroid characteristicUserDescriptionAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationCharacteristicUserDescriptionWriteFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationCharacteristicUserDescriptionWriteTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationValidRangeReadSuccess(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer1, @NonNull UUID uuid1, @NonNull Integer integer2, @Nullable Integer integer3, @NonNull Integer integer4, @NonNull ValidRangeAndroid validRangeAndroid, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationValidRangeReadFailed(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationValidRangeReadTimeout(@NonNull Integer integer, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @Nullable Integer integer1, @NonNull UUID uuid1, @Nullable Integer integer2, @Nullable Integer integer3, @Nullable Integer integer4, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onParticulateMatterPm25ConcentrationNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID uuid, @NonNull Integer integer, @NonNull UUID uuid1, @NonNull Integer integer1, @Nullable Integer integer2, @NonNull ParticulateMatterPm25ConcentrationAndroid particulateMatterPm25ConcentrationAndroid) {
 
     }
 

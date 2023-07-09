@@ -433,6 +433,7 @@ include ':characteristic:u2bd6'
 include ':characteristic:u2bd7'
 include ':characteristic:u2bd8'
 include ':characteristic:u2bd9'
+include ':characteristic:u2bdf'
 include ':characteristic:u2bf5'
 include ':characteristic'
 

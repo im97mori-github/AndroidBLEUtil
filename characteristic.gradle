@@ -2017,6 +2017,11 @@ ext.characteristicU2bd9Android = [
         , baseModule       : "${myGroupId}:ble-characteristic-u2bd9:${loadVersion}"
 ]
 
+ext.characteristicU2bdfAndroid = [
+        artifactId         : "ble-characteristic-u2bdf-android"
+        , baseModule       : "${myGroupId}:ble-characteristic-u2bdf:${loadVersion}"
+]
+
 ext.characteristicU2bf5Android = [
         artifactId         : "ble-characteristic-u2bf5-android"
         , baseModule       : "${myGroupId}:ble-characteristic-u2bf5:${loadVersion}"

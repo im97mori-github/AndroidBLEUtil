@@ -1,8 +1,10 @@
 package org.im97mori.ble.service.ess.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.AMMONIA_CONCENTRATION_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.APPARENT_WIND_DIRECTION_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.APPARENT_WIND_SPEED_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.DEW_POINT_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.ELEVATION_CHARACTERISTIC;
@@ -13,9 +15,18 @@ import static org.im97mori.ble.constants.CharacteristicUUID.IRRADIANCE_CHARACTER
 import static org.im97mori.ble.constants.CharacteristicUUID.MAGNETIC_DECLINATION_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.METHANE_CONCENTRATION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.OZONE_CONCENTRATION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.POLLEN_CONCENTRATION_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.PRESSURE_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.RAINFALL_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.TRUE_WIND_DIRECTION_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.TRUE_WIND_SPEED_CHARACTERISTIC;
@@ -64,6 +75,17 @@ import org.im97mori.ble.characteristic.u2a7b.DewPoint;
 import org.im97mori.ble.characteristic.u2aa0.MagneticFluxDensity2D;
 import org.im97mori.ble.characteristic.u2aa1.MagneticFluxDensity3D;
 import org.im97mori.ble.characteristic.u2aa3.BarometricPressureTrend;
+import org.im97mori.ble.characteristic.u2bcf.AmmoniaConcentration;
+import org.im97mori.ble.characteristic.u2bd0.CarbonMonoxideConcentration;
+import org.im97mori.ble.characteristic.u2bd1.MethaneConcentration;
+import org.im97mori.ble.characteristic.u2bd2.NitrogenDioxideConcentration;
+import org.im97mori.ble.characteristic.u2bd3.NonMethaneVolatileOrganicCompoundsConcentration;
+import org.im97mori.ble.characteristic.u2bd4.OzoneConcentration;
+import org.im97mori.ble.characteristic.u2bd5.ParticulateMatterPm1Concentration;
+import org.im97mori.ble.characteristic.u2bd6.ParticulateMatterPm25Concentration;
+import org.im97mori.ble.characteristic.u2bd7.ParticulateMatterPm10Concentration;
+import org.im97mori.ble.characteristic.u2bd8.SulfurDioxideConcentration;
+import org.im97mori.ble.characteristic.u2bd9.SulfurHexafluorideConcentration;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.descriptor.u2906.ValidRange;
@@ -168,6 +190,297 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
         @NonNull
         public Builder<T> removeDescriptorValueChanged() {
             mDescriptorValueChanged = null;
+            return this;
+        }
+
+        /**
+         * @see #addAmmoniaConcentration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addAmmoniaConcentration(int index, @NonNull AmmoniaConcentration ammoniaConcentration) {
+            return addAmmoniaConcentration(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, ammoniaConcentration.getBytes());
+        }
+
+        /**
+         * add Ammonia Concentration characteristic
+         *
+         * @param index        Ammonia Concentration index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addAmmoniaConcentration(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(AMMONIA_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(AMMONIA_CONCENTRATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Ammonia Concentration characteristic
+         *
+         * @param index Ammonia Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeAmmoniaConcentration(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(AMMONIA_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setAmmoniaConcentrationEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setAmmoniaConcentrationEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setAmmoniaConcentrationEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Ammonia Concentration's ES Measurement descriptor
+         *
+         * @param index        Ammonia Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setAmmoniaConcentrationEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(AMMONIA_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Ammonia Concentration's ES Measurement descriptor
+         *
+         * @param index Ammonia Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeAmmoniaConcentrationEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(AMMONIA_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setAmmoniaConcentrationEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setAmmoniaConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setAmmoniaConcentrationEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Ammonia Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Ammonia Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setAmmoniaConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(AMMONIA_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Ammonia Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Ammonia Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeAmmoniaConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(AMMONIA_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setAmmoniaConcentrationEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setAmmoniaConcentrationEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setAmmoniaConcentrationEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Ammonia Concentration's ES Configuration descriptor
+         *
+         * @param index        Ammonia Concentration index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setAmmoniaConcentrationEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(AMMONIA_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Ammonia Concentration's ES Configuration descriptor
+         *
+         * @param index Ammonia Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeAmmoniaConcentrationEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(AMMONIA_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setAmmoniaConcentrationCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setAmmoniaConcentrationCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setAmmoniaConcentrationCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Ammonia Concentration's Characteristic User Description descriptor
+         *
+         * @param index        Ammonia Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setAmmoniaConcentrationCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(AMMONIA_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Ammonia Concentration's Characteristic User Description descriptor
+         *
+         * @param index Ammonia Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeAmmoniaConcentrationCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(AMMONIA_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setAmmoniaConcentrationValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setAmmoniaConcentrationValidRange(int index, ValidRange validRange) {
+            return setAmmoniaConcentrationValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Ammonia Concentration's Valid Range descriptor
+         *
+         * @param index        Ammonia Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setAmmoniaConcentrationValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(AMMONIA_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Ammonia Concentration's Valid Range descriptor
+         *
+         * @param index Ammonia Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeAmmoniaConcentrationValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(AMMONIA_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
             return this;
         }
 
@@ -569,9 +882,9 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
          * @param characteristicIndex Apparent Wind Speed index
          * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
          * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
          * @param delay               response delay(millis)
          * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -754,6 +1067,588 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
         }
 
         /**
+         * @see #addBarometricPressureTrend(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addBarometricPressureTrend(int index, @NonNull BarometricPressureTrend barometricPressureTrend) {
+            return addBarometricPressureTrend(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, barometricPressureTrend.getBytes());
+        }
+
+        /**
+         * add Barometric Pressure Trend characteristic
+         *
+         * @param index        Barometric Pressure Trend index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addBarometricPressureTrend(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Barometric Pressure Trend characteristic
+         *
+         * @param index Barometric Pressure Trend index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeBarometricPressureTrend(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setBarometricPressureTrendEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setBarometricPressureTrendEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setBarometricPressureTrendEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Barometric Pressure Trend's ES Measurement descriptor
+         *
+         * @param index        Barometric Pressure Trend index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setBarometricPressureTrendEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Barometric Pressure Trend's ES Measurement descriptor
+         *
+         * @param index Barometric Pressure Trend index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeBarometricPressureTrendEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setBarometricPressureTrendEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setBarometricPressureTrendEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setBarometricPressureTrendEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Barometric Pressure Trend's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Barometric Pressure Trend index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setBarometricPressureTrendEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Barometric Pressure Trend's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Barometric Pressure Trend index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeBarometricPressureTrendEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setBarometricPressureTrendEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setBarometricPressureTrendEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setBarometricPressureTrendEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Barometric Pressure Trend's ES Configuration descriptor
+         *
+         * @param index        Barometric Pressure Trend index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setBarometricPressureTrendEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Barometric Pressure Trend's ES Configuration descriptor
+         *
+         * @param index Barometric Pressure Trend index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeBarometricPressureTrendEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setBarometricPressureTrendCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setBarometricPressureTrendCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setBarometricPressureTrendCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Barometric Pressure Trend's Characteristic User Description descriptor
+         *
+         * @param index        Barometric Pressure Trend index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setBarometricPressureTrendCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Barometric Pressure Trend's Characteristic User Description descriptor
+         *
+         * @param index Barometric Pressure Trend index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeBarometricPressureTrendCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setBarometricPressureTrendValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setBarometricPressureTrendValidRange(int index, ValidRange validRange) {
+            return setBarometricPressureTrendValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Barometric Pressure Trend's Valid Range descriptor
+         *
+         * @param index        Barometric Pressure Trend index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setBarometricPressureTrendValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Barometric Pressure Trend's Valid Range descriptor
+         *
+         * @param index Barometric Pressure Trend index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeBarometricPressureTrendValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #addCarbonMonoxideConcentration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addCarbonMonoxideConcentration(int index, @NonNull CarbonMonoxideConcentration carbonMonoxideConcentration) {
+            return addCarbonMonoxideConcentration(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, carbonMonoxideConcentration.getBytes());
+        }
+
+        /**
+         * add Carbon Monoxide Concentration characteristic
+         *
+         * @param index        Carbon Monoxide Concentration index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addCarbonMonoxideConcentration(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Carbon Monoxide Concentration characteristic
+         *
+         * @param index Carbon Monoxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeCarbonMonoxideConcentration(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setCarbonMonoxideConcentrationEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setCarbonMonoxideConcentrationEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setCarbonMonoxideConcentrationEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Carbon Monoxide Concentration's ES Measurement descriptor
+         *
+         * @param index        Carbon Monoxide Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setCarbonMonoxideConcentrationEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Carbon Monoxide Concentration's ES Measurement descriptor
+         *
+         * @param index Carbon Monoxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeCarbonMonoxideConcentrationEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setCarbonMonoxideConcentrationEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setCarbonMonoxideConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setCarbonMonoxideConcentrationEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Carbon Monoxide Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Carbon Monoxide Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setCarbonMonoxideConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Carbon Monoxide Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Carbon Monoxide Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeCarbonMonoxideConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setCarbonMonoxideConcentrationEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setCarbonMonoxideConcentrationEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setCarbonMonoxideConcentrationEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Carbon Monoxide Concentration's ES Configuration descriptor
+         *
+         * @param index        Carbon Monoxide Concentration index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setCarbonMonoxideConcentrationEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Carbon Monoxide Concentration's ES Configuration descriptor
+         *
+         * @param index Carbon Monoxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeCarbonMonoxideConcentrationEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setCarbonMonoxideConcentrationCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setCarbonMonoxideConcentrationCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setCarbonMonoxideConcentrationCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Carbon Monoxide Concentration's Characteristic User Description descriptor
+         *
+         * @param index        Carbon Monoxide Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setCarbonMonoxideConcentrationCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Carbon Monoxide Concentration's Characteristic User Description descriptor
+         *
+         * @param index Carbon Monoxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeCarbonMonoxideConcentrationCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setCarbonMonoxideConcentrationValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setCarbonMonoxideConcentrationValidRange(int index, ValidRange validRange) {
+            return setCarbonMonoxideConcentrationValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Carbon Monoxide Concentration's Valid Range descriptor
+         *
+         * @param index        Carbon Monoxide Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setCarbonMonoxideConcentrationValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Carbon Monoxide Concentration's Valid Range descriptor
+         *
+         * @param index Carbon Monoxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeCarbonMonoxideConcentrationValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
          * @see #addDewPoint(int, int, int, long, byte[])
          */
         @NonNull
@@ -860,9 +1755,9 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
          * @param characteristicIndex Dew Point index
          * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
          * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
          * @param delay               response delay(millis)
          * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -1151,9 +2046,9 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
          * @param characteristicIndex Elevation index
          * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
          * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
          * @param delay               response delay(millis)
          * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -1442,9 +2337,9 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
          * @param characteristicIndex Gust Factor index
          * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
          * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
          * @param delay               response delay(millis)
          * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -1610,7 +2505,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
         }
 
         /**
-         * remove AGust Factor's Valid Range descriptor
+         * remove Gust Factor's Valid Range descriptor
          *
          * @param index Gust Factor index
          * @return {@link Builder} instance
@@ -1733,9 +2628,9 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
          * @param characteristicIndex Heat Index index
          * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
          * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
          * @param delay               response delay(millis)
          * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -2024,9 +2919,9 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
          * @param characteristicIndex Humidity index
          * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
          * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
          * @param delay               response delay(millis)
          * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -2192,7 +3087,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
         }
 
         /**
-         * remove AHumidity's Valid Range descriptor
+         * remove Humidity's Valid Range descriptor
          *
          * @param index Humidity index
          * @return {@link Builder} instance
@@ -2315,9 +3210,9 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
          * @param characteristicIndex Irradiance index
          * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
          * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
          * @param delay               response delay(millis)
          * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -2463,7 +3358,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
         }
 
         /**
-         * add AIrradiance's Valid Range descriptor
+         * add Irradiance's Valid Range descriptor
          *
          * @param index        Irradiance index
          * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
@@ -2494,6 +3389,2916 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
             if (descriptorDataMap == null) {
                 descriptorDataMap = new HashMap<>();
                 mValidRangeMap.put(IRRADIANCE_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #addMagneticDeclination(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addMagneticDeclination(int index, @NonNull MagneticDeclination magneticDeclination) {
+            return addMagneticDeclination(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, magneticDeclination.getBytes());
+        }
+
+        /**
+         * add Magnetic Declination characteristic
+         *
+         * @param index        Magnetic Declination index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addMagneticDeclination(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(MAGNETIC_DECLINATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Declination characteristic
+         *
+         * @param index Magnetic Declination index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticDeclination(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticDeclinationEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticDeclinationEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setMagneticDeclinationEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Magnetic Declination's ES Measurement descriptor
+         *
+         * @param index        Magnetic Declination index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticDeclinationEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Declination's ES Measurement descriptor
+         *
+         * @param index Magnetic Declination index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticDeclinationEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticDeclinationEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticDeclinationEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setMagneticDeclinationEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Magnetic Declination's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Magnetic Declination index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticDeclinationEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Declination's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Magnetic Declination index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticDeclinationEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticDeclinationEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticDeclinationEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setMagneticDeclinationEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Magnetic Declination's ES Configuration descriptor
+         *
+         * @param index        Magnetic Declination index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticDeclinationEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Declination's ES Configuration descriptor
+         *
+         * @param index Magnetic Declination index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticDeclinationEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticDeclinationCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticDeclinationCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setMagneticDeclinationCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Magnetic Declination's Characteristic User Description descriptor
+         *
+         * @param index        Magnetic Declination index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticDeclinationCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Declination's Characteristic User Description descriptor
+         *
+         * @param index Magnetic Declination index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticDeclinationCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticDeclinationValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticDeclinationValidRange(int index, ValidRange validRange) {
+            return setMagneticDeclinationValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Magnetic Declination's Valid Range descriptor
+         *
+         * @param index        Magnetic Declination index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticDeclinationValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Declination's Valid Range descriptor
+         *
+         * @param index Magnetic Declination index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticDeclinationValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #addMagneticFluxDensity2D(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addMagneticFluxDensity2D(int index, @NonNull MagneticFluxDensity2D magneticFluxDensity2d) {
+            return addMagneticFluxDensity2D(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, magneticFluxDensity2d.getBytes());
+        }
+
+        /**
+         * add Magnetic Flux Density - 2D characteristic
+         *
+         * @param index        Magnetic Flux Density - 2D index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addMagneticFluxDensity2D(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Flux Density - 2D characteristic
+         *
+         * @param index Magnetic Flux Density - 2D index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticFluxDensity2D(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticFluxDensity2DEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity2DEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setMagneticFluxDensity2DEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Magnetic Flux Density - 2D's ES Measurement descriptor
+         *
+         * @param index        Magnetic Flux Density - 2D index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity2DEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Flux Density - 2D's ES Measurement descriptor
+         *
+         * @param index Magnetic Flux Density - 2D index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticFluxDensity2DEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticFluxDensity2DEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity2DEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setMagneticFluxDensity2DEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Magnetic Flux Density - 2D's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Magnetic Flux Density - 2D index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity2DEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Flux Density - 2D's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Magnetic Flux Density - 2D index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticFluxDensity2DEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticFluxDensity2DEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity2DEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setMagneticFluxDensity2DEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Magnetic Flux Density - 2D's ES Configuration descriptor
+         *
+         * @param index        Magnetic Flux Density - 2D index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity2DEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Flux Density - 2D's ES Configuration descriptor
+         *
+         * @param index Magnetic Flux Density - 2D index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticFluxDensity2DEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticFluxDensity2DCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity2DCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setMagneticFluxDensity2DCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Magnetic Flux Density - 2D's Characteristic User Description descriptor
+         *
+         * @param index        Magnetic Flux Density - 2D index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity2DCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Flux Density - 2D's Characteristic User Description descriptor
+         *
+         * @param index Magnetic Flux Density - 2D index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticFluxDensity2DCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticFluxDensity2DValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity2DValidRange(int index, ValidRange validRange) {
+            return setMagneticFluxDensity2DValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Magnetic Flux Density - 2D's Valid Range descriptor
+         *
+         * @param index        Magnetic Flux Density - 2D index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity2DValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Flux Density - 2D's Valid Range descriptor
+         *
+         * @param index Magnetic Flux Density - 2D index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticFluxDensity2DValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #addMagneticFluxDensity3D(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addMagneticFluxDensity3D(int index, @NonNull MagneticFluxDensity3D magneticFluxDensity3d) {
+            return addMagneticFluxDensity3D(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, magneticFluxDensity3d.getBytes());
+        }
+
+        /**
+         * add Magnetic Flux Density - 3D characteristic
+         *
+         * @param index        Magnetic Flux Density - 3D index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addMagneticFluxDensity3D(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Flux Density - 3D characteristic
+         *
+         * @param index Magnetic Flux Density - 3D index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticFluxDensity3D(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticFluxDensity3DEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity3DEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setMagneticFluxDensity3DEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Magnetic Flux Density - 3D's ES Measurement descriptor
+         *
+         * @param index        Magnetic Flux Density - 3D index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity3DEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Flux Density - 3D's ES Measurement descriptor
+         *
+         * @param index Magnetic Flux Density - 3D index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticFluxDensity3DEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticFluxDensity3DEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity3DEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setMagneticFluxDensity3DEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Magnetic Flux Density - 3D's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Magnetic Flux Density - 3D index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity3DEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Flux Density - 3D's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Magnetic Flux Density - 3D index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticFluxDensity3DEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticFluxDensity3DEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity3DEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setMagneticFluxDensity3DEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Magnetic Flux Density - 3D's ES Configuration descriptor
+         *
+         * @param index        Magnetic Flux Density - 3D index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity3DEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Flux Density - 3D's ES Configuration descriptor
+         *
+         * @param index Magnetic Flux Density - 3D index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticFluxDensity3DEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticFluxDensity3DCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity3DCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setMagneticFluxDensity3DCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Magnetic Flux Density - 3D's Characteristic User Description descriptor
+         *
+         * @param index        Magnetic Flux Density - 3D index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity3DCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Flux Density - 3D's Characteristic User Description descriptor
+         *
+         * @param index Magnetic Flux Density - 3D index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticFluxDensity3DCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMagneticFluxDensity3DValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity3DValidRange(int index, ValidRange validRange) {
+            return setMagneticFluxDensity3DValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Magnetic Flux Density - 3D's Valid Range descriptor
+         *
+         * @param index        Magnetic Flux Density - 3D index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMagneticFluxDensity3DValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Magnetic Flux Density - 3D's Valid Range descriptor
+         *
+         * @param index Magnetic Flux Density - 3D index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMagneticFluxDensity3DValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #addMethaneConcentration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addMethaneConcentration(int index, @NonNull MethaneConcentration methaneConcentration) {
+            return addMethaneConcentration(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, methaneConcentration.getBytes());
+        }
+
+        /**
+         * add Methane Concentration characteristic
+         *
+         * @param index        Methane Concentration index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addMethaneConcentration(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(METHANE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(METHANE_CONCENTRATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Methane Concentration characteristic
+         *
+         * @param index Methane Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMethaneConcentration(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(METHANE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMethaneConcentrationEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMethaneConcentrationEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setMethaneConcentrationEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Methane Concentration's ES Measurement descriptor
+         *
+         * @param index        Methane Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMethaneConcentrationEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(METHANE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Methane Concentration's ES Measurement descriptor
+         *
+         * @param index Methane Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMethaneConcentrationEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(METHANE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMethaneConcentrationEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMethaneConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setMethaneConcentrationEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Methane Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Methane Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMethaneConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(METHANE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Methane Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Methane Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMethaneConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(METHANE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setMethaneConcentrationEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMethaneConcentrationEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setMethaneConcentrationEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Methane Concentration's ES Configuration descriptor
+         *
+         * @param index        Methane Concentration index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMethaneConcentrationEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(METHANE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Methane Concentration's ES Configuration descriptor
+         *
+         * @param index Methane Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMethaneConcentrationEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(METHANE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMethaneConcentrationCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMethaneConcentrationCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setMethaneConcentrationCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Methane Concentration's Characteristic User Description descriptor
+         *
+         * @param index        Methane Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMethaneConcentrationCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(METHANE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Methane Concentration's Characteristic User Description descriptor
+         *
+         * @param index Methane Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMethaneConcentrationCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(METHANE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setMethaneConcentrationValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setMethaneConcentrationValidRange(int index, ValidRange validRange) {
+            return setMethaneConcentrationValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Methane Concentration's Valid Range descriptor
+         *
+         * @param index        Methane Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setMethaneConcentrationValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(METHANE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Methane Concentration's Valid Range descriptor
+         *
+         * @param index Methane Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeMethaneConcentrationValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(METHANE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #addNitrogenDioxideConcentration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addNitrogenDioxideConcentration(int index, @NonNull NitrogenDioxideConcentration nitrogenDioxideConcentration) {
+            return addNitrogenDioxideConcentration(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, nitrogenDioxideConcentration.getBytes());
+        }
+
+        /**
+         * add Nitrogen Dioxide Concentration characteristic
+         *
+         * @param index        Nitrogen Dioxide Concentration index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addNitrogenDioxideConcentration(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Nitrogen Dioxide Concentration characteristic
+         *
+         * @param index Nitrogen Dioxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeNitrogenDioxideConcentration(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setNitrogenDioxideConcentrationEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setNitrogenDioxideConcentrationEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setNitrogenDioxideConcentrationEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Nitrogen Dioxide Concentration's ES Measurement descriptor
+         *
+         * @param index        Nitrogen Dioxide Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setNitrogenDioxideConcentrationEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Nitrogen Dioxide Concentration's ES Measurement descriptor
+         *
+         * @param index Nitrogen Dioxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeNitrogenDioxideConcentrationEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setNitrogenDioxideConcentrationEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setNitrogenDioxideConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setNitrogenDioxideConcentrationEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Nitrogen Dioxide Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Nitrogen Dioxide Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setNitrogenDioxideConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Nitrogen Dioxide Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Nitrogen Dioxide Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeNitrogenDioxideConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setNitrogenDioxideConcentrationEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setNitrogenDioxideConcentrationEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setNitrogenDioxideConcentrationEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Nitrogen Dioxide Concentration's ES Configuration descriptor
+         *
+         * @param index        Nitrogen Dioxide Concentration index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setNitrogenDioxideConcentrationEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Nitrogen Dioxide Concentration's ES Configuration descriptor
+         *
+         * @param index Nitrogen Dioxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeNitrogenDioxideConcentrationEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setNitrogenDioxideConcentrationCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setNitrogenDioxideConcentrationCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setNitrogenDioxideConcentrationCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Nitrogen Dioxide Concentration's Characteristic User Description descriptor
+         *
+         * @param index        Nitrogen Dioxide Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setNitrogenDioxideConcentrationCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Nitrogen Dioxide Concentration's Characteristic User Description descriptor
+         *
+         * @param index Nitrogen Dioxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeNitrogenDioxideConcentrationCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setNitrogenDioxideConcentrationValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setNitrogenDioxideConcentrationValidRange(int index, ValidRange validRange) {
+            return setNitrogenDioxideConcentrationValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Nitrogen Dioxide Concentration's Valid Range descriptor
+         *
+         * @param index        Nitrogen Dioxide Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setNitrogenDioxideConcentrationValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Nitrogen Dioxide Concentration's Valid Range descriptor
+         *
+         * @param index Nitrogen Dioxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeNitrogenDioxideConcentrationValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #addNonMethaneVolatileOrganicCompoundsConcentration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addNonMethaneVolatileOrganicCompoundsConcentration(int index, @NonNull NonMethaneVolatileOrganicCompoundsConcentration nonMethaneVolatileOrganicCompoundsConcentration) {
+            return addNonMethaneVolatileOrganicCompoundsConcentration(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, nonMethaneVolatileOrganicCompoundsConcentration.getBytes());
+        }
+
+        /**
+         * add Non-Methane Volatile Organic Compounds Concentration characteristic
+         *
+         * @param index        Non-Methane Volatile Organic Compounds Concentration index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addNonMethaneVolatileOrganicCompoundsConcentration(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Non-Methane Volatile Organic Compounds Concentration characteristic
+         *
+         * @param index Non-Methane Volatile Organic Compounds Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeNonMethaneVolatileOrganicCompoundsConcentration(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setNonMethaneVolatileOrganicCompoundsConcentrationEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setNonMethaneVolatileOrganicCompoundsConcentrationEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setNonMethaneVolatileOrganicCompoundsConcentrationEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Non-Methane Volatile Organic Compounds Concentration's ES Measurement descriptor
+         *
+         * @param index        Non-Methane Volatile Organic Compounds Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setNonMethaneVolatileOrganicCompoundsConcentrationEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Non-Methane Volatile Organic Compounds Concentration's ES Measurement descriptor
+         *
+         * @param index Non-Methane Volatile Organic Compounds Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeNonMethaneVolatileOrganicCompoundsConcentrationEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setNonMethaneVolatileOrganicCompoundsConcentrationEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setNonMethaneVolatileOrganicCompoundsConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setNonMethaneVolatileOrganicCompoundsConcentrationEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Non-Methane Volatile Organic Compounds Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Non-Methane Volatile Organic Compounds Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setNonMethaneVolatileOrganicCompoundsConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Non-Methane Volatile Organic Compounds Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Non-Methane Volatile Organic Compounds Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeNonMethaneVolatileOrganicCompoundsConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setNonMethaneVolatileOrganicCompoundsConcentrationEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setNonMethaneVolatileOrganicCompoundsConcentrationEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setNonMethaneVolatileOrganicCompoundsConcentrationEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Non-Methane Volatile Organic Compounds Concentration's ES Configuration descriptor
+         *
+         * @param index        Non-Methane Volatile Organic Compounds Concentration index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setNonMethaneVolatileOrganicCompoundsConcentrationEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Non-Methane Volatile Organic Compounds Concentration's ES Configuration descriptor
+         *
+         * @param index Non-Methane Volatile Organic Compounds Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeNonMethaneVolatileOrganicCompoundsConcentrationEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setNonMethaneVolatileOrganicCompoundsConcentrationCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setNonMethaneVolatileOrganicCompoundsConcentrationCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setNonMethaneVolatileOrganicCompoundsConcentrationCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Non-Methane Volatile Organic Compounds Concentration's Characteristic User Description descriptor
+         *
+         * @param index        Non-Methane Volatile Organic Compounds Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setNonMethaneVolatileOrganicCompoundsConcentrationCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Non-Methane Volatile Organic Compounds Concentration's Characteristic User Description descriptor
+         *
+         * @param index Non-Methane Volatile Organic Compounds Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeNonMethaneVolatileOrganicCompoundsConcentrationCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setNonMethaneVolatileOrganicCompoundsConcentrationValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setNonMethaneVolatileOrganicCompoundsConcentrationValidRange(int index, ValidRange validRange) {
+            return setNonMethaneVolatileOrganicCompoundsConcentrationValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Non-Methane Volatile Organic Compounds Concentration's Valid Range descriptor
+         *
+         * @param index        Non-Methane Volatile Organic Compounds Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setNonMethaneVolatileOrganicCompoundsConcentrationValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Non-Methane Volatile Organic Compounds Concentration's Valid Range descriptor
+         *
+         * @param index Non-Methane Volatile Organic Compounds Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeNonMethaneVolatileOrganicCompoundsConcentrationValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #addOzoneConcentration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addOzoneConcentration(int index, @NonNull OzoneConcentration ozoneConcentration) {
+            return addOzoneConcentration(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, ozoneConcentration.getBytes());
+        }
+
+        /**
+         * add Ozone Concentration characteristic
+         *
+         * @param index        Ozone Concentration index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addOzoneConcentration(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(OZONE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(OZONE_CONCENTRATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Ozone Concentration characteristic
+         *
+         * @param index Ozone Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeOzoneConcentration(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(OZONE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setOzoneConcentrationEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setOzoneConcentrationEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setOzoneConcentrationEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Ozone Concentration's ES Measurement descriptor
+         *
+         * @param index        Ozone Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setOzoneConcentrationEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(OZONE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Ozone Concentration's ES Measurement descriptor
+         *
+         * @param index Ozone Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeOzoneConcentrationEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(OZONE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setOzoneConcentrationEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setOzoneConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setOzoneConcentrationEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Ozone Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Ozone Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setOzoneConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(OZONE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Ozone Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Ozone Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeOzoneConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(OZONE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setOzoneConcentrationEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setOzoneConcentrationEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setOzoneConcentrationEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Ozone Concentration's ES Configuration descriptor
+         *
+         * @param index        Ozone Concentration index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setOzoneConcentrationEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(OZONE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Ozone Concentration's ES Configuration descriptor
+         *
+         * @param index Ozone Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeOzoneConcentrationEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(OZONE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setOzoneConcentrationCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setOzoneConcentrationCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setOzoneConcentrationCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Ozone Concentration's Characteristic User Description descriptor
+         *
+         * @param index        Ozone Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setOzoneConcentrationCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(OZONE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Ozone Concentration's Characteristic User Description descriptor
+         *
+         * @param index Ozone Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeOzoneConcentrationCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(OZONE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setOzoneConcentrationValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setOzoneConcentrationValidRange(int index, ValidRange validRange) {
+            return setOzoneConcentrationValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Ozone Concentration's Valid Range descriptor
+         *
+         * @param index        Ozone Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setOzoneConcentrationValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(OZONE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Ozone Concentration's Valid Range descriptor
+         *
+         * @param index Ozone Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeOzoneConcentrationValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(OZONE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #addParticulateMatterPm10Concentration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addParticulateMatterPm10Concentration(int index, @NonNull ParticulateMatterPm10Concentration particulateMatterPm10Concentration) {
+            return addParticulateMatterPm10Concentration(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, particulateMatterPm10Concentration.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM10 Concentration characteristic
+         *
+         * @param index        Particulate Matter - PM10 Concentration index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addParticulateMatterPm10Concentration(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM10 Concentration characteristic
+         *
+         * @param index Particulate Matter - PM10 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm10Concentration(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm10ConcentrationEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm10ConcentrationEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setParticulateMatterPm10ConcentrationEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM10 Concentration's ES Measurement descriptor
+         *
+         * @param index        Particulate Matter - PM10 Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm10ConcentrationEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM10 Concentration's ES Measurement descriptor
+         *
+         * @param index Particulate Matter - PM10 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm10ConcentrationEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm10ConcentrationEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm10ConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setParticulateMatterPm10ConcentrationEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM10 Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Particulate Matter - PM10 Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm10ConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM10 Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Particulate Matter - PM10 Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm10ConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm10ConcentrationEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm10ConcentrationEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setParticulateMatterPm10ConcentrationEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM10 Concentration's ES Configuration descriptor
+         *
+         * @param index        Particulate Matter - PM10 Concentration index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm10ConcentrationEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM10 Concentration's ES Configuration descriptor
+         *
+         * @param index Particulate Matter - PM10 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm10ConcentrationEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm10ConcentrationCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm10ConcentrationCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setParticulateMatterPm10ConcentrationCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM10 Concentration's Characteristic User Description descriptor
+         *
+         * @param index        Particulate Matter - PM10 Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm10ConcentrationCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM10 Concentration's Characteristic User Description descriptor
+         *
+         * @param index Particulate Matter - PM10 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm10ConcentrationCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm10ConcentrationValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm10ConcentrationValidRange(int index, ValidRange validRange) {
+            return setParticulateMatterPm10ConcentrationValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM10 Concentration's Valid Range descriptor
+         *
+         * @param index        Particulate Matter - PM10 Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm10ConcentrationValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM10 Concentration's Valid Range descriptor
+         *
+         * @param index Particulate Matter - PM10 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm10ConcentrationValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #addParticulateMatterPm1Concentration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addParticulateMatterPm1Concentration(int index, @NonNull ParticulateMatterPm1Concentration particulateMatterPm1Concentration) {
+            return addParticulateMatterPm1Concentration(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, particulateMatterPm1Concentration.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM1 Concentration characteristic
+         *
+         * @param index        Particulate Matter - PM1 Concentration index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addParticulateMatterPm1Concentration(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM1 Concentration characteristic
+         *
+         * @param index Particulate Matter - PM1 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm1Concentration(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm1ConcentrationEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm1ConcentrationEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setParticulateMatterPm1ConcentrationEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM1 Concentration's ES Measurement descriptor
+         *
+         * @param index        Particulate Matter - PM1 Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm1ConcentrationEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM1 Concentration's ES Measurement descriptor
+         *
+         * @param index Particulate Matter - PM1 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm1ConcentrationEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm1ConcentrationEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm1ConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setParticulateMatterPm1ConcentrationEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM1 Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Particulate Matter - PM1 Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm1ConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM1 Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Particulate Matter - PM1 Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm1ConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm1ConcentrationEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm1ConcentrationEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setParticulateMatterPm1ConcentrationEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM1 Concentration's ES Configuration descriptor
+         *
+         * @param index        Particulate Matter - PM1 Concentration index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm1ConcentrationEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM1 Concentration's ES Configuration descriptor
+         *
+         * @param index Particulate Matter - PM1 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm1ConcentrationEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm1ConcentrationCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm1ConcentrationCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setParticulateMatterPm1ConcentrationCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM1 Concentration's Characteristic User Description descriptor
+         *
+         * @param index        Particulate Matter - PM1 Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm1ConcentrationCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM1 Concentration's Characteristic User Description descriptor
+         *
+         * @param index Particulate Matter - PM1 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm1ConcentrationCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm1ConcentrationValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm1ConcentrationValidRange(int index, ValidRange validRange) {
+            return setParticulateMatterPm1ConcentrationValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM1 Concentration's Valid Range descriptor
+         *
+         * @param index        Particulate Matter - PM1 Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm1ConcentrationValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM1 Concentration's Valid Range descriptor
+         *
+         * @param index Particulate Matter - PM1 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm1ConcentrationValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #addParticulateMatterPm25Concentration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addParticulateMatterPm25Concentration(int index, @NonNull ParticulateMatterPm25Concentration particulateMatterPm25Concentration) {
+            return addParticulateMatterPm25Concentration(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, particulateMatterPm25Concentration.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM2.5 Concentration characteristic
+         *
+         * @param index        Particulate Matter - PM2.5 Concentration index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addParticulateMatterPm25Concentration(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM2.5 Concentration characteristic
+         *
+         * @param index Particulate Matter - PM2.5 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm25Concentration(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm25ConcentrationEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm25ConcentrationEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setParticulateMatterPm25ConcentrationEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM2.5 Concentration's ES Measurement descriptor
+         *
+         * @param index        Particulate Matter - PM2.5 Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm25ConcentrationEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM2.5 Concentration's ES Measurement descriptor
+         *
+         * @param index Particulate Matter - PM2.5 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm25ConcentrationEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm25ConcentrationEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm25ConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setParticulateMatterPm25ConcentrationEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM2.5 Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Particulate Matter - PM2.5 Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm25ConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM2.5 Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Particulate Matter - PM2.5 Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm25ConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm25ConcentrationEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm25ConcentrationEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setParticulateMatterPm25ConcentrationEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM2.5 Concentration's ES Configuration descriptor
+         *
+         * @param index        Particulate Matter - PM2.5 Concentration index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm25ConcentrationEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM2.5 Concentration's ES Configuration descriptor
+         *
+         * @param index Particulate Matter - PM2.5 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm25ConcentrationEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm25ConcentrationCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm25ConcentrationCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setParticulateMatterPm25ConcentrationCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM2.5 Concentration's Characteristic User Description descriptor
+         *
+         * @param index        Particulate Matter - PM2.5 Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm25ConcentrationCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM2.5 Concentration's Characteristic User Description descriptor
+         *
+         * @param index Particulate Matter - PM2.5 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm25ConcentrationCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setParticulateMatterPm25ConcentrationValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm25ConcentrationValidRange(int index, ValidRange validRange) {
+            return setParticulateMatterPm25ConcentrationValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Particulate Matter - PM2.5 Concentration's Valid Range descriptor
+         *
+         * @param index        Particulate Matter - PM2.5 Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setParticulateMatterPm25ConcentrationValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Particulate Matter - PM2.5 Concentration's Valid Range descriptor
+         *
+         * @param index Particulate Matter - PM2.5 Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeParticulateMatterPm25ConcentrationValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
             }
             descriptorDataMap.remove(index);
             return this;
@@ -2606,9 +6411,9 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
          * @param characteristicIndex Pollen Concentration index
          * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
          * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
          * @param delay               response delay(millis)
          * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -2729,7 +6534,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
         }
 
         /**
-         * remove APollen Concentration's Characteristic User Description descriptor
+         * remove Pollen Concentration's Characteristic User Description descriptor
          *
          * @param index Pollen Concentration index
          * @return {@link Builder} instance
@@ -2785,297 +6590,6 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
             if (descriptorDataMap == null) {
                 descriptorDataMap = new HashMap<>();
                 mValidRangeMap.put(POLLEN_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #addRainfall(int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> addRainfall(int index, @NonNull Rainfall rainfall) {
-            return addRainfall(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, rainfall.getBytes());
-        }
-
-        /**
-         * add Rainfall characteristic
-         *
-         * @param index        Rainfall index
-         * @param property     combination of
-         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
-         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> addRainfall(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(RAINFALL_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsCharacteristicDataMap.put(RAINFALL_CHARACTERISTIC, characteristicDataMap);
-            }
-            characteristicDataMap.put(index, new CharacteristicData(RAINFALL_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
-            return this;
-        }
-
-        /**
-         * remove Rainfall characteristic
-         *
-         * @param index Rainfall index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeRainfall(int index) {
-            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(RAINFALL_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsCharacteristicDataMap.put(RAINFALL_CHARACTERISTIC, characteristicDataMap);
-            }
-            characteristicDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setRainfallEsMeasurement(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setRainfallEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
-            return setRainfallEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
-        }
-
-        /**
-         * add Rainfall's ES Measurement descriptor
-         *
-         * @param index        Rainfall index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setRainfallEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(RAINFALL_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsMeasurementMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Rainfall's ES Measurement descriptor
-         *
-         * @param index Rainfall index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeRainfallEsMeasurement(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(RAINFALL_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsMeasurementMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setRainfallEsTriggerSetting(int, int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setRainfallEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
-            return setRainfallEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
-        }
-
-        /**
-         * add Rainfall's ES Trigger Setting descriptor
-         *
-         * @param characteristicIndex Rainfall index
-         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
-         * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay               response delay(millis)
-         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setRainfallEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(RAINFALL_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsTriggerSettingMap.put(RAINFALL_CHARACTERISTIC, characteristicDataMap);
-            }
-            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
-            }
-            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Rainfall's ES Trigger Setting descriptor
-         *
-         * @param characteristicIndex Rainfall index
-         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeRainfallEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
-            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(RAINFALL_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsTriggerSettingMap.put(RAINFALL_CHARACTERISTIC, characteristicDataMap);
-            }
-            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
-            }
-            descriptorDataMap.remove(descriptorIndex);
-            return this;
-        }
-
-        /**
-         * @see #setRainfallEsConfiguration(int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setRainfallEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
-            return setRainfallEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
-        }
-
-        /**
-         * add Rainfall's ES Configuration descriptor
-         *
-         * @param index        Rainfall index
-         * @param permission   combination of
-         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setRainfallEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(RAINFALL_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsConfigurationMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Rainfall's ES Configuration descriptor
-         *
-         * @param index Rainfall index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeRainfallEsConfiguration(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(RAINFALL_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsConfigurationMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setRainfallCharacteristicUserDescription(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setRainfallCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
-            return setRainfallCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
-        }
-
-        /**
-         * add Rainfall's Characteristic User Description descriptor
-         *
-         * @param index        Rainfall index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setRainfallCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(RAINFALL_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mCharacteristicUserDescriptionMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Rainfall's Characteristic User Description descriptor
-         *
-         * @param index Rainfall index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeRainfallCharacteristicUserDescription(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(RAINFALL_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mCharacteristicUserDescriptionMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setRainfallValidRange(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setRainfallValidRange(int index, ValidRange validRange) {
-            return setRainfallValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
-        }
-
-        /**
-         * add Rainfall's Valid Range descriptor
-         *
-         * @param index        Rainfall index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setRainfallValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(RAINFALL_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mValidRangeMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Rainfall's Valid Range descriptor
-         *
-         * @param index Rainfall index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeRainfallValidRange(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(RAINFALL_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mValidRangeMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
             }
             descriptorDataMap.remove(index);
             return this;
@@ -3188,9 +6702,9 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
          * @param characteristicIndex Pressure index
          * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
          * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
          * @param delay               response delay(millis)
          * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -3373,6 +6887,879 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
         }
 
         /**
+         * @see #addRainfall(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addRainfall(int index, @NonNull Rainfall rainfall) {
+            return addRainfall(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, rainfall.getBytes());
+        }
+
+        /**
+         * add Rainfall characteristic
+         *
+         * @param index        Rainfall index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addRainfall(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(RAINFALL_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(RAINFALL_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(RAINFALL_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Rainfall characteristic
+         *
+         * @param index Rainfall index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeRainfall(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(RAINFALL_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(RAINFALL_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setRainfallEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setRainfallEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setRainfallEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Rainfall's ES Measurement descriptor
+         *
+         * @param index        Rainfall index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setRainfallEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(RAINFALL_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Rainfall's ES Measurement descriptor
+         *
+         * @param index Rainfall index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeRainfallEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(RAINFALL_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setRainfallEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setRainfallEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setRainfallEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Rainfall's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Rainfall index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setRainfallEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(RAINFALL_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(RAINFALL_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Rainfall's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Rainfall index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeRainfallEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(RAINFALL_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(RAINFALL_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setRainfallEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setRainfallEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setRainfallEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Rainfall's ES Configuration descriptor
+         *
+         * @param index        Rainfall index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setRainfallEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(RAINFALL_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Rainfall's ES Configuration descriptor
+         *
+         * @param index Rainfall index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeRainfallEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(RAINFALL_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setRainfallCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setRainfallCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setRainfallCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Rainfall's Characteristic User Description descriptor
+         *
+         * @param index        Rainfall index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setRainfallCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(RAINFALL_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Rainfall's Characteristic User Description descriptor
+         *
+         * @param index Rainfall index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeRainfallCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(RAINFALL_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setRainfallValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setRainfallValidRange(int index, ValidRange validRange) {
+            return setRainfallValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Rainfall's Valid Range descriptor
+         *
+         * @param index        Rainfall index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setRainfallValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(RAINFALL_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Rainfall's Valid Range descriptor
+         *
+         * @param index Rainfall index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeRainfallValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(RAINFALL_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(RAINFALL_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #addSulfurDioxideConcentration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addSulfurDioxideConcentration(int index, @NonNull SulfurDioxideConcentration sulfurDioxideConcentration) {
+            return addSulfurDioxideConcentration(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, sulfurDioxideConcentration.getBytes());
+        }
+
+        /**
+         * add Sulfur Dioxide Concentration characteristic
+         *
+         * @param index        Sulfur Dioxide Concentration index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addSulfurDioxideConcentration(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Sulfur Dioxide Concentration characteristic
+         *
+         * @param index Sulfur Dioxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeSulfurDioxideConcentration(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setSulfurDioxideConcentrationEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setSulfurDioxideConcentrationEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setSulfurDioxideConcentrationEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Sulfur Dioxide Concentration's ES Measurement descriptor
+         *
+         * @param index        Sulfur Dioxide Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setSulfurDioxideConcentrationEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Sulfur Dioxide Concentration's ES Measurement descriptor
+         *
+         * @param index Sulfur Dioxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeSulfurDioxideConcentrationEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setSulfurDioxideConcentrationEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setSulfurDioxideConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setSulfurDioxideConcentrationEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Sulfur Dioxide Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Sulfur Dioxide Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setSulfurDioxideConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Sulfur Dioxide Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Sulfur Dioxide Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeSulfurDioxideConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setSulfurDioxideConcentrationEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setSulfurDioxideConcentrationEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setSulfurDioxideConcentrationEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Sulfur Dioxide Concentration's ES Configuration descriptor
+         *
+         * @param index        Sulfur Dioxide Concentration index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setSulfurDioxideConcentrationEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Sulfur Dioxide Concentration's ES Configuration descriptor
+         *
+         * @param index Sulfur Dioxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeSulfurDioxideConcentrationEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setSulfurDioxideConcentrationCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setSulfurDioxideConcentrationCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setSulfurDioxideConcentrationCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Sulfur Dioxide Concentration's Characteristic User Description descriptor
+         *
+         * @param index        Sulfur Dioxide Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setSulfurDioxideConcentrationCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Sulfur Dioxide Concentration's Characteristic User Description descriptor
+         *
+         * @param index Sulfur Dioxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeSulfurDioxideConcentrationCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setSulfurDioxideConcentrationValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setSulfurDioxideConcentrationValidRange(int index, ValidRange validRange) {
+            return setSulfurDioxideConcentrationValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Sulfur Dioxide Concentration's Valid Range descriptor
+         *
+         * @param index        Sulfur Dioxide Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setSulfurDioxideConcentrationValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Sulfur Dioxide Concentration's Valid Range descriptor
+         *
+         * @param index Sulfur Dioxide Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeSulfurDioxideConcentrationValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #addSulfurHexafluorideConcentration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> addSulfurHexafluorideConcentration(int index, @NonNull SulfurHexafluorideConcentration sulfurHexafluorideConcentration) {
+            return addSulfurHexafluorideConcentration(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, sulfurHexafluorideConcentration.getBytes());
+        }
+
+        /**
+         * add Sulfur Hexafluoride Concentration characteristic
+         *
+         * @param index        Sulfur Hexafluoride Concentration index
+         * @param property     combination of
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
+         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> addSulfurHexafluorideConcentration(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.put(index, new CharacteristicData(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
+            return this;
+        }
+
+        /**
+         * remove Sulfur Hexafluoride Concentration characteristic
+         *
+         * @param index Sulfur Hexafluoride Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeSulfurHexafluorideConcentration(int index) {
+            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsCharacteristicDataMap.put(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            characteristicDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setSulfurHexafluorideConcentrationEsMeasurement(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setSulfurHexafluorideConcentrationEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
+            return setSulfurHexafluorideConcentrationEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
+        }
+
+        /**
+         * add Sulfur Hexafluoride Concentration's ES Measurement descriptor
+         *
+         * @param index        Sulfur Hexafluoride Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setSulfurHexafluorideConcentrationEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Sulfur Hexafluoride Concentration's ES Measurement descriptor
+         *
+         * @param index Sulfur Hexafluoride Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeSulfurHexafluorideConcentrationEsMeasurement(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsMeasurementMap.put(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setSulfurHexafluorideConcentrationEsTriggerSetting(int, int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setSulfurHexafluorideConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
+            return setSulfurHexafluorideConcentrationEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
+        }
+
+        /**
+         * add Sulfur Hexafluoride Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Sulfur Hexafluoride Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @param permission          combination of
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay               response delay(millis)
+         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setSulfurHexafluorideConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Sulfur Hexafluoride Concentration's ES Trigger Setting descriptor
+         *
+         * @param characteristicIndex Sulfur Hexafluoride Concentration index
+         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeSulfurHexafluorideConcentrationEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
+            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
+            if (characteristicDataMap == null) {
+                characteristicDataMap = new HashMap<>();
+                mEsTriggerSettingMap.put(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, characteristicDataMap);
+            }
+            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
+            }
+            descriptorDataMap.remove(descriptorIndex);
+            return this;
+        }
+
+        /**
+         * @see #setSulfurHexafluorideConcentrationEsConfiguration(int, int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setSulfurHexafluorideConcentrationEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
+            return setSulfurHexafluorideConcentrationEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
+        }
+
+        /**
+         * add Sulfur Hexafluoride Concentration's ES Configuration descriptor
+         *
+         * @param index        Sulfur Hexafluoride Concentration index
+         * @param permission   combination of
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
+         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setSulfurHexafluorideConcentrationEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Sulfur Hexafluoride Concentration's ES Configuration descriptor
+         *
+         * @param index Sulfur Hexafluoride Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeSulfurHexafluorideConcentrationEsConfiguration(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mEsConfigurationMap.put(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setSulfurHexafluorideConcentrationCharacteristicUserDescription(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setSulfurHexafluorideConcentrationCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
+            return setSulfurHexafluorideConcentrationCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
+        }
+
+        /**
+         * add Sulfur Hexafluoride Concentration's Characteristic User Description descriptor
+         *
+         * @param index        Sulfur Hexafluoride Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setSulfurHexafluorideConcentrationCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Sulfur Hexafluoride Concentration's Characteristic User Description descriptor
+         *
+         * @param index Sulfur Hexafluoride Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeSulfurHexafluorideConcentrationCharacteristicUserDescription(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mCharacteristicUserDescriptionMap.put(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
+         * @see #setSulfurHexafluorideConcentrationValidRange(int, int, long, byte[])
+         */
+        @NonNull
+        public Builder<T> setSulfurHexafluorideConcentrationValidRange(int index, ValidRange validRange) {
+            return setSulfurHexafluorideConcentrationValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
+        }
+
+        /**
+         * add Sulfur Hexafluoride Concentration's Valid Range descriptor
+         *
+         * @param index        Sulfur Hexafluoride Concentration index
+         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         * @param delay        response delay(millis)
+         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> setSulfurHexafluorideConcentrationValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
+            return this;
+        }
+
+        /**
+         * remove Sulfur Hexafluoride Concentration's Valid Range descriptor
+         *
+         * @param index Sulfur Hexafluoride Concentration index
+         * @return {@link Builder} instance
+         */
+        @NonNull
+        public Builder<T> removeSulfurHexafluorideConcentrationValidRange(int index) {
+            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
+            if (descriptorDataMap == null) {
+                descriptorDataMap = new HashMap<>();
+                mValidRangeMap.put(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, descriptorDataMap);
+            }
+            descriptorDataMap.remove(index);
+            return this;
+        }
+
+        /**
          * @see #addTemperature(int, int, int, long, byte[])
          */
         @NonNull
@@ -3479,9 +7866,9 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
          * @param characteristicIndex Temperature index
          * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
          * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
          * @param delay               response delay(millis)
          * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -3770,9 +8157,9 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
          * @param characteristicIndex True Wind Direction index
          * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
          * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
          * @param delay               response delay(millis)
          * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -4061,9 +8448,9 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
          * @param characteristicIndex True Wind Speed index
          * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
          * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
          * @param delay               response delay(millis)
          * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -4352,9 +8739,9 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
          * @param characteristicIndex UV Index index
          * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
          * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
          * @param delay               response delay(millis)
          * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -4407,7 +8794,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
         }
 
         /**
-         * add AUV Index's ES Configuration descriptor
+         * add UV Index's ES Configuration descriptor
          *
          * @param index        UV Index index
          * @param permission   combination of
@@ -4643,9 +9030,9 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
          * @param characteristicIndex Wind Chill index
          * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
          * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
+         *                            {@link BluetoothGattDescriptor#PERMISSION_READ}
+         *                            {@link BluetoothGattDescriptor#PERMISSION_WRITE}
+         * @param responseCode        response code, {@link BluetoothGatt#GATT_SUCCESS} or etc
          * @param delay               response delay(millis)
          * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
@@ -4746,7 +9133,7 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
         }
 
         /**
-         * add AWind Chill's Characteristic User Description descriptor
+         * add Wind Chill's Characteristic User Description descriptor
          *
          * @param index        Wind Chill index
          * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
@@ -4822,1170 +9209,6 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
             if (descriptorDataMap == null) {
                 descriptorDataMap = new HashMap<>();
                 mValidRangeMap.put(WIND_CHILL_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #addBarometricPressureTrend(int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> addBarometricPressureTrend(int index, @NonNull BarometricPressureTrend barometricPressureTrend) {
-            return addBarometricPressureTrend(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, barometricPressureTrend.getBytes());
-        }
-
-        /**
-         * add Barometric Pressure Trend characteristic
-         *
-         * @param index        Barometric Pressure Trend index
-         * @param property     combination of
-         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
-         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> addBarometricPressureTrend(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsCharacteristicDataMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, characteristicDataMap);
-            }
-            characteristicDataMap.put(index, new CharacteristicData(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
-            return this;
-        }
-
-        /**
-         * remove Barometric Pressure Trend characteristic
-         *
-         * @param index Barometric Pressure Trend index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeBarometricPressureTrend(int index) {
-            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsCharacteristicDataMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, characteristicDataMap);
-            }
-            characteristicDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setBarometricPressureTrendEsMeasurement(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setBarometricPressureTrendEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
-            return setBarometricPressureTrendEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
-        }
-
-        /**
-         * add Barometric Pressure Trend's ES Measurement descriptor
-         *
-         * @param index        Barometric Pressure Trend index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setBarometricPressureTrendEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsMeasurementMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Barometric Pressure Trend's ES Measurement descriptor
-         *
-         * @param index Barometric Pressure Trend index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeBarometricPressureTrendEsMeasurement(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsMeasurementMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setBarometricPressureTrendEsTriggerSetting(int, int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setBarometricPressureTrendEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
-            return setBarometricPressureTrendEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
-        }
-
-        /**
-         * add Barometric Pressure Trend's ES Trigger Setting descriptor
-         *
-         * @param characteristicIndex Barometric Pressure Trend index
-         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
-         * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay               response delay(millis)
-         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setBarometricPressureTrendEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsTriggerSettingMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, characteristicDataMap);
-            }
-            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
-            }
-            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Barometric Pressure Trend's ES Trigger Setting descriptor
-         *
-         * @param characteristicIndex Barometric Pressure Trend index
-         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeBarometricPressureTrendEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
-            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsTriggerSettingMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, characteristicDataMap);
-            }
-            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
-            }
-            descriptorDataMap.remove(descriptorIndex);
-            return this;
-        }
-
-        /**
-         * @see #setBarometricPressureTrendEsConfiguration(int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setBarometricPressureTrendEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
-            return setBarometricPressureTrendEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
-        }
-
-        /**
-         * add Barometric Pressure Trend's ES Configuration descriptor
-         *
-         * @param index        Barometric Pressure Trend index
-         * @param permission   combination of
-         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setBarometricPressureTrendEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsConfigurationMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Barometric Pressure Trend's ES Configuration descriptor
-         *
-         * @param index Barometric Pressure Trend index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeBarometricPressureTrendEsConfiguration(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsConfigurationMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setBarometricPressureTrendCharacteristicUserDescription(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setBarometricPressureTrendCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
-            return setBarometricPressureTrendCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
-        }
-
-        /**
-         * add Barometric Pressure Trend's Characteristic User Description descriptor
-         *
-         * @param index        Barometric Pressure Trend index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setBarometricPressureTrendCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mCharacteristicUserDescriptionMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Barometric Pressure Trend's Characteristic User Description descriptor
-         *
-         * @param index Barometric Pressure Trend index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeBarometricPressureTrendCharacteristicUserDescription(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mCharacteristicUserDescriptionMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setBarometricPressureTrendValidRange(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setBarometricPressureTrendValidRange(int index, ValidRange validRange) {
-            return setBarometricPressureTrendValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
-        }
-
-        /**
-         * add Barometric Pressure Trend's Valid Range descriptor
-         *
-         * @param index        Barometric Pressure Trend index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setBarometricPressureTrendValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mValidRangeMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Barometric Pressure Trend's Valid Range descriptor
-         *
-         * @param index Barometric Pressure Trend index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeBarometricPressureTrendValidRange(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mValidRangeMap.put(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #addMagneticDeclination(int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> addMagneticDeclination(int index, @NonNull MagneticDeclination magneticDeclination) {
-            return addMagneticDeclination(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, magneticDeclination.getBytes());
-        }
-
-        /**
-         * add Magnetic Declination characteristic
-         *
-         * @param index        Magnetic Declination index
-         * @param property     combination of
-         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
-         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> addMagneticDeclination(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsCharacteristicDataMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, characteristicDataMap);
-            }
-            characteristicDataMap.put(index, new CharacteristicData(MAGNETIC_DECLINATION_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Declination characteristic
-         *
-         * @param index Magnetic Declination index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticDeclination(int index) {
-            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsCharacteristicDataMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, characteristicDataMap);
-            }
-            characteristicDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticDeclinationEsMeasurement(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticDeclinationEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
-            return setMagneticDeclinationEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
-        }
-
-        /**
-         * add Magnetic Declination's ES Measurement descriptor
-         *
-         * @param index        Magnetic Declination index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticDeclinationEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsMeasurementMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Declination's ES Measurement descriptor
-         *
-         * @param index Magnetic Declination index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticDeclinationEsMeasurement(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsMeasurementMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticDeclinationEsTriggerSetting(int, int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticDeclinationEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
-            return setMagneticDeclinationEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
-        }
-
-        /**
-         * add Magnetic Declination's ES Trigger Setting descriptor
-         *
-         * @param characteristicIndex Magnetic Declination index
-         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
-         * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay               response delay(millis)
-         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticDeclinationEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsTriggerSettingMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, characteristicDataMap);
-            }
-            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
-            }
-            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Declination's ES Trigger Setting descriptor
-         *
-         * @param characteristicIndex Magnetic Declination index
-         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticDeclinationEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
-            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsTriggerSettingMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, characteristicDataMap);
-            }
-            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
-            }
-            descriptorDataMap.remove(descriptorIndex);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticDeclinationEsConfiguration(int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticDeclinationEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
-            return setMagneticDeclinationEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
-        }
-
-        /**
-         * add Magnetic Declination's ES Configuration descriptor
-         *
-         * @param index        Magnetic Declination index
-         * @param permission   combination of
-         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticDeclinationEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsConfigurationMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Declination's ES Configuration descriptor
-         *
-         * @param index Magnetic Declination index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticDeclinationEsConfiguration(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsConfigurationMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticDeclinationCharacteristicUserDescription(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticDeclinationCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
-            return setMagneticDeclinationCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
-        }
-
-        /**
-         * add Magnetic Declination's Characteristic User Description descriptor
-         *
-         * @param index        Magnetic Declination index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticDeclinationCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mCharacteristicUserDescriptionMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Declination's Characteristic User Description descriptor
-         *
-         * @param index Magnetic Declination index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticDeclinationCharacteristicUserDescription(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mCharacteristicUserDescriptionMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticDeclinationValidRange(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticDeclinationValidRange(int index, ValidRange validRange) {
-            return setMagneticDeclinationValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
-        }
-
-        /**
-         * add Magnetic Declination's Valid Range descriptor
-         *
-         * @param index        Magnetic Declination index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticDeclinationValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mValidRangeMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Declination's Valid Range descriptor
-         *
-         * @param index Magnetic Declination index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticDeclinationValidRange(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mValidRangeMap.put(MAGNETIC_DECLINATION_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #addMagneticFluxDensity2D(int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> addMagneticFluxDensity2D(int index, @NonNull MagneticFluxDensity2D magneticFluxDensity2D) {
-            return addMagneticFluxDensity2D(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, magneticFluxDensity2D.getBytes());
-        }
-
-        /**
-         * add Magnetic Flux Density - 2D characteristic
-         *
-         * @param index        Magnetic Flux Density - 2D index
-         * @param property     combination of
-         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
-         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> addMagneticFluxDensity2D(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsCharacteristicDataMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, characteristicDataMap);
-            }
-            characteristicDataMap.put(index, new CharacteristicData(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Flux Density - 2D characteristic
-         *
-         * @param index Magnetic Flux Density - 2D index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticFluxDensity2D(int index) {
-            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsCharacteristicDataMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, characteristicDataMap);
-            }
-            characteristicDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticFluxDensity2DEsMeasurement(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity2DEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
-            return setMagneticFluxDensity2DEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
-        }
-
-        /**
-         * add Magnetic Flux Density - 2D's ES Measurement descriptor
-         *
-         * @param index        Magnetic Flux Density - 2D index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity2DEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsMeasurementMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Flux Density - 2D's ES Measurement descriptor
-         *
-         * @param index Magnetic Flux Density - 2D index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticFluxDensity2DEsMeasurement(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsMeasurementMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticFluxDensity2DEsTriggerSetting(int, int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity2DEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
-            return setMagneticFluxDensity2DEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
-        }
-
-        /**
-         * add Magnetic Flux Density - 2D's ES Trigger Setting descriptor
-         *
-         * @param characteristicIndex Magnetic Flux Density - 2D index
-         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
-         * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay               response delay(millis)
-         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity2DEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsTriggerSettingMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, characteristicDataMap);
-            }
-            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
-            }
-            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Flux Density - 2D's ES Trigger Setting descriptor
-         *
-         * @param characteristicIndex Magnetic Flux Density - 2D index
-         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticFluxDensity2DEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
-            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsTriggerSettingMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, characteristicDataMap);
-            }
-            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
-            }
-            descriptorDataMap.remove(descriptorIndex);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticFluxDensity2DEsConfiguration(int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity2DEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
-            return setMagneticFluxDensity2DEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
-        }
-
-        /**
-         * add Magnetic Flux Density - 2D's ES Configuration descriptor
-         *
-         * @param index        Magnetic Flux Density - 2D index
-         * @param permission   combination of
-         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity2DEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsConfigurationMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Flux Density - 2D's ES Configuration descriptor
-         *
-         * @param index Magnetic Flux Density - 2D index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticFluxDensity2DEsConfiguration(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsConfigurationMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticFluxDensity2DCharacteristicUserDescription(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity2DCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
-            return setMagneticFluxDensity2DCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
-        }
-
-        /**
-         * add Magnetic Flux Density - 2D's Characteristic User Description descriptor
-         *
-         * @param index        Magnetic Flux Density - 2D index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity2DCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mCharacteristicUserDescriptionMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Flux Density - 2D's Characteristic User Description descriptor
-         *
-         * @param index Magnetic Flux Density - 2D index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticFluxDensity2DCharacteristicUserDescription(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mCharacteristicUserDescriptionMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticFluxDensity2DValidRange(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity2DValidRange(int index, ValidRange validRange) {
-            return setMagneticFluxDensity2DValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
-        }
-
-        /**
-         * add Magnetic Flux Density - 2D's Valid Range descriptor
-         *
-         * @param index        Magnetic Flux Density - 2D index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity2DValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mValidRangeMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Flux Density - 2D's Valid Range descriptor
-         *
-         * @param index Magnetic Flux Density - 2D index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticFluxDensity2DValidRange(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mValidRangeMap.put(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #addMagneticFluxDensity3D(int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> addMagneticFluxDensity3D(int index, @NonNull MagneticFluxDensity3D magneticFluxDensity3D) {
-            return addMagneticFluxDensity3D(index, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, BluetoothGattCharacteristic.PERMISSION_READ, 0, magneticFluxDensity3D.getBytes());
-        }
-
-        /**
-         * add Magnetic Flux Density - 3D characteristic
-         *
-         * @param index        Magnetic Flux Density - 3D index
-         * @param property     combination of
-         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_READ}
-         *                     {@link android.bluetooth.BluetoothGattCharacteristic#PROPERTY_NOTIFY}
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> addMagneticFluxDensity3D(int index, int property, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsCharacteristicDataMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, characteristicDataMap);
-            }
-            characteristicDataMap.put(index, new CharacteristicData(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, property, BluetoothGattCharacteristic.PERMISSION_READ, new ArrayList<>(), responseCode, delay, value, 0));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Flux Density - 3D characteristic
-         *
-         * @param index Magnetic Flux Density - 3D index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticFluxDensity3D(int index) {
-            Map<Integer, CharacteristicData> characteristicDataMap = mEsCharacteristicDataMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsCharacteristicDataMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, characteristicDataMap);
-            }
-            characteristicDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticFluxDensity3DEsMeasurement(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity3DEsMeasurement(int index, EnvironmentalSensingMeasurement environmentalSensingMeasurement) {
-            return setMagneticFluxDensity3DEsMeasurement(index, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingMeasurement.getBytes());
-        }
-
-        /**
-         * add Magnetic Flux Density - 3D's ES Measurement descriptor
-         *
-         * @param index        Magnetic Flux Density - 3D index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity3DEsMeasurement(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsMeasurementMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Flux Density - 3D's ES Measurement descriptor
-         *
-         * @param index Magnetic Flux Density - 3D index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticFluxDensity3DEsMeasurement(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsMeasurementMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsMeasurementMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticFluxDensity3DEsTriggerSetting(int, int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity3DEsTriggerSetting(int characteristicIndex, int descriptorIndex, EnvironmentalSensingTriggerSetting environmentalSensingTriggerSetting) {
-            return setMagneticFluxDensity3DEsTriggerSetting(characteristicIndex, descriptorIndex, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingTriggerSetting.getBytes());
-        }
-
-        /**
-         * add Magnetic Flux Density - 3D's ES Trigger Setting descriptor
-         *
-         * @param characteristicIndex Magnetic Flux Density - 3D index
-         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
-         * @param permission          combination of
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                            {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode        response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay               response delay(millis)
-         * @param value               data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity3DEsTriggerSetting(int characteristicIndex, int descriptorIndex, int permission, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsTriggerSettingMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, characteristicDataMap);
-            }
-            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
-            }
-            descriptorDataMap.put(descriptorIndex, new DescriptorData(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, permission, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Flux Density - 3D's ES Trigger Setting descriptor
-         *
-         * @param characteristicIndex Magnetic Flux Density - 3D index
-         * @param descriptorIndex     Environmental Sensing Trigger Setting index(0 - 2)
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticFluxDensity3DEsTriggerSetting(int characteristicIndex, int descriptorIndex) {
-            Map<Integer, Map<Integer, DescriptorData>> characteristicDataMap = mEsTriggerSettingMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
-            if (characteristicDataMap == null) {
-                characteristicDataMap = new HashMap<>();
-                mEsTriggerSettingMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, characteristicDataMap);
-            }
-            Map<Integer, DescriptorData> descriptorDataMap = characteristicDataMap.get(characteristicIndex);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                characteristicDataMap.put(characteristicIndex, descriptorDataMap);
-            }
-            descriptorDataMap.remove(descriptorIndex);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticFluxDensity3DEsConfiguration(int, int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity3DEsConfiguration(int index, EnvironmentalSensingConfiguration environmentalSensingConfiguration) {
-            return setMagneticFluxDensity3DEsConfiguration(index, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, environmentalSensingConfiguration.getBytes());
-        }
-
-        /**
-         * add Magnetic Flux Density - 3D's ES Configuration descriptor
-         *
-         * @param index        Magnetic Flux Density - 3D index
-         * @param permission   combination of
-         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_READ}
-         *                     {@link android.bluetooth.BluetoothGattDescriptor#PERMISSION_WRITE}
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity3DEsConfiguration(int index, int permission, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsConfigurationMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, permission, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Flux Density - 3D's ES Configuration descriptor
-         *
-         * @param index Magnetic Flux Density - 3D index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticFluxDensity3DEsConfiguration(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mEsConfigurationMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mEsConfigurationMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticFluxDensity3DCharacteristicUserDescription(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity3DCharacteristicUserDescription(int index, CharacteristicUserDescription characteristicUserDescription) {
-            return setMagneticFluxDensity3DCharacteristicUserDescription(index, BluetoothGatt.GATT_SUCCESS, 0, characteristicUserDescription.getBytes());
-        }
-
-        /**
-         * add Magnetic Flux Density - 3D's Characteristic User Description descriptor
-         *
-         * @param index        Magnetic Flux Density - 3D index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity3DCharacteristicUserDescription(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mCharacteristicUserDescriptionMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Flux Density - 3D's Characteristic User Description descriptor
-         *
-         * @param index Magnetic Flux Density - 3D index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticFluxDensity3DCharacteristicUserDescription(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mCharacteristicUserDescriptionMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mCharacteristicUserDescriptionMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.remove(index);
-            return this;
-        }
-
-        /**
-         * @see #setMagneticFluxDensity3DValidRange(int, int, long, byte[])
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity3DValidRange(int index, ValidRange validRange) {
-            return setMagneticFluxDensity3DValidRange(index, BluetoothGatt.GATT_SUCCESS, 0, validRange.getBytes());
-        }
-
-        /**
-         * add Magnetic Flux Density - 3D's Valid Range descriptor
-         *
-         * @param index        Magnetic Flux Density - 3D index
-         * @param responseCode response code, {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} or etc
-         * @param delay        response delay(millis)
-         * @param value        data for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> setMagneticFluxDensity3DValidRange(int index, int responseCode, long delay, @NonNull byte[] value) {
-            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mValidRangeMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
-            }
-            descriptorDataMap.put(index, new DescriptorData(VALID_RANGE_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ, responseCode, delay, value));
-            return this;
-        }
-
-        /**
-         * remove Magnetic Flux Density - 3D's Valid Range descriptor
-         *
-         * @param index Magnetic Flux Density - 3D index
-         * @return {@link Builder} instance
-         */
-        @NonNull
-        public Builder<T> removeMagneticFluxDensity3DValidRange(int index) {
-            Map<Integer, DescriptorData> descriptorDataMap = mValidRangeMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
-            if (descriptorDataMap == null) {
-                descriptorDataMap = new HashMap<>();
-                mValidRangeMap.put(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC, descriptorDataMap);
             }
             descriptorDataMap.remove(index);
             return this;
@@ -6120,8 +9343,8 @@ public class EnvironmentalSensingServiceMockCallback extends AbstractServiceMock
     }
 
     /**
-     * @param serviceData   {@link ServiceData} instance
-     * @param isFallback fallback flag
+     * @param serviceData {@link ServiceData} instance
+     * @param isFallback  fallback flag
      */
     public EnvironmentalSensingServiceMockCallback(@NonNull ServiceData serviceData, boolean isFallback) {
         super(serviceData, isFallback);
