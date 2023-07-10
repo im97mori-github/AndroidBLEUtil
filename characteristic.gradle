@@ -1,2032 +1,2032 @@
 ext.characteristicCoreAndroid = [
-        artifactId         : "ble-characteristic-core-android"
+        artifactId         : 'ble-characteristic-core-android'
 ]
 
 ext.characteristicU2a00Android = [
-        artifactId         : "ble-characteristic-u2a00-android"
+        artifactId         : 'ble-characteristic-u2a00-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a00:${loadVersion}"
 ]
 
 ext.characteristicU2a01Android = [
-        artifactId         : "ble-characteristic-u2a01-android"
+        artifactId         : 'ble-characteristic-u2a01-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a01:${loadVersion}"
 ]
 
 ext.characteristicU2a02Android = [
-        artifactId         : "ble-characteristic-u2a02-android"
+        artifactId         : 'ble-characteristic-u2a02-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a02:${loadVersion}"
 ]
 
 ext.characteristicU2a03Android = [
-        artifactId         : "ble-characteristic-u2a03-android"
+        artifactId         : 'ble-characteristic-u2a03-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a03:${loadVersion}"
 ]
 
 ext.characteristicU2a04Android = [
-        artifactId         : "ble-characteristic-u2a04-android"
+        artifactId         : 'ble-characteristic-u2a04-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a04:${loadVersion}"
 ]
 
 ext.characteristicU2a05Android = [
-        artifactId         : "ble-characteristic-u2a05-android"
+        artifactId         : 'ble-characteristic-u2a05-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a05:${loadVersion}"
 ]
 
 ext.characteristicU2a06Android = [
-        artifactId         : "ble-characteristic-u2a06-android"
+        artifactId         : 'ble-characteristic-u2a06-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a06:${loadVersion}"
 ]
 
 ext.characteristicU2a07Android = [
-        artifactId         : "ble-characteristic-u2a07-android"
+        artifactId         : 'ble-characteristic-u2a07-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a07:${loadVersion}"
 ]
 
 ext.characteristicU2a08Android = [
-        artifactId         : "ble-characteristic-u2a08-android"
+        artifactId         : 'ble-characteristic-u2a08-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a08:${loadVersion}"
 ]
 
 ext.characteristicU2a09Android = [
-        artifactId         : "ble-characteristic-u2a09-android"
+        artifactId         : 'ble-characteristic-u2a09-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a09:${loadVersion}"
 ]
 
 ext.characteristicU2a0aAndroid = [
-        artifactId         : "ble-characteristic-u2a0a-android"
+        artifactId         : 'ble-characteristic-u2a0a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a0a:${loadVersion}"
 ]
 
 ext.characteristicU2a0cAndroid = [
-        artifactId         : "ble-characteristic-u2a0c-android"
+        artifactId         : 'ble-characteristic-u2a0c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a0c:${loadVersion}"
 ]
 
 ext.characteristicU2a0dAndroid = [
-        artifactId         : "ble-characteristic-u2a0d-android"
+        artifactId         : 'ble-characteristic-u2a0d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a0d:${loadVersion}"
 ]
 
 ext.characteristicU2a0eAndroid = [
-        artifactId         : "ble-characteristic-u2a0e-android"
+        artifactId         : 'ble-characteristic-u2a0e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a0e:${loadVersion}"
 ]
 
 ext.characteristicU2a0fAndroid = [
-        artifactId         : "ble-characteristic-u2a0f-android"
+        artifactId         : 'ble-characteristic-u2a0f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a0f:${loadVersion}"
 ]
 
 ext.characteristicU2a11Android = [
-        artifactId         : "ble-characteristic-u2a11-android"
+        artifactId         : 'ble-characteristic-u2a11-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a11:${loadVersion}"
 ]
 
 ext.characteristicU2a12Android = [
-        artifactId         : "ble-characteristic-u2a12-android"
+        artifactId         : 'ble-characteristic-u2a12-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a12:${loadVersion}"
 ]
 
 ext.characteristicU2a13Android = [
-        artifactId         : "ble-characteristic-u2a13-android"
+        artifactId         : 'ble-characteristic-u2a13-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a13:${loadVersion}"
 ]
 
 ext.characteristicU2a14Android = [
-        artifactId         : "ble-characteristic-u2a14-android"
+        artifactId         : 'ble-characteristic-u2a14-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a14:${loadVersion}"
 ]
 
 ext.characteristicU2a16Android = [
-        artifactId         : "ble-characteristic-u2a16-android"
+        artifactId         : 'ble-characteristic-u2a16-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a16:${loadVersion}"
 ]
 
 ext.characteristicU2a17Android = [
-        artifactId         : "ble-characteristic-u2a17-android"
+        artifactId         : 'ble-characteristic-u2a17-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a17:${loadVersion}"
 ]
 
 ext.characteristicU2a18Android = [
-        artifactId         : "ble-characteristic-u2a18-android"
+        artifactId         : 'ble-characteristic-u2a18-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a18:${loadVersion}"
 ]
 
 ext.characteristicU2a19Android = [
-        artifactId         : "ble-characteristic-u2a19-android"
+        artifactId         : 'ble-characteristic-u2a19-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a19:${loadVersion}"
 ]
 
 ext.characteristicU2a1cAndroid = [
-        artifactId         : "ble-characteristic-u2a1c-android"
+        artifactId         : 'ble-characteristic-u2a1c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a1c:${loadVersion}"
 ]
 
 ext.characteristicU2a1dAndroid = [
-        artifactId         : "ble-characteristic-u2a1d-android"
+        artifactId         : 'ble-characteristic-u2a1d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a1d:${loadVersion}"
 ]
 
 ext.characteristicU2a1eAndroid = [
-        artifactId         : "ble-characteristic-u2a1e-android"
+        artifactId         : 'ble-characteristic-u2a1e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a1e:${loadVersion}"
 ]
 
 ext.characteristicU2a21Android = [
-        artifactId         : "ble-characteristic-u2a21-android"
+        artifactId         : 'ble-characteristic-u2a21-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a21:${loadVersion}"
 ]
 
 ext.characteristicU2a22Android = [
-        artifactId         : "ble-characteristic-u2a22-android"
+        artifactId         : 'ble-characteristic-u2a22-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a22:${loadVersion}"
 ]
 
 ext.characteristicU2a23Android = [
-        artifactId         : "ble-characteristic-u2a23-android"
+        artifactId         : 'ble-characteristic-u2a23-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a23:${loadVersion}"
 ]
 
 ext.characteristicU2a24Android = [
-        artifactId         : "ble-characteristic-u2a24-android"
+        artifactId         : 'ble-characteristic-u2a24-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a24:${loadVersion}"
 ]
 
 ext.characteristicU2a25Android = [
-        artifactId         : "ble-characteristic-u2a25-android"
+        artifactId         : 'ble-characteristic-u2a25-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a25:${loadVersion}"
 ]
 
 ext.characteristicU2a26Android = [
-        artifactId         : "ble-characteristic-u2a26-android"
+        artifactId         : 'ble-characteristic-u2a26-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a26:${loadVersion}"
 ]
 
 ext.characteristicU2a27Android = [
-        artifactId         : "ble-characteristic-u2a27-android"
+        artifactId         : 'ble-characteristic-u2a27-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a27:${loadVersion}"
 ]
 
 ext.characteristicU2a28Android = [
-        artifactId         : "ble-characteristic-u2a28-android"
+        artifactId         : 'ble-characteristic-u2a28-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a28:${loadVersion}"
 ]
 
 ext.characteristicU2a29Android = [
-        artifactId         : "ble-characteristic-u2a29-android"
+        artifactId         : 'ble-characteristic-u2a29-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a29:${loadVersion}"
 ]
 
 ext.characteristicU2a2aAndroid = [
-        artifactId         : "ble-characteristic-u2a2a-android"
+        artifactId         : 'ble-characteristic-u2a2a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a2a:${loadVersion}"
 ]
 
 ext.characteristicU2a2bAndroid = [
-        artifactId         : "ble-characteristic-u2a2b-android"
+        artifactId         : 'ble-characteristic-u2a2b-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a2b:${loadVersion}"
 ]
 
 ext.characteristicU2a2cAndroid = [
-        artifactId         : "ble-characteristic-u2a2c-android"
+        artifactId         : 'ble-characteristic-u2a2c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a2c:${loadVersion}"
 ]
 
 ext.characteristicU2a31Android = [
-        artifactId         : "ble-characteristic-u2a31-android"
+        artifactId         : 'ble-characteristic-u2a31-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a31:${loadVersion}"
 ]
 
 ext.characteristicU2a32Android = [
-        artifactId         : "ble-characteristic-u2a32-android"
+        artifactId         : 'ble-characteristic-u2a32-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a32:${loadVersion}"
 ]
 
 ext.characteristicU2a33Android = [
-        artifactId         : "ble-characteristic-u2a33-android"
+        artifactId         : 'ble-characteristic-u2a33-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a33:${loadVersion}"
 ]
 
 ext.characteristicU2a34Android = [
-        artifactId         : "ble-characteristic-u2a34-android"
+        artifactId         : 'ble-characteristic-u2a34-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a34:${loadVersion}"
 ]
 
 ext.characteristicU2a35Android = [
-        artifactId         : "ble-characteristic-u2a35-android"
+        artifactId         : 'ble-characteristic-u2a35-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a35:${loadVersion}"
 ]
 
 ext.characteristicU2a36Android = [
-        artifactId         : "ble-characteristic-u2a36-android"
+        artifactId         : 'ble-characteristic-u2a36-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a36:${loadVersion}"
 ]
 
 ext.characteristicU2a37Android = [
-        artifactId         : "ble-characteristic-u2a37-android"
+        artifactId         : 'ble-characteristic-u2a37-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a37:${loadVersion}"
 ]
 
 ext.characteristicU2a38Android = [
-        artifactId         : "ble-characteristic-u2a38-android"
+        artifactId         : 'ble-characteristic-u2a38-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a38:${loadVersion}"
 ]
 
 ext.characteristicU2a39Android = [
-        artifactId         : "ble-characteristic-u2a39-android"
+        artifactId         : 'ble-characteristic-u2a39-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a39:${loadVersion}"
 ]
 
 ext.characteristicU2a3fAndroid = [
-        artifactId         : "ble-characteristic-u2a3f-android"
+        artifactId         : 'ble-characteristic-u2a3f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a3f:${loadVersion}"
 ]
 
 ext.characteristicU2a40Android = [
-        artifactId         : "ble-characteristic-u2a40-android"
+        artifactId         : 'ble-characteristic-u2a40-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a40:${loadVersion}"
 ]
 
 ext.characteristicU2a41Android = [
-        artifactId         : "ble-characteristic-u2a41-android"
+        artifactId         : 'ble-characteristic-u2a41-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a41:${loadVersion}"
 ]
 
 ext.characteristicU2a42Android = [
-        artifactId         : "ble-characteristic-u2a42-android"
+        artifactId         : 'ble-characteristic-u2a42-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a42:${loadVersion}"
 ]
 
 ext.characteristicU2a43Android = [
-        artifactId         : "ble-characteristic-u2a43-android"
+        artifactId         : 'ble-characteristic-u2a43-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a43:${loadVersion}"
 ]
 
 ext.characteristicU2a44Android = [
-        artifactId         : "ble-characteristic-u2a44-android"
+        artifactId         : 'ble-characteristic-u2a44-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a44:${loadVersion}"
 ]
 
 ext.characteristicU2a45Android = [
-        artifactId         : "ble-characteristic-u2a45-android"
+        artifactId         : 'ble-characteristic-u2a45-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a45:${loadVersion}"
 ]
 
 ext.characteristicU2a46Android = [
-        artifactId         : "ble-characteristic-u2a46-android"
+        artifactId         : 'ble-characteristic-u2a46-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a46:${loadVersion}"
 ]
 
 ext.characteristicU2a47Android = [
-        artifactId         : "ble-characteristic-u2a47-android"
+        artifactId         : 'ble-characteristic-u2a47-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a47:${loadVersion}"
 ]
 
 ext.characteristicU2a48Android = [
-        artifactId         : "ble-characteristic-u2a48-android"
+        artifactId         : 'ble-characteristic-u2a48-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a48:${loadVersion}"
 ]
 
 ext.characteristicU2a49Android = [
-        artifactId         : "ble-characteristic-u2a49-android"
+        artifactId         : 'ble-characteristic-u2a49-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a49:${loadVersion}"
 ]
 
 ext.characteristicU2a4aAndroid = [
-        artifactId         : "ble-characteristic-u2a4a-android"
+        artifactId         : 'ble-characteristic-u2a4a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a4a:${loadVersion}"
 ]
 
 ext.characteristicU2a4bAndroid = [
-        artifactId         : "ble-characteristic-u2a4b-android"
+        artifactId         : 'ble-characteristic-u2a4b-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a4b:${loadVersion}"
 ]
 
 ext.characteristicU2a4cAndroid = [
-        artifactId         : "ble-characteristic-u2a4c-android"
+        artifactId         : 'ble-characteristic-u2a4c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a4c:${loadVersion}"
 ]
 
 ext.characteristicU2a4dAndroid = [
-        artifactId         : "ble-characteristic-u2a4d-android"
+        artifactId         : 'ble-characteristic-u2a4d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a4d:${loadVersion}"
 ]
 
 ext.characteristicU2a4eAndroid = [
-        artifactId         : "ble-characteristic-u2a4e-android"
+        artifactId         : 'ble-characteristic-u2a4e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a4e:${loadVersion}"
 ]
 
 ext.characteristicU2a4fAndroid = [
-        artifactId         : "ble-characteristic-u2a4f-android"
+        artifactId         : 'ble-characteristic-u2a4f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a4f:${loadVersion}"
 ]
 
 ext.characteristicU2a50Android = [
-        artifactId         : "ble-characteristic-u2a50-android"
+        artifactId         : 'ble-characteristic-u2a50-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a50:${loadVersion}"
 ]
 
 ext.characteristicU2a51Android = [
-        artifactId         : "ble-characteristic-u2a51-android"
+        artifactId         : 'ble-characteristic-u2a51-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a51:${loadVersion}"
 ]
 
 ext.characteristicU2a52Android = [
-        artifactId         : "ble-characteristic-u2a52-android"
+        artifactId         : 'ble-characteristic-u2a52-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a52:${loadVersion}"
 ]
 
 ext.characteristicU2a53Android = [
-        artifactId         : "ble-characteristic-u2a53-android"
+        artifactId         : 'ble-characteristic-u2a53-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a53:${loadVersion}"
 ]
 
 ext.characteristicU2a54Android = [
-        artifactId         : "ble-characteristic-u2a54-android"
+        artifactId         : 'ble-characteristic-u2a54-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a54:${loadVersion}"
 ]
 
 ext.characteristicU2a55Android = [
-        artifactId         : "ble-characteristic-u2a55-android"
+        artifactId         : 'ble-characteristic-u2a55-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a55:${loadVersion}"
 ]
 
 ext.characteristicU2a56Android = [
-        artifactId         : "ble-characteristic-u2a56-android"
+        artifactId         : 'ble-characteristic-u2a56-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a56:${loadVersion}"
 ]
 
 ext.characteristicU2a58Android = [
-        artifactId         : "ble-characteristic-u2a58-android"
+        artifactId         : 'ble-characteristic-u2a58-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a58:${loadVersion}"
 ]
 
 ext.characteristicU2a5aAndroid = [
-        artifactId         : "ble-characteristic-u2a5a-android"
+        artifactId         : 'ble-characteristic-u2a5a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a5a:${loadVersion}"
 ]
 
 ext.characteristicU2a5bAndroid = [
-        artifactId         : "ble-characteristic-u2a5b-android"
+        artifactId         : 'ble-characteristic-u2a5b-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a5b:${loadVersion}"
 ]
 
 ext.characteristicU2a5cAndroid = [
-        artifactId         : "ble-characteristic-u2a5c-android"
+        artifactId         : 'ble-characteristic-u2a5c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a5c:${loadVersion}"
 ]
 
 ext.characteristicU2a5dAndroid = [
-        artifactId         : "ble-characteristic-u2a5d-android"
+        artifactId         : 'ble-characteristic-u2a5d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a5d:${loadVersion}"
 ]
 
 ext.characteristicU2a5eAndroid = [
-        artifactId         : "ble-characteristic-u2a5e-android"
+        artifactId         : 'ble-characteristic-u2a5e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a5e:${loadVersion}"
 ]
 
 ext.characteristicU2a5fAndroid = [
-        artifactId         : "ble-characteristic-u2a5f-android"
+        artifactId         : 'ble-characteristic-u2a5f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a5f:${loadVersion}"
 ]
 
 ext.characteristicU2a60Android = [
-        artifactId         : "ble-characteristic-u2a60-android"
+        artifactId         : 'ble-characteristic-u2a60-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a60:${loadVersion}"
 ]
 
 ext.characteristicU2a63Android = [
-        artifactId         : "ble-characteristic-u2a63-android"
+        artifactId         : 'ble-characteristic-u2a63-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a63:${loadVersion}"
 ]
 
 ext.characteristicU2a64Android = [
-        artifactId         : "ble-characteristic-u2a64-android"
+        artifactId         : 'ble-characteristic-u2a64-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a64:${loadVersion}"
 ]
 
 ext.characteristicU2a65Android = [
-        artifactId         : "ble-characteristic-u2a65-android"
+        artifactId         : 'ble-characteristic-u2a65-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a65:${loadVersion}"
 ]
 
 ext.characteristicU2a66Android = [
-        artifactId         : "ble-characteristic-u2a66-android"
+        artifactId         : 'ble-characteristic-u2a66-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a66:${loadVersion}"
 ]
 
 ext.characteristicU2a67Android = [
-        artifactId         : "ble-characteristic-u2a67-android"
+        artifactId         : 'ble-characteristic-u2a67-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a67:${loadVersion}"
 ]
 
 ext.characteristicU2a68Android = [
-        artifactId         : "ble-characteristic-u2a68-android"
+        artifactId         : 'ble-characteristic-u2a68-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a68:${loadVersion}"
 ]
 
 ext.characteristicU2a69Android = [
-        artifactId         : "ble-characteristic-u2a69-android"
+        artifactId         : 'ble-characteristic-u2a69-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a69:${loadVersion}"
 ]
 
 ext.characteristicU2a6aAndroid = [
-        artifactId         : "ble-characteristic-u2a6a-android"
+        artifactId         : 'ble-characteristic-u2a6a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a6a:${loadVersion}"
 ]
 
 ext.characteristicU2a6bAndroid = [
-        artifactId         : "ble-characteristic-u2a6b-android"
+        artifactId         : 'ble-characteristic-u2a6b-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a6b:${loadVersion}"
 ]
 
 ext.characteristicU2a6cAndroid = [
-        artifactId         : "ble-characteristic-u2a6c-android"
+        artifactId         : 'ble-characteristic-u2a6c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a6c:${loadVersion}"
 ]
 
 ext.characteristicU2a6dAndroid = [
-        artifactId         : "ble-characteristic-u2a6d-android"
+        artifactId         : 'ble-characteristic-u2a6d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a6d:${loadVersion}"
 ]
 
 ext.characteristicU2a6eAndroid = [
-        artifactId         : "ble-characteristic-u2a6e-android"
+        artifactId         : 'ble-characteristic-u2a6e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a6e:${loadVersion}"
 ]
 
 ext.characteristicU2a6fAndroid = [
-        artifactId         : "ble-characteristic-u2a6f-android"
+        artifactId         : 'ble-characteristic-u2a6f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a6f:${loadVersion}"
 ]
 
 ext.characteristicU2a70Android = [
-        artifactId         : "ble-characteristic-u2a70-android"
+        artifactId         : 'ble-characteristic-u2a70-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a70:${loadVersion}"
 ]
 
 ext.characteristicU2a71Android = [
-        artifactId         : "ble-characteristic-u2a71-android"
+        artifactId         : 'ble-characteristic-u2a71-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a71:${loadVersion}"
 ]
 
 ext.characteristicU2a72Android = [
-        artifactId         : "ble-characteristic-u2a72-android"
+        artifactId         : 'ble-characteristic-u2a72-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a72:${loadVersion}"
 ]
 
 ext.characteristicU2a73Android = [
-        artifactId         : "ble-characteristic-u2a73-android"
+        artifactId         : 'ble-characteristic-u2a73-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a73:${loadVersion}"
 ]
 
 ext.characteristicU2a74Android = [
-        artifactId         : "ble-characteristic-u2a74-android"
+        artifactId         : 'ble-characteristic-u2a74-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a74:${loadVersion}"
 ]
 
 ext.characteristicU2a75Android = [
-        artifactId         : "ble-characteristic-u2a75-android"
+        artifactId         : 'ble-characteristic-u2a75-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a75:${loadVersion}"
 ]
 
 ext.characteristicU2a76Android = [
-        artifactId         : "ble-characteristic-u2a76-android"
+        artifactId         : 'ble-characteristic-u2a76-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a76:${loadVersion}"
 ]
 
 ext.characteristicU2a77Android = [
-        artifactId         : "ble-characteristic-u2a77-android"
+        artifactId         : 'ble-characteristic-u2a77-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a77:${loadVersion}"
 ]
 
 ext.characteristicU2a78Android = [
-        artifactId         : "ble-characteristic-u2a78-android"
+        artifactId         : 'ble-characteristic-u2a78-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a78:${loadVersion}"
 ]
 
 ext.characteristicU2a79Android = [
-        artifactId         : "ble-characteristic-u2a79-android"
+        artifactId         : 'ble-characteristic-u2a79-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a79:${loadVersion}"
 ]
 
 ext.characteristicU2a7aAndroid = [
-        artifactId         : "ble-characteristic-u2a7a-android"
+        artifactId         : 'ble-characteristic-u2a7a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a7a:${loadVersion}"
 ]
 
 ext.characteristicU2a7bAndroid = [
-        artifactId         : "ble-characteristic-u2a7b-android"
+        artifactId         : 'ble-characteristic-u2a7b-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a7b:${loadVersion}"
 ]
 
 ext.characteristicU2a7dAndroid = [
-        artifactId         : "ble-characteristic-u2a7d-android"
+        artifactId         : 'ble-characteristic-u2a7d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a7d:${loadVersion}"
 ]
 
 ext.characteristicU2a7eAndroid = [
-        artifactId         : "ble-characteristic-u2a7e-android"
+        artifactId         : 'ble-characteristic-u2a7e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a7e:${loadVersion}"
 ]
 
 ext.characteristicU2a7fAndroid = [
-        artifactId         : "ble-characteristic-u2a7f-android"
+        artifactId         : 'ble-characteristic-u2a7f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a7f:${loadVersion}"
 ]
 
 ext.characteristicU2a80Android = [
-        artifactId         : "ble-characteristic-u2a80-android"
+        artifactId         : 'ble-characteristic-u2a80-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a80:${loadVersion}"
 ]
 
 ext.characteristicU2a81Android = [
-        artifactId         : "ble-characteristic-u2a81-android"
+        artifactId         : 'ble-characteristic-u2a81-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a81:${loadVersion}"
 ]
 
 ext.characteristicU2a82Android = [
-        artifactId         : "ble-characteristic-u2a82-android"
+        artifactId         : 'ble-characteristic-u2a82-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a82:${loadVersion}"
 ]
 
 ext.characteristicU2a83Android = [
-        artifactId         : "ble-characteristic-u2a83-android"
+        artifactId         : 'ble-characteristic-u2a83-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a83:${loadVersion}"
 ]
 
 ext.characteristicU2a84Android = [
-        artifactId         : "ble-characteristic-u2a84-android"
+        artifactId         : 'ble-characteristic-u2a84-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a84:${loadVersion}"
 ]
 
 ext.characteristicU2a85Android = [
-        artifactId         : "ble-characteristic-u2a85-android"
+        artifactId         : 'ble-characteristic-u2a85-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a85:${loadVersion}"
 ]
 
 ext.characteristicU2a86Android = [
-        artifactId         : "ble-characteristic-u2a86-android"
+        artifactId         : 'ble-characteristic-u2a86-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a86:${loadVersion}"
 ]
 
 ext.characteristicU2a87Android = [
-        artifactId         : "ble-characteristic-u2a87-android"
+        artifactId         : 'ble-characteristic-u2a87-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a87:${loadVersion}"
 ]
 
 ext.characteristicU2a88Android = [
-        artifactId         : "ble-characteristic-u2a88-android"
+        artifactId         : 'ble-characteristic-u2a88-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a88:${loadVersion}"
 ]
 
 ext.characteristicU2a89Android = [
-        artifactId         : "ble-characteristic-u2a89-android"
+        artifactId         : 'ble-characteristic-u2a89-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a89:${loadVersion}"
 ]
 
 ext.characteristicU2a8aAndroid = [
-        artifactId         : "ble-characteristic-u2a8a-android"
+        artifactId         : 'ble-characteristic-u2a8a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a8a:${loadVersion}"
 ]
 
 ext.characteristicU2a8bAndroid = [
-        artifactId         : "ble-characteristic-u2a8b-android"
+        artifactId         : 'ble-characteristic-u2a8b-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a8b:${loadVersion}"
 ]
 
 ext.characteristicU2a8cAndroid = [
-        artifactId         : "ble-characteristic-u2a8c-android"
+        artifactId         : 'ble-characteristic-u2a8c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a8c:${loadVersion}"
 ]
 
 ext.characteristicU2a8dAndroid = [
-        artifactId         : "ble-characteristic-u2a8d-android"
+        artifactId         : 'ble-characteristic-u2a8d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a8d:${loadVersion}"
 ]
 
 ext.characteristicU2a8eAndroid = [
-        artifactId         : "ble-characteristic-u2a8e-android"
+        artifactId         : 'ble-characteristic-u2a8e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a8e:${loadVersion}"
 ]
 
 ext.characteristicU2a8fAndroid = [
-        artifactId         : "ble-characteristic-u2a8f-android"
+        artifactId         : 'ble-characteristic-u2a8f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a8f:${loadVersion}"
 ]
 
 ext.characteristicU2a90Android = [
-        artifactId         : "ble-characteristic-u2a90-android"
+        artifactId         : 'ble-characteristic-u2a90-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a90:${loadVersion}"
 ]
 
 ext.characteristicU2a91Android = [
-        artifactId         : "ble-characteristic-u2a91-android"
+        artifactId         : 'ble-characteristic-u2a91-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a91:${loadVersion}"
 ]
 
 ext.characteristicU2a92Android = [
-        artifactId         : "ble-characteristic-u2a92-android"
+        artifactId         : 'ble-characteristic-u2a92-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a92:${loadVersion}"
 ]
 
 ext.characteristicU2a93Android = [
-        artifactId         : "ble-characteristic-u2a93-android"
+        artifactId         : 'ble-characteristic-u2a93-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a93:${loadVersion}"
 ]
 
 ext.characteristicU2a94Android = [
-        artifactId         : "ble-characteristic-u2a94-android"
+        artifactId         : 'ble-characteristic-u2a94-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a94:${loadVersion}"
 ]
 
 ext.characteristicU2a95Android = [
-        artifactId         : "ble-characteristic-u2a95-android"
+        artifactId         : 'ble-characteristic-u2a95-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a95:${loadVersion}"
 ]
 
 ext.characteristicU2a96Android = [
-        artifactId         : "ble-characteristic-u2a96-android"
+        artifactId         : 'ble-characteristic-u2a96-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a96:${loadVersion}"
 ]
 
 ext.characteristicU2a97Android = [
-        artifactId         : "ble-characteristic-u2a97-android"
+        artifactId         : 'ble-characteristic-u2a97-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a97:${loadVersion}"
 ]
 
 ext.characteristicU2a98Android = [
-        artifactId         : "ble-characteristic-u2a98-android"
+        artifactId         : 'ble-characteristic-u2a98-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a98:${loadVersion}"
 ]
 
 ext.characteristicU2a99Android = [
-        artifactId         : "ble-characteristic-u2a99-android"
+        artifactId         : 'ble-characteristic-u2a99-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a99:${loadVersion}"
 ]
 
 ext.characteristicU2a9aAndroid = [
-        artifactId         : "ble-characteristic-u2a9a-android"
+        artifactId         : 'ble-characteristic-u2a9a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a9a:${loadVersion}"
 ]
 
 ext.characteristicU2a9bAndroid = [
-        artifactId         : "ble-characteristic-u2a9b-android"
+        artifactId         : 'ble-characteristic-u2a9b-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a9b:${loadVersion}"
 ]
 
 ext.characteristicU2a9cAndroid = [
-        artifactId         : "ble-characteristic-u2a9c-android"
+        artifactId         : 'ble-characteristic-u2a9c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a9c:${loadVersion}"
 ]
 
 ext.characteristicU2a9dAndroid = [
-        artifactId         : "ble-characteristic-u2a9d-android"
+        artifactId         : 'ble-characteristic-u2a9d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a9d:${loadVersion}"
 ]
 
 ext.characteristicU2a9eAndroid = [
-        artifactId         : "ble-characteristic-u2a9e-android"
+        artifactId         : 'ble-characteristic-u2a9e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a9e:${loadVersion}"
 ]
 
 ext.characteristicU2a9fAndroid = [
-        artifactId         : "ble-characteristic-u2a9f-android"
+        artifactId         : 'ble-characteristic-u2a9f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2a9f:${loadVersion}"
 ]
 
 ext.characteristicU2aa0Android = [
-        artifactId         : "ble-characteristic-u2aa0-android"
+        artifactId         : 'ble-characteristic-u2aa0-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aa0:${loadVersion}"
 ]
 
 ext.characteristicU2aa1Android = [
-        artifactId         : "ble-characteristic-u2aa1-android"
+        artifactId         : 'ble-characteristic-u2aa1-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aa1:${loadVersion}"
 ]
 
 ext.characteristicU2aa2Android = [
-        artifactId         : "ble-characteristic-u2aa2-android"
+        artifactId         : 'ble-characteristic-u2aa2-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aa2:${loadVersion}"
 ]
 
 ext.characteristicU2aa3Android = [
-        artifactId         : "ble-characteristic-u2aa3-android"
+        artifactId         : 'ble-characteristic-u2aa3-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aa3:${loadVersion}"
 ]
 
 ext.characteristicU2aa4Android = [
-        artifactId         : "ble-characteristic-u2aa4-android"
+        artifactId         : 'ble-characteristic-u2aa4-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aa4:${loadVersion}"
 ]
 
 ext.characteristicU2aa5Android = [
-        artifactId         : "ble-characteristic-u2aa5-android"
+        artifactId         : 'ble-characteristic-u2aa5-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aa5:${loadVersion}"
 ]
 
 ext.characteristicU2aa6Android = [
-        artifactId         : "ble-characteristic-u2aa6-android"
+        artifactId         : 'ble-characteristic-u2aa6-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aa6:${loadVersion}"
 ]
 
 ext.characteristicU2aa7Android = [
-        artifactId         : "ble-characteristic-u2aa7-android"
+        artifactId         : 'ble-characteristic-u2aa7-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aa7:${loadVersion}"
 ]
 
 ext.characteristicU2aa8Android = [
-        artifactId         : "ble-characteristic-u2aa8-android"
+        artifactId         : 'ble-characteristic-u2aa8-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aa8:${loadVersion}"
 ]
 
 ext.characteristicU2aa9Android = [
-        artifactId         : "ble-characteristic-u2aa9-android"
+        artifactId         : 'ble-characteristic-u2aa9-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aa9:${loadVersion}"
 ]
 
 ext.characteristicU2aaaAndroid = [
-        artifactId         : "ble-characteristic-u2aaa-android"
+        artifactId         : 'ble-characteristic-u2aaa-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aaa:${loadVersion}"
 ]
 
 ext.characteristicU2aabAndroid = [
-        artifactId         : "ble-characteristic-u2aab-android"
+        artifactId         : 'ble-characteristic-u2aab-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aab:${loadVersion}"
 ]
 
 ext.characteristicU2aacAndroid = [
-        artifactId         : "ble-characteristic-u2aac-android"
+        artifactId         : 'ble-characteristic-u2aac-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aac:${loadVersion}"
 ]
 
 ext.characteristicU2aadAndroid = [
-        artifactId         : "ble-characteristic-u2aad-android"
+        artifactId         : 'ble-characteristic-u2aad-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aad:${loadVersion}"
 ]
 
 ext.characteristicU2aaeAndroid = [
-        artifactId         : "ble-characteristic-u2aae-android"
+        artifactId         : 'ble-characteristic-u2aae-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aae:${loadVersion}"
 ]
 
 ext.characteristicU2aafAndroid = [
-        artifactId         : "ble-characteristic-u2aaf-android"
+        artifactId         : 'ble-characteristic-u2aaf-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aaf:${loadVersion}"
 ]
 
 ext.characteristicU2ab0Android = [
-        artifactId         : "ble-characteristic-u2ab0-android"
+        artifactId         : 'ble-characteristic-u2ab0-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ab0:${loadVersion}"
 ]
 
 ext.characteristicU2ab1Android = [
-        artifactId         : "ble-characteristic-u2ab1-android"
+        artifactId         : 'ble-characteristic-u2ab1-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ab1:${loadVersion}"
 ]
 
 ext.characteristicU2ab2Android = [
-        artifactId         : "ble-characteristic-u2ab2-android"
+        artifactId         : 'ble-characteristic-u2ab2-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ab2:${loadVersion}"
 ]
 
 ext.characteristicU2ab3Android = [
-        artifactId         : "ble-characteristic-u2ab3-android"
+        artifactId         : 'ble-characteristic-u2ab3-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ab3:${loadVersion}"
 ]
 
 ext.characteristicU2ab4Android = [
-        artifactId         : "ble-characteristic-u2ab4-android"
+        artifactId         : 'ble-characteristic-u2ab4-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ab4:${loadVersion}"
 ]
 
 ext.characteristicU2ab5Android = [
-        artifactId         : "ble-characteristic-u2ab5-android"
+        artifactId         : 'ble-characteristic-u2ab5-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ab5:${loadVersion}"
 ]
 
 ext.characteristicU2ab6Android = [
-        artifactId         : "ble-characteristic-u2ab6-android"
+        artifactId         : 'ble-characteristic-u2ab6-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ab6:${loadVersion}"
 ]
 
 ext.characteristicU2ab7Android = [
-        artifactId         : "ble-characteristic-u2ab7-android"
+        artifactId         : 'ble-characteristic-u2ab7-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ab7:${loadVersion}"
 ]
 
 ext.characteristicU2ab8Android = [
-        artifactId         : "ble-characteristic-u2ab8-android"
+        artifactId         : 'ble-characteristic-u2ab8-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ab8:${loadVersion}"
 ]
 
 ext.characteristicU2ab9Android = [
-        artifactId         : "ble-characteristic-u2ab9-android"
+        artifactId         : 'ble-characteristic-u2ab9-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ab9:${loadVersion}"
 ]
 
 ext.characteristicU2abaAndroid = [
-        artifactId         : "ble-characteristic-u2aba-android"
+        artifactId         : 'ble-characteristic-u2aba-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aba:${loadVersion}"
 ]
 
 ext.characteristicU2abbAndroid = [
-        artifactId         : "ble-characteristic-u2abb-android"
+        artifactId         : 'ble-characteristic-u2abb-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2abb:${loadVersion}"
 ]
 
 ext.characteristicU2abcAndroid = [
-        artifactId         : "ble-characteristic-u2abc-android"
+        artifactId         : 'ble-characteristic-u2abc-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2abc:${loadVersion}"
 ]
 
 ext.characteristicU2abdAndroid = [
-        artifactId         : "ble-characteristic-u2abd-android"
+        artifactId         : 'ble-characteristic-u2abd-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2abd:${loadVersion}"
 ]
 
 ext.characteristicU2abeAndroid = [
-        artifactId         : "ble-characteristic-u2abe-android"
+        artifactId         : 'ble-characteristic-u2abe-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2abe:${loadVersion}"
 ]
 
 ext.characteristicU2abfAndroid = [
-        artifactId         : "ble-characteristic-u2abf-android"
+        artifactId         : 'ble-characteristic-u2abf-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2abf:${loadVersion}"
 ]
 
 ext.characteristicU2ac0Android = [
-        artifactId         : "ble-characteristic-u2ac0-android"
+        artifactId         : 'ble-characteristic-u2ac0-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ac0:${loadVersion}"
 ]
 
 ext.characteristicU2ac1Android = [
-        artifactId         : "ble-characteristic-u2ac1-android"
+        artifactId         : 'ble-characteristic-u2ac1-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ac1:${loadVersion}"
 ]
 
 ext.characteristicU2ac2Android = [
-        artifactId         : "ble-characteristic-u2ac2-android"
+        artifactId         : 'ble-characteristic-u2ac2-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ac2:${loadVersion}"
 ]
 
 ext.characteristicU2ac3Android = [
-        artifactId         : "ble-characteristic-u2ac3-android"
+        artifactId         : 'ble-characteristic-u2ac3-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ac3:${loadVersion}"
 ]
 
 ext.characteristicU2ac4Android = [
-        artifactId         : "ble-characteristic-u2ac4-android"
+        artifactId         : 'ble-characteristic-u2ac4-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ac4:${loadVersion}"
 ]
 
 ext.characteristicU2ac5Android = [
-        artifactId         : "ble-characteristic-u2ac5-android"
+        artifactId         : 'ble-characteristic-u2ac5-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ac5:${loadVersion}"
 ]
 
 ext.characteristicU2ac6Android = [
-        artifactId         : "ble-characteristic-u2ac6-android"
+        artifactId         : 'ble-characteristic-u2ac6-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ac6:${loadVersion}"
 ]
 
 ext.characteristicU2ac7Android = [
-        artifactId         : "ble-characteristic-u2ac7-android"
+        artifactId         : 'ble-characteristic-u2ac7-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ac7:${loadVersion}"
 ]
 
 ext.characteristicU2ac8Android = [
-        artifactId         : "ble-characteristic-u2ac8-android"
+        artifactId         : 'ble-characteristic-u2ac8-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ac8:${loadVersion}"
 ]
 
 ext.characteristicU2ac9Android = [
-        artifactId         : "ble-characteristic-u2ac9-android"
+        artifactId         : 'ble-characteristic-u2ac9-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ac9:${loadVersion}"
 ]
 
 ext.characteristicU2acaAndroid = [
-        artifactId         : "ble-characteristic-u2aca-android"
+        artifactId         : 'ble-characteristic-u2aca-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aca:${loadVersion}"
 ]
 
 ext.characteristicU2acbAndroid = [
-        artifactId         : "ble-characteristic-u2acb-android"
+        artifactId         : 'ble-characteristic-u2acb-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2acb:${loadVersion}"
 ]
 
 ext.characteristicU2accAndroid = [
-        artifactId         : "ble-characteristic-u2acc-android"
+        artifactId         : 'ble-characteristic-u2acc-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2acc:${loadVersion}"
 ]
 
 ext.characteristicU2acdAndroid = [
-        artifactId         : "ble-characteristic-u2acd-android"
+        artifactId         : 'ble-characteristic-u2acd-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2acd:${loadVersion}"
 ]
 
 ext.characteristicU2aceAndroid = [
-        artifactId         : "ble-characteristic-u2ace-android"
+        artifactId         : 'ble-characteristic-u2ace-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ace:${loadVersion}"
 ]
 
 ext.characteristicU2acfAndroid = [
-        artifactId         : "ble-characteristic-u2acf-android"
+        artifactId         : 'ble-characteristic-u2acf-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2acf:${loadVersion}"
 ]
 
 ext.characteristicU2ad0Android = [
-        artifactId         : "ble-characteristic-u2ad0-android"
+        artifactId         : 'ble-characteristic-u2ad0-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ad0:${loadVersion}"
 ]
 
 ext.characteristicU2ad1Android = [
-        artifactId         : "ble-characteristic-u2ad1-android"
+        artifactId         : 'ble-characteristic-u2ad1-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ad1:${loadVersion}"
 ]
 
 ext.characteristicU2ad2Android = [
-        artifactId         : "ble-characteristic-u2ad2-android"
+        artifactId         : 'ble-characteristic-u2ad2-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ad2:${loadVersion}"
 ]
 
 ext.characteristicU2ad3Android = [
-        artifactId         : "ble-characteristic-u2ad3-android"
+        artifactId         : 'ble-characteristic-u2ad3-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ad3:${loadVersion}"
 ]
 
 ext.characteristicU2ad4Android = [
-        artifactId         : "ble-characteristic-u2ad4-android"
+        artifactId         : 'ble-characteristic-u2ad4-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ad4:${loadVersion}"
 ]
 
 ext.characteristicU2ad5Android = [
-        artifactId         : "ble-characteristic-u2ad5-android"
+        artifactId         : 'ble-characteristic-u2ad5-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ad5:${loadVersion}"
 ]
 
 ext.characteristicU2ad6Android = [
-        artifactId         : "ble-characteristic-u2ad6-android"
+        artifactId         : 'ble-characteristic-u2ad6-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ad6:${loadVersion}"
 ]
 
 ext.characteristicU2ad7Android = [
-        artifactId         : "ble-characteristic-u2ad7-android"
+        artifactId         : 'ble-characteristic-u2ad7-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ad7:${loadVersion}"
 ]
 
 ext.characteristicU2ad8Android = [
-        artifactId         : "ble-characteristic-u2ad8-android"
+        artifactId         : 'ble-characteristic-u2ad8-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ad8:${loadVersion}"
 ]
 
 ext.characteristicU2ad9Android = [
-        artifactId         : "ble-characteristic-u2ad9-android"
+        artifactId         : 'ble-characteristic-u2ad9-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ad9:${loadVersion}"
 ]
 
 ext.characteristicU2adaAndroid = [
-        artifactId         : "ble-characteristic-u2ada-android"
+        artifactId         : 'ble-characteristic-u2ada-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ada:${loadVersion}"
 ]
 
 ext.characteristicU2adbAndroid = [
-        artifactId         : "ble-characteristic-u2adb-android"
+        artifactId         : 'ble-characteristic-u2adb-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2adb:${loadVersion}"
 ]
 
 ext.characteristicU2adcAndroid = [
-        artifactId         : "ble-characteristic-u2adc-android"
+        artifactId         : 'ble-characteristic-u2adc-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2adc:${loadVersion}"
 ]
 
 ext.characteristicU2addAndroid = [
-        artifactId         : "ble-characteristic-u2add-android"
+        artifactId         : 'ble-characteristic-u2add-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2add:${loadVersion}"
 ]
 
 ext.characteristicU2adeAndroid = [
-        artifactId         : "ble-characteristic-u2ade-android"
+        artifactId         : 'ble-characteristic-u2ade-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ade:${loadVersion}"
 ]
 
 ext.characteristicU2ae0Android = [
-        artifactId         : "ble-characteristic-u2ae0-android"
+        artifactId         : 'ble-characteristic-u2ae0-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ae0:${loadVersion}"
 ]
 
 ext.characteristicU2ae1Android = [
-        artifactId         : "ble-characteristic-u2ae1-android"
+        artifactId         : 'ble-characteristic-u2ae1-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ae1:${loadVersion}"
 ]
 
 ext.characteristicU2ae2Android = [
-        artifactId         : "ble-characteristic-u2ae2-android"
+        artifactId         : 'ble-characteristic-u2ae2-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ae2:${loadVersion}"
 ]
 
 ext.characteristicU2ae3Android = [
-        artifactId         : "ble-characteristic-u2ae3-android"
+        artifactId         : 'ble-characteristic-u2ae3-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ae3:${loadVersion}"
 ]
 
 ext.characteristicU2ae4Android = [
-        artifactId         : "ble-characteristic-u2ae4-android"
+        artifactId         : 'ble-characteristic-u2ae4-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ae4:${loadVersion}"
 ]
 
 ext.characteristicU2ae5Android = [
-        artifactId         : "ble-characteristic-u2ae5-android"
+        artifactId         : 'ble-characteristic-u2ae5-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ae5:${loadVersion}"
 ]
 
 ext.characteristicU2ae6Android = [
-        artifactId         : "ble-characteristic-u2ae6-android"
+        artifactId         : 'ble-characteristic-u2ae6-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ae6:${loadVersion}"
 ]
 
 ext.characteristicU2ae7Android = [
-        artifactId         : "ble-characteristic-u2ae7-android"
+        artifactId         : 'ble-characteristic-u2ae7-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ae7:${loadVersion}"
 ]
 
 ext.characteristicU2ae8Android = [
-        artifactId         : "ble-characteristic-u2ae8-android"
+        artifactId         : 'ble-characteristic-u2ae8-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ae8:${loadVersion}"
 ]
 
 ext.characteristicU2ae9Android = [
-        artifactId         : "ble-characteristic-u2ae9-android"
+        artifactId         : 'ble-characteristic-u2ae9-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ae9:${loadVersion}"
 ]
 
 ext.characteristicU2aeaAndroid = [
-        artifactId         : "ble-characteristic-u2aea-android"
+        artifactId         : 'ble-characteristic-u2aea-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aea:${loadVersion}"
 ]
 
 ext.characteristicU2aebAndroid = [
-        artifactId         : "ble-characteristic-u2aeb-android"
+        artifactId         : 'ble-characteristic-u2aeb-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aeb:${loadVersion}"
 ]
 
 ext.characteristicU2aecAndroid = [
-        artifactId         : "ble-characteristic-u2aec-android"
+        artifactId         : 'ble-characteristic-u2aec-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aec:${loadVersion}"
 ]
 
 ext.characteristicU2aedAndroid = [
-        artifactId         : "ble-characteristic-u2aed-android"
+        artifactId         : 'ble-characteristic-u2aed-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aed:${loadVersion}"
 ]
 
 ext.characteristicU2aeeAndroid = [
-        artifactId         : "ble-characteristic-u2aee-android"
+        artifactId         : 'ble-characteristic-u2aee-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aee:${loadVersion}"
 ]
 
 ext.characteristicU2aefAndroid = [
-        artifactId         : "ble-characteristic-u2aef-android"
+        artifactId         : 'ble-characteristic-u2aef-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aef:${loadVersion}"
 ]
 
 ext.characteristicU2af0Android = [
-        artifactId         : "ble-characteristic-u2af0-android"
+        artifactId         : 'ble-characteristic-u2af0-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2af0:${loadVersion}"
 ]
 
 ext.characteristicU2af1Android = [
-        artifactId         : "ble-characteristic-u2af1-android"
+        artifactId         : 'ble-characteristic-u2af1-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2af1:${loadVersion}"
 ]
 
 ext.characteristicU2af2Android = [
-        artifactId         : "ble-characteristic-u2af2-android"
+        artifactId         : 'ble-characteristic-u2af2-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2af2:${loadVersion}"
 ]
 
 ext.characteristicU2af3Android = [
-        artifactId         : "ble-characteristic-u2af3-android"
+        artifactId         : 'ble-characteristic-u2af3-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2af3:${loadVersion}"
 ]
 
 ext.characteristicU2af4Android = [
-        artifactId         : "ble-characteristic-u2af4-android"
+        artifactId         : 'ble-characteristic-u2af4-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2af4:${loadVersion}"
 ]
 
 ext.characteristicU2af5Android = [
-        artifactId         : "ble-characteristic-u2af5-android"
+        artifactId         : 'ble-characteristic-u2af5-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2af5:${loadVersion}"
 ]
 
 ext.characteristicU2af6Android = [
-        artifactId         : "ble-characteristic-u2af6-android"
+        artifactId         : 'ble-characteristic-u2af6-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2af6:${loadVersion}"
 ]
 
 ext.characteristicU2af7Android = [
-        artifactId         : "ble-characteristic-u2af7-android"
+        artifactId         : 'ble-characteristic-u2af7-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2af7:${loadVersion}"
 ]
 
 ext.characteristicU2af8Android = [
-        artifactId         : "ble-characteristic-u2af8-android"
+        artifactId         : 'ble-characteristic-u2af8-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2af8:${loadVersion}"
 ]
 
 ext.characteristicU2af9Android = [
-        artifactId         : "ble-characteristic-u2af9-android"
+        artifactId         : 'ble-characteristic-u2af9-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2af9:${loadVersion}"
 ]
 
 ext.characteristicU2afaAndroid = [
-        artifactId         : "ble-characteristic-u2afa-android"
+        artifactId         : 'ble-characteristic-u2afa-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2afa:${loadVersion}"
 ]
 
 ext.characteristicU2afbAndroid = [
-        artifactId         : "ble-characteristic-u2afb-android"
+        artifactId         : 'ble-characteristic-u2afb-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2afb:${loadVersion}"
 ]
 
 ext.characteristicU2afcAndroid = [
-        artifactId         : "ble-characteristic-u2afc-android"
+        artifactId         : 'ble-characteristic-u2afc-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2afc:${loadVersion}"
 ]
 
 ext.characteristicU2afdAndroid = [
-        artifactId         : "ble-characteristic-u2afd-android"
+        artifactId         : 'ble-characteristic-u2afd-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2afd:${loadVersion}"
 ]
 
 ext.characteristicU2afeAndroid = [
-        artifactId         : "ble-characteristic-u2afe-android"
+        artifactId         : 'ble-characteristic-u2afe-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2afe:${loadVersion}"
 ]
 
 ext.characteristicU2affAndroid = [
-        artifactId         : "ble-characteristic-u2aff-android"
+        artifactId         : 'ble-characteristic-u2aff-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2aff:${loadVersion}"
 ]
 
 ext.characteristicU2b00Android = [
-        artifactId         : "ble-characteristic-u2b00-android"
+        artifactId         : 'ble-characteristic-u2b00-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b00:${loadVersion}"
 ]
 
 ext.characteristicU2b01Android = [
-        artifactId         : "ble-characteristic-u2b01-android"
+        artifactId         : 'ble-characteristic-u2b01-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b01:${loadVersion}"
 ]
 
 ext.characteristicU2b02Android = [
-        artifactId         : "ble-characteristic-u2b02-android"
+        artifactId         : 'ble-characteristic-u2b02-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b02:${loadVersion}"
 ]
 
 ext.characteristicU2b03Android = [
-        artifactId         : "ble-characteristic-u2b03-android"
+        artifactId         : 'ble-characteristic-u2b03-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b03:${loadVersion}"
 ]
 
 ext.characteristicU2b04Android = [
-        artifactId         : "ble-characteristic-u2b04-android"
+        artifactId         : 'ble-characteristic-u2b04-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b04:${loadVersion}"
 ]
 
 ext.characteristicU2b05Android = [
-        artifactId         : "ble-characteristic-u2b05-android"
+        artifactId         : 'ble-characteristic-u2b05-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b05:${loadVersion}"
 ]
 
 ext.characteristicU2b06Android = [
-        artifactId         : "ble-characteristic-u2b06-android"
+        artifactId         : 'ble-characteristic-u2b06-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b06:${loadVersion}"
 ]
 
 ext.characteristicU2b07Android = [
-        artifactId         : "ble-characteristic-u2b07-android"
+        artifactId         : 'ble-characteristic-u2b07-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b07:${loadVersion}"
 ]
 
 ext.characteristicU2b08Android = [
-        artifactId         : "ble-characteristic-u2b08-android"
+        artifactId         : 'ble-characteristic-u2b08-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b08:${loadVersion}"
 ]
 
 ext.characteristicU2b09Android = [
-        artifactId         : "ble-characteristic-u2b09-android"
+        artifactId         : 'ble-characteristic-u2b09-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b09:${loadVersion}"
 ]
 
 ext.characteristicU2b0aAndroid = [
-        artifactId         : "ble-characteristic-u2b0a-android"
+        artifactId         : 'ble-characteristic-u2b0a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b0a:${loadVersion}"
 ]
 
 ext.characteristicU2b0bAndroid = [
-        artifactId         : "ble-characteristic-u2b0b-android"
+        artifactId         : 'ble-characteristic-u2b0b-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b0b:${loadVersion}"
 ]
 
 ext.characteristicU2b0cAndroid = [
-        artifactId         : "ble-characteristic-u2b0c-android"
+        artifactId         : 'ble-characteristic-u2b0c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b0c:${loadVersion}"
 ]
 
 ext.characteristicU2b0dAndroid = [
-        artifactId         : "ble-characteristic-u2b0d-android"
+        artifactId         : 'ble-characteristic-u2b0d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b0d:${loadVersion}"
 ]
 
 ext.characteristicU2b0eAndroid = [
-        artifactId         : "ble-characteristic-u2b0e-android"
+        artifactId         : 'ble-characteristic-u2b0e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b0e:${loadVersion}"
 ]
 
 ext.characteristicU2b0fAndroid = [
-        artifactId         : "ble-characteristic-u2b0f-android"
+        artifactId         : 'ble-characteristic-u2b0f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b0f:${loadVersion}"
 ]
 
 ext.characteristicU2b10Android = [
-        artifactId         : "ble-characteristic-u2b10-android"
+        artifactId         : 'ble-characteristic-u2b10-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b10:${loadVersion}"
 ]
 
 ext.characteristicU2b11Android = [
-        artifactId         : "ble-characteristic-u2b11-android"
+        artifactId         : 'ble-characteristic-u2b11-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b11:${loadVersion}"
 ]
 
 ext.characteristicU2b12Android = [
-        artifactId         : "ble-characteristic-u2b12-android"
+        artifactId         : 'ble-characteristic-u2b12-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b12:${loadVersion}"
 ]
 
 ext.characteristicU2b13Android = [
-        artifactId         : "ble-characteristic-u2b13-android"
+        artifactId         : 'ble-characteristic-u2b13-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b13:${loadVersion}"
 ]
 
 ext.characteristicU2b14Android = [
-        artifactId         : "ble-characteristic-u2b14-android"
+        artifactId         : 'ble-characteristic-u2b14-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b14:${loadVersion}"
 ]
 
 ext.characteristicU2b15Android = [
-        artifactId         : "ble-characteristic-u2b15-android"
+        artifactId         : 'ble-characteristic-u2b15-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b15:${loadVersion}"
 ]
 
 ext.characteristicU2b16Android = [
-        artifactId         : "ble-characteristic-u2b16-android"
+        artifactId         : 'ble-characteristic-u2b16-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b16:${loadVersion}"
 ]
 
 ext.characteristicU2b17Android = [
-        artifactId         : "ble-characteristic-u2b17-android"
+        artifactId         : 'ble-characteristic-u2b17-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b17:${loadVersion}"
 ]
 
 ext.characteristicU2b18Android = [
-        artifactId         : "ble-characteristic-u2b18-android"
+        artifactId         : 'ble-characteristic-u2b18-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b18:${loadVersion}"
 ]
 
 ext.characteristicU2b19Android = [
-        artifactId         : "ble-characteristic-u2b19-android"
+        artifactId         : 'ble-characteristic-u2b19-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b19:${loadVersion}"
 ]
 
 ext.characteristicU2b1aAndroid = [
-        artifactId         : "ble-characteristic-u2b1a-android"
+        artifactId         : 'ble-characteristic-u2b1a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b1a:${loadVersion}"
 ]
 
 ext.characteristicU2b1bAndroid = [
-        artifactId         : "ble-characteristic-u2b1b-android"
+        artifactId         : 'ble-characteristic-u2b1b-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b1b:${loadVersion}"
 ]
 
 ext.characteristicU2b1cAndroid = [
-        artifactId         : "ble-characteristic-u2b1c-android"
+        artifactId         : 'ble-characteristic-u2b1c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b1c:${loadVersion}"
 ]
 
 ext.characteristicU2b1dAndroid = [
-        artifactId         : "ble-characteristic-u2b1d-android"
+        artifactId         : 'ble-characteristic-u2b1d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b1d:${loadVersion}"
 ]
 
 ext.characteristicU2b1eAndroid = [
-        artifactId         : "ble-characteristic-u2b1e-android"
+        artifactId         : 'ble-characteristic-u2b1e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b1e:${loadVersion}"
 ]
 
 ext.characteristicU2b1fAndroid = [
-        artifactId         : "ble-characteristic-u2b1f-android"
+        artifactId         : 'ble-characteristic-u2b1f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b1f:${loadVersion}"
 ]
 
 ext.characteristicU2b20Android = [
-        artifactId         : "ble-characteristic-u2b20-android"
+        artifactId         : 'ble-characteristic-u2b20-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b20:${loadVersion}"
 ]
 
 ext.characteristicU2b21Android = [
-        artifactId         : "ble-characteristic-u2b21-android"
+        artifactId         : 'ble-characteristic-u2b21-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b21:${loadVersion}"
 ]
 
 ext.characteristicU2b22Android = [
-        artifactId         : "ble-characteristic-u2b22-android"
+        artifactId         : 'ble-characteristic-u2b22-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b22:${loadVersion}"
 ]
 
 ext.characteristicU2b23Android = [
-        artifactId         : "ble-characteristic-u2b23-android"
+        artifactId         : 'ble-characteristic-u2b23-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b23:${loadVersion}"
 ]
 
 ext.characteristicU2b24Android = [
-        artifactId         : "ble-characteristic-u2b24-android"
+        artifactId         : 'ble-characteristic-u2b24-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b24:${loadVersion}"
 ]
 
 ext.characteristicU2b25Android = [
-        artifactId         : "ble-characteristic-u2b25-android"
+        artifactId         : 'ble-characteristic-u2b25-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b25:${loadVersion}"
 ]
 
 ext.characteristicU2b26Android = [
-        artifactId         : "ble-characteristic-u2b26-android"
+        artifactId         : 'ble-characteristic-u2b26-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b26:${loadVersion}"
 ]
 
 ext.characteristicU2b27Android = [
-        artifactId         : "ble-characteristic-u2b27-android"
+        artifactId         : 'ble-characteristic-u2b27-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b27:${loadVersion}"
 ]
 
 ext.characteristicU2b28Android = [
-        artifactId         : "ble-characteristic-u2b28-android"
+        artifactId         : 'ble-characteristic-u2b28-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b28:${loadVersion}"
 ]
 
 ext.characteristicU2b29Android = [
-        artifactId         : "ble-characteristic-u2b29-android"
+        artifactId         : 'ble-characteristic-u2b29-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b29:${loadVersion}"
 ]
 
 ext.characteristicU2b2aAndroid = [
-        artifactId         : "ble-characteristic-u2b2a-android"
+        artifactId         : 'ble-characteristic-u2b2a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b2a:${loadVersion}"
 ]
 
 ext.characteristicU2b2bAndroid = [
-        artifactId         : "ble-characteristic-u2b2b-android"
+        artifactId         : 'ble-characteristic-u2b2b-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b2b:${loadVersion}"
 ]
 
 ext.characteristicU2b2cAndroid = [
-        artifactId         : "ble-characteristic-u2b2c-android"
+        artifactId         : 'ble-characteristic-u2b2c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b2c:${loadVersion}"
 ]
 
 ext.characteristicU2b2dAndroid = [
-        artifactId         : "ble-characteristic-u2b2d-android"
+        artifactId         : 'ble-characteristic-u2b2d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b2d:${loadVersion}"
 ]
 
 ext.characteristicU2b2eAndroid = [
-        artifactId         : "ble-characteristic-u2b2e-android"
+        artifactId         : 'ble-characteristic-u2b2e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b2e:${loadVersion}"
 ]
 
 ext.characteristicU2b34Android = [
-        artifactId         : "ble-characteristic-u2b34-android"
+        artifactId         : 'ble-characteristic-u2b34-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b34:${loadVersion}"
 ]
 
 ext.characteristicU2b35Android = [
-        artifactId         : "ble-characteristic-u2b35-android"
+        artifactId         : 'ble-characteristic-u2b35-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b35:${loadVersion}"
 ]
 
 ext.characteristicU2b36Android = [
-        artifactId         : "ble-characteristic-u2b36-android"
+        artifactId         : 'ble-characteristic-u2b36-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b36:${loadVersion}"
 ]
 
 ext.characteristicU2b37Android = [
-        artifactId         : "ble-characteristic-u2b37-android"
+        artifactId         : 'ble-characteristic-u2b37-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b37:${loadVersion}"
 ]
 
 ext.characteristicU2b38Android = [
-        artifactId         : "ble-characteristic-u2b38-android"
+        artifactId         : 'ble-characteristic-u2b38-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b38:${loadVersion}"
 ]
 
 ext.characteristicU2b39Android = [
-        artifactId         : "ble-characteristic-u2b39-android"
+        artifactId         : 'ble-characteristic-u2b39-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b39:${loadVersion}"
 ]
 
 ext.characteristicU2b3aAndroid = [
-        artifactId         : "ble-characteristic-u2b3a-android"
+        artifactId         : 'ble-characteristic-u2b3a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b3a:${loadVersion}"
 ]
 
 ext.characteristicU2b3bAndroid = [
-        artifactId         : "ble-characteristic-u2b3b-android"
+        artifactId         : 'ble-characteristic-u2b3b-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b3b:${loadVersion}"
 ]
 
 ext.characteristicU2b3cAndroid = [
-        artifactId         : "ble-characteristic-u2b3c-android"
+        artifactId         : 'ble-characteristic-u2b3c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b3c:${loadVersion}"
 ]
 
 ext.characteristicU2b3dAndroid = [
-        artifactId         : "ble-characteristic-u2b3d-android"
+        artifactId         : 'ble-characteristic-u2b3d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b3d:${loadVersion}"
 ]
 
 ext.characteristicU2b3eAndroid = [
-        artifactId         : "ble-characteristic-u2b3e-android"
+        artifactId         : 'ble-characteristic-u2b3e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b3e:${loadVersion}"
 ]
 
 ext.characteristicU2b3fAndroid = [
-        artifactId         : "ble-characteristic-u2b3f-android"
+        artifactId         : 'ble-characteristic-u2b3f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b3f:${loadVersion}"
 ]
 
 ext.characteristicU2b40Android = [
-        artifactId         : "ble-characteristic-u2b40-android"
+        artifactId         : 'ble-characteristic-u2b40-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b40:${loadVersion}"
 ]
 
 ext.characteristicU2b41Android = [
-        artifactId         : "ble-characteristic-u2b41-android"
+        artifactId         : 'ble-characteristic-u2b41-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b41:${loadVersion}"
 ]
 
 ext.characteristicU2b42Android = [
-        artifactId         : "ble-characteristic-u2b42-android"
+        artifactId         : 'ble-characteristic-u2b42-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b42:${loadVersion}"
 ]
 
 ext.characteristicU2b43Android = [
-        artifactId         : "ble-characteristic-u2b43-android"
+        artifactId         : 'ble-characteristic-u2b43-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b43:${loadVersion}"
 ]
 
 ext.characteristicU2b44Android = [
-        artifactId         : "ble-characteristic-u2b44-android"
+        artifactId         : 'ble-characteristic-u2b44-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b44:${loadVersion}"
 ]
 
 ext.characteristicU2b45Android = [
-        artifactId         : "ble-characteristic-u2b45-android"
+        artifactId         : 'ble-characteristic-u2b45-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b45:${loadVersion}"
 ]
 
 ext.characteristicU2b46Android = [
-        artifactId         : "ble-characteristic-u2b46-android"
+        artifactId         : 'ble-characteristic-u2b46-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b46:${loadVersion}"
 ]
 
 ext.characteristicU2b47Android = [
-        artifactId         : "ble-characteristic-u2b47-android"
+        artifactId         : 'ble-characteristic-u2b47-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b47:${loadVersion}"
 ]
 
 ext.characteristicU2b48Android = [
-        artifactId         : "ble-characteristic-u2b48-android"
+        artifactId         : 'ble-characteristic-u2b48-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b48:${loadVersion}"
 ]
 
 ext.characteristicU2b49Android = [
-        artifactId         : "ble-characteristic-u2b49-android"
+        artifactId         : 'ble-characteristic-u2b49-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b49:${loadVersion}"
 ]
 
 ext.characteristicU2b4aAndroid = [
-        artifactId         : "ble-characteristic-u2b4a-android"
+        artifactId         : 'ble-characteristic-u2b4a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b4a:${loadVersion}"
 ]
 
 ext.characteristicU2b4bAndroid = [
-        artifactId         : "ble-characteristic-u2b4b-android"
+        artifactId         : 'ble-characteristic-u2b4b-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b4b:${loadVersion}"
 ]
 
 ext.characteristicU2b4cAndroid = [
-        artifactId         : "ble-characteristic-u2b4c-android"
+        artifactId         : 'ble-characteristic-u2b4c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b4c:${loadVersion}"
 ]
 
 ext.characteristicU2b4dAndroid = [
-        artifactId         : "ble-characteristic-u2b4d-android"
+        artifactId         : 'ble-characteristic-u2b4d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b4d:${loadVersion}"
 ]
 
 ext.characteristicU2b4eAndroid = [
-        artifactId         : "ble-characteristic-u2b4e-android"
+        artifactId         : 'ble-characteristic-u2b4e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b4e:${loadVersion}"
 ]
 
 ext.characteristicU2b4fAndroid = [
-        artifactId         : "ble-characteristic-u2b4f-android"
+        artifactId         : 'ble-characteristic-u2b4f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b4f:${loadVersion}"
 ]
 
 ext.characteristicU2b50Android = [
-        artifactId         : "ble-characteristic-u2b50-android"
+        artifactId         : 'ble-characteristic-u2b50-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b50:${loadVersion}"
 ]
 
 ext.characteristicU2b77Android = [
-        artifactId         : "ble-characteristic-u2b77-android"
+        artifactId         : 'ble-characteristic-u2b77-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b77:${loadVersion}"
 ]
 
 ext.characteristicU2b78Android = [
-        artifactId         : "ble-characteristic-u2b78-android"
+        artifactId         : 'ble-characteristic-u2b78-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b78:${loadVersion}"
 ]
 
 ext.characteristicU2b79Android = [
-        artifactId         : "ble-characteristic-u2b79-android"
+        artifactId         : 'ble-characteristic-u2b79-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b79:${loadVersion}"
 ]
 
 ext.characteristicU2b7aAndroid = [
-        artifactId         : "ble-characteristic-u2b7a-android"
+        artifactId         : 'ble-characteristic-u2b7a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b7a:${loadVersion}"
 ]
 
 ext.characteristicU2b7bAndroid = [
-        artifactId         : "ble-characteristic-u2b7b-android"
+        artifactId         : 'ble-characteristic-u2b7b-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b7b:${loadVersion}"
 ]
 
 ext.characteristicU2b7cAndroid = [
-        artifactId         : "ble-characteristic-u2b7c-android"
+        artifactId         : 'ble-characteristic-u2b7c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b7c:${loadVersion}"
 ]
 
 ext.characteristicU2b7dAndroid = [
-        artifactId         : "ble-characteristic-u2b7d-android"
+        artifactId         : 'ble-characteristic-u2b7d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b7d:${loadVersion}"
 ]
 
 ext.characteristicU2b7eAndroid = [
-        artifactId         : "ble-characteristic-u2b7e-android"
+        artifactId         : 'ble-characteristic-u2b7e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b7e:${loadVersion}"
 ]
 
 ext.characteristicU2b7fAndroid = [
-        artifactId         : "ble-characteristic-u2b7f-android"
+        artifactId         : 'ble-characteristic-u2b7f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b7f:${loadVersion}"
 ]
 
 ext.characteristicU2b80Android = [
-        artifactId         : "ble-characteristic-u2b80-android"
+        artifactId         : 'ble-characteristic-u2b80-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b80:${loadVersion}"
 ]
 
 ext.characteristicU2b81Android = [
-        artifactId         : "ble-characteristic-u2b81-android"
+        artifactId         : 'ble-characteristic-u2b81-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b81:${loadVersion}"
 ]
 
 ext.characteristicU2b82Android = [
-        artifactId         : "ble-characteristic-u2b82-android"
+        artifactId         : 'ble-characteristic-u2b82-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b82:${loadVersion}"
 ]
 
 ext.characteristicU2b83Android = [
-        artifactId         : "ble-characteristic-u2b83-android"
+        artifactId         : 'ble-characteristic-u2b83-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b83:${loadVersion}"
 ]
 
 ext.characteristicU2b84Android = [
-        artifactId         : "ble-characteristic-u2b84-android"
+        artifactId         : 'ble-characteristic-u2b84-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b84:${loadVersion}"
 ]
 
 ext.characteristicU2b85Android = [
-        artifactId         : "ble-characteristic-u2b85-android"
+        artifactId         : 'ble-characteristic-u2b85-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b85:${loadVersion}"
 ]
 
 ext.characteristicU2b86Android = [
-        artifactId         : "ble-characteristic-u2b86-android"
+        artifactId         : 'ble-characteristic-u2b86-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b86:${loadVersion}"
 ]
 
 ext.characteristicU2b87Android = [
-        artifactId         : "ble-characteristic-u2b87-android"
+        artifactId         : 'ble-characteristic-u2b87-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b87:${loadVersion}"
 ]
 
 ext.characteristicU2b88Android = [
-        artifactId         : "ble-characteristic-u2b88-android"
+        artifactId         : 'ble-characteristic-u2b88-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b88:${loadVersion}"
 ]
 
 ext.characteristicU2b8eAndroid = [
-        artifactId         : "ble-characteristic-u2b8e-android"
+        artifactId         : 'ble-characteristic-u2b8e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b8e:${loadVersion}"
 ]
 
 ext.characteristicU2b8fAndroid = [
-        artifactId         : "ble-characteristic-u2b8f-android"
+        artifactId         : 'ble-characteristic-u2b8f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b8f:${loadVersion}"
 ]
 
 ext.characteristicU2b90Android = [
-        artifactId         : "ble-characteristic-u2b90-android"
+        artifactId         : 'ble-characteristic-u2b90-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b90:${loadVersion}"
 ]
 
 ext.characteristicU2b91Android = [
-        artifactId         : "ble-characteristic-u2b91-android"
+        artifactId         : 'ble-characteristic-u2b91-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b91:${loadVersion}"
 ]
 
 ext.characteristicU2b92Android = [
-        artifactId         : "ble-characteristic-u2b92-android"
+        artifactId         : 'ble-characteristic-u2b92-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b92:${loadVersion}"
 ]
 
 ext.characteristicU2b93Android = [
-        artifactId         : "ble-characteristic-u2b93-android"
+        artifactId         : 'ble-characteristic-u2b93-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b93:${loadVersion}"
 ]
 
 ext.characteristicU2b94Android = [
-        artifactId         : "ble-characteristic-u2b94-android"
+        artifactId         : 'ble-characteristic-u2b94-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b94:${loadVersion}"
 ]
 
 ext.characteristicU2b95Android = [
-        artifactId         : "ble-characteristic-u2b95-android"
+        artifactId         : 'ble-characteristic-u2b95-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b95:${loadVersion}"
 ]
 
 ext.characteristicU2b96Android = [
-        artifactId         : "ble-characteristic-u2b96-android"
+        artifactId         : 'ble-characteristic-u2b96-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b96:${loadVersion}"
 ]
 
 ext.characteristicU2b97Android = [
-        artifactId         : "ble-characteristic-u2b97-android"
+        artifactId         : 'ble-characteristic-u2b97-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b97:${loadVersion}"
 ]
 
 ext.characteristicU2b98Android = [
-        artifactId         : "ble-characteristic-u2b98-android"
+        artifactId         : 'ble-characteristic-u2b98-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b98:${loadVersion}"
 ]
 
 ext.characteristicU2b99Android = [
-        artifactId         : "ble-characteristic-u2b99-android"
+        artifactId         : 'ble-characteristic-u2b99-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b99:${loadVersion}"
 ]
 
 ext.characteristicU2b9aAndroid = [
-        artifactId         : "ble-characteristic-u2b9a-android"
+        artifactId         : 'ble-characteristic-u2b9a-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b9a:${loadVersion}"
 ]
 
 ext.characteristicU2b9bAndroid = [
-        artifactId         : "ble-characteristic-u2b9b-android"
+        artifactId         : 'ble-characteristic-u2b9b-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b9b:${loadVersion}"
 ]
 
 ext.characteristicU2b9cAndroid = [
-        artifactId         : "ble-characteristic-u2b9c-android"
+        artifactId         : 'ble-characteristic-u2b9c-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b9c:${loadVersion}"
 ]
 
 ext.characteristicU2b9dAndroid = [
-        artifactId         : "ble-characteristic-u2b9d-android"
+        artifactId         : 'ble-characteristic-u2b9d-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b9d:${loadVersion}"
 ]
 
 ext.characteristicU2b9eAndroid = [
-        artifactId         : "ble-characteristic-u2b9e-android"
+        artifactId         : 'ble-characteristic-u2b9e-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b9e:${loadVersion}"
 ]
 
 ext.characteristicU2b9fAndroid = [
-        artifactId         : "ble-characteristic-u2b9f-android"
+        artifactId         : 'ble-characteristic-u2b9f-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2b9f:${loadVersion}"
 ]
 
 ext.characteristicU2ba0Android = [
-        artifactId         : "ble-characteristic-u2ba0-android"
+        artifactId         : 'ble-characteristic-u2ba0-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ba0:${loadVersion}"
 ]
 
 ext.characteristicU2ba1Android = [
-        artifactId         : "ble-characteristic-u2ba1-android"
+        artifactId         : 'ble-characteristic-u2ba1-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ba1:${loadVersion}"
 ]
 
 ext.characteristicU2ba2Android = [
-        artifactId         : "ble-characteristic-u2ba2-android"
+        artifactId         : 'ble-characteristic-u2ba2-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ba2:${loadVersion}"
 ]
 
 ext.characteristicU2ba3Android = [
-        artifactId         : "ble-characteristic-u2ba3-android"
+        artifactId         : 'ble-characteristic-u2ba3-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ba3:${loadVersion}"
 ]
 
 ext.characteristicU2ba4Android = [
-        artifactId         : "ble-characteristic-u2ba4-android"
+        artifactId         : 'ble-characteristic-u2ba4-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ba4:${loadVersion}"
 ]
 
 ext.characteristicU2ba5Android = [
-        artifactId         : "ble-characteristic-u2ba5-android"
+        artifactId         : 'ble-characteristic-u2ba5-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ba5:${loadVersion}"
 ]
 
 ext.characteristicU2ba6Android = [
-        artifactId         : "ble-characteristic-u2ba6-android"
+        artifactId         : 'ble-characteristic-u2ba6-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ba6:${loadVersion}"
 ]
 
 ext.characteristicU2ba7Android = [
-        artifactId         : "ble-characteristic-u2ba7-android"
+        artifactId         : 'ble-characteristic-u2ba7-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ba7:${loadVersion}"
 ]
 
 ext.characteristicU2ba9Android = [
-        artifactId         : "ble-characteristic-u2ba9-android"
+        artifactId         : 'ble-characteristic-u2ba9-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2ba9:${loadVersion}"
 ]
 
 ext.characteristicU2baaAndroid = [
-        artifactId         : "ble-characteristic-u2baa-android"
+        artifactId         : 'ble-characteristic-u2baa-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2baa:${loadVersion}"
 ]
 
 ext.characteristicU2babAndroid = [
-        artifactId         : "ble-characteristic-u2bab-android"
+        artifactId         : 'ble-characteristic-u2bab-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bab:${loadVersion}"
 ]
 
 ext.characteristicU2bacAndroid = [
-        artifactId         : "ble-characteristic-u2bac-android"
+        artifactId         : 'ble-characteristic-u2bac-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bac:${loadVersion}"
 ]
 
 ext.characteristicU2badAndroid = [
-        artifactId         : "ble-characteristic-u2bad-android"
+        artifactId         : 'ble-characteristic-u2bad-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bad:${loadVersion}"
 ]
 
 ext.characteristicU2baeAndroid = [
-        artifactId         : "ble-characteristic-u2bae-android"
+        artifactId         : 'ble-characteristic-u2bae-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bae:${loadVersion}"
 ]
 
 ext.characteristicU2bafAndroid = [
-        artifactId         : "ble-characteristic-u2baf-android"
+        artifactId         : 'ble-characteristic-u2baf-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2baf:${loadVersion}"
 ]
 
 ext.characteristicU2bb0Android = [
-        artifactId         : "ble-characteristic-u2bb0-android"
+        artifactId         : 'ble-characteristic-u2bb0-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bb0:${loadVersion}"
 ]
 
 ext.characteristicU2bb1Android = [
-        artifactId         : "ble-characteristic-u2bb1-android"
+        artifactId         : 'ble-characteristic-u2bb1-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bb1:${loadVersion}"
 ]
 
 ext.characteristicU2bb2Android = [
-        artifactId         : "ble-characteristic-u2bb2-android"
+        artifactId         : 'ble-characteristic-u2bb2-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bb2:${loadVersion}"
 ]
 
 ext.characteristicU2bb3Android = [
-        artifactId         : "ble-characteristic-u2bb3-android"
+        artifactId         : 'ble-characteristic-u2bb3-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bb3:${loadVersion}"
 ]
 
 ext.characteristicU2bb4Android = [
-        artifactId         : "ble-characteristic-u2bb4-android"
+        artifactId         : 'ble-characteristic-u2bb4-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bb4:${loadVersion}"
 ]
 
 ext.characteristicU2bb5Android = [
-        artifactId         : "ble-characteristic-u2bb5-android"
+        artifactId         : 'ble-characteristic-u2bb5-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bb5:${loadVersion}"
 ]
 
 ext.characteristicU2bb6Android = [
-        artifactId         : "ble-characteristic-u2bb6-android"
+        artifactId         : 'ble-characteristic-u2bb6-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bb6:${loadVersion}"
 ]
 
 ext.characteristicU2bb7Android = [
-        artifactId         : "ble-characteristic-u2bb7-android"
+        artifactId         : 'ble-characteristic-u2bb7-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bb7:${loadVersion}"
 ]
 
 ext.characteristicU2bb8Android = [
-        artifactId         : "ble-characteristic-u2bb8-android"
+        artifactId         : 'ble-characteristic-u2bb8-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bb8:${loadVersion}"
 ]
 
 ext.characteristicU2bb9Android = [
-        artifactId         : "ble-characteristic-u2bb9-android"
+        artifactId         : 'ble-characteristic-u2bb9-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bb9:${loadVersion}"
 ]
 
 ext.characteristicU2bbaAndroid = [
-        artifactId         : "ble-characteristic-u2bba-android"
+        artifactId         : 'ble-characteristic-u2bba-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bba:${loadVersion}"
 ]
 
 ext.characteristicU2bbbAndroid = [
-        artifactId         : "ble-characteristic-u2bbb-android"
+        artifactId         : 'ble-characteristic-u2bbb-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bbb:${loadVersion}"
 ]
 
 ext.characteristicU2bbcAndroid = [
-        artifactId         : "ble-characteristic-u2bbc-android"
+        artifactId         : 'ble-characteristic-u2bbc-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bbc:${loadVersion}"
 ]
 
 ext.characteristicU2bbdAndroid = [
-        artifactId         : "ble-characteristic-u2bbd-android"
+        artifactId         : 'ble-characteristic-u2bbd-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bbd:${loadVersion}"
 ]
 
 ext.characteristicU2bbeAndroid = [
-        artifactId         : "ble-characteristic-u2bbe-android"
+        artifactId         : 'ble-characteristic-u2bbe-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bbe:${loadVersion}"
 ]
 
 ext.characteristicU2bbfAndroid = [
-        artifactId         : "ble-characteristic-u2bbf-android"
+        artifactId         : 'ble-characteristic-u2bbf-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bbf:${loadVersion}"
 ]
 
 ext.characteristicU2bc0Android = [
-        artifactId         : "ble-characteristic-u2bc0-android"
+        artifactId         : 'ble-characteristic-u2bc0-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bc0:${loadVersion}"
 ]
 
 ext.characteristicU2bc1Android = [
-        artifactId         : "ble-characteristic-u2bc1-android"
+        artifactId         : 'ble-characteristic-u2bc1-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bc1:${loadVersion}"
 ]
 
 ext.characteristicU2bc2Android = [
-        artifactId         : "ble-characteristic-u2bc2-android"
+        artifactId         : 'ble-characteristic-u2bc2-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bc2:${loadVersion}"
 ]
 
 ext.characteristicU2bc3Android = [
-        artifactId         : "ble-characteristic-u2bc3-android"
+        artifactId         : 'ble-characteristic-u2bc3-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bc3:${loadVersion}"
 ]
 
 ext.characteristicU2bc4Android = [
-        artifactId         : "ble-characteristic-u2bc4-android"
+        artifactId         : 'ble-characteristic-u2bc4-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bc4:${loadVersion}"
 ]
 
 ext.characteristicU2bc5Android = [
-        artifactId         : "ble-characteristic-u2bc5-android"
+        artifactId         : 'ble-characteristic-u2bc5-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bc5:${loadVersion}"
 ]
 
 ext.characteristicU2bc6Android = [
-        artifactId         : "ble-characteristic-u2bc6-android"
+        artifactId         : 'ble-characteristic-u2bc6-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bc6:${loadVersion}"
 ]
 
 ext.characteristicU2bc7Android = [
-        artifactId         : "ble-characteristic-u2bc7-android"
+        artifactId         : 'ble-characteristic-u2bc7-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bc7:${loadVersion}"
 ]
 
 ext.characteristicU2bc8Android = [
-        artifactId         : "ble-characteristic-u2bc8-android"
+        artifactId         : 'ble-characteristic-u2bc8-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bc8:${loadVersion}"
 ]
 
 ext.characteristicU2bc9Android = [
-        artifactId         : "ble-characteristic-u2bc9-android"
+        artifactId         : 'ble-characteristic-u2bc9-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bc9:${loadVersion}"
 ]
 
 ext.characteristicU2bcaAndroid = [
-        artifactId         : "ble-characteristic-u2bca-android"
+        artifactId         : 'ble-characteristic-u2bca-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bca:${loadVersion}"
 ]
 
 ext.characteristicU2bcbAndroid = [
-        artifactId         : "ble-characteristic-u2bcb-android"
+        artifactId         : 'ble-characteristic-u2bcb-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bcb:${loadVersion}"
 ]
 
 ext.characteristicU2bccAndroid = [
-        artifactId         : "ble-characteristic-u2bcc-android"
+        artifactId         : 'ble-characteristic-u2bcc-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bcc:${loadVersion}"
 ]
 
 ext.characteristicU2bcdAndroid = [
-        artifactId         : "ble-characteristic-u2bcd-android"
+        artifactId         : 'ble-characteristic-u2bcd-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bcd:${loadVersion}"
 ]
 
 ext.characteristicU2bceAndroid = [
-        artifactId         : "ble-characteristic-u2bce-android"
+        artifactId         : 'ble-characteristic-u2bce-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bce:${loadVersion}"
 ]
 
 ext.characteristicU2bcfAndroid = [
-        artifactId         : "ble-characteristic-u2bcf-android"
+        artifactId         : 'ble-characteristic-u2bcf-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bcf:${loadVersion}"
 ]
 
 ext.characteristicU2bd0Android = [
-        artifactId         : "ble-characteristic-u2bd0-android"
+        artifactId         : 'ble-characteristic-u2bd0-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bd0:${loadVersion}"
 ]
 
 ext.characteristicU2bd1Android = [
-        artifactId         : "ble-characteristic-u2bd1-android"
+        artifactId         : 'ble-characteristic-u2bd1-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bd1:${loadVersion}"
 ]
 
 ext.characteristicU2bd2Android = [
-        artifactId         : "ble-characteristic-u2bd2-android"
+        artifactId         : 'ble-characteristic-u2bd2-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bd2:${loadVersion}"
 ]
 
 ext.characteristicU2bd3Android = [
-        artifactId         : "ble-characteristic-u2bd3-android"
+        artifactId         : 'ble-characteristic-u2bd3-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bd3:${loadVersion}"
 ]
 
 ext.characteristicU2bd4Android = [
-        artifactId         : "ble-characteristic-u2bd4-android"
+        artifactId         : 'ble-characteristic-u2bd4-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bd4:${loadVersion}"
 ]
 
 ext.characteristicU2bd5Android = [
-        artifactId         : "ble-characteristic-u2bd5-android"
+        artifactId         : 'ble-characteristic-u2bd5-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bd5:${loadVersion}"
 ]
 
 ext.characteristicU2bd6Android = [
-        artifactId         : "ble-characteristic-u2bd6-android"
+        artifactId         : 'ble-characteristic-u2bd6-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bd6:${loadVersion}"
 ]
 
 ext.characteristicU2bd7Android = [
-        artifactId         : "ble-characteristic-u2bd7-android"
+        artifactId         : 'ble-characteristic-u2bd7-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bd7:${loadVersion}"
 ]
 
 ext.characteristicU2bd8Android = [
-        artifactId         : "ble-characteristic-u2bd8-android"
+        artifactId         : 'ble-characteristic-u2bd8-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bd8:${loadVersion}"
 ]
 
 ext.characteristicU2bd9Android = [
-        artifactId         : "ble-characteristic-u2bd9-android"
+        artifactId         : 'ble-characteristic-u2bd9-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bd9:${loadVersion}"
 ]
 
 ext.characteristicU2bdfAndroid = [
-        artifactId         : "ble-characteristic-u2bdf-android"
+        artifactId         : 'ble-characteristic-u2bdf-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bdf:${loadVersion}"
 ]
 
 ext.characteristicU2bf5Android = [
-        artifactId         : "ble-characteristic-u2bf5-android"
+        artifactId         : 'ble-characteristic-u2bf5-android'
         , baseModule       : "${myGroupId}:ble-characteristic-u2bf5:${loadVersion}"
 ]
 
 ext.characteristicAndroid = [
-        artifactId         : "ble-characteristic-android"
+        artifactId         : 'ble-characteristic-android'
 ]

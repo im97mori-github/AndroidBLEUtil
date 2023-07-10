@@ -1,239 +1,239 @@
 ext.profileCentralAndroid = [
-        artifactId         : "ble-profile-central-android"
+        artifactId         : 'ble-profile-central-android'
 ]
 
 ext.profilePeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-android"
+        artifactId         : 'ble-profile-peripheral-android'
 ]
 
 ext.profileAiopAndroid = [
-        artifactId         : "ble-profile-aiop-android"
+        artifactId         : 'ble-profile-aiop-android'
 ]
 
 ext.profileAiopCentralAndroid = [
-        artifactId         : "ble-profile-central-aiop-android"
+        artifactId         : 'ble-profile-central-aiop-android'
 ]
 
 ext.profileAiopPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-aiop-android"
+        artifactId         : 'ble-profile-peripheral-aiop-android'
 ]
 
 ext.profileAnpAndroid = [
-        artifactId         : "ble-profile-anp-android"
+        artifactId         : 'ble-profile-anp-android'
 ]
 
 ext.profileAnpCentralAndroid = [
-        artifactId         : "ble-profile-central-anp-android"
+        artifactId         : 'ble-profile-central-anp-android'
 ]
 
 ext.profileAnpPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-anp-android"
+        artifactId         : 'ble-profile-peripheral-anp-android'
 ]
 
 ext.profileBlpAndroid = [
-        artifactId         : "ble-profile-blp-android"
+        artifactId         : 'ble-profile-blp-android'
 ]
 
 ext.profileBlpCentralAndroid = [
-        artifactId         : "ble-profile-central-blp-android"
+        artifactId         : 'ble-profile-central-blp-android'
 ]
 
 ext.profileBlpPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-blp-android"
+        artifactId         : 'ble-profile-peripheral-blp-android'
 ]
 
 ext.profileCppAndroid = [
-        artifactId         : "ble-profile-cpp-android"
+        artifactId         : 'ble-profile-cpp-android'
 ]
 
 ext.profileCppCentralAndroid = [
-        artifactId         : "ble-profile-central-cpp-android"
+        artifactId         : 'ble-profile-central-cpp-android'
 ]
 
 ext.profileCppPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-cpp-android"
+        artifactId         : 'ble-profile-peripheral-cpp-android'
 ]
 
 ext.profileCscpAndroid = [
-        artifactId         : "ble-profile-cscp-android"
+        artifactId         : 'ble-profile-cscp-android'
 ]
 
 ext.profileCscpCentralAndroid = [
-        artifactId         : "ble-profile-central-cscp-android"
+        artifactId         : 'ble-profile-central-cscp-android'
 ]
 
 ext.profileCscpPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-cscp-android"
+        artifactId         : 'ble-profile-peripheral-cscp-android'
 ]
 
 ext.profileEspAndroid = [
-        artifactId         : "ble-profile-esp-android"
+        artifactId         : 'ble-profile-esp-android'
 ]
 
 ext.profileEspCentralAndroid = [
-        artifactId         : "ble-profile-central-esp-android"
+        artifactId         : 'ble-profile-central-esp-android'
 ]
 
 ext.profileEspPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-esp-android"
+        artifactId         : 'ble-profile-peripheral-esp-android'
 ]
 
 ext.profileFmpAndroid = [
-        artifactId         : "ble-profile-fmp-android"
+        artifactId         : 'ble-profile-fmp-android'
 ]
 
 ext.profileFmpCentralAndroid = [
-        artifactId         : "ble-profile-central-fmp-android"
+        artifactId         : 'ble-profile-central-fmp-android'
 ]
 
 ext.profileFmpPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-fmp-android"
+        artifactId         : 'ble-profile-peripheral-fmp-android'
 ]
 
 ext.profileFtmpAndroid = [
-        artifactId         : "ble-profile-ftmp-android"
+        artifactId         : 'ble-profile-ftmp-android'
 ]
 
 ext.profileFtmpCentralAndroid = [
-        artifactId         : "ble-profile-central-ftmp-android"
+        artifactId         : 'ble-profile-central-ftmp-android'
 ]
 
 ext.profileFtmpPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-ftmp-android"
+        artifactId         : 'ble-profile-peripheral-ftmp-android'
 ]
 
 ext.profileHrpAndroid = [
-        artifactId         : "ble-profile-hrp-android"
+        artifactId         : 'ble-profile-hrp-android'
 ]
 
 ext.profileHrpCentralAndroid = [
-        artifactId         : "ble-profile-central-hrp-android"
+        artifactId         : 'ble-profile-central-hrp-android'
 ]
 
 ext.profileHrpPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-hrp-android"
+        artifactId         : 'ble-profile-peripheral-hrp-android'
 ]
 
 ext.profileHtpAndroid = [
-        artifactId         : "ble-profile-htp-android"
+        artifactId         : 'ble-profile-htp-android'
 ]
 
 ext.profileHtpCentralAndroid = [
-        artifactId         : "ble-profile-central-htp-android"
+        artifactId         : 'ble-profile-central-htp-android'
 ]
 
 ext.profileHtpPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-htp-android"
+        artifactId         : 'ble-profile-peripheral-htp-android'
 ]
 
 ext.profileLnpAndroid = [
-        artifactId         : "ble-profile-lnp-android"
+        artifactId         : 'ble-profile-lnp-android'
 ]
 
 ext.profileLnpCentralAndroid = [
-        artifactId         : "ble-profile-central-lnp-android"
+        artifactId         : 'ble-profile-central-lnp-android'
 ]
 
 ext.profileLnpPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-lnp-android"
+        artifactId         : 'ble-profile-peripheral-lnp-android'
 ]
 
 ext.profilePaspAndroid = [
-        artifactId         : "ble-profile-pasp-android"
+        artifactId         : 'ble-profile-pasp-android'
 ]
 
 ext.profilePaspCentralAndroid = [
-        artifactId         : "ble-profile-central-pasp-android"
+        artifactId         : 'ble-profile-central-pasp-android'
 ]
 
 ext.profilePaspPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-pasp-android"
+        artifactId         : 'ble-profile-peripheral-pasp-android'
 ]
 
 ext.profilePxpAndroid = [
-        artifactId         : "ble-profile-pxp-android"
+        artifactId         : 'ble-profile-pxp-android'
 ]
 
 ext.profilePxpCentralAndroid = [
-        artifactId         : "ble-profile-central-pxp-android"
+        artifactId         : 'ble-profile-central-pxp-android'
 ]
 
 ext.profilePxpPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-pxp-android"
+        artifactId         : 'ble-profile-peripheral-pxp-android'
 ]
 
 ext.profileRcpAndroid = [
-        artifactId         : "ble-profile-rcp-android"
+        artifactId         : 'ble-profile-rcp-android'
 ]
 
 ext.profileRcpCentralAndroid = [
-        artifactId         : "ble-profile-central-rcp-android"
+        artifactId         : 'ble-profile-central-rcp-android'
 ]
 
 ext.profileRcpPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-rcp-android"
+        artifactId         : 'ble-profile-peripheral-rcp-android'
 ]
 
 ext.profileRscpAndroid = [
-        artifactId         : "ble-profile-rscp-android"
+        artifactId         : 'ble-profile-rscp-android'
 ]
 
 ext.profileRscpCentralAndroid = [
-        artifactId         : "ble-profile-central-rscp-android"
+        artifactId         : 'ble-profile-central-rscp-android'
 ]
 
 ext.profileRscpPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-rscp-android"
+        artifactId         : 'ble-profile-peripheral-rscp-android'
 ]
 
 ext.profileScppAndroid = [
-        artifactId         : "ble-profile-scpp-android"
+        artifactId         : 'ble-profile-scpp-android'
 ]
 
 ext.profileScppCentralAndroid = [
-        artifactId         : "ble-profile-central-scpp-android"
+        artifactId         : 'ble-profile-central-scpp-android'
 ]
 
 ext.profileScppPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-scpp-android"
+        artifactId         : 'ble-profile-peripheral-scpp-android'
 ]
 
 ext.profileSrcAndroid = [
-        artifactId         : "ble-profile-src-android"
+        artifactId         : 'ble-profile-src-android'
 ]
 
 ext.profileSrcCentralAndroid = [
-        artifactId         : "ble-profile-central-src-android"
+        artifactId         : 'ble-profile-central-src-android'
 ]
 
 ext.profileSrcPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-src-android"
+        artifactId         : 'ble-profile-peripheral-src-android'
 ]
 
 ext.profileTipAndroid = [
-        artifactId         : "ble-profile-tip-android"
+        artifactId         : 'ble-profile-tip-android'
 ]
 
 ext.profileTipCentralAndroid = [
-        artifactId         : "ble-profile-central-tip-android"
+        artifactId         : 'ble-profile-central-tip-android'
 ]
 
 ext.profileTipPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-tip-android"
+        artifactId         : 'ble-profile-peripheral-tip-android'
 ]
 
 ext.profileWspAndroid = [
-        artifactId         : "ble-profile-wsp-android"
+        artifactId         : 'ble-profile-wsp-android'
 ]
 
 ext.profileWspCentralAndroid = [
-        artifactId         : "ble-profile-central-wsp-android"
+        artifactId         : 'ble-profile-central-wsp-android'
 ]
 
 ext.profileWspPeripheralAndroid = [
-        artifactId         : "ble-profile-peripheral-wsp-android"
+        artifactId         : 'ble-profile-peripheral-wsp-android'
 ]
 
 ext.profileAndroid = [
-        artifactId         : "ble-profile-android"
+        artifactId         : 'ble-profile-android'
 ]

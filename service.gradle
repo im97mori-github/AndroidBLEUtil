@@ -1,359 +1,359 @@
 ext.serviceCentralAndroid = [
-        artifactId         : "ble-service-central-android"
+        artifactId         : 'ble-service-central-android'
 ]
 
 ext.servicePeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-android"
+        artifactId         : 'ble-service-peripheral-android'
 ]
 
 ext.serviceAiosAndroid = [
-        artifactId         : "ble-service-aios-android"
+        artifactId         : 'ble-service-aios-android'
 ]
 
 ext.serviceAiosCentralAndroid = [
-        artifactId         : "ble-service-central-aios-android"
+        artifactId         : 'ble-service-central-aios-android'
 ]
 
 ext.serviceAiosPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-aios-android"
+        artifactId         : 'ble-service-peripheral-aios-android'
 ]
 
 ext.serviceAnsAndroid = [
-        artifactId         : "ble-service-ans-android"
+        artifactId         : 'ble-service-ans-android'
 ]
 
 ext.serviceAnsCentralAndroid = [
-        artifactId         : "ble-service-central-ans-android"
+        artifactId         : 'ble-service-central-ans-android'
 ]
 
 ext.serviceAnsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-ans-android"
+        artifactId         : 'ble-service-peripheral-ans-android'
 ]
 
 ext.serviceBasAndroid = [
-        artifactId         : "ble-service-bas-android"
+        artifactId         : 'ble-service-bas-android'
 ]
 
 ext.serviceBasCentralAndroid = [
-        artifactId         : "ble-service-central-bas-android"
+        artifactId         : 'ble-service-central-bas-android'
 ]
 
 ext.serviceBasPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-bas-android"
+        artifactId         : 'ble-service-peripheral-bas-android'
 ]
 
 ext.serviceBcsAndroid = [
-        artifactId         : "ble-service-bcs-android"
+        artifactId         : 'ble-service-bcs-android'
 ]
 
 ext.serviceBcsCentralAndroid = [
-        artifactId         : "ble-service-central-bcs-android"
+        artifactId         : 'ble-service-central-bcs-android'
 ]
 
 ext.serviceBcsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-bcs-android"
+        artifactId         : 'ble-service-peripheral-bcs-android'
 ]
 
 ext.serviceBlsAndroid = [
-        artifactId         : "ble-service-bls-android"
+        artifactId         : 'ble-service-bls-android'
 ]
 
 ext.serviceBlsCentralAndroid = [
-        artifactId         : "ble-service-central-bls-android"
+        artifactId         : 'ble-service-central-bls-android'
 ]
 
 ext.serviceBlsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-bls-android"
+        artifactId         : 'ble-service-peripheral-bls-android'
 ]
 
 ext.serviceBmsAndroid = [
-        artifactId         : "ble-service-bms-android"
+        artifactId         : 'ble-service-bms-android'
 ]
 
 ext.serviceBmsCentralAndroid = [
-        artifactId         : "ble-service-central-bms-android"
+        artifactId         : 'ble-service-central-bms-android'
 ]
 
 ext.serviceBmsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-bms-android"
+        artifactId         : 'ble-service-peripheral-bms-android'
 ]
 
 ext.serviceCpsAndroid = [
-        artifactId         : "ble-service-cps-android"
+        artifactId         : 'ble-service-cps-android'
 ]
 
 ext.serviceCpsCentralAndroid = [
-        artifactId         : "ble-service-central-cps-android"
+        artifactId         : 'ble-service-central-cps-android'
 ]
 
 ext.serviceCpsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-cps-android"
+        artifactId         : 'ble-service-peripheral-cps-android'
 ]
 
 ext.serviceCscsAndroid = [
-        artifactId         : "ble-service-cscs-android"
+        artifactId         : 'ble-service-cscs-android'
 ]
 
 ext.serviceCscsCentralAndroid = [
-        artifactId         : "ble-service-central-cscs-android"
+        artifactId         : 'ble-service-central-cscs-android'
 ]
 
 ext.serviceCscsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-cscs-android"
+        artifactId         : 'ble-service-peripheral-cscs-android'
 ]
 
 ext.serviceCtsAndroid = [
-        artifactId         : "ble-service-cts-android"
+        artifactId         : 'ble-service-cts-android'
 ]
 
 ext.serviceCtsCentralAndroid = [
-        artifactId         : "ble-service-central-cts-android"
+        artifactId         : 'ble-service-central-cts-android'
 ]
 
 ext.serviceCtsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-cts-android"
+        artifactId         : 'ble-service-peripheral-cts-android'
 ]
 
 ext.serviceDisAndroid = [
-        artifactId         : "ble-service-dis-android"
+        artifactId         : 'ble-service-dis-android'
 ]
 
 ext.serviceDisCentralAndroid = [
-        artifactId         : "ble-service-central-dis-android"
+        artifactId         : 'ble-service-central-dis-android'
 ]
 
 ext.serviceDisPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-dis-android"
+        artifactId         : 'ble-service-peripheral-dis-android'
 ]
 
 ext.serviceEssAndroid = [
-        artifactId         : "ble-service-ess-android"
+        artifactId         : 'ble-service-ess-android'
 ]
 
 ext.serviceEssCentralAndroid = [
-        artifactId         : "ble-service-central-ess-android"
+        artifactId         : 'ble-service-central-ess-android'
 ]
 
 ext.serviceEssPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-ess-android"
+        artifactId         : 'ble-service-peripheral-ess-android'
 ]
 
 ext.serviceFtmsAndroid = [
-        artifactId         : "ble-service-ftms-android"
+        artifactId         : 'ble-service-ftms-android'
 ]
 
 ext.serviceFtmsCentralAndroid = [
-        artifactId         : "ble-service-central-ftms-android"
+        artifactId         : 'ble-service-central-ftms-android'
 ]
 
 ext.serviceFtmsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-ftms-android"
+        artifactId         : 'ble-service-peripheral-ftms-android'
 ]
 
 ext.serviceGapAndroid = [
-        artifactId         : "ble-service-gap-android"
+        artifactId         : 'ble-service-gap-android'
 ]
 
 ext.serviceGapCentralAndroid = [
-        artifactId         : "ble-service-central-gap-android"
+        artifactId         : 'ble-service-central-gap-android'
 ]
 
 ext.serviceGapPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-gap-android"
+        artifactId         : 'ble-service-peripheral-gap-android'
 ]
 
 ext.serviceGattAndroid = [
-        artifactId         : "ble-service-gatt-android"
+        artifactId         : 'ble-service-gatt-android'
 ]
 
 ext.serviceGattCentralAndroid = [
-        artifactId         : "ble-service-central-gatt-android"
+        artifactId         : 'ble-service-central-gatt-android'
 ]
 
 ext.serviceGattPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-gatt-android"
+        artifactId         : 'ble-service-peripheral-gatt-android'
 ]
 
 ext.serviceHrsAndroid = [
-        artifactId         : "ble-service-hrs-android"
+        artifactId         : 'ble-service-hrs-android'
 ]
 
 ext.serviceHrsCentralAndroid = [
-        artifactId         : "ble-service-central-hrs-android"
+        artifactId         : 'ble-service-central-hrs-android'
 ]
 
 ext.serviceHrsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-hrs-android"
+        artifactId         : 'ble-service-peripheral-hrs-android'
 ]
 
 ext.serviceHtsAndroid = [
-        artifactId         : "ble-service-hts-android"
+        artifactId         : 'ble-service-hts-android'
 ]
 
 ext.serviceHtsCentralAndroid = [
-        artifactId         : "ble-service-central-hts-android"
+        artifactId         : 'ble-service-central-hts-android'
 ]
 
 ext.serviceHtsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-hts-android"
+        artifactId         : 'ble-service-peripheral-hts-android'
 ]
 
 ext.serviceIasAndroid = [
-        artifactId         : "ble-service-ias-android"
+        artifactId         : 'ble-service-ias-android'
 ]
 
 ext.serviceIasCentralAndroid = [
-        artifactId         : "ble-service-central-ias-android"
+        artifactId         : 'ble-service-central-ias-android'
 ]
 
 ext.serviceIasPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-ias-android"
+        artifactId         : 'ble-service-peripheral-ias-android'
 ]
 
 ext.serviceLlsAndroid = [
-        artifactId         : "ble-service-lls-android"
+        artifactId         : 'ble-service-lls-android'
 ]
 
 ext.serviceLlsCentralAndroid = [
-        artifactId         : "ble-service-central-lls-android"
+        artifactId         : 'ble-service-central-lls-android'
 ]
 
 ext.serviceLlsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-lls-android"
+        artifactId         : 'ble-service-peripheral-lls-android'
 ]
 
 ext.serviceLnsAndroid = [
-        artifactId         : "ble-service-lns-android"
+        artifactId         : 'ble-service-lns-android'
 ]
 
 ext.serviceLnsCentralAndroid = [
-        artifactId         : "ble-service-central-lns-android"
+        artifactId         : 'ble-service-central-lns-android'
 ]
 
 ext.serviceLnsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-lns-android"
+        artifactId         : 'ble-service-peripheral-lns-android'
 ]
 
 ext.serviceNdcsAndroid = [
-        artifactId         : "ble-service-ndcs-android"
+        artifactId         : 'ble-service-ndcs-android'
 ]
 
 ext.serviceNdcsCentralAndroid = [
-        artifactId         : "ble-service-central-ndcs-android"
+        artifactId         : 'ble-service-central-ndcs-android'
 ]
 
 ext.serviceNdcsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-ndcs-android"
+        artifactId         : 'ble-service-peripheral-ndcs-android'
 ]
 
 ext.servicePassAndroid = [
-        artifactId         : "ble-service-pass-android"
+        artifactId         : 'ble-service-pass-android'
 ]
 
 ext.servicePassCentralAndroid = [
-        artifactId         : "ble-service-central-pass-android"
+        artifactId         : 'ble-service-central-pass-android'
 ]
 
 ext.servicePassPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-pass-android"
+        artifactId         : 'ble-service-peripheral-pass-android'
 ]
 
 ext.serviceRcsAndroid = [
-        artifactId         : "ble-service-rcs-android"
+        artifactId         : 'ble-service-rcs-android'
 ]
 
 ext.serviceRcsCentralAndroid = [
-        artifactId         : "ble-service-central-rcs-android"
+        artifactId         : 'ble-service-central-rcs-android'
 ]
 
 ext.serviceRcsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-rcs-android"
+        artifactId         : 'ble-service-peripheral-rcs-android'
 ]
 
 ext.serviceRscsAndroid = [
-        artifactId         : "ble-service-rscs-android"
+        artifactId         : 'ble-service-rscs-android'
 ]
 
 ext.serviceRscsCentralAndroid = [
-        artifactId         : "ble-service-central-rscs-android"
+        artifactId         : 'ble-service-central-rscs-android'
 ]
 
 ext.serviceRscsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-rscs-android"
+        artifactId         : 'ble-service-peripheral-rscs-android'
 ]
 
 ext.serviceRtusAndroid = [
-        artifactId         : "ble-service-rtus-android"
+        artifactId         : 'ble-service-rtus-android'
 ]
 
 ext.serviceRtusCentralAndroid = [
-        artifactId         : "ble-service-central-rtus-android"
+        artifactId         : 'ble-service-central-rtus-android'
 ]
 
 ext.serviceRtusPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-rtus-android"
+        artifactId         : 'ble-service-peripheral-rtus-android'
 ]
 
 ext.serviceScpsAndroid = [
-        artifactId         : "ble-service-scps-android"
+        artifactId         : 'ble-service-scps-android'
 ]
 
 ext.serviceScpsCentralAndroid = [
-        artifactId         : "ble-service-central-scps-android"
+        artifactId         : 'ble-service-central-scps-android'
 ]
 
 ext.serviceScpsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-scps-android"
+        artifactId         : 'ble-service-peripheral-scps-android'
 ]
 
 ext.serviceSrcAndroid = [
-        artifactId         : "ble-service-src-android"
+        artifactId         : 'ble-service-src-android'
 ]
 
 ext.serviceSrcCentralAndroid = [
-        artifactId         : "ble-service-central-src-android"
+        artifactId         : 'ble-service-central-src-android'
 ]
 
 ext.serviceSrcPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-src-android"
+        artifactId         : 'ble-service-peripheral-src-android'
 ]
 
 ext.serviceTpsAndroid = [
-        artifactId         : "ble-service-tps-android"
+        artifactId         : 'ble-service-tps-android'
 ]
 
 ext.serviceTpsCentralAndroid = [
-        artifactId         : "ble-service-central-tps-android"
+        artifactId         : 'ble-service-central-tps-android'
 ]
 
 ext.serviceTpsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-tps-android"
+        artifactId         : 'ble-service-peripheral-tps-android'
 ]
 
 ext.serviceUdsAndroid = [
-        artifactId         : "ble-service-uds-android"
+        artifactId         : 'ble-service-uds-android'
 ]
 
 ext.serviceUdsCentralAndroid = [
-        artifactId         : "ble-service-central-uds-android"
+        artifactId         : 'ble-service-central-uds-android'
 ]
 
 ext.serviceUdsPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-uds-android"
+        artifactId         : 'ble-service-peripheral-uds-android'
 ]
 
 ext.serviceWssAndroid = [
-        artifactId         : "ble-service-wss-android"
+        artifactId         : 'ble-service-wss-android'
 ]
 
 ext.serviceWssCentralAndroid = [
-        artifactId         : "ble-service-central-wss-android"
+        artifactId         : 'ble-service-central-wss-android'
 ]
 
 ext.serviceWssPeripheralAndroid = [
-        artifactId         : "ble-service-peripheral-wss-android"
+        artifactId         : 'ble-service-peripheral-wss-android'
 ]
 
 ext.serviceAndroid = [
-        artifactId         : "ble-service-android"
+        artifactId         : 'ble-service-android'
 ]

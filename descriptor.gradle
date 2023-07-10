@@ -1,83 +1,83 @@
 ext.descriptorU2900Android = [
-        artifactId         : "ble-descriptor-u2900-android"
+        artifactId         : 'ble-descriptor-u2900-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u2900:${loadVersion}"
 ]
 
 ext.descriptorU2901Android = [
-        artifactId         : "ble-descriptor-u2901-android"
+        artifactId         : 'ble-descriptor-u2901-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u2901:${loadVersion}"
 ]
 
 ext.descriptorU2902Android = [
-        artifactId         : "ble-descriptor-u2902-android"
+        artifactId         : 'ble-descriptor-u2902-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u2902:${loadVersion}"
 ]
 
 ext.descriptorU2903Android = [
-        artifactId         : "ble-descriptor-u2903-android"
+        artifactId         : 'ble-descriptor-u2903-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u2903:${loadVersion}"
 ]
 
 ext.descriptorU2904Android = [
-        artifactId         : "ble-descriptor-u2904-android"
+        artifactId         : 'ble-descriptor-u2904-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u2904:${loadVersion}"
 ]
 
 ext.descriptorU2905Android = [
-        artifactId         : "ble-descriptor-u2905-android"
+        artifactId         : 'ble-descriptor-u2905-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u2905:${loadVersion}"
 ]
 
 ext.descriptorU2906Android = [
-        artifactId         : "ble-descriptor-u2906-android"
+        artifactId         : 'ble-descriptor-u2906-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u2906:${loadVersion}"
 ]
 
 ext.descriptorU2907Android = [
-        artifactId         : "ble-descriptor-u2907-android"
+        artifactId         : 'ble-descriptor-u2907-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u2907:${loadVersion}"
 ]
 
 ext.descriptorU2908Android = [
-        artifactId         : "ble-descriptor-u2908-android"
+        artifactId         : 'ble-descriptor-u2908-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u2908:${loadVersion}"
 ]
 
 ext.descriptorU2909Android = [
-        artifactId         : "ble-descriptor-u2909-android"
+        artifactId         : 'ble-descriptor-u2909-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u2909:${loadVersion}"
 ]
 
 ext.descriptorU290aAndroid = [
-        artifactId         : "ble-descriptor-u290a-android"
+        artifactId         : 'ble-descriptor-u290a-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u290a:${loadVersion}"
 ]
 
 ext.descriptorU290bAndroid = [
-        artifactId         : "ble-descriptor-u290b-android"
+        artifactId         : 'ble-descriptor-u290b-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u290b:${loadVersion}"
 ]
 
 ext.descriptorU290cAndroid = [
-        artifactId         : "ble-descriptor-u290c-android"
+        artifactId         : 'ble-descriptor-u290c-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u290c:${loadVersion}"
 ]
 
 ext.descriptorU290dAndroid = [
-        artifactId         : "ble-descriptor-u290d-android"
+        artifactId         : 'ble-descriptor-u290d-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u290d:${loadVersion}"
 ]
 
 ext.descriptorU290eAndroid = [
-        artifactId         : "ble-descriptor-u290e-android"
+        artifactId         : 'ble-descriptor-u290e-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u290e:${loadVersion}"
 ]
 
 ext.descriptorU290fAndroid = [
-        artifactId         : "ble-descriptor-u290f-android"
+        artifactId         : 'ble-descriptor-u290f-android'
         , baseModule       : "${myGroupId}:ble-descriptor-u290f:${loadVersion}"
 ]
 
 ext.descriptorAndroid = [
-        artifactId         : "ble-descriptor-android"
+        artifactId         : 'ble-descriptor-android'
 ]

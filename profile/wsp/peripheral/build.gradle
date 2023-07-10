@@ -67,7 +67,7 @@ publishing {
             }
 
             pom {
-                name = 'BLE Core Utility for Android'
+                name = 'BLE Utility for Android(ble-profile-peripheral-wsp-android)'
                 url = 'https://github.com/im97mori-github/AndroidBLEUtil'
                 licenses {
                     license {
