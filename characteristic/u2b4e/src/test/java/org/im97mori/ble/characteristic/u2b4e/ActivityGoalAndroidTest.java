@@ -505,6 +505,422 @@ public class ActivityGoalAndroidTest {
     }
 
     @Test
+    public void test_constructor_00101() {
+        int presenceFlags = ActivityGoal.PRESENCE_FLAGS_TOTAL_ENERGY_EXPENDITURE_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_NORMAL_WALKING_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_INTENSITY_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_FLOOR_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DISTANCE_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_NORMAL_WALKING_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_INTENSITY_WALKING_PRESENT_FALSE;
+        int totalEnergyExpenditure = 1;
+        int normalWalkingSteps = 2;
+        int intensitySteps = 3;
+        int floorSteps = 4;
+        int distance = 5;
+        int durationOfNormalWalking = 6;
+        int durationOfIntensityWalking = 7;
+
+        ActivityGoalAndroid result1 = new ActivityGoalAndroid(presenceFlags, totalEnergyExpenditure, normalWalkingSteps,
+                intensitySteps, floorSteps, distance, durationOfNormalWalking, durationOfIntensityWalking);
+        assertEquals(presenceFlags, result1.getPresenceFlags());
+
+        assertTrue(result1.isTotalEnergyExpenditureNotPresent());
+        assertFalse(result1.isTotalEnergyExpenditurePresent());
+
+        assertTrue(result1.isNormalWalkingStepsNotPresent());
+        assertFalse(result1.isNormalWalkingStepsPresent());
+
+        assertTrue(result1.isIntensityStepsNotPresent());
+        assertFalse(result1.isIntensityStepsPresent());
+
+        assertTrue(result1.isFloorStepsNotPresent());
+        assertFalse(result1.isFloorStepsPresent());
+
+        assertTrue(result1.isDistanceNotPresent());
+        assertFalse(result1.isDistancePresent());
+
+        assertTrue(result1.isDurationOfNormalWalkingNotPresent());
+        assertFalse(result1.isDurationOfNormalWalkingPresent());
+
+        assertTrue(result1.isDurationOfIntensityWalkingNotPresent());
+        assertFalse(result1.isDurationOfIntensityWalkingPresent());
+
+        assertEquals(totalEnergyExpenditure, result1.getTotalEnergyExpenditure());
+        assertEquals(ActivityGoal.TOTAL_ENERGY_EXPENDITURE_RESOLUTION * totalEnergyExpenditure,
+                result1.getTotalEnergyExpenditureJoule(), 0);
+        assertEquals(normalWalkingSteps, result1.getNormalWalkingSteps());
+        assertEquals(intensitySteps, result1.getIntensitySteps());
+        assertEquals(floorSteps, result1.getFloorSteps());
+        assertEquals(distance, result1.getDistance());
+        assertEquals(durationOfNormalWalking, result1.getDurationOfNormalWalking());
+        assertEquals(durationOfIntensityWalking, result1.getDurationOfIntensityWalking());
+    }
+
+    @Test
+    public void test_constructor_00102() {
+        int presenceFlags = ActivityGoal.PRESENCE_FLAGS_TOTAL_ENERGY_EXPENDITURE_PRESENT_TRUE
+                | ActivityGoal.PRESENCE_FLAGS_NORMAL_WALKING_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_INTENSITY_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_FLOOR_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DISTANCE_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_NORMAL_WALKING_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_INTENSITY_WALKING_PRESENT_FALSE;
+        int totalEnergyExpenditure = 1;
+        int normalWalkingSteps = 2;
+        int intensitySteps = 3;
+        int floorSteps = 4;
+        int distance = 5;
+        int durationOfNormalWalking = 6;
+        int durationOfIntensityWalking = 7;
+
+        ActivityGoalAndroid result1 = new ActivityGoalAndroid(presenceFlags, totalEnergyExpenditure, normalWalkingSteps,
+                intensitySteps, floorSteps, distance, durationOfNormalWalking, durationOfIntensityWalking);
+        assertFalse(result1.isTotalEnergyExpenditureNotPresent());
+        assertTrue(result1.isTotalEnergyExpenditurePresent());
+
+        assertTrue(result1.isNormalWalkingStepsNotPresent());
+        assertFalse(result1.isNormalWalkingStepsPresent());
+
+        assertTrue(result1.isIntensityStepsNotPresent());
+        assertFalse(result1.isIntensityStepsPresent());
+
+        assertTrue(result1.isFloorStepsNotPresent());
+        assertFalse(result1.isFloorStepsPresent());
+
+        assertTrue(result1.isDistanceNotPresent());
+        assertFalse(result1.isDistancePresent());
+
+        assertTrue(result1.isDurationOfNormalWalkingNotPresent());
+        assertFalse(result1.isDurationOfNormalWalkingPresent());
+
+        assertTrue(result1.isDurationOfIntensityWalkingNotPresent());
+        assertFalse(result1.isDurationOfIntensityWalkingPresent());
+
+        assertEquals(totalEnergyExpenditure, result1.getTotalEnergyExpenditure());
+        assertEquals(ActivityGoal.TOTAL_ENERGY_EXPENDITURE_RESOLUTION * totalEnergyExpenditure,
+                result1.getTotalEnergyExpenditureJoule(), 0);
+        assertEquals(normalWalkingSteps, result1.getNormalWalkingSteps());
+        assertEquals(intensitySteps, result1.getIntensitySteps());
+        assertEquals(floorSteps, result1.getFloorSteps());
+        assertEquals(distance, result1.getDistance());
+        assertEquals(durationOfNormalWalking, result1.getDurationOfNormalWalking());
+        assertEquals(durationOfIntensityWalking, result1.getDurationOfIntensityWalking());
+    }
+
+    @Test
+    public void test_constructor_00103() {
+        int presenceFlags = ActivityGoal.PRESENCE_FLAGS_TOTAL_ENERGY_EXPENDITURE_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_NORMAL_WALKING_STEPS_PRESENT_TRUE
+                | ActivityGoal.PRESENCE_FLAGS_INTENSITY_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_FLOOR_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DISTANCE_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_NORMAL_WALKING_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_INTENSITY_WALKING_PRESENT_FALSE;
+        int totalEnergyExpenditure = 1;
+        int normalWalkingSteps = 2;
+        int intensitySteps = 3;
+        int floorSteps = 4;
+        int distance = 5;
+        int durationOfNormalWalking = 6;
+        int durationOfIntensityWalking = 7;
+
+        ActivityGoalAndroid result1 = new ActivityGoalAndroid(presenceFlags, totalEnergyExpenditure, normalWalkingSteps,
+                intensitySteps, floorSteps, distance, durationOfNormalWalking, durationOfIntensityWalking);
+
+        assertTrue(result1.isTotalEnergyExpenditureNotPresent());
+        assertFalse(result1.isTotalEnergyExpenditurePresent());
+
+        assertFalse(result1.isNormalWalkingStepsNotPresent());
+        assertTrue(result1.isNormalWalkingStepsPresent());
+
+        assertTrue(result1.isIntensityStepsNotPresent());
+        assertFalse(result1.isIntensityStepsPresent());
+
+        assertTrue(result1.isFloorStepsNotPresent());
+        assertFalse(result1.isFloorStepsPresent());
+
+        assertTrue(result1.isDistanceNotPresent());
+        assertFalse(result1.isDistancePresent());
+
+        assertTrue(result1.isDurationOfNormalWalkingNotPresent());
+        assertFalse(result1.isDurationOfNormalWalkingPresent());
+
+        assertTrue(result1.isDurationOfIntensityWalkingNotPresent());
+        assertFalse(result1.isDurationOfIntensityWalkingPresent());
+
+        assertEquals(totalEnergyExpenditure, result1.getTotalEnergyExpenditure());
+        assertEquals(ActivityGoal.TOTAL_ENERGY_EXPENDITURE_RESOLUTION * totalEnergyExpenditure,
+                result1.getTotalEnergyExpenditureJoule(), 0);
+        assertEquals(normalWalkingSteps, result1.getNormalWalkingSteps());
+        assertEquals(intensitySteps, result1.getIntensitySteps());
+        assertEquals(floorSteps, result1.getFloorSteps());
+        assertEquals(distance, result1.getDistance());
+        assertEquals(durationOfNormalWalking, result1.getDurationOfNormalWalking());
+        assertEquals(durationOfIntensityWalking, result1.getDurationOfIntensityWalking());
+    }
+
+    @Test
+    public void test_constructor_00104() {
+        int presenceFlags = ActivityGoal.PRESENCE_FLAGS_TOTAL_ENERGY_EXPENDITURE_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_NORMAL_WALKING_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_INTENSITY_STEPS_PRESENT_TRUE
+                | ActivityGoal.PRESENCE_FLAGS_FLOOR_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DISTANCE_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_NORMAL_WALKING_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_INTENSITY_WALKING_PRESENT_FALSE;
+        int totalEnergyExpenditure = 1;
+        int normalWalkingSteps = 2;
+        int intensitySteps = 3;
+        int floorSteps = 4;
+        int distance = 5;
+        int durationOfNormalWalking = 6;
+        int durationOfIntensityWalking = 7;
+
+        ActivityGoalAndroid result1 = new ActivityGoalAndroid(presenceFlags, totalEnergyExpenditure, normalWalkingSteps,
+                intensitySteps, floorSteps, distance, durationOfNormalWalking, durationOfIntensityWalking);
+
+        assertTrue(result1.isTotalEnergyExpenditureNotPresent());
+        assertFalse(result1.isTotalEnergyExpenditurePresent());
+
+        assertTrue(result1.isNormalWalkingStepsNotPresent());
+        assertFalse(result1.isNormalWalkingStepsPresent());
+
+        assertFalse(result1.isIntensityStepsNotPresent());
+        assertTrue(result1.isIntensityStepsPresent());
+
+        assertTrue(result1.isFloorStepsNotPresent());
+        assertFalse(result1.isFloorStepsPresent());
+
+        assertTrue(result1.isDistanceNotPresent());
+        assertFalse(result1.isDistancePresent());
+
+        assertTrue(result1.isDurationOfNormalWalkingNotPresent());
+        assertFalse(result1.isDurationOfNormalWalkingPresent());
+
+        assertTrue(result1.isDurationOfIntensityWalkingNotPresent());
+        assertFalse(result1.isDurationOfIntensityWalkingPresent());
+
+        assertEquals(totalEnergyExpenditure, result1.getTotalEnergyExpenditure());
+        assertEquals(ActivityGoal.TOTAL_ENERGY_EXPENDITURE_RESOLUTION * totalEnergyExpenditure,
+                result1.getTotalEnergyExpenditureJoule(), 0);
+        assertEquals(normalWalkingSteps, result1.getNormalWalkingSteps());
+        assertEquals(intensitySteps, result1.getIntensitySteps());
+        assertEquals(floorSteps, result1.getFloorSteps());
+        assertEquals(distance, result1.getDistance());
+        assertEquals(durationOfNormalWalking, result1.getDurationOfNormalWalking());
+        assertEquals(durationOfIntensityWalking, result1.getDurationOfIntensityWalking());
+    }
+
+    @Test
+    public void test_constructor_00105() {
+        int presenceFlags = ActivityGoal.PRESENCE_FLAGS_TOTAL_ENERGY_EXPENDITURE_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_NORMAL_WALKING_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_INTENSITY_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_FLOOR_STEPS_PRESENT_TRUE
+                | ActivityGoal.PRESENCE_FLAGS_DISTANCE_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_NORMAL_WALKING_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_INTENSITY_WALKING_PRESENT_FALSE;
+        int totalEnergyExpenditure = 1;
+        int normalWalkingSteps = 2;
+        int intensitySteps = 3;
+        int floorSteps = 4;
+        int distance = 5;
+        int durationOfNormalWalking = 6;
+        int durationOfIntensityWalking = 7;
+
+        ActivityGoalAndroid result1 = new ActivityGoalAndroid(presenceFlags, totalEnergyExpenditure, normalWalkingSteps,
+                intensitySteps, floorSteps, distance, durationOfNormalWalking, durationOfIntensityWalking);
+
+        assertTrue(result1.isTotalEnergyExpenditureNotPresent());
+        assertFalse(result1.isTotalEnergyExpenditurePresent());
+
+        assertTrue(result1.isNormalWalkingStepsNotPresent());
+        assertFalse(result1.isNormalWalkingStepsPresent());
+
+        assertTrue(result1.isIntensityStepsNotPresent());
+        assertFalse(result1.isIntensityStepsPresent());
+
+        assertFalse(result1.isFloorStepsNotPresent());
+        assertTrue(result1.isFloorStepsPresent());
+
+        assertTrue(result1.isDistanceNotPresent());
+        assertFalse(result1.isDistancePresent());
+
+        assertTrue(result1.isDurationOfNormalWalkingNotPresent());
+        assertFalse(result1.isDurationOfNormalWalkingPresent());
+
+        assertTrue(result1.isDurationOfIntensityWalkingNotPresent());
+        assertFalse(result1.isDurationOfIntensityWalkingPresent());
+
+        assertEquals(totalEnergyExpenditure, result1.getTotalEnergyExpenditure());
+        assertEquals(ActivityGoal.TOTAL_ENERGY_EXPENDITURE_RESOLUTION * totalEnergyExpenditure,
+                result1.getTotalEnergyExpenditureJoule(), 0);
+        assertEquals(normalWalkingSteps, result1.getNormalWalkingSteps());
+        assertEquals(intensitySteps, result1.getIntensitySteps());
+        assertEquals(floorSteps, result1.getFloorSteps());
+        assertEquals(distance, result1.getDistance());
+        assertEquals(durationOfNormalWalking, result1.getDurationOfNormalWalking());
+        assertEquals(durationOfIntensityWalking, result1.getDurationOfIntensityWalking());
+    }
+
+    @Test
+    public void test_constructor_00106() {
+        int presenceFlags = ActivityGoal.PRESENCE_FLAGS_TOTAL_ENERGY_EXPENDITURE_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_NORMAL_WALKING_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_INTENSITY_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_FLOOR_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DISTANCE_PRESENT_TRUE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_NORMAL_WALKING_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_INTENSITY_WALKING_PRESENT_FALSE;
+        int totalEnergyExpenditure = 1;
+        int normalWalkingSteps = 2;
+        int intensitySteps = 3;
+        int floorSteps = 4;
+        int distance = 5;
+        int durationOfNormalWalking = 6;
+        int durationOfIntensityWalking = 7;
+
+        ActivityGoalAndroid result1 = new ActivityGoalAndroid(presenceFlags, totalEnergyExpenditure, normalWalkingSteps,
+                intensitySteps, floorSteps, distance, durationOfNormalWalking, durationOfIntensityWalking);
+
+        assertTrue(result1.isTotalEnergyExpenditureNotPresent());
+        assertFalse(result1.isTotalEnergyExpenditurePresent());
+
+        assertTrue(result1.isNormalWalkingStepsNotPresent());
+        assertFalse(result1.isNormalWalkingStepsPresent());
+
+        assertTrue(result1.isIntensityStepsNotPresent());
+        assertFalse(result1.isIntensityStepsPresent());
+
+        assertTrue(result1.isFloorStepsNotPresent());
+        assertFalse(result1.isFloorStepsPresent());
+
+        assertFalse(result1.isDistanceNotPresent());
+        assertTrue(result1.isDistancePresent());
+
+        assertTrue(result1.isDurationOfNormalWalkingNotPresent());
+        assertFalse(result1.isDurationOfNormalWalkingPresent());
+
+        assertTrue(result1.isDurationOfIntensityWalkingNotPresent());
+        assertFalse(result1.isDurationOfIntensityWalkingPresent());
+
+        assertEquals(totalEnergyExpenditure, result1.getTotalEnergyExpenditure());
+        assertEquals(ActivityGoal.TOTAL_ENERGY_EXPENDITURE_RESOLUTION * totalEnergyExpenditure,
+                result1.getTotalEnergyExpenditureJoule(), 0);
+        assertEquals(normalWalkingSteps, result1.getNormalWalkingSteps());
+        assertEquals(intensitySteps, result1.getIntensitySteps());
+        assertEquals(floorSteps, result1.getFloorSteps());
+        assertEquals(distance, result1.getDistance());
+        assertEquals(durationOfNormalWalking, result1.getDurationOfNormalWalking());
+        assertEquals(durationOfIntensityWalking, result1.getDurationOfIntensityWalking());
+    }
+
+    @Test
+    public void test_constructor_00107() {
+        int presenceFlags = ActivityGoal.PRESENCE_FLAGS_TOTAL_ENERGY_EXPENDITURE_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_NORMAL_WALKING_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_INTENSITY_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_FLOOR_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DISTANCE_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_NORMAL_WALKING_PRESENT_TRUE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_INTENSITY_WALKING_PRESENT_FALSE;
+        int totalEnergyExpenditure = 1;
+        int normalWalkingSteps = 2;
+        int intensitySteps = 3;
+        int floorSteps = 4;
+        int distance = 5;
+        int durationOfNormalWalking = 6;
+        int durationOfIntensityWalking = 7;
+
+        ActivityGoalAndroid result1 = new ActivityGoalAndroid(presenceFlags, totalEnergyExpenditure, normalWalkingSteps,
+                intensitySteps, floorSteps, distance, durationOfNormalWalking, durationOfIntensityWalking);
+
+        assertTrue(result1.isTotalEnergyExpenditureNotPresent());
+        assertFalse(result1.isTotalEnergyExpenditurePresent());
+
+        assertTrue(result1.isNormalWalkingStepsNotPresent());
+        assertFalse(result1.isNormalWalkingStepsPresent());
+
+        assertTrue(result1.isIntensityStepsNotPresent());
+        assertFalse(result1.isIntensityStepsPresent());
+
+        assertTrue(result1.isFloorStepsNotPresent());
+        assertFalse(result1.isFloorStepsPresent());
+
+        assertTrue(result1.isDistanceNotPresent());
+        assertFalse(result1.isDistancePresent());
+
+        assertFalse(result1.isDurationOfNormalWalkingNotPresent());
+        assertTrue(result1.isDurationOfNormalWalkingPresent());
+
+        assertTrue(result1.isDurationOfIntensityWalkingNotPresent());
+        assertFalse(result1.isDurationOfIntensityWalkingPresent());
+
+        assertEquals(totalEnergyExpenditure, result1.getTotalEnergyExpenditure());
+        assertEquals(ActivityGoal.TOTAL_ENERGY_EXPENDITURE_RESOLUTION * totalEnergyExpenditure,
+                result1.getTotalEnergyExpenditureJoule(), 0);
+        assertEquals(normalWalkingSteps, result1.getNormalWalkingSteps());
+        assertEquals(intensitySteps, result1.getIntensitySteps());
+        assertEquals(floorSteps, result1.getFloorSteps());
+        assertEquals(distance, result1.getDistance());
+        assertEquals(durationOfNormalWalking, result1.getDurationOfNormalWalking());
+        assertEquals(durationOfIntensityWalking, result1.getDurationOfIntensityWalking());
+    }
+
+    @Test
+    public void test_constructor_00108() {
+        int presenceFlags = ActivityGoal.PRESENCE_FLAGS_TOTAL_ENERGY_EXPENDITURE_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_NORMAL_WALKING_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_INTENSITY_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_FLOOR_STEPS_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DISTANCE_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_NORMAL_WALKING_PRESENT_FALSE
+                | ActivityGoal.PRESENCE_FLAGS_DURATION_OF_INTENSITY_WALKING_PRESENT_TRUE;
+        int totalEnergyExpenditure = 1;
+        int normalWalkingSteps = 2;
+        int intensitySteps = 3;
+        int floorSteps = 4;
+        int distance = 5;
+        int durationOfNormalWalking = 6;
+        int durationOfIntensityWalking = 7;
+
+        ActivityGoalAndroid result1 = new ActivityGoalAndroid(presenceFlags, totalEnergyExpenditure, normalWalkingSteps,
+                intensitySteps, floorSteps, distance, durationOfNormalWalking, durationOfIntensityWalking);
+
+        assertTrue(result1.isTotalEnergyExpenditureNotPresent());
+        assertFalse(result1.isTotalEnergyExpenditurePresent());
+
+        assertTrue(result1.isNormalWalkingStepsNotPresent());
+        assertFalse(result1.isNormalWalkingStepsPresent());
+
+        assertTrue(result1.isIntensityStepsNotPresent());
+        assertFalse(result1.isIntensityStepsPresent());
+
+        assertTrue(result1.isFloorStepsNotPresent());
+        assertFalse(result1.isFloorStepsPresent());
+
+        assertTrue(result1.isDistanceNotPresent());
+        assertFalse(result1.isDistancePresent());
+
+        assertTrue(result1.isDurationOfNormalWalkingNotPresent());
+        assertFalse(result1.isDurationOfNormalWalkingPresent());
+
+        assertFalse(result1.isDurationOfIntensityWalkingNotPresent());
+        assertTrue(result1.isDurationOfIntensityWalkingPresent());
+
+        assertEquals(totalEnergyExpenditure, result1.getTotalEnergyExpenditure());
+        assertEquals(ActivityGoal.TOTAL_ENERGY_EXPENDITURE_RESOLUTION * totalEnergyExpenditure,
+                result1.getTotalEnergyExpenditureJoule(), 0);
+        assertEquals(normalWalkingSteps, result1.getNormalWalkingSteps());
+        assertEquals(intensitySteps, result1.getIntensitySteps());
+        assertEquals(floorSteps, result1.getFloorSteps());
+        assertEquals(distance, result1.getDistance());
+        assertEquals(durationOfNormalWalking, result1.getDurationOfNormalWalking());
+        assertEquals(durationOfIntensityWalking, result1.getDurationOfIntensityWalking());
+    }
+
+    @Test
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 

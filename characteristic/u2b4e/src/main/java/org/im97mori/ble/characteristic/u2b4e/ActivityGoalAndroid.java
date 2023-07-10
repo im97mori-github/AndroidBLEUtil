@@ -61,6 +61,23 @@ public class ActivityGoalAndroid extends ActivityGoal implements Parcelable {
     }
 
     /**
+     * Constructor from parameters
+     *
+     * @param presenceFlags              Presence Flags
+     * @param totalEnergyExpenditure     Total Energy Expenditure
+     * @param normalWalkingSteps         Normal Walking Steps
+     * @param intensitySteps             Intensity Steps
+     * @param floorSteps                 Floor Steps
+     * @param distance                   Distance
+     * @param durationOfNormalWalking    Duration of Normal Walking
+     * @param durationOfIntensityWalking Duration of Intensity Walking
+     */
+    public ActivityGoalAndroid(int presenceFlags, int totalEnergyExpenditure, int normalWalkingSteps, int intensitySteps,
+                               int floorSteps, int distance, int durationOfNormalWalking, int durationOfIntensityWalking) {
+        super(presenceFlags, totalEnergyExpenditure, normalWalkingSteps, intensitySteps, floorSteps, distance, durationOfNormalWalking, durationOfIntensityWalking);
+    }
+
+    /**
      * Constructor from {@link Parcel}
      *
      * @param in Parcel
