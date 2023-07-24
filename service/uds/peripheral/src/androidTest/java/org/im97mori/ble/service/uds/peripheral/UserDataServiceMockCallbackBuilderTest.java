@@ -6559,7 +6559,7 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
         int characteristicResponseCode = 1;
         long characteristicDelay = 2;
-        boolean isNotificatable = true;
+        boolean canNotify = true;
         int descriptorResponseCode = 3;
         long descriptorDelay = 4;
 
@@ -6570,7 +6570,7 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         try {
             UserDataServiceMockCallback userDataServiceMockCallback = new UserDataServiceMockCallback.Builder<>()
                     .addFirstName("First Name")
-                    .addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, isNotificatable, descriptorResponseCode, descriptorDelay, clientCharacteristicConfiguration.getBytes())
+                    .addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, canNotify, descriptorResponseCode, descriptorDelay, clientCharacteristicConfiguration.getBytes())
                     .addUserIndex()
                     .addUserControlPoint(0
                             , UserControlPoint.RESPONSE_VALUE_SUCCESS
@@ -6616,7 +6616,7 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(value);
         int characteristicResponseCode = 1;
         long characteristicDelay = 2;
-        boolean isNotificatable = false;
+        boolean canNotify = false;
         int descriptorResponseCode = 3;
         long descriptorDelay = 4;
 
@@ -6627,7 +6627,7 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         try {
             UserDataServiceMockCallback userDataServiceMockCallback = new UserDataServiceMockCallback.Builder<>()
                     .addFirstName("First Name")
-                    .addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, isNotificatable, descriptorResponseCode, descriptorDelay, clientCharacteristicConfiguration.getBytes())
+                    .addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, canNotify, descriptorResponseCode, descriptorDelay, clientCharacteristicConfiguration.getBytes())
                     .addUserIndex()
                     .addUserControlPoint(0
                             , UserControlPoint.RESPONSE_VALUE_SUCCESS

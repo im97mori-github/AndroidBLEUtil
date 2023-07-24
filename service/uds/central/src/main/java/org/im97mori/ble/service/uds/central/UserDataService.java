@@ -298,8 +298,8 @@ public class UserDataService extends AbstractCentralService {
     private boolean mIsLanguageCharacteristicSupported;
 
     /**
-     * Database Change Increment characteristic notificatable flag
-     * {@code true}:Database Change Increment characteristic is notificatable, {@code false}:Database Change Increment characteristic is not notificatable or service not ready
+     * Database Change Increment characteristic notify flag
+     * {@code true}:Database Change Increment characteristic can notify, {@code false}:Database Change Increment characteristic can not notify or service not ready
      */
     private boolean mIsDatabaseChangeIncrementCharacteristicNotifySupported;
 
@@ -1319,9 +1319,9 @@ public class UserDataService extends AbstractCentralService {
     }
 
     /**
-     * Database Change Increment characteristic notificatable flag
+     * Database Change Increment characteristic notify flag
      * <p>
-     * {@code true}:Database Change Increment is notificatable, {@code false}:Database Change Increment characteristic is not notificatable or service not ready
+     * {@code true}:Database Change Increment can notify, {@code false}:Database Change Increment characteristic can not notify or service not ready
      */
     public boolean isDatabaseChangeIncrementCharacteristicNotifySupported() {
         return mIsDatabaseChangeIncrementCharacteristicNotifySupported;

@@ -14,12 +14,12 @@ import static org.junit.Assert.assertTrue;
 import androidx.test.filters.RequiresDevice;
 
 @SuppressWarnings("ConstantConditions")
-public class NotificatedTaskTest extends AbstractCentralTest {
+public class NotifiedTaskTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
     public void test_createInitialMessage_00001() {
-        NotificatedTask task = new NotificatedTask(null
+        NotifiedTask task = new NotifiedTask(null
                 , null
                 , null
                 , null
@@ -36,7 +36,7 @@ public class NotificatedTaskTest extends AbstractCentralTest {
     @Test
     @RequiresDevice
     public void test_doProcess_00001() {
-        NotificatedTask task = new NotificatedTask(MOCK_BLE_CONNECTION
+        NotifiedTask task = new NotifiedTask(MOCK_BLE_CONNECTION
                 , null
                 , null
                 , null
@@ -56,7 +56,7 @@ public class NotificatedTaskTest extends AbstractCentralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            NotificatedTask task = new NotificatedTask(MOCK_BLE_CONNECTION
+            NotifiedTask task = new NotifiedTask(MOCK_BLE_CONNECTION
                     , null
                     , null
                     , null

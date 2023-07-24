@@ -96,7 +96,7 @@ public interface HeartRateServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Heart Rate Measurement notificate success callback
+     * Start Heart Rate Measurement notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -107,7 +107,7 @@ public interface HeartRateServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onHeartRateMeasurementNotificateStartSuccess(@NonNull Integer taskId
+    void onHeartRateMeasurementNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -117,7 +117,7 @@ public interface HeartRateServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Heart Rate Measurement notificate error callback
+     * Start Heart Rate Measurement notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -132,7 +132,7 @@ public interface HeartRateServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onHeartRateMeasurementNotificateStartFailed(@NonNull Integer taskId
+    void onHeartRateMeasurementNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -143,7 +143,7 @@ public interface HeartRateServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Heart Rate Measurement notificate timeout callback
+     * Start Heart Rate Measurement notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -155,7 +155,7 @@ public interface HeartRateServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onHeartRateMeasurementNotificateStartTimeout(@NonNull Integer taskId
+    void onHeartRateMeasurementNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -166,7 +166,7 @@ public interface HeartRateServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Heart Rate Measurement notificate success callback
+     * Stop Heart Rate Measurement notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -177,7 +177,7 @@ public interface HeartRateServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onHeartRateMeasurementNotificateStopSuccess(@NonNull Integer taskId
+    void onHeartRateMeasurementNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -187,7 +187,7 @@ public interface HeartRateServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Heart Rate Measurement notificate error callback
+     * Stop Heart Rate Measurement notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -202,7 +202,7 @@ public interface HeartRateServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onHeartRateMeasurementNotificateStopFailed(@NonNull Integer taskId
+    void onHeartRateMeasurementNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -213,7 +213,7 @@ public interface HeartRateServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Heart Rate Measurement notificate timeout callback
+     * Stop Heart Rate Measurement notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -225,7 +225,7 @@ public interface HeartRateServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onHeartRateMeasurementNotificateStopTimeout(@NonNull Integer taskId
+    void onHeartRateMeasurementNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId

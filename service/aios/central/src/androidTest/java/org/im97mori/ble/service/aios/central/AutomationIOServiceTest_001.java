@@ -74,7 +74,7 @@ public class AutomationIOServiceTest_001 extends AbstractCentralTest {
         assertEquals(1, automationIOService.getAnalogCount().intValue());
         assertTrue(automationIOService.isAggregateSupported());
         assertTrue(automationIOService.isAggregateReadable());
-        assertTrue(automationIOService.isAggregateNotificatable());
+        assertTrue(automationIOService.canAggregateNotify());
 
         automationIOService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
@@ -86,7 +86,7 @@ public class AutomationIOServiceTest_001 extends AbstractCentralTest {
         assertEquals(0, count.intValue());
         assertFalse(automationIOService.isAggregateSupported());
         assertFalse(automationIOService.isAggregateReadable());
-        assertFalse(automationIOService.isAggregateNotificatable());
+        assertFalse(automationIOService.canAggregateNotify());
     }
 
     @Test
@@ -114,7 +114,7 @@ public class AutomationIOServiceTest_001 extends AbstractCentralTest {
         assertEquals(1, count.intValue());
         assertTrue(automationIOService.isAggregateSupported());
         assertTrue(automationIOService.isAggregateReadable());
-        assertTrue(automationIOService.isAggregateIndicatable());
+        assertTrue(automationIOService.canAggregateIndicate());
 
         automationIOService.onBLEDisconnected(1, BLETestUtilsAndroid.MOCK_DEVICE_0, 0, null);
 
@@ -126,7 +126,7 @@ public class AutomationIOServiceTest_001 extends AbstractCentralTest {
         assertEquals(0, count.intValue());
         assertFalse(automationIOService.isAggregateSupported());
         assertFalse(automationIOService.isAggregateReadable());
-        assertFalse(automationIOService.isAggregateIndicatable());
+        assertFalse(automationIOService.canAggregateIndicate());
     }
 
     @Test
@@ -141,8 +141,8 @@ public class AutomationIOServiceTest_001 extends AbstractCentralTest {
         assertNull(count);
         assertFalse(automationIOService.isAggregateSupported());
         assertFalse(automationIOService.isAggregateReadable());
-        assertFalse(automationIOService.isAggregateNotificatable());
-        assertFalse(automationIOService.isAggregateIndicatable());
+        assertFalse(automationIOService.canAggregateNotify());
+        assertFalse(automationIOService.canAggregateIndicate());
     }
 
     @Test
@@ -164,8 +164,8 @@ public class AutomationIOServiceTest_001 extends AbstractCentralTest {
         assertEquals(0, count.intValue());
         assertFalse(automationIOService.isAggregateSupported());
         assertFalse(automationIOService.isAggregateReadable());
-        assertFalse(automationIOService.isAggregateNotificatable());
-        assertFalse(automationIOService.isAggregateIndicatable());
+        assertFalse(automationIOService.canAggregateNotify());
+        assertFalse(automationIOService.canAggregateIndicate());
     }
 
     @Test
@@ -189,8 +189,8 @@ public class AutomationIOServiceTest_001 extends AbstractCentralTest {
         assertEquals(0, count.intValue());
         assertFalse(automationIOService.isAggregateSupported());
         assertFalse(automationIOService.isAggregateReadable());
-        assertFalse(automationIOService.isAggregateNotificatable());
-        assertFalse(automationIOService.isAggregateIndicatable());
+        assertFalse(automationIOService.canAggregateNotify());
+        assertFalse(automationIOService.canAggregateIndicate());
     }
 
     @Test
@@ -214,8 +214,8 @@ public class AutomationIOServiceTest_001 extends AbstractCentralTest {
         assertEquals(1, count.intValue());
         assertFalse(automationIOService.isAggregateSupported());
         assertFalse(automationIOService.isAggregateReadable());
-        assertFalse(automationIOService.isAggregateNotificatable());
-        assertFalse(automationIOService.isAggregateIndicatable());
+        assertFalse(automationIOService.canAggregateNotify());
+        assertFalse(automationIOService.canAggregateIndicate());
     }
 
     @Test
@@ -240,8 +240,8 @@ public class AutomationIOServiceTest_001 extends AbstractCentralTest {
         assertEquals(0, count.intValue());
         assertTrue(automationIOService.isAggregateSupported());
         assertFalse(automationIOService.isAggregateReadable());
-        assertFalse(automationIOService.isAggregateNotificatable());
-        assertFalse(automationIOService.isAggregateIndicatable());
+        assertFalse(automationIOService.canAggregateNotify());
+        assertFalse(automationIOService.canAggregateIndicate());
     }
 
     @Test
@@ -266,8 +266,8 @@ public class AutomationIOServiceTest_001 extends AbstractCentralTest {
         assertEquals(0, count.intValue());
         assertTrue(automationIOService.isAggregateSupported());
         assertTrue(automationIOService.isAggregateReadable());
-        assertFalse(automationIOService.isAggregateNotificatable());
-        assertFalse(automationIOService.isAggregateIndicatable());
+        assertFalse(automationIOService.canAggregateNotify());
+        assertFalse(automationIOService.canAggregateIndicate());
     }
 
     @Test
@@ -293,8 +293,8 @@ public class AutomationIOServiceTest_001 extends AbstractCentralTest {
         assertEquals(0, count.intValue());
         assertTrue(automationIOService.isAggregateSupported());
         assertTrue(automationIOService.isAggregateReadable());
-        assertFalse(automationIOService.isAggregateNotificatable());
-        assertFalse(automationIOService.isAggregateIndicatable());
+        assertFalse(automationIOService.canAggregateNotify());
+        assertFalse(automationIOService.canAggregateIndicate());
     }
 
     @Test
@@ -320,8 +320,8 @@ public class AutomationIOServiceTest_001 extends AbstractCentralTest {
         assertEquals(0, count.intValue());
         assertTrue(automationIOService.isAggregateSupported());
         assertTrue(automationIOService.isAggregateReadable());
-        assertTrue(automationIOService.isAggregateNotificatable());
-        assertFalse(automationIOService.isAggregateIndicatable());
+        assertTrue(automationIOService.canAggregateNotify());
+        assertFalse(automationIOService.canAggregateIndicate());
     }
 
     @Test
@@ -347,8 +347,8 @@ public class AutomationIOServiceTest_001 extends AbstractCentralTest {
         assertEquals(0, count.intValue());
         assertTrue(automationIOService.isAggregateSupported());
         assertTrue(automationIOService.isAggregateReadable());
-        assertFalse(automationIOService.isAggregateNotificatable());
-        assertTrue(automationIOService.isAggregateIndicatable());
+        assertFalse(automationIOService.canAggregateNotify());
+        assertTrue(automationIOService.canAggregateIndicate());
     }
 
     @Test

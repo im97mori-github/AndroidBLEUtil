@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfilePressureTest extends AbstractCentralTest
 
     @Test
     @RequiresDevice
-    public void test_isPressureNotificatable_00001() {
+    public void test_canPressureNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isPressureNotificatable());
+        assertNull(environmentalSensingProfile.canPressureNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isPressureNotificatable_00002() {
+    public void test_canPressureNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isPressureNotificatable());
+        assertNotNull(environmentalSensingProfile.canPressureNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isPressureNotificatable_00101() {
+    public void test_canPressureNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isPressureNotificatable(0));
+        assertNull(environmentalSensingProfile.canPressureNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isPressureNotificatable_00102() {
+    public void test_canPressureNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isPressureNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canPressureNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

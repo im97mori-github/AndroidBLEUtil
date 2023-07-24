@@ -58,11 +58,11 @@
             android:id="@+id/read_ammonia_concentration_count"
             android:title="@string/menu_read_ammonia_concentration_count" />
         <item
-            android:id="@+id/is_ammonia_concentration_notificatable_0"
-            android:title="@string/menu_is_ammonia_concentration_notificatable_0" />
+            android:id="@+id/can_ammonia_concentration_notify_0"
+            android:title="@string/menu_can_ammonia_concentration_notify_0" />
         <item
-            android:id="@+id/is_ammonia_concentration_notificatable_1"
-            android:title="@string/menu_is_ammonia_concentration_notificatable_1" />
+            android:id="@+id/can_ammonia_concentration_notify_1"
+            android:title="@string/menu_can_ammonia_concentration_notify_1" />
         <item
             android:id="@+id/has_ammonia_concentration_esm_0"
             android:title="@string/menu_has_ammonia_concentration_esm_0" />
@@ -174,11 +174,11 @@
             android:id="@+id/read_apparent_wind_direction_count"
             android:title="@string/menu_read_apparent_wind_direction_count" />
         <item
-            android:id="@+id/is_apparent_wind_direction_notificatable_0"
-            android:title="@string/menu_is_apparent_wind_direction_notificatable_0" />
+            android:id="@+id/can_apparent_wind_direction_notify_0"
+            android:title="@string/menu_can_apparent_wind_direction_notify_0" />
         <item
-            android:id="@+id/is_apparent_wind_direction_notificatable_1"
-            android:title="@string/menu_is_apparent_wind_direction_notificatable_1" />
+            android:id="@+id/can_apparent_wind_direction_notify_1"
+            android:title="@string/menu_can_apparent_wind_direction_notify_1" />
         <item
             android:id="@+id/has_apparent_wind_direction_esm_0"
             android:title="@string/menu_has_apparent_wind_direction_esm_0" />
@@ -290,11 +290,11 @@
             android:id="@+id/read_apparent_wind_speed_count"
             android:title="@string/menu_read_apparent_wind_speed_count" />
         <item
-            android:id="@+id/is_apparent_wind_speed_notificatable_0"
-            android:title="@string/menu_is_apparent_wind_speed_notificatable_0" />
+            android:id="@+id/can_apparent_wind_speed_notify_0"
+            android:title="@string/menu_can_apparent_wind_speed_notify_0" />
         <item
-            android:id="@+id/is_apparent_wind_speed_notificatable_1"
-            android:title="@string/menu_is_apparent_wind_speed_notificatable_1" />
+            android:id="@+id/can_apparent_wind_speed_notify_1"
+            android:title="@string/menu_can_apparent_wind_speed_notify_1" />
         <item
             android:id="@+id/has_apparent_wind_speed_esm_0"
             android:title="@string/menu_has_apparent_wind_speed_esm_0" />
@@ -406,11 +406,11 @@
             android:id="@+id/read_barometric_pressure_trend_count"
             android:title="@string/menu_read_barometric_pressure_trend_count" />
         <item
-            android:id="@+id/is_barometric_pressure_trend_notificatable_0"
-            android:title="@string/menu_is_barometric_pressure_trend_notificatable_0" />
+            android:id="@+id/can_barometric_pressure_trend_notify_0"
+            android:title="@string/menu_can_barometric_pressure_trend_notify_0" />
         <item
-            android:id="@+id/is_barometric_pressure_trend_notificatable_1"
-            android:title="@string/menu_is_barometric_pressure_trend_notificatable_1" />
+            android:id="@+id/can_barometric_pressure_trend_notify_1"
+            android:title="@string/menu_can_barometric_pressure_trend_notify_1" />
         <item
             android:id="@+id/has_barometric_pressure_trend_esm_0"
             android:title="@string/menu_has_barometric_pressure_trend_esm_0" />
@@ -522,11 +522,11 @@
             android:id="@+id/read_carbon_monoxide_concentration_count"
             android:title="@string/menu_read_carbon_monoxide_concentration_count" />
         <item
-            android:id="@+id/is_carbon_monoxide_concentration_notificatable_0"
-            android:title="@string/menu_is_carbon_monoxide_concentration_notificatable_0" />
+            android:id="@+id/can_carbon_monoxide_concentration_notify_0"
+            android:title="@string/menu_can_carbon_monoxide_concentration_notify_0" />
         <item
-            android:id="@+id/is_carbon_monoxide_concentration_notificatable_1"
-            android:title="@string/menu_is_carbon_monoxide_concentration_notificatable_1" />
+            android:id="@+id/can_carbon_monoxide_concentration_notify_1"
+            android:title="@string/menu_can_carbon_monoxide_concentration_notify_1" />
         <item
             android:id="@+id/has_carbon_monoxide_concentration_esm_0"
             android:title="@string/menu_has_carbon_monoxide_concentration_esm_0" />
@@ -638,11 +638,11 @@
             android:id="@+id/read_dew_point_count"
             android:title="@string/menu_read_dew_point_count" />
         <item
-            android:id="@+id/is_dew_point_notificatable_0"
-            android:title="@string/menu_is_dew_point_notificatable_0" />
+            android:id="@+id/can_dew_point_notify_0"
+            android:title="@string/menu_can_dew_point_notify_0" />
         <item
-            android:id="@+id/is_dew_point_notificatable_1"
-            android:title="@string/menu_is_dew_point_notificatable_1" />
+            android:id="@+id/can_dew_point_notify_1"
+            android:title="@string/menu_can_dew_point_notify_1" />
         <item
             android:id="@+id/has_dew_point_esm_0"
             android:title="@string/menu_has_dew_point_esm_0" />
@@ -754,11 +754,11 @@
             android:id="@+id/read_elevation_count"
             android:title="@string/menu_read_elevation_count" />
         <item
-            android:id="@+id/is_elevation_notificatable_0"
-            android:title="@string/menu_is_elevation_notificatable_0" />
+            android:id="@+id/can_elevation_notify_0"
+            android:title="@string/menu_can_elevation_notify_0" />
         <item
-            android:id="@+id/is_elevation_notificatable_1"
-            android:title="@string/menu_is_elevation_notificatable_1" />
+            android:id="@+id/can_elevation_notify_1"
+            android:title="@string/menu_can_elevation_notify_1" />
         <item
             android:id="@+id/has_elevation_esm_0"
             android:title="@string/menu_has_elevation_esm_0" />
@@ -870,11 +870,11 @@
             android:id="@+id/read_gust_factor_count"
             android:title="@string/menu_read_gust_factor_count" />
         <item
-            android:id="@+id/is_gust_factor_notificatable_0"
-            android:title="@string/menu_is_gust_factor_notificatable_0" />
+            android:id="@+id/can_gust_factor_notify_0"
+            android:title="@string/menu_can_gust_factor_notify_0" />
         <item
-            android:id="@+id/is_gust_factor_notificatable_1"
-            android:title="@string/menu_is_gust_factor_notificatable_1" />
+            android:id="@+id/can_gust_factor_notify_1"
+            android:title="@string/menu_can_gust_factor_notify_1" />
         <item
             android:id="@+id/has_gust_factor_esm_0"
             android:title="@string/menu_has_gust_factor_esm_0" />
@@ -986,11 +986,11 @@
             android:id="@+id/read_heat_index_count"
             android:title="@string/menu_read_heat_index_count" />
         <item
-            android:id="@+id/is_heat_index_notificatable_0"
-            android:title="@string/menu_is_heat_index_notificatable_0" />
+            android:id="@+id/can_heat_index_notify_0"
+            android:title="@string/menu_can_heat_index_notify_0" />
         <item
-            android:id="@+id/is_heat_index_notificatable_1"
-            android:title="@string/menu_is_heat_index_notificatable_1" />
+            android:id="@+id/can_heat_index_notify_1"
+            android:title="@string/menu_can_heat_index_notify_1" />
         <item
             android:id="@+id/has_heat_index_esm_0"
             android:title="@string/menu_has_heat_index_esm_0" />
@@ -1102,11 +1102,11 @@
             android:id="@+id/read_humidity_count"
             android:title="@string/menu_read_humidity_count" />
         <item
-            android:id="@+id/is_humidity_notificatable_0"
-            android:title="@string/menu_is_humidity_notificatable_0" />
+            android:id="@+id/can_humidity_notify_0"
+            android:title="@string/menu_can_humidity_notify_0" />
         <item
-            android:id="@+id/is_humidity_notificatable_1"
-            android:title="@string/menu_is_humidity_notificatable_1" />
+            android:id="@+id/can_humidity_notify_1"
+            android:title="@string/menu_can_humidity_notify_1" />
         <item
             android:id="@+id/has_humidity_esm_0"
             android:title="@string/menu_has_humidity_esm_0" />
@@ -1218,11 +1218,11 @@
             android:id="@+id/read_irradiance_count"
             android:title="@string/menu_read_irradiance_count" />
         <item
-            android:id="@+id/is_irradiance_notificatable_0"
-            android:title="@string/menu_is_irradiance_notificatable_0" />
+            android:id="@+id/can_irradiance_notify_0"
+            android:title="@string/menu_can_irradiance_notify_0" />
         <item
-            android:id="@+id/is_irradiance_notificatable_1"
-            android:title="@string/menu_is_irradiance_notificatable_1" />
+            android:id="@+id/can_irradiance_notify_1"
+            android:title="@string/menu_can_irradiance_notify_1" />
         <item
             android:id="@+id/has_irradiance_esm_0"
             android:title="@string/menu_has_irradiance_esm_0" />
@@ -1334,11 +1334,11 @@
             android:id="@+id/read_magnetic_declination_count"
             android:title="@string/menu_read_magnetic_declination_count" />
         <item
-            android:id="@+id/is_magnetic_declination_notificatable_0"
-            android:title="@string/menu_is_magnetic_declination_notificatable_0" />
+            android:id="@+id/can_magnetic_declination_notify_0"
+            android:title="@string/menu_can_magnetic_declination_notify_0" />
         <item
-            android:id="@+id/is_magnetic_declination_notificatable_1"
-            android:title="@string/menu_is_magnetic_declination_notificatable_1" />
+            android:id="@+id/can_magnetic_declination_notify_1"
+            android:title="@string/menu_can_magnetic_declination_notify_1" />
         <item
             android:id="@+id/has_magnetic_declination_esm_0"
             android:title="@string/menu_has_magnetic_declination_esm_0" />
@@ -1450,11 +1450,11 @@
             android:id="@+id/read_magnetic_flux_density_2d_count"
             android:title="@string/menu_read_magnetic_flux_density_2d_count" />
         <item
-            android:id="@+id/is_magnetic_flux_density_2d_notificatable_0"
-            android:title="@string/menu_is_magnetic_flux_density_2d_notificatable_0" />
+            android:id="@+id/can_magnetic_flux_density_2d_notify_0"
+            android:title="@string/menu_can_magnetic_flux_density_2d_notify_0" />
         <item
-            android:id="@+id/is_magnetic_flux_density_2d_notificatable_1"
-            android:title="@string/menu_is_magnetic_flux_density_2d_notificatable_1" />
+            android:id="@+id/can_magnetic_flux_density_2d_notify_1"
+            android:title="@string/menu_can_magnetic_flux_density_2d_notify_1" />
         <item
             android:id="@+id/has_magnetic_flux_density_2d_esm_0"
             android:title="@string/menu_has_magnetic_flux_density_2d_esm_0" />
@@ -1566,11 +1566,11 @@
             android:id="@+id/read_magnetic_flux_density_3d_count"
             android:title="@string/menu_read_magnetic_flux_density_3d_count" />
         <item
-            android:id="@+id/is_magnetic_flux_density_3d_notificatable_0"
-            android:title="@string/menu_is_magnetic_flux_density_3d_notificatable_0" />
+            android:id="@+id/can_magnetic_flux_density_3d_notify_0"
+            android:title="@string/menu_can_magnetic_flux_density_3d_notify_0" />
         <item
-            android:id="@+id/is_magnetic_flux_density_3d_notificatable_1"
-            android:title="@string/menu_is_magnetic_flux_density_3d_notificatable_1" />
+            android:id="@+id/can_magnetic_flux_density_3d_notify_1"
+            android:title="@string/menu_can_magnetic_flux_density_3d_notify_1" />
         <item
             android:id="@+id/has_magnetic_flux_density_3d_esm_0"
             android:title="@string/menu_has_magnetic_flux_density_3d_esm_0" />
@@ -1682,11 +1682,11 @@
             android:id="@+id/read_methane_concentration_count"
             android:title="@string/menu_read_methane_concentration_count" />
         <item
-            android:id="@+id/is_methane_concentration_notificatable_0"
-            android:title="@string/menu_is_methane_concentration_notificatable_0" />
+            android:id="@+id/can_methane_concentration_notify_0"
+            android:title="@string/menu_can_methane_concentration_notify_0" />
         <item
-            android:id="@+id/is_methane_concentration_notificatable_1"
-            android:title="@string/menu_is_methane_concentration_notificatable_1" />
+            android:id="@+id/can_methane_concentration_notify_1"
+            android:title="@string/menu_can_methane_concentration_notify_1" />
         <item
             android:id="@+id/has_methane_concentration_esm_0"
             android:title="@string/menu_has_methane_concentration_esm_0" />
@@ -1798,11 +1798,11 @@
             android:id="@+id/read_nitrogen_dioxide_concentration_count"
             android:title="@string/menu_read_nitrogen_dioxide_concentration_count" />
         <item
-            android:id="@+id/is_nitrogen_dioxide_concentration_notificatable_0"
-            android:title="@string/menu_is_nitrogen_dioxide_concentration_notificatable_0" />
+            android:id="@+id/can_nitrogen_dioxide_concentration_notify_0"
+            android:title="@string/menu_can_nitrogen_dioxide_concentration_notify_0" />
         <item
-            android:id="@+id/is_nitrogen_dioxide_concentration_notificatable_1"
-            android:title="@string/menu_is_nitrogen_dioxide_concentration_notificatable_1" />
+            android:id="@+id/can_nitrogen_dioxide_concentration_notify_1"
+            android:title="@string/menu_can_nitrogen_dioxide_concentration_notify_1" />
         <item
             android:id="@+id/has_nitrogen_dioxide_concentration_esm_0"
             android:title="@string/menu_has_nitrogen_dioxide_concentration_esm_0" />
@@ -1914,11 +1914,11 @@
             android:id="@+id/read_non_methane_volatile_organic_compounds_concentration_count"
             android:title="@string/menu_read_non_methane_volatile_organic_compounds_concentration_count" />
         <item
-            android:id="@+id/is_non_methane_volatile_organic_compounds_concentration_notificatable_0"
-            android:title="@string/menu_is_non_methane_volatile_organic_compounds_concentration_notificatable_0" />
+            android:id="@+id/can_non_methane_volatile_organic_compounds_concentration_notify_0"
+            android:title="@string/menu_can_non_methane_volatile_organic_compounds_concentration_notify_0" />
         <item
-            android:id="@+id/is_non_methane_volatile_organic_compounds_concentration_notificatable_1"
-            android:title="@string/menu_is_non_methane_volatile_organic_compounds_concentration_notificatable_1" />
+            android:id="@+id/can_non_methane_volatile_organic_compounds_concentration_notify_1"
+            android:title="@string/menu_can_non_methane_volatile_organic_compounds_concentration_notify_1" />
         <item
             android:id="@+id/has_non_methane_volatile_organic_compounds_concentration_esm_0"
             android:title="@string/menu_has_non_methane_volatile_organic_compounds_concentration_esm_0" />
@@ -2030,11 +2030,11 @@
             android:id="@+id/read_ozone_concentration_count"
             android:title="@string/menu_read_ozone_concentration_count" />
         <item
-            android:id="@+id/is_ozone_concentration_notificatable_0"
-            android:title="@string/menu_is_ozone_concentration_notificatable_0" />
+            android:id="@+id/can_ozone_concentration_notify_0"
+            android:title="@string/menu_can_ozone_concentration_notify_0" />
         <item
-            android:id="@+id/is_ozone_concentration_notificatable_1"
-            android:title="@string/menu_is_ozone_concentration_notificatable_1" />
+            android:id="@+id/can_ozone_concentration_notify_1"
+            android:title="@string/menu_can_ozone_concentration_notify_1" />
         <item
             android:id="@+id/has_ozone_concentration_esm_0"
             android:title="@string/menu_has_ozone_concentration_esm_0" />
@@ -2146,11 +2146,11 @@
             android:id="@+id/read_particulate_matter_pm10_concentration_count"
             android:title="@string/menu_read_particulate_matter_pm10_concentration_count" />
         <item
-            android:id="@+id/is_particulate_matter_pm10_concentration_notificatable_0"
-            android:title="@string/menu_is_particulate_matter_pm10_concentration_notificatable_0" />
+            android:id="@+id/can_particulate_matter_pm10_concentration_notify_0"
+            android:title="@string/menu_can_particulate_matter_pm10_concentration_notify_0" />
         <item
-            android:id="@+id/is_particulate_matter_pm10_concentration_notificatable_1"
-            android:title="@string/menu_is_particulate_matter_pm10_concentration_notificatable_1" />
+            android:id="@+id/can_particulate_matter_pm10_concentration_notify_1"
+            android:title="@string/menu_can_particulate_matter_pm10_concentration_notify_1" />
         <item
             android:id="@+id/has_particulate_matter_pm10_concentration_esm_0"
             android:title="@string/menu_has_particulate_matter_pm10_concentration_esm_0" />
@@ -2262,11 +2262,11 @@
             android:id="@+id/read_particulate_matter_pm1_concentration_count"
             android:title="@string/menu_read_particulate_matter_pm1_concentration_count" />
         <item
-            android:id="@+id/is_particulate_matter_pm1_concentration_notificatable_0"
-            android:title="@string/menu_is_particulate_matter_pm1_concentration_notificatable_0" />
+            android:id="@+id/can_particulate_matter_pm1_concentration_notify_0"
+            android:title="@string/menu_can_particulate_matter_pm1_concentration_notify_0" />
         <item
-            android:id="@+id/is_particulate_matter_pm1_concentration_notificatable_1"
-            android:title="@string/menu_is_particulate_matter_pm1_concentration_notificatable_1" />
+            android:id="@+id/can_particulate_matter_pm1_concentration_notify_1"
+            android:title="@string/menu_can_particulate_matter_pm1_concentration_notify_1" />
         <item
             android:id="@+id/has_particulate_matter_pm1_concentration_esm_0"
             android:title="@string/menu_has_particulate_matter_pm1_concentration_esm_0" />
@@ -2378,11 +2378,11 @@
             android:id="@+id/read_particulate_matter_pm2_5_concentration_count"
             android:title="@string/menu_read_particulate_matter_pm2_5_concentration_count" />
         <item
-            android:id="@+id/is_particulate_matter_pm2_5_concentration_notificatable_0"
-            android:title="@string/menu_is_particulate_matter_pm2_5_concentration_notificatable_0" />
+            android:id="@+id/can_particulate_matter_pm2_5_concentration_notify_0"
+            android:title="@string/menu_can_particulate_matter_pm2_5_concentration_notify_0" />
         <item
-            android:id="@+id/is_particulate_matter_pm2_5_concentration_notificatable_1"
-            android:title="@string/menu_is_particulate_matter_pm2_5_concentration_notificatable_1" />
+            android:id="@+id/can_particulate_matter_pm2_5_concentration_notify_1"
+            android:title="@string/menu_can_particulate_matter_pm2_5_concentration_notify_1" />
         <item
             android:id="@+id/has_particulate_matter_pm2_5_concentration_esm_0"
             android:title="@string/menu_has_particulate_matter_pm2_5_concentration_esm_0" />
@@ -2494,11 +2494,11 @@
             android:id="@+id/read_pollen_concentration_count"
             android:title="@string/menu_read_pollen_concentration_count" />
         <item
-            android:id="@+id/is_pollen_concentration_notificatable_0"
-            android:title="@string/menu_is_pollen_concentration_notificatable_0" />
+            android:id="@+id/can_pollen_concentration_notify_0"
+            android:title="@string/menu_can_pollen_concentration_notify_0" />
         <item
-            android:id="@+id/is_pollen_concentration_notificatable_1"
-            android:title="@string/menu_is_pollen_concentration_notificatable_1" />
+            android:id="@+id/can_pollen_concentration_notify_1"
+            android:title="@string/menu_can_pollen_concentration_notify_1" />
         <item
             android:id="@+id/has_pollen_concentration_esm_0"
             android:title="@string/menu_has_pollen_concentration_esm_0" />
@@ -2610,11 +2610,11 @@
             android:id="@+id/read_pressure_count"
             android:title="@string/menu_read_pressure_count" />
         <item
-            android:id="@+id/is_pressure_notificatable_0"
-            android:title="@string/menu_is_pressure_notificatable_0" />
+            android:id="@+id/can_pressure_notify_0"
+            android:title="@string/menu_can_pressure_notify_0" />
         <item
-            android:id="@+id/is_pressure_notificatable_1"
-            android:title="@string/menu_is_pressure_notificatable_1" />
+            android:id="@+id/can_pressure_notify_1"
+            android:title="@string/menu_can_pressure_notify_1" />
         <item
             android:id="@+id/has_pressure_esm_0"
             android:title="@string/menu_has_pressure_esm_0" />
@@ -2726,11 +2726,11 @@
             android:id="@+id/read_rainfall_count"
             android:title="@string/menu_read_rainfall_count" />
         <item
-            android:id="@+id/is_rainfall_notificatable_0"
-            android:title="@string/menu_is_rainfall_notificatable_0" />
+            android:id="@+id/can_rainfall_notify_0"
+            android:title="@string/menu_can_rainfall_notify_0" />
         <item
-            android:id="@+id/is_rainfall_notificatable_1"
-            android:title="@string/menu_is_rainfall_notificatable_1" />
+            android:id="@+id/can_rainfall_notify_1"
+            android:title="@string/menu_can_rainfall_notify_1" />
         <item
             android:id="@+id/has_rainfall_esm_0"
             android:title="@string/menu_has_rainfall_esm_0" />
@@ -2842,11 +2842,11 @@
             android:id="@+id/read_sulfur_dioxide_concentration_count"
             android:title="@string/menu_read_sulfur_dioxide_concentration_count" />
         <item
-            android:id="@+id/is_sulfur_dioxide_concentration_notificatable_0"
-            android:title="@string/menu_is_sulfur_dioxide_concentration_notificatable_0" />
+            android:id="@+id/can_sulfur_dioxide_concentration_notify_0"
+            android:title="@string/menu_can_sulfur_dioxide_concentration_notify_0" />
         <item
-            android:id="@+id/is_sulfur_dioxide_concentration_notificatable_1"
-            android:title="@string/menu_is_sulfur_dioxide_concentration_notificatable_1" />
+            android:id="@+id/can_sulfur_dioxide_concentration_notify_1"
+            android:title="@string/menu_can_sulfur_dioxide_concentration_notify_1" />
         <item
             android:id="@+id/has_sulfur_dioxide_concentration_esm_0"
             android:title="@string/menu_has_sulfur_dioxide_concentration_esm_0" />
@@ -2958,11 +2958,11 @@
             android:id="@+id/read_sulfur_hexafluoride_concentration_count"
             android:title="@string/menu_read_sulfur_hexafluoride_concentration_count" />
         <item
-            android:id="@+id/is_sulfur_hexafluoride_concentration_notificatable_0"
-            android:title="@string/menu_is_sulfur_hexafluoride_concentration_notificatable_0" />
+            android:id="@+id/can_sulfur_hexafluoride_concentration_notify_0"
+            android:title="@string/menu_can_sulfur_hexafluoride_concentration_notify_0" />
         <item
-            android:id="@+id/is_sulfur_hexafluoride_concentration_notificatable_1"
-            android:title="@string/menu_is_sulfur_hexafluoride_concentration_notificatable_1" />
+            android:id="@+id/can_sulfur_hexafluoride_concentration_notify_1"
+            android:title="@string/menu_can_sulfur_hexafluoride_concentration_notify_1" />
         <item
             android:id="@+id/has_sulfur_hexafluoride_concentration_esm_0"
             android:title="@string/menu_has_sulfur_hexafluoride_concentration_esm_0" />
@@ -3074,11 +3074,11 @@
             android:id="@+id/read_temperature_count"
             android:title="@string/menu_read_temperature_count" />
         <item
-            android:id="@+id/is_temperature_notificatable_0"
-            android:title="@string/menu_is_temperature_notificatable_0" />
+            android:id="@+id/can_temperature_notify_0"
+            android:title="@string/menu_can_temperature_notify_0" />
         <item
-            android:id="@+id/is_temperature_notificatable_1"
-            android:title="@string/menu_is_temperature_notificatable_1" />
+            android:id="@+id/can_temperature_notify_1"
+            android:title="@string/menu_can_temperature_notify_1" />
         <item
             android:id="@+id/has_temperature_esm_0"
             android:title="@string/menu_has_temperature_esm_0" />
@@ -3190,11 +3190,11 @@
             android:id="@+id/read_true_wind_direction_count"
             android:title="@string/menu_read_true_wind_direction_count" />
         <item
-            android:id="@+id/is_true_wind_direction_notificatable_0"
-            android:title="@string/menu_is_true_wind_direction_notificatable_0" />
+            android:id="@+id/can_true_wind_direction_notify_0"
+            android:title="@string/menu_can_true_wind_direction_notify_0" />
         <item
-            android:id="@+id/is_true_wind_direction_notificatable_1"
-            android:title="@string/menu_is_true_wind_direction_notificatable_1" />
+            android:id="@+id/can_true_wind_direction_notify_1"
+            android:title="@string/menu_can_true_wind_direction_notify_1" />
         <item
             android:id="@+id/has_true_wind_direction_esm_0"
             android:title="@string/menu_has_true_wind_direction_esm_0" />
@@ -3306,11 +3306,11 @@
             android:id="@+id/read_true_wind_speed_count"
             android:title="@string/menu_read_true_wind_speed_count" />
         <item
-            android:id="@+id/is_true_wind_speed_notificatable_0"
-            android:title="@string/menu_is_true_wind_speed_notificatable_0" />
+            android:id="@+id/can_true_wind_speed_notify_0"
+            android:title="@string/menu_can_true_wind_speed_notify_0" />
         <item
-            android:id="@+id/is_true_wind_speed_notificatable_1"
-            android:title="@string/menu_is_true_wind_speed_notificatable_1" />
+            android:id="@+id/can_true_wind_speed_notify_1"
+            android:title="@string/menu_can_true_wind_speed_notify_1" />
         <item
             android:id="@+id/has_true_wind_speed_esm_0"
             android:title="@string/menu_has_true_wind_speed_esm_0" />
@@ -3422,11 +3422,11 @@
             android:id="@+id/read_uv_index_count"
             android:title="@string/menu_read_uv_index_count" />
         <item
-            android:id="@+id/is_uv_index_notificatable_0"
-            android:title="@string/menu_is_uv_index_notificatable_0" />
+            android:id="@+id/can_uv_index_notify_0"
+            android:title="@string/menu_can_uv_index_notify_0" />
         <item
-            android:id="@+id/is_uv_index_notificatable_1"
-            android:title="@string/menu_is_uv_index_notificatable_1" />
+            android:id="@+id/can_uv_index_notify_1"
+            android:title="@string/menu_can_uv_index_notify_1" />
         <item
             android:id="@+id/has_uv_index_esm_0"
             android:title="@string/menu_has_uv_index_esm_0" />
@@ -3538,11 +3538,11 @@
             android:id="@+id/read_wind_chill_count"
             android:title="@string/menu_read_wind_chill_count" />
         <item
-            android:id="@+id/is_wind_chill_notificatable_0"
-            android:title="@string/menu_is_wind_chill_notificatable_0" />
+            android:id="@+id/can_wind_chill_notify_0"
+            android:title="@string/menu_can_wind_chill_notify_0" />
         <item
-            android:id="@+id/is_wind_chill_notificatable_1"
-            android:title="@string/menu_is_wind_chill_notificatable_1" />
+            android:id="@+id/can_wind_chill_notify_1"
+            android:title="@string/menu_can_wind_chill_notify_1" />
         <item
             android:id="@+id/has_wind_chill_esm_0"
             android:title="@string/menu_has_wind_chill_esm_0" />

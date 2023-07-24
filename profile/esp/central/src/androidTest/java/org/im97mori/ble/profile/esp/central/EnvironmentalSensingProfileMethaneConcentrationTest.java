@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileMethaneConcentrationTest extends Abstrac
 
     @Test
     @RequiresDevice
-    public void test_isMethaneConcentrationNotificatable_00001() {
+    public void test_canMethaneConcentrationNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isMethaneConcentrationNotificatable());
+        assertNull(environmentalSensingProfile.canMethaneConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isMethaneConcentrationNotificatable_00002() {
+    public void test_canMethaneConcentrationNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isMethaneConcentrationNotificatable());
+        assertNotNull(environmentalSensingProfile.canMethaneConcentrationNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isMethaneConcentrationNotificatable_00101() {
+    public void test_canMethaneConcentrationNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isMethaneConcentrationNotificatable(0));
+        assertNull(environmentalSensingProfile.canMethaneConcentrationNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isMethaneConcentrationNotificatable_00102() {
+    public void test_canMethaneConcentrationNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isMethaneConcentrationNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canMethaneConcentrationNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

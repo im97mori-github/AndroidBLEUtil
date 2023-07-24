@@ -5,7 +5,7 @@ import android.bluetooth.BluetoothDevice;
 import androidx.annotation.NonNull;
 
 /**
- * list all users inidication data class
+ * list all users indication data class
  */
 public class RegisteredUserIndicationData {
 

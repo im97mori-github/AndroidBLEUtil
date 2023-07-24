@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileTrueWindSpeedTest extends AbstractCentra
 
     @Test
     @RequiresDevice
-    public void test_isTrueWindSpeedNotificatable_00001() {
+    public void test_canTrueWindSpeedNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isTrueWindSpeedNotificatable());
+        assertNull(environmentalSensingProfile.canTrueWindSpeedNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isTrueWindSpeedNotificatable_00002() {
+    public void test_canTrueWindSpeedNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isTrueWindSpeedNotificatable());
+        assertNotNull(environmentalSensingProfile.canTrueWindSpeedNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isTrueWindSpeedNotificatable_00101() {
+    public void test_canTrueWindSpeedNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isTrueWindSpeedNotificatable(0));
+        assertNull(environmentalSensingProfile.canTrueWindSpeedNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isTrueWindSpeedNotificatable_00102() {
+    public void test_canTrueWindSpeedNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isTrueWindSpeedNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canTrueWindSpeedNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

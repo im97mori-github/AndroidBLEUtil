@@ -237,7 +237,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
          * @param measurementIntervalResponseCode               characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param measurementIntervalDelay                      characteristic response delay(millis)
          * @param measurementIntervalValue                      characteristic data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
-         * @param isMeasurementIntervalIndicatable              indictable flag for Measurement Interval characteristic
+         * @param canMeasurementIntervalIndicate              indictable flag for Measurement Interval characteristic
          * @param isMeasurementIntervalWritable                 writable flag for Measurement Interval characteristic
          * @param clientCharacteristicConfigurationResponseCode Client Characteristic Configuration descriptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param clientCharacteristicConfigurationDelay        Client Characteristic Configuration descriptor response delay(millis)
@@ -251,7 +251,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
         public Builder<T> addMeasurementInterval(int measurementIntervalResponseCode
                 , long measurementIntervalDelay
                 , @NonNull byte[] measurementIntervalValue
-                , boolean isMeasurementIntervalIndicatable
+                , boolean canMeasurementIntervalIndicate
                 , boolean isMeasurementIntervalWritable
                 , int clientCharacteristicConfigurationResponseCode
                 , long clientCharacteristicConfigurationDelay
@@ -262,7 +262,7 @@ public class HealthThermometerServiceMockCallback extends AbstractServiceMockCal
             int property = BluetoothGattCharacteristic.PROPERTY_READ;
             int permission = BluetoothGattCharacteristic.PERMISSION_READ;
             List<DescriptorData> descriptorDataList = new ArrayList<>();
-            if (isMeasurementIntervalIndicatable) {
+            if (canMeasurementIntervalIndicate) {
                 property |= BluetoothGattCharacteristic.PROPERTY_INDICATE;
                 descriptorDataList.add(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, clientCharacteristicConfigurationResponseCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue));
             }

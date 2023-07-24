@@ -3772,49 +3772,49 @@ public class BatteryServiceTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00001() {
+    public void test_canBatteryLevelNotify_00001() {
         final AtomicInteger originalIndex = new AtomicInteger(-1);
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
             @Override
-            public synchronized boolean isBatteryLevelNotificatable(int index) {
+            public synchronized boolean canBatteryLevelNotify(int index) {
                 originalIndex.set(index);
-                return super.isBatteryLevelNotificatable(index);
+                return super.canBatteryLevelNotify(index);
             }
 
         };
 
-        assertFalse(batteryService.isBatteryLevelNotificatable());
+        assertFalse(batteryService.canBatteryLevelNotify());
         assertEquals(0, originalIndex.get());
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00002() {
-        final boolean originaNotificatable = true;
+    public void test_canBatteryLevelNotify_00002() {
+        final boolean originalCanNotify = true;
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
             @Override
-            public synchronized boolean isBatteryLevelNotificatable(int index) {
-                return originaNotificatable;
+            public synchronized boolean canBatteryLevelNotify(int index) {
+                return originalCanNotify;
             }
 
         };
 
-        assertEquals(originaNotificatable, batteryService.isBatteryLevelNotificatable());
+        assertEquals(originalCanNotify, batteryService.canBatteryLevelNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00101() {
+    public void test_canBatteryLevelNotify_00101() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null);
 
-        assertFalse(batteryService.isBatteryLevelNotificatable(0));
+        assertFalse(batteryService.canBatteryLevelNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00102() {
+    public void test_canBatteryLevelNotify_00102() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3823,47 +3823,12 @@ public class BatteryServiceTest extends AbstractCentralTest {
             }
         };
 
-        assertFalse(batteryService.isBatteryLevelNotificatable(-1));
+        assertFalse(batteryService.canBatteryLevelNotify(-1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00103() {
-        BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
-
-            @Override
-            public boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ);
-        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
-
-        assertFalse(batteryService.isBatteryLevelNotificatable(0));
-    }
-
-    @Test
-    @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00104() {
-        BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
-
-            @Override
-            public boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
-        batteryService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-
-        assertFalse(batteryService.isBatteryLevelNotificatable(0));
-    }
-
-    @Test
-    @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00105() {
+    public void test_canBatteryLevelNotify_00103() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3876,14 +3841,49 @@ public class BatteryServiceTest extends AbstractCentralTest {
         BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
 
-        batteryService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-
-        assertFalse(batteryService.isBatteryLevelNotificatable(0));
+        assertFalse(batteryService.canBatteryLevelNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00106() {
+    public void test_canBatteryLevelNotify_00104() {
+        BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
+
+            @Override
+            public boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
+        batteryService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+
+        assertFalse(batteryService.canBatteryLevelNotify(0));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_canBatteryLevelNotify_00105() {
+        BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
+
+            @Override
+            public boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(BATTERY_SERVICE, 0);
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, BluetoothGattCharacteristic.PERMISSION_READ);
+        bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
+
+        batteryService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+
+        assertFalse(batteryService.canBatteryLevelNotify(0));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_canBatteryLevelNotify_00106() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3898,12 +3898,12 @@ public class BatteryServiceTest extends AbstractCentralTest {
 
         batteryService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
-        assertFalse(batteryService.isBatteryLevelNotificatable(0));
+        assertFalse(batteryService.canBatteryLevelNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00107() {
+    public void test_canBatteryLevelNotify_00107() {
         BatteryService batteryService = new BatteryService(MOCK_BLE_CONNECTION, new MockBatteryServiceCallback(), null) {
 
             @Override
@@ -3919,7 +3919,7 @@ public class BatteryServiceTest extends AbstractCentralTest {
 
         batteryService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
 
-        assertTrue(batteryService.isBatteryLevelNotificatable(0));
+        assertTrue(batteryService.canBatteryLevelNotify(0));
     }
 
     @Test

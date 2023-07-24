@@ -566,9 +566,9 @@ public class WeightScaleProfileMockCallback extends AbstractProfileMockCallback 
          * @see org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback.Builder#addDatabaseChangeIncrement(ClientCharacteristicConfiguration)
          */
         @NonNull
-        public Builder<T> addDatabaseChangeIncrement(int characteristicResponseCode, long characteristicDelay, boolean isNotificatable, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+        public Builder<T> addDatabaseChangeIncrement(int characteristicResponseCode, long characteristicDelay, boolean canNotify, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
             if (mUserDataServiceMockCallbackBuilder != null) {
-                mUserDataServiceMockCallbackBuilder.addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, isNotificatable, descriptorResponseCode, descriptorDelay, descriptorValue);
+                mUserDataServiceMockCallbackBuilder.addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, canNotify, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
             return this;
         }

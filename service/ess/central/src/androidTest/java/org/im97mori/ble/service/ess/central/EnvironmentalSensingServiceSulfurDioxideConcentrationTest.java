@@ -143,16 +143,16 @@ public class EnvironmentalSensingServiceSulfurDioxideConcentrationTest extends A
     @Test
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurDioxideConcentrationNotificatable_00001() {
+    public void test_canSulfurDioxideConcentrationNotify_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
-        assertFalse(environmentalSensingService.isSulfurDioxideConcentrationNotificatable());
+        assertFalse(environmentalSensingService.canSulfurDioxideConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurDioxideConcentrationNotificatable_00002() {
+    public void test_canSulfurDioxideConcentrationNotify_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -160,99 +160,13 @@ public class EnvironmentalSensingServiceSulfurDioxideConcentrationTest extends A
             }
         };
 
-        assertFalse(environmentalSensingService.isSulfurDioxideConcentrationNotificatable());
+        assertFalse(environmentalSensingService.canSulfurDioxideConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurDioxideConcentrationNotificatable_00003() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(environmentalSensingService.isSulfurDioxideConcentrationNotificatable());
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurDioxideConcentrationNotificatable_00004() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertTrue(environmentalSensingService.isSulfurDioxideConcentrationNotificatable());
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurDioxideConcentrationNotificatable_00005() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertTrue(environmentalSensingService.isSulfurDioxideConcentrationNotificatable(0));
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurDioxideConcentrationNotificatable_00006() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(environmentalSensingService.isSulfurDioxideConcentrationNotificatable(1));
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurDioxideConcentrationNotificatable_00007() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(environmentalSensingService.isSulfurDioxideConcentrationNotificatable(1));
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurDioxideConcentrationNotificatable_00008() {
+    public void test_canSulfurDioxideConcentrationNotify_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -262,9 +176,95 @@ public class EnvironmentalSensingServiceSulfurDioxideConcentrationTest extends A
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertFalse(environmentalSensingService.canSulfurDioxideConcentrationNotify());
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canSulfurDioxideConcentrationNotify_00004() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertTrue(environmentalSensingService.isSulfurDioxideConcentrationNotificatable(1));
+        assertTrue(environmentalSensingService.canSulfurDioxideConcentrationNotify());
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canSulfurDioxideConcentrationNotify_00005() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertTrue(environmentalSensingService.canSulfurDioxideConcentrationNotify(0));
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canSulfurDioxideConcentrationNotify_00006() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertFalse(environmentalSensingService.canSulfurDioxideConcentrationNotify(1));
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canSulfurDioxideConcentrationNotify_00007() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertFalse(environmentalSensingService.canSulfurDioxideConcentrationNotify(1));
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canSulfurDioxideConcentrationNotify_00008() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertTrue(environmentalSensingService.canSulfurDioxideConcentrationNotify(1));
     }
 
     @Test
@@ -1157,7 +1157,7 @@ public class EnvironmentalSensingServiceSulfurDioxideConcentrationTest extends A
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startSulfurDioxideConcentrationNotification_00005() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1176,7 +1176,7 @@ public class EnvironmentalSensingServiceSulfurDioxideConcentrationTest extends A
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startSulfurDioxideConcentrationNotification_00006() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1195,7 +1195,7 @@ public class EnvironmentalSensingServiceSulfurDioxideConcentrationTest extends A
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startSulfurDioxideConcentrationNotification_00007() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1214,7 +1214,7 @@ public class EnvironmentalSensingServiceSulfurDioxideConcentrationTest extends A
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startSulfurDioxideConcentrationNotification_00008() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1291,7 +1291,7 @@ public class EnvironmentalSensingServiceSulfurDioxideConcentrationTest extends A
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopSulfurDioxideConcentrationNotification_00005() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1310,7 +1310,7 @@ public class EnvironmentalSensingServiceSulfurDioxideConcentrationTest extends A
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopSulfurDioxideConcentrationNotification_00006() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1329,7 +1329,7 @@ public class EnvironmentalSensingServiceSulfurDioxideConcentrationTest extends A
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopSulfurDioxideConcentrationNotification_00007() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1348,7 +1348,7 @@ public class EnvironmentalSensingServiceSulfurDioxideConcentrationTest extends A
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopSulfurDioxideConcentrationNotification_00008() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {

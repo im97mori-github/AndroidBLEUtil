@@ -29,9 +29,9 @@ public class SampleMockData extends MockData {
 
     public static final UUID SAMPLE_WRITABLE_DESCRIPTOR = UUID.fromString("00000200-a087-4fa3-add4-3b8a7d5d4921");
 
-    public static final UUID SAMPLE_NOTIFICATABLE_CHARACTERISTIC = UUID.fromString("00000030-a087-4fa3-add4-3b8a7d5d4921");
+    public static final UUID SAMPLE_NOTIFY_CHARACTERISTIC = UUID.fromString("00000030-a087-4fa3-add4-3b8a7d5d4921");
 
-    public static final UUID SAMPLE_INDICATABLE_CHARACTERISTIC = UUID.fromString("00000040-a087-4fa3-add4-3b8a7d5d4921");
+    public static final UUID SAMPLE_INDICATE_CHARACTERISTIC = UUID.fromString("00000040-a087-4fa3-add4-3b8a7d5d4921");
 
     public static final UUID SAMPLE_WRITE_CHARACTERISTIC_RELIABLE = UUID.fromString("00000050-a087-4fa3-add4-3b8a7d5d4921");
 
@@ -97,13 +97,13 @@ public class SampleMockData extends MockData {
             descriptorData.data = null;
             descriptorDataList.add(descriptorData);
             characteristicData = new CharacteristicData();
-            characteristicData.uuid = SAMPLE_NOTIFICATABLE_CHARACTERISTIC;
+            characteristicData.uuid = SAMPLE_NOTIFY_CHARACTERISTIC;
             characteristicData.property = BluetoothGattCharacteristic.PROPERTY_NOTIFY;
             characteristicData.permission = 0;
             characteristicData.descriptorDataList = descriptorDataList;
             characteristicData.responseCode = BluetoothGatt.GATT_SUCCESS;
             characteristicData.delay = 0;
-            characteristicData.data = SAMPLE_NOTIFICATABLE_CHARACTERISTIC.toString().getBytes();
+            characteristicData.data = SAMPLE_NOTIFY_CHARACTERISTIC.toString().getBytes();
             characteristicData.notificationCount = 10;
             characteristicDataList.add(characteristicData);
 
@@ -116,13 +116,13 @@ public class SampleMockData extends MockData {
             descriptorData.data = null;
             descriptorDataList.add(descriptorData);
             characteristicData = new CharacteristicData();
-            characteristicData.uuid = SAMPLE_INDICATABLE_CHARACTERISTIC;
+            characteristicData.uuid = SAMPLE_INDICATE_CHARACTERISTIC;
             characteristicData.property = BluetoothGattCharacteristic.PROPERTY_INDICATE;
             characteristicData.permission = 0;
             characteristicData.descriptorDataList = descriptorDataList;
             characteristicData.responseCode = BluetoothGatt.GATT_SUCCESS;
             characteristicData.delay = 0;
-            characteristicData.data = SAMPLE_INDICATABLE_CHARACTERISTIC.toString().getBytes();
+            characteristicData.data = SAMPLE_INDICATE_CHARACTERISTIC.toString().getBytes();
             characteristicData.notificationCount = 10;
             characteristicDataList.add(characteristicData);
 

@@ -145,19 +145,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isAmmoniaConcentrationNotificatable(int)
+     * @see #canAmmoniaConcentrationNotify(int)
      */
-    public synchronized Boolean isAmmoniaConcentrationNotificatable() {
-        return isAmmoniaConcentrationNotificatable(0);
+    public synchronized Boolean canAmmoniaConcentrationNotify() {
+        return canAmmoniaConcentrationNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isAmmoniaConcentrationNotificatable(int)
+     * @see EnvironmentalSensingService#canAmmoniaConcentrationNotify(int)
      */
-    public synchronized Boolean isAmmoniaConcentrationNotificatable(int index) {
+    public synchronized Boolean canAmmoniaConcentrationNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isAmmoniaConcentrationNotificatable(index);
+            result = mEnvironmentalSensingService.canAmmoniaConcentrationNotify(index);
         }
         return result;
     }
@@ -486,19 +486,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isApparentWindDirectionNotificatable(int)
+     * @see #canApparentWindDirectionNotify(int)
      */
-    public synchronized Boolean isApparentWindDirectionNotificatable() {
-        return isApparentWindDirectionNotificatable(0);
+    public synchronized Boolean canApparentWindDirectionNotify() {
+        return canApparentWindDirectionNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isApparentWindDirectionNotificatable(int)
+     * @see EnvironmentalSensingService#canApparentWindDirectionNotify(int)
      */
-    public synchronized Boolean isApparentWindDirectionNotificatable(int index) {
+    public synchronized Boolean canApparentWindDirectionNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isApparentWindDirectionNotificatable(index);
+            result = mEnvironmentalSensingService.canApparentWindDirectionNotify(index);
         }
         return result;
     }
@@ -827,19 +827,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isApparentWindSpeedNotificatable(int)
+     * @see #canApparentWindSpeedNotify(int)
      */
-    public synchronized Boolean isApparentWindSpeedNotificatable() {
-        return isApparentWindSpeedNotificatable(0);
+    public synchronized Boolean canApparentWindSpeedNotify() {
+        return canApparentWindSpeedNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isApparentWindSpeedNotificatable(int)
+     * @see EnvironmentalSensingService#canApparentWindSpeedNotify(int)
      */
-    public synchronized Boolean isApparentWindSpeedNotificatable(int index) {
+    public synchronized Boolean canApparentWindSpeedNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isApparentWindSpeedNotificatable(index);
+            result = mEnvironmentalSensingService.canApparentWindSpeedNotify(index);
         }
         return result;
     }
@@ -1168,19 +1168,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isBarometricPressureTrendNotificatable(int)
+     * @see #canBarometricPressureTrendNotify(int)
      */
-    public synchronized Boolean isBarometricPressureTrendNotificatable() {
-        return isBarometricPressureTrendNotificatable(0);
+    public synchronized Boolean canBarometricPressureTrendNotify() {
+        return canBarometricPressureTrendNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isBarometricPressureTrendNotificatable(int)
+     * @see EnvironmentalSensingService#canBarometricPressureTrendNotify(int)
      */
-    public synchronized Boolean isBarometricPressureTrendNotificatable(int index) {
+    public synchronized Boolean canBarometricPressureTrendNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isBarometricPressureTrendNotificatable(index);
+            result = mEnvironmentalSensingService.canBarometricPressureTrendNotify(index);
         }
         return result;
     }
@@ -1509,19 +1509,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isCarbonMonoxideConcentrationNotificatable(int)
+     * @see #canCarbonMonoxideConcentrationNotify(int)
      */
-    public synchronized Boolean isCarbonMonoxideConcentrationNotificatable() {
-        return isCarbonMonoxideConcentrationNotificatable(0);
+    public synchronized Boolean canCarbonMonoxideConcentrationNotify() {
+        return canCarbonMonoxideConcentrationNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isCarbonMonoxideConcentrationNotificatable(int)
+     * @see EnvironmentalSensingService#canCarbonMonoxideConcentrationNotify(int)
      */
-    public synchronized Boolean isCarbonMonoxideConcentrationNotificatable(int index) {
+    public synchronized Boolean canCarbonMonoxideConcentrationNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isCarbonMonoxideConcentrationNotificatable(index);
+            result = mEnvironmentalSensingService.canCarbonMonoxideConcentrationNotify(index);
         }
         return result;
     }
@@ -1850,19 +1850,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isDewPointNotificatable(int)
+     * @see #canDewPointNotify(int)
      */
-    public synchronized Boolean isDewPointNotificatable() {
-        return isDewPointNotificatable(0);
+    public synchronized Boolean canDewPointNotify() {
+        return canDewPointNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isDewPointNotificatable(int)
+     * @see EnvironmentalSensingService#canDewPointNotify(int)
      */
-    public synchronized Boolean isDewPointNotificatable(int index) {
+    public synchronized Boolean canDewPointNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isDewPointNotificatable(index);
+            result = mEnvironmentalSensingService.canDewPointNotify(index);
         }
         return result;
     }
@@ -2191,19 +2191,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isElevationNotificatable(int)
+     * @see #canElevationNotify(int)
      */
-    public synchronized Boolean isElevationNotificatable() {
-        return isElevationNotificatable(0);
+    public synchronized Boolean canElevationNotify() {
+        return canElevationNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isElevationNotificatable(int)
+     * @see EnvironmentalSensingService#canElevationNotify(int)
      */
-    public synchronized Boolean isElevationNotificatable(int index) {
+    public synchronized Boolean canElevationNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isElevationNotificatable(index);
+            result = mEnvironmentalSensingService.canElevationNotify(index);
         }
         return result;
     }
@@ -2532,19 +2532,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isGustFactorNotificatable(int)
+     * @see #canGustFactorNotify(int)
      */
-    public synchronized Boolean isGustFactorNotificatable() {
-        return isGustFactorNotificatable(0);
+    public synchronized Boolean canGustFactorNotify() {
+        return canGustFactorNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isGustFactorNotificatable(int)
+     * @see EnvironmentalSensingService#canGustFactorNotify(int)
      */
-    public synchronized Boolean isGustFactorNotificatable(int index) {
+    public synchronized Boolean canGustFactorNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isGustFactorNotificatable(index);
+            result = mEnvironmentalSensingService.canGustFactorNotify(index);
         }
         return result;
     }
@@ -2873,19 +2873,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isHeatIndexNotificatable(int)
+     * @see #canHeatIndexNotify(int)
      */
-    public synchronized Boolean isHeatIndexNotificatable() {
-        return isHeatIndexNotificatable(0);
+    public synchronized Boolean canHeatIndexNotify() {
+        return canHeatIndexNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isHeatIndexNotificatable(int)
+     * @see EnvironmentalSensingService#canHeatIndexNotify(int)
      */
-    public synchronized Boolean isHeatIndexNotificatable(int index) {
+    public synchronized Boolean canHeatIndexNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isHeatIndexNotificatable(index);
+            result = mEnvironmentalSensingService.canHeatIndexNotify(index);
         }
         return result;
     }
@@ -3214,19 +3214,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isHumidityNotificatable(int)
+     * @see #canHumidityNotify(int)
      */
-    public synchronized Boolean isHumidityNotificatable() {
-        return isHumidityNotificatable(0);
+    public synchronized Boolean canHumidityNotify() {
+        return canHumidityNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isHumidityNotificatable(int)
+     * @see EnvironmentalSensingService#canHumidityNotify(int)
      */
-    public synchronized Boolean isHumidityNotificatable(int index) {
+    public synchronized Boolean canHumidityNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isHumidityNotificatable(index);
+            result = mEnvironmentalSensingService.canHumidityNotify(index);
         }
         return result;
     }
@@ -3555,19 +3555,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isIrradianceNotificatable(int)
+     * @see #canIrradianceNotify(int)
      */
-    public synchronized Boolean isIrradianceNotificatable() {
-        return isIrradianceNotificatable(0);
+    public synchronized Boolean canIrradianceNotify() {
+        return canIrradianceNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isIrradianceNotificatable(int)
+     * @see EnvironmentalSensingService#canIrradianceNotify(int)
      */
-    public synchronized Boolean isIrradianceNotificatable(int index) {
+    public synchronized Boolean canIrradianceNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isIrradianceNotificatable(index);
+            result = mEnvironmentalSensingService.canIrradianceNotify(index);
         }
         return result;
     }
@@ -3896,19 +3896,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isMagneticDeclinationNotificatable(int)
+     * @see #canMagneticDeclinationNotify(int)
      */
-    public synchronized Boolean isMagneticDeclinationNotificatable() {
-        return isMagneticDeclinationNotificatable(0);
+    public synchronized Boolean canMagneticDeclinationNotify() {
+        return canMagneticDeclinationNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isMagneticDeclinationNotificatable(int)
+     * @see EnvironmentalSensingService#canMagneticDeclinationNotify(int)
      */
-    public synchronized Boolean isMagneticDeclinationNotificatable(int index) {
+    public synchronized Boolean canMagneticDeclinationNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isMagneticDeclinationNotificatable(index);
+            result = mEnvironmentalSensingService.canMagneticDeclinationNotify(index);
         }
         return result;
     }
@@ -4237,19 +4237,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isMagneticFluxDensity2DNotificatable(int)
+     * @see #canMagneticFluxDensity2DNotify(int)
      */
-    public synchronized Boolean isMagneticFluxDensity2DNotificatable() {
-        return isMagneticFluxDensity2DNotificatable(0);
+    public synchronized Boolean canMagneticFluxDensity2DNotify() {
+        return canMagneticFluxDensity2DNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isMagneticFluxDensity2DNotificatable(int)
+     * @see EnvironmentalSensingService#canMagneticFluxDensity2DNotify(int)
      */
-    public synchronized Boolean isMagneticFluxDensity2DNotificatable(int index) {
+    public synchronized Boolean canMagneticFluxDensity2DNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isMagneticFluxDensity2DNotificatable(index);
+            result = mEnvironmentalSensingService.canMagneticFluxDensity2DNotify(index);
         }
         return result;
     }
@@ -4578,19 +4578,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isMagneticFluxDensity3DNotificatable(int)
+     * @see #canMagneticFluxDensity3DNotify(int)
      */
-    public synchronized Boolean isMagneticFluxDensity3DNotificatable() {
-        return isMagneticFluxDensity3DNotificatable(0);
+    public synchronized Boolean canMagneticFluxDensity3DNotify() {
+        return canMagneticFluxDensity3DNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isMagneticFluxDensity3DNotificatable(int)
+     * @see EnvironmentalSensingService#canMagneticFluxDensity3DNotify(int)
      */
-    public synchronized Boolean isMagneticFluxDensity3DNotificatable(int index) {
+    public synchronized Boolean canMagneticFluxDensity3DNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isMagneticFluxDensity3DNotificatable(index);
+            result = mEnvironmentalSensingService.canMagneticFluxDensity3DNotify(index);
         }
         return result;
     }
@@ -4919,19 +4919,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isMethaneConcentrationNotificatable(int)
+     * @see #canMethaneConcentrationNotify(int)
      */
-    public synchronized Boolean isMethaneConcentrationNotificatable() {
-        return isMethaneConcentrationNotificatable(0);
+    public synchronized Boolean canMethaneConcentrationNotify() {
+        return canMethaneConcentrationNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isMethaneConcentrationNotificatable(int)
+     * @see EnvironmentalSensingService#canMethaneConcentrationNotify(int)
      */
-    public synchronized Boolean isMethaneConcentrationNotificatable(int index) {
+    public synchronized Boolean canMethaneConcentrationNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isMethaneConcentrationNotificatable(index);
+            result = mEnvironmentalSensingService.canMethaneConcentrationNotify(index);
         }
         return result;
     }
@@ -5260,19 +5260,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isNitrogenDioxideConcentrationNotificatable(int)
+     * @see #canNitrogenDioxideConcentrationNotify(int)
      */
-    public synchronized Boolean isNitrogenDioxideConcentrationNotificatable() {
-        return isNitrogenDioxideConcentrationNotificatable(0);
+    public synchronized Boolean canNitrogenDioxideConcentrationNotify() {
+        return canNitrogenDioxideConcentrationNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isNitrogenDioxideConcentrationNotificatable(int)
+     * @see EnvironmentalSensingService#canNitrogenDioxideConcentrationNotify(int)
      */
-    public synchronized Boolean isNitrogenDioxideConcentrationNotificatable(int index) {
+    public synchronized Boolean canNitrogenDioxideConcentrationNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isNitrogenDioxideConcentrationNotificatable(index);
+            result = mEnvironmentalSensingService.canNitrogenDioxideConcentrationNotify(index);
         }
         return result;
     }
@@ -5601,19 +5601,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(int)
+     * @see #canNonMethaneVolatileOrganicCompoundsConcentrationNotify(int)
      */
-    public synchronized Boolean isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable() {
-        return isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(0);
+    public synchronized Boolean canNonMethaneVolatileOrganicCompoundsConcentrationNotify() {
+        return canNonMethaneVolatileOrganicCompoundsConcentrationNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(int)
+     * @see EnvironmentalSensingService#canNonMethaneVolatileOrganicCompoundsConcentrationNotify(int)
      */
-    public synchronized Boolean isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(int index) {
+    public synchronized Boolean canNonMethaneVolatileOrganicCompoundsConcentrationNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(index);
+            result = mEnvironmentalSensingService.canNonMethaneVolatileOrganicCompoundsConcentrationNotify(index);
         }
         return result;
     }
@@ -5942,19 +5942,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isOzoneConcentrationNotificatable(int)
+     * @see #canOzoneConcentrationNotify(int)
      */
-    public synchronized Boolean isOzoneConcentrationNotificatable() {
-        return isOzoneConcentrationNotificatable(0);
+    public synchronized Boolean canOzoneConcentrationNotify() {
+        return canOzoneConcentrationNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isOzoneConcentrationNotificatable(int)
+     * @see EnvironmentalSensingService#canOzoneConcentrationNotify(int)
      */
-    public synchronized Boolean isOzoneConcentrationNotificatable(int index) {
+    public synchronized Boolean canOzoneConcentrationNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isOzoneConcentrationNotificatable(index);
+            result = mEnvironmentalSensingService.canOzoneConcentrationNotify(index);
         }
         return result;
     }
@@ -6283,19 +6283,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isParticulateMatterPm10ConcentrationNotificatable(int)
+     * @see #canParticulateMatterPm10ConcentrationNotify(int)
      */
-    public synchronized Boolean isParticulateMatterPm10ConcentrationNotificatable() {
-        return isParticulateMatterPm10ConcentrationNotificatable(0);
+    public synchronized Boolean canParticulateMatterPm10ConcentrationNotify() {
+        return canParticulateMatterPm10ConcentrationNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isParticulateMatterPm10ConcentrationNotificatable(int)
+     * @see EnvironmentalSensingService#canParticulateMatterPm10ConcentrationNotify(int)
      */
-    public synchronized Boolean isParticulateMatterPm10ConcentrationNotificatable(int index) {
+    public synchronized Boolean canParticulateMatterPm10ConcentrationNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isParticulateMatterPm10ConcentrationNotificatable(index);
+            result = mEnvironmentalSensingService.canParticulateMatterPm10ConcentrationNotify(index);
         }
         return result;
     }
@@ -6624,19 +6624,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isParticulateMatterPm1ConcentrationNotificatable(int)
+     * @see #canParticulateMatterPm1ConcentrationNotify(int)
      */
-    public synchronized Boolean isParticulateMatterPm1ConcentrationNotificatable() {
-        return isParticulateMatterPm1ConcentrationNotificatable(0);
+    public synchronized Boolean canParticulateMatterPm1ConcentrationNotify() {
+        return canParticulateMatterPm1ConcentrationNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isParticulateMatterPm1ConcentrationNotificatable(int)
+     * @see EnvironmentalSensingService#canParticulateMatterPm1ConcentrationNotify(int)
      */
-    public synchronized Boolean isParticulateMatterPm1ConcentrationNotificatable(int index) {
+    public synchronized Boolean canParticulateMatterPm1ConcentrationNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isParticulateMatterPm1ConcentrationNotificatable(index);
+            result = mEnvironmentalSensingService.canParticulateMatterPm1ConcentrationNotify(index);
         }
         return result;
     }
@@ -6965,19 +6965,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isParticulateMatterPm25ConcentrationNotificatable(int)
+     * @see #canParticulateMatterPm25ConcentrationNotify(int)
      */
-    public synchronized Boolean isParticulateMatterPm25ConcentrationNotificatable() {
-        return isParticulateMatterPm25ConcentrationNotificatable(0);
+    public synchronized Boolean canParticulateMatterPm25ConcentrationNotify() {
+        return canParticulateMatterPm25ConcentrationNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isParticulateMatterPm25ConcentrationNotificatable(int)
+     * @see EnvironmentalSensingService#canParticulateMatterPm25ConcentrationNotify(int)
      */
-    public synchronized Boolean isParticulateMatterPm25ConcentrationNotificatable(int index) {
+    public synchronized Boolean canParticulateMatterPm25ConcentrationNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isParticulateMatterPm25ConcentrationNotificatable(index);
+            result = mEnvironmentalSensingService.canParticulateMatterPm25ConcentrationNotify(index);
         }
         return result;
     }
@@ -7306,19 +7306,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isPollenConcentrationNotificatable(int)
+     * @see #canPollenConcentrationNotify(int)
      */
-    public synchronized Boolean isPollenConcentrationNotificatable() {
-        return isPollenConcentrationNotificatable(0);
+    public synchronized Boolean canPollenConcentrationNotify() {
+        return canPollenConcentrationNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isPollenConcentrationNotificatable(int)
+     * @see EnvironmentalSensingService#canPollenConcentrationNotify(int)
      */
-    public synchronized Boolean isPollenConcentrationNotificatable(int index) {
+    public synchronized Boolean canPollenConcentrationNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isPollenConcentrationNotificatable(index);
+            result = mEnvironmentalSensingService.canPollenConcentrationNotify(index);
         }
         return result;
     }
@@ -7647,19 +7647,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isPressureNotificatable(int)
+     * @see #canPressureNotify(int)
      */
-    public synchronized Boolean isPressureNotificatable() {
-        return isPressureNotificatable(0);
+    public synchronized Boolean canPressureNotify() {
+        return canPressureNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isPressureNotificatable(int)
+     * @see EnvironmentalSensingService#canPressureNotify(int)
      */
-    public synchronized Boolean isPressureNotificatable(int index) {
+    public synchronized Boolean canPressureNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isPressureNotificatable(index);
+            result = mEnvironmentalSensingService.canPressureNotify(index);
         }
         return result;
     }
@@ -7988,19 +7988,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isRainfallNotificatable(int)
+     * @see #canRainfallNotify(int)
      */
-    public synchronized Boolean isRainfallNotificatable() {
-        return isRainfallNotificatable(0);
+    public synchronized Boolean canRainfallNotify() {
+        return canRainfallNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isRainfallNotificatable(int)
+     * @see EnvironmentalSensingService#canRainfallNotify(int)
      */
-    public synchronized Boolean isRainfallNotificatable(int index) {
+    public synchronized Boolean canRainfallNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isRainfallNotificatable(index);
+            result = mEnvironmentalSensingService.canRainfallNotify(index);
         }
         return result;
     }
@@ -8329,19 +8329,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isSulfurDioxideConcentrationNotificatable(int)
+     * @see #canSulfurDioxideConcentrationNotify(int)
      */
-    public synchronized Boolean isSulfurDioxideConcentrationNotificatable() {
-        return isSulfurDioxideConcentrationNotificatable(0);
+    public synchronized Boolean canSulfurDioxideConcentrationNotify() {
+        return canSulfurDioxideConcentrationNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isSulfurDioxideConcentrationNotificatable(int)
+     * @see EnvironmentalSensingService#canSulfurDioxideConcentrationNotify(int)
      */
-    public synchronized Boolean isSulfurDioxideConcentrationNotificatable(int index) {
+    public synchronized Boolean canSulfurDioxideConcentrationNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isSulfurDioxideConcentrationNotificatable(index);
+            result = mEnvironmentalSensingService.canSulfurDioxideConcentrationNotify(index);
         }
         return result;
     }
@@ -8670,19 +8670,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isSulfurHexafluorideConcentrationNotificatable(int)
+     * @see #canSulfurHexafluorideConcentrationNotify(int)
      */
-    public synchronized Boolean isSulfurHexafluorideConcentrationNotificatable() {
-        return isSulfurHexafluorideConcentrationNotificatable(0);
+    public synchronized Boolean canSulfurHexafluorideConcentrationNotify() {
+        return canSulfurHexafluorideConcentrationNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isSulfurHexafluorideConcentrationNotificatable(int)
+     * @see EnvironmentalSensingService#canSulfurHexafluorideConcentrationNotify(int)
      */
-    public synchronized Boolean isSulfurHexafluorideConcentrationNotificatable(int index) {
+    public synchronized Boolean canSulfurHexafluorideConcentrationNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isSulfurHexafluorideConcentrationNotificatable(index);
+            result = mEnvironmentalSensingService.canSulfurHexafluorideConcentrationNotify(index);
         }
         return result;
     }
@@ -9011,19 +9011,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isTemperatureNotificatable(int)
+     * @see #canTemperatureNotify(int)
      */
-    public synchronized Boolean isTemperatureNotificatable() {
-        return isTemperatureNotificatable(0);
+    public synchronized Boolean canTemperatureNotify() {
+        return canTemperatureNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isTemperatureNotificatable(int)
+     * @see EnvironmentalSensingService#canTemperatureNotify(int)
      */
-    public synchronized Boolean isTemperatureNotificatable(int index) {
+    public synchronized Boolean canTemperatureNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isTemperatureNotificatable(index);
+            result = mEnvironmentalSensingService.canTemperatureNotify(index);
         }
         return result;
     }
@@ -9352,19 +9352,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isTrueWindDirectionNotificatable(int)
+     * @see #canTrueWindDirectionNotify(int)
      */
-    public synchronized Boolean isTrueWindDirectionNotificatable() {
-        return isTrueWindDirectionNotificatable(0);
+    public synchronized Boolean canTrueWindDirectionNotify() {
+        return canTrueWindDirectionNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isTrueWindDirectionNotificatable(int)
+     * @see EnvironmentalSensingService#canTrueWindDirectionNotify(int)
      */
-    public synchronized Boolean isTrueWindDirectionNotificatable(int index) {
+    public synchronized Boolean canTrueWindDirectionNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isTrueWindDirectionNotificatable(index);
+            result = mEnvironmentalSensingService.canTrueWindDirectionNotify(index);
         }
         return result;
     }
@@ -9693,19 +9693,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isTrueWindSpeedNotificatable(int)
+     * @see #canTrueWindSpeedNotify(int)
      */
-    public synchronized Boolean isTrueWindSpeedNotificatable() {
-        return isTrueWindSpeedNotificatable(0);
+    public synchronized Boolean canTrueWindSpeedNotify() {
+        return canTrueWindSpeedNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isTrueWindSpeedNotificatable(int)
+     * @see EnvironmentalSensingService#canTrueWindSpeedNotify(int)
      */
-    public synchronized Boolean isTrueWindSpeedNotificatable(int index) {
+    public synchronized Boolean canTrueWindSpeedNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isTrueWindSpeedNotificatable(index);
+            result = mEnvironmentalSensingService.canTrueWindSpeedNotify(index);
         }
         return result;
     }
@@ -10034,19 +10034,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isUVIndexNotificatable(int)
+     * @see #canUVIndexNotify(int)
      */
-    public synchronized Boolean isUVIndexNotificatable() {
-        return isUVIndexNotificatable(0);
+    public synchronized Boolean canUVIndexNotify() {
+        return canUVIndexNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isUVIndexNotificatable(int)
+     * @see EnvironmentalSensingService#canUVIndexNotify(int)
      */
-    public synchronized Boolean isUVIndexNotificatable(int index) {
+    public synchronized Boolean canUVIndexNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isUVIndexNotificatable(index);
+            result = mEnvironmentalSensingService.canUVIndexNotify(index);
         }
         return result;
     }
@@ -10375,19 +10375,19 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isWindChillNotificatable(int)
+     * @see #canWindChillNotify(int)
      */
-    public synchronized Boolean isWindChillNotificatable() {
-        return isWindChillNotificatable(0);
+    public synchronized Boolean canWindChillNotify() {
+        return canWindChillNotify(0);
     }
 
     /**
-     * @see EnvironmentalSensingService#isWindChillNotificatable(int)
+     * @see EnvironmentalSensingService#canWindChillNotify(int)
      */
-    public synchronized Boolean isWindChillNotificatable(int index) {
+    public synchronized Boolean canWindChillNotify(int index) {
         Boolean result = null;
         if (mEnvironmentalSensingService != null) {
-            result = mEnvironmentalSensingService.isWindChillNotificatable(index);
+            result = mEnvironmentalSensingService.canWindChillNotify(index);
         }
         return result;
     }
@@ -10791,23 +10791,23 @@ public class EnvironmentalSensingProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isBatteryLevelNotificatable(int)
+     * @see #canBatteryLevelNotify(int)
      */
-    public synchronized Boolean isBatteryLevelNotificatable() {
-        return isBatteryLevelNotificatable(0);
+    public synchronized Boolean canBatteryLevelNotify() {
+        return canBatteryLevelNotify(0);
     }
 
     /**
-     * get Battery Level's notificatable status
+     * get Battery Level's notify status
      *
      * @param index Battery Service index
-     * @return {@code true}:target Battery Service is notificatable, {@code false}:not notificatable. if {@code null} returned, profile is not ready or no Battery Service
-     * @see BatteryService#isBatteryLevelNotificatable(int)
+     * @return {@code true}:target Battery Service can notify, {@code false}:can not notify. if {@code null} returned, profile is not ready or no Battery Service
+     * @see BatteryService#canBatteryLevelNotify(int)
      */
-    public synchronized Boolean isBatteryLevelNotificatable(int index) {
+    public synchronized Boolean canBatteryLevelNotify(int index) {
         Boolean result = null;
         if (mBatteryService != null) {
-            result = mBatteryService.isBatteryLevelNotificatable(index);
+            result = mBatteryService.canBatteryLevelNotify(index);
         }
         return result;
     }

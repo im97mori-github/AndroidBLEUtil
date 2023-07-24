@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileMagneticDeclinationTest extends Abstract
 
     @Test
     @RequiresDevice
-    public void test_isMagneticDeclinationNotificatable_00001() {
+    public void test_canMagneticDeclinationNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isMagneticDeclinationNotificatable());
+        assertNull(environmentalSensingProfile.canMagneticDeclinationNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isMagneticDeclinationNotificatable_00002() {
+    public void test_canMagneticDeclinationNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isMagneticDeclinationNotificatable());
+        assertNotNull(environmentalSensingProfile.canMagneticDeclinationNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isMagneticDeclinationNotificatable_00101() {
+    public void test_canMagneticDeclinationNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isMagneticDeclinationNotificatable(0));
+        assertNull(environmentalSensingProfile.canMagneticDeclinationNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isMagneticDeclinationNotificatable_00102() {
+    public void test_canMagneticDeclinationNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isMagneticDeclinationNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canMagneticDeclinationNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

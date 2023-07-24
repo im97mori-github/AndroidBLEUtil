@@ -324,7 +324,7 @@ public interface BloodPressureServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Intermediate Cuff Pressure notificate success callback
+     * Start Intermediate Cuff Pressure notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -345,7 +345,7 @@ public interface BloodPressureServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Intermediate Cuff Pressure notificate error callback
+     * Start Intermediate Cuff Pressure notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -371,7 +371,7 @@ public interface BloodPressureServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Intermediate Cuff Pressure notificate timeout callback
+     * Start Intermediate Cuff Pressure notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -394,7 +394,7 @@ public interface BloodPressureServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Intermediate Cuff Pressure notificate success callback
+     * Stop Intermediate Cuff Pressure notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -415,7 +415,7 @@ public interface BloodPressureServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Intermediate Cuff Pressure notificate error callback
+     * Stop Intermediate Cuff Pressure notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -441,7 +441,7 @@ public interface BloodPressureServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Intermediate Cuff Pressure notificate timeout callback
+     * Stop Intermediate Cuff Pressure notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device

@@ -201,10 +201,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onAmmoniaConcentration(MenuItem item) {
         if (R.id.read_ammonia_concentration_count == item.getItemId()) {
             addRow("getAmmoniaConcentrationCount", mEnvironmentalSensingProfile.getAmmoniaConcentrationCount());
-        } else if (R.id.is_ammonia_concentration_notificatable_0 == item.getItemId()) {
-            addRow("isAmmoniaConcentrationNotificatable", mEnvironmentalSensingProfile.isAmmoniaConcentrationNotificatable());
-        } else if (R.id.is_ammonia_concentration_notificatable_1 == item.getItemId()) {
-            addRow("isAmmoniaConcentrationNotificatable_1", mEnvironmentalSensingProfile.isAmmoniaConcentrationNotificatable(1));
+        } else if (R.id.can_ammonia_concentration_notify_0 == item.getItemId()) {
+            addRow("canAmmoniaConcentrationNotify", mEnvironmentalSensingProfile.canAmmoniaConcentrationNotify());
+        } else if (R.id.can_ammonia_concentration_notify_1 == item.getItemId()) {
+            addRow("canAmmoniaConcentrationNotify_1", mEnvironmentalSensingProfile.canAmmoniaConcentrationNotify(1));
         } else if (R.id.has_ammonia_concentration_esm_0 == item.getItemId()) {
             addRow("hasAmmoniaConcentrationCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasAmmoniaConcentrationCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_ammonia_concentration_esm_1 == item.getItemId()) {
@@ -279,10 +279,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onApparentWindDirection(MenuItem item) {
         if (R.id.read_apparent_wind_direction_count == item.getItemId()) {
             addRow("getApparentWindDirectionCount", mEnvironmentalSensingProfile.getApparentWindDirectionCount());
-        } else if (R.id.is_apparent_wind_direction_notificatable_0 == item.getItemId()) {
-            addRow("isApparentWindDirectionNotificatable", mEnvironmentalSensingProfile.isApparentWindDirectionNotificatable());
-        } else if (R.id.is_apparent_wind_direction_notificatable_1 == item.getItemId()) {
-            addRow("isApparentWindDirectionNotificatable_1", mEnvironmentalSensingProfile.isApparentWindDirectionNotificatable(1));
+        } else if (R.id.can_apparent_wind_direction_notify_0 == item.getItemId()) {
+            addRow("canApparentWindDirectionNotify", mEnvironmentalSensingProfile.canApparentWindDirectionNotify());
+        } else if (R.id.can_apparent_wind_direction_notify_1 == item.getItemId()) {
+            addRow("canApparentWindDirectionNotify_1", mEnvironmentalSensingProfile.canApparentWindDirectionNotify(1));
         } else if (R.id.has_apparent_wind_direction_esm_0 == item.getItemId()) {
             addRow("hasApparentWindDirectionCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasApparentWindDirectionCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_apparent_wind_direction_esm_1 == item.getItemId()) {
@@ -357,10 +357,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onApparentWindSpeed(MenuItem item) {
         if (R.id.read_apparent_wind_speed_count == item.getItemId()) {
             addRow("getApparentWindSpeedCount", mEnvironmentalSensingProfile.getApparentWindSpeedCount());
-        } else if (R.id.is_apparent_wind_speed_notificatable_0 == item.getItemId()) {
-            addRow("isApparentWindSpeedNotificatable", mEnvironmentalSensingProfile.isApparentWindSpeedNotificatable());
-        } else if (R.id.is_apparent_wind_speed_notificatable_1 == item.getItemId()) {
-            addRow("isApparentWindSpeedNotificatable_1", mEnvironmentalSensingProfile.isApparentWindSpeedNotificatable(1));
+        } else if (R.id.can_apparent_wind_speed_notify_0 == item.getItemId()) {
+            addRow("canApparentWindSpeedNotify", mEnvironmentalSensingProfile.canApparentWindSpeedNotify());
+        } else if (R.id.can_apparent_wind_speed_notify_1 == item.getItemId()) {
+            addRow("canApparentWindSpeedNotify_1", mEnvironmentalSensingProfile.canApparentWindSpeedNotify(1));
         } else if (R.id.has_apparent_wind_speed_esm_0 == item.getItemId()) {
             addRow("hasApparentWindSpeedCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasApparentWindSpeedCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_apparent_wind_speed_esm_1 == item.getItemId()) {
@@ -435,10 +435,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onBarometricPressureTrend(MenuItem item) {
         if (R.id.read_barometric_pressure_trend_count == item.getItemId()) {
             addRow("getBarometricPressureTrendCount", mEnvironmentalSensingProfile.getBarometricPressureTrendCount());
-        } else if (R.id.is_barometric_pressure_trend_notificatable_0 == item.getItemId()) {
-            addRow("isBarometricPressureTrendNotificatable", mEnvironmentalSensingProfile.isBarometricPressureTrendNotificatable());
-        } else if (R.id.is_barometric_pressure_trend_notificatable_1 == item.getItemId()) {
-            addRow("isBarometricPressureTrendNotificatable_1", mEnvironmentalSensingProfile.isBarometricPressureTrendNotificatable(1));
+        } else if (R.id.can_barometric_pressure_trend_notify_0 == item.getItemId()) {
+            addRow("canBarometricPressureTrendNotify", mEnvironmentalSensingProfile.canBarometricPressureTrendNotify());
+        } else if (R.id.can_barometric_pressure_trend_notify_1 == item.getItemId()) {
+            addRow("canBarometricPressureTrendNotify_1", mEnvironmentalSensingProfile.canBarometricPressureTrendNotify(1));
         } else if (R.id.has_barometric_pressure_trend_esm_0 == item.getItemId()) {
             addRow("hasBarometricPressureTrendCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasBarometricPressureTrendCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_barometric_pressure_trend_esm_1 == item.getItemId()) {
@@ -513,10 +513,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onCarbonMonoxideConcentration(MenuItem item) {
         if (R.id.read_carbon_monoxide_concentration_count == item.getItemId()) {
             addRow("getCarbonMonoxideConcentrationCount", mEnvironmentalSensingProfile.getCarbonMonoxideConcentrationCount());
-        } else if (R.id.is_carbon_monoxide_concentration_notificatable_0 == item.getItemId()) {
-            addRow("isCarbonMonoxideConcentrationNotificatable", mEnvironmentalSensingProfile.isCarbonMonoxideConcentrationNotificatable());
-        } else if (R.id.is_carbon_monoxide_concentration_notificatable_1 == item.getItemId()) {
-            addRow("isCarbonMonoxideConcentrationNotificatable_1", mEnvironmentalSensingProfile.isCarbonMonoxideConcentrationNotificatable(1));
+        } else if (R.id.can_carbon_monoxide_concentration_notify_0 == item.getItemId()) {
+            addRow("canCarbonMonoxideConcentrationNotify", mEnvironmentalSensingProfile.canCarbonMonoxideConcentrationNotify());
+        } else if (R.id.can_carbon_monoxide_concentration_notify_1 == item.getItemId()) {
+            addRow("canCarbonMonoxideConcentrationNotify_1", mEnvironmentalSensingProfile.canCarbonMonoxideConcentrationNotify(1));
         } else if (R.id.has_carbon_monoxide_concentration_esm_0 == item.getItemId()) {
             addRow("hasCarbonMonoxideConcentrationCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasCarbonMonoxideConcentrationCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_carbon_monoxide_concentration_esm_1 == item.getItemId()) {
@@ -591,10 +591,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onDewPoint(MenuItem item) {
         if (R.id.read_dew_point_count == item.getItemId()) {
             addRow("getDewPointCount", mEnvironmentalSensingProfile.getDewPointCount());
-        } else if (R.id.is_dew_point_notificatable_0 == item.getItemId()) {
-            addRow("isDewPointNotificatable", mEnvironmentalSensingProfile.isDewPointNotificatable());
-        } else if (R.id.is_dew_point_notificatable_1 == item.getItemId()) {
-            addRow("isDewPointNotificatable_1", mEnvironmentalSensingProfile.isDewPointNotificatable(1));
+        } else if (R.id.can_dew_point_notify_0 == item.getItemId()) {
+            addRow("canDewPointNotify", mEnvironmentalSensingProfile.canDewPointNotify());
+        } else if (R.id.can_dew_point_notify_1 == item.getItemId()) {
+            addRow("canDewPointNotify_1", mEnvironmentalSensingProfile.canDewPointNotify(1));
         } else if (R.id.has_dew_point_esm_0 == item.getItemId()) {
             addRow("hasDewPointCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasDewPointCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_dew_point_esm_1 == item.getItemId()) {
@@ -669,10 +669,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onElevation(MenuItem item) {
         if (R.id.read_elevation_count == item.getItemId()) {
             addRow("getElevationCount", mEnvironmentalSensingProfile.getElevationCount());
-        } else if (R.id.is_elevation_notificatable_0 == item.getItemId()) {
-            addRow("isElevationNotificatable", mEnvironmentalSensingProfile.isElevationNotificatable());
-        } else if (R.id.is_elevation_notificatable_1 == item.getItemId()) {
-            addRow("isElevationNotificatable_1", mEnvironmentalSensingProfile.isElevationNotificatable(1));
+        } else if (R.id.can_elevation_notify_0 == item.getItemId()) {
+            addRow("canElevationNotify", mEnvironmentalSensingProfile.canElevationNotify());
+        } else if (R.id.can_elevation_notify_1 == item.getItemId()) {
+            addRow("canElevationNotify_1", mEnvironmentalSensingProfile.canElevationNotify(1));
         } else if (R.id.has_elevation_esm_0 == item.getItemId()) {
             addRow("hasElevationCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasElevationCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_elevation_esm_1 == item.getItemId()) {
@@ -747,10 +747,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onGustFactor(MenuItem item) {
         if (R.id.read_gust_factor_count == item.getItemId()) {
             addRow("getGustFactorCount", mEnvironmentalSensingProfile.getGustFactorCount());
-        } else if (R.id.is_gust_factor_notificatable_0 == item.getItemId()) {
-            addRow("isGustFactorNotificatable", mEnvironmentalSensingProfile.isGustFactorNotificatable());
-        } else if (R.id.is_gust_factor_notificatable_1 == item.getItemId()) {
-            addRow("isGustFactorNotificatable_1", mEnvironmentalSensingProfile.isGustFactorNotificatable(1));
+        } else if (R.id.can_gust_factor_notify_0 == item.getItemId()) {
+            addRow("canGustFactorNotify", mEnvironmentalSensingProfile.canGustFactorNotify());
+        } else if (R.id.can_gust_factor_notify_1 == item.getItemId()) {
+            addRow("canGustFactorNotify_1", mEnvironmentalSensingProfile.canGustFactorNotify(1));
         } else if (R.id.has_gust_factor_esm_0 == item.getItemId()) {
             addRow("hasGustFactorCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasGustFactorCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_gust_factor_esm_1 == item.getItemId()) {
@@ -825,10 +825,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onHeatIndex(MenuItem item) {
         if (R.id.read_heat_index_count == item.getItemId()) {
             addRow("getHeatIndexCount", mEnvironmentalSensingProfile.getHeatIndexCount());
-        } else if (R.id.is_heat_index_notificatable_0 == item.getItemId()) {
-            addRow("isHeatIndexNotificatable", mEnvironmentalSensingProfile.isHeatIndexNotificatable());
-        } else if (R.id.is_heat_index_notificatable_1 == item.getItemId()) {
-            addRow("isHeatIndexNotificatable_1", mEnvironmentalSensingProfile.isHeatIndexNotificatable(1));
+        } else if (R.id.can_heat_index_notify_0 == item.getItemId()) {
+            addRow("canHeatIndexNotify", mEnvironmentalSensingProfile.canHeatIndexNotify());
+        } else if (R.id.can_heat_index_notify_1 == item.getItemId()) {
+            addRow("canHeatIndexNotify_1", mEnvironmentalSensingProfile.canHeatIndexNotify(1));
         } else if (R.id.has_heat_index_esm_0 == item.getItemId()) {
             addRow("hasHeatIndexCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasHeatIndexCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_heat_index_esm_1 == item.getItemId()) {
@@ -903,10 +903,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onHumidity(MenuItem item) {
         if (R.id.read_humidity_count == item.getItemId()) {
             addRow("getHumidityCount", mEnvironmentalSensingProfile.getHumidityCount());
-        } else if (R.id.is_humidity_notificatable_0 == item.getItemId()) {
-            addRow("isHumidityNotificatable", mEnvironmentalSensingProfile.isHumidityNotificatable());
-        } else if (R.id.is_humidity_notificatable_1 == item.getItemId()) {
-            addRow("isHumidityNotificatable_1", mEnvironmentalSensingProfile.isHumidityNotificatable(1));
+        } else if (R.id.can_humidity_notify_0 == item.getItemId()) {
+            addRow("canHumidityNotify", mEnvironmentalSensingProfile.canHumidityNotify());
+        } else if (R.id.can_humidity_notify_1 == item.getItemId()) {
+            addRow("canHumidityNotify_1", mEnvironmentalSensingProfile.canHumidityNotify(1));
         } else if (R.id.has_humidity_esm_0 == item.getItemId()) {
             addRow("hasHumidityCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasHumidityCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_humidity_esm_1 == item.getItemId()) {
@@ -981,10 +981,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onIrradiance(MenuItem item) {
         if (R.id.read_irradiance_count == item.getItemId()) {
             addRow("getIrradianceCount", mEnvironmentalSensingProfile.getIrradianceCount());
-        } else if (R.id.is_irradiance_notificatable_0 == item.getItemId()) {
-            addRow("isIrradianceNotificatable", mEnvironmentalSensingProfile.isIrradianceNotificatable());
-        } else if (R.id.is_irradiance_notificatable_1 == item.getItemId()) {
-            addRow("isIrradianceNotificatable_1", mEnvironmentalSensingProfile.isIrradianceNotificatable(1));
+        } else if (R.id.can_irradiance_notify_0 == item.getItemId()) {
+            addRow("canIrradianceNotify", mEnvironmentalSensingProfile.canIrradianceNotify());
+        } else if (R.id.can_irradiance_notify_1 == item.getItemId()) {
+            addRow("canIrradianceNotify_1", mEnvironmentalSensingProfile.canIrradianceNotify(1));
         } else if (R.id.has_irradiance_esm_0 == item.getItemId()) {
             addRow("hasIrradianceCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasIrradianceCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_irradiance_esm_1 == item.getItemId()) {
@@ -1059,10 +1059,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onMagneticDeclination(MenuItem item) {
         if (R.id.read_magnetic_declination_count == item.getItemId()) {
             addRow("getMagneticDeclinationCount", mEnvironmentalSensingProfile.getMagneticDeclinationCount());
-        } else if (R.id.is_magnetic_declination_notificatable_0 == item.getItemId()) {
-            addRow("isMagneticDeclinationNotificatable", mEnvironmentalSensingProfile.isMagneticDeclinationNotificatable());
-        } else if (R.id.is_magnetic_declination_notificatable_1 == item.getItemId()) {
-            addRow("isMagneticDeclinationNotificatable_1", mEnvironmentalSensingProfile.isMagneticDeclinationNotificatable(1));
+        } else if (R.id.can_magnetic_declination_notify_0 == item.getItemId()) {
+            addRow("canMagneticDeclinationNotify", mEnvironmentalSensingProfile.canMagneticDeclinationNotify());
+        } else if (R.id.can_magnetic_declination_notify_1 == item.getItemId()) {
+            addRow("canMagneticDeclinationNotify_1", mEnvironmentalSensingProfile.canMagneticDeclinationNotify(1));
         } else if (R.id.has_magnetic_declination_esm_0 == item.getItemId()) {
             addRow("hasMagneticDeclinationCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasMagneticDeclinationCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_magnetic_declination_esm_1 == item.getItemId()) {
@@ -1137,10 +1137,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onMagneticFluxDensity2D(MenuItem item) {
         if (R.id.read_magnetic_flux_density_2d_count == item.getItemId()) {
             addRow("getMagneticFluxDensity2DCount", mEnvironmentalSensingProfile.getMagneticFluxDensity2DCount());
-        } else if (R.id.is_magnetic_flux_density_2d_notificatable_0 == item.getItemId()) {
-            addRow("isMagneticFluxDensity2DNotificatable", mEnvironmentalSensingProfile.isMagneticFluxDensity2DNotificatable());
-        } else if (R.id.is_magnetic_flux_density_2d_notificatable_1 == item.getItemId()) {
-            addRow("isMagneticFluxDensity2DNotificatable_1", mEnvironmentalSensingProfile.isMagneticFluxDensity2DNotificatable(1));
+        } else if (R.id.can_magnetic_flux_density_2d_notify_0 == item.getItemId()) {
+            addRow("canMagneticFluxDensity2DNotify", mEnvironmentalSensingProfile.canMagneticFluxDensity2DNotify());
+        } else if (R.id.can_magnetic_flux_density_2d_notify_1 == item.getItemId()) {
+            addRow("canMagneticFluxDensity2DNotify_1", mEnvironmentalSensingProfile.canMagneticFluxDensity2DNotify(1));
         } else if (R.id.has_magnetic_flux_density_2d_esm_0 == item.getItemId()) {
             addRow("hasMagneticFluxDensity2DCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasMagneticFluxDensity2DCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_magnetic_flux_density_2d_esm_1 == item.getItemId()) {
@@ -1215,10 +1215,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onMagneticFluxDensity3D(MenuItem item) {
         if (R.id.read_magnetic_flux_density_3d_count == item.getItemId()) {
             addRow("getMagneticFluxDensity3DCount", mEnvironmentalSensingProfile.getMagneticFluxDensity3DCount());
-        } else if (R.id.is_magnetic_flux_density_3d_notificatable_0 == item.getItemId()) {
-            addRow("isMagneticFluxDensity3DNotificatable", mEnvironmentalSensingProfile.isMagneticFluxDensity3DNotificatable());
-        } else if (R.id.is_magnetic_flux_density_3d_notificatable_1 == item.getItemId()) {
-            addRow("isMagneticFluxDensity3DNotificatable_1", mEnvironmentalSensingProfile.isMagneticFluxDensity3DNotificatable(1));
+        } else if (R.id.can_magnetic_flux_density_3d_notify_0 == item.getItemId()) {
+            addRow("canMagneticFluxDensity3DNotify", mEnvironmentalSensingProfile.canMagneticFluxDensity3DNotify());
+        } else if (R.id.can_magnetic_flux_density_3d_notify_1 == item.getItemId()) {
+            addRow("canMagneticFluxDensity3DNotify_1", mEnvironmentalSensingProfile.canMagneticFluxDensity3DNotify(1));
         } else if (R.id.has_magnetic_flux_density_3d_esm_0 == item.getItemId()) {
             addRow("hasMagneticFluxDensity3DCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasMagneticFluxDensity3DCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_magnetic_flux_density_3d_esm_1 == item.getItemId()) {
@@ -1293,10 +1293,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onMethaneConcentration(MenuItem item) {
         if (R.id.read_methane_concentration_count == item.getItemId()) {
             addRow("getMethaneConcentrationCount", mEnvironmentalSensingProfile.getMethaneConcentrationCount());
-        } else if (R.id.is_methane_concentration_notificatable_0 == item.getItemId()) {
-            addRow("isMethaneConcentrationNotificatable", mEnvironmentalSensingProfile.isMethaneConcentrationNotificatable());
-        } else if (R.id.is_methane_concentration_notificatable_1 == item.getItemId()) {
-            addRow("isMethaneConcentrationNotificatable_1", mEnvironmentalSensingProfile.isMethaneConcentrationNotificatable(1));
+        } else if (R.id.can_methane_concentration_notify_0 == item.getItemId()) {
+            addRow("canMethaneConcentrationNotify", mEnvironmentalSensingProfile.canMethaneConcentrationNotify());
+        } else if (R.id.can_methane_concentration_notify_1 == item.getItemId()) {
+            addRow("canMethaneConcentrationNotify_1", mEnvironmentalSensingProfile.canMethaneConcentrationNotify(1));
         } else if (R.id.has_methane_concentration_esm_0 == item.getItemId()) {
             addRow("hasMethaneConcentrationCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasMethaneConcentrationCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_methane_concentration_esm_1 == item.getItemId()) {
@@ -1371,10 +1371,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onNitrogenDioxideConcentration(MenuItem item) {
         if (R.id.read_nitrogen_dioxide_concentration_count == item.getItemId()) {
             addRow("getNitrogenDioxideConcentrationCount", mEnvironmentalSensingProfile.getNitrogenDioxideConcentrationCount());
-        } else if (R.id.is_nitrogen_dioxide_concentration_notificatable_0 == item.getItemId()) {
-            addRow("isNitrogenDioxideConcentrationNotificatable", mEnvironmentalSensingProfile.isNitrogenDioxideConcentrationNotificatable());
-        } else if (R.id.is_nitrogen_dioxide_concentration_notificatable_1 == item.getItemId()) {
-            addRow("isNitrogenDioxideConcentrationNotificatable_1", mEnvironmentalSensingProfile.isNitrogenDioxideConcentrationNotificatable(1));
+        } else if (R.id.can_nitrogen_dioxide_concentration_notify_0 == item.getItemId()) {
+            addRow("canNitrogenDioxideConcentrationNotify", mEnvironmentalSensingProfile.canNitrogenDioxideConcentrationNotify());
+        } else if (R.id.can_nitrogen_dioxide_concentration_notify_1 == item.getItemId()) {
+            addRow("canNitrogenDioxideConcentrationNotify_1", mEnvironmentalSensingProfile.canNitrogenDioxideConcentrationNotify(1));
         } else if (R.id.has_nitrogen_dioxide_concentration_esm_0 == item.getItemId()) {
             addRow("hasNitrogenDioxideConcentrationCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasNitrogenDioxideConcentrationCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_nitrogen_dioxide_concentration_esm_1 == item.getItemId()) {
@@ -1449,10 +1449,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onNonMethaneVolatileOrganicCompoundsConcentration(MenuItem item) {
         if (R.id.read_non_methane_volatile_organic_compounds_concentration_count == item.getItemId()) {
             addRow("getNonMethaneVolatileOrganicCompoundsConcentrationCount", mEnvironmentalSensingProfile.getNonMethaneVolatileOrganicCompoundsConcentrationCount());
-        } else if (R.id.is_non_methane_volatile_organic_compounds_concentration_notificatable_0 == item.getItemId()) {
-            addRow("isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable", mEnvironmentalSensingProfile.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable());
-        } else if (R.id.is_non_methane_volatile_organic_compounds_concentration_notificatable_1 == item.getItemId()) {
-            addRow("isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable_1", mEnvironmentalSensingProfile.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(1));
+        } else if (R.id.can_non_methane_volatile_organic_compounds_concentration_notify_0 == item.getItemId()) {
+            addRow("canNonMethaneVolatileOrganicCompoundsConcentrationNotify", mEnvironmentalSensingProfile.canNonMethaneVolatileOrganicCompoundsConcentrationNotify());
+        } else if (R.id.can_non_methane_volatile_organic_compounds_concentration_notify_1 == item.getItemId()) {
+            addRow("canNonMethaneVolatileOrganicCompoundsConcentrationNotify_1", mEnvironmentalSensingProfile.canNonMethaneVolatileOrganicCompoundsConcentrationNotify(1));
         } else if (R.id.has_non_methane_volatile_organic_compounds_concentration_esm_0 == item.getItemId()) {
             addRow("hasNonMethaneVolatileOrganicCompoundsConcentrationCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasNonMethaneVolatileOrganicCompoundsConcentrationCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_non_methane_volatile_organic_compounds_concentration_esm_1 == item.getItemId()) {
@@ -1527,10 +1527,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onOzoneConcentration(MenuItem item) {
         if (R.id.read_ozone_concentration_count == item.getItemId()) {
             addRow("getOzoneConcentrationCount", mEnvironmentalSensingProfile.getOzoneConcentrationCount());
-        } else if (R.id.is_ozone_concentration_notificatable_0 == item.getItemId()) {
-            addRow("isOzoneConcentrationNotificatable", mEnvironmentalSensingProfile.isOzoneConcentrationNotificatable());
-        } else if (R.id.is_ozone_concentration_notificatable_1 == item.getItemId()) {
-            addRow("isOzoneConcentrationNotificatable_1", mEnvironmentalSensingProfile.isOzoneConcentrationNotificatable(1));
+        } else if (R.id.can_ozone_concentration_notify_0 == item.getItemId()) {
+            addRow("canOzoneConcentrationNotify", mEnvironmentalSensingProfile.canOzoneConcentrationNotify());
+        } else if (R.id.can_ozone_concentration_notify_1 == item.getItemId()) {
+            addRow("canOzoneConcentrationNotify_1", mEnvironmentalSensingProfile.canOzoneConcentrationNotify(1));
         } else if (R.id.has_ozone_concentration_esm_0 == item.getItemId()) {
             addRow("hasOzoneConcentrationCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasOzoneConcentrationCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_ozone_concentration_esm_1 == item.getItemId()) {
@@ -1605,10 +1605,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onParticulateMatterPm10Concentration(MenuItem item) {
         if (R.id.read_particulate_matter_pm10_concentration_count == item.getItemId()) {
             addRow("getParticulateMatterPm10ConcentrationCount", mEnvironmentalSensingProfile.getParticulateMatterPm10ConcentrationCount());
-        } else if (R.id.is_particulate_matter_pm10_concentration_notificatable_0 == item.getItemId()) {
-            addRow("isParticulateMatterPm10ConcentrationNotificatable", mEnvironmentalSensingProfile.isParticulateMatterPm10ConcentrationNotificatable());
-        } else if (R.id.is_particulate_matter_pm10_concentration_notificatable_1 == item.getItemId()) {
-            addRow("isParticulateMatterPm10ConcentrationNotificatable_1", mEnvironmentalSensingProfile.isParticulateMatterPm10ConcentrationNotificatable(1));
+        } else if (R.id.can_particulate_matter_pm10_concentration_notify_0 == item.getItemId()) {
+            addRow("canParticulateMatterPm10ConcentrationNotify", mEnvironmentalSensingProfile.canParticulateMatterPm10ConcentrationNotify());
+        } else if (R.id.can_particulate_matter_pm10_concentration_notify_1 == item.getItemId()) {
+            addRow("canParticulateMatterPm10ConcentrationNotify_1", mEnvironmentalSensingProfile.canParticulateMatterPm10ConcentrationNotify(1));
         } else if (R.id.has_particulate_matter_pm10_concentration_esm_0 == item.getItemId()) {
             addRow("hasParticulateMatterPm10ConcentrationCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasParticulateMatterPm10ConcentrationCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_particulate_matter_pm10_concentration_esm_1 == item.getItemId()) {
@@ -1683,10 +1683,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onParticulateMatterPm1Concentration(MenuItem item) {
         if (R.id.read_particulate_matter_pm1_concentration_count == item.getItemId()) {
             addRow("getParticulateMatterPm1ConcentrationCount", mEnvironmentalSensingProfile.getParticulateMatterPm1ConcentrationCount());
-        } else if (R.id.is_particulate_matter_pm1_concentration_notificatable_0 == item.getItemId()) {
-            addRow("isParticulateMatterPm1ConcentrationNotificatable", mEnvironmentalSensingProfile.isParticulateMatterPm1ConcentrationNotificatable());
-        } else if (R.id.is_particulate_matter_pm1_concentration_notificatable_1 == item.getItemId()) {
-            addRow("isParticulateMatterPm1ConcentrationNotificatable_1", mEnvironmentalSensingProfile.isParticulateMatterPm1ConcentrationNotificatable(1));
+        } else if (R.id.can_particulate_matter_pm1_concentration_notify_0 == item.getItemId()) {
+            addRow("canParticulateMatterPm1ConcentrationNotify", mEnvironmentalSensingProfile.canParticulateMatterPm1ConcentrationNotify());
+        } else if (R.id.can_particulate_matter_pm1_concentration_notify_1 == item.getItemId()) {
+            addRow("canParticulateMatterPm1ConcentrationNotify_1", mEnvironmentalSensingProfile.canParticulateMatterPm1ConcentrationNotify(1));
         } else if (R.id.has_particulate_matter_pm1_concentration_esm_0 == item.getItemId()) {
             addRow("hasParticulateMatterPm1ConcentrationCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasParticulateMatterPm1ConcentrationCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_particulate_matter_pm1_concentration_esm_1 == item.getItemId()) {
@@ -1761,10 +1761,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onParticulateMatterPm25Concentration(MenuItem item) {
         if (R.id.read_particulate_matter_pm2_5_concentration_count == item.getItemId()) {
             addRow("getParticulateMatterPm25ConcentrationCount", mEnvironmentalSensingProfile.getParticulateMatterPm25ConcentrationCount());
-        } else if (R.id.is_particulate_matter_pm2_5_concentration_notificatable_0 == item.getItemId()) {
-            addRow("isParticulateMatterPm25ConcentrationNotificatable", mEnvironmentalSensingProfile.isParticulateMatterPm25ConcentrationNotificatable());
-        } else if (R.id.is_particulate_matter_pm2_5_concentration_notificatable_1 == item.getItemId()) {
-            addRow("isParticulateMatterPm25ConcentrationNotificatable_1", mEnvironmentalSensingProfile.isParticulateMatterPm25ConcentrationNotificatable(1));
+        } else if (R.id.can_particulate_matter_pm2_5_concentration_notify_0 == item.getItemId()) {
+            addRow("canParticulateMatterPm25ConcentrationNotify", mEnvironmentalSensingProfile.canParticulateMatterPm25ConcentrationNotify());
+        } else if (R.id.can_particulate_matter_pm2_5_concentration_notify_1 == item.getItemId()) {
+            addRow("canParticulateMatterPm25ConcentrationNotify_1", mEnvironmentalSensingProfile.canParticulateMatterPm25ConcentrationNotify(1));
         } else if (R.id.has_particulate_matter_pm2_5_concentration_esm_0 == item.getItemId()) {
             addRow("hasParticulateMatterPm25ConcentrationCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasParticulateMatterPm25ConcentrationCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_particulate_matter_pm2_5_concentration_esm_1 == item.getItemId()) {
@@ -1839,10 +1839,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onPollenConcentration(MenuItem item) {
         if (R.id.read_pollen_concentration_count == item.getItemId()) {
             addRow("getPollenConcentrationCount", mEnvironmentalSensingProfile.getPollenConcentrationCount());
-        } else if (R.id.is_pollen_concentration_notificatable_0 == item.getItemId()) {
-            addRow("isPollenConcentrationNotificatable", mEnvironmentalSensingProfile.isPollenConcentrationNotificatable());
-        } else if (R.id.is_pollen_concentration_notificatable_1 == item.getItemId()) {
-            addRow("isPollenConcentrationNotificatable_1", mEnvironmentalSensingProfile.isPollenConcentrationNotificatable(1));
+        } else if (R.id.can_pollen_concentration_notify_0 == item.getItemId()) {
+            addRow("canPollenConcentrationNotify", mEnvironmentalSensingProfile.canPollenConcentrationNotify());
+        } else if (R.id.can_pollen_concentration_notify_1 == item.getItemId()) {
+            addRow("canPollenConcentrationNotify_1", mEnvironmentalSensingProfile.canPollenConcentrationNotify(1));
         } else if (R.id.has_pollen_concentration_esm_0 == item.getItemId()) {
             addRow("hasPollenConcentrationCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasPollenConcentrationCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_pollen_concentration_esm_1 == item.getItemId()) {
@@ -1917,10 +1917,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onPressure(MenuItem item) {
         if (R.id.read_pressure_count == item.getItemId()) {
             addRow("getPressureCount", mEnvironmentalSensingProfile.getPressureCount());
-        } else if (R.id.is_pressure_notificatable_0 == item.getItemId()) {
-            addRow("isPressureNotificatable", mEnvironmentalSensingProfile.isPressureNotificatable());
-        } else if (R.id.is_pressure_notificatable_1 == item.getItemId()) {
-            addRow("isPressureNotificatable_1", mEnvironmentalSensingProfile.isPressureNotificatable(1));
+        } else if (R.id.can_pressure_notify_0 == item.getItemId()) {
+            addRow("canPressureNotify", mEnvironmentalSensingProfile.canPressureNotify());
+        } else if (R.id.can_pressure_notify_1 == item.getItemId()) {
+            addRow("canPressureNotify_1", mEnvironmentalSensingProfile.canPressureNotify(1));
         } else if (R.id.has_pressure_esm_0 == item.getItemId()) {
             addRow("hasPressureCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasPressureCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_pressure_esm_1 == item.getItemId()) {
@@ -1995,10 +1995,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onRainfall(MenuItem item) {
         if (R.id.read_rainfall_count == item.getItemId()) {
             addRow("getRainfallCount", mEnvironmentalSensingProfile.getRainfallCount());
-        } else if (R.id.is_rainfall_notificatable_0 == item.getItemId()) {
-            addRow("isRainfallNotificatable", mEnvironmentalSensingProfile.isRainfallNotificatable());
-        } else if (R.id.is_rainfall_notificatable_1 == item.getItemId()) {
-            addRow("isRainfallNotificatable_1", mEnvironmentalSensingProfile.isRainfallNotificatable(1));
+        } else if (R.id.can_rainfall_notify_0 == item.getItemId()) {
+            addRow("canRainfallNotify", mEnvironmentalSensingProfile.canRainfallNotify());
+        } else if (R.id.can_rainfall_notify_1 == item.getItemId()) {
+            addRow("canRainfallNotify_1", mEnvironmentalSensingProfile.canRainfallNotify(1));
         } else if (R.id.has_rainfall_esm_0 == item.getItemId()) {
             addRow("hasRainfallCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasRainfallCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_rainfall_esm_1 == item.getItemId()) {
@@ -2073,10 +2073,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onSulfurDioxideConcentration(MenuItem item) {
         if (R.id.read_sulfur_dioxide_concentration_count == item.getItemId()) {
             addRow("getSulfurDioxideConcentrationCount", mEnvironmentalSensingProfile.getSulfurDioxideConcentrationCount());
-        } else if (R.id.is_sulfur_dioxide_concentration_notificatable_0 == item.getItemId()) {
-            addRow("isSulfurDioxideConcentrationNotificatable", mEnvironmentalSensingProfile.isSulfurDioxideConcentrationNotificatable());
-        } else if (R.id.is_sulfur_dioxide_concentration_notificatable_1 == item.getItemId()) {
-            addRow("isSulfurDioxideConcentrationNotificatable_1", mEnvironmentalSensingProfile.isSulfurDioxideConcentrationNotificatable(1));
+        } else if (R.id.can_sulfur_dioxide_concentration_notify_0 == item.getItemId()) {
+            addRow("canSulfurDioxideConcentrationNotify", mEnvironmentalSensingProfile.canSulfurDioxideConcentrationNotify());
+        } else if (R.id.can_sulfur_dioxide_concentration_notify_1 == item.getItemId()) {
+            addRow("canSulfurDioxideConcentrationNotify_1", mEnvironmentalSensingProfile.canSulfurDioxideConcentrationNotify(1));
         } else if (R.id.has_sulfur_dioxide_concentration_esm_0 == item.getItemId()) {
             addRow("hasSulfurDioxideConcentrationCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasSulfurDioxideConcentrationCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_sulfur_dioxide_concentration_esm_1 == item.getItemId()) {
@@ -2151,10 +2151,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onSulfurHexafluorideConcentration(MenuItem item) {
         if (R.id.read_sulfur_hexafluoride_concentration_count == item.getItemId()) {
             addRow("getSulfurHexafluorideConcentrationCount", mEnvironmentalSensingProfile.getSulfurHexafluorideConcentrationCount());
-        } else if (R.id.is_sulfur_hexafluoride_concentration_notificatable_0 == item.getItemId()) {
-            addRow("isSulfurHexafluorideConcentrationNotificatable", mEnvironmentalSensingProfile.isSulfurHexafluorideConcentrationNotificatable());
-        } else if (R.id.is_sulfur_hexafluoride_concentration_notificatable_1 == item.getItemId()) {
-            addRow("isSulfurHexafluorideConcentrationNotificatable_1", mEnvironmentalSensingProfile.isSulfurHexafluorideConcentrationNotificatable(1));
+        } else if (R.id.can_sulfur_hexafluoride_concentration_notify_0 == item.getItemId()) {
+            addRow("canSulfurHexafluorideConcentrationNotify", mEnvironmentalSensingProfile.canSulfurHexafluorideConcentrationNotify());
+        } else if (R.id.can_sulfur_hexafluoride_concentration_notify_1 == item.getItemId()) {
+            addRow("canSulfurHexafluorideConcentrationNotify_1", mEnvironmentalSensingProfile.canSulfurHexafluorideConcentrationNotify(1));
         } else if (R.id.has_sulfur_hexafluoride_concentration_esm_0 == item.getItemId()) {
             addRow("hasSulfurHexafluorideConcentrationCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasSulfurHexafluorideConcentrationCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_sulfur_hexafluoride_concentration_esm_1 == item.getItemId()) {
@@ -2229,10 +2229,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onTemperature(MenuItem item) {
         if (R.id.read_temperature_count == item.getItemId()) {
             addRow("getTemperatureCount", mEnvironmentalSensingProfile.getTemperatureCount());
-        } else if (R.id.is_temperature_notificatable_0 == item.getItemId()) {
-            addRow("isTemperatureNotificatable", mEnvironmentalSensingProfile.isTemperatureNotificatable());
-        } else if (R.id.is_temperature_notificatable_1 == item.getItemId()) {
-            addRow("isTemperatureNotificatable_1", mEnvironmentalSensingProfile.isTemperatureNotificatable(1));
+        } else if (R.id.can_temperature_notify_0 == item.getItemId()) {
+            addRow("canTemperatureNotify", mEnvironmentalSensingProfile.canTemperatureNotify());
+        } else if (R.id.can_temperature_notify_1 == item.getItemId()) {
+            addRow("canTemperatureNotify_1", mEnvironmentalSensingProfile.canTemperatureNotify(1));
         } else if (R.id.has_temperature_esm_0 == item.getItemId()) {
             addRow("hasTemperatureCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasTemperatureCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_temperature_esm_1 == item.getItemId()) {
@@ -2307,10 +2307,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onTrueWindDirection(MenuItem item) {
         if (R.id.read_true_wind_direction_count == item.getItemId()) {
             addRow("getTrueWindDirectionCount", mEnvironmentalSensingProfile.getTrueWindDirectionCount());
-        } else if (R.id.is_true_wind_direction_notificatable_0 == item.getItemId()) {
-            addRow("isTrueWindDirectionNotificatable", mEnvironmentalSensingProfile.isTrueWindDirectionNotificatable());
-        } else if (R.id.is_true_wind_direction_notificatable_1 == item.getItemId()) {
-            addRow("isTrueWindDirectionNotificatable_1", mEnvironmentalSensingProfile.isTrueWindDirectionNotificatable(1));
+        } else if (R.id.can_true_wind_direction_notify_0 == item.getItemId()) {
+            addRow("canTrueWindDirectionNotify", mEnvironmentalSensingProfile.canTrueWindDirectionNotify());
+        } else if (R.id.can_true_wind_direction_notify_1 == item.getItemId()) {
+            addRow("canTrueWindDirectionNotify_1", mEnvironmentalSensingProfile.canTrueWindDirectionNotify(1));
         } else if (R.id.has_true_wind_direction_esm_0 == item.getItemId()) {
             addRow("hasTrueWindDirectionCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasTrueWindDirectionCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_true_wind_direction_esm_1 == item.getItemId()) {
@@ -2385,10 +2385,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onTrueWindSpeed(MenuItem item) {
         if (R.id.read_true_wind_speed_count == item.getItemId()) {
             addRow("getTrueWindSpeedCount", mEnvironmentalSensingProfile.getTrueWindSpeedCount());
-        } else if (R.id.is_true_wind_speed_notificatable_0 == item.getItemId()) {
-            addRow("isTrueWindSpeedNotificatable", mEnvironmentalSensingProfile.isTrueWindSpeedNotificatable());
-        } else if (R.id.is_true_wind_speed_notificatable_1 == item.getItemId()) {
-            addRow("isTrueWindSpeedNotificatable_1", mEnvironmentalSensingProfile.isTrueWindSpeedNotificatable(1));
+        } else if (R.id.can_true_wind_speed_notify_0 == item.getItemId()) {
+            addRow("canTrueWindSpeedNotify", mEnvironmentalSensingProfile.canTrueWindSpeedNotify());
+        } else if (R.id.can_true_wind_speed_notify_1 == item.getItemId()) {
+            addRow("canTrueWindSpeedNotify_1", mEnvironmentalSensingProfile.canTrueWindSpeedNotify(1));
         } else if (R.id.has_true_wind_speed_esm_0 == item.getItemId()) {
             addRow("hasTrueWindSpeedCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasTrueWindSpeedCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_true_wind_speed_esm_1 == item.getItemId()) {
@@ -2463,10 +2463,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onUVIndex(MenuItem item) {
         if (R.id.read_uv_index_count == item.getItemId()) {
             addRow("getUVIndexCount", mEnvironmentalSensingProfile.getUVIndexCount());
-        } else if (R.id.is_uv_index_notificatable_0 == item.getItemId()) {
-            addRow("isUVIndexNotificatable", mEnvironmentalSensingProfile.isUVIndexNotificatable());
-        } else if (R.id.is_uv_index_notificatable_1 == item.getItemId()) {
-            addRow("isUVIndexNotificatable_1", mEnvironmentalSensingProfile.isUVIndexNotificatable(1));
+        } else if (R.id.can_uv_index_notify_0 == item.getItemId()) {
+            addRow("canUVIndexNotify", mEnvironmentalSensingProfile.canUVIndexNotify());
+        } else if (R.id.can_uv_index_notify_1 == item.getItemId()) {
+            addRow("canUVIndexNotify_1", mEnvironmentalSensingProfile.canUVIndexNotify(1));
         } else if (R.id.has_uv_index_esm_0 == item.getItemId()) {
             addRow("hasUVIndexCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasUVIndexCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_uv_index_esm_1 == item.getItemId()) {
@@ -2541,10 +2541,10 @@ public class EspCentralSampleActivity extends BaseActivity implements View.OnCli
     private void onWindChill(MenuItem item) {
         if (R.id.read_wind_chill_count == item.getItemId()) {
             addRow("getWindChillCount", mEnvironmentalSensingProfile.getWindChillCount());
-        } else if (R.id.is_wind_chill_notificatable_0 == item.getItemId()) {
-            addRow("isWindChillNotificatable", mEnvironmentalSensingProfile.isWindChillNotificatable());
-        } else if (R.id.is_wind_chill_notificatable_1 == item.getItemId()) {
-            addRow("isWindChillNotificatable_1", mEnvironmentalSensingProfile.isWindChillNotificatable(1));
+        } else if (R.id.can_wind_chill_notify_0 == item.getItemId()) {
+            addRow("canWindChillNotify", mEnvironmentalSensingProfile.canWindChillNotify());
+        } else if (R.id.can_wind_chill_notify_1 == item.getItemId()) {
+            addRow("canWindChillNotify_1", mEnvironmentalSensingProfile.canWindChillNotify(1));
         } else if (R.id.has_wind_chill_esm_0 == item.getItemId()) {
             addRow("hasWindChillCharacteristicEnvironmentalSensingMeasurement", mEnvironmentalSensingProfile.hasWindChillCharacteristicEnvironmentalSensingMeasurement());
         } else if (R.id.has_wind_chill_esm_1 == item.getItemId()) {

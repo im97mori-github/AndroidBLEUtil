@@ -143,16 +143,16 @@ public class EnvironmentalSensingServiceSulfurHexafluorideConcentrationTest exte
     @Test
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurHexafluorideConcentrationNotificatable_00001() {
+    public void test_canSulfurHexafluorideConcentrationNotify_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
-        assertFalse(environmentalSensingService.isSulfurHexafluorideConcentrationNotificatable());
+        assertFalse(environmentalSensingService.canSulfurHexafluorideConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurHexafluorideConcentrationNotificatable_00002() {
+    public void test_canSulfurHexafluorideConcentrationNotify_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -160,99 +160,13 @@ public class EnvironmentalSensingServiceSulfurHexafluorideConcentrationTest exte
             }
         };
 
-        assertFalse(environmentalSensingService.isSulfurHexafluorideConcentrationNotificatable());
+        assertFalse(environmentalSensingService.canSulfurHexafluorideConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurHexafluorideConcentrationNotificatable_00003() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(environmentalSensingService.isSulfurHexafluorideConcentrationNotificatable());
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurHexafluorideConcentrationNotificatable_00004() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertTrue(environmentalSensingService.isSulfurHexafluorideConcentrationNotificatable());
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurHexafluorideConcentrationNotificatable_00005() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertTrue(environmentalSensingService.isSulfurHexafluorideConcentrationNotificatable(0));
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurHexafluorideConcentrationNotificatable_00006() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(environmentalSensingService.isSulfurHexafluorideConcentrationNotificatable(1));
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurHexafluorideConcentrationNotificatable_00007() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(environmentalSensingService.isSulfurHexafluorideConcentrationNotificatable(1));
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isSulfurHexafluorideConcentrationNotificatable_00008() {
+    public void test_canSulfurHexafluorideConcentrationNotify_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -262,9 +176,95 @@ public class EnvironmentalSensingServiceSulfurHexafluorideConcentrationTest exte
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertFalse(environmentalSensingService.canSulfurHexafluorideConcentrationNotify());
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canSulfurHexafluorideConcentrationNotify_00004() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertTrue(environmentalSensingService.isSulfurHexafluorideConcentrationNotificatable(1));
+        assertTrue(environmentalSensingService.canSulfurHexafluorideConcentrationNotify());
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canSulfurHexafluorideConcentrationNotify_00005() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertTrue(environmentalSensingService.canSulfurHexafluorideConcentrationNotify(0));
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canSulfurHexafluorideConcentrationNotify_00006() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertFalse(environmentalSensingService.canSulfurHexafluorideConcentrationNotify(1));
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canSulfurHexafluorideConcentrationNotify_00007() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertFalse(environmentalSensingService.canSulfurHexafluorideConcentrationNotify(1));
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canSulfurHexafluorideConcentrationNotify_00008() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertTrue(environmentalSensingService.canSulfurHexafluorideConcentrationNotify(1));
     }
 
     @Test
@@ -1157,7 +1157,7 @@ public class EnvironmentalSensingServiceSulfurHexafluorideConcentrationTest exte
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startSulfurHexafluorideConcentrationNotification_00005() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1176,7 +1176,7 @@ public class EnvironmentalSensingServiceSulfurHexafluorideConcentrationTest exte
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startSulfurHexafluorideConcentrationNotification_00006() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1195,7 +1195,7 @@ public class EnvironmentalSensingServiceSulfurHexafluorideConcentrationTest exte
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startSulfurHexafluorideConcentrationNotification_00007() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1214,7 +1214,7 @@ public class EnvironmentalSensingServiceSulfurHexafluorideConcentrationTest exte
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startSulfurHexafluorideConcentrationNotification_00008() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1291,7 +1291,7 @@ public class EnvironmentalSensingServiceSulfurHexafluorideConcentrationTest exte
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopSulfurHexafluorideConcentrationNotification_00005() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1310,7 +1310,7 @@ public class EnvironmentalSensingServiceSulfurHexafluorideConcentrationTest exte
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopSulfurHexafluorideConcentrationNotification_00006() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1329,7 +1329,7 @@ public class EnvironmentalSensingServiceSulfurHexafluorideConcentrationTest exte
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopSulfurHexafluorideConcentrationNotification_00007() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1348,7 +1348,7 @@ public class EnvironmentalSensingServiceSulfurHexafluorideConcentrationTest exte
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopSulfurHexafluorideConcentrationNotification_00008() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {

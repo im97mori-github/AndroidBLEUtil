@@ -20,11 +20,11 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Notification / Indication task
+ * Notify / Indication task
  * <p>
  * for peripheral role
  */
-public class NotificationTask extends AbstractBLETask {
+public class NotifyTask extends AbstractBLETask {
 
     /**
      * STATUS:CANCEL
@@ -85,7 +85,7 @@ public class NotificationTask extends AbstractBLETask {
      * create notification sent success message
      *
      * @param bluetoothDevice BLE device
-     * @return otification sent success {@link Message} instance
+     * @return notification sent success {@link Message} instance
      */
     @NonNull
     public static Message createNotificationSentSuccessMessage(BluetoothDevice bluetoothDevice) {
@@ -102,7 +102,7 @@ public class NotificationTask extends AbstractBLETask {
      *
      * @param bluetoothDevice BLE device
      * @param status          {@link android.bluetooth.BluetoothGattServerCallback#onNotificationSent(BluetoothDevice, int)} 2nd argument
-     * @return otification sent success {@link Message} instance
+     * @return notification sent success {@link Message} instance
      */
     @NonNull
     public static Message createNotificationSentErrorMessage(BluetoothDevice bluetoothDevice, int status) {
@@ -190,7 +190,7 @@ public class NotificationTask extends AbstractBLETask {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    public NotificationTask(@NonNull BLEServerConnection bleServerConnection
+    public NotifyTask(@NonNull BLEServerConnection bleServerConnection
             , @NonNull BluetoothGattServer bluetoothGattServer
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull TaskHandler taskHandler

@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileTrueWindDirectionTest extends AbstractCe
 
     @Test
     @RequiresDevice
-    public void test_isTrueWindDirectionNotificatable_00001() {
+    public void test_canTrueWindDirectionNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isTrueWindDirectionNotificatable());
+        assertNull(environmentalSensingProfile.canTrueWindDirectionNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isTrueWindDirectionNotificatable_00002() {
+    public void test_canTrueWindDirectionNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isTrueWindDirectionNotificatable());
+        assertNotNull(environmentalSensingProfile.canTrueWindDirectionNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isTrueWindDirectionNotificatable_00101() {
+    public void test_canTrueWindDirectionNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isTrueWindDirectionNotificatable(0));
+        assertNull(environmentalSensingProfile.canTrueWindDirectionNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isTrueWindDirectionNotificatable_00102() {
+    public void test_canTrueWindDirectionNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isTrueWindDirectionNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canTrueWindDirectionNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

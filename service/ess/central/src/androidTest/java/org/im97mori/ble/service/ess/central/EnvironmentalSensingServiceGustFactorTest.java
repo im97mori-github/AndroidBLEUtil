@@ -143,16 +143,16 @@ public class EnvironmentalSensingServiceGustFactorTest extends AbstractCentralTe
     @Test
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isGustFactorNotificatable_00001() {
+    public void test_canGustFactorNotify_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
-        assertFalse(environmentalSensingService.isGustFactorNotificatable());
+        assertFalse(environmentalSensingService.canGustFactorNotify());
     }
 
     @Test
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isGustFactorNotificatable_00002() {
+    public void test_canGustFactorNotify_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -160,99 +160,13 @@ public class EnvironmentalSensingServiceGustFactorTest extends AbstractCentralTe
             }
         };
 
-        assertFalse(environmentalSensingService.isGustFactorNotificatable());
+        assertFalse(environmentalSensingService.canGustFactorNotify());
     }
 
     @Test
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isGustFactorNotificatable_00003() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(environmentalSensingService.isGustFactorNotificatable());
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isGustFactorNotificatable_00004() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertTrue(environmentalSensingService.isGustFactorNotificatable());
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isGustFactorNotificatable_00005() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertTrue(environmentalSensingService.isGustFactorNotificatable(0));
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isGustFactorNotificatable_00006() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(environmentalSensingService.isGustFactorNotificatable(1));
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isGustFactorNotificatable_00007() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(environmentalSensingService.isGustFactorNotificatable(1));
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isGustFactorNotificatable_00008() {
+    public void test_canGustFactorNotify_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -262,9 +176,95 @@ public class EnvironmentalSensingServiceGustFactorTest extends AbstractCentralTe
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertFalse(environmentalSensingService.canGustFactorNotify());
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canGustFactorNotify_00004() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertTrue(environmentalSensingService.isGustFactorNotificatable(1));
+        assertTrue(environmentalSensingService.canGustFactorNotify());
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canGustFactorNotify_00005() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertTrue(environmentalSensingService.canGustFactorNotify(0));
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canGustFactorNotify_00006() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertFalse(environmentalSensingService.canGustFactorNotify(1));
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canGustFactorNotify_00007() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertFalse(environmentalSensingService.canGustFactorNotify(1));
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canGustFactorNotify_00008() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertTrue(environmentalSensingService.canGustFactorNotify(1));
     }
 
     @Test
@@ -1157,7 +1157,7 @@ public class EnvironmentalSensingServiceGustFactorTest extends AbstractCentralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startGustFactorNotification_00005() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1176,7 +1176,7 @@ public class EnvironmentalSensingServiceGustFactorTest extends AbstractCentralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startGustFactorNotification_00006() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1195,7 +1195,7 @@ public class EnvironmentalSensingServiceGustFactorTest extends AbstractCentralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startGustFactorNotification_00007() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1214,7 +1214,7 @@ public class EnvironmentalSensingServiceGustFactorTest extends AbstractCentralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startGustFactorNotification_00008() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1291,7 +1291,7 @@ public class EnvironmentalSensingServiceGustFactorTest extends AbstractCentralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopGustFactorNotification_00005() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1310,7 +1310,7 @@ public class EnvironmentalSensingServiceGustFactorTest extends AbstractCentralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopGustFactorNotification_00006() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1329,7 +1329,7 @@ public class EnvironmentalSensingServiceGustFactorTest extends AbstractCentralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopGustFactorNotification_00007() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1348,7 +1348,7 @@ public class EnvironmentalSensingServiceGustFactorTest extends AbstractCentralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopGustFactorNotification_00008() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {

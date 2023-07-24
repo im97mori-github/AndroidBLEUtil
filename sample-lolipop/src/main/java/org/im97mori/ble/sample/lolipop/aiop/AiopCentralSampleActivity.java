@@ -229,10 +229,10 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
             addRow("isDigitalWritable", mAutomationIOProfile.isDigitalWritable());
         } else if (R.id.is_digital_writable_with_no_response_0 == item.getItemId()) {
             addRow("isDigitalWritableWithNoResponse", mAutomationIOProfile.isDigitalWritableWithNoResponse());
-        } else if (R.id.is_digital_notificatable_0 == item.getItemId()) {
-            addRow("isDigitalNotificatable", mAutomationIOProfile.isDigitalNotificatable());
-        } else if (R.id.is_digital_indictable_0 == item.getItemId()) {
-            addRow("isDigitalIndicatable", mAutomationIOProfile.isDigitalIndicatable());
+        } else if (R.id.can_digital_notify_0 == item.getItemId()) {
+            addRow("canDigitalNotify", mAutomationIOProfile.canDigitalNotify());
+        } else if (R.id.can_digital_indicate_0 == item.getItemId()) {
+            addRow("canDigitalIndicate", mAutomationIOProfile.canDigitalIndicate());
         } else if (R.id.has_digital_characteristic_presentation_format_0 == item.getItemId()) {
             addRow("hasDigitalCharacteristicPresentationFormat", mAutomationIOProfile.hasDigitalCharacteristicPresentationFormat());
         } else if (R.id.has_digital_characteristic_user_description_0 == item.getItemId()) {
@@ -289,10 +289,10 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
             addRow("isDigitalWritable", mAutomationIOProfile.isDigitalWritable(1));
         } else if (R.id.is_digital_writable_with_no_response_1 == item.getItemId()) {
             addRow("isDigitalWritableWithNoResponse", mAutomationIOProfile.isDigitalWritableWithNoResponse(1));
-        } else if (R.id.is_digital_notificatable_1 == item.getItemId()) {
-            addRow("isDigitalNotificatable", mAutomationIOProfile.isDigitalNotificatable(1));
+        } else if (R.id.can_digital_notify_1 == item.getItemId()) {
+            addRow("canDigitalNotify", mAutomationIOProfile.canDigitalNotify(1));
         } else if (R.id.is_digital_indictable_1 == item.getItemId()) {
-            addRow("isDigitalIndicatable", mAutomationIOProfile.isDigitalIndicatable(1));
+            addRow("canDigitalIndicate", mAutomationIOProfile.canDigitalIndicate(1));
         } else if (R.id.has_digital_characteristic_presentation_format_1 == item.getItemId()) {
             addRow("hasDigitalCharacteristicPresentationFormat", mAutomationIOProfile.hasDigitalCharacteristicPresentationFormat(1));
         } else if (R.id.has_digital_characteristic_user_description_1 == item.getItemId()) {
@@ -349,10 +349,10 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
             addRow("isAnalogWritable", mAutomationIOProfile.isAnalogWritable());
         } else if (R.id.is_analog_writable_with_no_response_0 == item.getItemId()) {
             addRow("isAnalogWritableWithNoResponse", mAutomationIOProfile.isAnalogWritableWithNoResponse());
-        } else if (R.id.is_analog_notificatable_0 == item.getItemId()) {
-            addRow("isAnalogNotificatable", mAutomationIOProfile.isAnalogNotificatable());
-        } else if (R.id.is_analog_indictable_0 == item.getItemId()) {
-            addRow("isAnalogIndicatable", mAutomationIOProfile.isAnalogIndicatable());
+        } else if (R.id.can_analog_notify_0 == item.getItemId()) {
+            addRow("canAnalogNotify", mAutomationIOProfile.canAnalogNotify());
+        } else if (R.id.can_analog_indicate_0 == item.getItemId()) {
+            addRow("canAnalogIndicate", mAutomationIOProfile.canAnalogIndicate());
         } else if (R.id.has_analog_characteristic_presentation_format_0 == item.getItemId()) {
             addRow("hasAnalogCharacteristicPresentationFormat", mAutomationIOProfile.hasAnalogCharacteristicPresentationFormat());
         } else if (R.id.has_analog_characteristic_user_description_0 == item.getItemId()) {
@@ -409,10 +409,10 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
             addRow("isAnalogWritable", mAutomationIOProfile.isAnalogWritable(1));
         } else if (R.id.is_analog_writable_with_no_response_1 == item.getItemId()) {
             addRow("isAnalogWritableWithNoResponse", mAutomationIOProfile.isAnalogWritableWithNoResponse(1));
-        } else if (R.id.is_analog_notificatable_1 == item.getItemId()) {
-            addRow("isAnalogNotificatable", mAutomationIOProfile.isAnalogNotificatable(1));
+        } else if (R.id.can_analog_notify_1 == item.getItemId()) {
+            addRow("canAnalogNotify", mAutomationIOProfile.canAnalogNotify(1));
         } else if (R.id.is_analog_indictable_1 == item.getItemId()) {
-            addRow("isAnalogIndicatable", mAutomationIOProfile.isAnalogIndicatable(1));
+            addRow("canAnalogIndicate", mAutomationIOProfile.canAnalogIndicate(1));
         } else if (R.id.has_analog_characteristic_presentation_format_1 == item.getItemId()) {
             addRow("hasAnalogCharacteristicPresentationFormat", mAutomationIOProfile.hasAnalogCharacteristicPresentationFormat(1));
         } else if (R.id.has_analog_characteristic_user_description_1 == item.getItemId()) {
@@ -467,10 +467,10 @@ public class AiopCentralSampleActivity extends BaseActivity implements View.OnCl
             addRow("isAggregateSupported", mAutomationIOProfile.isAggregateSupported());
         } else if (R.id.is_aggregate_readable == item.getItemId()) {
             addRow("isAggregateReadable", mAutomationIOProfile.isAggregateReadable());
-        } else if (R.id.is_aggregate_notificatable == item.getItemId()) {
-            addRow("isAggregateNotificatable", mAutomationIOProfile.isAggregateNotificatable());
+        } else if (R.id.can_aggregate_notify == item.getItemId()) {
+            addRow("canAggregateNotify", mAutomationIOProfile.canAggregateNotify());
         } else if (R.id.is_aggregate_indictable == item.getItemId()) {
-            addRow("isAggregateIndicatable", mAutomationIOProfile.isAggregateIndicatable());
+            addRow("canAggregateIndicate", mAutomationIOProfile.canAggregateIndicate());
         } else if (R.id.get_aggregate == item.getItemId()) {
             mAutomationIOProfile.getAggregate();
         } else if (R.id.get_aggregate_client_characteristic_configuration == item.getItemId()) {

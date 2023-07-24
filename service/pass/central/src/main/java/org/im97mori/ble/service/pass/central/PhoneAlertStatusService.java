@@ -187,15 +187,15 @@ public class PhoneAlertStatusService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && PHONE_ALERT_STATUS_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (ALERT_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mPhoneAlertStatusServiceCallback.onAlertStatusNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
+                    mPhoneAlertStatusServiceCallback.onAlertStatusNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mPhoneAlertStatusServiceCallback.onAlertStatusNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
+                    mPhoneAlertStatusServiceCallback.onAlertStatusNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (RINGER_SETTING_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mPhoneAlertStatusServiceCallback.onRingerSettingNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
+                    mPhoneAlertStatusServiceCallback.onRingerSettingNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mPhoneAlertStatusServiceCallback.onRingerSettingNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
+                    mPhoneAlertStatusServiceCallback.onRingerSettingNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             }
         }
@@ -210,15 +210,15 @@ public class PhoneAlertStatusService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && PHONE_ALERT_STATUS_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (ALERT_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mPhoneAlertStatusServiceCallback.onAlertStatusNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
+                    mPhoneAlertStatusServiceCallback.onAlertStatusNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mPhoneAlertStatusServiceCallback.onAlertStatusNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
+                    mPhoneAlertStatusServiceCallback.onAlertStatusNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (RINGER_SETTING_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mPhoneAlertStatusServiceCallback.onRingerSettingNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
+                    mPhoneAlertStatusServiceCallback.onRingerSettingNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mPhoneAlertStatusServiceCallback.onRingerSettingNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
+                    mPhoneAlertStatusServiceCallback.onRingerSettingNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             }
         }
@@ -233,15 +233,15 @@ public class PhoneAlertStatusService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && PHONE_ALERT_STATUS_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (ALERT_STATUS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mPhoneAlertStatusServiceCallback.onAlertStatusNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
+                    mPhoneAlertStatusServiceCallback.onAlertStatusNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mPhoneAlertStatusServiceCallback.onAlertStatusNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
+                    mPhoneAlertStatusServiceCallback.onAlertStatusNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (RINGER_SETTING_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mPhoneAlertStatusServiceCallback.onRingerSettingNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
+                    mPhoneAlertStatusServiceCallback.onRingerSettingNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mPhoneAlertStatusServiceCallback.onRingerSettingNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
+                    mPhoneAlertStatusServiceCallback.onRingerSettingNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             }
         }
@@ -301,9 +301,9 @@ public class PhoneAlertStatusService extends AbstractCentralService {
      * start Alert Status notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see PhoneAlertStatusServiceCallback#onAlertStatusNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see PhoneAlertStatusServiceCallback#onAlertStatusNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see PhoneAlertStatusServiceCallback#onAlertStatusNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see PhoneAlertStatusServiceCallback#onAlertStatusNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see PhoneAlertStatusServiceCallback#onAlertStatusNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see PhoneAlertStatusServiceCallback#onAlertStatusNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startAlertStatusNotification() {
@@ -320,9 +320,9 @@ public class PhoneAlertStatusService extends AbstractCentralService {
      * stop Alert Status notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see PhoneAlertStatusServiceCallback#onAlertStatusNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see PhoneAlertStatusServiceCallback#onAlertStatusNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see PhoneAlertStatusServiceCallback#onAlertStatusNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see PhoneAlertStatusServiceCallback#onAlertStatusNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see PhoneAlertStatusServiceCallback#onAlertStatusNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see PhoneAlertStatusServiceCallback#onAlertStatusNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopAlertStatusNotification() {
@@ -373,9 +373,9 @@ public class PhoneAlertStatusService extends AbstractCentralService {
      * start Ringer Setting notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see PhoneAlertStatusServiceCallback#onRingerSettingNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see PhoneAlertStatusServiceCallback#onRingerSettingNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see PhoneAlertStatusServiceCallback#onRingerSettingNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see PhoneAlertStatusServiceCallback#onRingerSettingNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see PhoneAlertStatusServiceCallback#onRingerSettingNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see PhoneAlertStatusServiceCallback#onRingerSettingNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startRingerSettingNotification() {
@@ -392,9 +392,9 @@ public class PhoneAlertStatusService extends AbstractCentralService {
      * stop Ringer Setting notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see PhoneAlertStatusServiceCallback#onRingerSettingNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see PhoneAlertStatusServiceCallback#onRingerSettingNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see PhoneAlertStatusServiceCallback#onRingerSettingNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see PhoneAlertStatusServiceCallback#onRingerSettingNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see PhoneAlertStatusServiceCallback#onRingerSettingNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see PhoneAlertStatusServiceCallback#onRingerSettingNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopRingerSettingNotification() {

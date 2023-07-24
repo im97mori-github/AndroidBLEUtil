@@ -29,7 +29,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble.task.AddServiceTask;
-import org.im97mori.ble.task.NotificationTask;
+import org.im97mori.ble.task.NotifyTask;
 import org.im97mori.ble.task.RemoveServiceTask;
 
 import java.util.Collections;
@@ -325,9 +325,9 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
             , int status) {
         if (mBluetoothGattServer != null) {
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                mTaskHandler.sendProcessingMessage(NotificationTask.createNotificationSentSuccessMessage(device));
+                mTaskHandler.sendProcessingMessage(NotifyTask.createNotificationSentSuccessMessage(device));
             } else {
-                mTaskHandler.sendProcessingMessage(NotificationTask.createNotificationSentErrorMessage(device, status));
+                mTaskHandler.sendProcessingMessage(NotifyTask.createNotificationSentErrorMessage(device, status));
             }
         }
     }
@@ -453,7 +453,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      * @return task id. if {@code null} returned, task was not registered
      */
     @Nullable
-    public synchronized Integer createNotificationTask(@NonNull BluetoothDevice device
+    public synchronized Integer createNotifyTask(@NonNull BluetoothDevice device
             , @NonNull UUID serviceUUID
             , int serviceInstanceId
             , @NonNull UUID characteristicUUID
@@ -466,7 +466,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
             , @Nullable BLEServerCallback bleServerCallback) {
         Integer taskId = null;
         if (mBluetoothGattServer != null) {
-            NotificationTask task = new NotificationTask(this
+            NotifyTask task = new NotifyTask(this
                     , mBluetoothGattServer
                     , device
                     , mTaskHandler

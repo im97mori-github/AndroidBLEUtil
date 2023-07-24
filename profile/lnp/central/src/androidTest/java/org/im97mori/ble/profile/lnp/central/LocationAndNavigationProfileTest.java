@@ -350,33 +350,33 @@ public class LocationAndNavigationProfileTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00001() {
+    public void test_canBatteryLevelNotify_00001() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
-        assertNull(locationAndNavigationProfile.isBatteryLevelNotificatable());
+        assertNull(locationAndNavigationProfile.canBatteryLevelNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00002() {
+    public void test_canBatteryLevelNotify_00002() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(locationAndNavigationProfile.isBatteryLevelNotificatable());
+        assertNotNull(locationAndNavigationProfile.canBatteryLevelNotify());
         locationAndNavigationProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00101() {
+    public void test_canBatteryLevelNotify_00101() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
-        assertNull(locationAndNavigationProfile.isBatteryLevelNotificatable(0));
+        assertNull(locationAndNavigationProfile.canBatteryLevelNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00102() {
+    public void test_canBatteryLevelNotify_00102() {
         LocationAndNavigationProfile locationAndNavigationProfile = new LocationAndNavigationProfile(ApplicationProvider.getApplicationContext(), new BaseLocationAndNavigationProfileCallback());
         locationAndNavigationProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(locationAndNavigationProfile.isBatteryLevelNotificatable(0));
+        assertNotNull(locationAndNavigationProfile.canBatteryLevelNotify(0));
         locationAndNavigationProfile.disconnect();
     }
 

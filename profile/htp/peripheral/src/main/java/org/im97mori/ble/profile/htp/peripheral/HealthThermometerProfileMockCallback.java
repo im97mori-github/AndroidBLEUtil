@@ -316,7 +316,7 @@ public class HealthThermometerProfileMockCallback extends AbstractProfileMockCal
         public Builder<T> addMeasurementInterval(int measurementIntervalResponseCode
                 , long measurementIntervalDelay
                 , @NonNull byte[] measurementIntervalValue
-                , boolean isMeasurementIntervalIndicatable
+                , boolean canMeasurementIntervalIndicate
                 , boolean isMeasurementIntervalWritable
                 , int clientCharacteristicConfigurationResponseCode
                 , long clientCharacteristicConfigurationDelay
@@ -324,7 +324,7 @@ public class HealthThermometerProfileMockCallback extends AbstractProfileMockCal
                 , int validRangeResponseCode
                 , long validRangeDelay
                 , @NonNull byte[] validRangeValue) {
-            mHealthThermometerServiceMockCallback.addMeasurementInterval(measurementIntervalResponseCode, measurementIntervalDelay, measurementIntervalValue, isMeasurementIntervalIndicatable, isMeasurementIntervalWritable, clientCharacteristicConfigurationResponseCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue, validRangeResponseCode, validRangeDelay, validRangeValue);
+            mHealthThermometerServiceMockCallback.addMeasurementInterval(measurementIntervalResponseCode, measurementIntervalDelay, measurementIntervalValue, canMeasurementIntervalIndicate, isMeasurementIntervalWritable, clientCharacteristicConfigurationResponseCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue, validRangeResponseCode, validRangeDelay, validRangeValue);
             return this;
         }
 

@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileIrradianceTest extends AbstractCentralTe
 
     @Test
     @RequiresDevice
-    public void test_isIrradianceNotificatable_00001() {
+    public void test_canIrradianceNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isIrradianceNotificatable());
+        assertNull(environmentalSensingProfile.canIrradianceNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isIrradianceNotificatable_00002() {
+    public void test_canIrradianceNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isIrradianceNotificatable());
+        assertNotNull(environmentalSensingProfile.canIrradianceNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isIrradianceNotificatable_00101() {
+    public void test_canIrradianceNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isIrradianceNotificatable(0));
+        assertNull(environmentalSensingProfile.canIrradianceNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isIrradianceNotificatable_00102() {
+    public void test_canIrradianceNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isIrradianceNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canIrradianceNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

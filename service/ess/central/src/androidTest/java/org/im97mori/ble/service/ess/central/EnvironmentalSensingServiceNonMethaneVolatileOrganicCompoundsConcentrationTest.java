@@ -143,16 +143,16 @@ public class EnvironmentalSensingServiceNonMethaneVolatileOrganicCompoundsConcen
     @Test
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable_00001() {
+    public void test_canNonMethaneVolatileOrganicCompoundsConcentrationNotify_00001() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null);
 
-        assertFalse(environmentalSensingService.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable());
+        assertFalse(environmentalSensingService.canNonMethaneVolatileOrganicCompoundsConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable_00002() {
+    public void test_canNonMethaneVolatileOrganicCompoundsConcentrationNotify_00002() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -160,99 +160,13 @@ public class EnvironmentalSensingServiceNonMethaneVolatileOrganicCompoundsConcen
             }
         };
 
-        assertFalse(environmentalSensingService.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable());
+        assertFalse(environmentalSensingService.canNonMethaneVolatileOrganicCompoundsConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable_00003() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(environmentalSensingService.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable());
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable_00004() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertTrue(environmentalSensingService.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable());
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable_00005() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertTrue(environmentalSensingService.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(0));
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable_00006() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(environmentalSensingService.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(1));
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable_00007() {
-        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
-            @Override
-            public synchronized boolean isStarted() {
-                return true;
-            }
-        };
-
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
-        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
-        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(environmentalSensingService.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(1));
-    }
-
-    @Test
-    @RequiresDevice
-    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
-    public void test_isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable_00008() {
+    public void test_canNonMethaneVolatileOrganicCompoundsConcentrationNotify_00003() {
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -262,9 +176,95 @@ public class EnvironmentalSensingServiceNonMethaneVolatileOrganicCompoundsConcen
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertFalse(environmentalSensingService.canNonMethaneVolatileOrganicCompoundsConcentrationNotify());
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canNonMethaneVolatileOrganicCompoundsConcentrationNotify_00004() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
         bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
         environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
-        assertTrue(environmentalSensingService.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(1));
+        assertTrue(environmentalSensingService.canNonMethaneVolatileOrganicCompoundsConcentrationNotify());
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canNonMethaneVolatileOrganicCompoundsConcentrationNotify_00005() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertTrue(environmentalSensingService.canNonMethaneVolatileOrganicCompoundsConcentrationNotify(0));
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canNonMethaneVolatileOrganicCompoundsConcentrationNotify_00006() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertFalse(environmentalSensingService.canNonMethaneVolatileOrganicCompoundsConcentrationNotify(1));
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canNonMethaneVolatileOrganicCompoundsConcentrationNotify_00007() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertFalse(environmentalSensingService.canNonMethaneVolatileOrganicCompoundsConcentrationNotify(1));
+    }
+
+    @Test
+    @RequiresDevice
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
+    public void test_canNonMethaneVolatileOrganicCompoundsConcentrationNotify_00008() {
+        EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
+            @Override
+            public synchronized boolean isStarted() {
+                return true;
+            }
+        };
+
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(ENVIRONMENTAL_SENSING_SERVICE, 0);
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ, 0));
+        bluetoothGattService.addCharacteristic(new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0));
+        environmentalSensingService.onDiscoverServiceSuccess(1, BLETestUtilsAndroid.MOCK_DEVICE_0, Collections.singletonList(bluetoothGattService), null);
+        assertTrue(environmentalSensingService.canNonMethaneVolatileOrganicCompoundsConcentrationNotify(1));
     }
 
     @Test
@@ -1157,7 +1157,7 @@ public class EnvironmentalSensingServiceNonMethaneVolatileOrganicCompoundsConcen
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startNonMethaneVolatileOrganicCompoundsConcentrationNotification_00005() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1176,7 +1176,7 @@ public class EnvironmentalSensingServiceNonMethaneVolatileOrganicCompoundsConcen
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startNonMethaneVolatileOrganicCompoundsConcentrationNotification_00006() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1195,7 +1195,7 @@ public class EnvironmentalSensingServiceNonMethaneVolatileOrganicCompoundsConcen
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startNonMethaneVolatileOrganicCompoundsConcentrationNotification_00007() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1214,7 +1214,7 @@ public class EnvironmentalSensingServiceNonMethaneVolatileOrganicCompoundsConcen
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_startNonMethaneVolatileOrganicCompoundsConcentrationNotification_00008() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1291,7 +1291,7 @@ public class EnvironmentalSensingServiceNonMethaneVolatileOrganicCompoundsConcen
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopNonMethaneVolatileOrganicCompoundsConcentrationNotification_00005() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1310,7 +1310,7 @@ public class EnvironmentalSensingServiceNonMethaneVolatileOrganicCompoundsConcen
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopNonMethaneVolatileOrganicCompoundsConcentrationNotification_00006() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1329,7 +1329,7 @@ public class EnvironmentalSensingServiceNonMethaneVolatileOrganicCompoundsConcen
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopNonMethaneVolatileOrganicCompoundsConcentrationNotification_00007() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {
@@ -1348,7 +1348,7 @@ public class EnvironmentalSensingServiceNonMethaneVolatileOrganicCompoundsConcen
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.KITKAT)
     public void test_stopNonMethaneVolatileOrganicCompoundsConcentrationNotification_00008() {
         final Integer originalTaskId = 1;
-        MOCK_BLE_CONNECTION.setCreateSetNotificationTaskId(originalTaskId);
+        MOCK_BLE_CONNECTION.setCreateSetNotifyTaskId(originalTaskId);
         EnvironmentalSensingService environmentalSensingService = new EnvironmentalSensingService(MOCK_BLE_CONNECTION, new MockEnvironmentalSensingServiceCallback(), null) {
             @Override
             public synchronized boolean isStarted() {

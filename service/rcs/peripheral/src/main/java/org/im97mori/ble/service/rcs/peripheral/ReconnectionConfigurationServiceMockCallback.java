@@ -136,7 +136,7 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
         /**
          * add RC Settings characteristic
          *
-         * @param isNotificatable            {@code true}:RC Settings is notificatable, {@code false}:not notificatable
+         * @param canNotify            {@code true}:RC Settings can notify, {@code false}:can not notify
          * @param characteristicResponseCode characteristic response code for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
          * @param characteristicValue        characteristic data array for {@link android.bluetooth.BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
@@ -147,7 +147,7 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addRCSettings(boolean isNotificatable
+        public Builder<T> addRCSettings(boolean canNotify
                 , int characteristicResponseCode
                 , long characteristicDelay
                 , @NonNull byte[] characteristicValue
@@ -157,7 +157,7 @@ public class ReconnectionConfigurationServiceMockCallback extends AbstractServic
                 , @NonNull byte[] descriptorValue) {
             int property = BluetoothGattCharacteristic.PROPERTY_READ;
             List<DescriptorData> descriptorDataList;
-            if (isNotificatable) {
+            if (canNotify) {
                 property |= BluetoothGattCharacteristic.PROPERTY_NOTIFY;
                 descriptorDataList = Collections.singletonList(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                         , BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE

@@ -31,10 +31,10 @@
             android:id="@+id/read_cycling_power_measurement_characteristic_configuration"
             android:title="@string/menu_read_cycling_power_measurement_characteristic_configuration" />
         <item
-            android:id="@+id/start_notificate_cycling_power_measurement"
+            android:id="@+id/start_notify_cycling_power_measurement"
             android:title="@string/menu_notify_cycling_power_measurement_start" />
         <item
-            android:id="@+id/stop_notificate_cycling_power_measurement"
+            android:id="@+id/stop_notify_cycling_power_measurement"
             android:title="@string/menu_notify_cycling_power_measurement_stop" />
 
         <item
@@ -107,10 +107,10 @@
             android:id="@+id/read_cycling_power_vector_characteristic_configuration"
             android:title="@string/menu_read_cycling_power_vector_characteristic_configuration" />
         <item
-            android:id="@+id/start_notificate_cycling_power_vector"
+            android:id="@+id/start_notify_cycling_power_vector"
             android:title="@string/menu_notify_cycling_power_vector_start" />
         <item
-            android:id="@+id/stop_notificate_cycling_power_vector"
+            android:id="@+id/stop_notify_cycling_power_vector"
             android:title="@string/menu_notify_cycling_power_vector_stop" />
 
         <item

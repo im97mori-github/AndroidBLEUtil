@@ -1964,18 +1964,18 @@ public class UserDataServiceMockCallback extends AbstractServiceMockCallback {
          *
          * @param characteristicResponseCode characteristic response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param characteristicDelay        characteristic response delay(millis)
-         * @param isNotificatable            notificatable flag for Database Change Increment characteristic
+         * @param canNotify            notify flag for Database Change Increment characteristic
          * @param descriptorResponseCode     descriptor response code for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 3rd parameter
          * @param descriptorDelay            descriptor response delay(millis)
          * @param descriptorValue            descriptor data array for {@link BluetoothGattServer#sendResponse(BluetoothDevice, int, int, int, byte[])} 5th parameter
          * @return {@link Builder} instance
          */
         @NonNull
-        public Builder<T> addDatabaseChangeIncrement(int characteristicResponseCode, long characteristicDelay, boolean isNotificatable, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+        public Builder<T> addDatabaseChangeIncrement(int characteristicResponseCode, long characteristicDelay, boolean canNotify, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
             int property = BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE;
             int permission = BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE;
             List<DescriptorData> descriptorDataList = new ArrayList<>();
-            if (isNotificatable) {
+            if (canNotify) {
                 property |= BluetoothGattCharacteristic.PROPERTY_NOTIFY;
                 descriptorDataList.add(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, descriptorResponseCode, descriptorDelay, descriptorValue));
             }

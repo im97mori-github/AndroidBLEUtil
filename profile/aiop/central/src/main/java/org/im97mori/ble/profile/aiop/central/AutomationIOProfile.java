@@ -110,37 +110,37 @@ public class AutomationIOProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isDigitalNotificatable(int)
+     * @see #canDigitalNotify(int)
      */
-    public synchronized Boolean isDigitalNotificatable() {
-        return isDigitalNotificatable(0);
+    public synchronized Boolean canDigitalNotify() {
+        return canDigitalNotify(0);
     }
 
     /**
-     * @see AutomationIOService#isDigitalNotificatable(int)
+     * @see AutomationIOService#canDigitalNotify(int)
      */
-    public synchronized Boolean isDigitalNotificatable(int index) {
+    public synchronized Boolean canDigitalNotify(int index) {
         Boolean result = null;
         if (mAutomationIOService != null) {
-            result = mAutomationIOService.isDigitalNotificatable(index);
+            result = mAutomationIOService.canDigitalNotify(index);
         }
         return result;
     }
 
     /**
-     * @see #isDigitalIndicatable(int)
+     * @see #canDigitalIndicate(int)
      */
-    public synchronized Boolean isDigitalIndicatable() {
-        return isDigitalIndicatable(0);
+    public synchronized Boolean canDigitalIndicate() {
+        return canDigitalIndicate(0);
     }
 
     /**
-     * @see AutomationIOService#isDigitalIndicatable(int)
+     * @see AutomationIOService#canDigitalIndicate(int)
      */
-    public synchronized Boolean isDigitalIndicatable(int index) {
+    public synchronized Boolean canDigitalIndicate(int index) {
         Boolean result = null;
         if (mAutomationIOService != null) {
-            result = mAutomationIOService.isDigitalIndicatable(index);
+            result = mAutomationIOService.canDigitalIndicate(index);
         }
         return result;
     }
@@ -319,37 +319,37 @@ public class AutomationIOProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isAnalogNotificatable(int)
+     * @see #canAnalogNotify(int)
      */
-    public synchronized Boolean isAnalogNotificatable() {
-        return isAnalogNotificatable(0);
+    public synchronized Boolean canAnalogNotify() {
+        return canAnalogNotify(0);
     }
 
     /**
-     * @see AutomationIOService#isAnalogNotificatable(int)
+     * @see AutomationIOService#canAnalogNotify(int)
      */
-    public synchronized Boolean isAnalogNotificatable(int index) {
+    public synchronized Boolean canAnalogNotify(int index) {
         Boolean result = null;
         if (mAutomationIOService != null) {
-            result = mAutomationIOService.isAnalogNotificatable(index);
+            result = mAutomationIOService.canAnalogNotify(index);
         }
         return result;
     }
 
     /**
-     * @see #isAnalogIndicatable(int)
+     * @see #canAnalogIndicate(int)
      */
-    public synchronized Boolean isAnalogIndicatable() {
-        return isAnalogIndicatable(0);
+    public synchronized Boolean canAnalogIndicate() {
+        return canAnalogIndicate(0);
     }
 
     /**
-     * @see AutomationIOService#isAnalogIndicatable(int)
+     * @see AutomationIOService#canAnalogIndicate(int)
      */
-    public synchronized Boolean isAnalogIndicatable(int index) {
+    public synchronized Boolean canAnalogIndicate(int index) {
         Boolean result = null;
         if (mAutomationIOService != null) {
-            result = mAutomationIOService.isAnalogIndicatable(index);
+            result = mAutomationIOService.canAnalogIndicate(index);
         }
         return result;
     }
@@ -485,23 +485,23 @@ public class AutomationIOProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see AutomationIOService#isAggregateNotificatable()
+     * @see AutomationIOService#canAggregateNotify()
      */
-    public synchronized Boolean isAggregateNotificatable() {
+    public synchronized Boolean canAggregateNotify() {
         Boolean result = null;
         if (mAutomationIOService != null) {
-            result = mAutomationIOService.isAggregateNotificatable();
+            result = mAutomationIOService.canAggregateNotify();
         }
         return result;
     }
 
     /**
-     * @see AutomationIOService#isAggregateIndicatable()
+     * @see AutomationIOService#canAggregateIndicate()
      */
-    public synchronized Boolean isAggregateIndicatable() {
+    public synchronized Boolean canAggregateIndicate() {
         Boolean result = null;
         if (mAutomationIOService != null) {
-            result = mAutomationIOService.isAggregateIndicatable();
+            result = mAutomationIOService.canAggregateIndicate();
         }
         return result;
     }

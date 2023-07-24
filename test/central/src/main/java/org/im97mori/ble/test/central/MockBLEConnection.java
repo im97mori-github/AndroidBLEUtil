@@ -30,7 +30,7 @@ public class MockBLEConnection extends BLEConnection {
 
     protected Integer mCreateWriteDescriptorTaskId;
 
-    protected Integer mCreateSetNotificationTaskId;
+    protected Integer mCreateSetNotifyTaskId;
 
     protected boolean mIsCreateDiscoverServiceTaskPassed;
 
@@ -67,8 +67,8 @@ public class MockBLEConnection extends BLEConnection {
         mCreateWriteDescriptorTaskId = createWriteDescriptorTaskId;
     }
 
-    public void setCreateSetNotificationTaskId(@Nullable Integer createSetNotificationTaskId) {
-        mCreateSetNotificationTaskId = createSetNotificationTaskId;
+    public void setCreateSetNotifyTaskId(@Nullable Integer createSetNotifyTaskId) {
+        mCreateSetNotifyTaskId = createSetNotifyTaskId;
     }
 
     @Override
@@ -154,12 +154,12 @@ public class MockBLEConnection extends BLEConnection {
 
     @Nullable
     @Override
-    public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
+    public synchronized Integer createSetNotifyTask(@NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument, @Nullable BLECallback bleCallback) {
         Integer result;
-        if (mCreateSetNotificationTaskId == null) {
-            result = super.createSetNotificationTask(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, notificationStatus, argument, bleCallback);
+        if (mCreateSetNotifyTaskId == null) {
+            result = super.createSetNotifyTask(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, notificationStatus, argument, bleCallback);
         } else {
-            result = mCreateSetNotificationTaskId;
+            result = mCreateSetNotifyTaskId;
         }
         return result;
     }

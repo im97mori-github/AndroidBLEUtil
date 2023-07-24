@@ -24,21 +24,21 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class SetNotificationTaskTest extends AbstractCentralTest {
+public class SetNotifyTaskTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
     public void test_createInitialMessage_00001() {
         UUID serviceUUID = UUID.randomUUID();
         UUID characteristicUUID = UUID.randomUUID();
-        SetNotificationTask task = new SetNotificationTask(null, null, null, serviceUUID, null, characteristicUUID, null, true, null);
+        SetNotifyTask task = new SetNotifyTask(null, null, null, serviceUUID, null, characteristicUUID, null, true, null);
         Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(SetNotificationTask.KEY_NEXT_PROGRESS));
-        assertEquals(SetNotificationTask.PROGRESS_SET_NOTIFICATION_START, bundle.getString(SetNotificationTask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(SetNotifyTask.KEY_NEXT_PROGRESS));
+        assertEquals(SetNotifyTask.PROGRESS_SET_NOTIFICATION_START, bundle.getString(SetNotifyTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
@@ -47,7 +47,7 @@ public class SetNotificationTaskTest extends AbstractCentralTest {
     public void test_doProcess_00001() {
         UUID serviceUUID = UUID.randomUUID();
         UUID characteristicUUID = UUID.randomUUID();
-        SetNotificationTask task = new SetNotificationTask(null, null, null, serviceUUID, null, characteristicUUID, null, true, null);
+        SetNotifyTask task = new SetNotifyTask(null, null, null, serviceUUID, null, characteristicUUID, null, true, null);
         assertFalse(task.doProcess(new Message()));
     }
 
@@ -63,7 +63,7 @@ public class SetNotificationTaskTest extends AbstractCentralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            SetNotificationTask task = new SetNotificationTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, null, null, null, null, true, BLECallbackDistributor.wrapArgument(null, null));
+            SetNotifyTask task = new SetNotifyTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, null, null, null, null, true, BLECallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
         } finally {
@@ -95,7 +95,7 @@ public class SetNotificationTaskTest extends AbstractCentralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            SetNotificationTask task = new SetNotificationTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, null, null, null, null, true, BLECallbackDistributor.wrapArgument(null, null));
+            SetNotifyTask task = new SetNotifyTask(MOCK_BLE_CONNECTION, null, mockTaskHandler, null, null, null, null, true, BLECallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));
             assertTrue(callback.result.get());

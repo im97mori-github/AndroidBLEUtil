@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileDewPointTest extends AbstractCentralTest
 
     @Test
     @RequiresDevice
-    public void test_isDewPointNotificatable_00001() {
+    public void test_canDewPointNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isDewPointNotificatable());
+        assertNull(environmentalSensingProfile.canDewPointNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isDewPointNotificatable_00002() {
+    public void test_canDewPointNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isDewPointNotificatable());
+        assertNotNull(environmentalSensingProfile.canDewPointNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isDewPointNotificatable_00101() {
+    public void test_canDewPointNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isDewPointNotificatable(0));
+        assertNull(environmentalSensingProfile.canDewPointNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isDewPointNotificatable_00102() {
+    public void test_canDewPointNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isDewPointNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canDewPointNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

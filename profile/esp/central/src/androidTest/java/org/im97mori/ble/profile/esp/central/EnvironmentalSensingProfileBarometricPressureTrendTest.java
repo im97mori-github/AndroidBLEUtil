@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileBarometricPressureTrendTest extends Abst
 
     @Test
     @RequiresDevice
-    public void test_isBarometricPressureTrendNotificatable_00001() {
+    public void test_canBarometricPressureTrendNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isBarometricPressureTrendNotificatable());
+        assertNull(environmentalSensingProfile.canBarometricPressureTrendNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isBarometricPressureTrendNotificatable_00002() {
+    public void test_canBarometricPressureTrendNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isBarometricPressureTrendNotificatable());
+        assertNotNull(environmentalSensingProfile.canBarometricPressureTrendNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isBarometricPressureTrendNotificatable_00101() {
+    public void test_canBarometricPressureTrendNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isBarometricPressureTrendNotificatable(0));
+        assertNull(environmentalSensingProfile.canBarometricPressureTrendNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isBarometricPressureTrendNotificatable_00102() {
+    public void test_canBarometricPressureTrendNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isBarometricPressureTrendNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canBarometricPressureTrendNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

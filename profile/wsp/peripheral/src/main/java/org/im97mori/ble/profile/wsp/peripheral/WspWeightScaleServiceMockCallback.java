@@ -20,7 +20,7 @@ import org.im97mori.ble.callback.NotificationData;
 import org.im97mori.ble.characteristic.u2a9d.WeightMeasurement;
 import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
 import org.im97mori.ble.service.wss.peripheral.WeightScaleServiceMockCallback;
-import org.im97mori.ble.task.NotificationTask;
+import org.im97mori.ble.task.NotifyTask;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -140,14 +140,14 @@ public class WspWeightScaleServiceMockCallback extends WeightScaleServiceMockCal
                                     }
                                     notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
                                     if (!mActivatedNotificationMap.containsKey(notificationData)) {
-                                        Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
+                                        Integer newTaskId = bleServerConnection.createNotifyTask(bluetoothDevice
                                                 , serviceUUID
                                                 , serviceInstanceId
                                                 , characteristicUUID
                                                 , characteristicInstanceId
                                                 , characteristicData
                                                 , isConfirm
-                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , NotifyTask.TIMEOUT_MILLIS
                                                 , delay
                                                 , bundle
                                                 , this);
@@ -164,14 +164,14 @@ public class WspWeightScaleServiceMockCallback extends WeightScaleServiceMockCal
                                 if (mConnectedDeviceMap.containsKey(device)) {
                                     Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
                                     if (currentTaskId == null || currentTaskId.equals(taskId)) {
-                                        Integer newTaskId = bleServerConnection.createNotificationTask(device
+                                        Integer newTaskId = bleServerConnection.createNotifyTask(device
                                                 , serviceUUID
                                                 , serviceInstanceId
                                                 , characteristicUUID
                                                 , characteristicInstanceId
                                                 , characteristicData
                                                 , isConfirm
-                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , NotifyTask.TIMEOUT_MILLIS
                                                 , delay
                                                 , bundle
                                                 , this);

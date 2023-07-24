@@ -126,17 +126,17 @@ public class PaspCentralSampleActivity extends BaseActivity implements View.OnCl
             mPhoneAlertStatusProfile.getAlertStatus();
         } else if (R.id.read_alert_status_characteristic_configuration == item.getItemId()) {
             mPhoneAlertStatusProfile.getAlertStatusClientCharacteristicConfiguration();
-        } else if (R.id.start_notificate_alert_status == item.getItemId()) {
+        } else if (R.id.start_notify_alert_status == item.getItemId()) {
             mPhoneAlertStatusProfile.startAlertStatusNotification();
-        } else if (R.id.stop_notificate_alert_status == item.getItemId()) {
+        } else if (R.id.stop_notify_alert_status == item.getItemId()) {
             mPhoneAlertStatusProfile.stopAlertStatusNotification();
         } else if (R.id.read_ringer_setting == item.getItemId()) {
             mPhoneAlertStatusProfile.getRingerSetting();
         } else if (R.id.read_ringer_setting_characteristic_configuration == item.getItemId()) {
             mPhoneAlertStatusProfile.getRingerSettingClientCharacteristicConfiguration();
-        } else if (R.id.start_notificate_ringer_setting == item.getItemId()) {
+        } else if (R.id.start_notify_ringer_setting == item.getItemId()) {
             mPhoneAlertStatusProfile.startRingerSettingNotification();
-        } else if (R.id.stop_notificate_ringer_setting == item.getItemId()) {
+        } else if (R.id.stop_notify_ringer_setting == item.getItemId()) {
             mPhoneAlertStatusProfile.stopRingerSettingNotification();
         } else if (R.id.write_ringer_control_point_1 == item.getItemId()) {
             mPhoneAlertStatusProfile.setRingerControlPoint(new RingerControlPoint(RingerControlPoint.RINGER_CONTROL_POINT_SILENT_MODE));

@@ -393,7 +393,7 @@ public interface HealthThermometerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Intermediate Temperature notificate success callback
+     * Start Intermediate Temperature notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -404,7 +404,7 @@ public interface HealthThermometerServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onIntermediateTemperatureNotificateStartSuccess(@NonNull Integer taskId
+    void onIntermediateTemperatureNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -414,7 +414,7 @@ public interface HealthThermometerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Intermediate Temperature notificate error callback
+     * Start Intermediate Temperature notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -429,7 +429,7 @@ public interface HealthThermometerServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
-    void onIntermediateTemperatureNotificateStartFailed(@NonNull Integer taskId
+    void onIntermediateTemperatureNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -440,7 +440,7 @@ public interface HealthThermometerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Intermediate Temperature notificate timeout callback
+     * Start Intermediate Temperature notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -452,7 +452,7 @@ public interface HealthThermometerServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onIntermediateTemperatureNotificateStartTimeout(@NonNull Integer taskId
+    void onIntermediateTemperatureNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -463,7 +463,7 @@ public interface HealthThermometerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Intermediate Temperature notificate success callback
+     * Stop Intermediate Temperature notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -474,7 +474,7 @@ public interface HealthThermometerServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onIntermediateTemperatureNotificateStopSuccess(@NonNull Integer taskId
+    void onIntermediateTemperatureNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -484,7 +484,7 @@ public interface HealthThermometerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Intermediate Temperature notificate error callback
+     * Stop Intermediate Temperature notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -499,7 +499,7 @@ public interface HealthThermometerServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
      */
-    void onIntermediateTemperatureNotificateStopFailed(@NonNull Integer taskId
+    void onIntermediateTemperatureNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -510,7 +510,7 @@ public interface HealthThermometerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Intermediate Temperature notificate timeout callback
+     * Stop Intermediate Temperature notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -522,7 +522,7 @@ public interface HealthThermometerServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onIntermediateTemperatureNotificateStopTimeout(@NonNull Integer taskId
+    void onIntermediateTemperatureNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId

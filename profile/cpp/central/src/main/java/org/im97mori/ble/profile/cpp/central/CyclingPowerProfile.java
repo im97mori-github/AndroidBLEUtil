@@ -344,19 +344,19 @@ public class CyclingPowerProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isBatteryLevelNotificatable(int)
+     * @see #canBatteryLevelNotify(int)
      */
-    public synchronized Boolean isBatteryLevelNotificatable() {
-        return isBatteryLevelNotificatable(0);
+    public synchronized Boolean canBatteryLevelNotify() {
+        return canBatteryLevelNotify(0);
     }
 
     /**
-     * @see BatteryService#isBatteryLevelNotificatable(int)
+     * @see BatteryService#canBatteryLevelNotify(int)
      */
-    public synchronized Boolean isBatteryLevelNotificatable(int index) {
+    public synchronized Boolean canBatteryLevelNotify(int index) {
         Boolean result = null;
         if (mBatteryService != null) {
-            result = mBatteryService.isBatteryLevelNotificatable(index);
+            result = mBatteryService.canBatteryLevelNotify(index);
         }
         return result;
     }

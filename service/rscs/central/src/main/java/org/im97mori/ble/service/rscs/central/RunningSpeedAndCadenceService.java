@@ -241,9 +241,9 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && RUNNING_SPEED_AND_CADENCE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (RSC_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mRunningSpeedAndCadenceServiceCallback.onRSCMeasurementNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
+                    mRunningSpeedAndCadenceServiceCallback.onRSCMeasurementNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mRunningSpeedAndCadenceServiceCallback.onRSCMeasurementNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
+                    mRunningSpeedAndCadenceServiceCallback.onRSCMeasurementNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (SC_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -264,9 +264,9 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && RUNNING_SPEED_AND_CADENCE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (RSC_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mRunningSpeedAndCadenceServiceCallback.onRSCMeasurementNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
+                    mRunningSpeedAndCadenceServiceCallback.onRSCMeasurementNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mRunningSpeedAndCadenceServiceCallback.onRSCMeasurementNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
+                    mRunningSpeedAndCadenceServiceCallback.onRSCMeasurementNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (SC_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -287,9 +287,9 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && RUNNING_SPEED_AND_CADENCE_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (RSC_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mRunningSpeedAndCadenceServiceCallback.onRSCMeasurementNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
+                    mRunningSpeedAndCadenceServiceCallback.onRSCMeasurementNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mRunningSpeedAndCadenceServiceCallback.onRSCMeasurementNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
+                    mRunningSpeedAndCadenceServiceCallback.onRSCMeasurementNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (SC_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -373,9 +373,9 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
      * start RSC Measurement notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see RunningSpeedAndCadenceServiceCallback#onRSCMeasurementNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see RunningSpeedAndCadenceServiceCallback#onRSCMeasurementNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see RunningSpeedAndCadenceServiceCallback#onRSCMeasurementNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see RunningSpeedAndCadenceServiceCallback#onRSCMeasurementNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see RunningSpeedAndCadenceServiceCallback#onRSCMeasurementNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see RunningSpeedAndCadenceServiceCallback#onRSCMeasurementNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startRSCMeasurementNotification() {
@@ -392,9 +392,9 @@ public class RunningSpeedAndCadenceService extends AbstractCentralService {
      * stop RSC Measurement notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see RunningSpeedAndCadenceServiceCallback#onRSCMeasurementNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see RunningSpeedAndCadenceServiceCallback#onRSCMeasurementNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see RunningSpeedAndCadenceServiceCallback#onRSCMeasurementNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see RunningSpeedAndCadenceServiceCallback#onRSCMeasurementNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see RunningSpeedAndCadenceServiceCallback#onRSCMeasurementNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see RunningSpeedAndCadenceServiceCallback#onRSCMeasurementNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopRSCMeasurementNotification() {

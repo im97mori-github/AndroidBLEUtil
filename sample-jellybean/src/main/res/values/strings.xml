@@ -162,7 +162,7 @@
     <string name="menu_indicate_user_control_point_stop">Indicate User Control Point stop</string>
     <string name="menu_indicate_registered_user_start">Indicate Registered User start</string>
     <string name="menu_indicate_registered_user_stop">Indicate Registered User stop</string>
-    <string name="menu_is_database_change_increment_notificatable">Is Database Change Increment Notificatable</string>
+    <string name="menu_can_database_change_increment_notify">Can Database Change Increment Notify</string>
     <string name="menu_read_database_change_increment_characteristic_configuration">Read Database Change Increment Client Characteristic Configuration</string>
     <string name="menu_read_database_change_increment">Read Database Change Increment</string>
     <string name="menu_write_database_change_increment">Write Database Change Increment</string>
@@ -221,8 +221,8 @@
     <string name="menu_is_digital_readable_0">D Readable(0)</string>
     <string name="menu_is_digital_writable_0">D Writable(0)</string>
     <string name="menu_is_digital_writable_with_no_response_0">D WritableWNR(0)</string>
-    <string name="menu_is_digital_notificatable_0">D Notificatable(0)</string>
-    <string name="menu_is_digital_indictable_0">D Indicatable(0)</string>
+    <string name="menu_can_digital_notify_0">D Can Notify(0)</string>
+    <string name="menu_can_digital_indicate_0">D Can Indicate(0)</string>
     <string name="menu_has_digital_characteristic_presentation_format_0">Has D CPF(0)</string>
     <string name="menu_has_digital_characteristic_user_description_0">Has D CUD(0)</string>
     <string name="menu_is_digital_characteristic_user_description_writable_0">D CUD Writable(0)</string>
@@ -250,8 +250,8 @@
     <string name="menu_is_digital_readable_1">D Readable(1)</string>
     <string name="menu_is_digital_writable_1">D Writable(1)</string>
     <string name="menu_is_digital_writable_with_no_response_1">D WritableWNR(1)</string>
-    <string name="menu_is_digital_notificatable_1">D Notificatable(1)</string>
-    <string name="menu_is_digital_indictable_1">D Indicatable(1)</string>
+    <string name="menu_can_digital_notify_1">D Can Notify(1)</string>
+    <string name="menu_can_digital_indicate_1">D Can Indicate(1)</string>
     <string name="menu_has_digital_characteristic_presentation_format_1">Has D CPF(1)</string>
     <string name="menu_has_digital_characteristic_user_description_1">Has D CUD(1)</string>
     <string name="menu_is_digital_characteristic_user_description_writable_1">D CUD Writable(1)</string>
@@ -279,8 +279,8 @@
     <string name="menu_is_analog_readable_0">A Readable(0)</string>
     <string name="menu_is_analog_writable_0">A Writable(0)</string>
     <string name="menu_is_analog_writable_with_no_response_0">A WritableWNR(0)</string>
-    <string name="menu_is_analog_notificatable_0">A Notificatable(0)</string>
-    <string name="menu_is_analog_indictable_0">A Indicatable(0)</string>
+    <string name="menu_can_analog_notify_0">A Can Notify(0)</string>
+    <string name="menu_can_analog_indicate_0">A Can Indicate(0)</string>
     <string name="menu_has_analog_characteristic_presentation_format_0">Has A CPF(0)</string>
     <string name="menu_has_analog_characteristic_user_description_0">Has A CUD(0)</string>
     <string name="menu_is_analog_characteristic_user_description_writable_0">A CUA Writable(0)</string>
@@ -308,8 +308,8 @@
     <string name="menu_is_analog_readable_1">A Readable(1)</string>
     <string name="menu_is_analog_writable_1">A Writable(1)</string>
     <string name="menu_is_analog_writable_with_no_response_1">A WritableWNR(1)</string>
-    <string name="menu_is_analog_notificatable_1">A Notificatable(1)</string>
-    <string name="menu_is_analog_indictable_1">A Indicatable(1)</string>
+    <string name="menu_can_analog_notify_1">A Can Notify(1)</string>
+    <string name="menu_can_analog_indicate_1">A Can Indicate(1)</string>
     <string name="menu_has_analog_characteristic_presentation_format_1">Has A CPF(1)</string>
     <string name="menu_has_analog_characteristic_user_description_1">Has A CUD(1)</string>
     <string name="menu_is_analog_characteristic_user_description_writable_1">A CUA Writable(1)</string>
@@ -336,8 +336,8 @@
 
     <string name="menu_is_aggregate_supported">Is Aggregate Supported</string>
     <string name="menu_is_aggregate_readable">Is Aggregate Readable</string>
-    <string name="menu_is_aggregate_notificatable">Is Aggregate Notificatable</string>
-    <string name="menu_is_aggregate_indictable">Is Aggregate Indicatable</string>
+    <string name="menu_can_aggregate_notify">Can Aggregate Notify</string>
+    <string name="menu_can_aggregate_indicate">Can Aggregate Indicate</string>
     <string name="menu_get_aggregate">Get Aggregate</string>
     <string name="menu_get_aggregate_client_characteristic_configuration">Get Aggregate Client Characteristic Configuration</string>
     <string name="menu_start_aggregate_notification">Start Aggregate Notification</string>
@@ -599,7 +599,7 @@
 
     <string name="menu_has_bond_management_service">Has Bond Management Service</string>
     <string name="menu_has_rc_settings">Has RC Settings</string>
-    <string name="menu_is_rc_settings_notificatable">Is RC Settings Notificatable</string>
+    <string name="menu_can_rc_settings_notify">Can RC Settings Notify</string>
     <string name="menu_has_reconnection_configuration_control_point">Has RCCP</string>
     <string name="menu_read_rc_feature">Read RC Feature</string>
     <string name="menu_read_rc_settings">Read RC Settings</string>

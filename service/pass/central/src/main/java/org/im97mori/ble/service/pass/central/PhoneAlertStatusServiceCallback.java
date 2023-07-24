@@ -162,7 +162,7 @@ public interface PhoneAlertStatusServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Alert Status notificate success callback
+     * Start Alert Status notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -173,7 +173,7 @@ public interface PhoneAlertStatusServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onAlertStatusNotificateStartSuccess(@NonNull Integer taskId
+    void onAlertStatusNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -183,7 +183,7 @@ public interface PhoneAlertStatusServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Alert Status notificate error callback
+     * Start Alert Status notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -198,7 +198,7 @@ public interface PhoneAlertStatusServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onAlertStatusNotificateStartFailed(@NonNull Integer taskId
+    void onAlertStatusNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -209,7 +209,7 @@ public interface PhoneAlertStatusServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Alert Status notificate timeout callback
+     * Start Alert Status notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -221,7 +221,7 @@ public interface PhoneAlertStatusServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onAlertStatusNotificateStartTimeout(@NonNull Integer taskId
+    void onAlertStatusNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -232,7 +232,7 @@ public interface PhoneAlertStatusServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Alert Status notificate success callback
+     * Stop Alert Status notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -243,7 +243,7 @@ public interface PhoneAlertStatusServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onAlertStatusNotificateStopSuccess(@NonNull Integer taskId
+    void onAlertStatusNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -253,7 +253,7 @@ public interface PhoneAlertStatusServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Alert Status notificate error callback
+     * Stop Alert Status notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -268,7 +268,7 @@ public interface PhoneAlertStatusServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onAlertStatusNotificateStopFailed(@NonNull Integer taskId
+    void onAlertStatusNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -279,7 +279,7 @@ public interface PhoneAlertStatusServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Alert Status notificate timeout callback
+     * Stop Alert Status notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -291,7 +291,7 @@ public interface PhoneAlertStatusServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onAlertStatusNotificateStopTimeout(@NonNull Integer taskId
+    void onAlertStatusNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -457,7 +457,7 @@ public interface PhoneAlertStatusServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Ringer Setting notificate success callback
+     * Start Ringer Setting notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -468,7 +468,7 @@ public interface PhoneAlertStatusServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onRingerSettingNotificateStartSuccess(@NonNull Integer taskId
+    void onRingerSettingNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -478,7 +478,7 @@ public interface PhoneAlertStatusServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Ringer Setting notificate error callback
+     * Start Ringer Setting notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -493,7 +493,7 @@ public interface PhoneAlertStatusServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onRingerSettingNotificateStartFailed(@NonNull Integer taskId
+    void onRingerSettingNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -504,7 +504,7 @@ public interface PhoneAlertStatusServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Ringer Setting notificate timeout callback
+     * Start Ringer Setting notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -516,7 +516,7 @@ public interface PhoneAlertStatusServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onRingerSettingNotificateStartTimeout(@NonNull Integer taskId
+    void onRingerSettingNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -527,7 +527,7 @@ public interface PhoneAlertStatusServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Ringer Setting notificate success callback
+     * Stop Ringer Setting notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -538,7 +538,7 @@ public interface PhoneAlertStatusServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onRingerSettingNotificateStopSuccess(@NonNull Integer taskId
+    void onRingerSettingNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -548,7 +548,7 @@ public interface PhoneAlertStatusServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Ringer Setting notificate error callback
+     * Stop Ringer Setting notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -563,7 +563,7 @@ public interface PhoneAlertStatusServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onRingerSettingNotificateStopFailed(@NonNull Integer taskId
+    void onRingerSettingNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -574,7 +574,7 @@ public interface PhoneAlertStatusServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Ringer Setting notificate timeout callback
+     * Stop Ringer Setting notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -586,7 +586,7 @@ public interface PhoneAlertStatusServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onRingerSettingNotificateStopTimeout(@NonNull Integer taskId
+    void onRingerSettingNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId

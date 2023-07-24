@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.EncryptedData;
 
-import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 

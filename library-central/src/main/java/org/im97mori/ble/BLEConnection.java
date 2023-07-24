@@ -26,13 +26,13 @@ import org.im97mori.ble.task.ConnectTask;
 import org.im97mori.ble.task.DisconnectTask;
 import org.im97mori.ble.task.DiscoverServiceTask;
 import org.im97mori.ble.task.ExecuteReliableWriteTask;
-import org.im97mori.ble.task.NotificatedTask;
+import org.im97mori.ble.task.NotifiedTask;
 import org.im97mori.ble.task.ReadCharacteristicTask;
 import org.im97mori.ble.task.ReadDescriptorTask;
 import org.im97mori.ble.task.ReadPhyTask;
 import org.im97mori.ble.task.ReadRemoteRssiTask;
 import org.im97mori.ble.task.RequestMtuTask;
-import org.im97mori.ble.task.SetNotificationTask;
+import org.im97mori.ble.task.SetNotifyTask;
 import org.im97mori.ble.task.SetPreferredPhyTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
@@ -545,7 +545,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             return;
         }
         try {
-            mTaskHandler.addHighPriorityTask(new NotificatedTask(this, characteristic.getService().getUuid(), characteristic.getService().getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), characteristic.getValue()));
+            mTaskHandler.addHighPriorityTask(new NotifiedTask(this, characteristic.getService().getUuid(), characteristic.getService().getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), characteristic.getValue()));
         } catch (Exception e) {
             BLELogUtils.stackLog(e);
         }
@@ -1094,7 +1094,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      */
     @SuppressWarnings("unused")
     @Nullable
-    public synchronized Integer createSetNotificationTask(@NonNull UUID serviceUUID
+    public synchronized Integer createSetNotifyTask(@NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @Nullable Integer characteristicInstanceId
@@ -1104,7 +1104,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         Integer taskId = null;
         BluetoothGatt bluetoothGatt = mBluetoothGatt;
         if (bluetoothGatt != null) {
-            SetNotificationTask task = new SetNotificationTask(this, bluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, notificationStatus, BLECallbackDistributor.wrapArgument(argument, bleCallback));
+            SetNotifyTask task = new SetNotifyTask(this, bluetoothGatt, mTaskHandler, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, notificationStatus, BLECallbackDistributor.wrapArgument(argument, bleCallback));
             mTaskHandler.addTask(task);
             taskId = task.getTaskId();
         }

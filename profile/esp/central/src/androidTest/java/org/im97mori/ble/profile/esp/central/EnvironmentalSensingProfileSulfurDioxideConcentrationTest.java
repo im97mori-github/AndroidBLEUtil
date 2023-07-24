@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileSulfurDioxideConcentrationTest extends A
 
     @Test
     @RequiresDevice
-    public void test_isSulfurDioxideConcentrationNotificatable_00001() {
+    public void test_canSulfurDioxideConcentrationNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isSulfurDioxideConcentrationNotificatable());
+        assertNull(environmentalSensingProfile.canSulfurDioxideConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isSulfurDioxideConcentrationNotificatable_00002() {
+    public void test_canSulfurDioxideConcentrationNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isSulfurDioxideConcentrationNotificatable());
+        assertNotNull(environmentalSensingProfile.canSulfurDioxideConcentrationNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isSulfurDioxideConcentrationNotificatable_00101() {
+    public void test_canSulfurDioxideConcentrationNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isSulfurDioxideConcentrationNotificatable(0));
+        assertNull(environmentalSensingProfile.canSulfurDioxideConcentrationNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isSulfurDioxideConcentrationNotificatable_00102() {
+    public void test_canSulfurDioxideConcentrationNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isSulfurDioxideConcentrationNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canSulfurDioxideConcentrationNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

@@ -17,8 +17,8 @@
             android:id="@+id/has_rc_settings"
             android:title="@string/menu_has_rc_settings" />
         <item
-            android:id="@+id/is_rc_settings_notificatable"
-            android:title="@string/menu_is_rc_settings_notificatable" />
+            android:id="@+id/can_rc_settings_notify"
+            android:title="@string/menu_can_rc_settings_notify" />
         <item
             android:id="@+id/has_reconnection_configuration_control_point"
             android:title="@string/menu_has_reconnection_configuration_control_point" />

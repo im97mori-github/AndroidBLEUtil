@@ -228,7 +228,7 @@ public interface ReconnectionConfigurationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start RC Settings notificate success callback
+     * Start RC Settings notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -239,7 +239,7 @@ public interface ReconnectionConfigurationServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onRCSettingsNotificateStartSuccess(@NonNull Integer taskId
+    void onRCSettingsNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -249,7 +249,7 @@ public interface ReconnectionConfigurationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start RC Settings notificate error callback
+     * Start RC Settings notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -264,7 +264,7 @@ public interface ReconnectionConfigurationServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onRCSettingsNotificateStartFailed(@NonNull Integer taskId
+    void onRCSettingsNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -275,7 +275,7 @@ public interface ReconnectionConfigurationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start RC Settings notificate timeout callback
+     * Start RC Settings notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -287,7 +287,7 @@ public interface ReconnectionConfigurationServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onRCSettingsNotificateStartTimeout(@NonNull Integer taskId
+    void onRCSettingsNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -298,7 +298,7 @@ public interface ReconnectionConfigurationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop RC Settings notificate success callback
+     * Stop RC Settings notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -309,7 +309,7 @@ public interface ReconnectionConfigurationServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onRCSettingsNotificateStopSuccess(@NonNull Integer taskId
+    void onRCSettingsNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -319,7 +319,7 @@ public interface ReconnectionConfigurationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop RC Settings notificate error callback
+     * Stop RC Settings notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -334,7 +334,7 @@ public interface ReconnectionConfigurationServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onRCSettingsNotificateStopFailed(@NonNull Integer taskId
+    void onRCSettingsNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -345,7 +345,7 @@ public interface ReconnectionConfigurationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop RC Settings notificate timeout callback
+     * Stop RC Settings notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -357,7 +357,7 @@ public interface ReconnectionConfigurationServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onRCSettingsNotificateStopTimeout(@NonNull Integer taskId
+    void onRCSettingsNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId

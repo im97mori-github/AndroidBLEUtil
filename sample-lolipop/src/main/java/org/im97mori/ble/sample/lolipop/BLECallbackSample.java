@@ -1,7 +1,7 @@
 package org.im97mori.ble.sample.lolipop;
 
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_INDICATABLE_CHARACTERISTIC;
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFICATABLE_CHARACTERISTIC;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_INDICATE_CHARACTERISTIC;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFY_CHARACTERISTIC;
 import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_PRIMARY_SERVICE_1;
 import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_READABLE_CHARACTERISTIC;
 
@@ -226,7 +226,7 @@ public class BLECallbackSample extends BaseMockCallback implements BLECallback {
 
     @Override
     public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
-        if (SAMPLE_NOTIFICATABLE_CHARACTERISTIC.equals(characteristicUUID) || SAMPLE_INDICATABLE_CHARACTERISTIC.equals(characteristicUUID)) {
+        if (SAMPLE_NOTIFY_CHARACTERISTIC.equals(characteristicUUID) || SAMPLE_INDICATE_CHARACTERISTIC.equals(characteristicUUID)) {
             callback(serviceUUID, characteristicUUID, new String(values));
         } else {
             callback(serviceUUID, characteristicUUID, Arrays.toString(values));
@@ -352,8 +352,8 @@ public class BLECallbackSample extends BaseMockCallback implements BLECallback {
         callback(device);
         if (mPeripheralSampleActivity != null) {
             mPeripheralSampleActivity.mLatestConnectedBluetoothDevice = null;
-            mPeripheralSampleActivity.mLatestNotificatableServiceInstanceId = null;
-            mPeripheralSampleActivity.mLatestNotificatableCharacteristicInstanceId = null;
+            mPeripheralSampleActivity.mLatestNotifyServiceInstanceId = null;
+            mPeripheralSampleActivity.mLatestNotifyCharacteristicInstanceId = null;
         }
     }
 
@@ -361,10 +361,10 @@ public class BLECallbackSample extends BaseMockCallback implements BLECallback {
     public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
         callback(bluetoothGattService.getUuid());
         UUID serviceUUID = bluetoothGattService.getUuid();
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SAMPLE_NOTIFICATABLE_CHARACTERISTIC);
+        BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SAMPLE_NOTIFY_CHARACTERISTIC);
         if (SAMPLE_PRIMARY_SERVICE_1.equals(serviceUUID) && bluetoothGattCharacteristic != null) {
-            mPeripheralSampleActivity.mLatestNotificatableServiceInstanceId = bluetoothGattService.getInstanceId();
-            mPeripheralSampleActivity.mLatestNotificatableCharacteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
+            mPeripheralSampleActivity.mLatestNotifyServiceInstanceId = bluetoothGattService.getInstanceId();
+            mPeripheralSampleActivity.mLatestNotifyCharacteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
         }
         return super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
     }

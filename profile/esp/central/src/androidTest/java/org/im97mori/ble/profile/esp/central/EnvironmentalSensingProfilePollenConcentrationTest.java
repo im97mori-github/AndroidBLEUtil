@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfilePollenConcentrationTest extends Abstract
 
     @Test
     @RequiresDevice
-    public void test_isPollenConcentrationNotificatable_00001() {
+    public void test_canPollenConcentrationNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isPollenConcentrationNotificatable());
+        assertNull(environmentalSensingProfile.canPollenConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isPollenConcentrationNotificatable_00002() {
+    public void test_canPollenConcentrationNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isPollenConcentrationNotificatable());
+        assertNotNull(environmentalSensingProfile.canPollenConcentrationNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isPollenConcentrationNotificatable_00101() {
+    public void test_canPollenConcentrationNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isPollenConcentrationNotificatable(0));
+        assertNull(environmentalSensingProfile.canPollenConcentrationNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isPollenConcentrationNotificatable_00102() {
+    public void test_canPollenConcentrationNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isPollenConcentrationNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canPollenConcentrationNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

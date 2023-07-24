@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileRainfallTest extends AbstractCentralTest
 
     @Test
     @RequiresDevice
-    public void test_isRainfallNotificatable_00001() {
+    public void test_canRainfallNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isRainfallNotificatable());
+        assertNull(environmentalSensingProfile.canRainfallNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isRainfallNotificatable_00002() {
+    public void test_canRainfallNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isRainfallNotificatable());
+        assertNotNull(environmentalSensingProfile.canRainfallNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isRainfallNotificatable_00101() {
+    public void test_canRainfallNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isRainfallNotificatable(0));
+        assertNull(environmentalSensingProfile.canRainfallNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isRainfallNotificatable_00102() {
+    public void test_canRainfallNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isRainfallNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canRainfallNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

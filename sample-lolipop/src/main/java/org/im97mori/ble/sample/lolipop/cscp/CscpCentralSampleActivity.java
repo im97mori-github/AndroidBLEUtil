@@ -145,9 +145,9 @@ public class CscpCentralSampleActivity extends BaseActivity implements View.OnCl
             mCyclingSpeedAndCadenceProfile.getCSCFeature();
         } else if (R.id.read_csc_measurement_characteristic_configuration == item.getItemId()) {
             mCyclingSpeedAndCadenceProfile.getCSCMeasurementClientCharacteristicConfiguration();
-        } else if (R.id.start_notificate_csc_measurement == item.getItemId()) {
+        } else if (R.id.start_notify_csc_measurement == item.getItemId()) {
             mCyclingSpeedAndCadenceProfile.startCSCMeasurementNotification();
-        } else if (R.id.stop_notificate_csc_measurement == item.getItemId()) {
+        } else if (R.id.stop_notify_csc_measurement == item.getItemId()) {
             mCyclingSpeedAndCadenceProfile.stopCSCMeasurementNotification();
         } else if (R.id.read_sensor_location == item.getItemId()) {
             mCyclingSpeedAndCadenceProfile.getSensorLocation();

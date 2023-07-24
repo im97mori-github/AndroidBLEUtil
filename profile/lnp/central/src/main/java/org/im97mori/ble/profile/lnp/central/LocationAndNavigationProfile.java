@@ -182,23 +182,23 @@ public class LocationAndNavigationProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isBatteryLevelNotificatable(int)
+     * @see #canBatteryLevelNotify(int)
      */
-    public synchronized Boolean isBatteryLevelNotificatable() {
-        return isBatteryLevelNotificatable(0);
+    public synchronized Boolean canBatteryLevelNotify() {
+        return canBatteryLevelNotify(0);
     }
 
     /**
-     * get Battery Level's notificatable status
+     * get Battery Level's notify status
      *
      * @param index Battery Service index
-     * @return {@code true}:target Battery Service is notificatable, {@code false}:not notificatable. if {@code null} returned, profile is not ready or no Battery Service
-     * @see BatteryService#isBatteryLevelNotificatable(int)
+     * @return {@code true}:target Battery Service can notify, {@code false}:can not notify. if {@code null} returned, profile is not ready or no Battery Service
+     * @see BatteryService#canBatteryLevelNotify(int)
      */
-    public synchronized Boolean isBatteryLevelNotificatable(int index) {
+    public synchronized Boolean canBatteryLevelNotify(int index) {
         Boolean result = null;
         if (mBatteryService != null) {
-            result = mBatteryService.isBatteryLevelNotificatable(index);
+            result = mBatteryService.canBatteryLevelNotify(index);
         }
         return result;
     }

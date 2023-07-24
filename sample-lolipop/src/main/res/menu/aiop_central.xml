@@ -121,11 +121,11 @@
             android:id="@+id/is_digital_writable_with_no_response_0"
             android:title="@string/menu_is_digital_writable_with_no_response_0" />
         <item
-            android:id="@+id/is_digital_notificatable_0"
-            android:title="@string/menu_is_digital_notificatable_0" />
+            android:id="@+id/can_digital_notify_0"
+            android:title="@string/menu_can_digital_notify_0" />
         <item
-            android:id="@+id/is_digital_indictable_0"
-            android:title="@string/menu_is_digital_indictable_0" />
+            android:id="@+id/can_digital_indicate_0"
+            android:title="@string/menu_can_digital_indicate_0" />
         <item
             android:id="@+id/has_digital_characteristic_presentation_format_0"
             android:title="@string/menu_has_digital_characteristic_presentation_format_0" />
@@ -210,11 +210,11 @@
             android:id="@+id/is_digital_writable_with_no_response_1"
             android:title="@string/menu_is_digital_writable_with_no_response_1" />
         <item
-            android:id="@+id/is_digital_notificatable_1"
-            android:title="@string/menu_is_digital_notificatable_1" />
+            android:id="@+id/can_digital_notify_1"
+            android:title="@string/menu_can_digital_notify_1" />
         <item
             android:id="@+id/is_digital_indictable_1"
-            android:title="@string/menu_is_digital_indictable_1" />
+            android:title="@string/menu_can_digital_indicate_1" />
         <item
             android:id="@+id/has_digital_characteristic_presentation_format_1"
             android:title="@string/menu_has_digital_characteristic_presentation_format_1" />
@@ -299,11 +299,11 @@
             android:id="@+id/is_analog_writable_with_no_response_0"
             android:title="@string/menu_is_analog_writable_with_no_response_0" />
         <item
-            android:id="@+id/is_analog_notificatable_0"
-            android:title="@string/menu_is_analog_notificatable_0" />
+            android:id="@+id/can_analog_notify_0"
+            android:title="@string/menu_can_analog_notify_0" />
         <item
-            android:id="@+id/is_analog_indictable_0"
-            android:title="@string/menu_is_analog_indictable_0" />
+            android:id="@+id/can_analog_indicate_0"
+            android:title="@string/menu_can_analog_indicate_0" />
         <item
             android:id="@+id/has_analog_characteristic_presentation_format_0"
             android:title="@string/menu_has_analog_characteristic_presentation_format_0" />
@@ -388,11 +388,11 @@
             android:id="@+id/is_analog_writable_with_no_response_1"
             android:title="@string/menu_is_analog_writable_with_no_response_1" />
         <item
-            android:id="@+id/is_analog_notificatable_1"
-            android:title="@string/menu_is_analog_notificatable_1" />
+            android:id="@+id/can_analog_notify_1"
+            android:title="@string/menu_can_analog_notify_1" />
         <item
             android:id="@+id/is_analog_indictable_1"
-            android:title="@string/menu_is_analog_indictable_1" />
+            android:title="@string/menu_can_analog_indicate_1" />
         <item
             android:id="@+id/has_analog_characteristic_presentation_format_1"
             android:title="@string/menu_has_analog_characteristic_presentation_format_1" />
@@ -474,11 +474,11 @@
             android:id="@+id/is_aggregate_readable"
             android:title="@string/menu_is_aggregate_readable" />
         <item
-            android:id="@+id/is_aggregate_notificatable"
-            android:title="@string/menu_is_aggregate_notificatable" />
+            android:id="@+id/can_aggregate_notify"
+            android:title="@string/menu_can_aggregate_notify" />
         <item
             android:id="@+id/is_aggregate_indictable"
-            android:title="@string/menu_is_aggregate_indictable" />
+            android:title="@string/menu_can_aggregate_indicate" />
         <item
             android:id="@+id/get_aggregate"
             android:title="@string/menu_get_aggregate" />

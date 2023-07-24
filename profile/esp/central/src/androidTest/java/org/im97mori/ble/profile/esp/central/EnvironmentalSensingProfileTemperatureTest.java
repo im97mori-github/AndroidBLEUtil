@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileTemperatureTest extends AbstractCentralT
 
     @Test
     @RequiresDevice
-    public void test_isTemperatureNotificatable_00001() {
+    public void test_canTemperatureNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isTemperatureNotificatable());
+        assertNull(environmentalSensingProfile.canTemperatureNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isTemperatureNotificatable_00002() {
+    public void test_canTemperatureNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isTemperatureNotificatable());
+        assertNotNull(environmentalSensingProfile.canTemperatureNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isTemperatureNotificatable_00101() {
+    public void test_canTemperatureNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isTemperatureNotificatable(0));
+        assertNull(environmentalSensingProfile.canTemperatureNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isTemperatureNotificatable_00102() {
+    public void test_canTemperatureNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isTemperatureNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canTemperatureNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

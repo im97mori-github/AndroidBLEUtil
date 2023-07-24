@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Mockdata from asset callback
+ * Mock data from asset callback
  */
 @SuppressWarnings("WeakerAccess")
 public abstract class AssetCallback extends BaseMockCallback {

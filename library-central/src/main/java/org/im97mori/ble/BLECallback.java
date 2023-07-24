@@ -11,6 +11,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.task.NotifiedTask;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -355,7 +357,7 @@ public interface BLECallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId characteristic Instance Id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param values                   {@link BluetoothGattCharacteristic#getValue()}
-     * @see org.im97mori.ble.task.NotificatedTask
+     * @see NotifiedTask
      */
     void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values);
 
@@ -565,7 +567,7 @@ public interface BLECallback {
      * @param characteristicInstanceId task target characteristic Instance Id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param notificationStatus       {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd parameter
      * @param argument                 callback argument
-     * @see org.im97mori.ble.task.SetNotificationTask
+     * @see org.im97mori.ble.task.SetNotifyTask
      */
     void onSetNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument);
 
@@ -579,10 +581,10 @@ public interface BLECallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic Instance Id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param notificationStatus       {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd parameter
-     * @param status                   {@link org.im97mori.ble.task.SetNotificationTask#STATUS_CANCEL}
-     *                                 {@link org.im97mori.ble.task.SetNotificationTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     * @param status                   {@link org.im97mori.ble.task.SetNotifyTask#STATUS_CANCEL}
+     *                                 {@link org.im97mori.ble.task.SetNotifyTask#STATUS_CHARACTERISTIC_NOT_FOUND}
      * @param argument                 callback argument
-     * @see org.im97mori.ble.task.SetNotificationTask
+     * @see org.im97mori.ble.task.SetNotifyTask
      */
     void onSetNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, int status, @Nullable Bundle argument);
 

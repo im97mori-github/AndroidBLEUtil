@@ -15,6 +15,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.im97mori.ble.task.NotifyTask;
+
 import java.util.UUID;
 
 /**
@@ -167,7 +169,7 @@ public interface BLEServerCallback {
      *                                 {@link BluetoothGattDescriptor#ENABLE_INDICATION_VALUE}
      *                                 {@link BluetoothGattDescriptor#DISABLE_NOTIFICATION_VALUE}
      * @param argument                 callback argument
-     * @see org.im97mori.ble.task.NotificationTask
+     * @see NotifyTask
      */
     void onNotificationSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull byte[] value, @Nullable Bundle argument);
 
@@ -181,11 +183,11 @@ public interface BLEServerCallback {
      * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param status                   {@link org.im97mori.ble.task.NotificationTask#STATUS_CANCEL}
-     *                                 {@link org.im97mori.ble.task.NotificationTask#STATUS_CHARACTERISTIC_NOT_FOUND}
-     *                                 {@link org.im97mori.ble.task.NotificationTask#STATUS_NOTIFY_CHARACTERISTIC_CHANGED}
+     * @param status                   {@link NotifyTask#STATUS_CANCEL}
+     *                                 {@link NotifyTask#STATUS_CHARACTERISTIC_NOT_FOUND}
+     *                                 {@link NotifyTask#STATUS_NOTIFY_CHARACTERISTIC_CHANGED}
      * @param argument                 callback argument
-     * @see org.im97mori.ble.task.NotificationTask
+     * @see NotifyTask
      */
     void onNotificationFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int status, @Nullable Bundle argument);
 
@@ -201,7 +203,7 @@ public interface BLEServerCallback {
      * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
-     * @see org.im97mori.ble.task.NotificationTask
+     * @see NotifyTask
      */
     void onNotificationTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, long timeout, @Nullable Bundle argument);
 

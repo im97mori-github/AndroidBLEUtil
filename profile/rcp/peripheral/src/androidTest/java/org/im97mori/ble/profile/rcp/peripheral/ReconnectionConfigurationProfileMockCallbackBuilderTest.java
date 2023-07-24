@@ -163,11 +163,11 @@ public class ReconnectionConfigurationProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public ReconnectionConfigurationServiceMockCallback.Builder<ReconnectionConfigurationServiceMockCallback> addRCSettings(boolean isNotificatable, int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public ReconnectionConfigurationServiceMockCallback.Builder<ReconnectionConfigurationServiceMockCallback> addRCSettings(boolean canNotify, int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(rcSettings.getBytes(), characteristicValue);
                 assertArrayEquals(clientCharacteristicConfiguration.getBytes(), descriptorValue);
                 atomicBoolean.set(true);
-                return super.addRCSettings(isNotificatable, characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
+                return super.addRCSettings(canNotify, characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -182,7 +182,7 @@ public class ReconnectionConfigurationProfileMockCallbackBuilderTest {
     public void test_addRCSettings_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
-        final boolean isNotificatable = false;
+        final boolean canNotify = false;
         final int originalCharacteristicResponseCode = 38;
         final long originalCharacteristicDelay = 39;
         final int originalNotificationCount = 40;
@@ -199,8 +199,8 @@ public class ReconnectionConfigurationProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public ReconnectionConfigurationServiceMockCallback.Builder<ReconnectionConfigurationServiceMockCallback> addRCSettings(boolean isNotificatable, int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
-                assertEquals(isNotificatable, isNotificatable);
+            public ReconnectionConfigurationServiceMockCallback.Builder<ReconnectionConfigurationServiceMockCallback> addRCSettings(boolean canNotify, int characteristicResponseCode, long characteristicDelay, @NonNull byte[] characteristicValue, int notificationCount, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+                assertEquals(canNotify, canNotify);
                 assertEquals(originalCharacteristicResponseCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
                 assertArrayEquals(rcSettings.getBytes(), characteristicValue);
@@ -209,13 +209,13 @@ public class ReconnectionConfigurationProfileMockCallbackBuilderTest {
                 assertEquals(originalDescriptorDelay, descriptorDelay);
                 assertArrayEquals(clientCharacteristicConfiguration.getBytes(), descriptorValue);
                 atomicBoolean.set(true);
-                return super.addRCSettings(isNotificatable, characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
+                return super.addRCSettings(canNotify, characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
         BondManagementServiceMockCallback.Builder<BondManagementServiceMockCallback> bondManagementServiceMockCallbackBuilder = new BondManagementServiceMockCallback.Builder<>();
         BaseBuilder baseBuilder = new BaseBuilder(context, reconnectionConfigurationServiceMockCallbackBuilder, bondManagementServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addRCSettings(isNotificatable, originalCharacteristicResponseCode, originalCharacteristicDelay, rcSettings.getBytes(), originalNotificationCount, originalDescriptorResponseCode, originalDescriptorDelay, clientCharacteristicConfiguration.getBytes()));
+        assertEquals(baseBuilder, baseBuilder.addRCSettings(canNotify, originalCharacteristicResponseCode, originalCharacteristicDelay, rcSettings.getBytes(), originalNotificationCount, originalDescriptorResponseCode, originalDescriptorDelay, clientCharacteristicConfiguration.getBytes()));
 
         assertTrue(atomicBoolean.get());
     }

@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileParticulateMatterPm1ConcentrationTest ex
 
     @Test
     @RequiresDevice
-    public void test_isParticulateMatterPm1ConcentrationNotificatable_00001() {
+    public void test_canParticulateMatterPm1ConcentrationNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isParticulateMatterPm1ConcentrationNotificatable());
+        assertNull(environmentalSensingProfile.canParticulateMatterPm1ConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isParticulateMatterPm1ConcentrationNotificatable_00002() {
+    public void test_canParticulateMatterPm1ConcentrationNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isParticulateMatterPm1ConcentrationNotificatable());
+        assertNotNull(environmentalSensingProfile.canParticulateMatterPm1ConcentrationNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isParticulateMatterPm1ConcentrationNotificatable_00101() {
+    public void test_canParticulateMatterPm1ConcentrationNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isParticulateMatterPm1ConcentrationNotificatable(0));
+        assertNull(environmentalSensingProfile.canParticulateMatterPm1ConcentrationNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isParticulateMatterPm1ConcentrationNotificatable_00102() {
+    public void test_canParticulateMatterPm1ConcentrationNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isParticulateMatterPm1ConcentrationNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canParticulateMatterPm1ConcentrationNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

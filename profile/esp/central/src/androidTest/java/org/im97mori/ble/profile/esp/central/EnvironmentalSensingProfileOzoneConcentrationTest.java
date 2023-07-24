@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileOzoneConcentrationTest extends AbstractC
 
     @Test
     @RequiresDevice
-    public void test_isOzoneConcentrationNotificatable_00001() {
+    public void test_canOzoneConcentrationNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isOzoneConcentrationNotificatable());
+        assertNull(environmentalSensingProfile.canOzoneConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isOzoneConcentrationNotificatable_00002() {
+    public void test_canOzoneConcentrationNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isOzoneConcentrationNotificatable());
+        assertNotNull(environmentalSensingProfile.canOzoneConcentrationNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isOzoneConcentrationNotificatable_00101() {
+    public void test_canOzoneConcentrationNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isOzoneConcentrationNotificatable(0));
+        assertNull(environmentalSensingProfile.canOzoneConcentrationNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isOzoneConcentrationNotificatable_00102() {
+    public void test_canOzoneConcentrationNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isOzoneConcentrationNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canOzoneConcentrationNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

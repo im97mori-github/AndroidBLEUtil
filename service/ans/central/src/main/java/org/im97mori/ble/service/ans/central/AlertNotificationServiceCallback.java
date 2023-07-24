@@ -164,7 +164,7 @@ public interface AlertNotificationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start New Alert notificate success callback
+     * Start New Alert notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -175,7 +175,7 @@ public interface AlertNotificationServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onNewAlertNotificateStartSuccess(@NonNull Integer taskId
+    void onNewAlertNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -185,7 +185,7 @@ public interface AlertNotificationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start New Alert notificate error callback
+     * Start New Alert notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -200,7 +200,7 @@ public interface AlertNotificationServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onNewAlertNotificateStartFailed(@NonNull Integer taskId
+    void onNewAlertNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -211,7 +211,7 @@ public interface AlertNotificationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start New Alert notificate timeout callback
+     * Start New Alert notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -223,7 +223,7 @@ public interface AlertNotificationServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onNewAlertNotificateStartTimeout(@NonNull Integer taskId
+    void onNewAlertNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -234,7 +234,7 @@ public interface AlertNotificationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop New Alert notificate success callback
+     * Stop New Alert notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -245,7 +245,7 @@ public interface AlertNotificationServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onNewAlertNotificateStopSuccess(@NonNull Integer taskId
+    void onNewAlertNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -255,7 +255,7 @@ public interface AlertNotificationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop New Alert notificate error callback
+     * Stop New Alert notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -270,7 +270,7 @@ public interface AlertNotificationServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onNewAlertNotificateStopFailed(@NonNull Integer taskId
+    void onNewAlertNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -281,7 +281,7 @@ public interface AlertNotificationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop New Alert notificate timeout callback
+     * Stop New Alert notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -293,7 +293,7 @@ public interface AlertNotificationServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onNewAlertNotificateStopTimeout(@NonNull Integer taskId
+    void onNewAlertNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -459,7 +459,7 @@ public interface AlertNotificationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Unread Alert Status notificate success callback
+     * Start Unread Alert Status notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -470,7 +470,7 @@ public interface AlertNotificationServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onUnreadAlertStatusNotificateStartSuccess(@NonNull Integer taskId
+    void onUnreadAlertStatusNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -480,7 +480,7 @@ public interface AlertNotificationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Unread Alert Status notificate error callback
+     * Start Unread Alert Status notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -495,7 +495,7 @@ public interface AlertNotificationServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onUnreadAlertStatusNotificateStartFailed(@NonNull Integer taskId
+    void onUnreadAlertStatusNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -506,7 +506,7 @@ public interface AlertNotificationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Unread Alert Status notificate timeout callback
+     * Start Unread Alert Status notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -518,7 +518,7 @@ public interface AlertNotificationServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onUnreadAlertStatusNotificateStartTimeout(@NonNull Integer taskId
+    void onUnreadAlertStatusNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -529,7 +529,7 @@ public interface AlertNotificationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Unread Alert Status notificate success callback
+     * Stop Unread Alert Status notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -540,7 +540,7 @@ public interface AlertNotificationServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onUnreadAlertStatusNotificateStopSuccess(@NonNull Integer taskId
+    void onUnreadAlertStatusNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -550,7 +550,7 @@ public interface AlertNotificationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Unread Alert Status notificate error callback
+     * Stop Unread Alert Status notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -565,7 +565,7 @@ public interface AlertNotificationServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onUnreadAlertStatusNotificateStopFailed(@NonNull Integer taskId
+    void onUnreadAlertStatusNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -576,7 +576,7 @@ public interface AlertNotificationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Unread Alert Status notificate timeout callback
+     * Stop Unread Alert Status notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -588,7 +588,7 @@ public interface AlertNotificationServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onUnreadAlertStatusNotificateStopTimeout(@NonNull Integer taskId
+    void onUnreadAlertStatusNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId

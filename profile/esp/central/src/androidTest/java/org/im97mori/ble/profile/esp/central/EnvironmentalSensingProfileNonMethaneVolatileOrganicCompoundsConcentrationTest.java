@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileNonMethaneVolatileOrganicCompoundsConcen
 
     @Test
     @RequiresDevice
-    public void test_isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable_00001() {
+    public void test_canNonMethaneVolatileOrganicCompoundsConcentrationNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable());
+        assertNull(environmentalSensingProfile.canNonMethaneVolatileOrganicCompoundsConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable_00002() {
+    public void test_canNonMethaneVolatileOrganicCompoundsConcentrationNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable());
+        assertNotNull(environmentalSensingProfile.canNonMethaneVolatileOrganicCompoundsConcentrationNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable_00101() {
+    public void test_canNonMethaneVolatileOrganicCompoundsConcentrationNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(0));
+        assertNull(environmentalSensingProfile.canNonMethaneVolatileOrganicCompoundsConcentrationNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable_00102() {
+    public void test_canNonMethaneVolatileOrganicCompoundsConcentrationNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canNonMethaneVolatileOrganicCompoundsConcentrationNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

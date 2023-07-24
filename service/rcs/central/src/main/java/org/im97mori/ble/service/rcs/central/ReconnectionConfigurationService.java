@@ -49,8 +49,8 @@ public class ReconnectionConfigurationService extends AbstractCentralService {
     private boolean mIsRCSettingsCharacteristicSupported;
 
     /**
-     * RC Settings characteristic notificatable flag
-     * {@code true}:RC Settings characteristic is notificatable, {@code false}:RC Settings characteristic is not notificatable or service not ready
+     * RC Settings characteristic notify flag
+     * {@code true}:RC Settings characteristic can notify, {@code false}:RC Settings characteristic can not notify or service not ready
      */
     private boolean mIsRCSettingsCharacteristicNotifySupported;
 
@@ -250,9 +250,9 @@ public class ReconnectionConfigurationService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && RECONNECTION_CONFIGURATION_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (RC_SETTINGS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mReconnectionConfigurationServiceCallback.onRCSettingsNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
+                    mReconnectionConfigurationServiceCallback.onRCSettingsNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mReconnectionConfigurationServiceCallback.onRCSettingsNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
+                    mReconnectionConfigurationServiceCallback.onRCSettingsNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -273,9 +273,9 @@ public class ReconnectionConfigurationService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && RECONNECTION_CONFIGURATION_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (RC_SETTINGS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mReconnectionConfigurationServiceCallback.onRCSettingsNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
+                    mReconnectionConfigurationServiceCallback.onRCSettingsNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mReconnectionConfigurationServiceCallback.onRCSettingsNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
+                    mReconnectionConfigurationServiceCallback.onRCSettingsNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -296,9 +296,9 @@ public class ReconnectionConfigurationService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && RECONNECTION_CONFIGURATION_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (RC_SETTINGS_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mReconnectionConfigurationServiceCallback.onRCSettingsNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
+                    mReconnectionConfigurationServiceCallback.onRCSettingsNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mReconnectionConfigurationServiceCallback.onRCSettingsNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
+                    mReconnectionConfigurationServiceCallback.onRCSettingsNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (RECONNECTION_CONFIGURATION_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -335,8 +335,8 @@ public class ReconnectionConfigurationService extends AbstractCentralService {
     }
 
     /**
-     * RC Settings characteristic notificatable flag
-     * {@code true}:RC Settings characteristic is notificatable, {@code false}:RC Settings characteristic is not notificatable or service not ready
+     * RC Settings characteristic notify flag
+     * {@code true}:RC Settings characteristic can notify, {@code false}:RC Settings characteristic can not notify or service not ready
      */
     public boolean isRCSettingsCharacteristicNotifySupported() {
         return mIsRCSettingsCharacteristicNotifySupported;
@@ -405,9 +405,9 @@ public class ReconnectionConfigurationService extends AbstractCentralService {
      * start RC Settings notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see ReconnectionConfigurationServiceCallback#onRCSettingsNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see ReconnectionConfigurationServiceCallback#onRCSettingsNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
-     * @see ReconnectionConfigurationServiceCallback#onRCSettingsNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see ReconnectionConfigurationServiceCallback#onRCSettingsNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see ReconnectionConfigurationServiceCallback#onRCSettingsNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see ReconnectionConfigurationServiceCallback#onRCSettingsNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
      */
     @Nullable
     public synchronized Integer startRCSettingsNotification() {
@@ -424,9 +424,9 @@ public class ReconnectionConfigurationService extends AbstractCentralService {
      * stop RC Settings notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see ReconnectionConfigurationServiceCallback#onRCSettingsNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see ReconnectionConfigurationServiceCallback#onRCSettingsNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
-     * @see ReconnectionConfigurationServiceCallback#onRCSettingsNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see ReconnectionConfigurationServiceCallback#onRCSettingsNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see ReconnectionConfigurationServiceCallback#onRCSettingsNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see ReconnectionConfigurationServiceCallback#onRCSettingsNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
      */
     @Nullable
     public synchronized Integer stopRCSettingsNotification() {

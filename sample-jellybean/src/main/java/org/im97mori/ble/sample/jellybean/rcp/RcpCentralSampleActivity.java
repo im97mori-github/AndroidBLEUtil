@@ -151,7 +151,7 @@ public class RcpCentralSampleActivity extends BaseActivity implements View.OnCli
             mAdapter.add(Pair.create(new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US).format(new Date()), text));
             mListView.smoothScrollToPosition(mAdapter.getCount());
             updateLayout();
-        } else if (R.id.is_rc_settings_notificatable == item.getItemId()) {
+        } else if (R.id.can_rc_settings_notify == item.getItemId()) {
             String text;
             Boolean result = mReconnectionConfigurationProfile.isRCSettingsCharacteristicNotifySupported();
             if (result == null) {

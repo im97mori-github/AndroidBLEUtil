@@ -332,14 +332,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalNotificatable_00001() {
+    public void test_canDigitalNotify_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalNotificatable());
+        assertNull(automationIOProfile.canDigitalNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalNotificatable_00002() {
+    public void test_canDigitalNotify_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -349,7 +349,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalNotificatable(int index) {
+                        public boolean canDigitalNotify(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -360,21 +360,21 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
             }
         };
         automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(automationIOProfile.isDigitalNotificatable());
+        assertNotNull(automationIOProfile.canDigitalNotify());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalNotificatable_00101() {
+    public void test_canDigitalNotify_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalNotificatable(1));
+        assertNull(automationIOProfile.canDigitalNotify(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalNotificatable_00102() {
+    public void test_canDigitalNotify_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -384,7 +384,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalNotificatable(int index) {
+                        public boolean canDigitalNotify(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -395,21 +395,21 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
             }
         };
         automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(automationIOProfile.isDigitalNotificatable(originalIndex));
+        assertNotNull(automationIOProfile.canDigitalNotify(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalIndicatable_00001() {
+    public void test_canDigitalIndicate_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalIndicatable());
+        assertNull(automationIOProfile.canDigitalIndicate());
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalIndicatable_00002() {
+    public void test_canDigitalIndicate_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -419,7 +419,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalIndicatable(int index) {
+                        public boolean canDigitalIndicate(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -430,21 +430,21 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
             }
         };
         automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(automationIOProfile.isDigitalIndicatable());
+        assertNotNull(automationIOProfile.canDigitalIndicate());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalIndicatable_00101() {
+    public void test_canDigitalIndicate_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isDigitalIndicatable(1));
+        assertNull(automationIOProfile.canDigitalIndicate(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalIndicatable_00102() {
+    public void test_canDigitalIndicate_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -454,7 +454,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isDigitalIndicatable(int index) {
+                        public boolean canDigitalIndicate(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -465,7 +465,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
             }
         };
         automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(automationIOProfile.isDigitalIndicatable(originalIndex));
+        assertNotNull(automationIOProfile.canDigitalIndicate(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
@@ -1130,14 +1130,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogNotificatable_00001() {
+    public void test_canAnalogNotify_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogNotificatable());
+        assertNull(automationIOProfile.canAnalogNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogNotificatable_00002() {
+    public void test_canAnalogNotify_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -1147,7 +1147,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogNotificatable(int index) {
+                        public boolean canAnalogNotify(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1158,21 +1158,21 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
             }
         };
         automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(automationIOProfile.isAnalogNotificatable());
+        assertNotNull(automationIOProfile.canAnalogNotify());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogNotificatable_00101() {
+    public void test_canAnalogNotify_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogNotificatable(1));
+        assertNull(automationIOProfile.canAnalogNotify(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogNotificatable_00102() {
+    public void test_canAnalogNotify_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -1182,7 +1182,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogNotificatable(int index) {
+                        public boolean canAnalogNotify(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1193,21 +1193,21 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
             }
         };
         automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(automationIOProfile.isAnalogNotificatable(originalIndex));
+        assertNotNull(automationIOProfile.canAnalogNotify(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogIndicatable_00001() {
+    public void test_canAnalogIndicate_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogIndicatable());
+        assertNull(automationIOProfile.canAnalogIndicate());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogIndicatable_00002() {
+    public void test_canAnalogIndicate_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 0;
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -1217,7 +1217,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogIndicatable(int index) {
+                        public boolean canAnalogIndicate(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1228,21 +1228,21 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
             }
         };
         automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(automationIOProfile.isAnalogIndicatable());
+        assertNotNull(automationIOProfile.canAnalogIndicate());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogIndicatable_00101() {
+    public void test_canAnalogIndicate_00101() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAnalogIndicatable(1));
+        assertNull(automationIOProfile.canAnalogIndicate(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogIndicatable_00102() {
+    public void test_canAnalogIndicate_00102() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         final int originalIndex = 1;
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
@@ -1252,7 +1252,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAnalogIndicatable(int index) {
+                        public boolean canAnalogIndicate(int index) {
                             assertEquals(originalIndex, index);
                             atomicBoolean.set(true);
                             return true;
@@ -1263,7 +1263,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
             }
         };
         automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(automationIOProfile.isAnalogIndicatable(originalIndex));
+        assertNotNull(automationIOProfile.canAnalogIndicate(originalIndex));
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
@@ -1756,14 +1756,14 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAggregateNotificatable_00001() {
+    public void test_canAggregateNotify_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAggregateNotificatable());
+        assertNull(automationIOProfile.canAggregateNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAggregateNotificatable_00002() {
+    public void test_canAggregateNotify_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
@@ -1772,7 +1772,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAggregateNotificatable() {
+                        public boolean canAggregateNotify() {
                             atomicBoolean.set(true);
                             return true;
                         }
@@ -1782,21 +1782,21 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
             }
         };
         automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(automationIOProfile.isAggregateNotificatable());
+        assertNotNull(automationIOProfile.canAggregateNotify());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isAggregateIndicatable_00001() {
+    public void test_canAggregateIndicate_00001() {
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback());
-        assertNull(automationIOProfile.isAggregateIndicatable());
+        assertNull(automationIOProfile.canAggregateIndicate());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAggregateIndicatable_00002() {
+    public void test_canAggregateIndicate_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
         AutomationIOProfile automationIOProfile = new AutomationIOProfile(ApplicationProvider.getApplicationContext(), new BaseAutomationIOProfileCallback()) {
             @Override
@@ -1805,7 +1805,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
                     mAutomationIOService = new AutomationIOService(mBLEConnection, mAutomationIOProfileCallback, null) {
 
                         @Override
-                        public boolean isAggregateIndicatable() {
+                        public boolean canAggregateIndicate() {
                             atomicBoolean.set(true);
                             return true;
                         }
@@ -1815,7 +1815,7 @@ public class AutomationIOProfileTest extends AbstractCentralTest {
             }
         };
         automationIOProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(automationIOProfile.isAggregateIndicatable());
+        assertNotNull(automationIOProfile.canAggregateIndicate());
         assertTrue(atomicBoolean.get());
         automationIOProfile.disconnect();
     }

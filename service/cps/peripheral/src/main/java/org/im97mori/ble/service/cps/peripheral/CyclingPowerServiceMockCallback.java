@@ -38,7 +38,7 @@ import org.im97mori.ble.characteristic.u2a65.CyclingPowerFeature;
 import org.im97mori.ble.characteristic.u2a66.CyclingPowerControlPoint;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
-import org.im97mori.ble.task.NotificationTask;
+import org.im97mori.ble.task.NotifyTask;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -572,8 +572,8 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                                     }
                                 } else if (requestCyclingPowerControlPoint.isOpCodesUpdateSensorLocation(requestCyclingPowerControlPoint.getOpCodes())
                                         && CyclingPowerControlPoint.RESPONSE_VALUE_SUCCESS == cyclingPowerControlPointCharacteristicData.updateSensorLocationResponseValue) {
-                                    CharacteristicData cyclingPowerFeatureCharacterisiticData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
-                                    if (cyclingPowerFeatureCharacterisiticData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacterisiticData.getBytes()).isCyclingPowerFeatureCyclingMultipleSensorLocationsSupported()) {
+                                    CharacteristicData cyclingPowerFeatureCharacteristicData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
+                                    if (cyclingPowerFeatureCharacteristicData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacteristicData.getBytes()).isCyclingPowerFeatureCyclingMultipleSensorLocationsSupported()) {
                                         int sensorLocation = BLEUtils.createUInt8(requestCyclingPowerControlPoint.getParameterValue(), 0);
                                         if (Arrays.binarySearch(cyclingPowerControlPointCharacteristicData.requestSupportedSensorLocationsResponseParameter, (byte) sensorLocation) < 0) {
                                             cyclingPowerControlPointCharacteristicData.highPriorityResponseData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], CyclingPowerControlPoint.OP_CODES_UPDATE_SENSOR_LOCATION, CyclingPowerControlPoint.RESPONSE_VALUE_INVALID_PARAMETER, new byte[0]).getBytes();
@@ -588,52 +588,52 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                                     }
                                 } else if (requestCyclingPowerControlPoint.isOpCodesRequestSupportedSensorLocations(requestCyclingPowerControlPoint.getOpCodes())
                                         && CyclingPowerControlPoint.RESPONSE_VALUE_SUCCESS == cyclingPowerControlPointCharacteristicData.requestSupportedSensorLocationsResponseValue) {
-                                    CharacteristicData cyclingPowerFeatureCharacterisiticData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
-                                    if (cyclingPowerFeatureCharacterisiticData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacterisiticData.getBytes()).isCyclingPowerFeatureCyclingMultipleSensorLocationsNotSupported()) {
+                                    CharacteristicData cyclingPowerFeatureCharacteristicData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
+                                    if (cyclingPowerFeatureCharacteristicData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacteristicData.getBytes()).isCyclingPowerFeatureCyclingMultipleSensorLocationsNotSupported()) {
                                         cyclingPowerControlPointCharacteristicData.highPriorityResponseData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], CyclingPowerControlPoint.OP_CODES_REQUEST_SUPPORTED_SENSOR_LOCATION, CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes();
                                     }
                                 } else if (requestCyclingPowerControlPoint.isOpCodesSetCrankLength(requestCyclingPowerControlPoint.getOpCodes())
                                         && CyclingPowerControlPoint.RESPONSE_VALUE_SUCCESS == cyclingPowerControlPointCharacteristicData.setCrankLengthResponseValue) {
-                                    CharacteristicData cyclingPowerFeatureCharacterisiticData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
-                                    if (cyclingPowerFeatureCharacterisiticData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacterisiticData.getBytes()).isCyclingPowerFeatureCrankLengthAdjustmentSupported()) {
+                                    CharacteristicData cyclingPowerFeatureCharacteristicData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
+                                    if (cyclingPowerFeatureCharacteristicData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacteristicData.getBytes()).isCyclingPowerFeatureCrankLengthAdjustmentSupported()) {
                                         cyclingPowerControlPointCharacteristicData.requestCrankLengthResponseParameter = requestCyclingPowerControlPoint.getParameterValue();
                                     } else {
                                         cyclingPowerControlPointCharacteristicData.highPriorityResponseData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], CyclingPowerControlPoint.OP_CODES_SET_CRANK_LENGTH, CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes();
                                     }
                                 } else if (requestCyclingPowerControlPoint.isOpCodesSetChainLength(requestCyclingPowerControlPoint.getOpCodes())
                                         && CyclingPowerControlPoint.RESPONSE_VALUE_SUCCESS == cyclingPowerControlPointCharacteristicData.setChainLengthResponseValue) {
-                                    CharacteristicData cyclingPowerFeatureCharacterisiticData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
-                                    if (cyclingPowerFeatureCharacterisiticData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacterisiticData.getBytes()).isCyclingPowerFeatureChainLengthAdjustmentSupported()) {
+                                    CharacteristicData cyclingPowerFeatureCharacteristicData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
+                                    if (cyclingPowerFeatureCharacteristicData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacteristicData.getBytes()).isCyclingPowerFeatureChainLengthAdjustmentSupported()) {
                                         cyclingPowerControlPointCharacteristicData.requestChainLengthResponseParameter = requestCyclingPowerControlPoint.getParameterValue();
                                     } else {
                                         cyclingPowerControlPointCharacteristicData.highPriorityResponseData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], CyclingPowerControlPoint.OP_CODES_SET_CRANK_LENGTH, CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes();
                                     }
                                 } else if (requestCyclingPowerControlPoint.isOpCodesSetChainWeight(requestCyclingPowerControlPoint.getOpCodes())
                                         && CyclingPowerControlPoint.RESPONSE_VALUE_SUCCESS == cyclingPowerControlPointCharacteristicData.setChainWeightResponseValue) {
-                                    CharacteristicData cyclingPowerFeatureCharacterisiticData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
-                                    if (cyclingPowerFeatureCharacterisiticData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacterisiticData.getBytes()).isCyclingPowerFeatureChainWeightAdjustmentSupported()) {
+                                    CharacteristicData cyclingPowerFeatureCharacteristicData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
+                                    if (cyclingPowerFeatureCharacteristicData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacteristicData.getBytes()).isCyclingPowerFeatureChainWeightAdjustmentSupported()) {
                                         cyclingPowerControlPointCharacteristicData.requestChainWeightResponseParameter = requestCyclingPowerControlPoint.getParameterValue();
                                     } else {
                                         cyclingPowerControlPointCharacteristicData.highPriorityResponseData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], CyclingPowerControlPoint.OP_CODES_SET_CRANK_LENGTH, CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes();
                                     }
                                 } else if (requestCyclingPowerControlPoint.isOpCodesSetSpanLength(requestCyclingPowerControlPoint.getOpCodes())
                                         && CyclingPowerControlPoint.RESPONSE_VALUE_SUCCESS == cyclingPowerControlPointCharacteristicData.setSpanLengthResponseValue) {
-                                    CharacteristicData cyclingPowerFeatureCharacterisiticData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
-                                    if (cyclingPowerFeatureCharacterisiticData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacterisiticData.getBytes()).isCyclingPowerFeatureSpanLengthAdjustmentSupported()) {
+                                    CharacteristicData cyclingPowerFeatureCharacteristicData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
+                                    if (cyclingPowerFeatureCharacteristicData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacteristicData.getBytes()).isCyclingPowerFeatureSpanLengthAdjustmentSupported()) {
                                         cyclingPowerControlPointCharacteristicData.requestSpanLengthResponseParameter = requestCyclingPowerControlPoint.getParameterValue();
                                     } else {
                                         cyclingPowerControlPointCharacteristicData.highPriorityResponseData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], CyclingPowerControlPoint.OP_CODES_SET_CRANK_LENGTH, CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes();
                                     }
                                 } else if (requestCyclingPowerControlPoint.isOpCodesStartOffsetCompensation(requestCyclingPowerControlPoint.getOpCodes())
                                         && CyclingPowerControlPoint.RESPONSE_VALUE_SUCCESS == cyclingPowerControlPointCharacteristicData.startOffsetCompensationResponseValue) {
-                                    CharacteristicData cyclingPowerFeatureCharacterisiticData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
-                                    if (cyclingPowerFeatureCharacterisiticData == null || new CyclingPowerFeature(cyclingPowerFeatureCharacterisiticData.getBytes()).isCyclingPowerFeatureOffsetCompensationNotSupported()) {
+                                    CharacteristicData cyclingPowerFeatureCharacteristicData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
+                                    if (cyclingPowerFeatureCharacteristicData == null || new CyclingPowerFeature(cyclingPowerFeatureCharacteristicData.getBytes()).isCyclingPowerFeatureOffsetCompensationNotSupported()) {
                                         cyclingPowerControlPointCharacteristicData.highPriorityResponseData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], CyclingPowerControlPoint.OP_CODES_SET_CRANK_LENGTH, CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes();
                                     }
                                 } else if (requestCyclingPowerControlPoint.isOpCodesMaskCyclingPowerMeasurementCharacteristicContent(requestCyclingPowerControlPoint.getOpCodes())
                                         && CyclingPowerControlPoint.RESPONSE_VALUE_SUCCESS == cyclingPowerControlPointCharacteristicData.maskCyclingPowerMeasurementCharacteristicContentResponseValue) {
-                                    CharacteristicData cyclingPowerFeatureCharacterisiticData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
-                                    if (cyclingPowerFeatureCharacterisiticData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacterisiticData.getBytes()).isCyclingPowerFeatureCyclingPowerMeasurementCharacteristicContentMaskingNotSupported()) {
+                                    CharacteristicData cyclingPowerFeatureCharacteristicData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
+                                    if (cyclingPowerFeatureCharacteristicData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacteristicData.getBytes()).isCyclingPowerFeatureCyclingPowerMeasurementCharacteristicContentMaskingNotSupported()) {
                                         cyclingPowerControlPointCharacteristicData.highPriorityResponseData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], CyclingPowerControlPoint.OP_CODES_MASK_CYCLING_POWER_MEASUREMENT_CHARACTERISTIC_CONTENT, CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes();
                                     } else {
                                         mMaskMap.put(CyclingPowerControlPoint.PARAMETER_VALUE_MASK_CYCLING_POWER_MEASURMENT_CHARACTERISTIC_CONTENT_PEDAL_POWER_BALANCE_MASK
@@ -657,14 +657,14 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                                     }
                                 } else if (requestCyclingPowerControlPoint.isOpCodesRequestFactoryCalibrationDate(requestCyclingPowerControlPoint.getOpCodes())
                                         && CyclingPowerControlPoint.RESPONSE_VALUE_SUCCESS == cyclingPowerControlPointCharacteristicData.requestFactoryCalibrationDateResponseValue) {
-                                    CharacteristicData cyclingPowerFeatureCharacterisiticData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
-                                    if (cyclingPowerFeatureCharacterisiticData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacterisiticData.getBytes()).isCyclingPowerFeatureFactoryCalibrationDateNotSupported()) {
+                                    CharacteristicData cyclingPowerFeatureCharacteristicData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
+                                    if (cyclingPowerFeatureCharacteristicData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacteristicData.getBytes()).isCyclingPowerFeatureFactoryCalibrationDateNotSupported()) {
                                         cyclingPowerControlPointCharacteristicData.highPriorityResponseData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], CyclingPowerControlPoint.OP_CODES_REQUEST_FACTORY_CALIBRATION_DATE, CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes();
                                     }
                                 } else if (requestCyclingPowerControlPoint.isOpCodesStartEnhancedOffsetCompensation(requestCyclingPowerControlPoint.getOpCodes())
                                         && CyclingPowerControlPoint.RESPONSE_VALUE_SUCCESS == cyclingPowerControlPointCharacteristicData.startEnhancedOffsetCompensationResponseValue) {
-                                    CharacteristicData cyclingPowerFeatureCharacterisiticData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
-                                    if (cyclingPowerFeatureCharacterisiticData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacterisiticData.getBytes()).isCyclingPowerFeatureEnhancedOffsetCompensationNotSupported()) {
+                                    CharacteristicData cyclingPowerFeatureCharacteristicData = findCharacteristicData(CYCLING_POWER_SERVICE, CYCLING_POWER_FEATURE_CHARACTERISTIC, CharacteristicData.class);
+                                    if (cyclingPowerFeatureCharacteristicData != null && new CyclingPowerFeature(cyclingPowerFeatureCharacteristicData.getBytes()).isCyclingPowerFeatureEnhancedOffsetCompensationNotSupported()) {
                                         cyclingPowerControlPointCharacteristicData.highPriorityResponseData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE, new byte[0], CyclingPowerControlPoint.OP_CODES_START_ENHANCED_OFFSET_COMPENSATION, CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes();
                                     }
                                 }
@@ -786,14 +786,14 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                                 for (BluetoothDevice bluetoothDevice : mConnectedDeviceMap.keySet()) {
                                     notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
                                     if (!mActivatedNotificationMap.containsKey(notificationData)) {
-                                        Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
+                                        Integer newTaskId = bleServerConnection.createNotifyTask(bluetoothDevice
                                                 , serviceUUID
                                                 , serviceInstanceId
                                                 , characteristicUUID
                                                 , characteristicInstanceId
                                                 , modifiedCyclingPowerMeasurement
                                                 , isConfirm
-                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , NotifyTask.TIMEOUT_MILLIS
                                                 , delay
                                                 , bundle
                                                 , this);
@@ -807,14 +807,14 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                                 if (mConnectedDeviceMap.containsKey(device)) {
                                     Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
                                     if (currentTaskId == null || currentTaskId.equals(taskId)) {
-                                        Integer newTaskId = bleServerConnection.createNotificationTask(device
+                                        Integer newTaskId = bleServerConnection.createNotifyTask(device
                                                 , serviceUUID
                                                 , serviceInstanceId
                                                 , characteristicUUID
                                                 , characteristicInstanceId
                                                 , modifiedCyclingPowerMeasurement
                                                 , isConfirm
-                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , NotifyTask.TIMEOUT_MILLIS
                                                 , delay
                                                 , bundle
                                                 , this);
@@ -831,14 +831,14 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                                 for (BluetoothDevice bluetoothDevice : mConnectedDeviceMap.keySet()) {
                                     notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
                                     if (!mActivatedNotificationMap.containsKey(notificationData)) {
-                                        Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
+                                        Integer newTaskId = bleServerConnection.createNotifyTask(bluetoothDevice
                                                 , serviceUUID
                                                 , serviceInstanceId
                                                 , characteristicUUID
                                                 , characteristicInstanceId
                                                 , characteristicData
                                                 , isConfirm
-                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , NotifyTask.TIMEOUT_MILLIS
                                                 , delay
                                                 , bundle
                                                 , this);
@@ -852,14 +852,14 @@ public class CyclingPowerServiceMockCallback extends AbstractServiceMockCallback
                                 if (mConnectedDeviceMap.containsKey(device)) {
                                     Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
                                     if (currentTaskId == null || currentTaskId.equals(taskId)) {
-                                        Integer newTaskId = bleServerConnection.createNotificationTask(device
+                                        Integer newTaskId = bleServerConnection.createNotifyTask(device
                                                 , serviceUUID
                                                 , serviceInstanceId
                                                 , characteristicUUID
                                                 , characteristicInstanceId
                                                 , characteristicData
                                                 , isConfirm
-                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , NotifyTask.TIMEOUT_MILLIS
                                                 , delay
                                                 , bundle
                                                 , this);

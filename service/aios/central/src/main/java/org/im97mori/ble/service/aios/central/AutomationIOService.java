@@ -87,16 +87,16 @@ public class AutomationIOService extends AbstractCentralService {
     private boolean mIsAggregateReadable;
 
     /**
-     * Aggregate characteristic notificatable flag
-     * {@code true}:Aggregate characteristic is notificatable, {@code false}:Aggregate characteristic is not notificatable or service not ready
+     * Aggregate characteristic notify flag
+     * {@code true}:Aggregate characteristic can notify, {@code false}:Aggregate characteristic can not notify or service not ready
      */
-    private boolean mIsAggregateNotificatable;
+    private boolean mCanAggregateNotify;
 
     /**
      * Aggregate characteristic indictable flag
      * {@code true}:Aggregate characteristic is indictable, {@code false}:Aggregate characteristic is not indictable or service not ready
      */
-    private boolean mIsAggregateIndicatable;
+    private boolean mCanAggregateIndicate;
 
     /**
      * @param bleConnection {@link BLEConnection} instance{@link BLEConnection} instance
@@ -117,8 +117,8 @@ public class AutomationIOService extends AbstractCentralService {
             mAnalogList.clear();
             mIsAggregateSupported = false;
             mIsAggregateReadable = false;
-            mIsAggregateNotificatable = false;
-            mIsAggregateIndicatable = false;
+            mCanAggregateNotify = false;
+            mCanAggregateIndicate = false;
         }
         super.onBLEDisconnected(taskId, bluetoothDevice, status, argument);
     }
@@ -143,9 +143,9 @@ public class AutomationIOService extends AbstractCentralService {
                             }
                             if (isAggregateReadable() && bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR) != null) {
                                 if ((bluetoothGattCharacteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_NOTIFY) == BluetoothGattCharacteristic.PROPERTY_NOTIFY) {
-                                    mIsAggregateNotificatable = true;
+                                    mCanAggregateNotify = true;
                                 } else if ((bluetoothGattCharacteristic.getProperties() & BluetoothGattCharacteristic.PROPERTY_INDICATE) == BluetoothGattCharacteristic.PROPERTY_INDICATE) {
-                                    mIsAggregateIndicatable = true;
+                                    mCanAggregateIndicate = true;
                                 }
                             }
                         }
@@ -459,15 +459,15 @@ public class AutomationIOService extends AbstractCentralService {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                     if (characteristicIndex != null) {
                         if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                            if (isDigitalNotificatable(characteristicIndex)) {
+                            if (canDigitalNotify(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onDigitalNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
-                            } else if (isDigitalIndicatable(characteristicIndex)) {
+                            } else if (canDigitalIndicate(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onDigitalIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
                             }
                         } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
-                            if (isDigitalNotificatable(characteristicIndex)) {
+                            if (canDigitalNotify(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onDigitalNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
-                            } else if (isDigitalIndicatable(characteristicIndex)) {
+                            } else if (canDigitalIndicate(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onDigitalIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
                             }
                         }
@@ -484,15 +484,15 @@ public class AutomationIOService extends AbstractCentralService {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                     if (characteristicIndex != null) {
                         if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                            if (isAnalogNotificatable(characteristicIndex)) {
+                            if (canAnalogNotify(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onAnalogNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
-                            } else if (isAnalogIndicatable(characteristicIndex)) {
+                            } else if (canAnalogIndicate(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onAnalogIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
                             }
                         } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
-                            if (isAnalogNotificatable(characteristicIndex)) {
+                            if (canAnalogNotify(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onAnalogNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
-                            } else if (isAnalogIndicatable(characteristicIndex)) {
+                            } else if (canAnalogIndicate(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onAnalogIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, argument);
                             }
                         }
@@ -507,15 +507,15 @@ public class AutomationIOService extends AbstractCentralService {
             } else if (AGGREGATE_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                     if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                        if (isAggregateNotificatable()) {
+                        if (canAggregateNotify()) {
                             mAutomationIOServiceCallback.onAggregateNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
-                        } else if (isAggregateIndicatable()) {
+                        } else if (canAggregateIndicate()) {
                             mAutomationIOServiceCallback.onAggregateIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                         }
                     } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
-                        if (isAggregateNotificatable()) {
+                        if (canAggregateNotify()) {
                             mAutomationIOServiceCallback.onAggregateNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
-                        } else if (isAggregateIndicatable()) {
+                        } else if (canAggregateIndicate()) {
                             mAutomationIOServiceCallback.onAggregateIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                         }
                     }
@@ -536,15 +536,15 @@ public class AutomationIOService extends AbstractCentralService {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                     if (characteristicIndex != null) {
                         if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                            if (isDigitalNotificatable(characteristicIndex)) {
+                            if (canDigitalNotify(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onDigitalNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
-                            } else if (isDigitalIndicatable(characteristicIndex)) {
+                            } else if (canDigitalIndicate(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onDigitalIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                             }
                         } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
-                            if (isDigitalNotificatable(characteristicIndex)) {
+                            if (canDigitalNotify(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onDigitalNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
-                            } else if (isDigitalIndicatable(characteristicIndex)) {
+                            } else if (canDigitalIndicate(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onDigitalIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                             }
                         }
@@ -561,15 +561,15 @@ public class AutomationIOService extends AbstractCentralService {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                     if (characteristicIndex != null) {
                         if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                            if (isAnalogNotificatable(characteristicIndex)) {
+                            if (canAnalogNotify(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onAnalogNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
-                            } else if (isAnalogIndicatable(characteristicIndex)) {
+                            } else if (canAnalogIndicate(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onAnalogIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                             }
                         } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
-                            if (isAnalogNotificatable(characteristicIndex)) {
+                            if (canAnalogNotify(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onAnalogNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
-                            } else if (isAnalogIndicatable(characteristicIndex)) {
+                            } else if (canAnalogIndicate(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onAnalogIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, status, argument);
                             }
                         }
@@ -584,15 +584,15 @@ public class AutomationIOService extends AbstractCentralService {
             } else if (AGGREGATE_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                     if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                        if (isAggregateNotificatable()) {
+                        if (canAggregateNotify()) {
                             mAutomationIOServiceCallback.onAggregateNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
-                        } else if (isAggregateIndicatable()) {
+                        } else if (canAggregateIndicate()) {
                             mAutomationIOServiceCallback.onAggregateIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                         }
                     } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
-                        if (isAggregateNotificatable()) {
+                        if (canAggregateNotify()) {
                             mAutomationIOServiceCallback.onAggregateNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
-                        } else if (isAggregateIndicatable()) {
+                        } else if (canAggregateIndicate()) {
                             mAutomationIOServiceCallback.onAggregateIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                         }
                     }
@@ -613,15 +613,15 @@ public class AutomationIOService extends AbstractCentralService {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                     if (characteristicIndex != null) {
                         if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                            if (isDigitalNotificatable(characteristicIndex)) {
+                            if (canDigitalNotify(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onDigitalNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
-                            } else if (isDigitalIndicatable(characteristicIndex)) {
+                            } else if (canDigitalIndicate(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onDigitalIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                             }
                         } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
-                            if (isDigitalNotificatable(characteristicIndex)) {
+                            if (canDigitalNotify(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onDigitalNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
-                            } else if (isDigitalIndicatable(characteristicIndex)) {
+                            } else if (canDigitalIndicate(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onDigitalIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                             }
                         }
@@ -638,15 +638,15 @@ public class AutomationIOService extends AbstractCentralService {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                     if (characteristicIndex != null) {
                         if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                            if (isAnalogNotificatable(characteristicIndex)) {
+                            if (canAnalogNotify(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onAnalogNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
-                            } else if (isAnalogIndicatable(characteristicIndex)) {
+                            } else if (canAnalogIndicate(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onAnalogIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                             }
                         } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
-                            if (isAnalogNotificatable(characteristicIndex)) {
+                            if (canAnalogNotify(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onAnalogNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
-                            } else if (isAnalogIndicatable(characteristicIndex)) {
+                            } else if (canAnalogIndicate(characteristicIndex)) {
                                 mAutomationIOServiceCallback.onAnalogIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, timeout, argument);
                             }
                         }
@@ -661,15 +661,15 @@ public class AutomationIOService extends AbstractCentralService {
             } else if (AGGREGATE_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
                     if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                        if (isAggregateNotificatable()) {
+                        if (canAggregateNotify()) {
                             mAutomationIOServiceCallback.onAggregateNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
-                        } else if (isAggregateIndicatable()) {
+                        } else if (canAggregateIndicate()) {
                             mAutomationIOServiceCallback.onAggregateIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                         }
                     } else if (argument.getInt(KEY_STATUS, STATUS_STOP) == STATUS_STOP) {
-                        if (isAggregateNotificatable()) {
+                        if (canAggregateNotify()) {
                             mAutomationIOServiceCallback.onAggregateNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
-                        } else if (isAggregateIndicatable()) {
+                        } else if (canAggregateIndicate()) {
                             mAutomationIOServiceCallback.onAggregateIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                         }
                     }
@@ -688,25 +688,25 @@ public class AutomationIOService extends AbstractCentralService {
             if (DIGITAL_CHARACTERISTIC.equals(characteristicUUID)) {
                 Integer characteristicIndex = getCharacteristicIndex(mDigitalList, characteristicInstanceId);
                 if (characteristicIndex != null) {
-                    if (isDigitalNotificatable(characteristicIndex)) {
+                    if (canDigitalNotify(characteristicIndex)) {
                         mAutomationIOServiceCallback.onDigitalNotified(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, DigitalAndroid.CREATOR.createFromByteArray(values));
-                    } else if (isDigitalIndicatable(characteristicIndex)) {
+                    } else if (canDigitalIndicate(characteristicIndex)) {
                         mAutomationIOServiceCallback.onDigitalIndicated(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, DigitalAndroid.CREATOR.createFromByteArray(values));
                     }
                 }
             } else if (ANALOG_CHARACTERISTIC.equals(characteristicUUID)) {
                 Integer characteristicIndex = getCharacteristicIndex(mAnalogList, characteristicInstanceId);
                 if (characteristicIndex != null) {
-                    if (isAnalogNotificatable(characteristicIndex)) {
+                    if (canAnalogNotify(characteristicIndex)) {
                         mAutomationIOServiceCallback.onAnalogNotified(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, AnalogAndroid.CREATOR.createFromByteArray(values));
-                    } else if (isAnalogIndicatable(characteristicIndex)) {
+                    } else if (canAnalogIndicate(characteristicIndex)) {
                         mAutomationIOServiceCallback.onAnalogIndicated(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, AnalogAndroid.CREATOR.createFromByteArray(values));
                     }
                 }
             } else if (AGGREGATE_CHARACTERISTIC.equals(characteristicUUID)) {
-                if (isAggregateNotificatable()) {
+                if (canAggregateNotify()) {
                     mAutomationIOServiceCallback.onAggregateNotified(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, AggregateAndroid.CREATOR.createFromByteArray(values));
-                } else if (isAggregateIndicatable()) {
+                } else if (canAggregateIndicate()) {
                     mAutomationIOServiceCallback.onAggregateIndicated(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, AggregateAndroid.CREATOR.createFromByteArray(values));
                 }
             }
@@ -796,27 +796,27 @@ public class AutomationIOService extends AbstractCentralService {
     }
 
     /**
-     * @see #isDigitalNotificatable(int)
+     * @see #canDigitalNotify(int)
      */
-    public synchronized boolean isDigitalNotificatable() {
-        return isDigitalNotificatable(0);
+    public synchronized boolean canDigitalNotify() {
+        return canDigitalNotify(0);
     }
 
     /**
-     * get Digital's notificatable status
+     * get Digital's notify status
      *
      * @param index Digital Characteristic index
-     * @return {@code true}:target Digital Characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target Digital Characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isDigitalNotificatable(int index) {
+    public synchronized boolean canDigitalNotify(int index) {
         return isCharacteristicPropertyEnabled(mDigitalList, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, index);
     }
 
     /**
-     * @see #isDigitalIndicatable(int)
+     * @see #canDigitalIndicate(int)
      */
-    public synchronized boolean isDigitalIndicatable() {
-        return isDigitalIndicatable(0);
+    public synchronized boolean canDigitalIndicate() {
+        return canDigitalIndicate(0);
     }
 
     /**
@@ -825,7 +825,7 @@ public class AutomationIOService extends AbstractCentralService {
      * @param index Digital Characteristic index
      * @return {@code true}:target Digital Characteristic is indictable, {@code false}:not indictable
      */
-    public synchronized boolean isDigitalIndicatable(int index) {
+    public synchronized boolean canDigitalIndicate(int index) {
         return isCharacteristicPropertyEnabled(mDigitalList, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, index);
     }
 
@@ -939,7 +939,7 @@ public class AutomationIOService extends AbstractCentralService {
      * @return {@code true}:target Digital Characteristic has Value Trigger Setting Descriptor, {@code false}:target Digital Characteristic does not have Value Trigger Setting Descriptor
      */
     public synchronized boolean hasDigitalValueTriggerSetting(int index) {
-        return (isDigitalNotificatable(index) || isDigitalIndicatable(index)) && getDescriptor(mDigitalList, VALUE_TRIGGER_SETTING_DESCRIPTOR, index) != null;
+        return (canDigitalNotify(index) || canDigitalIndicate(index)) && getDescriptor(mDigitalList, VALUE_TRIGGER_SETTING_DESCRIPTOR, index) != null;
     }
 
     /**
@@ -1024,27 +1024,27 @@ public class AutomationIOService extends AbstractCentralService {
     }
 
     /**
-     * @see #isAnalogNotificatable(int)
+     * @see #canAnalogNotify(int)
      */
-    public synchronized boolean isAnalogNotificatable() {
-        return isAnalogNotificatable(0);
+    public synchronized boolean canAnalogNotify() {
+        return canAnalogNotify(0);
     }
 
     /**
-     * get Analog's notificatable status
+     * get Analog's notify status
      *
      * @param index Analog Characteristic index
-     * @return {@code true}:target Analog Characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target Analog Characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isAnalogNotificatable(int index) {
+    public synchronized boolean canAnalogNotify(int index) {
         return isCharacteristicPropertyEnabled(mAnalogList, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, index);
     }
 
     /**
-     * @see #isAnalogIndicatable(int)
+     * @see #canAnalogIndicate(int)
      */
-    public synchronized boolean isAnalogIndicatable() {
-        return isAnalogIndicatable(0);
+    public synchronized boolean canAnalogIndicate() {
+        return canAnalogIndicate(0);
     }
 
     /**
@@ -1053,7 +1053,7 @@ public class AutomationIOService extends AbstractCentralService {
      * @param index Analog Characteristic index
      * @return {@code true}:target Analog Characteristic is indictable, {@code false}:not indictable
      */
-    public synchronized boolean isAnalogIndicatable(int index) {
+    public synchronized boolean canAnalogIndicate(int index) {
         return isCharacteristicPropertyEnabled(mAnalogList, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, index);
     }
 
@@ -1149,7 +1149,7 @@ public class AutomationIOService extends AbstractCentralService {
      * @return {@code true}:target Analog Characteristic has Value Trigger Setting Descriptor, {@code false}:target Analog Characteristic does not have Value Trigger Setting Descriptor
      */
     public synchronized boolean hasAnalogValueTriggerSetting(int index) {
-        return (isAnalogNotificatable(index) || isAnalogIndicatable(index)) && getDescriptor(mAnalogList, VALUE_TRIGGER_SETTING_DESCRIPTOR, index) != null;
+        return (canAnalogNotify(index) || canAnalogIndicate(index)) && getDescriptor(mAnalogList, VALUE_TRIGGER_SETTING_DESCRIPTOR, index) != null;
     }
 
     /**
@@ -1188,12 +1188,12 @@ public class AutomationIOService extends AbstractCentralService {
     }
 
     /**
-     * get Aggregate's notificatable status
+     * get Aggregate's notify status
      *
-     * @return {@code true}:Aggregate characteristic is notificatable, {@code false}:Aggregate characteristic is not notificatable or service not ready
+     * @return {@code true}:Aggregate characteristic can notify, {@code false}:Aggregate characteristic can not notify or service not ready
      */
-    public synchronized boolean isAggregateNotificatable() {
-        return mIsAggregateNotificatable;
+    public synchronized boolean canAggregateNotify() {
+        return mCanAggregateNotify;
     }
 
     /**
@@ -1201,8 +1201,8 @@ public class AutomationIOService extends AbstractCentralService {
      *
      * @return {@code true}:Aggregate characteristic is indictable, {@code false}:Aggregate characteristic is not indictable or service not ready
      */
-    public synchronized boolean isAggregateIndicatable() {
-        return mIsAggregateIndicatable;
+    public synchronized boolean canAggregateIndicate() {
+        return mCanAggregateIndicate;
     }
 
     /**
@@ -1328,7 +1328,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getDigitalClientCharacteristicConfiguration(int index) {
         Integer taskId = null;
-        if (isStarted() && (isDigitalNotificatable(index) || isDigitalIndicatable(index))) {
+        if (isStarted() && (canDigitalNotify(index) || canDigitalIndicate(index))) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
             taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
@@ -1355,7 +1355,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startDigitalNotification(int index) {
         Integer taskId = null;
-        if (isStarted() && isDigitalNotificatable(index)) {
+        if (isStarted() && canDigitalNotify(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
@@ -1384,7 +1384,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopDigitalNotification(int index) {
         Integer taskId = null;
-        if (isStarted() && isDigitalNotificatable(index)) {
+        if (isStarted() && canDigitalNotify(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
@@ -1413,7 +1413,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startDigitalIndication(int index) {
         Integer taskId = null;
-        if (isStarted() && isDigitalIndicatable(index)) {
+        if (isStarted() && canDigitalIndicate(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
@@ -1442,7 +1442,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopDigitalIndication(int index) {
         Integer taskId = null;
-        if (isStarted() && isDigitalIndicatable(index)) {
+        if (isStarted() && canDigitalIndicate(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mDigitalList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
@@ -1818,7 +1818,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getAnalogClientCharacteristicConfiguration(int index) {
         Integer taskId = null;
-        if (isStarted() && (isAnalogNotificatable(index) || isAnalogIndicatable(index))) {
+        if (isStarted() && (canAnalogNotify(index) || canAnalogIndicate(index))) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
             taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, bluetoothGattCharacteristic.getService().getInstanceId(), ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getInstanceId(), CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
@@ -1845,7 +1845,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startAnalogNotification(int index) {
         Integer taskId = null;
-        if (isStarted() && isAnalogNotificatable(index)) {
+        if (isStarted() && canAnalogNotify(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
@@ -1874,7 +1874,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopAnalogNotification(int index) {
         Integer taskId = null;
-        if (isStarted() && isAnalogNotificatable(index)) {
+        if (isStarted() && canAnalogNotify(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
@@ -1903,7 +1903,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startAnalogIndication(int index) {
         Integer taskId = null;
-        if (isStarted() && isAnalogIndicatable(index)) {
+        if (isStarted() && canAnalogIndicate(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
@@ -1932,7 +1932,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopAnalogIndication(int index) {
         Integer taskId = null;
-        if (isStarted() && isAnalogIndicatable(index)) {
+        if (isStarted() && canAnalogIndicate(index)) {
             BluetoothGattCharacteristic bluetoothGattCharacteristic = mAnalogList.get(index);
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
@@ -2212,7 +2212,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer getAggregateClientCharacteristicConfiguration() {
         Integer taskId = null;
-        if (isStarted() && (isAggregateNotificatable() || isAggregateIndicatable())) {
+        if (isStarted() && (canAggregateNotify() || canAggregateIndicate())) {
             taskId = mBLEConnection.createReadDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, ReadDescriptorTask.TIMEOUT_MILLIS, null, this);
         }
         return taskId;
@@ -2229,7 +2229,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startAggregateNotification() {
         Integer taskId = null;
-        if (isStarted() && isAggregateNotificatable()) {
+        if (isStarted() && canAggregateNotify()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -2248,7 +2248,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopAggregateNotification() {
         Integer taskId = null;
-        if (isStarted() && isAggregateNotificatable()) {
+        if (isStarted() && canAggregateNotify()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -2267,7 +2267,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startAggregateIndication() {
         Integer taskId = null;
-        if (isStarted() && isAggregateIndicatable()) {
+        if (isStarted() && canAggregateIndicate()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_START);
             taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);
@@ -2286,7 +2286,7 @@ public class AutomationIOService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopAggregateIndication() {
         Integer taskId = null;
-        if (isStarted() && isAggregateIndicatable()) {
+        if (isStarted() && canAggregateIndicate()) {
             Bundle bundle = new Bundle();
             bundle.putInt(KEY_STATUS, STATUS_STOP);
             taskId = mBLEConnection.createWriteDescriptorTask(AUTOMATION_IO_SERVICE, null, AGGREGATE_CHARACTERISTIC, null, CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, null, new ClientCharacteristicConfiguration(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE), WriteDescriptorTask.TIMEOUT_MILLIS, bundle, this);

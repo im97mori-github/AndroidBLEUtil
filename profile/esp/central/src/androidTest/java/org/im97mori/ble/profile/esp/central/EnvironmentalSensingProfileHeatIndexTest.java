@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileHeatIndexTest extends AbstractCentralTes
 
     @Test
     @RequiresDevice
-    public void test_isHeatIndexNotificatable_00001() {
+    public void test_canHeatIndexNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isHeatIndexNotificatable());
+        assertNull(environmentalSensingProfile.canHeatIndexNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isHeatIndexNotificatable_00002() {
+    public void test_canHeatIndexNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isHeatIndexNotificatable());
+        assertNotNull(environmentalSensingProfile.canHeatIndexNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isHeatIndexNotificatable_00101() {
+    public void test_canHeatIndexNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isHeatIndexNotificatable(0));
+        assertNull(environmentalSensingProfile.canHeatIndexNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isHeatIndexNotificatable_00102() {
+    public void test_canHeatIndexNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isHeatIndexNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canHeatIndexNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

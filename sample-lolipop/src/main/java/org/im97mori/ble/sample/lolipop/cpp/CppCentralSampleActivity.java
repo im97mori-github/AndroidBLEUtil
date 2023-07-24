@@ -134,9 +134,9 @@ public class CppCentralSampleActivity extends BaseActivity implements View.OnCli
 
         } else if (R.id.read_cycling_power_measurement_characteristic_configuration == item.getItemId()) {
             mCyclingPowerProfile.getCyclingPowerMeasurementClientCharacteristicConfiguration();
-        } else if (R.id.start_notificate_cycling_power_measurement == item.getItemId()) {
+        } else if (R.id.start_notify_cycling_power_measurement == item.getItemId()) {
             mCyclingPowerProfile.startCyclingPowerMeasurementNotification();
-        } else if (R.id.stop_notificate_cycling_power_measurement == item.getItemId()) {
+        } else if (R.id.stop_notify_cycling_power_measurement == item.getItemId()) {
             mCyclingPowerProfile.stopCyclingPowerMeasurementNotification();
 
         } else if (R.id.read_sensor_location == item.getItemId()) {
@@ -220,9 +220,9 @@ public class CppCentralSampleActivity extends BaseActivity implements View.OnCli
             mCyclingPowerProfile.stopCyclingPowerControlPointIndication();
         } else if (R.id.read_cycling_power_vector_characteristic_configuration == item.getItemId()) {
             mCyclingPowerProfile.getCyclingPowerVectorClientCharacteristicConfiguration();
-        } else if (R.id.start_notificate_cycling_power_vector == item.getItemId()) {
+        } else if (R.id.start_notify_cycling_power_vector == item.getItemId()) {
             mCyclingPowerProfile.startCyclingPowerVectorNotification();
-        } else if (R.id.stop_notificate_cycling_power_vector == item.getItemId()) {
+        } else if (R.id.stop_notify_cycling_power_vector == item.getItemId()) {
             mCyclingPowerProfile.stopCyclingPowerVectorNotification();
         } else if (R.id.read_manufacturer_name == item.getItemId()) {
             mCyclingPowerProfile.getManufacturerNameString();

@@ -3953,7 +3953,7 @@ public interface UserDataServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Database Change Increment notificate success callback
+     * Start Database Change Increment notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -3974,7 +3974,7 @@ public interface UserDataServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Database Change Increment notificate error callback
+     * Start Database Change Increment notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -4000,7 +4000,7 @@ public interface UserDataServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Database Change Increment notificate timeout callback
+     * Start Database Change Increment notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -4023,7 +4023,7 @@ public interface UserDataServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Database Change Increment notificate success callback
+     * Stop Database Change Increment notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -4044,7 +4044,7 @@ public interface UserDataServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Database Change Increment notificate error callback
+     * Stop Database Change Increment notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -4070,7 +4070,7 @@ public interface UserDataServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Database Change Increment notificate timeout callback
+     * Stop Database Change Increment notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device

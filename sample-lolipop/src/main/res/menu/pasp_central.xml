@@ -17,10 +17,10 @@
             android:id="@+id/read_alert_status_characteristic_configuration"
             android:title="@string/menu_read_alert_status_characteristic_configuration" />
         <item
-            android:id="@+id/start_notificate_alert_status"
+            android:id="@+id/start_notify_alert_status"
             android:title="@string/menu_notify_alert_status_start" />
         <item
-            android:id="@+id/stop_notificate_alert_status"
+            android:id="@+id/stop_notify_alert_status"
             android:title="@string/menu_notify_alert_status_stop" />
         <item
             android:id="@+id/read_ringer_setting"
@@ -29,10 +29,10 @@
             android:id="@+id/read_ringer_setting_characteristic_configuration"
             android:title="@string/menu_read_ringer_setting_characteristic_configuration" />
         <item
-            android:id="@+id/start_notificate_ringer_setting"
+            android:id="@+id/start_notify_ringer_setting"
             android:title="@string/menu_notify_ringer_setting_start" />
         <item
-            android:id="@+id/stop_notificate_ringer_setting"
+            android:id="@+id/stop_notify_ringer_setting"
             android:title="@string/menu_notify_ringer_setting_stop" />
         <item
             android:id="@+id/write_ringer_control_point_1"

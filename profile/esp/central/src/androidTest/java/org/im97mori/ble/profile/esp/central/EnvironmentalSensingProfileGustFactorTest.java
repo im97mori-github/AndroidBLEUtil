@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileGustFactorTest extends AbstractCentralTe
 
     @Test
     @RequiresDevice
-    public void test_isGustFactorNotificatable_00001() {
+    public void test_canGustFactorNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isGustFactorNotificatable());
+        assertNull(environmentalSensingProfile.canGustFactorNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isGustFactorNotificatable_00002() {
+    public void test_canGustFactorNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isGustFactorNotificatable());
+        assertNotNull(environmentalSensingProfile.canGustFactorNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isGustFactorNotificatable_00101() {
+    public void test_canGustFactorNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isGustFactorNotificatable(0));
+        assertNull(environmentalSensingProfile.canGustFactorNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isGustFactorNotificatable_00102() {
+    public void test_canGustFactorNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isGustFactorNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canGustFactorNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

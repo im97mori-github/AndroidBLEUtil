@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileElevationTest extends AbstractCentralTes
 
     @Test
     @RequiresDevice
-    public void test_isElevationNotificatable_00001() {
+    public void test_canElevationNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isElevationNotificatable());
+        assertNull(environmentalSensingProfile.canElevationNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isElevationNotificatable_00002() {
+    public void test_canElevationNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isElevationNotificatable());
+        assertNotNull(environmentalSensingProfile.canElevationNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isElevationNotificatable_00101() {
+    public void test_canElevationNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isElevationNotificatable(0));
+        assertNull(environmentalSensingProfile.canElevationNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isElevationNotificatable_00102() {
+    public void test_canElevationNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isElevationNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canElevationNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

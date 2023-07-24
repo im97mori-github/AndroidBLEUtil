@@ -36,7 +36,7 @@ import org.im97mori.ble.characteristic.u2a47.SupportedNewAlertCategory;
 import org.im97mori.ble.characteristic.u2a48.SupportedUnreadAlertCategory;
 import org.im97mori.ble.service.ans.AlertNotificationCategoryIdUtils;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
-import org.im97mori.ble.task.NotificationTask;
+import org.im97mori.ble.task.NotifyTask;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -750,28 +750,28 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
                             for (NewAlert newAlert : newAlertList) {
                                 if (device == null) {
                                     for (BluetoothDevice bluetoothDevice : mConnectedDeviceMap.keySet()) {
-                                        bleServerConnection.createNotificationTask(bluetoothDevice
+                                        bleServerConnection.createNotifyTask(bluetoothDevice
                                                 , serviceUUID
                                                 , serviceInstanceId
                                                 , characteristicUUID
                                                 , characteristicInstanceId
                                                 , newAlert
                                                 , isConfirm
-                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , NotifyTask.TIMEOUT_MILLIS
                                                 , delay
                                                 , bundle
                                                 , this);
                                     }
                                 } else {
                                     if (mConnectedDeviceMap.containsKey(device)) {
-                                        bleServerConnection.createNotificationTask(device
+                                        bleServerConnection.createNotifyTask(device
                                                 , serviceUUID
                                                 , serviceInstanceId
                                                 , characteristicUUID
                                                 , characteristicInstanceId
                                                 , newAlert
                                                 , isConfirm
-                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , NotifyTask.TIMEOUT_MILLIS
                                                 , delay
                                                 , bundle
                                                 , this);
@@ -842,28 +842,28 @@ public class AlertNotificationServiceMockCallback extends AbstractServiceMockCal
                             for (UnreadAlertStatus unreadAlertStatus : unreadAlertStatusList) {
                                 if (device == null) {
                                     for (BluetoothDevice bluetoothDevice : mConnectedDeviceMap.keySet()) {
-                                        bleServerConnection.createNotificationTask(bluetoothDevice
+                                        bleServerConnection.createNotifyTask(bluetoothDevice
                                                 , serviceUUID
                                                 , serviceInstanceId
                                                 , characteristicUUID
                                                 , characteristicInstanceId
                                                 , unreadAlertStatus
                                                 , isConfirm
-                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , NotifyTask.TIMEOUT_MILLIS
                                                 , delay
                                                 , bundle
                                                 , this);
                                     }
                                 } else {
                                     if (mConnectedDeviceMap.containsKey(device)) {
-                                        bleServerConnection.createNotificationTask(device
+                                        bleServerConnection.createNotifyTask(device
                                                 , serviceUUID
                                                 , serviceInstanceId
                                                 , characteristicUUID
                                                 , characteristicInstanceId
                                                 , unreadAlertStatus
                                                 , isConfirm
-                                                , NotificationTask.TIMEOUT_MILLIS
+                                                , NotifyTask.TIMEOUT_MILLIS
                                                 , delay
                                                 , bundle
                                                 , this);

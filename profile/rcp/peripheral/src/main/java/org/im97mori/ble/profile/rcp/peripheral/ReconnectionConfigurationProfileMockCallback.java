@@ -115,7 +115,7 @@ public class ReconnectionConfigurationProfileMockCallback extends AbstractProfil
          * @see org.im97mori.ble.service.rcs.peripheral.ReconnectionConfigurationServiceMockCallback.Builder#addRCSettings(boolean, int, long, byte[], int, int, long, byte[])
          */
         @NonNull
-        public Builder<T> addRCSettings(boolean isNotificatable
+        public Builder<T> addRCSettings(boolean canNotify
                 , int characteristicResponseCode
                 , long characteristicDelay
                 , @NonNull byte[] characteristicValue
@@ -123,7 +123,7 @@ public class ReconnectionConfigurationProfileMockCallback extends AbstractProfil
                 , int descriptorResponseCode
                 , long descriptorDelay
                 , @NonNull byte[] descriptorValue) {
-            mReconnectionConfigurationServiceMockCallbackBuilder.addRCSettings(isNotificatable, characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
+            mReconnectionConfigurationServiceMockCallbackBuilder.addRCSettings(canNotify, characteristicResponseCode, characteristicDelay, characteristicValue, notificationCount, descriptorResponseCode, descriptorDelay, descriptorValue);
             return this;
         }
 

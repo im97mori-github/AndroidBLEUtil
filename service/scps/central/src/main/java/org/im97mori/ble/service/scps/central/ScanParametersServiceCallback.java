@@ -162,7 +162,7 @@ public interface ScanParametersServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Scan Refresh notificate success callback
+     * Start Scan Refresh notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -173,7 +173,7 @@ public interface ScanParametersServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onScanRefreshNotificateStartSuccess(@NonNull Integer taskId
+    void onScanRefreshNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -183,7 +183,7 @@ public interface ScanParametersServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Scan Refresh notificate error callback
+     * Start Scan Refresh notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -198,7 +198,7 @@ public interface ScanParametersServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onScanRefreshNotificateStartFailed(@NonNull Integer taskId
+    void onScanRefreshNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -209,7 +209,7 @@ public interface ScanParametersServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Scan Refresh notificate timeout callback
+     * Start Scan Refresh notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -221,7 +221,7 @@ public interface ScanParametersServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onScanRefreshNotificateStartTimeout(@NonNull Integer taskId
+    void onScanRefreshNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -232,7 +232,7 @@ public interface ScanParametersServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Scan Refresh notificate success callback
+     * Stop Scan Refresh notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -243,7 +243,7 @@ public interface ScanParametersServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onScanRefreshNotificateStopSuccess(@NonNull Integer taskId
+    void onScanRefreshNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -253,7 +253,7 @@ public interface ScanParametersServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Scan Refresh notificate error callback
+     * Stop Scan Refresh notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -268,7 +268,7 @@ public interface ScanParametersServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onScanRefreshNotificateStopFailed(@NonNull Integer taskId
+    void onScanRefreshNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -279,7 +279,7 @@ public interface ScanParametersServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Scan Refresh notificate timeout callback
+     * Stop Scan Refresh notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -291,7 +291,7 @@ public interface ScanParametersServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onScanRefreshNotificateStopTimeout(@NonNull Integer taskId
+    void onScanRefreshNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId

@@ -229,7 +229,7 @@ public interface CurrentTimeServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Current Time notificate success callback
+     * Start Current Time notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -240,7 +240,7 @@ public interface CurrentTimeServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onCurrentTimeNotificateStartSuccess(@NonNull Integer taskId
+    void onCurrentTimeNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -250,7 +250,7 @@ public interface CurrentTimeServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Current Time notificate error callback
+     * Start Current Time notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -265,7 +265,7 @@ public interface CurrentTimeServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onCurrentTimeNotificateStartFailed(@NonNull Integer taskId
+    void onCurrentTimeNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -276,7 +276,7 @@ public interface CurrentTimeServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Current Time notificate timeout callback
+     * Start Current Time notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -288,7 +288,7 @@ public interface CurrentTimeServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onCurrentTimeNotificateStartTimeout(@NonNull Integer taskId
+    void onCurrentTimeNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -299,7 +299,7 @@ public interface CurrentTimeServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Current Time notificate success callback
+     * Stop Current Time notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -310,7 +310,7 @@ public interface CurrentTimeServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onCurrentTimeNotificateStopSuccess(@NonNull Integer taskId
+    void onCurrentTimeNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -320,7 +320,7 @@ public interface CurrentTimeServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Current Time notificate error callback
+     * Stop Current Time notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -335,7 +335,7 @@ public interface CurrentTimeServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onCurrentTimeNotificateStopFailed(@NonNull Integer taskId
+    void onCurrentTimeNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -346,7 +346,7 @@ public interface CurrentTimeServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Current Time notificate timeout callback
+     * Stop Current Time notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -358,7 +358,7 @@ public interface CurrentTimeServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onCurrentTimeNotificateStopTimeout(@NonNull Integer taskId
+    void onCurrentTimeNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId

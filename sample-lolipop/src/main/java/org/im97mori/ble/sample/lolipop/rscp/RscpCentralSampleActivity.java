@@ -145,9 +145,9 @@ public class RscpCentralSampleActivity extends BaseActivity implements View.OnCl
             mRunningSpeedAndCadenceProfile.getRSCFeature();
         } else if (R.id.read_rsc_measurement_characteristic_configuration == item.getItemId()) {
             mRunningSpeedAndCadenceProfile.getRSCMeasurementClientCharacteristicConfiguration();
-        } else if (R.id.start_notificate_rsc_measurement == item.getItemId()) {
+        } else if (R.id.start_notify_rsc_measurement == item.getItemId()) {
             mRunningSpeedAndCadenceProfile.startRSCMeasurementNotification();
-        } else if (R.id.stop_notificate_rsc_measurement == item.getItemId()) {
+        } else if (R.id.stop_notify_rsc_measurement == item.getItemId()) {
             mRunningSpeedAndCadenceProfile.stopRSCMeasurementNotification();
         } else if (R.id.read_sensor_location == item.getItemId()) {
             mRunningSpeedAndCadenceProfile.getSensorLocation();

@@ -250,9 +250,9 @@ public class CyclingPowerService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && CYCLING_POWER_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (CYCLING_POWER_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mCyclingPowerServiceCallback.onCyclingPowerMeasurementNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
+                    mCyclingPowerServiceCallback.onCyclingPowerMeasurementNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mCyclingPowerServiceCallback.onCyclingPowerMeasurementNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
+                    mCyclingPowerServiceCallback.onCyclingPowerMeasurementNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             } else if (CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -262,9 +262,9 @@ public class CyclingPowerService extends AbstractCentralService {
                 }
             } else if (CYCLING_POWER_VECTOR_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mCyclingPowerServiceCallback.onCyclingPowerVectorNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
+                    mCyclingPowerServiceCallback.onCyclingPowerVectorNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 } else {
-                    mCyclingPowerServiceCallback.onCyclingPowerVectorNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
+                    mCyclingPowerServiceCallback.onCyclingPowerVectorNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                 }
             }
         }
@@ -279,9 +279,9 @@ public class CyclingPowerService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && CYCLING_POWER_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (CYCLING_POWER_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mCyclingPowerServiceCallback.onCyclingPowerMeasurementNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
+                    mCyclingPowerServiceCallback.onCyclingPowerMeasurementNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mCyclingPowerServiceCallback.onCyclingPowerMeasurementNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
+                    mCyclingPowerServiceCallback.onCyclingPowerMeasurementNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             } else if (CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -291,9 +291,9 @@ public class CyclingPowerService extends AbstractCentralService {
                 }
             } else if (CYCLING_POWER_VECTOR_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mCyclingPowerServiceCallback.onCyclingPowerVectorNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
+                    mCyclingPowerServiceCallback.onCyclingPowerVectorNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 } else {
-                    mCyclingPowerServiceCallback.onCyclingPowerVectorNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
+                    mCyclingPowerServiceCallback.onCyclingPowerVectorNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                 }
             }
         }
@@ -308,9 +308,9 @@ public class CyclingPowerService extends AbstractCentralService {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice) && CYCLING_POWER_SERVICE.equals(serviceUUID) && CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID) && argument != null && argument.containsKey(KEY_STATUS)) {
             if (CYCLING_POWER_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mCyclingPowerServiceCallback.onCyclingPowerMeasurementNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
+                    mCyclingPowerServiceCallback.onCyclingPowerMeasurementNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mCyclingPowerServiceCallback.onCyclingPowerMeasurementNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
+                    mCyclingPowerServiceCallback.onCyclingPowerMeasurementNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             } else if (CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
@@ -320,9 +320,9 @@ public class CyclingPowerService extends AbstractCentralService {
                 }
             } else if (CYCLING_POWER_VECTOR_CHARACTERISTIC.equals(characteristicUUID)) {
                 if (argument.getInt(KEY_STATUS, STATUS_START) == STATUS_START) {
-                    mCyclingPowerServiceCallback.onCyclingPowerVectorNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
+                    mCyclingPowerServiceCallback.onCyclingPowerVectorNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 } else {
-                    mCyclingPowerServiceCallback.onCyclingPowerVectorNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
+                    mCyclingPowerServiceCallback.onCyclingPowerVectorNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                 }
             }
         }
@@ -402,9 +402,9 @@ public class CyclingPowerService extends AbstractCentralService {
      * start Cycling Power Measurement notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see CyclingPowerServiceCallback#onCyclingPowerMeasurementNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see CyclingPowerServiceCallback#onCyclingPowerMeasurementNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
-     * @see CyclingPowerServiceCallback#onCyclingPowerMeasurementNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see CyclingPowerServiceCallback#onCyclingPowerMeasurementNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see CyclingPowerServiceCallback#onCyclingPowerMeasurementNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see CyclingPowerServiceCallback#onCyclingPowerMeasurementNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
      */
     @Nullable
     public synchronized Integer startCyclingPowerMeasurementNotification() {
@@ -421,9 +421,9 @@ public class CyclingPowerService extends AbstractCentralService {
      * stop Cycling Power Measurement notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see CyclingPowerServiceCallback#onCyclingPowerMeasurementNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see CyclingPowerServiceCallback#onCyclingPowerMeasurementNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
-     * @see CyclingPowerServiceCallback#onCyclingPowerMeasurementNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see CyclingPowerServiceCallback#onCyclingPowerMeasurementNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see CyclingPowerServiceCallback#onCyclingPowerMeasurementNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see CyclingPowerServiceCallback#onCyclingPowerMeasurementNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
      */
     @Nullable
     public synchronized Integer stopCyclingPowerMeasurementNotification() {
@@ -547,9 +547,9 @@ public class CyclingPowerService extends AbstractCentralService {
      * start Cycling Power Vector notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see CyclingPowerServiceCallback#onCyclingPowerVectorNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see CyclingPowerServiceCallback#onCyclingPowerVectorNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
-     * @see CyclingPowerServiceCallback#onCyclingPowerVectorNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see CyclingPowerServiceCallback#onCyclingPowerVectorNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see CyclingPowerServiceCallback#onCyclingPowerVectorNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see CyclingPowerServiceCallback#onCyclingPowerVectorNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
      */
     @Nullable
     public synchronized Integer startCyclingPowerVectorNotification() {
@@ -566,9 +566,9 @@ public class CyclingPowerService extends AbstractCentralService {
      * stop Cycling Power Vector notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see CyclingPowerServiceCallback#onCyclingPowerVectorNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see CyclingPowerServiceCallback#onCyclingPowerVectorNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
-     * @see CyclingPowerServiceCallback#onCyclingPowerVectorNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see CyclingPowerServiceCallback#onCyclingPowerVectorNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see CyclingPowerServiceCallback#onCyclingPowerVectorNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see CyclingPowerServiceCallback#onCyclingPowerVectorNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
      */
     @Nullable
     public synchronized Integer stopCyclingPowerVectorNotification() {

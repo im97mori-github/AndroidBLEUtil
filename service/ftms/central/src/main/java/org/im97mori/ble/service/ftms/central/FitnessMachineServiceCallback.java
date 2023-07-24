@@ -174,7 +174,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Treadmill Data notificate success callback
+     * Start Treadmill Data notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -185,7 +185,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onTreadmillDataNotificateStartSuccess(@NonNull Integer taskId
+    void onTreadmillDataNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -195,7 +195,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Treadmill Data notificate error callback
+     * Start Treadmill Data notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -210,7 +210,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onTreadmillDataNotificateStartFailed(@NonNull Integer taskId
+    void onTreadmillDataNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -221,7 +221,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Treadmill Data notificate timeout callback
+     * Start Treadmill Data notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -233,7 +233,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onTreadmillDataNotificateStartTimeout(@NonNull Integer taskId
+    void onTreadmillDataNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -244,7 +244,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Treadmill Data notificate success callback
+     * Stop Treadmill Data notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -255,7 +255,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onTreadmillDataNotificateStopSuccess(@NonNull Integer taskId
+    void onTreadmillDataNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -265,7 +265,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Treadmill Data notificate error callback
+     * Stop Treadmill Data notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -280,7 +280,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onTreadmillDataNotificateStopFailed(@NonNull Integer taskId
+    void onTreadmillDataNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -291,7 +291,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Treadmill Data notificate timeout callback
+     * Stop Treadmill Data notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -303,7 +303,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onTreadmillDataNotificateStopTimeout(@NonNull Integer taskId
+    void onTreadmillDataNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -403,7 +403,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Treadmill Data notificate success callback
+     * Start Treadmill Data notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -414,7 +414,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onCrossTrainerDataNotificateStartSuccess(@NonNull Integer taskId
+    void onCrossTrainerDataNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -424,7 +424,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Cross Trainer Data notificate error callback
+     * Start Cross Trainer Data notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -439,7 +439,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onCrossTrainerDataNotificateStartFailed(@NonNull Integer taskId
+    void onCrossTrainerDataNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -450,7 +450,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Cross Trainer Data notificate timeout callback
+     * Start Cross Trainer Data notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -462,7 +462,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onCrossTrainerDataNotificateStartTimeout(@NonNull Integer taskId
+    void onCrossTrainerDataNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -473,7 +473,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Cross Trainer Data notificate success callback
+     * Stop Cross Trainer Data notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -484,7 +484,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onCrossTrainerDataNotificateStopSuccess(@NonNull Integer taskId
+    void onCrossTrainerDataNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -494,7 +494,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Cross Trainer Data notificate error callback
+     * Stop Cross Trainer Data notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -509,7 +509,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onCrossTrainerDataNotificateStopFailed(@NonNull Integer taskId
+    void onCrossTrainerDataNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -520,7 +520,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Cross Trainer Data notificate timeout callback
+     * Stop Cross Trainer Data notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -532,7 +532,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onCrossTrainerDataNotificateStopTimeout(@NonNull Integer taskId
+    void onCrossTrainerDataNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -632,7 +632,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Step Climber Data notificate success callback
+     * Start Step Climber Data notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -643,7 +643,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onStepClimberDataNotificateStartSuccess(@NonNull Integer taskId
+    void onStepClimberDataNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -653,7 +653,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Step Climber Data notificate error callback
+     * Start Step Climber Data notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -668,7 +668,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onStepClimberDataNotificateStartFailed(@NonNull Integer taskId
+    void onStepClimberDataNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -679,7 +679,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Step Climber Data notificate timeout callback
+     * Start Step Climber Data notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -691,7 +691,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onStepClimberDataNotificateStartTimeout(@NonNull Integer taskId
+    void onStepClimberDataNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -702,7 +702,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Step Climber Data notificate success callback
+     * Stop Step Climber Data notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -713,7 +713,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onStepClimberDataNotificateStopSuccess(@NonNull Integer taskId
+    void onStepClimberDataNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -723,7 +723,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Step Climber Data notificate error callback
+     * Stop Step Climber Data notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -738,7 +738,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onStepClimberDataNotificateStopFailed(@NonNull Integer taskId
+    void onStepClimberDataNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -749,7 +749,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Step Climber Data notificate timeout callback
+     * Stop Step Climber Data notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -761,7 +761,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onStepClimberDataNotificateStopTimeout(@NonNull Integer taskId
+    void onStepClimberDataNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -861,7 +861,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Rower Data notificate success callback
+     * Start Rower Data notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -872,7 +872,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onStairClimberDataNotificateStartSuccess(@NonNull Integer taskId
+    void onStairClimberDataNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -882,7 +882,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Rower Data notificate error callback
+     * Start Rower Data notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -897,7 +897,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onStairClimberDataNotificateStartFailed(@NonNull Integer taskId
+    void onStairClimberDataNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -908,7 +908,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Rower Data notificate timeout callback
+     * Start Rower Data notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -920,7 +920,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onStairClimberDataNotificateStartTimeout(@NonNull Integer taskId
+    void onStairClimberDataNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -931,7 +931,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Rower Data notificate success callback
+     * Stop Rower Data notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -942,7 +942,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onStairClimberDataNotificateStopSuccess(@NonNull Integer taskId
+    void onStairClimberDataNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -952,7 +952,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Rower Data notificate error callback
+     * Stop Rower Data notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -967,7 +967,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onStairClimberDataNotificateStopFailed(@NonNull Integer taskId
+    void onStairClimberDataNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -978,7 +978,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Rower Data notificate timeout callback
+     * Stop Rower Data notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -990,7 +990,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onStairClimberDataNotificateStopTimeout(@NonNull Integer taskId
+    void onStairClimberDataNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1090,7 +1090,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Rower Data notificate success callback
+     * Start Rower Data notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1101,7 +1101,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onRowerDataNotificateStartSuccess(@NonNull Integer taskId
+    void onRowerDataNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1111,7 +1111,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Rower Data notificate error callback
+     * Start Rower Data notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1126,7 +1126,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onRowerDataNotificateStartFailed(@NonNull Integer taskId
+    void onRowerDataNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1137,7 +1137,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Rower Data notificate timeout callback
+     * Start Rower Data notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1149,7 +1149,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onRowerDataNotificateStartTimeout(@NonNull Integer taskId
+    void onRowerDataNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1160,7 +1160,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Rower Data notificate success callback
+     * Stop Rower Data notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1171,7 +1171,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onRowerDataNotificateStopSuccess(@NonNull Integer taskId
+    void onRowerDataNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1181,7 +1181,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Rower Data notificate error callback
+     * Stop Rower Data notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1196,7 +1196,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onRowerDataNotificateStopFailed(@NonNull Integer taskId
+    void onRowerDataNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1207,7 +1207,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Rower Data notificate timeout callback
+     * Stop Rower Data notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1219,7 +1219,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onRowerDataNotificateStopTimeout(@NonNull Integer taskId
+    void onRowerDataNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1319,7 +1319,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Indoor Bike Data notificate success callback
+     * Start Indoor Bike Data notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1330,7 +1330,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onIndoorBikeDataNotificateStartSuccess(@NonNull Integer taskId
+    void onIndoorBikeDataNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1340,7 +1340,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Indoor Bike Data notificate error callback
+     * Start Indoor Bike Data notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1355,7 +1355,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onIndoorBikeDataNotificateStartFailed(@NonNull Integer taskId
+    void onIndoorBikeDataNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1366,7 +1366,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Indoor Bike Data notificate timeout callback
+     * Start Indoor Bike Data notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1378,7 +1378,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onIndoorBikeDataNotificateStartTimeout(@NonNull Integer taskId
+    void onIndoorBikeDataNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1389,7 +1389,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Indoor Bike Data notificate success callback
+     * Stop Indoor Bike Data notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1400,7 +1400,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onIndoorBikeDataNotificateStopSuccess(@NonNull Integer taskId
+    void onIndoorBikeDataNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1410,7 +1410,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Indoor Bike Data notificate error callback
+     * Stop Indoor Bike Data notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1425,7 +1425,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onIndoorBikeDataNotificateStopFailed(@NonNull Integer taskId
+    void onIndoorBikeDataNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1436,7 +1436,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Indoor Bike Data notificate timeout callback
+     * Stop Indoor Bike Data notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1448,7 +1448,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onIndoorBikeDataNotificateStopTimeout(@NonNull Integer taskId
+    void onIndoorBikeDataNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1613,7 +1613,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Training Status notificate success callback
+     * Start Training Status notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1624,7 +1624,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onTrainingStatusNotificateStartSuccess(@NonNull Integer taskId
+    void onTrainingStatusNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1634,7 +1634,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Training Status notificate error callback
+     * Start Training Status notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1649,7 +1649,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onTrainingStatusNotificateStartFailed(@NonNull Integer taskId
+    void onTrainingStatusNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1660,7 +1660,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Training Status notificate timeout callback
+     * Start Training Status notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1672,7 +1672,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onTrainingStatusNotificateStartTimeout(@NonNull Integer taskId
+    void onTrainingStatusNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1683,7 +1683,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Training Status notificate success callback
+     * Stop Training Status notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1694,7 +1694,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onTrainingStatusNotificateStopSuccess(@NonNull Integer taskId
+    void onTrainingStatusNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1704,7 +1704,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Training Status notificate error callback
+     * Stop Training Status notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1719,7 +1719,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onTrainingStatusNotificateStopFailed(@NonNull Integer taskId
+    void onTrainingStatusNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -1730,7 +1730,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Training Status notificate timeout callback
+     * Stop Training Status notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -1742,7 +1742,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onTrainingStatusNotificateStopTimeout(@NonNull Integer taskId
+    void onTrainingStatusNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -2467,7 +2467,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Fitness Machine Status notificate success callback
+     * Start Fitness Machine Status notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -2478,7 +2478,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onFitnessMachineStatusNotificateStartSuccess(@NonNull Integer taskId
+    void onFitnessMachineStatusNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -2488,7 +2488,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Fitness Machine Status notificate error callback
+     * Start Fitness Machine Status notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -2503,7 +2503,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onFitnessMachineStatusNotificateStartFailed(@NonNull Integer taskId
+    void onFitnessMachineStatusNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -2514,7 +2514,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Fitness Machine Status notificate timeout callback
+     * Start Fitness Machine Status notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -2526,7 +2526,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onFitnessMachineStatusNotificateStartTimeout(@NonNull Integer taskId
+    void onFitnessMachineStatusNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -2537,7 +2537,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Fitness Machine Status notificate success callback
+     * Stop Fitness Machine Status notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -2548,7 +2548,7 @@ public interface FitnessMachineServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onFitnessMachineStatusNotificateStopSuccess(@NonNull Integer taskId
+    void onFitnessMachineStatusNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -2558,7 +2558,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Fitness Machine Status notificate error callback
+     * Stop Fitness Machine Status notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -2573,7 +2573,7 @@ public interface FitnessMachineServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onFitnessMachineStatusNotificateStopFailed(@NonNull Integer taskId
+    void onFitnessMachineStatusNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -2584,7 +2584,7 @@ public interface FitnessMachineServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Fitness Machine Status notificate timeout callback
+     * Stop Fitness Machine Status notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -2596,7 +2596,7 @@ public interface FitnessMachineServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onFitnessMachineStatusNotificateStopTimeout(@NonNull Integer taskId
+    void onFitnessMachineStatusNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId

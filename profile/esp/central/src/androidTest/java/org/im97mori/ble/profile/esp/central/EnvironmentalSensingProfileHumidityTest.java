@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileHumidityTest extends AbstractCentralTest
 
     @Test
     @RequiresDevice
-    public void test_isHumidityNotificatable_00001() {
+    public void test_canHumidityNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isHumidityNotificatable());
+        assertNull(environmentalSensingProfile.canHumidityNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isHumidityNotificatable_00002() {
+    public void test_canHumidityNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isHumidityNotificatable());
+        assertNotNull(environmentalSensingProfile.canHumidityNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isHumidityNotificatable_00101() {
+    public void test_canHumidityNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isHumidityNotificatable(0));
+        assertNull(environmentalSensingProfile.canHumidityNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isHumidityNotificatable_00102() {
+    public void test_canHumidityNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isHumidityNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canHumidityNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

@@ -671,7 +671,7 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
             public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addMeasurementInterval(int measurementIntervalResponseCode
                     , long measurementIntervalDelay
                     , @NonNull byte[] measurementIntervalValue
-                    , boolean isMeasurementIntervalIndicatable
+                    , boolean canMeasurementIntervalIndicate
                     , boolean isMeasurementIntervalWritable
                     , int clientCharacteristicConfigurationResponseCode
                     , long clientCharacteristicConfigurationDelay
@@ -683,7 +683,7 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
                 assertArrayEquals(clientCharacteristicConfiguration.getBytes(), clientCharacteristicConfigurationValue);
                 assertArrayEquals(validRange.getBytes(), validRangeValue);
                 atomicBoolean.set(true);
-                return super.addMeasurementInterval(measurementIntervalResponseCode, measurementIntervalDelay, measurementIntervalValue, isMeasurementIntervalIndicatable, isMeasurementIntervalWritable, clientCharacteristicConfigurationResponseCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue, validRangeResponseCode, validRangeDelay, validRangeValue);
+                return super.addMeasurementInterval(measurementIntervalResponseCode, measurementIntervalDelay, measurementIntervalValue, canMeasurementIntervalIndicate, isMeasurementIntervalWritable, clientCharacteristicConfigurationResponseCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue, validRangeResponseCode, validRangeDelay, validRangeValue);
             }
 
         };
@@ -722,7 +722,7 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
             public HealthThermometerServiceMockCallback.Builder<HealthThermometerServiceMockCallback> addMeasurementInterval(int measurementIntervalResponseCode
                     , long measurementIntervalDelay
                     , @NonNull byte[] measurementIntervalValue
-                    , boolean isMeasurementIntervalIndicatable
+                    , boolean canMeasurementIntervalIndicate
                     , boolean isMeasurementIntervalWritable
                     , int clientCharacteristicConfigurationResponseCode
                     , long clientCharacteristicConfigurationDelay
@@ -740,7 +740,7 @@ public class HealthThermometerProfileMockCallbackBuilderTest {
                 assertEquals(originalDescriptorDelay2, validRangeDelay);
                 assertArrayEquals(validRange.getBytes(), validRangeValue);
                 atomicBoolean.set(true);
-                return super.addMeasurementInterval(measurementIntervalResponseCode, measurementIntervalDelay, measurementIntervalValue, isMeasurementIntervalIndicatable, isMeasurementIntervalWritable, clientCharacteristicConfigurationResponseCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue, validRangeResponseCode, validRangeDelay, validRangeValue);
+                return super.addMeasurementInterval(measurementIntervalResponseCode, measurementIntervalDelay, measurementIntervalValue, canMeasurementIntervalIndicate, isMeasurementIntervalWritable, clientCharacteristicConfigurationResponseCode, clientCharacteristicConfigurationDelay, clientCharacteristicConfigurationValue, validRangeResponseCode, validRangeDelay, validRangeValue);
             }
 
         };

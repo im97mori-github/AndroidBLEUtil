@@ -28,10 +28,10 @@
             android:id="@+id/read_rsc_measurement_characteristic_configuration"
             android:title="@string/menu_read_rsc_measurement_characteristic_configuration" />
         <item
-            android:id="@+id/start_notificate_rsc_measurement"
+            android:id="@+id/start_notify_rsc_measurement"
             android:title="@string/menu_notify_rsc_measurement_start" />
         <item
-            android:id="@+id/stop_notificate_rsc_measurement"
+            android:id="@+id/stop_notify_rsc_measurement"
             android:title="@string/menu_notify_rsc_measurement_stop" />
         <item
             android:id="@+id/read_sensor_location"

@@ -421,33 +421,33 @@ public class EnvironmentalSensingProfileTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00001() {
+    public void test_canBatteryLevelNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isBatteryLevelNotificatable());
+        assertNull(environmentalSensingProfile.canBatteryLevelNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00002() {
+    public void test_canBatteryLevelNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isBatteryLevelNotificatable());
+        assertNotNull(environmentalSensingProfile.canBatteryLevelNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00101() {
+    public void test_canBatteryLevelNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isBatteryLevelNotificatable(0));
+        assertNull(environmentalSensingProfile.canBatteryLevelNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00102() {
+    public void test_canBatteryLevelNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isBatteryLevelNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canBatteryLevelNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

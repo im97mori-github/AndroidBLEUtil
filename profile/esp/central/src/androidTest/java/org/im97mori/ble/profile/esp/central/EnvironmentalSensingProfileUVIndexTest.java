@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileUVIndexTest extends AbstractCentralTest 
 
     @Test
     @RequiresDevice
-    public void test_isUVIndexNotificatable_00001() {
+    public void test_canUVIndexNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isUVIndexNotificatable());
+        assertNull(environmentalSensingProfile.canUVIndexNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isUVIndexNotificatable_00002() {
+    public void test_canUVIndexNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isUVIndexNotificatable());
+        assertNotNull(environmentalSensingProfile.canUVIndexNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isUVIndexNotificatable_00101() {
+    public void test_canUVIndexNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isUVIndexNotificatable(0));
+        assertNull(environmentalSensingProfile.canUVIndexNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isUVIndexNotificatable_00102() {
+    public void test_canUVIndexNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isUVIndexNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canUVIndexNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

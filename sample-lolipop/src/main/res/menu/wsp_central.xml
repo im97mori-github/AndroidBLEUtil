@@ -123,8 +123,8 @@
             android:id="@+id/indicate_registered_user_stop"
             android:title="@string/menu_indicate_registered_user_stop" />
         <item
-            android:id="@+id/is_database_change_increment_notificatable"
-            android:title="@string/menu_is_database_change_increment_notificatable" />
+            android:id="@+id/can_database_change_increment_notify"
+            android:title="@string/menu_can_database_change_increment_notify" />
         <item
             android:id="@+id/read_database_change_increment"
             android:title="@string/menu_read_database_change_increment" />

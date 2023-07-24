@@ -78,9 +78,9 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
 
 //    public static final UUID SAMPLE_WRITABLE_DESCRIPTOR = UUID.fromString("00000200-a087-4fa3-add4-3b8a7d5d4921");
 
-    public static final UUID SAMPLE_NOTIFICATABLE_CHARACTERISTIC = UUID.fromString("00000030-a087-4fa3-add4-3b8a7d5d4921");
+    public static final UUID SAMPLE_NOTIFY_CHARACTERISTIC = UUID.fromString("00000030-a087-4fa3-add4-3b8a7d5d4921");
 
-    public static final UUID SAMPLE_INDICATABLE_CHARACTERISTIC = UUID.fromString("00000040-a087-4fa3-add4-3b8a7d5d4921");
+    public static final UUID SAMPLE_INDICATE_CHARACTERISTIC = UUID.fromString("00000040-a087-4fa3-add4-3b8a7d5d4921");
 
 //    public static final UUID SAMPLE_WRITE_CHARACTERISTIC_RELIABLE = UUID.fromString("00000050-a087-4fa3-add4-3b8a7d5d4921");
 
@@ -362,7 +362,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
             descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
             mBleConnection.createWriteDescriptorTask(
                     SAMPLE_PRIMARY_SERVICE_1
-                    , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                    , SAMPLE_NOTIFY_CHARACTERISTIC
                     , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , new ClientCharacteristicConfigurationAndroid(descriptor)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
@@ -372,7 +372,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
             descriptor.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
             mBleConnection.createWriteDescriptorTask(
                     SAMPLE_PRIMARY_SERVICE_1
-                    , SAMPLE_INDICATABLE_CHARACTERISTIC
+                    , SAMPLE_INDICATE_CHARACTERISTIC
                     , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , new ClientCharacteristicConfigurationAndroid(descriptor)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
@@ -382,7 +382,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
             descriptor.setValue(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
             mBleConnection.createWriteDescriptorTask(
                     SAMPLE_PRIMARY_SERVICE_1
-                    , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                    , SAMPLE_NOTIFY_CHARACTERISTIC
                     , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , new ClientCharacteristicConfigurationAndroid(descriptor)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
@@ -392,7 +392,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
             descriptor.setValue(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
             mBleConnection.createWriteDescriptorTask(
                     SAMPLE_PRIMARY_SERVICE_1
-                    , SAMPLE_INDICATABLE_CHARACTERISTIC
+                    , SAMPLE_INDICATE_CHARACTERISTIC
                     , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
                     , new ClientCharacteristicConfigurationAndroid(descriptor)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
@@ -496,12 +496,12 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     if (target != null) {
                         List<byte[]> valueList = BLESyncConnection.listen(target
                                 , SAMPLE_PRIMARY_SERVICE_1
-                                , SAMPLE_INDICATABLE_CHARACTERISTIC
+                                , SAMPLE_INDICATE_CHARACTERISTIC
                                 , WriteDescriptorTask.TIMEOUT_MILLIS);
 
                         if (valueList != null) {
                             for (byte[] value : valueList) {
-                                mBLECallbackSample.onCharacteristicNotified(mBleConnection.getBluetoothDevice(), SAMPLE_PRIMARY_SERVICE_1, 1, SAMPLE_NOTIFICATABLE_CHARACTERISTIC, 2, value);
+                                mBLECallbackSample.onCharacteristicNotified(mBleConnection.getBluetoothDevice(), SAMPLE_PRIMARY_SERVICE_1, 1, SAMPLE_NOTIFY_CHARACTERISTIC, 2, value);
                             }
                         }
                     }
@@ -582,17 +582,17 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
 //                    )
 //                    , WriteCharacteristicTask.TIMEOUT_MILLIS);
         } else if (R.id.set_notification_on == item.getItemId()) {
-            mBleConnection.createSetNotificationTask(SAMPLE_PRIMARY_SERVICE_1
+            mBleConnection.createSetNotifyTask(SAMPLE_PRIMARY_SERVICE_1
                     , null
-                    , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                    , SAMPLE_NOTIFY_CHARACTERISTIC
                     , null
                     , true
                     , null
                     , null);
         } else if (R.id.set_notification_off == item.getItemId()) {
-            mBleConnection.createSetNotificationTask(SAMPLE_PRIMARY_SERVICE_1
+            mBleConnection.createSetNotifyTask(SAMPLE_PRIMARY_SERVICE_1
                     , null
-                    , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                    , SAMPLE_NOTIFY_CHARACTERISTIC
                     , null
                     , false
                     , null
@@ -603,10 +603,10 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                 public void run() {
                     BLEConnection target = mBleConnection;
                     if (target != null) {
-                        BLESyncConnection.BLEResult result = BLESyncConnection.createSetNotificationTask(target
+                        BLESyncConnection.BLEResult result = BLESyncConnection.createSetNotifyTask(target
                                 , SAMPLE_PRIMARY_SERVICE_1
                                 , null
-                                , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                , SAMPLE_NOTIFY_CHARACTERISTIC
                                 , null
                                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                                 , true
@@ -618,7 +618,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                     , target.getBluetoothDevice()
                                     , SAMPLE_PRIMARY_SERVICE_1
                                     , null
-                                    , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                    , SAMPLE_NOTIFY_CHARACTERISTIC
                                     , null
                                     , true
                                     , BLESyncConnection.BLEResult.RESULT_FAILED
@@ -629,7 +629,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                         , target.getBluetoothDevice()
                                         , SAMPLE_PRIMARY_SERVICE_1
                                         , Objects.requireNonNull(result.getServiceInstanceId())
-                                        , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                        , SAMPLE_NOTIFY_CHARACTERISTIC
                                         , Objects.requireNonNull(result.getCharacteristicInstanceId())
                                         , result.getNotificationStatus()
                                         , result.getArgument());
@@ -638,7 +638,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                         , target.getBluetoothDevice()
                                         , SAMPLE_PRIMARY_SERVICE_1
                                         , result.getServiceInstanceId()
-                                        , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                        , SAMPLE_NOTIFY_CHARACTERISTIC
                                         , result.getServiceInstanceId()
                                         , result.getNotificationStatus()
                                         , result.getStatus()
@@ -654,10 +654,10 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                 public void run() {
                     BLEConnection target = mBleConnection;
                     if (target != null) {
-                        BLESyncConnection.BLEResult result = BLESyncConnection.createSetNotificationTask(target
+                        BLESyncConnection.BLEResult result = BLESyncConnection.createSetNotifyTask(target
                                 , SAMPLE_PRIMARY_SERVICE_1
                                 , null
-                                , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                , SAMPLE_NOTIFY_CHARACTERISTIC
                                 , null
                                 , ReadCharacteristicTask.TIMEOUT_MILLIS
                                 , false
@@ -669,7 +669,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                     , target.getBluetoothDevice()
                                     , SAMPLE_PRIMARY_SERVICE_1
                                     , null
-                                    , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                    , SAMPLE_NOTIFY_CHARACTERISTIC
                                     , null
                                     , true
                                     , BLESyncConnection.BLEResult.RESULT_FAILED
@@ -680,7 +680,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                         , target.getBluetoothDevice()
                                         , SAMPLE_PRIMARY_SERVICE_1
                                         , Objects.requireNonNull(result.getServiceInstanceId())
-                                        , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                        , SAMPLE_NOTIFY_CHARACTERISTIC
                                         , Objects.requireNonNull(result.getCharacteristicInstanceId())
                                         , result.getNotificationStatus()
                                         , result.getArgument());
@@ -689,7 +689,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                                         , target.getBluetoothDevice()
                                         , SAMPLE_PRIMARY_SERVICE_1
                                         , result.getServiceInstanceId()
-                                        , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                                        , SAMPLE_NOTIFY_CHARACTERISTIC
                                         , result.getServiceInstanceId()
                                         , result.getNotificationStatus()
                                         , result.getStatus()

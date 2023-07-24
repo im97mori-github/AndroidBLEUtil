@@ -45,7 +45,7 @@ import org.im97mori.ble.descriptor.u2909.NumberOfDigitals;
 import org.im97mori.ble.descriptor.u290a.ValueTriggerSetting;
 import org.im97mori.ble.descriptor.u290e.TimeTriggerSetting;
 import org.im97mori.ble.service.peripheral.AbstractServiceMockCallback;
-import org.im97mori.ble.task.NotificationTask;
+import org.im97mori.ble.task.NotifyTask;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -838,15 +838,15 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
             List<CharacteristicData> characteristicDataList = new ArrayList<>();
             List<DigitalCharacteristicData> digitalCharacteristicDataList = new ArrayList<>();
 
-            boolean isNotificatable;
-            boolean isIndicatable;
-            boolean isAggregateNotificatable;
+            boolean canNotify;
+            boolean canIndicate;
+            boolean canAggregateNotify;
             if (mAggregateData != null) {
-                isNotificatable = (mAggregateData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0;
-                isIndicatable = (mAggregateData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0;
-                if (isNotificatable && isIndicatable) {
+                canNotify = (mAggregateData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0;
+                canIndicate = (mAggregateData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0;
+                if (canNotify && canIndicate) {
                     throw new RuntimeException("The Indicate and Notify properties shall not be permitted simultaneously for Aggregate characteristic");
-                } else if (isNotificatable || isIndicatable) {
+                } else if (canNotify || canIndicate) {
                     if (mAggregateClientCharacteristicConfigurationData == null) {
                         mAggregateData.descriptorDataList.add(new DescriptorData(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, BluetoothGatt.GATT_SUCCESS, 0, BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE));
                     } else {
@@ -854,12 +854,12 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                     }
                 }
                 characteristicDataList.add(mAggregateData);
-                isAggregateNotificatable = isNotificatable | isIndicatable;
-                if (isAggregateNotificatable && (mAggregateData.property & BluetoothGattCharacteristic.PROPERTY_READ) == 0) {
+                canAggregateNotify = canNotify | canIndicate;
+                if (canAggregateNotify && (mAggregateData.property & BluetoothGattCharacteristic.PROPERTY_READ) == 0) {
                     throw new RuntimeException("Aggregate characteristic Read property is not supported");
                 }
             } else {
-                isAggregateNotificatable = false;
+                canAggregateNotify = false;
             }
 
             CharacteristicData characteristicData;
@@ -874,14 +874,14 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                 digitalCharacteristicData = mDigitalMap.get(index);
 
                 if (digitalCharacteristicData != null) {
-                    isNotificatable = (digitalCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0;
-                    isIndicatable = (digitalCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0;
-                    if (isNotificatable && isIndicatable) {
+                    canNotify = (digitalCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0;
+                    canIndicate = (digitalCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0;
+                    if (canNotify && canIndicate) {
                         throw new RuntimeException("The Indicate and Notify properties shall not be permitted simultaneously for Digital characteristic. index:" + index);
-                    } else if (isNotificatable || isIndicatable) {
+                    } else if (canNotify || canIndicate) {
                         if ((digitalCharacteristicData.property & BluetoothGattCharacteristic.PROPERTY_READ) == 0) {
                             throw new RuntimeException("Indicate or Notify property shall be supported only if the Read property is supported for the characteristic. index:" + index);
-                        } else if (isAggregateNotificatable) {
+                        } else if (canAggregateNotify) {
                             throw new RuntimeException("The Indicate and Notify properties are excluded for the Digital characteristic if the Aggregate characteristic is supported. index:" + index);
                         }
                         descriptorData = mDigitalClientCharacteristicConfigurationMap.get(index);
@@ -913,7 +913,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                         digitalCharacteristicData.descriptorDataList.add(descriptorData);
                     }
 
-                    if (isNotificatable || isIndicatable || isAggregateNotificatable) {
+                    if (canNotify || canIndicate || canAggregateNotify) {
                         descriptorData = mDigitalValueTriggerSettingMap.get(index);
                         if (descriptorData != null) {
                             digitalCharacteristicData.descriptorDataList.add(descriptorData);
@@ -960,14 +960,14 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                 characteristicData = mAnalogMap.get(index);
 
                 if (characteristicData != null) {
-                    isNotificatable = (characteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0;
-                    isIndicatable = (characteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0;
-                    if (isNotificatable && isIndicatable) {
+                    canNotify = (characteristicData.property & BluetoothGattCharacteristic.PROPERTY_NOTIFY) != 0;
+                    canIndicate = (characteristicData.property & BluetoothGattCharacteristic.PROPERTY_INDICATE) != 0;
+                    if (canNotify && canIndicate) {
                         throw new RuntimeException("The Indicate and Notify properties shall not be permitted simultaneously for Analog characteristic. index:" + index);
-                    } else if (isNotificatable || isIndicatable) {
+                    } else if (canNotify || canIndicate) {
                         if ((characteristicData.property & BluetoothGattCharacteristic.PROPERTY_READ) == 0) {
                             throw new RuntimeException("Indicate or Notify property shall be supported only if the Read property is supported for the characteristic. index:" + index);
-                        } else if (isAggregateNotificatable) {
+                        } else if (canAggregateNotify) {
                             throw new RuntimeException("The Indicate and Notify properties are excluded for the Analog characteristic if the Aggregate characteristic is supported. index:" + index);
                         }
                         descriptorData = mAnalogClientCharacteristicConfigurationMap.get(index);
@@ -1009,7 +1009,7 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                         characteristicData.descriptorDataList.add(descriptorData);
                     }
 
-                    if (isNotificatable || isIndicatable || isAggregateNotificatable) {
+                    if (canNotify || canIndicate || canAggregateNotify) {
                         descriptorData = mAnalogValueTriggerSettingMap.get(index);
                         if (descriptorData != null) {
                             characteristicData.descriptorDataList.add(descriptorData);
@@ -1686,14 +1686,14 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                     for (BluetoothDevice bluetoothDevice : mConnectedDeviceMap.keySet()) {
                                         notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
                                         if (!mActivatedNotificationMap.containsKey(notificationData)) {
-                                            Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
+                                            Integer newTaskId = bleServerConnection.createNotifyTask(bluetoothDevice
                                                     , serviceUUID
                                                     , serviceInstanceId
                                                     , characteristicUUID
                                                     , characteristicInstanceId
                                                     , characteristicData
                                                     , isConfirm
-                                                    , NotificationTask.TIMEOUT_MILLIS
+                                                    , NotifyTask.TIMEOUT_MILLIS
                                                     , delay
                                                     , bundle
                                                     , this);
@@ -1707,14 +1707,14 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                     if (mConnectedDeviceMap.containsKey(device)) {
                                         Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
                                         if (currentTaskId == null || currentTaskId.equals(taskId)) {
-                                            Integer newTaskId = bleServerConnection.createNotificationTask(device
+                                            Integer newTaskId = bleServerConnection.createNotifyTask(device
                                                     , serviceUUID
                                                     , serviceInstanceId
                                                     , characteristicUUID
                                                     , characteristicInstanceId
                                                     , characteristicData
                                                     , isConfirm
-                                                    , NotificationTask.TIMEOUT_MILLIS
+                                                    , NotifyTask.TIMEOUT_MILLIS
                                                     , delay
                                                     , bundle
                                                     , this);
@@ -1820,14 +1820,14 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                         for (BluetoothDevice bluetoothDevice : mConnectedDeviceMap.keySet()) {
                                             notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
                                             if (!mActivatedNotificationMap.containsKey(notificationData)) {
-                                                Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
+                                                Integer newTaskId = bleServerConnection.createNotifyTask(bluetoothDevice
                                                         , serviceUUID
                                                         , serviceInstanceId
                                                         , characteristicUUID
                                                         , characteristicInstanceId
                                                         , aggregateData
                                                         , isConfirm
-                                                        , NotificationTask.TIMEOUT_MILLIS
+                                                        , NotifyTask.TIMEOUT_MILLIS
                                                         , delay
                                                         , bundle
                                                         , this);
@@ -1841,14 +1841,14 @@ public class AutomationIOServiceMockCallback extends AbstractServiceMockCallback
                                         if (mConnectedDeviceMap.containsKey(device)) {
                                             Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
                                             if (currentTaskId == null || currentTaskId.equals(taskId)) {
-                                                Integer newTaskId = bleServerConnection.createNotificationTask(device
+                                                Integer newTaskId = bleServerConnection.createNotifyTask(device
                                                         , serviceUUID
                                                         , serviceInstanceId
                                                         , characteristicUUID
                                                         , characteristicInstanceId
                                                         , aggregateData
                                                         , isConfirm
-                                                        , NotificationTask.TIMEOUT_MILLIS
+                                                        , NotifyTask.TIMEOUT_MILLIS
                                                         , delay
                                                         , bundle
                                                         , this);

@@ -286,7 +286,7 @@ public class HealthThermometerService extends AbstractCentralService {
                     if (TEMPERATURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                         mHealthThermometerServiceCallback.onTemperatureMeasurementIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                     } else if (INTERMEDIATE_TEMPERATURE_CHARACTERISTIC.equals(characteristicUUID)) {
-                        mHealthThermometerServiceCallback.onIntermediateTemperatureNotificateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
+                        mHealthThermometerServiceCallback.onIntermediateTemperatureNotifyStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                     } else if (MEASUREMENT_INTERVAL_CHARACTERISTIC.equals(characteristicUUID)) {
                         mHealthThermometerServiceCallback.onMeasurementIntervalIndicateStartSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                     }
@@ -294,7 +294,7 @@ public class HealthThermometerService extends AbstractCentralService {
                     if (TEMPERATURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                         mHealthThermometerServiceCallback.onTemperatureMeasurementIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                     } else if (INTERMEDIATE_TEMPERATURE_CHARACTERISTIC.equals(characteristicUUID)) {
-                        mHealthThermometerServiceCallback.onIntermediateTemperatureNotificateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
+                        mHealthThermometerServiceCallback.onIntermediateTemperatureNotifyStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                     } else if (MEASUREMENT_INTERVAL_CHARACTERISTIC.equals(characteristicUUID)) {
                         mHealthThermometerServiceCallback.onMeasurementIntervalIndicateStopSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, argument);
                     }
@@ -315,7 +315,7 @@ public class HealthThermometerService extends AbstractCentralService {
                     if (TEMPERATURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                         mHealthThermometerServiceCallback.onTemperatureMeasurementIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                     } else if (INTERMEDIATE_TEMPERATURE_CHARACTERISTIC.equals(characteristicUUID)) {
-                        mHealthThermometerServiceCallback.onIntermediateTemperatureNotificateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
+                        mHealthThermometerServiceCallback.onIntermediateTemperatureNotifyStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                     } else if (MEASUREMENT_INTERVAL_CHARACTERISTIC.equals(characteristicUUID)) {
                         mHealthThermometerServiceCallback.onMeasurementIntervalIndicateStartFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                     }
@@ -323,7 +323,7 @@ public class HealthThermometerService extends AbstractCentralService {
                     if (TEMPERATURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                         mHealthThermometerServiceCallback.onTemperatureMeasurementIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                     } else if (INTERMEDIATE_TEMPERATURE_CHARACTERISTIC.equals(characteristicUUID)) {
-                        mHealthThermometerServiceCallback.onIntermediateTemperatureNotificateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
+                        mHealthThermometerServiceCallback.onIntermediateTemperatureNotifyStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                     } else if (MEASUREMENT_INTERVAL_CHARACTERISTIC.equals(characteristicUUID)) {
                         mHealthThermometerServiceCallback.onMeasurementIntervalIndicateStopFailed(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, status, argument);
                     }
@@ -344,7 +344,7 @@ public class HealthThermometerService extends AbstractCentralService {
                     if (TEMPERATURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                         mHealthThermometerServiceCallback.onTemperatureMeasurementIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                     } else if (INTERMEDIATE_TEMPERATURE_CHARACTERISTIC.equals(characteristicUUID)) {
-                        mHealthThermometerServiceCallback.onIntermediateTemperatureNotificateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
+                        mHealthThermometerServiceCallback.onIntermediateTemperatureNotifyStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                     } else if (MEASUREMENT_INTERVAL_CHARACTERISTIC.equals(characteristicUUID)) {
                         mHealthThermometerServiceCallback.onMeasurementIntervalIndicateStartTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                     }
@@ -352,7 +352,7 @@ public class HealthThermometerService extends AbstractCentralService {
                     if (TEMPERATURE_MEASUREMENT_CHARACTERISTIC.equals(characteristicUUID)) {
                         mHealthThermometerServiceCallback.onTemperatureMeasurementIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                     } else if (INTERMEDIATE_TEMPERATURE_CHARACTERISTIC.equals(characteristicUUID)) {
-                        mHealthThermometerServiceCallback.onIntermediateTemperatureNotificateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
+                        mHealthThermometerServiceCallback.onIntermediateTemperatureNotifyStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                     } else if (MEASUREMENT_INTERVAL_CHARACTERISTIC.equals(characteristicUUID)) {
                         mHealthThermometerServiceCallback.onMeasurementIntervalIndicateStopTimeout(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, descriptorInstanceId, timeout, argument);
                     }
@@ -517,9 +517,9 @@ public class HealthThermometerService extends AbstractCentralService {
      * start Intermediate Temperature notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see HealthThermometerServiceCallback#onIntermediateTemperatureNotificateStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see HealthThermometerServiceCallback#onIntermediateTemperatureNotificateStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see HealthThermometerServiceCallback#onIntermediateTemperatureNotificateStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see HealthThermometerServiceCallback#onIntermediateTemperatureNotifyStartSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see HealthThermometerServiceCallback#onIntermediateTemperatureNotifyStartFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see HealthThermometerServiceCallback#onIntermediateTemperatureNotifyStartTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer startIntermediateTemperatureNotification() {
@@ -536,9 +536,9 @@ public class HealthThermometerService extends AbstractCentralService {
      * stop Intermediate Temperature notification
      *
      * @return task id. if {@code null} returned, service is not ready
-     * @see HealthThermometerServiceCallback#onIntermediateTemperatureNotificateStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
-     * @see HealthThermometerServiceCallback#onIntermediateTemperatureNotificateStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
-     * @see HealthThermometerServiceCallback#onIntermediateTemperatureNotificateStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
+     * @see HealthThermometerServiceCallback#onIntermediateTemperatureNotifyStopSuccess(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, Bundle)
+     * @see HealthThermometerServiceCallback#onIntermediateTemperatureNotifyStopFailed(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, int, Bundle)
+     * @see HealthThermometerServiceCallback#onIntermediateTemperatureNotifyStopTimeout(Integer, BluetoothDevice, UUID, Integer, UUID, Integer, Integer, long, Bundle)
      */
     @Nullable
     public synchronized Integer stopIntermediateTemperatureNotification() {

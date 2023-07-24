@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileCarbonMonoxideConcentrationTest extends 
 
     @Test
     @RequiresDevice
-    public void test_isCarbonMonoxideConcentrationNotificatable_00001() {
+    public void test_canCarbonMonoxideConcentrationNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isCarbonMonoxideConcentrationNotificatable());
+        assertNull(environmentalSensingProfile.canCarbonMonoxideConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isCarbonMonoxideConcentrationNotificatable_00002() {
+    public void test_canCarbonMonoxideConcentrationNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isCarbonMonoxideConcentrationNotificatable());
+        assertNotNull(environmentalSensingProfile.canCarbonMonoxideConcentrationNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isCarbonMonoxideConcentrationNotificatable_00101() {
+    public void test_canCarbonMonoxideConcentrationNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isCarbonMonoxideConcentrationNotificatable(0));
+        assertNull(environmentalSensingProfile.canCarbonMonoxideConcentrationNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isCarbonMonoxideConcentrationNotificatable_00102() {
+    public void test_canCarbonMonoxideConcentrationNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isCarbonMonoxideConcentrationNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canCarbonMonoxideConcentrationNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

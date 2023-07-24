@@ -1424,33 +1424,33 @@ public class WeightScaleProfileTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00001() {
+    public void test_canBatteryLevelNotify_00001() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
-        assertNull(weightScaleProfile.isBatteryLevelNotificatable());
+        assertNull(weightScaleProfile.canBatteryLevelNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00002() {
+    public void test_canBatteryLevelNotify_00002() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
         weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(weightScaleProfile.isBatteryLevelNotificatable());
+        assertNotNull(weightScaleProfile.canBatteryLevelNotify());
         weightScaleProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00101() {
+    public void test_canBatteryLevelNotify_00101() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
-        assertNull(weightScaleProfile.isBatteryLevelNotificatable(0));
+        assertNull(weightScaleProfile.canBatteryLevelNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00102() {
+    public void test_canBatteryLevelNotify_00102() {
         WeightScaleProfile weightScaleProfile = new WeightScaleProfile(ApplicationProvider.getApplicationContext(), new BaseWeightScaleProfileCallback());
         weightScaleProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(weightScaleProfile.isBatteryLevelNotificatable(0));
+        assertNotNull(weightScaleProfile.canBatteryLevelNotify(0));
         weightScaleProfile.disconnect();
     }
 

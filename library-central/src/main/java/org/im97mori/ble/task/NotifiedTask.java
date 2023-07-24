@@ -11,11 +11,11 @@ import org.im97mori.ble.BLEConnection;
 import java.util.UUID;
 
 /**
- * Notificated(Indicated) task
+ * Notified(Indicated) task
  * <p>
  * for central role
  */
-public class NotificatedTask extends AbstractBLETask {
+public class NotifiedTask extends AbstractBLETask {
 
     /**
      * task target {@link BLEConnection} instance
@@ -55,7 +55,7 @@ public class NotificatedTask extends AbstractBLETask {
      * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param byteArray                task target data
      */
-    public NotificatedTask(@NonNull BLEConnection bleConnection
+    public NotifiedTask(@NonNull BLEConnection bleConnection
             , @NonNull UUID serviceUUID
             , @NonNull Integer serviceInstanceId
             , @NonNull UUID characteristicUUID

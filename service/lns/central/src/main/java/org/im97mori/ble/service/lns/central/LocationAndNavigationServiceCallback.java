@@ -164,7 +164,7 @@ public interface LocationAndNavigationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Location and Speed notificate success callback
+     * Start Location and Speed notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -185,7 +185,7 @@ public interface LocationAndNavigationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Location and Speed notificate error callback
+     * Start Location and Speed notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -211,7 +211,7 @@ public interface LocationAndNavigationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Location and Speed notificate timeout callback
+     * Start Location and Speed notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -234,7 +234,7 @@ public interface LocationAndNavigationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Location and Speed notificate success callback
+     * Stop Location and Speed notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -255,7 +255,7 @@ public interface LocationAndNavigationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Location and Speed notificate error callback
+     * Stop Location and Speed notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -281,7 +281,7 @@ public interface LocationAndNavigationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Location and Speed notificate timeout callback
+     * Stop Location and Speed notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -756,7 +756,7 @@ public interface LocationAndNavigationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Navigation notificate success callback
+     * Start Navigation notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -777,7 +777,7 @@ public interface LocationAndNavigationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Navigation notificate error callback
+     * Start Navigation notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -803,7 +803,7 @@ public interface LocationAndNavigationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Navigation notificate timeout callback
+     * Start Navigation notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -826,7 +826,7 @@ public interface LocationAndNavigationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Navigation notificate success callback
+     * Stop Navigation notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -847,7 +847,7 @@ public interface LocationAndNavigationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Navigation notificate error callback
+     * Stop Navigation notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -873,7 +873,7 @@ public interface LocationAndNavigationServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Navigation notificate timeout callback
+     * Stop Navigation notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device

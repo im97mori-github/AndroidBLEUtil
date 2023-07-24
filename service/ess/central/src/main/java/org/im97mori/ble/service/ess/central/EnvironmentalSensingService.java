@@ -138,12 +138,12 @@ public class EnvironmentalSensingService extends AbstractCentralService {
         /**
          * available {@link BluetoothGattCharacteristic} instance list
          */
-        List<BluetoothGattCharacteristic> mBluetoothGattCharacteristicList = new LinkedList<>();
+        final List<BluetoothGattCharacteristic> mBluetoothGattCharacteristicList = new LinkedList<>();
 
         /**
          * available {@link BluetoothGattDescriptor} instance map
          */
-        Map<Integer, List<BluetoothGattDescriptor>> mEnvironmentalSensingTriggerSettingDescriptorMap = new HashMap<>();
+        final Map<Integer, List<BluetoothGattDescriptor>> mEnvironmentalSensingTriggerSettingDescriptorMap = new HashMap<>();
 
         /**
          * ESS Characteristic data class
@@ -1279,7 +1279,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
             if (bluetoothGattCharacteristic != null) {
                 BluetoothGattService bluetoothGattService = bluetoothGattCharacteristic.getService();
                 if (bluetoothGattService != null) {
-                    taskId = mBLEConnection.createSetNotificationTask(ENVIRONMENTAL_SENSING_SERVICE
+                    taskId = mBLEConnection.createSetNotifyTask(ENVIRONMENTAL_SENSING_SERVICE
                             , bluetoothGattService.getInstanceId()
                             , bluetoothGattCharacteristic.getUuid()
                             , bluetoothGattCharacteristic.getInstanceId()
@@ -1615,19 +1615,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isAmmoniaConcentrationNotificatable(int)
+     * @see #canAmmoniaConcentrationNotify(int)
      */
-    public synchronized boolean isAmmoniaConcentrationNotificatable() {
-        return isAmmoniaConcentrationNotificatable(0);
+    public synchronized boolean canAmmoniaConcentrationNotify() {
+        return canAmmoniaConcentrationNotify(0);
     }
 
     /**
-     * get Ammonia Concentration characteristic's notificatable status
+     * get Ammonia Concentration characteristic's notify status
      *
      * @param index Ammonia Concentration characteristic index
-     * @return {@code true}:target  Ammonia Concentration characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Ammonia Concentration characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isAmmoniaConcentrationNotificatable(int index) {
+    public synchronized boolean canAmmoniaConcentrationNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
         if (essData != null) {
@@ -1746,7 +1746,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startAmmoniaConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isAmmoniaConcentrationNotificatable(index)) {
+        if (canAmmoniaConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -1774,7 +1774,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopAmmoniaConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isAmmoniaConcentrationNotificatable(index)) {
+        if (canAmmoniaConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(AMMONIA_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -2077,19 +2077,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isApparentWindDirectionNotificatable(int)
+     * @see #canApparentWindDirectionNotify(int)
      */
-    public synchronized boolean isApparentWindDirectionNotificatable() {
-        return isApparentWindDirectionNotificatable(0);
+    public synchronized boolean canApparentWindDirectionNotify() {
+        return canApparentWindDirectionNotify(0);
     }
 
     /**
-     * get Apparent Wind Direction characteristic's notificatable status
+     * get Apparent Wind Direction characteristic's notify status
      *
      * @param index Apparent Wind Direction characteristic index
-     * @return {@code true}:target  Apparent Wind Direction characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Apparent Wind Direction characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isApparentWindDirectionNotificatable(int index) {
+    public synchronized boolean canApparentWindDirectionNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(APPARENT_WIND_DIRECTION_CHARACTERISTIC);
         if (essData != null) {
@@ -2208,7 +2208,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startApparentWindDirectionNotification(int index) {
         Integer taskId = null;
-        if (isApparentWindDirectionNotificatable(index)) {
+        if (canApparentWindDirectionNotify(index)) {
             EssData essData = mEssDataMap.get(APPARENT_WIND_DIRECTION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -2236,7 +2236,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopApparentWindDirectionNotification(int index) {
         Integer taskId = null;
-        if (isApparentWindDirectionNotificatable(index)) {
+        if (canApparentWindDirectionNotify(index)) {
             EssData essData = mEssDataMap.get(APPARENT_WIND_DIRECTION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -2539,19 +2539,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isApparentWindSpeedNotificatable(int)
+     * @see #canApparentWindSpeedNotify(int)
      */
-    public synchronized boolean isApparentWindSpeedNotificatable() {
-        return isApparentWindSpeedNotificatable(0);
+    public synchronized boolean canApparentWindSpeedNotify() {
+        return canApparentWindSpeedNotify(0);
     }
 
     /**
-     * get Apparent Wind Speed characteristic's notificatable status
+     * get Apparent Wind Speed characteristic's notify status
      *
      * @param index Apparent Wind Speed characteristic index
-     * @return {@code true}:target  Apparent Wind Speed characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Apparent Wind Speed characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isApparentWindSpeedNotificatable(int index) {
+    public synchronized boolean canApparentWindSpeedNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(APPARENT_WIND_SPEED_CHARACTERISTIC);
         if (essData != null) {
@@ -2670,7 +2670,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startApparentWindSpeedNotification(int index) {
         Integer taskId = null;
-        if (isApparentWindSpeedNotificatable(index)) {
+        if (canApparentWindSpeedNotify(index)) {
             EssData essData = mEssDataMap.get(APPARENT_WIND_SPEED_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -2698,7 +2698,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopApparentWindSpeedNotification(int index) {
         Integer taskId = null;
-        if (isApparentWindSpeedNotificatable(index)) {
+        if (canApparentWindSpeedNotify(index)) {
             EssData essData = mEssDataMap.get(APPARENT_WIND_SPEED_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -3001,19 +3001,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isBarometricPressureTrendNotificatable(int)
+     * @see #canBarometricPressureTrendNotify(int)
      */
-    public synchronized boolean isBarometricPressureTrendNotificatable() {
-        return isBarometricPressureTrendNotificatable(0);
+    public synchronized boolean canBarometricPressureTrendNotify() {
+        return canBarometricPressureTrendNotify(0);
     }
 
     /**
-     * get Barometric Pressure Trend characteristic's notificatable status
+     * get Barometric Pressure Trend characteristic's notify status
      *
      * @param index Barometric Pressure Trend characteristic index
-     * @return {@code true}:target  Barometric Pressure Trend characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Barometric Pressure Trend characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isBarometricPressureTrendNotificatable(int index) {
+    public synchronized boolean canBarometricPressureTrendNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
         if (essData != null) {
@@ -3132,7 +3132,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startBarometricPressureTrendNotification(int index) {
         Integer taskId = null;
-        if (isBarometricPressureTrendNotificatable(index)) {
+        if (canBarometricPressureTrendNotify(index)) {
             EssData essData = mEssDataMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -3160,7 +3160,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopBarometricPressureTrendNotification(int index) {
         Integer taskId = null;
-        if (isBarometricPressureTrendNotificatable(index)) {
+        if (canBarometricPressureTrendNotify(index)) {
             EssData essData = mEssDataMap.get(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -3463,19 +3463,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isCarbonMonoxideConcentrationNotificatable(int)
+     * @see #canCarbonMonoxideConcentrationNotify(int)
      */
-    public synchronized boolean isCarbonMonoxideConcentrationNotificatable() {
-        return isCarbonMonoxideConcentrationNotificatable(0);
+    public synchronized boolean canCarbonMonoxideConcentrationNotify() {
+        return canCarbonMonoxideConcentrationNotify(0);
     }
 
     /**
-     * get Carbon Monoxide Concentration characteristic's notificatable status
+     * get Carbon Monoxide Concentration characteristic's notify status
      *
      * @param index Carbon Monoxide Concentration characteristic index
-     * @return {@code true}:target  Carbon Monoxide Concentration characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Carbon Monoxide Concentration characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isCarbonMonoxideConcentrationNotificatable(int index) {
+    public synchronized boolean canCarbonMonoxideConcentrationNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
         if (essData != null) {
@@ -3594,7 +3594,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startCarbonMonoxideConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isCarbonMonoxideConcentrationNotificatable(index)) {
+        if (canCarbonMonoxideConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -3622,7 +3622,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopCarbonMonoxideConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isCarbonMonoxideConcentrationNotificatable(index)) {
+        if (canCarbonMonoxideConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(CARBON_MONOXIDE_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -3925,19 +3925,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isDewPointNotificatable(int)
+     * @see #canDewPointNotify(int)
      */
-    public synchronized boolean isDewPointNotificatable() {
-        return isDewPointNotificatable(0);
+    public synchronized boolean canDewPointNotify() {
+        return canDewPointNotify(0);
     }
 
     /**
-     * get Dew Point characteristic's notificatable status
+     * get Dew Point characteristic's notify status
      *
      * @param index Dew Point characteristic index
-     * @return {@code true}:target  Dew Point characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Dew Point characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isDewPointNotificatable(int index) {
+    public synchronized boolean canDewPointNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(DEW_POINT_CHARACTERISTIC);
         if (essData != null) {
@@ -4056,7 +4056,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startDewPointNotification(int index) {
         Integer taskId = null;
-        if (isDewPointNotificatable(index)) {
+        if (canDewPointNotify(index)) {
             EssData essData = mEssDataMap.get(DEW_POINT_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -4084,7 +4084,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopDewPointNotification(int index) {
         Integer taskId = null;
-        if (isDewPointNotificatable(index)) {
+        if (canDewPointNotify(index)) {
             EssData essData = mEssDataMap.get(DEW_POINT_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -4387,19 +4387,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isElevationNotificatable(int)
+     * @see #canElevationNotify(int)
      */
-    public synchronized boolean isElevationNotificatable() {
-        return isElevationNotificatable(0);
+    public synchronized boolean canElevationNotify() {
+        return canElevationNotify(0);
     }
 
     /**
-     * get Elevation characteristic's notificatable status
+     * get Elevation characteristic's notify status
      *
      * @param index Elevation characteristic index
-     * @return {@code true}:target  Elevation characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Elevation characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isElevationNotificatable(int index) {
+    public synchronized boolean canElevationNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(ELEVATION_CHARACTERISTIC);
         if (essData != null) {
@@ -4518,7 +4518,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startElevationNotification(int index) {
         Integer taskId = null;
-        if (isElevationNotificatable(index)) {
+        if (canElevationNotify(index)) {
             EssData essData = mEssDataMap.get(ELEVATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -4546,7 +4546,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopElevationNotification(int index) {
         Integer taskId = null;
-        if (isElevationNotificatable(index)) {
+        if (canElevationNotify(index)) {
             EssData essData = mEssDataMap.get(ELEVATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -4849,19 +4849,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isGustFactorNotificatable(int)
+     * @see #canGustFactorNotify(int)
      */
-    public synchronized boolean isGustFactorNotificatable() {
-        return isGustFactorNotificatable(0);
+    public synchronized boolean canGustFactorNotify() {
+        return canGustFactorNotify(0);
     }
 
     /**
-     * get Gust Factor characteristic's notificatable status
+     * get Gust Factor characteristic's notify status
      *
      * @param index Gust Factor characteristic index
-     * @return {@code true}:target  Gust Factor characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Gust Factor characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isGustFactorNotificatable(int index) {
+    public synchronized boolean canGustFactorNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(GUST_FACTOR_CHARACTERISTIC);
         if (essData != null) {
@@ -4980,7 +4980,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startGustFactorNotification(int index) {
         Integer taskId = null;
-        if (isGustFactorNotificatable(index)) {
+        if (canGustFactorNotify(index)) {
             EssData essData = mEssDataMap.get(GUST_FACTOR_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -5008,7 +5008,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopGustFactorNotification(int index) {
         Integer taskId = null;
-        if (isGustFactorNotificatable(index)) {
+        if (canGustFactorNotify(index)) {
             EssData essData = mEssDataMap.get(GUST_FACTOR_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -5311,19 +5311,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isHeatIndexNotificatable(int)
+     * @see #canHeatIndexNotify(int)
      */
-    public synchronized boolean isHeatIndexNotificatable() {
-        return isHeatIndexNotificatable(0);
+    public synchronized boolean canHeatIndexNotify() {
+        return canHeatIndexNotify(0);
     }
 
     /**
-     * get Heat Index characteristic's notificatable status
+     * get Heat Index characteristic's notify status
      *
      * @param index Heat Index characteristic index
-     * @return {@code true}:target  Heat Index characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Heat Index characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isHeatIndexNotificatable(int index) {
+    public synchronized boolean canHeatIndexNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(HEAT_INDEX_CHARACTERISTIC);
         if (essData != null) {
@@ -5442,7 +5442,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startHeatIndexNotification(int index) {
         Integer taskId = null;
-        if (isHeatIndexNotificatable(index)) {
+        if (canHeatIndexNotify(index)) {
             EssData essData = mEssDataMap.get(HEAT_INDEX_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -5470,7 +5470,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopHeatIndexNotification(int index) {
         Integer taskId = null;
-        if (isHeatIndexNotificatable(index)) {
+        if (canHeatIndexNotify(index)) {
             EssData essData = mEssDataMap.get(HEAT_INDEX_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -5773,19 +5773,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isHumidityNotificatable(int)
+     * @see #canHumidityNotify(int)
      */
-    public synchronized boolean isHumidityNotificatable() {
-        return isHumidityNotificatable(0);
+    public synchronized boolean canHumidityNotify() {
+        return canHumidityNotify(0);
     }
 
     /**
-     * get Humidity characteristic's notificatable status
+     * get Humidity characteristic's notify status
      *
      * @param index Humidity characteristic index
-     * @return {@code true}:target  Humidity characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Humidity characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isHumidityNotificatable(int index) {
+    public synchronized boolean canHumidityNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(HUMIDITY_CHARACTERISTIC);
         if (essData != null) {
@@ -5904,7 +5904,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startHumidityNotification(int index) {
         Integer taskId = null;
-        if (isHumidityNotificatable(index)) {
+        if (canHumidityNotify(index)) {
             EssData essData = mEssDataMap.get(HUMIDITY_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -5932,7 +5932,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopHumidityNotification(int index) {
         Integer taskId = null;
-        if (isHumidityNotificatable(index)) {
+        if (canHumidityNotify(index)) {
             EssData essData = mEssDataMap.get(HUMIDITY_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -6235,19 +6235,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isIrradianceNotificatable(int)
+     * @see #canIrradianceNotify(int)
      */
-    public synchronized boolean isIrradianceNotificatable() {
-        return isIrradianceNotificatable(0);
+    public synchronized boolean canIrradianceNotify() {
+        return canIrradianceNotify(0);
     }
 
     /**
-     * get Irradiance characteristic's notificatable status
+     * get Irradiance characteristic's notify status
      *
      * @param index Irradiance characteristic index
-     * @return {@code true}:target  Irradiance characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Irradiance characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isIrradianceNotificatable(int index) {
+    public synchronized boolean canIrradianceNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(IRRADIANCE_CHARACTERISTIC);
         if (essData != null) {
@@ -6366,7 +6366,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startIrradianceNotification(int index) {
         Integer taskId = null;
-        if (isIrradianceNotificatable(index)) {
+        if (canIrradianceNotify(index)) {
             EssData essData = mEssDataMap.get(IRRADIANCE_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -6394,7 +6394,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopIrradianceNotification(int index) {
         Integer taskId = null;
-        if (isIrradianceNotificatable(index)) {
+        if (canIrradianceNotify(index)) {
             EssData essData = mEssDataMap.get(IRRADIANCE_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -6697,19 +6697,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isMagneticDeclinationNotificatable(int)
+     * @see #canMagneticDeclinationNotify(int)
      */
-    public synchronized boolean isMagneticDeclinationNotificatable() {
-        return isMagneticDeclinationNotificatable(0);
+    public synchronized boolean canMagneticDeclinationNotify() {
+        return canMagneticDeclinationNotify(0);
     }
 
     /**
-     * get Magnetic Declination characteristic's notificatable status
+     * get Magnetic Declination characteristic's notify status
      *
      * @param index Magnetic Declination characteristic index
-     * @return {@code true}:target  Magnetic Declination characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Magnetic Declination characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isMagneticDeclinationNotificatable(int index) {
+    public synchronized boolean canMagneticDeclinationNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
         if (essData != null) {
@@ -6828,7 +6828,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startMagneticDeclinationNotification(int index) {
         Integer taskId = null;
-        if (isMagneticDeclinationNotificatable(index)) {
+        if (canMagneticDeclinationNotify(index)) {
             EssData essData = mEssDataMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -6856,7 +6856,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopMagneticDeclinationNotification(int index) {
         Integer taskId = null;
-        if (isMagneticDeclinationNotificatable(index)) {
+        if (canMagneticDeclinationNotify(index)) {
             EssData essData = mEssDataMap.get(MAGNETIC_DECLINATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -7159,19 +7159,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isMagneticFluxDensity2DNotificatable(int)
+     * @see #canMagneticFluxDensity2DNotify(int)
      */
-    public synchronized boolean isMagneticFluxDensity2DNotificatable() {
-        return isMagneticFluxDensity2DNotificatable(0);
+    public synchronized boolean canMagneticFluxDensity2DNotify() {
+        return canMagneticFluxDensity2DNotify(0);
     }
 
     /**
-     * get Magnetic Flux Density - 2D characteristic's notificatable status
+     * get Magnetic Flux Density - 2D characteristic's notify status
      *
      * @param index Magnetic Flux Density - 2D characteristic index
-     * @return {@code true}:target  Magnetic Flux Density - 2D characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Magnetic Flux Density - 2D characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isMagneticFluxDensity2DNotificatable(int index) {
+    public synchronized boolean canMagneticFluxDensity2DNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
         if (essData != null) {
@@ -7290,7 +7290,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startMagneticFluxDensity2DNotification(int index) {
         Integer taskId = null;
-        if (isMagneticFluxDensity2DNotificatable(index)) {
+        if (canMagneticFluxDensity2DNotify(index)) {
             EssData essData = mEssDataMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -7318,7 +7318,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopMagneticFluxDensity2DNotification(int index) {
         Integer taskId = null;
-        if (isMagneticFluxDensity2DNotificatable(index)) {
+        if (canMagneticFluxDensity2DNotify(index)) {
             EssData essData = mEssDataMap.get(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -7621,19 +7621,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isMagneticFluxDensity3DNotificatable(int)
+     * @see #canMagneticFluxDensity3DNotify(int)
      */
-    public synchronized boolean isMagneticFluxDensity3DNotificatable() {
-        return isMagneticFluxDensity3DNotificatable(0);
+    public synchronized boolean canMagneticFluxDensity3DNotify() {
+        return canMagneticFluxDensity3DNotify(0);
     }
 
     /**
-     * get Magnetic Flux Density - 3D characteristic's notificatable status
+     * get Magnetic Flux Density - 3D characteristic's notify status
      *
      * @param index Magnetic Flux Density - 3D characteristic index
-     * @return {@code true}:target  Magnetic Flux Density - 3D characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Magnetic Flux Density - 3D characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isMagneticFluxDensity3DNotificatable(int index) {
+    public synchronized boolean canMagneticFluxDensity3DNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
         if (essData != null) {
@@ -7752,7 +7752,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startMagneticFluxDensity3DNotification(int index) {
         Integer taskId = null;
-        if (isMagneticFluxDensity3DNotificatable(index)) {
+        if (canMagneticFluxDensity3DNotify(index)) {
             EssData essData = mEssDataMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -7780,7 +7780,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopMagneticFluxDensity3DNotification(int index) {
         Integer taskId = null;
-        if (isMagneticFluxDensity3DNotificatable(index)) {
+        if (canMagneticFluxDensity3DNotify(index)) {
             EssData essData = mEssDataMap.get(MAGNETIC_FLUX_DENSITY_3D_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -8083,19 +8083,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isMethaneConcentrationNotificatable(int)
+     * @see #canMethaneConcentrationNotify(int)
      */
-    public synchronized boolean isMethaneConcentrationNotificatable() {
-        return isMethaneConcentrationNotificatable(0);
+    public synchronized boolean canMethaneConcentrationNotify() {
+        return canMethaneConcentrationNotify(0);
     }
 
     /**
-     * get Methane Concentration characteristic's notificatable status
+     * get Methane Concentration characteristic's notify status
      *
      * @param index Methane Concentration characteristic index
-     * @return {@code true}:target  Methane Concentration characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Methane Concentration characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isMethaneConcentrationNotificatable(int index) {
+    public synchronized boolean canMethaneConcentrationNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
         if (essData != null) {
@@ -8214,7 +8214,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startMethaneConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isMethaneConcentrationNotificatable(index)) {
+        if (canMethaneConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -8242,7 +8242,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopMethaneConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isMethaneConcentrationNotificatable(index)) {
+        if (canMethaneConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(METHANE_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -8545,19 +8545,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isNitrogenDioxideConcentrationNotificatable(int)
+     * @see #canNitrogenDioxideConcentrationNotify(int)
      */
-    public synchronized boolean isNitrogenDioxideConcentrationNotificatable() {
-        return isNitrogenDioxideConcentrationNotificatable(0);
+    public synchronized boolean canNitrogenDioxideConcentrationNotify() {
+        return canNitrogenDioxideConcentrationNotify(0);
     }
 
     /**
-     * get Nitrogen Dioxide Concentration characteristic's notificatable status
+     * get Nitrogen Dioxide Concentration characteristic's notify status
      *
      * @param index Nitrogen Dioxide Concentration characteristic index
-     * @return {@code true}:target  Nitrogen Dioxide Concentration characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Nitrogen Dioxide Concentration characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isNitrogenDioxideConcentrationNotificatable(int index) {
+    public synchronized boolean canNitrogenDioxideConcentrationNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
         if (essData != null) {
@@ -8676,7 +8676,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startNitrogenDioxideConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isNitrogenDioxideConcentrationNotificatable(index)) {
+        if (canNitrogenDioxideConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -8704,7 +8704,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopNitrogenDioxideConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isNitrogenDioxideConcentrationNotificatable(index)) {
+        if (canNitrogenDioxideConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -9007,19 +9007,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(int)
+     * @see #canNonMethaneVolatileOrganicCompoundsConcentrationNotify(int)
      */
-    public synchronized boolean isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable() {
-        return isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(0);
+    public synchronized boolean canNonMethaneVolatileOrganicCompoundsConcentrationNotify() {
+        return canNonMethaneVolatileOrganicCompoundsConcentrationNotify(0);
     }
 
     /**
-     * get Non-Methane Volatile Organic Compounds Concentration characteristic's notificatable status
+     * get Non-Methane Volatile Organic Compounds Concentration characteristic's notify status
      *
      * @param index Non-Methane Volatile Organic Compounds Concentration characteristic index
-     * @return {@code true}:target  Non-Methane Volatile Organic Compounds Concentration characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Non-Methane Volatile Organic Compounds Concentration characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(int index) {
+    public synchronized boolean canNonMethaneVolatileOrganicCompoundsConcentrationNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
         if (essData != null) {
@@ -9138,7 +9138,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startNonMethaneVolatileOrganicCompoundsConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(index)) {
+        if (canNonMethaneVolatileOrganicCompoundsConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -9166,7 +9166,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopNonMethaneVolatileOrganicCompoundsConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isNonMethaneVolatileOrganicCompoundsConcentrationNotificatable(index)) {
+        if (canNonMethaneVolatileOrganicCompoundsConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -9469,19 +9469,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isOzoneConcentrationNotificatable(int)
+     * @see #canOzoneConcentrationNotify(int)
      */
-    public synchronized boolean isOzoneConcentrationNotificatable() {
-        return isOzoneConcentrationNotificatable(0);
+    public synchronized boolean canOzoneConcentrationNotify() {
+        return canOzoneConcentrationNotify(0);
     }
 
     /**
-     * get Ozone Concentration characteristic's notificatable status
+     * get Ozone Concentration characteristic's notify status
      *
      * @param index Ozone Concentration characteristic index
-     * @return {@code true}:target  Ozone Concentration characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Ozone Concentration characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isOzoneConcentrationNotificatable(int index) {
+    public synchronized boolean canOzoneConcentrationNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
         if (essData != null) {
@@ -9600,7 +9600,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startOzoneConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isOzoneConcentrationNotificatable(index)) {
+        if (canOzoneConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -9628,7 +9628,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopOzoneConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isOzoneConcentrationNotificatable(index)) {
+        if (canOzoneConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(OZONE_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -9931,19 +9931,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isParticulateMatterPm10ConcentrationNotificatable(int)
+     * @see #canParticulateMatterPm10ConcentrationNotify(int)
      */
-    public synchronized boolean isParticulateMatterPm10ConcentrationNotificatable() {
-        return isParticulateMatterPm10ConcentrationNotificatable(0);
+    public synchronized boolean canParticulateMatterPm10ConcentrationNotify() {
+        return canParticulateMatterPm10ConcentrationNotify(0);
     }
 
     /**
-     * get Particulate Matter - PM10 Concentration characteristic's notificatable status
+     * get Particulate Matter - PM10 Concentration characteristic's notify status
      *
      * @param index Particulate Matter - PM10 Concentration characteristic index
-     * @return {@code true}:target  Particulate Matter - PM10 Concentration characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Particulate Matter - PM10 Concentration characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isParticulateMatterPm10ConcentrationNotificatable(int index) {
+    public synchronized boolean canParticulateMatterPm10ConcentrationNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
         if (essData != null) {
@@ -10062,7 +10062,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startParticulateMatterPm10ConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isParticulateMatterPm10ConcentrationNotificatable(index)) {
+        if (canParticulateMatterPm10ConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -10090,7 +10090,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopParticulateMatterPm10ConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isParticulateMatterPm10ConcentrationNotificatable(index)) {
+        if (canParticulateMatterPm10ConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(PARTICULATE_MATTER_PM10_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -10393,19 +10393,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isParticulateMatterPm1ConcentrationNotificatable(int)
+     * @see #canParticulateMatterPm1ConcentrationNotify(int)
      */
-    public synchronized boolean isParticulateMatterPm1ConcentrationNotificatable() {
-        return isParticulateMatterPm1ConcentrationNotificatable(0);
+    public synchronized boolean canParticulateMatterPm1ConcentrationNotify() {
+        return canParticulateMatterPm1ConcentrationNotify(0);
     }
 
     /**
-     * get Particulate Matter - PM1 Concentration characteristic's notificatable status
+     * get Particulate Matter - PM1 Concentration characteristic's notify status
      *
      * @param index Particulate Matter - PM1 Concentration characteristic index
-     * @return {@code true}:target  Particulate Matter - PM1 Concentration characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Particulate Matter - PM1 Concentration characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isParticulateMatterPm1ConcentrationNotificatable(int index) {
+    public synchronized boolean canParticulateMatterPm1ConcentrationNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
         if (essData != null) {
@@ -10524,7 +10524,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startParticulateMatterPm1ConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isParticulateMatterPm1ConcentrationNotificatable(index)) {
+        if (canParticulateMatterPm1ConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -10552,7 +10552,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopParticulateMatterPm1ConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isParticulateMatterPm1ConcentrationNotificatable(index)) {
+        if (canParticulateMatterPm1ConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(PARTICULATE_MATTER_PM1_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -10855,19 +10855,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isParticulateMatterPm25ConcentrationNotificatable(int)
+     * @see #canParticulateMatterPm25ConcentrationNotify(int)
      */
-    public synchronized boolean isParticulateMatterPm25ConcentrationNotificatable() {
-        return isParticulateMatterPm25ConcentrationNotificatable(0);
+    public synchronized boolean canParticulateMatterPm25ConcentrationNotify() {
+        return canParticulateMatterPm25ConcentrationNotify(0);
     }
 
     /**
-     * get Particulate Matter - PM2.5 Concentration characteristic's notificatable status
+     * get Particulate Matter - PM2.5 Concentration characteristic's notify status
      *
      * @param index Particulate Matter - PM2.5 Concentration characteristic index
-     * @return {@code true}:target  Particulate Matter - PM2.5 Concentration characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Particulate Matter - PM2.5 Concentration characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isParticulateMatterPm25ConcentrationNotificatable(int index) {
+    public synchronized boolean canParticulateMatterPm25ConcentrationNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
         if (essData != null) {
@@ -10986,7 +10986,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startParticulateMatterPm25ConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isParticulateMatterPm25ConcentrationNotificatable(index)) {
+        if (canParticulateMatterPm25ConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -11014,7 +11014,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopParticulateMatterPm25ConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isParticulateMatterPm25ConcentrationNotificatable(index)) {
+        if (canParticulateMatterPm25ConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -11317,19 +11317,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isPollenConcentrationNotificatable(int)
+     * @see #canPollenConcentrationNotify(int)
      */
-    public synchronized boolean isPollenConcentrationNotificatable() {
-        return isPollenConcentrationNotificatable(0);
+    public synchronized boolean canPollenConcentrationNotify() {
+        return canPollenConcentrationNotify(0);
     }
 
     /**
-     * get Pollen Concentration characteristic's notificatable status
+     * get Pollen Concentration characteristic's notify status
      *
      * @param index Pollen Concentration characteristic index
-     * @return {@code true}:target  Pollen Concentration characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Pollen Concentration characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isPollenConcentrationNotificatable(int index) {
+    public synchronized boolean canPollenConcentrationNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(POLLEN_CONCENTRATION_CHARACTERISTIC);
         if (essData != null) {
@@ -11448,7 +11448,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startPollenConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isPollenConcentrationNotificatable(index)) {
+        if (canPollenConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(POLLEN_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -11476,7 +11476,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopPollenConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isPollenConcentrationNotificatable(index)) {
+        if (canPollenConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(POLLEN_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -11779,19 +11779,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isPressureNotificatable(int)
+     * @see #canPressureNotify(int)
      */
-    public synchronized boolean isPressureNotificatable() {
-        return isPressureNotificatable(0);
+    public synchronized boolean canPressureNotify() {
+        return canPressureNotify(0);
     }
 
     /**
-     * get Pressure characteristic's notificatable status
+     * get Pressure characteristic's notify status
      *
      * @param index Pressure characteristic index
-     * @return {@code true}:target  Pressure characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Pressure characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isPressureNotificatable(int index) {
+    public synchronized boolean canPressureNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(PRESSURE_CHARACTERISTIC);
         if (essData != null) {
@@ -11910,7 +11910,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startPressureNotification(int index) {
         Integer taskId = null;
-        if (isPressureNotificatable(index)) {
+        if (canPressureNotify(index)) {
             EssData essData = mEssDataMap.get(PRESSURE_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -11938,7 +11938,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopPressureNotification(int index) {
         Integer taskId = null;
-        if (isPressureNotificatable(index)) {
+        if (canPressureNotify(index)) {
             EssData essData = mEssDataMap.get(PRESSURE_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -12241,19 +12241,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isRainfallNotificatable(int)
+     * @see #canRainfallNotify(int)
      */
-    public synchronized boolean isRainfallNotificatable() {
-        return isRainfallNotificatable(0);
+    public synchronized boolean canRainfallNotify() {
+        return canRainfallNotify(0);
     }
 
     /**
-     * get Rainfall characteristic's notificatable status
+     * get Rainfall characteristic's notify status
      *
      * @param index Rainfall characteristic index
-     * @return {@code true}:target  Rainfall characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Rainfall characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isRainfallNotificatable(int index) {
+    public synchronized boolean canRainfallNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(RAINFALL_CHARACTERISTIC);
         if (essData != null) {
@@ -12372,7 +12372,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startRainfallNotification(int index) {
         Integer taskId = null;
-        if (isRainfallNotificatable(index)) {
+        if (canRainfallNotify(index)) {
             EssData essData = mEssDataMap.get(RAINFALL_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -12400,7 +12400,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopRainfallNotification(int index) {
         Integer taskId = null;
-        if (isRainfallNotificatable(index)) {
+        if (canRainfallNotify(index)) {
             EssData essData = mEssDataMap.get(RAINFALL_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -12703,19 +12703,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isSulfurDioxideConcentrationNotificatable(int)
+     * @see #canSulfurDioxideConcentrationNotify(int)
      */
-    public synchronized boolean isSulfurDioxideConcentrationNotificatable() {
-        return isSulfurDioxideConcentrationNotificatable(0);
+    public synchronized boolean canSulfurDioxideConcentrationNotify() {
+        return canSulfurDioxideConcentrationNotify(0);
     }
 
     /**
-     * get Sulfur Dioxide Concentration characteristic's notificatable status
+     * get Sulfur Dioxide Concentration characteristic's notify status
      *
      * @param index Sulfur Dioxide Concentration characteristic index
-     * @return {@code true}:target  Sulfur Dioxide Concentration characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Sulfur Dioxide Concentration characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isSulfurDioxideConcentrationNotificatable(int index) {
+    public synchronized boolean canSulfurDioxideConcentrationNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
         if (essData != null) {
@@ -12834,7 +12834,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startSulfurDioxideConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isSulfurDioxideConcentrationNotificatable(index)) {
+        if (canSulfurDioxideConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -12862,7 +12862,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopSulfurDioxideConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isSulfurDioxideConcentrationNotificatable(index)) {
+        if (canSulfurDioxideConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(SULFUR_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -13165,19 +13165,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isSulfurHexafluorideConcentrationNotificatable(int)
+     * @see #canSulfurHexafluorideConcentrationNotify(int)
      */
-    public synchronized boolean isSulfurHexafluorideConcentrationNotificatable() {
-        return isSulfurHexafluorideConcentrationNotificatable(0);
+    public synchronized boolean canSulfurHexafluorideConcentrationNotify() {
+        return canSulfurHexafluorideConcentrationNotify(0);
     }
 
     /**
-     * get Sulfur Hexafluoride Concentration characteristic's notificatable status
+     * get Sulfur Hexafluoride Concentration characteristic's notify status
      *
      * @param index Sulfur Hexafluoride Concentration characteristic index
-     * @return {@code true}:target  Sulfur Hexafluoride Concentration characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Sulfur Hexafluoride Concentration characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isSulfurHexafluorideConcentrationNotificatable(int index) {
+    public synchronized boolean canSulfurHexafluorideConcentrationNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
         if (essData != null) {
@@ -13296,7 +13296,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startSulfurHexafluorideConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isSulfurHexafluorideConcentrationNotificatable(index)) {
+        if (canSulfurHexafluorideConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -13324,7 +13324,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopSulfurHexafluorideConcentrationNotification(int index) {
         Integer taskId = null;
-        if (isSulfurHexafluorideConcentrationNotificatable(index)) {
+        if (canSulfurHexafluorideConcentrationNotify(index)) {
             EssData essData = mEssDataMap.get(SULFUR_HEXAFLUORIDE_CONCENTRATION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -13627,19 +13627,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isTemperatureNotificatable(int)
+     * @see #canTemperatureNotify(int)
      */
-    public synchronized boolean isTemperatureNotificatable() {
-        return isTemperatureNotificatable(0);
+    public synchronized boolean canTemperatureNotify() {
+        return canTemperatureNotify(0);
     }
 
     /**
-     * get Temperature characteristic's notificatable status
+     * get Temperature characteristic's notify status
      *
      * @param index Temperature characteristic index
-     * @return {@code true}:target  Temperature characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Temperature characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isTemperatureNotificatable(int index) {
+    public synchronized boolean canTemperatureNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(TEMPERATURE_CHARACTERISTIC);
         if (essData != null) {
@@ -13758,7 +13758,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startTemperatureNotification(int index) {
         Integer taskId = null;
-        if (isTemperatureNotificatable(index)) {
+        if (canTemperatureNotify(index)) {
             EssData essData = mEssDataMap.get(TEMPERATURE_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -13786,7 +13786,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopTemperatureNotification(int index) {
         Integer taskId = null;
-        if (isTemperatureNotificatable(index)) {
+        if (canTemperatureNotify(index)) {
             EssData essData = mEssDataMap.get(TEMPERATURE_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -14089,19 +14089,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isTrueWindDirectionNotificatable(int)
+     * @see #canTrueWindDirectionNotify(int)
      */
-    public synchronized boolean isTrueWindDirectionNotificatable() {
-        return isTrueWindDirectionNotificatable(0);
+    public synchronized boolean canTrueWindDirectionNotify() {
+        return canTrueWindDirectionNotify(0);
     }
 
     /**
-     * get True Wind Direction characteristic's notificatable status
+     * get True Wind Direction characteristic's notify status
      *
      * @param index True Wind Direction characteristic index
-     * @return {@code true}:target  True Wind Direction characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  True Wind Direction characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isTrueWindDirectionNotificatable(int index) {
+    public synchronized boolean canTrueWindDirectionNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(TRUE_WIND_DIRECTION_CHARACTERISTIC);
         if (essData != null) {
@@ -14220,7 +14220,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startTrueWindDirectionNotification(int index) {
         Integer taskId = null;
-        if (isTrueWindDirectionNotificatable(index)) {
+        if (canTrueWindDirectionNotify(index)) {
             EssData essData = mEssDataMap.get(TRUE_WIND_DIRECTION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -14248,7 +14248,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopTrueWindDirectionNotification(int index) {
         Integer taskId = null;
-        if (isTrueWindDirectionNotificatable(index)) {
+        if (canTrueWindDirectionNotify(index)) {
             EssData essData = mEssDataMap.get(TRUE_WIND_DIRECTION_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -14551,19 +14551,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isTrueWindSpeedNotificatable(int)
+     * @see #canTrueWindSpeedNotify(int)
      */
-    public synchronized boolean isTrueWindSpeedNotificatable() {
-        return isTrueWindSpeedNotificatable(0);
+    public synchronized boolean canTrueWindSpeedNotify() {
+        return canTrueWindSpeedNotify(0);
     }
 
     /**
-     * get True Wind Speed characteristic's notificatable status
+     * get True Wind Speed characteristic's notify status
      *
      * @param index True Wind Speed characteristic index
-     * @return {@code true}:target  True Wind Speed characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  True Wind Speed characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isTrueWindSpeedNotificatable(int index) {
+    public synchronized boolean canTrueWindSpeedNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(TRUE_WIND_SPEED_CHARACTERISTIC);
         if (essData != null) {
@@ -14682,7 +14682,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startTrueWindSpeedNotification(int index) {
         Integer taskId = null;
-        if (isTrueWindSpeedNotificatable(index)) {
+        if (canTrueWindSpeedNotify(index)) {
             EssData essData = mEssDataMap.get(TRUE_WIND_SPEED_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -14710,7 +14710,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopTrueWindSpeedNotification(int index) {
         Integer taskId = null;
-        if (isTrueWindSpeedNotificatable(index)) {
+        if (canTrueWindSpeedNotify(index)) {
             EssData essData = mEssDataMap.get(TRUE_WIND_SPEED_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -15013,19 +15013,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isUVIndexNotificatable(int)
+     * @see #canUVIndexNotify(int)
      */
-    public synchronized boolean isUVIndexNotificatable() {
-        return isUVIndexNotificatable(0);
+    public synchronized boolean canUVIndexNotify() {
+        return canUVIndexNotify(0);
     }
 
     /**
-     * get UV Index characteristic's notificatable status
+     * get UV Index characteristic's notify status
      *
      * @param index UV Index characteristic index
-     * @return {@code true}:target  UV Index characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  UV Index characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isUVIndexNotificatable(int index) {
+    public synchronized boolean canUVIndexNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(UV_INDEX_CHARACTERISTIC);
         if (essData != null) {
@@ -15144,7 +15144,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startUVIndexNotification(int index) {
         Integer taskId = null;
-        if (isUVIndexNotificatable(index)) {
+        if (canUVIndexNotify(index)) {
             EssData essData = mEssDataMap.get(UV_INDEX_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -15172,7 +15172,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopUVIndexNotification(int index) {
         Integer taskId = null;
-        if (isUVIndexNotificatable(index)) {
+        if (canUVIndexNotify(index)) {
             EssData essData = mEssDataMap.get(UV_INDEX_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);
@@ -15475,19 +15475,19 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     }
 
     /**
-     * @see #isWindChillNotificatable(int)
+     * @see #canWindChillNotify(int)
      */
-    public synchronized boolean isWindChillNotificatable() {
-        return isWindChillNotificatable(0);
+    public synchronized boolean canWindChillNotify() {
+        return canWindChillNotify(0);
     }
 
     /**
-     * get Wind Chill characteristic's notificatable status
+     * get Wind Chill characteristic's notify status
      *
      * @param index Wind Chill characteristic index
-     * @return {@code true}:target  Wind Chill characteristic is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target  Wind Chill characteristic can notify, {@code false}:can not notify
      */
-    public synchronized boolean isWindChillNotificatable(int index) {
+    public synchronized boolean canWindChillNotify(int index) {
         boolean result = false;
         EssData essData = mEssDataMap.get(WIND_CHILL_CHARACTERISTIC);
         if (essData != null) {
@@ -15606,7 +15606,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer startWindChillNotification(int index) {
         Integer taskId = null;
-        if (isWindChillNotificatable(index)) {
+        if (canWindChillNotify(index)) {
             EssData essData = mEssDataMap.get(WIND_CHILL_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, true);
@@ -15634,7 +15634,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
     @Nullable
     public synchronized Integer stopWindChillNotification(int index) {
         Integer taskId = null;
-        if (isWindChillNotificatable(index)) {
+        if (canWindChillNotify(index)) {
             EssData essData = mEssDataMap.get(WIND_CHILL_CHARACTERISTIC);
             if (essData != null) {
                 taskId = setEnvironmentalSensingCharacteristicNotification(index, essData.mBluetoothGattCharacteristicList, false);

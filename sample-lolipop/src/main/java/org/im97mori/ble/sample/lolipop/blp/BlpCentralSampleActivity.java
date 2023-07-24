@@ -132,9 +132,9 @@ public class BlpCentralSampleActivity extends BaseActivity implements View.OnCli
             mBloodPressureProfile.stopBloodPressureMeasurementIndication();
         } else if (R.id.has_intermediate_cuff_pressure == item.getItemId()) {
             addRow("isIntermediateCuffPressureSupported",  mBloodPressureProfile.isIntermediateCuffPressureSupported());
-        } else if (R.id.start_notificate_intermediate_cuff_pressure == item.getItemId()) {
+        } else if (R.id.start_notify_intermediate_cuff_pressure == item.getItemId()) {
             mBloodPressureProfile.startIntermediateCuffPressureNotification();
-        } else if (R.id.stop_notificate_intermediate_cuff_pressure == item.getItemId()) {
+        } else if (R.id.stop_notify_intermediate_cuff_pressure == item.getItemId()) {
             mBloodPressureProfile.stopIntermediateCuffPressureNotification();
         } else if (R.id.read_blood_pressure_feature == item.getItemId()) {
             mBloodPressureProfile.getBloodPressureFeature();

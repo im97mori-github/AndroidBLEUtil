@@ -27,7 +27,7 @@ import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.MockData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.task.AddServiceTask;
-import org.im97mori.ble.task.NotificationTask;
+import org.im97mori.ble.task.NotifyTask;
 import org.im97mori.ble.task.RemoveServiceTask;
 
 import java.util.Arrays;
@@ -541,7 +541,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      * @param delay                    notification delay(millis)
      * @param notificationCount        notification / indication count. if {@code null}, default notification count is used
      * @param argument                 callback argument
-     * @see BLEServerConnection#createNotificationTask(BluetoothDevice, UUID, int, UUID, int, ByteArrayInterface, boolean, long, long, Bundle, BLEServerCallback)
+     * @see BLEServerConnection#createNotifyTask(BluetoothDevice, UUID, int, UUID, int, ByteArrayInterface, boolean, long, long, Bundle, BLEServerCallback)
      */
     protected synchronized void startNotification(@Nullable Integer taskId
             , @NonNull BLEServerConnection bleServerConnection
@@ -587,14 +587,14 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                             for (BluetoothDevice bluetoothDevice : mConnectedDeviceMap.keySet()) {
                                 notificationData = new NotificationData(bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
                                 if (!mActivatedNotificationMap.containsKey(notificationData)) {
-                                    Integer newTaskId = bleServerConnection.createNotificationTask(bluetoothDevice
+                                    Integer newTaskId = bleServerConnection.createNotifyTask(bluetoothDevice
                                             , serviceUUID
                                             , serviceInstanceId
                                             , characteristicUUID
                                             , characteristicInstanceId
                                             , characteristicData
                                             , isConfirm
-                                            , NotificationTask.TIMEOUT_MILLIS
+                                            , NotifyTask.TIMEOUT_MILLIS
                                             , delay
                                             , bundle
                                             , this);
@@ -608,14 +608,14 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                             if (mConnectedDeviceMap.containsKey(device)) {
                                 Integer currentTaskId = mActivatedNotificationMap.get(notificationData);
                                 if (currentTaskId == null || currentTaskId.equals(taskId)) {
-                                    Integer newTaskId = bleServerConnection.createNotificationTask(device
+                                    Integer newTaskId = bleServerConnection.createNotifyTask(device
                                             , serviceUUID
                                             , serviceInstanceId
                                             , characteristicUUID
                                             , characteristicInstanceId
                                             , characteristicData
                                             , isConfirm
-                                            , NotificationTask.TIMEOUT_MILLIS
+                                            , NotifyTask.TIMEOUT_MILLIS
                                             , delay
                                             , bundle
                                             , this);
@@ -702,29 +702,29 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         BluetoothGattServer bluetoothGattServer = bleServerConnection.getBluetoothGattServer();
         if (bluetoothGattServer != null) {
             int status = BluetoothGatt.GATT_SUCCESS;
-            boolean isTempraryValid = true;
+            boolean isTemporaryValid = true;
             for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceEntry : mRemappedServiceCharacteristicMap.entrySet()) {
                 for (Map.Entry<Pair<UUID, Integer>, CharacteristicData> characteristicEntry : serviceEntry.getValue().entrySet()) {
                     CharacteristicData characteristicData = characteristicEntry.getValue();
-                    isTempraryValid = characteristicData.isTemporaryDataValid();
-                    if (!isTempraryValid) {
+                    isTemporaryValid = characteristicData.isTemporaryDataValid();
+                    if (!isTemporaryValid) {
                         break;
                     }
                 }
-                if (!isTempraryValid) {
+                if (!isTemporaryValid) {
                     break;
                 }
             }
 
-            if (isTempraryValid) {
+            if (isTemporaryValid) {
                 for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, DescriptorData>> characteristicEntry : mRemappedCharacteristicDescriptorMap.entrySet()) {
                     for (DescriptorData descriptorData : characteristicEntry.getValue().values()) {
-                        isTempraryValid = descriptorData.isTemporaryDataValid();
-                        if (!isTempraryValid) {
+                        isTemporaryValid = descriptorData.isTemporaryDataValid();
+                        if (!isTemporaryValid) {
                             break;
                         }
                     }
-                    if (!isTempraryValid) {
+                    if (!isTemporaryValid) {
                         break;
                     }
                 }
@@ -733,7 +733,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
             for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceEntry : mRemappedServiceCharacteristicMap.entrySet()) {
                 for (Map.Entry<Pair<UUID, Integer>, CharacteristicData> characteristicEntry : serviceEntry.getValue().entrySet()) {
                     CharacteristicData characteristicData = characteristicEntry.getValue();
-                    if (execute && isTempraryValid) {
+                    if (execute && isTemporaryValid) {
                         characteristicData.executeReliableWrite();
                     }
                     characteristicData.temporaryData.clear();
@@ -745,7 +745,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                 for (Map.Entry<Pair<UUID, Integer>, DescriptorData> descriptorEntry : characteristicEntry.getValue().entrySet()) {
                     Pair<UUID, Integer> descriptorKey = descriptorEntry.getKey();
                     DescriptorData descriptorData = descriptorEntry.getValue();
-                    if (execute && isTempraryValid) {
+                    if (execute && isTemporaryValid) {
                         byte[] before = descriptorData.getBytes();
                         descriptorData.executeReliableWrite();
                         byte[] after = descriptorData.getBytes();
@@ -768,7 +768,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                 }
             }
 
-            if (!isTempraryValid) {
+            if (!isTemporaryValid) {
                 status = APPLICATION_ERROR_9F;
             }
             mIsReliable = false;

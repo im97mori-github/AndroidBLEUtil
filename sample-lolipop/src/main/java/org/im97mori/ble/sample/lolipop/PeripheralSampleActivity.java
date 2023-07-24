@@ -19,11 +19,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
-import org.im97mori.ble.task.NotificationTask;
+import org.im97mori.ble.task.NotifyTask;
 
 import java.util.LinkedList;
 
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFICATABLE_CHARACTERISTIC;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFY_CHARACTERISTIC;
 import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_PRIMARY_SERVICE_1;
 
 public class PeripheralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
@@ -38,8 +38,8 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
     private BLEServerConnection mBLEServerConnection;
 
     BluetoothDevice mLatestConnectedBluetoothDevice;
-    Integer mLatestNotificatableServiceInstanceId;
-    Integer mLatestNotificatableCharacteristicInstanceId;
+    Integer mLatestNotifyServiceInstanceId;
+    Integer mLatestNotifyCharacteristicInstanceId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,34 +104,34 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (R.id.notification == item.getItemId()) {
             BluetoothDevice bluetoothDevice = mLatestConnectedBluetoothDevice;
-            Integer serviceInstanceId = mLatestNotificatableServiceInstanceId;
-            Integer characteristicInstanceId = mLatestNotificatableCharacteristicInstanceId;
+            Integer serviceInstanceId = mLatestNotifyServiceInstanceId;
+            Integer characteristicInstanceId = mLatestNotifyCharacteristicInstanceId;
             if (bluetoothDevice != null && serviceInstanceId != null && characteristicInstanceId != null) {
-                mBLEServerConnection.createNotificationTask(bluetoothDevice
+                mBLEServerConnection.createNotifyTask(bluetoothDevice
                         , SAMPLE_PRIMARY_SERVICE_1
                         , serviceInstanceId
-                        , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                        , SAMPLE_NOTIFY_CHARACTERISTIC
                         , characteristicInstanceId
                         , () -> new byte[]{1, 2, 3, 4}
                         , false
-                        , NotificationTask.TIMEOUT_MILLIS
+                        , NotifyTask.TIMEOUT_MILLIS
                         , 0
                         , null
                         , null);
             }
         } else if (R.id.indication == item.getItemId()) {
             BluetoothDevice bluetoothDevice = mLatestConnectedBluetoothDevice;
-            Integer serviceInstanceId = mLatestNotificatableServiceInstanceId;
-            Integer characteristicInstanceId = mLatestNotificatableCharacteristicInstanceId;
+            Integer serviceInstanceId = mLatestNotifyServiceInstanceId;
+            Integer characteristicInstanceId = mLatestNotifyCharacteristicInstanceId;
             if (bluetoothDevice != null && serviceInstanceId != null && characteristicInstanceId != null) {
-                mBLEServerConnection.createNotificationTask(bluetoothDevice
+                mBLEServerConnection.createNotifyTask(bluetoothDevice
                         , SAMPLE_PRIMARY_SERVICE_1
                         , serviceInstanceId
-                        , SAMPLE_NOTIFICATABLE_CHARACTERISTIC
+                        , SAMPLE_NOTIFY_CHARACTERISTIC
                         , characteristicInstanceId
                         , () -> new byte[]{1, 2, 3, 4}
                         , true
-                        , NotificationTask.TIMEOUT_MILLIS
+                        , NotifyTask.TIMEOUT_MILLIS
                         , 0
                         , null
                         , null);

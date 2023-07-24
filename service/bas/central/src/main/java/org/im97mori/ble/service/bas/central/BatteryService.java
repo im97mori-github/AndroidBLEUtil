@@ -289,19 +289,19 @@ public class BatteryService extends AbstractCentralService {
     }
 
     /**
-     * @see #isBatteryLevelNotificatable(int)
+     * @see #canBatteryLevelNotify(int)
      */
-    public synchronized boolean isBatteryLevelNotificatable() {
-        return isBatteryLevelNotificatable(0);
+    public synchronized boolean canBatteryLevelNotify() {
+        return canBatteryLevelNotify(0);
     }
 
     /**
-     * get Battery Level's notificatable status
+     * get Battery Level's notify status
      *
      * @param index Battery Service index
-     * @return {@code true}:target Battery Service is notificatable, {@code false}:not notificatable
+     * @return {@code true}:target Battery Service can notify, {@code false}:can not notify
      */
-    public synchronized boolean isBatteryLevelNotificatable(int index) {
+    public synchronized boolean canBatteryLevelNotify(int index) {
         boolean result = false;
         if (isStarted() && index >= 0 && index < mBatteryServiceList.size()) {
             BluetoothGattService bluetoothGattService = mBatteryServiceList.get(index);
@@ -366,7 +366,7 @@ public class BatteryService extends AbstractCentralService {
         Integer taskId = null;
         if (isStarted() && index >= 0 && index < mBatteryServiceList.size()) {
             BluetoothGattService bluetoothGattService = mBatteryServiceList.get(index);
-            if (isBatteryLevelNotificatable(index)) {
+            if (canBatteryLevelNotify(index)) {
                 BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BATTERY_LEVEL_CHARACTERISTIC);
                 BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
                 if (bluetoothGattDescriptor != null) {
@@ -399,7 +399,7 @@ public class BatteryService extends AbstractCentralService {
         Integer taskId = null;
         if (isStarted() && index >= 0 && index < mBatteryServiceList.size()) {
             BluetoothGattService bluetoothGattService = mBatteryServiceList.get(index);
-            if (isBatteryLevelNotificatable(index)) {
+            if (canBatteryLevelNotify(index)) {
                 BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BATTERY_LEVEL_CHARACTERISTIC);
                 BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
                 if (bluetoothGattDescriptor != null) {
@@ -434,7 +434,7 @@ public class BatteryService extends AbstractCentralService {
         Integer taskId = null;
         if (isStarted() && index >= 0 && index < mBatteryServiceList.size()) {
             BluetoothGattService bluetoothGattService = mBatteryServiceList.get(index);
-            if (isBatteryLevelNotificatable(index)) {
+            if (canBatteryLevelNotify(index)) {
                 BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BATTERY_LEVEL_CHARACTERISTIC);
                 BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
                 if (bluetoothGattDescriptor != null) {

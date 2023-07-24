@@ -733,21 +733,21 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00001() {
+    public void test_canBatteryLevelNotify_00001() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
-        assertNull(cyclingPowerProfile.isBatteryLevelNotificatable());
+        assertNull(cyclingPowerProfile.canBatteryLevelNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00002() {
+    public void test_canBatteryLevelNotify_00002() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public synchronized boolean isBatteryLevelNotificatable(int index) {
+                        public synchronized boolean canBatteryLevelNotify(int index) {
                             return true;
                         }
                     };
@@ -755,27 +755,27 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
             }
         };
         cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(cyclingPowerProfile.isBatteryLevelNotificatable());
+        assertNotNull(cyclingPowerProfile.canBatteryLevelNotify());
         cyclingPowerProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00101() {
+    public void test_canBatteryLevelNotify_00101() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback());
-        assertNull(cyclingPowerProfile.isBatteryLevelNotificatable(0));
+        assertNull(cyclingPowerProfile.canBatteryLevelNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isBatteryLevelNotificatable_00102() {
+    public void test_canBatteryLevelNotify_00102() {
         CyclingPowerProfile cyclingPowerProfile = new CyclingPowerProfile(ApplicationProvider.getApplicationContext(), new BaseCyclingPowerProfileCallback()) {
             @Override
             public synchronized void createServices() {
                 if (mBatteryService == null) {
                     mBatteryService = new BatteryService(mBLEConnection, mCyclingPowerProfileCallback, null) {
                         @Override
-                        public synchronized boolean isBatteryLevelNotificatable(int index) {
+                        public synchronized boolean canBatteryLevelNotify(int index) {
                             return true;
                         }
                     };
@@ -783,7 +783,7 @@ public class CyclingPowerProfileTest extends AbstractCentralTest {
             }
         };
         cyclingPowerProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(cyclingPowerProfile.isBatteryLevelNotificatable(0));
+        assertNotNull(cyclingPowerProfile.canBatteryLevelNotify(0));
         cyclingPowerProfile.disconnect();
     }
 

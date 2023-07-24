@@ -17,11 +17,11 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Set notification task
+ * Set notify task
  * <p>
  * for central role
  */
-public class SetNotificationTask extends AbstractBLETask {
+public class SetNotifyTask extends AbstractBLETask {
 
     /**
      * STATUS:CANCEL
@@ -104,7 +104,7 @@ public class SetNotificationTask extends AbstractBLETask {
      * @param notificationStatus       {@link BluetoothGatt#setCharacteristicNotification(BluetoothGattCharacteristic, boolean)} 2nd parameter
      * @param argument                 callback argument
      */
-    public SetNotificationTask(@NonNull BLEConnection bleConnection
+    public SetNotifyTask(@NonNull BLEConnection bleConnection
             , @NonNull BluetoothGatt bluetoothGatt
             , @NonNull TaskHandler taskHandler
             , @NonNull UUID serviceUUID

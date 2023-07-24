@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileSulfurHexafluorideConcentrationTest exte
 
     @Test
     @RequiresDevice
-    public void test_isSulfurHexafluorideConcentrationNotificatable_00001() {
+    public void test_canSulfurHexafluorideConcentrationNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isSulfurHexafluorideConcentrationNotificatable());
+        assertNull(environmentalSensingProfile.canSulfurHexafluorideConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isSulfurHexafluorideConcentrationNotificatable_00002() {
+    public void test_canSulfurHexafluorideConcentrationNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isSulfurHexafluorideConcentrationNotificatable());
+        assertNotNull(environmentalSensingProfile.canSulfurHexafluorideConcentrationNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isSulfurHexafluorideConcentrationNotificatable_00101() {
+    public void test_canSulfurHexafluorideConcentrationNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isSulfurHexafluorideConcentrationNotificatable(0));
+        assertNull(environmentalSensingProfile.canSulfurHexafluorideConcentrationNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isSulfurHexafluorideConcentrationNotificatable_00102() {
+    public void test_canSulfurHexafluorideConcentrationNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isSulfurHexafluorideConcentrationNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canSulfurHexafluorideConcentrationNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

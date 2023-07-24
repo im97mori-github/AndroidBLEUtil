@@ -189,53 +189,53 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             mFitnessMachineProfile.getFitnessMachineFeature();
         } else if (R.id.read_treadmill_data_characteristic_configuration == item.getItemId()) {
             mFitnessMachineProfile.getTreadmillDataClientCharacteristicConfiguration();
-        } else if (R.id.start_notificate_treadmill_data == item.getItemId()) {
+        } else if (R.id.start_notify_treadmill_data == item.getItemId()) {
             mFitnessMachineProfile.startTreadmillDataNotification();
-        } else if (R.id.stop_notificate_treadmill_data == item.getItemId()) {
+        } else if (R.id.stop_notify_treadmill_data == item.getItemId()) {
             mFitnessMachineProfile.stopTreadmillDataNotification();
 
         } else if (R.id.read_cross_trainer_data_characteristic_configuration == item.getItemId()) {
             mFitnessMachineProfile.getCrossTrainerDataClientCharacteristicConfiguration();
-        } else if (R.id.start_notificate_cross_trainer_data == item.getItemId()) {
+        } else if (R.id.start_notify_cross_trainer_data == item.getItemId()) {
             mFitnessMachineProfile.startCrossTrainerDataNotification();
-        } else if (R.id.stop_notificate_cross_trainer_data == item.getItemId()) {
+        } else if (R.id.stop_notify_cross_trainer_data == item.getItemId()) {
             mFitnessMachineProfile.stopCrossTrainerDataNotification();
 
         } else if (R.id.read_step_climber_data_characteristic_configuration == item.getItemId()) {
             mFitnessMachineProfile.getStepClimberDataClientCharacteristicConfiguration();
-        } else if (R.id.start_notificate_step_climber_data == item.getItemId()) {
+        } else if (R.id.start_notify_step_climber_data == item.getItemId()) {
             mFitnessMachineProfile.startStepClimberDataNotification();
-        } else if (R.id.stop_notificate_step_climber_data == item.getItemId()) {
+        } else if (R.id.stop_notify_step_climber_data == item.getItemId()) {
             mFitnessMachineProfile.stopStepClimberDataNotification();
 
         } else if (R.id.read_stair_climber_data_characteristic_configuration == item.getItemId()) {
             mFitnessMachineProfile.getStairClimberDataClientCharacteristicConfiguration();
-        } else if (R.id.start_notificate_stair_climber_data == item.getItemId()) {
+        } else if (R.id.start_notify_stair_climber_data == item.getItemId()) {
             mFitnessMachineProfile.startStairClimberDataNotification();
-        } else if (R.id.stop_notificate_stair_climber_data == item.getItemId()) {
+        } else if (R.id.stop_notify_stair_climber_data == item.getItemId()) {
             mFitnessMachineProfile.stopStairClimberDataNotification();
 
         } else if (R.id.read_rower_data_characteristic_configuration == item.getItemId()) {
             mFitnessMachineProfile.getRowerDataClientCharacteristicConfiguration();
-        } else if (R.id.start_notificate_rower_data == item.getItemId()) {
+        } else if (R.id.start_notify_rower_data == item.getItemId()) {
             mFitnessMachineProfile.startRowerDataNotification();
-        } else if (R.id.stop_notificate_rower_data == item.getItemId()) {
+        } else if (R.id.stop_notify_rower_data == item.getItemId()) {
             mFitnessMachineProfile.stopRowerDataNotification();
 
         } else if (R.id.read_indoor_bike_data_characteristic_configuration == item.getItemId()) {
             mFitnessMachineProfile.getIndoorBikeDataClientCharacteristicConfiguration();
-        } else if (R.id.start_notificate_indoor_bike_data == item.getItemId()) {
+        } else if (R.id.start_notify_indoor_bike_data == item.getItemId()) {
             mFitnessMachineProfile.startIndoorBikeDataNotification();
-        } else if (R.id.stop_notificate_indoor_bike_data == item.getItemId()) {
+        } else if (R.id.stop_notify_indoor_bike_data == item.getItemId()) {
             mFitnessMachineProfile.stopIndoorBikeDataNotification();
 
         } else if (R.id.read_training_status == item.getItemId()) {
             mFitnessMachineProfile.getTrainingStatus();
         } else if (R.id.read_training_status_characteristic_configuration == item.getItemId()) {
             mFitnessMachineProfile.getTrainingStatusClientCharacteristicConfiguration();
-        } else if (R.id.start_notificate_training_status == item.getItemId()) {
+        } else if (R.id.start_notify_training_status == item.getItemId()) {
             mFitnessMachineProfile.startTrainingStatusNotification();
-        } else if (R.id.stop_notificate_training_status == item.getItemId()) {
+        } else if (R.id.stop_notify_training_status == item.getItemId()) {
             mFitnessMachineProfile.stopTrainingStatusNotification();
 
         } else if (R.id.read_supported_speed_range == item.getItemId()) {
@@ -383,9 +383,9 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             mFitnessMachineProfile.stopFitnessMachineControlPointIndication();
         } else if (R.id.read_fitness_machine_status_characteristic_configuration == item.getItemId()) {
             mFitnessMachineProfile.getFitnessMachineStatusClientCharacteristicConfiguration();
-        } else if (R.id.start_notificate_fitness_machine_status == item.getItemId()) {
+        } else if (R.id.start_notify_fitness_machine_status == item.getItemId()) {
             mFitnessMachineProfile.startFitnessMachineStatusNotification();
-        } else if (R.id.stop_notificate_fitness_machine_status == item.getItemId()) {
+        } else if (R.id.stop_notify_fitness_machine_status == item.getItemId()) {
             mFitnessMachineProfile.stopFitnessMachineStatusNotification();
 
         } else if (R.id.has_first_name == item.getItemId()) {
@@ -615,7 +615,7 @@ public class FtmpCentralSampleActivity extends BaseActivity implements View.OnCl
             mFitnessMachineProfile.startUserControlPointIndication();
         } else if (R.id.indicate_user_control_point_stop == item.getItemId()) {
             mFitnessMachineProfile.stopUserControlPointIndication();
-        } else if (R.id.is_database_change_increment_notificatable == item.getItemId()) {
+        } else if (R.id.can_database_change_increment_notify == item.getItemId()) {
             String text;
             Boolean result = mFitnessMachineProfile.isDatabaseChangeIncrementCharacteristicNotifySupported();
             if (result == null) {

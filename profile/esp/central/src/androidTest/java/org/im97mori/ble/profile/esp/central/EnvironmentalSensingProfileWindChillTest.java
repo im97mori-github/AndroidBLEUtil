@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileWindChillTest extends AbstractCentralTes
 
     @Test
     @RequiresDevice
-    public void test_isWindChillNotificatable_00001() {
+    public void test_canWindChillNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isWindChillNotificatable());
+        assertNull(environmentalSensingProfile.canWindChillNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isWindChillNotificatable_00002() {
+    public void test_canWindChillNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isWindChillNotificatable());
+        assertNotNull(environmentalSensingProfile.canWindChillNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isWindChillNotificatable_00101() {
+    public void test_canWindChillNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isWindChillNotificatable(0));
+        assertNull(environmentalSensingProfile.canWindChillNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isWindChillNotificatable_00102() {
+    public void test_canWindChillNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isWindChillNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canWindChillNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

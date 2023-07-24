@@ -1,7 +1,7 @@
 package org.im97mori.ble.sample.jellybean;
 
-import static org.im97mori.ble.sample.jellybean.CentralSampleActivity.SAMPLE_INDICATABLE_CHARACTERISTIC;
-import static org.im97mori.ble.sample.jellybean.CentralSampleActivity.SAMPLE_NOTIFICATABLE_CHARACTERISTIC;
+import static org.im97mori.ble.sample.jellybean.CentralSampleActivity.SAMPLE_INDICATE_CHARACTERISTIC;
+import static org.im97mori.ble.sample.jellybean.CentralSampleActivity.SAMPLE_NOTIFY_CHARACTERISTIC;
 import static org.im97mori.ble.sample.jellybean.CentralSampleActivity.SAMPLE_READABLE_CHARACTERISTIC;
 
 import android.bluetooth.BluetoothDevice;
@@ -218,7 +218,7 @@ public class BLECallbackSample implements BLECallback {
 
     @Override
     public void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values) {
-        if (SAMPLE_NOTIFICATABLE_CHARACTERISTIC.equals(characteristicUUID) || SAMPLE_INDICATABLE_CHARACTERISTIC.equals(characteristicUUID)) {
+        if (SAMPLE_NOTIFY_CHARACTERISTIC.equals(characteristicUUID) || SAMPLE_INDICATE_CHARACTERISTIC.equals(characteristicUUID)) {
             callback(serviceUUID, characteristicUUID, new String(values));
         } else {
             callback(serviceUUID, characteristicUUID, Arrays.toString(values));

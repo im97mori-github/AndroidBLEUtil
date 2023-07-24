@@ -313,7 +313,7 @@ public class WspCentralSampleActivity extends BaseActivity implements View.OnCli
             mWeightScaleProfile.startRegisteredUserIndication();
         } else if (R.id.indicate_registered_user_stop == item.getItemId()) {
             mWeightScaleProfile.stopRegisteredUserIndication();
-        } else if (R.id.is_database_change_increment_notificatable == item.getItemId()) {
+        } else if (R.id.can_database_change_increment_notify == item.getItemId()) {
             String text;
             Boolean result = mWeightScaleProfile.isDatabaseChangeIncrementCharacteristicNotifySupported();
             if (result == null) {

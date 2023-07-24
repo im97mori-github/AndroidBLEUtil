@@ -27,11 +27,11 @@ import java.util.Random;
 import java.util.UUID;
 
 @SuppressWarnings("ConstantConditions")
-public class NotificationTaskTest extends AbstractPeripheralTest {
+public class NotifyTaskTest extends AbstractPeripheralTest {
 
     @Test
     public void test_createInitialMessage_00001() {
-        NotificationTask task = new NotificationTask(null
+        NotifyTask task = new NotifyTask(null
                 , null
                 , null
                 , null
@@ -41,51 +41,51 @@ public class NotificationTaskTest extends AbstractPeripheralTest {
                 , 2
                 , null
                 , true
-                , NotificationTask.TIMEOUT_MILLIS
+                , NotifyTask.TIMEOUT_MILLIS
                 , null);
         Message message = task.createInitialMessage();
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertEquals(NotificationTask.PROGRESS_NOTIFICATION_START, bundle.getString(NotificationTask.KEY_NEXT_PROGRESS));
+        assertEquals(NotifyTask.PROGRESS_NOTIFICATION_START, bundle.getString(NotifyTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
     }
 
     @Test
     @RequiresDevice
     public void test_createNotificationSentSuccessMessage_00001() {
-        Message message = NotificationTask.createNotificationSentSuccessMessage(BLETestUtilsAndroid.MOCK_DEVICE_0);
+        Message message = NotifyTask.createNotificationSentSuccessMessage(BLETestUtilsAndroid.MOCK_DEVICE_0);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(NotificationTask.KEY_BLUETOOTH_DEVICE));
-        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(NotificationTask.KEY_BLUETOOTH_DEVICE));
-        assertTrue(bundle.containsKey(NotificationTask.KEY_NEXT_PROGRESS));
-        assertEquals(NotificationTask.PROGRESS_NOTIFICATION_SUCCESS, bundle.getString(NotificationTask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(NotifyTask.KEY_BLUETOOTH_DEVICE));
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(NotifyTask.KEY_BLUETOOTH_DEVICE));
+        assertTrue(bundle.containsKey(NotifyTask.KEY_NEXT_PROGRESS));
+        assertEquals(NotifyTask.PROGRESS_NOTIFICATION_SUCCESS, bundle.getString(NotifyTask.KEY_NEXT_PROGRESS));
     }
 
     @Test
     @RequiresDevice
     public void test_createNotificationSentErrorMessage_00001() {
         int status = new Random().nextInt();
-        Message message = NotificationTask.createNotificationSentErrorMessage(BLETestUtilsAndroid.MOCK_DEVICE_0, status);
+        Message message = NotifyTask.createNotificationSentErrorMessage(BLETestUtilsAndroid.MOCK_DEVICE_0, status);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
-        assertTrue(bundle.containsKey(NotificationTask.KEY_BLUETOOTH_DEVICE));
-        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(NotificationTask.KEY_BLUETOOTH_DEVICE));
-        assertTrue(bundle.containsKey(NotificationTask.KEY_STATUS));
-        assertEquals(status, bundle.getInt(NotificationTask.KEY_STATUS));
-        assertTrue(bundle.containsKey(NotificationTask.KEY_NEXT_PROGRESS));
-        assertEquals(NotificationTask.PROGRESS_NOTIFICATION_ERROR, bundle.getString(NotificationTask.KEY_NEXT_PROGRESS));
+        assertTrue(bundle.containsKey(NotifyTask.KEY_BLUETOOTH_DEVICE));
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(NotifyTask.KEY_BLUETOOTH_DEVICE));
+        assertTrue(bundle.containsKey(NotifyTask.KEY_STATUS));
+        assertEquals(status, bundle.getInt(NotifyTask.KEY_STATUS));
+        assertTrue(bundle.containsKey(NotifyTask.KEY_NEXT_PROGRESS));
+        assertEquals(NotifyTask.PROGRESS_NOTIFICATION_ERROR, bundle.getString(NotifyTask.KEY_NEXT_PROGRESS));
     }
 
     @Test
     public void test_doProcess_00001() {
-        NotificationTask task = new NotificationTask(null
+        NotifyTask task = new NotifyTask(null
                 , null
                 , null
                 , null
@@ -95,7 +95,7 @@ public class NotificationTaskTest extends AbstractPeripheralTest {
                 , 2
                 , null
                 , true
-                , NotificationTask.TIMEOUT_MILLIS
+                , NotifyTask.TIMEOUT_MILLIS
                 , null);
         assertFalse(task.doProcess(new Message()));
     }
@@ -111,7 +111,7 @@ public class NotificationTaskTest extends AbstractPeripheralTest {
             Message message = Message.obtain();
             message.setData(Bundle.EMPTY);
 
-            NotificationTask task = new NotificationTask(MOCK_BLE_SERVER_CONNECTION
+            NotifyTask task = new NotifyTask(MOCK_BLE_SERVER_CONNECTION
                     , null
                     , null
                     , mockTaskHandler
@@ -121,7 +121,7 @@ public class NotificationTaskTest extends AbstractPeripheralTest {
                     , 2
                     , null
                     , false
-                    , NotificationTask.TIMEOUT_MILLIS
+                    , NotifyTask.TIMEOUT_MILLIS
                     , BLEServerCallbackDistributor.wrapArgument(null, null));
             task.cancel();
             assertTrue(task.doProcess(message));

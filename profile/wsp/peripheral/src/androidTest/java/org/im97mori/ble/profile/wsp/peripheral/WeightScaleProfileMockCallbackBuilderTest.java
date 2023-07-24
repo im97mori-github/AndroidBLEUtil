@@ -1860,10 +1860,10 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<UserDataServiceMockCallback> addDatabaseChangeIncrement(int characteristicResponseCode, long characteristicDelay, boolean isNotificatable, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public UserDataServiceMockCallback.Builder<UserDataServiceMockCallback> addDatabaseChangeIncrement(int characteristicResponseCode, long characteristicDelay, boolean canNotify, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(originalDescriptorValue, descriptorValue);
                 atomicBoolean.set(true);
-                return super.addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, isNotificatable, descriptorResponseCode, descriptorDelay, descriptorValue);
+                return super.addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, canNotify, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -1888,7 +1888,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
         final int originalCharacteristicResponseCode = 1;
         final long originalCharacteristicDelay = 2;
-        final boolean originalIsNotificatable = false;
+        final boolean originalcanNotify = false;
         final int originalDescriptorResponseCode = 4;
         final long originalDescriptorDelay = 5;
 
@@ -1899,15 +1899,15 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<UserDataServiceMockCallback> addDatabaseChangeIncrement(int characteristicResponseCode, long characteristicDelay, boolean isNotificatable, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public UserDataServiceMockCallback.Builder<UserDataServiceMockCallback> addDatabaseChangeIncrement(int characteristicResponseCode, long characteristicDelay, boolean canNotify, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertEquals(originalCharacteristicResponseCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
-                assertEquals(originalIsNotificatable, isNotificatable);
+                assertEquals(originalcanNotify, canNotify);
                 assertEquals(originalDescriptorResponseCode, descriptorResponseCode);
                 assertEquals(originalDescriptorDelay, descriptorDelay);
                 assertArrayEquals(originalDescriptorValue, descriptorValue);
                 atomicBoolean.set(true);
-                return super.addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, isNotificatable, descriptorResponseCode, descriptorDelay, descriptorValue);
+                return super.addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, canNotify, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -1919,7 +1919,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                 , userDataServiceMockCallbackBuilder
                 , batteryServiceMockCallbackBuilder
                 , currentTimeServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addDatabaseChangeIncrement(originalCharacteristicResponseCode, originalCharacteristicDelay, originalIsNotificatable, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue));
+        assertEquals(baseBuilder, baseBuilder.addDatabaseChangeIncrement(originalCharacteristicResponseCode, originalCharacteristicDelay, originalcanNotify, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -1930,7 +1930,7 @@ public class WeightScaleProfileMockCallbackBuilderTest {
 
         final int originalCharacteristicResponseCode = 1;
         final long originalCharacteristicDelay = 2;
-        final boolean originalIsNotificatable = false;
+        final boolean originalcanNotify = false;
         final int originalDescriptorResponseCode = 4;
         final long originalDescriptorDelay = 5;
 
@@ -1945,11 +1945,11 @@ public class WeightScaleProfileMockCallbackBuilderTest {
                 , null
                 , batteryServiceMockCallbackBuilder
                 , currentTimeServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addDatabaseChangeIncrement(originalCharacteristicResponseCode, originalCharacteristicDelay, originalIsNotificatable, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue));
+        assertEquals(baseBuilder, baseBuilder.addDatabaseChangeIncrement(originalCharacteristicResponseCode, originalCharacteristicDelay, originalcanNotify, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue));
 
         Exception exception = null;
         try {
-            baseBuilder.addDatabaseChangeIncrement(originalCharacteristicResponseCode, originalCharacteristicDelay, originalIsNotificatable, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue);
+            baseBuilder.addDatabaseChangeIncrement(originalCharacteristicResponseCode, originalCharacteristicDelay, originalcanNotify, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue);
         } catch (Exception e) {
             exception = e;
         }

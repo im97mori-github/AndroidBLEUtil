@@ -164,7 +164,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Cycling Power Measurement notificate success callback
+     * Start Cycling Power Measurement notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -175,7 +175,7 @@ public interface CyclingPowerServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onCyclingPowerMeasurementNotificateStartSuccess(@NonNull Integer taskId
+    void onCyclingPowerMeasurementNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -185,7 +185,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Cycling Power Measurement notificate error callback
+     * Start Cycling Power Measurement notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -200,7 +200,7 @@ public interface CyclingPowerServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onCyclingPowerMeasurementNotificateStartFailed(@NonNull Integer taskId
+    void onCyclingPowerMeasurementNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -211,7 +211,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Cycling Power Measurement notificate timeout callback
+     * Start Cycling Power Measurement notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -223,7 +223,7 @@ public interface CyclingPowerServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onCyclingPowerMeasurementNotificateStartTimeout(@NonNull Integer taskId
+    void onCyclingPowerMeasurementNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -234,7 +234,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Cycling Power Measurement notificate success callback
+     * Stop Cycling Power Measurement notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -245,7 +245,7 @@ public interface CyclingPowerServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onCyclingPowerMeasurementNotificateStopSuccess(@NonNull Integer taskId
+    void onCyclingPowerMeasurementNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -255,7 +255,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Cycling Power Measurement notificate error callback
+     * Stop Cycling Power Measurement notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -270,7 +270,7 @@ public interface CyclingPowerServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onCyclingPowerMeasurementNotificateStopFailed(@NonNull Integer taskId
+    void onCyclingPowerMeasurementNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -281,7 +281,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Cycling Power Measurement notificate timeout callback
+     * Stop Cycling Power Measurement notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -293,7 +293,7 @@ public interface CyclingPowerServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onCyclingPowerMeasurementNotificateStopTimeout(@NonNull Integer taskId
+    void onCyclingPowerMeasurementNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -754,7 +754,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Cycling Power Vector notificate success callback
+     * Start Cycling Power Vector notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -765,7 +765,7 @@ public interface CyclingPowerServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onCyclingPowerVectorNotificateStartSuccess(@NonNull Integer taskId
+    void onCyclingPowerVectorNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -775,7 +775,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Cycling Power Vector notificate error callback
+     * Start Cycling Power Vector notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -790,7 +790,7 @@ public interface CyclingPowerServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onCyclingPowerVectorNotificateStartFailed(@NonNull Integer taskId
+    void onCyclingPowerVectorNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -801,7 +801,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start Cycling Power Vector notificate timeout callback
+     * Start Cycling Power Vector notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -813,7 +813,7 @@ public interface CyclingPowerServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onCyclingPowerVectorNotificateStartTimeout(@NonNull Integer taskId
+    void onCyclingPowerVectorNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -824,7 +824,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Cycling Power Vector notificate success callback
+     * Stop Cycling Power Vector notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -835,7 +835,7 @@ public interface CyclingPowerServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onCyclingPowerVectorNotificateStopSuccess(@NonNull Integer taskId
+    void onCyclingPowerVectorNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -845,7 +845,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Cycling Power Vector notificate error callback
+     * Stop Cycling Power Vector notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -860,7 +860,7 @@ public interface CyclingPowerServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onCyclingPowerVectorNotificateStopFailed(@NonNull Integer taskId
+    void onCyclingPowerVectorNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -871,7 +871,7 @@ public interface CyclingPowerServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop Cycling Power Vector notificate timeout callback
+     * Stop Cycling Power Vector notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -883,7 +883,7 @@ public interface CyclingPowerServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onCyclingPowerVectorNotificateStopTimeout(@NonNull Integer taskId
+    void onCyclingPowerVectorNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId

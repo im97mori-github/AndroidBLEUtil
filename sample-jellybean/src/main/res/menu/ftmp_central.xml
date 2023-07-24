@@ -79,55 +79,55 @@
             android:id="@+id/read_treadmill_data_characteristic_configuration"
             android:title="@string/menu_read_treadmill_data_characteristic_configuration" />
         <item
-            android:id="@+id/start_notificate_treadmill_data"
+            android:id="@+id/start_notify_treadmill_data"
             android:title="@string/menu_notify_treadmill_data_start" />
         <item
-            android:id="@+id/stop_notificate_treadmill_data"
+            android:id="@+id/stop_notify_treadmill_data"
             android:title="@string/menu_notify_treadmill_data_stop" />
         <item
             android:id="@+id/read_cross_trainer_data_characteristic_configuration"
             android:title="@string/menu_read_cross_trainer_data_characteristic_configuration" />
         <item
-            android:id="@+id/start_notificate_cross_trainer_data"
+            android:id="@+id/start_notify_cross_trainer_data"
             android:title="@string/menu_notify_cross_trainer_data_start" />
         <item
-            android:id="@+id/stop_notificate_cross_trainer_data"
+            android:id="@+id/stop_notify_cross_trainer_data"
             android:title="@string/menu_notify_cross_trainer_data_stop" />
         <item
             android:id="@+id/read_step_climber_data_characteristic_configuration"
             android:title="@string/menu_read_step_climber_data_characteristic_configuration" />
         <item
-            android:id="@+id/start_notificate_step_climber_data"
+            android:id="@+id/start_notify_step_climber_data"
             android:title="@string/menu_notify_step_climber_data_start" />
         <item
-            android:id="@+id/stop_notificate_step_climber_data"
+            android:id="@+id/stop_notify_step_climber_data"
             android:title="@string/menu_notify_step_climber_data_stop" />
         <item
             android:id="@+id/read_stair_climber_data_characteristic_configuration"
             android:title="@string/menu_read_stair_climber_data_characteristic_configuration" />
         <item
-            android:id="@+id/start_notificate_stair_climber_data"
+            android:id="@+id/start_notify_stair_climber_data"
             android:title="@string/menu_notify_stair_climber_data_start" />
         <item
-            android:id="@+id/stop_notificate_stair_climber_data"
+            android:id="@+id/stop_notify_stair_climber_data"
             android:title="@string/menu_notify_stair_climber_data_stop" />
         <item
             android:id="@+id/read_rower_data_characteristic_configuration"
             android:title="@string/menu_read_rower_data_characteristic_configuration" />
         <item
-            android:id="@+id/start_notificate_rower_data"
+            android:id="@+id/start_notify_rower_data"
             android:title="@string/menu_notify_rower_data_start" />
         <item
-            android:id="@+id/stop_notificate_rower_data"
+            android:id="@+id/stop_notify_rower_data"
             android:title="@string/menu_notify_rower_data_stop" />
         <item
             android:id="@+id/read_indoor_bike_data_characteristic_configuration"
             android:title="@string/menu_read_indoor_bike_data_characteristic_configuration" />
         <item
-            android:id="@+id/start_notificate_indoor_bike_data"
+            android:id="@+id/start_notify_indoor_bike_data"
             android:title="@string/menu_notify_indoor_bike_data_start" />
         <item
-            android:id="@+id/stop_notificate_indoor_bike_data"
+            android:id="@+id/stop_notify_indoor_bike_data"
             android:title="@string/menu_notify_indoor_bike_data_stop" />
         <item
             android:id="@+id/read_training_status"
@@ -136,10 +136,10 @@
             android:id="@+id/read_training_status_characteristic_configuration"
             android:title="@string/menu_read_training_status_characteristic_configuration" />
         <item
-            android:id="@+id/start_notificate_training_status"
+            android:id="@+id/start_notify_training_status"
             android:title="@string/menu_notify_training_status_start" />
         <item
-            android:id="@+id/stop_notificate_training_status"
+            android:id="@+id/stop_notify_training_status"
             android:title="@string/menu_notify_training_status_stop" />
         <item
             android:id="@+id/read_supported_speed_range"
@@ -237,10 +237,10 @@
             android:id="@+id/read_fitness_machine_status_characteristic_configuration"
             android:title="@string/menu_read_fitness_machine_status_characteristic_configuration" />
         <item
-            android:id="@+id/start_notificate_fitness_machine_status"
+            android:id="@+id/start_notify_fitness_machine_status"
             android:title="@string/menu_notify_fitness_machine_status_start" />
         <item
-            android:id="@+id/stop_notificate_fitness_machine_status"
+            android:id="@+id/stop_notify_fitness_machine_status"
             android:title="@string/menu_notify_fitness_machine_status_stop" />
     </group>
     <group
@@ -304,8 +304,8 @@
             android:id="@+id/write_database_change_increment"
             android:title="@string/menu_write_database_change_increment" />
         <item
-            android:id="@+id/is_database_change_increment_notificatable"
-            android:title="@string/menu_is_database_change_increment_notificatable" />
+            android:id="@+id/can_database_change_increment_notify"
+            android:title="@string/menu_can_database_change_increment_notify" />
         <item
             android:id="@+id/read_database_change_increment_characteristic_configuration"
             android:title="@string/menu_read_database_change_increment_characteristic_configuration" />

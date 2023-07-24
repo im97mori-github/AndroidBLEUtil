@@ -31,7 +31,7 @@ import org.im97mori.ble.task.ReadDescriptorTask;
 import org.im97mori.ble.task.ReadPhyTask;
 import org.im97mori.ble.task.ReadRemoteRssiTask;
 import org.im97mori.ble.task.RequestMtuTask;
-import org.im97mori.ble.task.SetNotificationTask;
+import org.im97mori.ble.task.SetNotifyTask;
 import org.im97mori.ble.task.SetPreferredPhyTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
@@ -792,7 +792,7 @@ public class BLESyncConnection implements BLECallback {
     }
 
     /**
-     * instant read characterisitic task
+     * instant read characteristic task
      *
      * @see #createReadCharacteristicTask(UUID, Integer, UUID, Integer, long, long, Bundle, boolean)
      */
@@ -1727,7 +1727,7 @@ public class BLESyncConnection implements BLECallback {
      * @return {@code null}:BLE not connected, {@link BLEResult}:connected
      */
     @Nullable
-    public BLEResult createSetNotificationTask(@NonNull UUID serviceUUID
+    public BLEResult createSetNotifyTask(@NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
             , @Nullable Integer characteristicInstanceId
@@ -1739,7 +1739,7 @@ public class BLESyncConnection implements BLECallback {
         BLEConnection bleConnection = mBLEConnection;
         if (bleConnection != null) {
             Bundle wrappedArgument = wrapArgument(argument, isBroadcast ? null : this);
-            SetNotificationTask task = new SetNotificationTask(bleConnection
+            SetNotifyTask task = new SetNotifyTask(bleConnection
                     , bleConnection.getBluetoothGatt()
                     , bleConnection.getTaskHandler()
                     , serviceUUID
@@ -1776,10 +1776,10 @@ public class BLESyncConnection implements BLECallback {
     /**
      * instant set notification task
      *
-     * @see #createSetNotificationTask(UUID, Integer, UUID, Integer, long, boolean, Bundle, boolean)
+     * @see #createSetNotifyTask(UUID, Integer, UUID, Integer, long, boolean, Bundle, boolean)
      */
     @Nullable
-    public static BLEResult createSetNotificationTask(@NonNull BLEConnection bleConnection
+    public static BLEResult createSetNotifyTask(@NonNull BLEConnection bleConnection
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
             , @NonNull UUID characteristicUUID
@@ -1792,7 +1792,7 @@ public class BLESyncConnection implements BLECallback {
         if (bleConnection.isConnected()) {
             BLESyncConnection bleSyncConnection = new BLESyncConnection();
             bleSyncConnection.mBLEConnection = bleConnection;
-            bleResult = bleSyncConnection.createSetNotificationTask(serviceUUID
+            bleResult = bleSyncConnection.createSetNotifyTask(serviceUUID
                     , serviceInstanceId
                     , characteristicUUID
                     , characteristicInstanceId

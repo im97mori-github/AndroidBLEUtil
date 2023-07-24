@@ -189,7 +189,7 @@
     <string name="menu_indicate_user_control_point_stop">Indicate User Control Point stop</string>
     <string name="menu_indicate_registered_user_start">Indicate Registered User start</string>
     <string name="menu_indicate_registered_user_stop">Indicate Registered User stop</string>
-    <string name="menu_is_database_change_increment_notificatable">Is Database Change Increment Notificatable</string>
+    <string name="menu_can_database_change_increment_notify">Can Database Change Increment Notify</string>
     <string name="menu_read_database_change_increment_characteristic_configuration">Read Database Change Increment Client Characteristic Configuration</string>
     <string name="menu_read_database_change_increment">Read Database Change Increment</string>
     <string name="menu_write_database_change_increment">Write Database Change Increment</string>
@@ -248,8 +248,8 @@
     <string name="menu_is_digital_readable_0">D Readable(0)</string>
     <string name="menu_is_digital_writable_0">D Writable(0)</string>
     <string name="menu_is_digital_writable_with_no_response_0">D WritableWNR(0)</string>
-    <string name="menu_is_digital_notificatable_0">D Notificatable(0)</string>
-    <string name="menu_is_digital_indictable_0">D Indicatable(0)</string>
+    <string name="menu_can_digital_notify_0">D Can Notify(0)</string>
+    <string name="menu_can_digital_indicate_0">D Indicate(0)</string>
     <string name="menu_has_digital_characteristic_presentation_format_0">Has D CPF(0)</string>
     <string name="menu_has_digital_characteristic_user_description_0">Has D CUD(0)</string>
     <string name="menu_is_digital_characteristic_user_description_writable_0">D CUD Writable(0)</string>
@@ -277,8 +277,8 @@
     <string name="menu_is_digital_readable_1">D Readable(1)</string>
     <string name="menu_is_digital_writable_1">D Writable(1)</string>
     <string name="menu_is_digital_writable_with_no_response_1">D WritableWNR(1)</string>
-    <string name="menu_is_digital_notificatable_1">D Notificatable(1)</string>
-    <string name="menu_is_digital_indictable_1">D Indicatable(1)</string>
+    <string name="menu_can_digital_notify_1">D Can Notify(1)</string>
+    <string name="menu_can_digital_indicate_1">D Can Indicate(1)</string>
     <string name="menu_has_digital_characteristic_presentation_format_1">Has D CPF(1)</string>
     <string name="menu_has_digital_characteristic_user_description_1">Has D CUD(1)</string>
     <string name="menu_is_digital_characteristic_user_description_writable_1">D CUD Writable(1)</string>
@@ -306,8 +306,8 @@
     <string name="menu_is_analog_readable_0">A Readable(0)</string>
     <string name="menu_is_analog_writable_0">A Writable(0)</string>
     <string name="menu_is_analog_writable_with_no_response_0">A WritableWNR(0)</string>
-    <string name="menu_is_analog_notificatable_0">A Notificatable(0)</string>
-    <string name="menu_is_analog_indictable_0">A Indicatable(0)</string>
+    <string name="menu_can_analog_notify_0">A Can Notify(0)</string>
+    <string name="menu_can_analog_indicate_0">A Can Indicate(0)</string>
     <string name="menu_has_analog_characteristic_presentation_format_0">Has A CPF(0)</string>
     <string name="menu_has_analog_characteristic_user_description_0">Has A CUD(0)</string>
     <string name="menu_is_analog_characteristic_user_description_writable_0">A CUA Writable(0)</string>
@@ -335,8 +335,8 @@
     <string name="menu_is_analog_readable_1">A Readable(1)</string>
     <string name="menu_is_analog_writable_1">A Writable(1)</string>
     <string name="menu_is_analog_writable_with_no_response_1">A WritableWNR(1)</string>
-    <string name="menu_is_analog_notificatable_1">A Notificatable(1)</string>
-    <string name="menu_is_analog_indictable_1">A Indicatable(1)</string>
+    <string name="menu_can_analog_notify_1">A Can Notify(1)</string>
+    <string name="menu_can_analog_indicate_1">A Can Indicate(1)</string>
     <string name="menu_has_analog_characteristic_presentation_format_1">Has A CPF(1)</string>
     <string name="menu_has_analog_characteristic_user_description_1">Has A CUD(1)</string>
     <string name="menu_is_analog_characteristic_user_description_writable_1">A CUA Writable(1)</string>
@@ -363,8 +363,8 @@
 
     <string name="menu_is_aggregate_supported">Is Aggregate Supported</string>
     <string name="menu_is_aggregate_readable">Is Aggregate Readable</string>
-    <string name="menu_is_aggregate_notificatable">Is Aggregate Notificatable</string>
-    <string name="menu_is_aggregate_indictable">Is Aggregate Indicatable</string>
+    <string name="menu_can_aggregate_notify">Can Aggregate Notify</string>
+    <string name="menu_can_aggregate_indicate">Can Aggregate Indicate</string>
     <string name="menu_get_aggregate">Get Aggregate</string>
     <string name="menu_get_aggregate_client_characteristic_configuration">Get Aggregate Client Characteristic Configuration</string>
     <string name="menu_start_aggregate_notification">Start Aggregate Notification</string>
@@ -623,8 +623,8 @@
     <string name="menu_indicate_descriptor_value_changed_stop">Indicate DVC stop</string>
 
     <string name="menu_read_ammonia_concentration_count">Read AmmoniaConcentration Count</string>
-    <string name="menu_is_ammonia_concentration_notificatable_0">Is AmmoniaConcentration Notificatable(0)</string>
-    <string name="menu_is_ammonia_concentration_notificatable_1">Is AmmoniaConcentration Notificatable(1)</string>
+    <string name="menu_can_ammonia_concentration_notify_0">Can AmmoniaConcentration Notify(0)</string>
+    <string name="menu_can_ammonia_concentration_notify_1">Can AmmoniaConcentration Notify(1)</string>
     <string name="menu_has_ammonia_concentration_esm_0">Has AmmoniaConcentration ESM(0)</string>
     <string name="menu_has_ammonia_concentration_esm_1">Has AmmoniaConcentration ESM(1)</string>
     <string name="menu_read_ammonia_concentration_ests_count_0">Read AmmoniaConcentration ESTS Count(0)</string>
@@ -660,8 +660,8 @@
     <string name="menu_read_ammonia_concentration_vr_0">Read AmmoniaConcentration VR(0)</string>
     <string name="menu_read_ammonia_concentration_vr_1">Read AmmoniaConcentration VR(1)</string>
     <string name="menu_read_apparent_wind_direction_count">Read ApparentWindDirection Count</string>
-    <string name="menu_is_apparent_wind_direction_notificatable_0">Is ApparentWindDirection Notificatable(0)</string>
-    <string name="menu_is_apparent_wind_direction_notificatable_1">Is ApparentWindDirection Notificatable(1)</string>
+    <string name="menu_can_apparent_wind_direction_notify_0">Can ApparentWindDirection Notify(0)</string>
+    <string name="menu_can_apparent_wind_direction_notify_1">Can ApparentWindDirection Notify(1)</string>
     <string name="menu_has_apparent_wind_direction_esm_0">Has ApparentWindDirection ESM(0)</string>
     <string name="menu_has_apparent_wind_direction_esm_1">Has ApparentWindDirection ESM(1)</string>
     <string name="menu_read_apparent_wind_direction_ests_count_0">Read ApparentWindDirection ESTS Count(0)</string>
@@ -697,8 +697,8 @@
     <string name="menu_read_apparent_wind_direction_vr_0">Read ApparentWindDirection VR(0)</string>
     <string name="menu_read_apparent_wind_direction_vr_1">Read ApparentWindDirection VR(1)</string>
     <string name="menu_read_apparent_wind_speed_count">Read ApparentWindSpeed Count</string>
-    <string name="menu_is_apparent_wind_speed_notificatable_0">Is ApparentWindSpeed Notificatable(0)</string>
-    <string name="menu_is_apparent_wind_speed_notificatable_1">Is ApparentWindSpeed Notificatable(1)</string>
+    <string name="menu_can_apparent_wind_speed_notify_0">can_ApparentWindSpeed_notify(0)</string>
+    <string name="menu_can_apparent_wind_speed_notify_1">can_ApparentWindSpeed_notify(1)</string>
     <string name="menu_has_apparent_wind_speed_esm_0">Has ApparentWindSpeed ESM(0)</string>
     <string name="menu_has_apparent_wind_speed_esm_1">Has ApparentWindSpeed ESM(1)</string>
     <string name="menu_read_apparent_wind_speed_ests_count_0">Read ApparentWindSpeed ESTS Count(0)</string>
@@ -734,8 +734,8 @@
     <string name="menu_read_apparent_wind_speed_vr_0">Read ApparentWindSpeed VR(0)</string>
     <string name="menu_read_apparent_wind_speed_vr_1">Read ApparentWindSpeed VR(1)</string>
     <string name="menu_read_barometric_pressure_trend_count">Read BarometricPressureTrend Count</string>
-    <string name="menu_is_barometric_pressure_trend_notificatable_0">Is BarometricPressureTrend Notificatable(0)</string>
-    <string name="menu_is_barometric_pressure_trend_notificatable_1">Is BarometricPressureTrend Notificatable(1)</string>
+    <string name="menu_can_barometric_pressure_trend_notify_0">can_BarometricPressureTrend_notify(0)</string>
+    <string name="menu_can_barometric_pressure_trend_notify_1">can_BarometricPressureTrend_notify(1)</string>
     <string name="menu_has_barometric_pressure_trend_esm_0">Has BarometricPressureTrend ESM(0)</string>
     <string name="menu_has_barometric_pressure_trend_esm_1">Has BarometricPressureTrend ESM(1)</string>
     <string name="menu_read_barometric_pressure_trend_ests_count_0">Read BarometricPressureTrend ESTS Count(0)</string>
@@ -771,8 +771,8 @@
     <string name="menu_read_barometric_pressure_trend_vr_0">Read BarometricPressureTrend VR(0)</string>
     <string name="menu_read_barometric_pressure_trend_vr_1">Read BarometricPressureTrend VR(1)</string>
     <string name="menu_read_carbon_monoxide_concentration_count">Read CarbonMonoxideConcentration Count</string>
-    <string name="menu_is_carbon_monoxide_concentration_notificatable_0">Is CarbonMonoxideConcentration Notificatable(0)</string>
-    <string name="menu_is_carbon_monoxide_concentration_notificatable_1">Is CarbonMonoxideConcentration Notificatable(1)</string>
+    <string name="menu_can_carbon_monoxide_concentration_notify_0">can_CarbonMonoxideConcentration_notify(0)</string>
+    <string name="menu_can_carbon_monoxide_concentration_notify_1">can_CarbonMonoxideConcentration_notify(1)</string>
     <string name="menu_has_carbon_monoxide_concentration_esm_0">Has CarbonMonoxideConcentration ESM(0)</string>
     <string name="menu_has_carbon_monoxide_concentration_esm_1">Has CarbonMonoxideConcentration ESM(1)</string>
     <string name="menu_read_carbon_monoxide_concentration_ests_count_0">Read CarbonMonoxideConcentration ESTS Count(0)</string>
@@ -808,8 +808,8 @@
     <string name="menu_read_carbon_monoxide_concentration_vr_0">Read CarbonMonoxideConcentration VR(0)</string>
     <string name="menu_read_carbon_monoxide_concentration_vr_1">Read CarbonMonoxideConcentration VR(1)</string>
     <string name="menu_read_dew_point_count">Read DewPoint Count</string>
-    <string name="menu_is_dew_point_notificatable_0">Is DewPoint Notificatable(0)</string>
-    <string name="menu_is_dew_point_notificatable_1">Is DewPoint Notificatable(1)</string>
+    <string name="menu_can_dew_point_notify_0">can_DewPoint_notify(0)</string>
+    <string name="menu_can_dew_point_notify_1">can_DewPoint_notify(1)</string>
     <string name="menu_has_dew_point_esm_0">Has DewPoint ESM(0)</string>
     <string name="menu_has_dew_point_esm_1">Has DewPoint ESM(1)</string>
     <string name="menu_read_dew_point_ests_count_0">Read DewPoint ESTS Count(0)</string>
@@ -845,8 +845,8 @@
     <string name="menu_read_dew_point_vr_0">Read DewPoint VR(0)</string>
     <string name="menu_read_dew_point_vr_1">Read DewPoint VR(1)</string>
     <string name="menu_read_elevation_count">Read Elevation Count</string>
-    <string name="menu_is_elevation_notificatable_0">Is Elevation Notificatable(0)</string>
-    <string name="menu_is_elevation_notificatable_1">Is Elevation Notificatable(1)</string>
+    <string name="menu_can_elevation_notify_0">can_Elevation_notify(0)</string>
+    <string name="menu_can_elevation_notify_1">can_Elevation_notify(1)</string>
     <string name="menu_has_elevation_esm_0">Has Elevation ESM(0)</string>
     <string name="menu_has_elevation_esm_1">Has Elevation ESM(1)</string>
     <string name="menu_read_elevation_ests_count_0">Read Elevation ESTS Count(0)</string>
@@ -882,8 +882,8 @@
     <string name="menu_read_elevation_vr_0">Read Elevation VR(0)</string>
     <string name="menu_read_elevation_vr_1">Read Elevation VR(1)</string>
     <string name="menu_read_gust_factor_count">Read GustFactor Count</string>
-    <string name="menu_is_gust_factor_notificatable_0">Is GustFactor Notificatable(0)</string>
-    <string name="menu_is_gust_factor_notificatable_1">Is GustFactor Notificatable(1)</string>
+    <string name="menu_can_gust_factor_notify_0">can_GustFactor_notify(0)</string>
+    <string name="menu_can_gust_factor_notify_1">can_GustFactor_notify(1)</string>
     <string name="menu_has_gust_factor_esm_0">Has GustFactor ESM(0)</string>
     <string name="menu_has_gust_factor_esm_1">Has GustFactor ESM(1)</string>
     <string name="menu_read_gust_factor_ests_count_0">Read GustFactor ESTS Count(0)</string>
@@ -919,8 +919,8 @@
     <string name="menu_read_gust_factor_vr_0">Read GustFactor VR(0)</string>
     <string name="menu_read_gust_factor_vr_1">Read GustFactor VR(1)</string>
     <string name="menu_read_heat_index_count">Read HeatIndex Count</string>
-    <string name="menu_is_heat_index_notificatable_0">Is HeatIndex Notificatable(0)</string>
-    <string name="menu_is_heat_index_notificatable_1">Is HeatIndex Notificatable(1)</string>
+    <string name="menu_can_heat_index_notify_0">can_HeatIndex_notify(0)</string>
+    <string name="menu_can_heat_index_notify_1">can_HeatIndex_notify(1)</string>
     <string name="menu_has_heat_index_esm_0">Has HeatIndex ESM(0)</string>
     <string name="menu_has_heat_index_esm_1">Has HeatIndex ESM(1)</string>
     <string name="menu_read_heat_index_ests_count_0">Read HeatIndex ESTS Count(0)</string>
@@ -956,8 +956,8 @@
     <string name="menu_read_heat_index_vr_0">Read HeatIndex VR(0)</string>
     <string name="menu_read_heat_index_vr_1">Read HeatIndex VR(1)</string>
     <string name="menu_read_humidity_count">Read Humidity Count</string>
-    <string name="menu_is_humidity_notificatable_0">Is Humidity Notificatable(0)</string>
-    <string name="menu_is_humidity_notificatable_1">Is Humidity Notificatable(1)</string>
+    <string name="menu_can_humidity_notify_0">can_Humidity_notify(0)</string>
+    <string name="menu_can_humidity_notify_1">can_Humidity_notify(1)</string>
     <string name="menu_has_humidity_esm_0">Has Humidity ESM(0)</string>
     <string name="menu_has_humidity_esm_1">Has Humidity ESM(1)</string>
     <string name="menu_read_humidity_ests_count_0">Read Humidity ESTS Count(0)</string>
@@ -993,8 +993,8 @@
     <string name="menu_read_humidity_vr_0">Read Humidity VR(0)</string>
     <string name="menu_read_humidity_vr_1">Read Humidity VR(1)</string>
     <string name="menu_read_irradiance_count">Read Irradiance Count</string>
-    <string name="menu_is_irradiance_notificatable_0">Is Irradiance Notificatable(0)</string>
-    <string name="menu_is_irradiance_notificatable_1">Is Irradiance Notificatable(1)</string>
+    <string name="menu_can_irradiance_notify_0">can_Irradiance_notify(0)</string>
+    <string name="menu_can_irradiance_notify_1">can_Irradiance_notify(1)</string>
     <string name="menu_has_irradiance_esm_0">Has Irradiance ESM(0)</string>
     <string name="menu_has_irradiance_esm_1">Has Irradiance ESM(1)</string>
     <string name="menu_read_irradiance_ests_count_0">Read Irradiance ESTS Count(0)</string>
@@ -1030,8 +1030,8 @@
     <string name="menu_read_irradiance_vr_0">Read Irradiance VR(0)</string>
     <string name="menu_read_irradiance_vr_1">Read Irradiance VR(1)</string>
     <string name="menu_read_magnetic_declination_count">Read MagneticDeclination Count</string>
-    <string name="menu_is_magnetic_declination_notificatable_0">Is MagneticDeclination Notificatable(0)</string>
-    <string name="menu_is_magnetic_declination_notificatable_1">Is MagneticDeclination Notificatable(1)</string>
+    <string name="menu_can_magnetic_declination_notify_0">can_MagneticDeclination_notify(0)</string>
+    <string name="menu_can_magnetic_declination_notify_1">can_MagneticDeclination_notify(1)</string>
     <string name="menu_has_magnetic_declination_esm_0">Has MagneticDeclination ESM(0)</string>
     <string name="menu_has_magnetic_declination_esm_1">Has MagneticDeclination ESM(1)</string>
     <string name="menu_read_magnetic_declination_ests_count_0">Read MagneticDeclination ESTS Count(0)</string>
@@ -1067,8 +1067,8 @@
     <string name="menu_read_magnetic_declination_vr_0">Read MagneticDeclination VR(0)</string>
     <string name="menu_read_magnetic_declination_vr_1">Read MagneticDeclination VR(1)</string>
     <string name="menu_read_magnetic_flux_density_2d_count">Read MagneticFluxDensity2D Count</string>
-    <string name="menu_is_magnetic_flux_density_2d_notificatable_0">Is MagneticFluxDensity2D Notificatable(0)</string>
-    <string name="menu_is_magnetic_flux_density_2d_notificatable_1">Is MagneticFluxDensity2D Notificatable(1)</string>
+    <string name="menu_can_magnetic_flux_density_2d_notify_0">can_MagneticFluxDensity2D_notify(0)</string>
+    <string name="menu_can_magnetic_flux_density_2d_notify_1">can_MagneticFluxDensity2D_notify(1)</string>
     <string name="menu_has_magnetic_flux_density_2d_esm_0">Has MagneticFluxDensity2D ESM(0)</string>
     <string name="menu_has_magnetic_flux_density_2d_esm_1">Has MagneticFluxDensity2D ESM(1)</string>
     <string name="menu_read_magnetic_flux_density_2d_ests_count_0">Read MagneticFluxDensity2D ESTS Count(0)</string>
@@ -1104,8 +1104,8 @@
     <string name="menu_read_magnetic_flux_density_2d_vr_0">Read MagneticFluxDensity2D VR(0)</string>
     <string name="menu_read_magnetic_flux_density_2d_vr_1">Read MagneticFluxDensity2D VR(1)</string>
     <string name="menu_read_magnetic_flux_density_3d_count">Read MagneticFluxDensity3D Count</string>
-    <string name="menu_is_magnetic_flux_density_3d_notificatable_0">Is MagneticFluxDensity3D Notificatable(0)</string>
-    <string name="menu_is_magnetic_flux_density_3d_notificatable_1">Is MagneticFluxDensity3D Notificatable(1)</string>
+    <string name="menu_can_magnetic_flux_density_3d_notify_0">can_MagneticFluxDensity3D_notify(0)</string>
+    <string name="menu_can_magnetic_flux_density_3d_notify_1">can_MagneticFluxDensity3D_notify(1)</string>
     <string name="menu_has_magnetic_flux_density_3d_esm_0">Has MagneticFluxDensity3D ESM(0)</string>
     <string name="menu_has_magnetic_flux_density_3d_esm_1">Has MagneticFluxDensity3D ESM(1)</string>
     <string name="menu_read_magnetic_flux_density_3d_ests_count_0">Read MagneticFluxDensity3D ESTS Count(0)</string>
@@ -1141,8 +1141,8 @@
     <string name="menu_read_magnetic_flux_density_3d_vr_0">Read MagneticFluxDensity3D VR(0)</string>
     <string name="menu_read_magnetic_flux_density_3d_vr_1">Read MagneticFluxDensity3D VR(1)</string>
     <string name="menu_read_methane_concentration_count">Read MethaneConcentration Count</string>
-    <string name="menu_is_methane_concentration_notificatable_0">Is MethaneConcentration Notificatable(0)</string>
-    <string name="menu_is_methane_concentration_notificatable_1">Is MethaneConcentration Notificatable(1)</string>
+    <string name="menu_can_methane_concentration_notify_0">can_MethaneConcentration_notify(0)</string>
+    <string name="menu_can_methane_concentration_notify_1">can_MethaneConcentration_notify(1)</string>
     <string name="menu_has_methane_concentration_esm_0">Has MethaneConcentration ESM(0)</string>
     <string name="menu_has_methane_concentration_esm_1">Has MethaneConcentration ESM(1)</string>
     <string name="menu_read_methane_concentration_ests_count_0">Read MethaneConcentration ESTS Count(0)</string>
@@ -1178,8 +1178,8 @@
     <string name="menu_read_methane_concentration_vr_0">Read MethaneConcentration VR(0)</string>
     <string name="menu_read_methane_concentration_vr_1">Read MethaneConcentration VR(1)</string>
     <string name="menu_read_nitrogen_dioxide_concentration_count">Read NitrogenDioxideConcentration Count</string>
-    <string name="menu_is_nitrogen_dioxide_concentration_notificatable_0">Is NitrogenDioxideConcentration Notificatable(0)</string>
-    <string name="menu_is_nitrogen_dioxide_concentration_notificatable_1">Is NitrogenDioxideConcentration Notificatable(1)</string>
+    <string name="menu_can_nitrogen_dioxide_concentration_notify_0">can_NitrogenDioxideConcentration_notify(0)</string>
+    <string name="menu_can_nitrogen_dioxide_concentration_notify_1">can_NitrogenDioxideConcentration_notify(1)</string>
     <string name="menu_has_nitrogen_dioxide_concentration_esm_0">Has NitrogenDioxideConcentration ESM(0)</string>
     <string name="menu_has_nitrogen_dioxide_concentration_esm_1">Has NitrogenDioxideConcentration ESM(1)</string>
     <string name="menu_read_nitrogen_dioxide_concentration_ests_count_0">Read NitrogenDioxideConcentration ESTS Count(0)</string>
@@ -1215,8 +1215,8 @@
     <string name="menu_read_nitrogen_dioxide_concentration_vr_0">Read NitrogenDioxideConcentration VR(0)</string>
     <string name="menu_read_nitrogen_dioxide_concentration_vr_1">Read NitrogenDioxideConcentration VR(1)</string>
     <string name="menu_read_non_methane_volatile_organic_compounds_concentration_count">Read NonMethaneVolatileOrganicCompoundsConcentration Count</string>
-    <string name="menu_is_non_methane_volatile_organic_compounds_concentration_notificatable_0">Is NonMethaneVolatileOrganicCompoundsConcentration Notificatable(0)</string>
-    <string name="menu_is_non_methane_volatile_organic_compounds_concentration_notificatable_1">Is NonMethaneVolatileOrganicCompoundsConcentration Notificatable(1)</string>
+    <string name="menu_can_non_methane_volatile_organic_compounds_concentration_notify_0">can_NonMethaneVolatileOrganicCompoundsConcentration_notify(0)</string>
+    <string name="menu_can_non_methane_volatile_organic_compounds_concentration_notify_1">can_NonMethaneVolatileOrganicCompoundsConcentration_notify(1)</string>
     <string name="menu_has_non_methane_volatile_organic_compounds_concentration_esm_0">Has NonMethaneVolatileOrganicCompoundsConcentration ESM(0)</string>
     <string name="menu_has_non_methane_volatile_organic_compounds_concentration_esm_1">Has NonMethaneVolatileOrganicCompoundsConcentration ESM(1)</string>
     <string name="menu_read_non_methane_volatile_organic_compounds_concentration_ests_count_0">Read NonMethaneVolatileOrganicCompoundsConcentration ESTS Count(0)</string>
@@ -1252,8 +1252,8 @@
     <string name="menu_read_non_methane_volatile_organic_compounds_concentration_vr_0">Read NonMethaneVolatileOrganicCompoundsConcentration VR(0)</string>
     <string name="menu_read_non_methane_volatile_organic_compounds_concentration_vr_1">Read NonMethaneVolatileOrganicCompoundsConcentration VR(1)</string>
     <string name="menu_read_ozone_concentration_count">Read OzoneConcentration Count</string>
-    <string name="menu_is_ozone_concentration_notificatable_0">Is OzoneConcentration Notificatable(0)</string>
-    <string name="menu_is_ozone_concentration_notificatable_1">Is OzoneConcentration Notificatable(1)</string>
+    <string name="menu_can_ozone_concentration_notify_0">can_OzoneConcentration_notify(0)</string>
+    <string name="menu_can_ozone_concentration_notify_1">can_OzoneConcentration_notify(1)</string>
     <string name="menu_has_ozone_concentration_esm_0">Has OzoneConcentration ESM(0)</string>
     <string name="menu_has_ozone_concentration_esm_1">Has OzoneConcentration ESM(1)</string>
     <string name="menu_read_ozone_concentration_ests_count_0">Read OzoneConcentration ESTS Count(0)</string>
@@ -1289,8 +1289,8 @@
     <string name="menu_read_ozone_concentration_vr_0">Read OzoneConcentration VR(0)</string>
     <string name="menu_read_ozone_concentration_vr_1">Read OzoneConcentration VR(1)</string>
     <string name="menu_read_particulate_matter_pm10_concentration_count">Read ParticulateMatterPm10Concentration Count</string>
-    <string name="menu_is_particulate_matter_pm10_concentration_notificatable_0">Is ParticulateMatterPm10Concentration Notificatable(0)</string>
-    <string name="menu_is_particulate_matter_pm10_concentration_notificatable_1">Is ParticulateMatterPm10Concentration Notificatable(1)</string>
+    <string name="menu_can_particulate_matter_pm10_concentration_notify_0">can_ParticulateMatterPm10Concentration_notify(0)</string>
+    <string name="menu_can_particulate_matter_pm10_concentration_notify_1">can_ParticulateMatterPm10Concentration_notify(1)</string>
     <string name="menu_has_particulate_matter_pm10_concentration_esm_0">Has ParticulateMatterPm10Concentration ESM(0)</string>
     <string name="menu_has_particulate_matter_pm10_concentration_esm_1">Has ParticulateMatterPm10Concentration ESM(1)</string>
     <string name="menu_read_particulate_matter_pm10_concentration_ests_count_0">Read ParticulateMatterPm10Concentration ESTS Count(0)</string>
@@ -1326,8 +1326,8 @@
     <string name="menu_read_particulate_matter_pm10_concentration_vr_0">Read ParticulateMatterPm10Concentration VR(0)</string>
     <string name="menu_read_particulate_matter_pm10_concentration_vr_1">Read ParticulateMatterPm10Concentration VR(1)</string>
     <string name="menu_read_particulate_matter_pm1_concentration_count">Read ParticulateMatterPm1Concentration Count</string>
-    <string name="menu_is_particulate_matter_pm1_concentration_notificatable_0">Is ParticulateMatterPm1Concentration Notificatable(0)</string>
-    <string name="menu_is_particulate_matter_pm1_concentration_notificatable_1">Is ParticulateMatterPm1Concentration Notificatable(1)</string>
+    <string name="menu_can_particulate_matter_pm1_concentration_notify_0">can_ParticulateMatterPm1Concentration_notify(0)</string>
+    <string name="menu_can_particulate_matter_pm1_concentration_notify_1">can_ParticulateMatterPm1Concentration_notify(1)</string>
     <string name="menu_has_particulate_matter_pm1_concentration_esm_0">Has ParticulateMatterPm1Concentration ESM(0)</string>
     <string name="menu_has_particulate_matter_pm1_concentration_esm_1">Has ParticulateMatterPm1Concentration ESM(1)</string>
     <string name="menu_read_particulate_matter_pm1_concentration_ests_count_0">Read ParticulateMatterPm1Concentration ESTS Count(0)</string>
@@ -1363,8 +1363,8 @@
     <string name="menu_read_particulate_matter_pm1_concentration_vr_0">Read ParticulateMatterPm1Concentration VR(0)</string>
     <string name="menu_read_particulate_matter_pm1_concentration_vr_1">Read ParticulateMatterPm1Concentration VR(1)</string>
     <string name="menu_read_particulate_matter_pm2_5_concentration_count">Read ParticulateMatterPm25Concentration Count</string>
-    <string name="menu_is_particulate_matter_pm2_5_concentration_notificatable_0">Is ParticulateMatterPm25Concentration Notificatable(0)</string>
-    <string name="menu_is_particulate_matter_pm2_5_concentration_notificatable_1">Is ParticulateMatterPm25Concentration Notificatable(1)</string>
+    <string name="menu_can_particulate_matter_pm2_5_concentration_notify_0">can_ParticulateMatterPm25Concentration_notify(0)</string>
+    <string name="menu_can_particulate_matter_pm2_5_concentration_notify_1">can_ParticulateMatterPm25Concentration_notify(1)</string>
     <string name="menu_has_particulate_matter_pm2_5_concentration_esm_0">Has ParticulateMatterPm25Concentration ESM(0)</string>
     <string name="menu_has_particulate_matter_pm2_5_concentration_esm_1">Has ParticulateMatterPm25Concentration ESM(1)</string>
     <string name="menu_read_particulate_matter_pm2_5_concentration_ests_count_0">Read ParticulateMatterPm25Concentration ESTS Count(0)</string>
@@ -1400,8 +1400,8 @@
     <string name="menu_read_particulate_matter_pm2_5_concentration_vr_0">Read ParticulateMatterPm25Concentration VR(0)</string>
     <string name="menu_read_particulate_matter_pm2_5_concentration_vr_1">Read ParticulateMatterPm25Concentration VR(1)</string>
     <string name="menu_read_pollen_concentration_count">Read PollenConcentration Count</string>
-    <string name="menu_is_pollen_concentration_notificatable_0">Is PollenConcentration Notificatable(0)</string>
-    <string name="menu_is_pollen_concentration_notificatable_1">Is PollenConcentration Notificatable(1)</string>
+    <string name="menu_can_pollen_concentration_notify_0">can_PollenConcentration_notify(0)</string>
+    <string name="menu_can_pollen_concentration_notify_1">can_PollenConcentration_notify(1)</string>
     <string name="menu_has_pollen_concentration_esm_0">Has PollenConcentration ESM(0)</string>
     <string name="menu_has_pollen_concentration_esm_1">Has PollenConcentration ESM(1)</string>
     <string name="menu_read_pollen_concentration_ests_count_0">Read PollenConcentration ESTS Count(0)</string>
@@ -1437,8 +1437,8 @@
     <string name="menu_read_pollen_concentration_vr_0">Read PollenConcentration VR(0)</string>
     <string name="menu_read_pollen_concentration_vr_1">Read PollenConcentration VR(1)</string>
     <string name="menu_read_pressure_count">Read Pressure Count</string>
-    <string name="menu_is_pressure_notificatable_0">Is Pressure Notificatable(0)</string>
-    <string name="menu_is_pressure_notificatable_1">Is Pressure Notificatable(1)</string>
+    <string name="menu_can_pressure_notify_0">can_Pressure_notify(0)</string>
+    <string name="menu_can_pressure_notify_1">can_Pressure_notify(1)</string>
     <string name="menu_has_pressure_esm_0">Has Pressure ESM(0)</string>
     <string name="menu_has_pressure_esm_1">Has Pressure ESM(1)</string>
     <string name="menu_read_pressure_ests_count_0">Read Pressure ESTS Count(0)</string>
@@ -1474,8 +1474,8 @@
     <string name="menu_read_pressure_vr_0">Read Pressure VR(0)</string>
     <string name="menu_read_pressure_vr_1">Read Pressure VR(1)</string>
     <string name="menu_read_rainfall_count">Read Rainfall Count</string>
-    <string name="menu_is_rainfall_notificatable_0">Is Rainfall Notificatable(0)</string>
-    <string name="menu_is_rainfall_notificatable_1">Is Rainfall Notificatable(1)</string>
+    <string name="menu_can_rainfall_notify_0">can_Rainfall_notify(0)</string>
+    <string name="menu_can_rainfall_notify_1">can_Rainfall_notify(1)</string>
     <string name="menu_has_rainfall_esm_0">Has Rainfall ESM(0)</string>
     <string name="menu_has_rainfall_esm_1">Has Rainfall ESM(1)</string>
     <string name="menu_read_rainfall_ests_count_0">Read Rainfall ESTS Count(0)</string>
@@ -1511,8 +1511,8 @@
     <string name="menu_read_rainfall_vr_0">Read Rainfall VR(0)</string>
     <string name="menu_read_rainfall_vr_1">Read Rainfall VR(1)</string>
     <string name="menu_read_sulfur_dioxide_concentration_count">Read SulfurDioxideConcentration Count</string>
-    <string name="menu_is_sulfur_dioxide_concentration_notificatable_0">Is SulfurDioxideConcentration Notificatable(0)</string>
-    <string name="menu_is_sulfur_dioxide_concentration_notificatable_1">Is SulfurDioxideConcentration Notificatable(1)</string>
+    <string name="menu_can_sulfur_dioxide_concentration_notify_0">can_SulfurDioxideConcentration_notify(0)</string>
+    <string name="menu_can_sulfur_dioxide_concentration_notify_1">can_SulfurDioxideConcentration_notify(1)</string>
     <string name="menu_has_sulfur_dioxide_concentration_esm_0">Has SulfurDioxideConcentration ESM(0)</string>
     <string name="menu_has_sulfur_dioxide_concentration_esm_1">Has SulfurDioxideConcentration ESM(1)</string>
     <string name="menu_read_sulfur_dioxide_concentration_ests_count_0">Read SulfurDioxideConcentration ESTS Count(0)</string>
@@ -1548,8 +1548,8 @@
     <string name="menu_read_sulfur_dioxide_concentration_vr_0">Read SulfurDioxideConcentration VR(0)</string>
     <string name="menu_read_sulfur_dioxide_concentration_vr_1">Read SulfurDioxideConcentration VR(1)</string>
     <string name="menu_read_sulfur_hexafluoride_concentration_count">Read SulfurHexafluorideConcentration Count</string>
-    <string name="menu_is_sulfur_hexafluoride_concentration_notificatable_0">Is SulfurHexafluorideConcentration Notificatable(0)</string>
-    <string name="menu_is_sulfur_hexafluoride_concentration_notificatable_1">Is SulfurHexafluorideConcentration Notificatable(1)</string>
+    <string name="menu_can_sulfur_hexafluoride_concentration_notify_0">can_SulfurHexafluorideConcentration_notify(0)</string>
+    <string name="menu_can_sulfur_hexafluoride_concentration_notify_1">can_SulfurHexafluorideConcentration_notify(1)</string>
     <string name="menu_has_sulfur_hexafluoride_concentration_esm_0">Has SulfurHexafluorideConcentration ESM(0)</string>
     <string name="menu_has_sulfur_hexafluoride_concentration_esm_1">Has SulfurHexafluorideConcentration ESM(1)</string>
     <string name="menu_read_sulfur_hexafluoride_concentration_ests_count_0">Read SulfurHexafluorideConcentration ESTS Count(0)</string>
@@ -1585,8 +1585,8 @@
     <string name="menu_read_sulfur_hexafluoride_concentration_vr_0">Read SulfurHexafluorideConcentration VR(0)</string>
     <string name="menu_read_sulfur_hexafluoride_concentration_vr_1">Read SulfurHexafluorideConcentration VR(1)</string>
     <string name="menu_read_temperature_count">Read Temperature Count</string>
-    <string name="menu_is_temperature_notificatable_0">Is Temperature Notificatable(0)</string>
-    <string name="menu_is_temperature_notificatable_1">Is Temperature Notificatable(1)</string>
+    <string name="menu_can_temperature_notify_0">can_Temperature_notify(0)</string>
+    <string name="menu_can_temperature_notify_1">can_Temperature_notify(1)</string>
     <string name="menu_has_temperature_esm_0">Has Temperature ESM(0)</string>
     <string name="menu_has_temperature_esm_1">Has Temperature ESM(1)</string>
     <string name="menu_read_temperature_ests_count_0">Read Temperature ESTS Count(0)</string>
@@ -1622,8 +1622,8 @@
     <string name="menu_read_temperature_vr_0">Read Temperature VR(0)</string>
     <string name="menu_read_temperature_vr_1">Read Temperature VR(1)</string>
     <string name="menu_read_true_wind_direction_count">Read TrueWindDirection Count</string>
-    <string name="menu_is_true_wind_direction_notificatable_0">Is TrueWindDirection Notificatable(0)</string>
-    <string name="menu_is_true_wind_direction_notificatable_1">Is TrueWindDirection Notificatable(1)</string>
+    <string name="menu_can_true_wind_direction_notify_0">can_TrueWindDirection_notify(0)</string>
+    <string name="menu_can_true_wind_direction_notify_1">can_TrueWindDirection_notify(1)</string>
     <string name="menu_has_true_wind_direction_esm_0">Has TrueWindDirection ESM(0)</string>
     <string name="menu_has_true_wind_direction_esm_1">Has TrueWindDirection ESM(1)</string>
     <string name="menu_read_true_wind_direction_ests_count_0">Read TrueWindDirection ESTS Count(0)</string>
@@ -1659,8 +1659,8 @@
     <string name="menu_read_true_wind_direction_vr_0">Read TrueWindDirection VR(0)</string>
     <string name="menu_read_true_wind_direction_vr_1">Read TrueWindDirection VR(1)</string>
     <string name="menu_read_true_wind_speed_count">Read TrueWindSpeed Count</string>
-    <string name="menu_is_true_wind_speed_notificatable_0">Is TrueWindSpeed Notificatable(0)</string>
-    <string name="menu_is_true_wind_speed_notificatable_1">Is TrueWindSpeed Notificatable(1)</string>
+    <string name="menu_can_true_wind_speed_notify_0">can_TrueWindSpeed_notify(0)</string>
+    <string name="menu_can_true_wind_speed_notify_1">can_TrueWindSpeed_notify(1)</string>
     <string name="menu_has_true_wind_speed_esm_0">Has TrueWindSpeed ESM(0)</string>
     <string name="menu_has_true_wind_speed_esm_1">Has TrueWindSpeed ESM(1)</string>
     <string name="menu_read_true_wind_speed_ests_count_0">Read TrueWindSpeed ESTS Count(0)</string>
@@ -1696,8 +1696,8 @@
     <string name="menu_read_true_wind_speed_vr_0">Read TrueWindSpeed VR(0)</string>
     <string name="menu_read_true_wind_speed_vr_1">Read TrueWindSpeed VR(1)</string>
     <string name="menu_read_uv_index_count">Read UVIndex Count</string>
-    <string name="menu_is_uv_index_notificatable_0">Is UVIndex Notificatable(0)</string>
-    <string name="menu_is_uv_index_notificatable_1">Is UVIndex Notificatable(1)</string>
+    <string name="menu_can_uv_index_notify_0">can_UVIndex_notify(0)</string>
+    <string name="menu_can_uv_index_notify_1">can_UVIndex_notify(1)</string>
     <string name="menu_has_uv_index_esm_0">Has UVIndex ESM(0)</string>
     <string name="menu_has_uv_index_esm_1">Has UVIndex ESM(1)</string>
     <string name="menu_read_uv_index_ests_count_0">Read UVIndex ESTS Count(0)</string>
@@ -1733,8 +1733,8 @@
     <string name="menu_read_uv_index_vr_0">Read UVIndex VR(0)</string>
     <string name="menu_read_uv_index_vr_1">Read UVIndex VR(1)</string>
     <string name="menu_read_wind_chill_count">Read WindChill Count</string>
-    <string name="menu_is_wind_chill_notificatable_0">Is WindChill Notificatable(0)</string>
-    <string name="menu_is_wind_chill_notificatable_1">Is WindChill Notificatable(1)</string>
+    <string name="menu_can_wind_chill_notify_0">can_WindChill_notify(0)</string>
+    <string name="menu_can_wind_chill_notify_1">can_WindChill_notify(1)</string>
     <string name="menu_has_wind_chill_esm_0">Has WindChill ESM(0)</string>
     <string name="menu_has_wind_chill_esm_1">Has WindChill ESM(1)</string>
     <string name="menu_read_wind_chill_ests_count_0">Read WindChill ESTS Count(0)</string>
@@ -1778,7 +1778,7 @@
 
     <string name="menu_has_bond_management_service">Has Bond Management Service</string>
     <string name="menu_has_rc_settings">Has RC Settings</string>
-    <string name="menu_is_rc_settings_notificatable">Is RC Settings Notificatable</string>
+    <string name="menu_can_rc_settings_notify">Can RC Settings Notify</string>
     <string name="menu_has_reconnection_configuration_control_point">Has RCCP</string>
     <string name="menu_read_rc_feature">Read RC Feature</string>
     <string name="menu_read_rc_settings">Read RC Settings</string>

@@ -682,21 +682,21 @@ public class WeightScaleProfile extends AbstractCentralProfile {
     }
 
     /**
-     * @see #isBatteryLevelNotificatable(int)
+     * @see #canBatteryLevelNotify(int)
      */
     @Nullable
-    public synchronized Boolean isBatteryLevelNotificatable() {
-        return isBatteryLevelNotificatable(0);
+    public synchronized Boolean canBatteryLevelNotify() {
+        return canBatteryLevelNotify(0);
     }
 
     /**
-     * @see org.im97mori.ble.service.bas.central.BatteryService#isBatteryLevelNotificatable(int)
+     * @see org.im97mori.ble.service.bas.central.BatteryService#canBatteryLevelNotify(int)
      */
     @Nullable
-    public synchronized Boolean isBatteryLevelNotificatable(int index) {
+    public synchronized Boolean canBatteryLevelNotify(int index) {
         Boolean result = null;
         if (mBatteryService != null) {
-            result = mBatteryService.isBatteryLevelNotificatable(index);
+            result = mBatteryService.canBatteryLevelNotify(index);
         }
         return result;
     }

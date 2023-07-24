@@ -685,33 +685,33 @@ public class EnvironmentalSensingProfileNitrogenDioxideConcentrationTest extends
 
     @Test
     @RequiresDevice
-    public void test_isNitrogenDioxideConcentrationNotificatable_00001() {
+    public void test_canNitrogenDioxideConcentrationNotify_00001() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isNitrogenDioxideConcentrationNotificatable());
+        assertNull(environmentalSensingProfile.canNitrogenDioxideConcentrationNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_isNitrogenDioxideConcentrationNotificatable_00002() {
+    public void test_canNitrogenDioxideConcentrationNotify_00002() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isNitrogenDioxideConcentrationNotificatable());
+        assertNotNull(environmentalSensingProfile.canNitrogenDioxideConcentrationNotify());
         environmentalSensingProfile.disconnect();
     }
 
     @Test
     @RequiresDevice
-    public void test_isNitrogenDioxideConcentrationNotificatable_00101() {
+    public void test_canNitrogenDioxideConcentrationNotify_00101() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
-        assertNull(environmentalSensingProfile.isNitrogenDioxideConcentrationNotificatable(0));
+        assertNull(environmentalSensingProfile.canNitrogenDioxideConcentrationNotify(0));
     }
 
     @Test
     @RequiresDevice
-    public void test_isNitrogenDioxideConcentrationNotificatable_00102() {
+    public void test_canNitrogenDioxideConcentrationNotify_00102() {
         EnvironmentalSensingProfile environmentalSensingProfile = new EnvironmentalSensingProfile(ApplicationProvider.getApplicationContext(), new BaseEnvironmentalSensingProfileCallback());
         environmentalSensingProfile.connect(BLETestUtilsAndroid.MOCK_DEVICE_0);
-        assertNotNull(environmentalSensingProfile.isNitrogenDioxideConcentrationNotificatable(0));
+        assertNotNull(environmentalSensingProfile.canNitrogenDioxideConcentrationNotify(0));
         environmentalSensingProfile.disconnect();
     }
 

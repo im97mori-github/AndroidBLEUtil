@@ -1478,7 +1478,7 @@ public class FitnessMachineProfileMockCallbackBuilderTest {
     @Test
     public void test_addFitnessMachineControlPoint_00003() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        final long originalCharacterisiticDelay = 1;
+        final long originalCharacteristicDelay = 1;
         final int originalDescriptorResponseCode = 2;
         final long originalDescriptorDelay = 3;
         final @NonNull byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
@@ -1536,7 +1536,7 @@ public class FitnessMachineProfileMockCallbackBuilderTest {
                     , int spinDownControlResultCode
                     , @NonNull byte[] spinDownControlResultParameter
                     , int setTargetedCadenceResultCode) {
-                assertEquals(originalCharacterisiticDelay, characteristicDelay);
+                assertEquals(originalCharacteristicDelay, characteristicDelay);
                 assertEquals(originalDescriptorResponseCode, descriptorResponseCode);
                 assertEquals(originalDescriptorDelay, descriptorDelay);
                 assertArrayEquals(descriptorValue, descriptorValue);
@@ -1572,7 +1572,7 @@ public class FitnessMachineProfileMockCallbackBuilderTest {
                 , fitnessMachineServiceMockCallbackBuilder
                 , ftmpUserDataServiceMockCallbackBuilder
                 , deviceInformationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addFitnessMachineControlPoint(originalCharacterisiticDelay
+        assertEquals(baseBuilder, baseBuilder.addFitnessMachineControlPoint(originalCharacteristicDelay
                 , originalDescriptorResponseCode
                 , originalDescriptorDelay
                 , descriptorValue
@@ -4344,10 +4344,10 @@ public class FitnessMachineProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<FtmpUserDataServiceMockCallback> addDatabaseChangeIncrement(int characteristicResponseCode, long characteristicDelay, boolean isNotificatable, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public UserDataServiceMockCallback.Builder<FtmpUserDataServiceMockCallback> addDatabaseChangeIncrement(int characteristicResponseCode, long characteristicDelay, boolean canNotify, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertArrayEquals(originalDescriptorValue, descriptorValue);
                 atomicBoolean.set(true);
-                return super.addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, isNotificatable, descriptorResponseCode, descriptorDelay, descriptorValue);
+                return super.addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, canNotify, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -4369,7 +4369,7 @@ public class FitnessMachineProfileMockCallbackBuilderTest {
 
         final int originalCharacteristicResponseCode = 1;
         final long originalCharacteristicDelay = 2;
-        final boolean originalIsNotificatable = false;
+        final boolean originalcanNotify = false;
         final int originalDescriptorResponseCode = 4;
         final long originalDescriptorDelay = 5;
 
@@ -4379,15 +4379,15 @@ public class FitnessMachineProfileMockCallbackBuilderTest {
 
             @NonNull
             @Override
-            public UserDataServiceMockCallback.Builder<FtmpUserDataServiceMockCallback> addDatabaseChangeIncrement(int characteristicResponseCode, long characteristicDelay, boolean isNotificatable, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
+            public UserDataServiceMockCallback.Builder<FtmpUserDataServiceMockCallback> addDatabaseChangeIncrement(int characteristicResponseCode, long characteristicDelay, boolean canNotify, int descriptorResponseCode, long descriptorDelay, @NonNull byte[] descriptorValue) {
                 assertEquals(originalCharacteristicResponseCode, characteristicResponseCode);
                 assertEquals(originalCharacteristicDelay, characteristicDelay);
-                assertEquals(originalIsNotificatable, isNotificatable);
+                assertEquals(originalcanNotify, canNotify);
                 assertEquals(originalDescriptorResponseCode, descriptorResponseCode);
                 assertEquals(originalDescriptorDelay, descriptorDelay);
                 assertArrayEquals(originalDescriptorValue, descriptorValue);
                 atomicBoolean.set(true);
-                return super.addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, isNotificatable, descriptorResponseCode, descriptorDelay, descriptorValue);
+                return super.addDatabaseChangeIncrement(characteristicResponseCode, characteristicDelay, canNotify, descriptorResponseCode, descriptorDelay, descriptorValue);
             }
 
         };
@@ -4396,7 +4396,7 @@ public class FitnessMachineProfileMockCallbackBuilderTest {
                 , fitnessMachineServiceMockCallbackBuilder
                 , ftmpUserDataServiceMockCallbackBuilder
                 , deviceInformationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addDatabaseChangeIncrement(originalCharacteristicResponseCode, originalCharacteristicDelay, originalIsNotificatable, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue));
+        assertEquals(baseBuilder, baseBuilder.addDatabaseChangeIncrement(originalCharacteristicResponseCode, originalCharacteristicDelay, originalcanNotify, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue));
 
         assertTrue(atomicBoolean.get());
     }
@@ -4407,7 +4407,7 @@ public class FitnessMachineProfileMockCallbackBuilderTest {
 
         final int originalCharacteristicResponseCode = 1;
         final long originalCharacteristicDelay = 2;
-        final boolean originalIsNotificatable = false;
+        final boolean originalcanNotify = false;
         final int originalDescriptorResponseCode = 4;
         final long originalDescriptorDelay = 5;
 
@@ -4418,11 +4418,11 @@ public class FitnessMachineProfileMockCallbackBuilderTest {
                 , fitnessMachineServiceMockCallbackBuilder
                 , null
                 , deviceInformationServiceMockCallbackBuilder);
-        assertEquals(baseBuilder, baseBuilder.addDatabaseChangeIncrement(originalCharacteristicResponseCode, originalCharacteristicDelay, originalIsNotificatable, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue));
+        assertEquals(baseBuilder, baseBuilder.addDatabaseChangeIncrement(originalCharacteristicResponseCode, originalCharacteristicDelay, originalcanNotify, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue));
 
         Exception exception = null;
         try {
-            baseBuilder.addDatabaseChangeIncrement(originalCharacteristicResponseCode, originalCharacteristicDelay, originalIsNotificatable, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue);
+            baseBuilder.addDatabaseChangeIncrement(originalCharacteristicResponseCode, originalCharacteristicDelay, originalcanNotify, originalDescriptorResponseCode, originalDescriptorDelay, originalDescriptorValue);
         } catch (Exception e) {
             exception = e;
         }

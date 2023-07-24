@@ -164,7 +164,7 @@ public interface RunningSpeedAndCadenceServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start RSC Measurement notificate success callback
+     * Start RSC Measurement notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -175,7 +175,7 @@ public interface RunningSpeedAndCadenceServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onRSCMeasurementNotificateStartSuccess(@NonNull Integer taskId
+    void onRSCMeasurementNotifyStartSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -185,7 +185,7 @@ public interface RunningSpeedAndCadenceServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start RSC Measurement notificate error callback
+     * Start RSC Measurement notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -200,7 +200,7 @@ public interface RunningSpeedAndCadenceServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onRSCMeasurementNotificateStartFailed(@NonNull Integer taskId
+    void onRSCMeasurementNotifyStartFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -211,7 +211,7 @@ public interface RunningSpeedAndCadenceServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Start RSC Measurement notificate timeout callback
+     * Start RSC Measurement notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -223,7 +223,7 @@ public interface RunningSpeedAndCadenceServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onRSCMeasurementNotificateStartTimeout(@NonNull Integer taskId
+    void onRSCMeasurementNotifyStartTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -234,7 +234,7 @@ public interface RunningSpeedAndCadenceServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop RSC Measurement notificate success callback
+     * Stop RSC Measurement notify success callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -245,7 +245,7 @@ public interface RunningSpeedAndCadenceServiceCallback {
      * @param descriptorInstanceId     task target descriptor instance id
      * @param argument                 callback argument
      */
-    void onRSCMeasurementNotificateStopSuccess(@NonNull Integer taskId
+    void onRSCMeasurementNotifyStopSuccess(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -255,7 +255,7 @@ public interface RunningSpeedAndCadenceServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop RSC Measurement notificate error callback
+     * Stop RSC Measurement notify error callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -270,7 +270,7 @@ public interface RunningSpeedAndCadenceServiceCallback {
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
      * @param argument                 callback argument
      */
-    void onRSCMeasurementNotificateStopFailed(@NonNull Integer taskId
+    void onRSCMeasurementNotifyStopFailed(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
@@ -281,7 +281,7 @@ public interface RunningSpeedAndCadenceServiceCallback {
             , @Nullable Bundle argument);
 
     /**
-     * Stop RSC Measurement notificate timeout callback
+     * Stop RSC Measurement notify timeout callback
      *
      * @param taskId                   task id
      * @param bluetoothDevice          BLE device
@@ -293,7 +293,7 @@ public interface RunningSpeedAndCadenceServiceCallback {
      * @param timeout                  timeout(millis)
      * @param argument                 callback argument
      */
-    void onRSCMeasurementNotificateStopTimeout(@NonNull Integer taskId
+    void onRSCMeasurementNotifyStopTimeout(@NonNull Integer taskId
             , @NonNull BluetoothDevice bluetoothDevice
             , @NonNull UUID serviceUUID
             , @Nullable Integer serviceInstanceId
