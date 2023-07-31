@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_LAST_MODIFIED_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * object last modified (Characteristics UUID: 0x2AC2)
@@ -44,9 +44,7 @@ public class ObjectLastModifiedAndroid extends ObjectLastModified implements Par
          */
         @NonNull
         public ObjectLastModifiedAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(OBJECT_LAST_MODIFIED_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ObjectLastModifiedAndroid(bluetoothGattCharacteristic);
+            return new ObjectLastModifiedAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ObjectLastModifiedAndroid extends ObjectLastModified implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AC2
      */
+    @Deprecated
     public ObjectLastModifiedAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ObjectLastModifiedAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -80,8 +88,7 @@ public class ObjectLastModifiedAndroid extends ObjectLastModified implements Par
      * @param in Parcel
      */
     private ObjectLastModifiedAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

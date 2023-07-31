@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Nitrogen Dioxide Concentration (Characteristics UUID: 0x2BD2)
@@ -45,9 +45,7 @@ public class NitrogenDioxideConcentrationAndroid extends NitrogenDioxideConcentr
          */
         @NonNull
         public NitrogenDioxideConcentrationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new NitrogenDioxideConcentrationAndroid(bluetoothGattCharacteristic);
+            return new NitrogenDioxideConcentrationAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class NitrogenDioxideConcentrationAndroid extends NitrogenDioxideConcentr
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BD2
      */
+    @Deprecated
     public NitrogenDioxideConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public NitrogenDioxideConcentrationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class NitrogenDioxideConcentrationAndroid extends NitrogenDioxideConcentr
      * @param in Parcel
      */
     private NitrogenDioxideConcentrationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

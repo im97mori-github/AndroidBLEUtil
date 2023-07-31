@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b10;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,7 +10,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -32,10 +30,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = (byte) (TemperatureUtils.TEMPERATURE_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result = new TemperatureRangeAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result.getMinimumTemperature());
         assertEquals(BLEUtils.createSInt16(data, 2), result.getMaximumTemperature());
     }
@@ -50,10 +45,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = (byte) (-27315 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result = new TemperatureRangeAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result.getMinimumTemperature());
         assertEquals(BLEUtils.createSInt16(data, 2), result.getMaximumTemperature());
     }
@@ -68,10 +60,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = (byte) (32767 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result = new TemperatureRangeAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result.getMinimumTemperature());
         assertEquals(BLEUtils.createSInt16(data, 2), result.getMaximumTemperature());
     }
@@ -86,10 +75,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result = new TemperatureRangeAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result.getMinimumTemperature());
         assertEquals(BLEUtils.createSInt16(data, 2), result.getMaximumTemperature());
     }
@@ -144,10 +130,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = (byte) (TemperatureUtils.TEMPERATURE_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -167,10 +150,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = (byte) (-27315 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -190,10 +170,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = (byte) (32767 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -213,10 +190,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -236,10 +210,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = (byte) (TemperatureUtils.TEMPERATURE_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -253,10 +224,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = (byte) (-27315 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -270,10 +238,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = (byte) (32767 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -287,10 +252,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -304,10 +266,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = (byte) (TemperatureUtils.TEMPERATURE_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(data);
         TemperatureRangeAndroid result2 = TemperatureRangeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -322,10 +281,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = (byte) (-27315 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(data);
         TemperatureRangeAndroid result2 = TemperatureRangeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -340,10 +296,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = (byte) (32767 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(data);
         TemperatureRangeAndroid result2 = TemperatureRangeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -358,10 +311,7 @@ public class TemperatureRangeAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+        TemperatureRangeAndroid result1 = new TemperatureRangeAndroid(data);
         TemperatureRangeAndroid result2 = TemperatureRangeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

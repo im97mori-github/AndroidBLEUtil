@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CALL_STATE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Call State (Characteristics UUID: 0x2BBD)
@@ -45,9 +45,7 @@ public class CallStateAndroid extends CallState implements Parcelable {
          */
         @NonNull
         public CallStateAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CALL_STATE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new CallStateAndroid(bluetoothGattCharacteristic);
+            return new CallStateAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class CallStateAndroid extends CallState implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BBD
      */
+    @Deprecated
     public CallStateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public CallStateAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class CallStateAndroid extends CallState implements Parcelable {
      * @param in Parcel
      */
     private CallStateAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

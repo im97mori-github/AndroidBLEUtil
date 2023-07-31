@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.MUTE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Mute (Characteristics UUID: 0x2BC3)
@@ -44,9 +44,7 @@ public class MuteAndroid extends Mute implements Parcelable {
          */
         @NonNull
         public MuteAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MUTE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new MuteAndroid(bluetoothGattCharacteristic);
+            return new MuteAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class MuteAndroid extends Mute implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BC3
      */
+    @Deprecated
     public MuteAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public MuteAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class MuteAndroid extends Mute implements Parcelable {
      * @param in Parcel
      */
     private MuteAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

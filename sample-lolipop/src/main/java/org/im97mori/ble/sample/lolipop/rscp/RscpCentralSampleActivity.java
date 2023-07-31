@@ -16,7 +16,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.core.SensorLocationUtils;
 import org.im97mori.ble.characteristic.u2a55.SCControlPoint;
 import org.im97mori.ble.profile.central.task.BondTask;
@@ -195,21 +194,17 @@ public class RscpCentralSampleActivity extends BaseActivity implements View.OnCl
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else {
-            mConnectDisconnectButton.setVisibility(View.VISIBLE);
-            if (mRunningSpeedAndCadenceProfile.isConnected()) {
-                mConnectDisconnectButton.setText(R.string.disconnect);
-            } else if (mBluetoothDevice != null) {
-                if (BluetoothDevice.BOND_BONDED == mBluetoothDevice.getBondState()) {
-                    mConnectDisconnectButton.setText(R.string.connect);
-                } else {
-                    mConnectDisconnectButton.setText(R.string.bond);
-                }
+        mConnectDisconnectButton.setVisibility(View.VISIBLE);
+        if (mRunningSpeedAndCadenceProfile.isConnected()) {
+            mConnectDisconnectButton.setText(R.string.disconnect);
+        } else if (mBluetoothDevice != null) {
+            if (BluetoothDevice.BOND_BONDED == mBluetoothDevice.getBondState()) {
+                mConnectDisconnectButton.setText(R.string.connect);
             } else {
-                mConnectDisconnectButton.setText(R.string.scan_start);
+                mConnectDisconnectButton.setText(R.string.bond);
             }
+        } else {
+            mConnectDisconnectButton.setText(R.string.scan_start);
         }
         invalidateOptionsMenu();
     }

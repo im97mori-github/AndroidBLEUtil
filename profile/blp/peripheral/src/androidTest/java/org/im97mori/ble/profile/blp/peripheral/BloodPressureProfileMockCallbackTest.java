@@ -7,9 +7,9 @@ import org.junit.Test;
 import static org.im97mori.ble.constants.ServiceUUID.BLOOD_PRESSURE_SERVICE;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings("ConstantConditions")
 public class BloodPressureProfileMockCallbackTest {
 
+    /** @noinspection DataFlowIssue*/
     @Test
     public void test_getServiceUUID_00001() {
         assertEquals(BLOOD_PRESSURE_SERVICE, new BloodPressureProfileMockCallback(ApplicationProvider.getApplicationContext(), null, null).getServiceUUID());

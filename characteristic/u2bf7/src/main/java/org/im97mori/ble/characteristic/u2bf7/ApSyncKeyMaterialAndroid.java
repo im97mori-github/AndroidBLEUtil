@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.AP_SYNC_KEY_MATERIAL_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * AP Sync Key Material (Characteristics UUID: 0x2BF7)
@@ -45,9 +45,7 @@ public class ApSyncKeyMaterialAndroid extends ApSyncKeyMaterial implements Parce
          */
         @NonNull
         public ApSyncKeyMaterialAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(AP_SYNC_KEY_MATERIAL_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ApSyncKeyMaterialAndroid(bluetoothGattCharacteristic);
+            return new ApSyncKeyMaterialAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class ApSyncKeyMaterialAndroid extends ApSyncKeyMaterial implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BF7
      */
+    @Deprecated
     public ApSyncKeyMaterialAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ApSyncKeyMaterialAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class ApSyncKeyMaterialAndroid extends ApSyncKeyMaterial implements Parce
      * @param in Parcel
      */
     private ApSyncKeyMaterialAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

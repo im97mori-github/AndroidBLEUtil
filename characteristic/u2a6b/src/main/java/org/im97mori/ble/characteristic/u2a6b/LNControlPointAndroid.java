@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.LN_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * LN Control Point (Characteristics UUID: 0x2A6B)
@@ -44,9 +44,7 @@ public class LNControlPointAndroid extends LNControlPoint implements Parcelable 
          */
         @NonNull
         public LNControlPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LN_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new LNControlPointAndroid(bluetoothGattCharacteristic);
+            return new LNControlPointAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class LNControlPointAndroid extends LNControlPoint implements Parcelable 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A6B
      */
+    @Deprecated
     public LNControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public LNControlPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -79,8 +87,7 @@ public class LNControlPointAndroid extends LNControlPoint implements Parcelable 
      * @param in Parcel
      */
     private LNControlPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

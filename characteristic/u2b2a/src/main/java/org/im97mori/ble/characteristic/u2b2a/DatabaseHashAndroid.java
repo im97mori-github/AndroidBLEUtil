@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_HASH_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Database Hash (Characteristics UUID: 0x2B2A)
@@ -44,9 +44,7 @@ public class DatabaseHashAndroid extends DatabaseHash implements Parcelable {
          */
         @NonNull
         public DatabaseHashAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DATABASE_HASH_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new DatabaseHashAndroid(bluetoothGattCharacteristic);
+            return new DatabaseHashAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class DatabaseHashAndroid extends DatabaseHash implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B2A
      */
+    @Deprecated
     public DatabaseHashAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public DatabaseHashAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -66,8 +74,7 @@ public class DatabaseHashAndroid extends DatabaseHash implements Parcelable {
      * @param in Parcel
      */
     private DatabaseHashAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

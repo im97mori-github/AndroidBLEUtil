@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ae8;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -14,14 +13,13 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings({"ConstantConditions", "WrapperTypeMayBePrimitive"})
+@SuppressWarnings({"WrapperTypeMayBePrimitive"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -39,10 +37,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_NAN >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result = new CoefficientAndroid(data);
         assertEquals(Double.NaN, result.getCoefficient(), 0);
     }
 
@@ -56,10 +51,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_NRES >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result = new CoefficientAndroid(data);
         assertNull(result.getCoefficient());
         assertTrue(result.isNres());
     }
@@ -88,10 +80,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_NEGATIVE_INFINITY >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result = new CoefficientAndroid(data);
         assertEquals(Double.NEGATIVE_INFINITY, result.getCoefficient(), 0);
     }
 
@@ -105,10 +94,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_RFU >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result = new CoefficientAndroid(data);
         assertNull(result.getCoefficient());
         assertFalse(result.isNres());
     }
@@ -123,10 +109,7 @@ public class CoefficientAndroidTest {
         data[ 3] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result = new CoefficientAndroid(data);
         BigDecimal bd = BigDecimal.valueOf(0x00030201);
         bd = bd.round(new MathContext(8, RoundingMode.DOWN));
         assertEquals(bd.doubleValue(), result.getCoefficient(), 0);
@@ -142,10 +125,7 @@ public class CoefficientAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result = new CoefficientAndroid(data);
         BigDecimal bd = BigDecimal.valueOf(0x00030201);
         bd = bd.multiply(BigDecimal.valueOf(10000));
         bd = bd.round(new MathContext(8, RoundingMode.DOWN));
@@ -162,10 +142,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result = new CoefficientAndroid(data);
         BigDecimal bd = BigDecimal.valueOf(0x00030201);
         bd = bd.scaleByPowerOfTen(-1);
         bd = bd.round(new MathContext(8, RoundingMode.DOWN));
@@ -294,10 +271,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_NAN >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -317,10 +291,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_NRES >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -340,10 +311,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_POSITIVE_INFINITY >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -363,10 +331,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_NEGATIVE_INFINITY >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -386,10 +351,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_RFU >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -409,10 +371,7 @@ public class CoefficientAndroidTest {
         data[ 3] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -432,10 +391,7 @@ public class CoefficientAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -455,10 +411,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -479,10 +432,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_NAN >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -496,10 +446,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_NRES >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -513,10 +460,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_POSITIVE_INFINITY >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -530,10 +474,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_NEGATIVE_INFINITY >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -547,10 +488,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_RFU >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -564,10 +502,7 @@ public class CoefficientAndroidTest {
         data[ 3] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -581,10 +516,7 @@ public class CoefficientAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -598,10 +530,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -615,10 +544,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_NAN >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         CoefficientAndroid result2 = CoefficientAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -633,10 +559,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_NRES >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         CoefficientAndroid result2 = CoefficientAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -651,10 +574,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_POSITIVE_INFINITY >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         CoefficientAndroid result2 = CoefficientAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -669,10 +589,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_NEGATIVE_INFINITY >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         CoefficientAndroid result2 = CoefficientAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -687,10 +604,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) (BLEUtils.FLOAT_RFU >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         CoefficientAndroid result2 = CoefficientAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -705,10 +619,7 @@ public class CoefficientAndroidTest {
         data[ 3] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         CoefficientAndroid result2 = CoefficientAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -723,10 +634,7 @@ public class CoefficientAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         CoefficientAndroid result2 = CoefficientAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -741,10 +649,7 @@ public class CoefficientAndroidTest {
         data[ 3] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CoefficientAndroid result1 = new CoefficientAndroid(bluetoothGattCharacteristic);
+        CoefficientAndroid result1 = new CoefficientAndroid(data);
         CoefficientAndroid result2 = CoefficientAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.VOLUME_OFFSET_STATE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Volume Offset State (Characteristics UUID: 0x2B80)
@@ -45,9 +45,7 @@ public class VolumeOffsetStateAndroid extends VolumeOffsetState implements Parce
          */
         @NonNull
         public VolumeOffsetStateAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(VOLUME_OFFSET_STATE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new VolumeOffsetStateAndroid(bluetoothGattCharacteristic);
+            return new VolumeOffsetStateAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class VolumeOffsetStateAndroid extends VolumeOffsetState implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B80
      */
+    @Deprecated
     public VolumeOffsetStateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public VolumeOffsetStateAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class VolumeOffsetStateAndroid extends VolumeOffsetState implements Parce
      * @param in Parcel
      */
     private VolumeOffsetStateAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

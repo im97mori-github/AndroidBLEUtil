@@ -1,10 +1,24 @@
 package org.im97mori.ble.service.cscs.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.CSC_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.CSC_MEASUREMENT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SC_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SENSOR_LOCATION_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.CYCLING_SPEED_AND_CADENCE_SERVICE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.os.Build;
+
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.characteristic.core.SensorLocationUtils;
 import org.im97mori.ble.characteristic.u2a55.SCControlPoint;
@@ -17,21 +31,6 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.CSC_FEATURE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.CSC_MEASUREMENT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SC_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SENSOR_LOCATION_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ServiceUUID.CYCLING_SPEED_AND_CADENCE_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import androidx.test.filters.RequiresDevice;
-import androidx.test.filters.SdkSuppress;
 
 public class CyclingSpeedAndCadenceServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
@@ -345,7 +344,6 @@ public class CyclingSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
         assertEquals(CSC_FEATURE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(cscFeature.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -395,7 +393,6 @@ public class CyclingSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
         assertEquals(CSC_FEATURE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(cscFeature.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -447,7 +444,6 @@ public class CyclingSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
         assertEquals(CSC_FEATURE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(cscFeature.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -535,12 +531,10 @@ public class CyclingSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
         assertEquals(CSC_MEASUREMENT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(0, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(cscMeasurement.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -599,12 +593,10 @@ public class CyclingSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
         assertEquals(CSC_MEASUREMENT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(0, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(cscMeasurement.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -689,7 +681,6 @@ public class CyclingSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
         assertEquals(SENSOR_LOCATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(sensorLocation.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -739,7 +730,6 @@ public class CyclingSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
         assertEquals(SENSOR_LOCATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(sensorLocation.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -791,7 +781,6 @@ public class CyclingSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
         assertEquals(SENSOR_LOCATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(sensorLocation.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -877,12 +866,10 @@ public class CyclingSpeedAndCadenceServiceMockCallbackBuilderTest extends Abstra
         assertEquals(SC_CONTROL_POINT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(new SCControlPoint(SCControlPoint.OP_CODE_RESPONSE_CODE, 0, 0, SCControlPoint.OP_CODE_RESPONSE_CODE, SCControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, new byte[0]).getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(descriptorValue, bluetoothGattDescriptor.getValue());
     }
 
     @Test

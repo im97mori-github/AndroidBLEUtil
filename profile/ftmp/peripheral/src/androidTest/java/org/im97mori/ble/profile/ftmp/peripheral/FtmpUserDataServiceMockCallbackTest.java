@@ -15,7 +15,7 @@ import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 public class FtmpUserDataServiceMockCallbackTest {
 
     private static class TestFtmpUserDataServiceMockCallback extends FtmpUserDataServiceMockCallback {

@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2aed;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,11 +8,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings({"ConstantConditions"})
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -30,10 +28,7 @@ public class DateUtcAndroidTest {
         data[ 2] = (byte) (DateUtc.DATE_UTC_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DateUtcAndroid result1 = new DateUtcAndroid(bluetoothGattCharacteristic);
+        DateUtcAndroid result1 = new DateUtcAndroid(data);
         assertEquals(DateUtc.DATE_UTC_IS_NOT_KNOWN, result1.getDate());
     }
 
@@ -46,10 +41,7 @@ public class DateUtcAndroidTest {
         data[ 2] = (byte) (16777214 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DateUtcAndroid result1 = new DateUtcAndroid(bluetoothGattCharacteristic);
+        DateUtcAndroid result1 = new DateUtcAndroid(data);
         assertEquals(16777214, result1.getDate());
     }
 
@@ -78,10 +70,7 @@ public class DateUtcAndroidTest {
         data[ 2] = (byte) (DateUtc.DATE_UTC_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DateUtcAndroid result1 = new DateUtcAndroid(bluetoothGattCharacteristic);
+        DateUtcAndroid result1 = new DateUtcAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -99,10 +88,7 @@ public class DateUtcAndroidTest {
         data[ 2] = (byte) (16777214 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DateUtcAndroid result1 = new DateUtcAndroid(bluetoothGattCharacteristic);
+        DateUtcAndroid result1 = new DateUtcAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -120,10 +106,7 @@ public class DateUtcAndroidTest {
         data[ 2] = (byte) (DateUtc.DATE_UTC_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DateUtcAndroid result1 = new DateUtcAndroid(bluetoothGattCharacteristic);
+        DateUtcAndroid result1 = new DateUtcAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -136,10 +119,7 @@ public class DateUtcAndroidTest {
         data[ 2] = (byte) (16777214 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DateUtcAndroid result1 = new DateUtcAndroid(bluetoothGattCharacteristic);
+        DateUtcAndroid result1 = new DateUtcAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -152,10 +132,7 @@ public class DateUtcAndroidTest {
         data[ 2] = (byte) (DateUtc.DATE_UTC_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DateUtcAndroid result1 = new DateUtcAndroid(bluetoothGattCharacteristic);
+        DateUtcAndroid result1 = new DateUtcAndroid(data);
         DateUtcAndroid result2 = DateUtcAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -169,10 +146,7 @@ public class DateUtcAndroidTest {
         data[ 2] = (byte) (16777214 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DateUtcAndroid result1 = new DateUtcAndroid(bluetoothGattCharacteristic);
+        DateUtcAndroid result1 = new DateUtcAndroid(data);
         DateUtcAndroid result2 = DateUtcAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

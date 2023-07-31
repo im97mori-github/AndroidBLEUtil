@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_FLUX_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Luminous Flux (Characteristics UUID: 0x2AFF)
@@ -44,9 +44,7 @@ public class LuminousFluxAndroid extends LuminousFlux implements Parcelable {
          */
         @NonNull
         public LuminousFluxAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LUMINOUS_FLUX_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new LuminousFluxAndroid(bluetoothGattCharacteristic);
+            return new LuminousFluxAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class LuminousFluxAndroid extends LuminousFlux implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AFF
      */
+    @Deprecated
     public LuminousFluxAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public LuminousFluxAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class LuminousFluxAndroid extends LuminousFlux implements Parcelable {
      * @param in Parcel
      */
     private LuminousFluxAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

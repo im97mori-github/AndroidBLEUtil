@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion globalCompileSdkVersion
-    buildToolsVersion globalBuildToolsVersion
+    compileSdk globalCompileSdkVersion
+    buildToolsVersion = globalBuildToolsVersion
 
     defaultConfig {
         applicationId "org.im97mori.ble.sample.lolipop"
         minSdkVersion globalPeripheralMinSdkVersion
-        targetSdkVersion globalTargetSdkVersion
+        targetSdk globalTargetSdkVersion
         versionCode 1
         versionName "1.0"
 

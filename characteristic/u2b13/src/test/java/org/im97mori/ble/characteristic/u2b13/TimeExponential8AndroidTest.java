@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b13;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,11 +9,9 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings({"ConstantConditions"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -26,13 +23,11 @@ public class TimeExponential8AndroidTest {
     public void test_constructor_00001() {
         //@formatter:off
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeExponential8Android result1 = new TimeExponential8Android(bluetoothGattCharacteristic);
+        TimeExponential8Android result1 = new TimeExponential8Android(data);
         assertEquals(TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS, result1.getTimeExponential8());
     }
 
@@ -43,10 +38,7 @@ public class TimeExponential8AndroidTest {
         data[ 0] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeExponential8Android result1 = new TimeExponential8Android(bluetoothGattCharacteristic);
+        TimeExponential8Android result1 = new TimeExponential8Android(data);
         assertEquals(TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE, result1.getTimeExponential8());
     }
 
@@ -57,10 +49,7 @@ public class TimeExponential8AndroidTest {
         data[ 0] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeExponential8Android result1 = new TimeExponential8Android(bluetoothGattCharacteristic);
+        TimeExponential8Android result1 = new TimeExponential8Android(data);
         assertEquals(TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN, result1.getTimeExponential8());
     }
 
@@ -95,10 +84,7 @@ public class TimeExponential8AndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeExponential8Android result1 = new TimeExponential8Android(bluetoothGattCharacteristic);
+        TimeExponential8Android result1 = new TimeExponential8Android(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -114,10 +100,7 @@ public class TimeExponential8AndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeExponential8Android result1 = new TimeExponential8Android(bluetoothGattCharacteristic);
+        TimeExponential8Android result1 = new TimeExponential8Android(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -128,10 +111,7 @@ public class TimeExponential8AndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeExponential8Android result1 = new TimeExponential8Android(bluetoothGattCharacteristic);
+        TimeExponential8Android result1 = new TimeExponential8Android(data);
         TimeExponential8Android result2 = TimeExponential8Android.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

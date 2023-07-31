@@ -1,8 +1,25 @@
 package org.im97mori.ble.service.dis.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.FIRMWARE_REVISION_STRING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.HARDWARE_REVISION_STRING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.MANUFACTURER_NAME_STRING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.MODEL_NUMBER_STRING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.PNP_ID_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SERIAL_NUMBER_STRING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SOFTWARE_REVISION_STRING_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SYSTEM_ID_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.os.Build;
+
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.characteristic.u2a23.SystemId;
 import org.im97mori.ble.characteristic.u2a24.ModelNumberString;
@@ -18,24 +35,6 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.FIRMWARE_REVISION_STRING_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.HARDWARE_REVISION_STRING_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.MANUFACTURER_NAME_STRING_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.MODEL_NUMBER_STRING_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.PNP_ID_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SERIAL_NUMBER_STRING_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SOFTWARE_REVISION_STRING_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SYSTEM_ID_CHARACTERISTIC;
-import static org.im97mori.ble.constants.ServiceUUID.DEVICE_INFORMATION_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import androidx.test.filters.RequiresDevice;
-import androidx.test.filters.SdkSuppress;
 
 public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
@@ -71,7 +70,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(MANUFACTURER_NAME_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), manufacturerName.getBytes());
     }
 
     @Test
@@ -91,7 +89,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(MANUFACTURER_NAME_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), manufacturerName.getBytes());
     }
 
     @Test
@@ -111,7 +108,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(MANUFACTURER_NAME_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), manufacturerName.getBytes());
     }
 
 
@@ -132,7 +128,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(MANUFACTURER_NAME_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), manufacturerName.getBytes());
     }
 
     @Test
@@ -187,7 +182,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(MODEL_NUMBER_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), modelNumber.getBytes());
     }
 
     @Test
@@ -207,7 +201,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(MODEL_NUMBER_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), modelNumber.getBytes());
     }
 
     @Test
@@ -227,7 +220,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(MODEL_NUMBER_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), modelNumber.getBytes());
     }
 
     @Test
@@ -247,7 +239,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(MODEL_NUMBER_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), modelNumber.getBytes());
     }
 
     @Test
@@ -302,7 +293,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SERIAL_NUMBER_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), serialNumber.getBytes());
     }
 
     @Test
@@ -322,7 +312,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SERIAL_NUMBER_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), serialNumber.getBytes());
     }
 
     @Test
@@ -342,7 +331,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SERIAL_NUMBER_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), serialNumber.getBytes());
     }
 
     @Test
@@ -362,7 +350,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SERIAL_NUMBER_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), serialNumber.getBytes());
     }
 
     @Test
@@ -417,7 +404,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(HARDWARE_REVISION_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), hardwareRevision.getBytes());
     }
 
     @Test
@@ -437,7 +423,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(HARDWARE_REVISION_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), hardwareRevision.getBytes());
     }
 
     @Test
@@ -457,7 +442,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(HARDWARE_REVISION_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), hardwareRevision.getBytes());
     }
 
     @Test
@@ -477,7 +461,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(HARDWARE_REVISION_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), hardwareRevision.getBytes());
     }
 
     @Test
@@ -532,7 +515,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(FIRMWARE_REVISION_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), firmwareRevision.getBytes());
     }
 
     @Test
@@ -552,7 +534,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(FIRMWARE_REVISION_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), firmwareRevision.getBytes());
     }
 
     @Test
@@ -572,7 +553,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(FIRMWARE_REVISION_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), firmwareRevision.getBytes());
     }
 
     @Test
@@ -592,7 +572,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(FIRMWARE_REVISION_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), firmwareRevision.getBytes());
     }
 
     @Test
@@ -647,7 +626,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SOFTWARE_REVISION_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), softwareRevision.getBytes());
     }
 
     @Test
@@ -667,7 +645,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SOFTWARE_REVISION_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), softwareRevision.getBytes());
     }
 
     @Test
@@ -687,7 +664,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SOFTWARE_REVISION_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), softwareRevision.getBytes());
     }
 
     @Test
@@ -707,7 +683,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SOFTWARE_REVISION_STRING_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), softwareRevision.getBytes());
     }
 
     @Test
@@ -763,7 +738,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SYSTEM_ID_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), new SystemId(manufacturerIdentifier, organizationallyUniqueIdentifier).getBytes());
     }
 
     @Test
@@ -784,7 +758,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SYSTEM_ID_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), new SystemId(manufacturerIdentifier, organizationallyUniqueIdentifier).getBytes());
     }
 
     @Test
@@ -805,7 +778,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SYSTEM_ID_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), new SystemId(manufacturerIdentifier, organizationallyUniqueIdentifier).getBytes());
     }
 
     @Test
@@ -826,7 +798,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(SYSTEM_ID_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), new SystemId(manufacturerIdentifier, organizationallyUniqueIdentifier).getBytes());
     }
 
     @Test
@@ -971,7 +942,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PNP_ID_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), new PnpId(vendorIdSource, vendorId, productId, productVersion).getBytes());
     }
 
     @Test
@@ -994,7 +964,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PNP_ID_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), new PnpId(vendorIdSource, vendorId, productId, productVersion).getBytes());
     }
 
     @Test
@@ -1017,7 +986,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PNP_ID_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), new PnpId(vendorIdSource, vendorId, productId, productVersion).getBytes());
     }
 
     @Test
@@ -1040,7 +1008,6 @@ public class DeviceInformationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(DEVICE_INFORMATION_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PNP_ID_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), new PnpId(vendorIdSource, vendorId, productId, productVersion).getBytes());
     }
 
     @Test

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.EVENT_STATISTICS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Event Statistics (Characteristics UUID: 0x2AF4)
@@ -44,9 +44,7 @@ public class EventStatisticsAndroid extends EventStatistics implements Parcelabl
          */
         @NonNull
         public EventStatisticsAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(EVENT_STATISTICS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new EventStatisticsAndroid(bluetoothGattCharacteristic);
+            return new EventStatisticsAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class EventStatisticsAndroid extends EventStatistics implements Parcelabl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AF4
      */
+    @Deprecated
     public EventStatisticsAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public EventStatisticsAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -78,8 +86,7 @@ public class EventStatisticsAndroid extends EventStatistics implements Parcelabl
      * @param in Parcel
      */
     private EventStatisticsAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -262,9 +262,9 @@ public class IndoorPositioningTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -292,8 +292,8 @@ public class IndoorPositioningTest {
         assertEquals(data[0], result1.getLength());
         assertEquals(INDOOR_POSITIONING_DATA_TYPE, result1.getDataType());
         assertEquals(data[2], result1.getIndoorPositioningConfiguration());
-        assertEquals(0x04030201, result1.getGlobalCoorinatesLatitude());
-        assertEquals(0x08070605, result1.getGlobalCoorinatesLongitude());
+        assertEquals(0x04030201, result1.getGlobalCoordinatesLatitude());
+        assertEquals(0x08070605, result1.getGlobalCoordinatesLongitude());
     }
 
     @Test
@@ -436,8 +436,8 @@ public class IndoorPositioningTest {
         assertEquals(data[0], result1.getLength());
         assertEquals(INDOOR_POSITIONING_DATA_TYPE, result1.getDataType());
         assertEquals(data[2], result1.getIndoorPositioningConfiguration());
-        assertEquals(0x04030201, result1.getGlobalCoorinatesLatitude());
-        assertEquals(0x08070605, result1.getGlobalCoorinatesLongitude());
+        assertEquals(0x04030201, result1.getGlobalCoordinatesLatitude());
+        assertEquals(0x08070605, result1.getGlobalCoordinatesLongitude());
     }
 
     @Test
@@ -567,8 +567,8 @@ public class IndoorPositioningTest {
         byte[] data = getData();
 
         int indoorPositioningConfiguration;
-        int globalCoorinatesLatitude;
-        int globalCoorinatesLongitude;
+        int globalCoordinatesLatitude;
+        int globalCoordinatesLongitude;
         int localCoordinatesNorth;
         int localCoordinatesEast;
         int txPower;
@@ -584,23 +584,23 @@ public class IndoorPositioningTest {
 
         if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfCoordinatesInAdvertisingPacketsCoordinatesArePresent(indoorPositioningConfiguration)) {
             if (IndoorPositioningUtils.isIndoorPositioningConfigurationCoordinateSystemUsedInAdvertisingPacketsWgs84CoordinateSystem(indoorPositioningConfiguration)) {
-                globalCoorinatesLatitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLatitude = BLEUtils.createSInt32(data, index);
                 index += 4;
-                globalCoorinatesLongitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLongitude = BLEUtils.createSInt32(data, index);
                 index += 4;
                 localCoordinatesNorth = 0;
                 localCoordinatesEast = 0;
             } else {
-                globalCoorinatesLatitude = 0;
-                globalCoorinatesLongitude = 0;
+                globalCoordinatesLatitude = 0;
+                globalCoordinatesLongitude = 0;
                 localCoordinatesNorth = BLEUtils.createSInt16(data, index);
                 index += 2;
                 localCoordinatesEast = BLEUtils.createSInt16(data, index);
                 index += 2;
             }
         } else {
-            globalCoorinatesLatitude = 0;
-            globalCoorinatesLongitude = 0;
+            globalCoordinatesLatitude = 0;
+            globalCoordinatesLongitude = 0;
             localCoordinatesNorth = 0;
             localCoordinatesEast = 0;
         }
@@ -630,8 +630,8 @@ public class IndoorPositioningTest {
             uncertainty = 0;
         }
         IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(indoorPositioningConfiguration
-                , globalCoorinatesLatitude
-                , globalCoorinatesLongitude
+                , globalCoordinatesLatitude
+                , globalCoordinatesLongitude
                 , localCoordinatesNorth
                 , localCoordinatesEast
                 , txPower
@@ -648,8 +648,8 @@ public class IndoorPositioningTest {
         byte[] data = getData();
 
         int indoorPositioningConfiguration;
-        int globalCoorinatesLatitude;
-        int globalCoorinatesLongitude;
+        int globalCoordinatesLatitude;
+        int globalCoordinatesLongitude;
         int localCoordinatesNorth;
         int localCoordinatesEast;
         int txPower;
@@ -665,23 +665,23 @@ public class IndoorPositioningTest {
 
         if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfCoordinatesInAdvertisingPacketsCoordinatesArePresent(indoorPositioningConfiguration)) {
             if (IndoorPositioningUtils.isIndoorPositioningConfigurationCoordinateSystemUsedInAdvertisingPacketsWgs84CoordinateSystem(indoorPositioningConfiguration)) {
-                globalCoorinatesLatitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLatitude = BLEUtils.createSInt32(data, index);
                 index += 4;
-                globalCoorinatesLongitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLongitude = BLEUtils.createSInt32(data, index);
                 index += 4;
                 localCoordinatesNorth = 0;
                 localCoordinatesEast = 0;
             } else {
-                globalCoorinatesLatitude = 0;
-                globalCoorinatesLongitude = 0;
+                globalCoordinatesLatitude = 0;
+                globalCoordinatesLongitude = 0;
                 localCoordinatesNorth = BLEUtils.createSInt16(data, index);
                 index += 2;
                 localCoordinatesEast = BLEUtils.createSInt16(data, index);
                 index += 2;
             }
         } else {
-            globalCoorinatesLatitude = 0;
-            globalCoorinatesLongitude = 0;
+            globalCoordinatesLatitude = 0;
+            globalCoordinatesLongitude = 0;
             localCoordinatesNorth = 0;
             localCoordinatesEast = 0;
         }
@@ -711,8 +711,8 @@ public class IndoorPositioningTest {
             uncertainty = 0;
         }
         IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(indoorPositioningConfiguration
-                , globalCoorinatesLatitude
-                , globalCoorinatesLongitude
+                , globalCoordinatesLatitude
+                , globalCoordinatesLongitude
                 , localCoordinatesNorth
                 , localCoordinatesEast
                 , txPower
@@ -722,8 +722,8 @@ public class IndoorPositioningTest {
         assertEquals(data[0], result1.getLength());
         assertEquals(INDOOR_POSITIONING_DATA_TYPE, result1.getDataType());
         assertEquals(data[2], result1.getIndoorPositioningConfiguration());
-        assertEquals(0x04030201, result1.getGlobalCoorinatesLatitude());
-        assertEquals(0x08070605, result1.getGlobalCoorinatesLongitude());
+        assertEquals(0x04030201, result1.getGlobalCoordinatesLatitude());
+        assertEquals(0x08070605, result1.getGlobalCoordinatesLongitude());
     }
 
     @Test
@@ -731,8 +731,8 @@ public class IndoorPositioningTest {
         byte[] data = getData();
 
         int indoorPositioningConfiguration;
-        int globalCoorinatesLatitude;
-        int globalCoorinatesLongitude;
+        int globalCoordinatesLatitude;
+        int globalCoordinatesLongitude;
         int localCoordinatesNorth;
         int localCoordinatesEast;
         int txPower;
@@ -748,23 +748,23 @@ public class IndoorPositioningTest {
 
         if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfCoordinatesInAdvertisingPacketsCoordinatesArePresent(indoorPositioningConfiguration)) {
             if (IndoorPositioningUtils.isIndoorPositioningConfigurationCoordinateSystemUsedInAdvertisingPacketsWgs84CoordinateSystem(indoorPositioningConfiguration)) {
-                globalCoorinatesLatitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLatitude = BLEUtils.createSInt32(data, index);
                 index += 4;
-                globalCoorinatesLongitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLongitude = BLEUtils.createSInt32(data, index);
                 index += 4;
                 localCoordinatesNorth = 0;
                 localCoordinatesEast = 0;
             } else {
-                globalCoorinatesLatitude = 0;
-                globalCoorinatesLongitude = 0;
+                globalCoordinatesLatitude = 0;
+                globalCoordinatesLongitude = 0;
                 localCoordinatesNorth = BLEUtils.createSInt16(data, index);
                 index += 2;
                 localCoordinatesEast = BLEUtils.createSInt16(data, index);
                 index += 2;
             }
         } else {
-            globalCoorinatesLatitude = 0;
-            globalCoorinatesLongitude = 0;
+            globalCoordinatesLatitude = 0;
+            globalCoordinatesLongitude = 0;
             localCoordinatesNorth = 0;
             localCoordinatesEast = 0;
         }
@@ -794,8 +794,8 @@ public class IndoorPositioningTest {
             uncertainty = 0;
         }
         IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(indoorPositioningConfiguration
-                , globalCoorinatesLatitude
-                , globalCoorinatesLongitude
+                , globalCoordinatesLatitude
+                , globalCoordinatesLongitude
                 , localCoordinatesNorth
                 , localCoordinatesEast
                 , txPower
@@ -814,8 +814,8 @@ public class IndoorPositioningTest {
         byte[] data = getData();
 
         int indoorPositioningConfiguration;
-        int globalCoorinatesLatitude;
-        int globalCoorinatesLongitude;
+        int globalCoordinatesLatitude;
+        int globalCoordinatesLongitude;
         int localCoordinatesNorth;
         int localCoordinatesEast;
         int txPower;
@@ -831,23 +831,23 @@ public class IndoorPositioningTest {
 
         if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfCoordinatesInAdvertisingPacketsCoordinatesArePresent(indoorPositioningConfiguration)) {
             if (IndoorPositioningUtils.isIndoorPositioningConfigurationCoordinateSystemUsedInAdvertisingPacketsWgs84CoordinateSystem(indoorPositioningConfiguration)) {
-                globalCoorinatesLatitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLatitude = BLEUtils.createSInt32(data, index);
                 index += 4;
-                globalCoorinatesLongitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLongitude = BLEUtils.createSInt32(data, index);
                 index += 4;
                 localCoordinatesNorth = 0;
                 localCoordinatesEast = 0;
             } else {
-                globalCoorinatesLatitude = 0;
-                globalCoorinatesLongitude = 0;
+                globalCoordinatesLatitude = 0;
+                globalCoordinatesLongitude = 0;
                 localCoordinatesNorth = BLEUtils.createSInt16(data, index);
                 index += 2;
                 localCoordinatesEast = BLEUtils.createSInt16(data, index);
                 index += 2;
             }
         } else {
-            globalCoorinatesLatitude = 0;
-            globalCoorinatesLongitude = 0;
+            globalCoordinatesLatitude = 0;
+            globalCoordinatesLongitude = 0;
             localCoordinatesNorth = 0;
             localCoordinatesEast = 0;
         }
@@ -877,8 +877,8 @@ public class IndoorPositioningTest {
             uncertainty = 0;
         }
         IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(indoorPositioningConfiguration
-                , globalCoorinatesLatitude
-                , globalCoorinatesLongitude
+                , globalCoordinatesLatitude
+                , globalCoordinatesLongitude
                 , localCoordinatesNorth
                 , localCoordinatesEast
                 , txPower
@@ -896,8 +896,8 @@ public class IndoorPositioningTest {
         byte[] data = getData();
 
         int indoorPositioningConfiguration;
-        int globalCoorinatesLatitude;
-        int globalCoorinatesLongitude;
+        int globalCoordinatesLatitude;
+        int globalCoordinatesLongitude;
         int localCoordinatesNorth;
         int localCoordinatesEast;
         int txPower;
@@ -913,23 +913,23 @@ public class IndoorPositioningTest {
 
         if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfCoordinatesInAdvertisingPacketsCoordinatesArePresent(indoorPositioningConfiguration)) {
             if (IndoorPositioningUtils.isIndoorPositioningConfigurationCoordinateSystemUsedInAdvertisingPacketsWgs84CoordinateSystem(indoorPositioningConfiguration)) {
-                globalCoorinatesLatitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLatitude = BLEUtils.createSInt32(data, index);
                 index += 4;
-                globalCoorinatesLongitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLongitude = BLEUtils.createSInt32(data, index);
                 index += 4;
                 localCoordinatesNorth = 0;
                 localCoordinatesEast = 0;
             } else {
-                globalCoorinatesLatitude = 0;
-                globalCoorinatesLongitude = 0;
+                globalCoordinatesLatitude = 0;
+                globalCoordinatesLongitude = 0;
                 localCoordinatesNorth = BLEUtils.createSInt16(data, index);
                 index += 2;
                 localCoordinatesEast = BLEUtils.createSInt16(data, index);
                 index += 2;
             }
         } else {
-            globalCoorinatesLatitude = 0;
-            globalCoorinatesLongitude = 0;
+            globalCoordinatesLatitude = 0;
+            globalCoordinatesLongitude = 0;
             localCoordinatesNorth = 0;
             localCoordinatesEast = 0;
         }
@@ -959,8 +959,8 @@ public class IndoorPositioningTest {
             uncertainty = 0;
         }
         IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(indoorPositioningConfiguration
-                , globalCoorinatesLatitude
-                , globalCoorinatesLongitude
+                , globalCoordinatesLatitude
+                , globalCoordinatesLongitude
                 , localCoordinatesNorth
                 , localCoordinatesEast
                 , txPower
@@ -978,8 +978,8 @@ public class IndoorPositioningTest {
         byte[] data = getData();
 
         int indoorPositioningConfiguration;
-        int globalCoorinatesLatitude;
-        int globalCoorinatesLongitude;
+        int globalCoordinatesLatitude;
+        int globalCoordinatesLongitude;
         int localCoordinatesNorth;
         int localCoordinatesEast;
         int txPower;
@@ -995,23 +995,23 @@ public class IndoorPositioningTest {
 
         if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfCoordinatesInAdvertisingPacketsCoordinatesArePresent(indoorPositioningConfiguration)) {
             if (IndoorPositioningUtils.isIndoorPositioningConfigurationCoordinateSystemUsedInAdvertisingPacketsWgs84CoordinateSystem(indoorPositioningConfiguration)) {
-                globalCoorinatesLatitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLatitude = BLEUtils.createSInt32(data, index);
                 index += 4;
-                globalCoorinatesLongitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLongitude = BLEUtils.createSInt32(data, index);
                 index += 4;
                 localCoordinatesNorth = 0;
                 localCoordinatesEast = 0;
             } else {
-                globalCoorinatesLatitude = 0;
-                globalCoorinatesLongitude = 0;
+                globalCoordinatesLatitude = 0;
+                globalCoordinatesLongitude = 0;
                 localCoordinatesNorth = BLEUtils.createSInt16(data, index);
                 index += 2;
                 localCoordinatesEast = BLEUtils.createSInt16(data, index);
                 index += 2;
             }
         } else {
-            globalCoorinatesLatitude = 0;
-            globalCoorinatesLongitude = 0;
+            globalCoordinatesLatitude = 0;
+            globalCoordinatesLongitude = 0;
             localCoordinatesNorth = 0;
             localCoordinatesEast = 0;
         }
@@ -1041,8 +1041,8 @@ public class IndoorPositioningTest {
             uncertainty = 0;
         }
         IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(indoorPositioningConfiguration
-                , globalCoorinatesLatitude
-                , globalCoorinatesLongitude
+                , globalCoordinatesLatitude
+                , globalCoordinatesLongitude
                 , localCoordinatesNorth
                 , localCoordinatesEast
                 , txPower
@@ -1060,8 +1060,8 @@ public class IndoorPositioningTest {
         byte[] data = getData();
 
         int indoorPositioningConfiguration;
-        int globalCoorinatesLatitude;
-        int globalCoorinatesLongitude;
+        int globalCoordinatesLatitude;
+        int globalCoordinatesLongitude;
         int localCoordinatesNorth;
         int localCoordinatesEast;
         int txPower;
@@ -1077,23 +1077,23 @@ public class IndoorPositioningTest {
 
         if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfCoordinatesInAdvertisingPacketsCoordinatesArePresent(indoorPositioningConfiguration)) {
             if (IndoorPositioningUtils.isIndoorPositioningConfigurationCoordinateSystemUsedInAdvertisingPacketsWgs84CoordinateSystem(indoorPositioningConfiguration)) {
-                globalCoorinatesLatitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLatitude = BLEUtils.createSInt32(data, index);
                 index += 4;
-                globalCoorinatesLongitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLongitude = BLEUtils.createSInt32(data, index);
                 index += 4;
                 localCoordinatesNorth = 0;
                 localCoordinatesEast = 0;
             } else {
-                globalCoorinatesLatitude = 0;
-                globalCoorinatesLongitude = 0;
+                globalCoordinatesLatitude = 0;
+                globalCoordinatesLongitude = 0;
                 localCoordinatesNorth = BLEUtils.createSInt16(data, index);
                 index += 2;
                 localCoordinatesEast = BLEUtils.createSInt16(data, index);
                 index += 2;
             }
         } else {
-            globalCoorinatesLatitude = 0;
-            globalCoorinatesLongitude = 0;
+            globalCoordinatesLatitude = 0;
+            globalCoordinatesLongitude = 0;
             localCoordinatesNorth = 0;
             localCoordinatesEast = 0;
         }
@@ -1123,8 +1123,8 @@ public class IndoorPositioningTest {
             uncertainty = 0;
         }
         IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(indoorPositioningConfiguration
-                , globalCoorinatesLatitude
-                , globalCoorinatesLongitude
+                , globalCoordinatesLatitude
+                , globalCoordinatesLongitude
                 , localCoordinatesNorth
                 , localCoordinatesEast
                 , txPower
@@ -1142,8 +1142,8 @@ public class IndoorPositioningTest {
         byte[] data = getData();
 
         int indoorPositioningConfiguration;
-        int globalCoorinatesLatitude;
-        int globalCoorinatesLongitude;
+        int globalCoordinatesLatitude;
+        int globalCoordinatesLongitude;
         int localCoordinatesNorth;
         int localCoordinatesEast;
         int txPower;
@@ -1159,23 +1159,23 @@ public class IndoorPositioningTest {
 
         if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfCoordinatesInAdvertisingPacketsCoordinatesArePresent(indoorPositioningConfiguration)) {
             if (IndoorPositioningUtils.isIndoorPositioningConfigurationCoordinateSystemUsedInAdvertisingPacketsWgs84CoordinateSystem(indoorPositioningConfiguration)) {
-                globalCoorinatesLatitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLatitude = BLEUtils.createSInt32(data, index);
                 index += 4;
-                globalCoorinatesLongitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLongitude = BLEUtils.createSInt32(data, index);
                 index += 4;
                 localCoordinatesNorth = 0;
                 localCoordinatesEast = 0;
             } else {
-                globalCoorinatesLatitude = 0;
-                globalCoorinatesLongitude = 0;
+                globalCoordinatesLatitude = 0;
+                globalCoordinatesLongitude = 0;
                 localCoordinatesNorth = BLEUtils.createSInt16(data, index);
                 index += 2;
                 localCoordinatesEast = BLEUtils.createSInt16(data, index);
                 index += 2;
             }
         } else {
-            globalCoorinatesLatitude = 0;
-            globalCoorinatesLongitude = 0;
+            globalCoordinatesLatitude = 0;
+            globalCoordinatesLongitude = 0;
             localCoordinatesNorth = 0;
             localCoordinatesEast = 0;
         }
@@ -1205,8 +1205,8 @@ public class IndoorPositioningTest {
             uncertainty = 0;
         }
         IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(indoorPositioningConfiguration
-                , globalCoorinatesLatitude
-                , globalCoorinatesLongitude
+                , globalCoordinatesLatitude
+                , globalCoordinatesLongitude
                 , localCoordinatesNorth
                 , localCoordinatesEast
                 , txPower
@@ -1224,8 +1224,8 @@ public class IndoorPositioningTest {
         byte[] data = getData();
 
         int indoorPositioningConfiguration;
-        int globalCoorinatesLatitude;
-        int globalCoorinatesLongitude;
+        int globalCoordinatesLatitude;
+        int globalCoordinatesLongitude;
         int localCoordinatesNorth;
         int localCoordinatesEast;
         int txPower;
@@ -1241,23 +1241,23 @@ public class IndoorPositioningTest {
 
         if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfCoordinatesInAdvertisingPacketsCoordinatesArePresent(indoorPositioningConfiguration)) {
             if (IndoorPositioningUtils.isIndoorPositioningConfigurationCoordinateSystemUsedInAdvertisingPacketsWgs84CoordinateSystem(indoorPositioningConfiguration)) {
-                globalCoorinatesLatitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLatitude = BLEUtils.createSInt32(data, index);
                 index += 4;
-                globalCoorinatesLongitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLongitude = BLEUtils.createSInt32(data, index);
                 index += 4;
                 localCoordinatesNorth = 0;
                 localCoordinatesEast = 0;
             } else {
-                globalCoorinatesLatitude = 0;
-                globalCoorinatesLongitude = 0;
+                globalCoordinatesLatitude = 0;
+                globalCoordinatesLongitude = 0;
                 localCoordinatesNorth = BLEUtils.createSInt16(data, index);
                 index += 2;
                 localCoordinatesEast = BLEUtils.createSInt16(data, index);
                 index += 2;
             }
         } else {
-            globalCoorinatesLatitude = 0;
-            globalCoorinatesLongitude = 0;
+            globalCoordinatesLatitude = 0;
+            globalCoordinatesLongitude = 0;
             localCoordinatesNorth = 0;
             localCoordinatesEast = 0;
         }
@@ -1287,8 +1287,8 @@ public class IndoorPositioningTest {
             uncertainty = 0;
         }
         IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(indoorPositioningConfiguration
-                , globalCoorinatesLatitude
-                , globalCoorinatesLongitude
+                , globalCoordinatesLatitude
+                , globalCoordinatesLongitude
                 , localCoordinatesNorth
                 , localCoordinatesEast
                 , txPower
@@ -1306,8 +1306,8 @@ public class IndoorPositioningTest {
         byte[] data = getData();
 
         int indoorPositioningConfiguration;
-        int globalCoorinatesLatitude;
-        int globalCoorinatesLongitude;
+        int globalCoordinatesLatitude;
+        int globalCoordinatesLongitude;
         int localCoordinatesNorth;
         int localCoordinatesEast;
         int txPower;
@@ -1323,23 +1323,23 @@ public class IndoorPositioningTest {
 
         if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfCoordinatesInAdvertisingPacketsCoordinatesArePresent(indoorPositioningConfiguration)) {
             if (IndoorPositioningUtils.isIndoorPositioningConfigurationCoordinateSystemUsedInAdvertisingPacketsWgs84CoordinateSystem(indoorPositioningConfiguration)) {
-                globalCoorinatesLatitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLatitude = BLEUtils.createSInt32(data, index);
                 index += 4;
-                globalCoorinatesLongitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLongitude = BLEUtils.createSInt32(data, index);
                 index += 4;
                 localCoordinatesNorth = 0;
                 localCoordinatesEast = 0;
             } else {
-                globalCoorinatesLatitude = 0;
-                globalCoorinatesLongitude = 0;
+                globalCoordinatesLatitude = 0;
+                globalCoordinatesLongitude = 0;
                 localCoordinatesNorth = BLEUtils.createSInt16(data, index);
                 index += 2;
                 localCoordinatesEast = BLEUtils.createSInt16(data, index);
                 index += 2;
             }
         } else {
-            globalCoorinatesLatitude = 0;
-            globalCoorinatesLongitude = 0;
+            globalCoordinatesLatitude = 0;
+            globalCoordinatesLongitude = 0;
             localCoordinatesNorth = 0;
             localCoordinatesEast = 0;
         }
@@ -1369,8 +1369,8 @@ public class IndoorPositioningTest {
             uncertainty = 0;
         }
         IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(indoorPositioningConfiguration
-                , globalCoorinatesLatitude
-                , globalCoorinatesLongitude
+                , globalCoordinatesLatitude
+                , globalCoordinatesLongitude
                 , localCoordinatesNorth
                 , localCoordinatesEast
                 , txPower
@@ -1388,8 +1388,8 @@ public class IndoorPositioningTest {
         byte[] data = getData();
 
         int indoorPositioningConfiguration;
-        int globalCoorinatesLatitude;
-        int globalCoorinatesLongitude;
+        int globalCoordinatesLatitude;
+        int globalCoordinatesLongitude;
         int localCoordinatesNorth;
         int localCoordinatesEast;
         int txPower;
@@ -1405,23 +1405,23 @@ public class IndoorPositioningTest {
 
         if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfCoordinatesInAdvertisingPacketsCoordinatesArePresent(indoorPositioningConfiguration)) {
             if (IndoorPositioningUtils.isIndoorPositioningConfigurationCoordinateSystemUsedInAdvertisingPacketsWgs84CoordinateSystem(indoorPositioningConfiguration)) {
-                globalCoorinatesLatitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLatitude = BLEUtils.createSInt32(data, index);
                 index += 4;
-                globalCoorinatesLongitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLongitude = BLEUtils.createSInt32(data, index);
                 index += 4;
                 localCoordinatesNorth = 0;
                 localCoordinatesEast = 0;
             } else {
-                globalCoorinatesLatitude = 0;
-                globalCoorinatesLongitude = 0;
+                globalCoordinatesLatitude = 0;
+                globalCoordinatesLongitude = 0;
                 localCoordinatesNorth = BLEUtils.createSInt16(data, index);
                 index += 2;
                 localCoordinatesEast = BLEUtils.createSInt16(data, index);
                 index += 2;
             }
         } else {
-            globalCoorinatesLatitude = 0;
-            globalCoorinatesLongitude = 0;
+            globalCoordinatesLatitude = 0;
+            globalCoordinatesLongitude = 0;
             localCoordinatesNorth = 0;
             localCoordinatesEast = 0;
         }
@@ -1451,8 +1451,8 @@ public class IndoorPositioningTest {
             uncertainty = 0;
         }
         IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(indoorPositioningConfiguration
-                , globalCoorinatesLatitude
-                , globalCoorinatesLongitude
+                , globalCoordinatesLatitude
+                , globalCoordinatesLongitude
                 , localCoordinatesNorth
                 , localCoordinatesEast
                 , txPower
@@ -1470,8 +1470,8 @@ public class IndoorPositioningTest {
         byte[] data = getData();
 
         int indoorPositioningConfiguration;
-        int globalCoorinatesLatitude;
-        int globalCoorinatesLongitude;
+        int globalCoordinatesLatitude;
+        int globalCoordinatesLongitude;
         int localCoordinatesNorth;
         int localCoordinatesEast;
         int txPower;
@@ -1487,23 +1487,23 @@ public class IndoorPositioningTest {
 
         if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfCoordinatesInAdvertisingPacketsCoordinatesArePresent(indoorPositioningConfiguration)) {
             if (IndoorPositioningUtils.isIndoorPositioningConfigurationCoordinateSystemUsedInAdvertisingPacketsWgs84CoordinateSystem(indoorPositioningConfiguration)) {
-                globalCoorinatesLatitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLatitude = BLEUtils.createSInt32(data, index);
                 index += 4;
-                globalCoorinatesLongitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLongitude = BLEUtils.createSInt32(data, index);
                 index += 4;
                 localCoordinatesNorth = 0;
                 localCoordinatesEast = 0;
             } else {
-                globalCoorinatesLatitude = 0;
-                globalCoorinatesLongitude = 0;
+                globalCoordinatesLatitude = 0;
+                globalCoordinatesLongitude = 0;
                 localCoordinatesNorth = BLEUtils.createSInt16(data, index);
                 index += 2;
                 localCoordinatesEast = BLEUtils.createSInt16(data, index);
                 index += 2;
             }
         } else {
-            globalCoorinatesLatitude = 0;
-            globalCoorinatesLongitude = 0;
+            globalCoordinatesLatitude = 0;
+            globalCoordinatesLongitude = 0;
             localCoordinatesNorth = 0;
             localCoordinatesEast = 0;
         }
@@ -1533,8 +1533,8 @@ public class IndoorPositioningTest {
             uncertainty = 0;
         }
         IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(indoorPositioningConfiguration
-                , globalCoorinatesLatitude
-                , globalCoorinatesLongitude
+                , globalCoordinatesLatitude
+                , globalCoordinatesLongitude
                 , localCoordinatesNorth
                 , localCoordinatesEast
                 , txPower
@@ -1552,8 +1552,8 @@ public class IndoorPositioningTest {
         byte[] data = getData();
 
         int indoorPositioningConfiguration;
-        int globalCoorinatesLatitude;
-        int globalCoorinatesLongitude;
+        int globalCoordinatesLatitude;
+        int globalCoordinatesLongitude;
         int localCoordinatesNorth;
         int localCoordinatesEast;
         int txPower;
@@ -1569,23 +1569,23 @@ public class IndoorPositioningTest {
 
         if (IndoorPositioningUtils.isIndoorPositioningConfigurationPresenceOfCoordinatesInAdvertisingPacketsCoordinatesArePresent(indoorPositioningConfiguration)) {
             if (IndoorPositioningUtils.isIndoorPositioningConfigurationCoordinateSystemUsedInAdvertisingPacketsWgs84CoordinateSystem(indoorPositioningConfiguration)) {
-                globalCoorinatesLatitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLatitude = BLEUtils.createSInt32(data, index);
                 index += 4;
-                globalCoorinatesLongitude = BLEUtils.createSInt32(data, index);
+                globalCoordinatesLongitude = BLEUtils.createSInt32(data, index);
                 index += 4;
                 localCoordinatesNorth = 0;
                 localCoordinatesEast = 0;
             } else {
-                globalCoorinatesLatitude = 0;
-                globalCoorinatesLongitude = 0;
+                globalCoordinatesLatitude = 0;
+                globalCoordinatesLongitude = 0;
                 localCoordinatesNorth = BLEUtils.createSInt16(data, index);
                 index += 2;
                 localCoordinatesEast = BLEUtils.createSInt16(data, index);
                 index += 2;
             }
         } else {
-            globalCoorinatesLatitude = 0;
-            globalCoorinatesLongitude = 0;
+            globalCoordinatesLatitude = 0;
+            globalCoordinatesLongitude = 0;
             localCoordinatesNorth = 0;
             localCoordinatesEast = 0;
         }
@@ -1615,8 +1615,8 @@ public class IndoorPositioningTest {
             uncertainty = 0;
         }
         IndoorPositioningAndroid result1 = new IndoorPositioningAndroid(indoorPositioningConfiguration
-                , globalCoorinatesLatitude
-                , globalCoorinatesLongitude
+                , globalCoordinatesLatitude
+                , globalCoordinatesLongitude
                 , localCoordinatesNorth
                 , localCoordinatesEast
                 , txPower
@@ -1641,8 +1641,8 @@ public class IndoorPositioningTest {
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
-        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
-        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getGlobalCoordinatesLatitude(), result2.getGlobalCoordinatesLatitude());
+        assertEquals(result1.getGlobalCoordinatesLongitude(), result2.getGlobalCoordinatesLongitude());
         assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
         assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
         assertEquals(result1.getTxPower(), result2.getTxPower());
@@ -1663,8 +1663,8 @@ public class IndoorPositioningTest {
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
-        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
-        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getGlobalCoordinatesLatitude(), result2.getGlobalCoordinatesLatitude());
+        assertEquals(result1.getGlobalCoordinatesLongitude(), result2.getGlobalCoordinatesLongitude());
         assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
         assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
         assertEquals(result1.getTxPower(), result2.getTxPower());
@@ -1685,8 +1685,8 @@ public class IndoorPositioningTest {
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
-        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
-        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getGlobalCoordinatesLatitude(), result2.getGlobalCoordinatesLatitude());
+        assertEquals(result1.getGlobalCoordinatesLongitude(), result2.getGlobalCoordinatesLongitude());
         assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
         assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
         assertEquals(result1.getTxPower(), result2.getTxPower());
@@ -1707,8 +1707,8 @@ public class IndoorPositioningTest {
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
-        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
-        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getGlobalCoordinatesLatitude(), result2.getGlobalCoordinatesLatitude());
+        assertEquals(result1.getGlobalCoordinatesLongitude(), result2.getGlobalCoordinatesLongitude());
         assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
         assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
         assertEquals(result1.getTxPower(), result2.getTxPower());
@@ -1729,8 +1729,8 @@ public class IndoorPositioningTest {
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
-        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
-        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getGlobalCoordinatesLatitude(), result2.getGlobalCoordinatesLatitude());
+        assertEquals(result1.getGlobalCoordinatesLongitude(), result2.getGlobalCoordinatesLongitude());
         assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
         assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
         assertEquals(result1.getTxPower(), result2.getTxPower());
@@ -1751,8 +1751,8 @@ public class IndoorPositioningTest {
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
-        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
-        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getGlobalCoordinatesLatitude(), result2.getGlobalCoordinatesLatitude());
+        assertEquals(result1.getGlobalCoordinatesLongitude(), result2.getGlobalCoordinatesLongitude());
         assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
         assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
         assertEquals(result1.getTxPower(), result2.getTxPower());
@@ -1773,8 +1773,8 @@ public class IndoorPositioningTest {
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
-        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
-        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getGlobalCoordinatesLatitude(), result2.getGlobalCoordinatesLatitude());
+        assertEquals(result1.getGlobalCoordinatesLongitude(), result2.getGlobalCoordinatesLongitude());
         assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
         assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
         assertEquals(result1.getTxPower(), result2.getTxPower());
@@ -1795,8 +1795,8 @@ public class IndoorPositioningTest {
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
-        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
-        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getGlobalCoordinatesLatitude(), result2.getGlobalCoordinatesLatitude());
+        assertEquals(result1.getGlobalCoordinatesLongitude(), result2.getGlobalCoordinatesLongitude());
         assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
         assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
         assertEquals(result1.getTxPower(), result2.getTxPower());
@@ -1817,8 +1817,8 @@ public class IndoorPositioningTest {
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
-        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
-        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getGlobalCoordinatesLatitude(), result2.getGlobalCoordinatesLatitude());
+        assertEquals(result1.getGlobalCoordinatesLongitude(), result2.getGlobalCoordinatesLongitude());
         assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
         assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
         assertEquals(result1.getTxPower(), result2.getTxPower());
@@ -1839,8 +1839,8 @@ public class IndoorPositioningTest {
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
-        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
-        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getGlobalCoordinatesLatitude(), result2.getGlobalCoordinatesLatitude());
+        assertEquals(result1.getGlobalCoordinatesLongitude(), result2.getGlobalCoordinatesLongitude());
         assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
         assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
         assertEquals(result1.getTxPower(), result2.getTxPower());
@@ -1861,8 +1861,8 @@ public class IndoorPositioningTest {
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
-        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
-        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getGlobalCoordinatesLatitude(), result2.getGlobalCoordinatesLatitude());
+        assertEquals(result1.getGlobalCoordinatesLongitude(), result2.getGlobalCoordinatesLongitude());
         assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
         assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
         assertEquals(result1.getTxPower(), result2.getTxPower());
@@ -1883,8 +1883,8 @@ public class IndoorPositioningTest {
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
-        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
-        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getGlobalCoordinatesLatitude(), result2.getGlobalCoordinatesLatitude());
+        assertEquals(result1.getGlobalCoordinatesLongitude(), result2.getGlobalCoordinatesLongitude());
         assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
         assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
         assertEquals(result1.getTxPower(), result2.getTxPower());
@@ -1905,8 +1905,8 @@ public class IndoorPositioningTest {
         assertEquals(result1.getLength(), result2.getLength());
         assertEquals(result1.getDataType(), result2.getDataType());
         assertEquals(result1.getIndoorPositioningConfiguration(), result2.getIndoorPositioningConfiguration());
-        assertEquals(result1.getGlobalCoorinatesLatitude(), result2.getGlobalCoorinatesLatitude());
-        assertEquals(result1.getGlobalCoorinatesLongitude(), result2.getGlobalCoorinatesLongitude());
+        assertEquals(result1.getGlobalCoordinatesLatitude(), result2.getGlobalCoordinatesLatitude());
+        assertEquals(result1.getGlobalCoordinatesLongitude(), result2.getGlobalCoordinatesLongitude());
         assertEquals(result1.getLocalCoordinatesNorth(), result2.getLocalCoordinatesNorth());
         assertEquals(result1.getLocalCoordinatesEast(), result2.getLocalCoordinatesEast());
         assertEquals(result1.getTxPower(), result2.getTxPower());

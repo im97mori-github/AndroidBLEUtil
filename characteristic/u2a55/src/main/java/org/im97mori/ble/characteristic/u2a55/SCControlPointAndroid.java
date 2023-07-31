@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SC_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * SC Control Point (Characteristics UUID: 0x2A55)
@@ -44,9 +44,7 @@ public class SCControlPointAndroid extends SCControlPoint implements Parcelable 
          */
         @NonNull
         public SCControlPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SC_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new SCControlPointAndroid(bluetoothGattCharacteristic);
+            return new SCControlPointAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class SCControlPointAndroid extends SCControlPoint implements Parcelable 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A55
      */
+    @Deprecated
     public SCControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public SCControlPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -81,8 +89,7 @@ public class SCControlPointAndroid extends SCControlPoint implements Parcelable 
      * @param in Parcel
      */
     private SCControlPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

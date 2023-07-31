@@ -15,6 +15,7 @@ import org.im97mori.ble.ServiceData;
 import java.util.List;
 import java.util.UUID;
 
+/** @noinspection unused*/
 public class MockBLEServerConnection extends BLEServerConnection {
 
     protected List<BluetoothGattService> mCreateAddServiceTaskBluetoothGattServiceList;
@@ -41,7 +42,9 @@ public class MockBLEServerConnection extends BLEServerConnection {
         mCreateAddServiceTaskServiceDataList = createAddServiceTaskServiceDataList;
     }
 
+    /** @noinspection RedundantSuppression*/
     @Override
+    @SuppressWarnings("deprecation")
     public synchronized Integer createAddServiceTask(@NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument, @Nullable BLEServerCallback bleServerCallback) {
         if (mCreateAddServiceTaskBluetoothGattServiceList != null) {
             mCreateAddServiceTaskBluetoothGattServiceList.add(bluetoothGattService);

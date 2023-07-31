@@ -506,6 +506,7 @@ public class AdvertisingDataSampleActivity extends FragmentActivity implements V
     }
 
     @Override
+    @Deprecated
     protected void onDestroy() {
         if (mFilteredLeScanCallback != null) {
             mBluetoothAdapter.stopLeScan(mFilteredLeScanCallback);
@@ -529,6 +530,7 @@ public class AdvertisingDataSampleActivity extends FragmentActivity implements V
     }
 
     @Override
+    @Deprecated
     public void onClick(View v) {
         if (R.id.getPermissionButton == v.getId()) {
             hasPermission();
@@ -553,9 +555,7 @@ public class AdvertisingDataSampleActivity extends FragmentActivity implements V
     }
 
     private void updateLayout() {
-        if (mBluetoothAdapter != null && !mBluetoothAdapter.isEnabled()) {
-            mBluetoothAdapter.enable();
-        } else if (mBluetoothAdapter == null) {
+        if (mBluetoothAdapter == null) {
             mAdapter.clear();
             mAdapter.notifyDataSetChanged();
         } else if (mFilteredLeScanCallback == null) {

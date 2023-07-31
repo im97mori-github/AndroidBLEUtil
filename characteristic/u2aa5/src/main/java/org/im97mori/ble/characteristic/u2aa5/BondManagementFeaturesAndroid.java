@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_FEATURE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Bond Management Features (Characteristics UUID: 0x2AA5)
@@ -44,9 +44,7 @@ public class BondManagementFeaturesAndroid extends BondManagementFeatures implem
          */
         @NonNull
         public BondManagementFeaturesAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BOND_MANAGEMENT_FEATURE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+            return new BondManagementFeaturesAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class BondManagementFeaturesAndroid extends BondManagementFeatures implem
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AA5
      */
+    @Deprecated
     public BondManagementFeaturesAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BondManagementFeaturesAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -66,8 +74,7 @@ public class BondManagementFeaturesAndroid extends BondManagementFeatures implem
      * @param in Parcel
      */
     private BondManagementFeaturesAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

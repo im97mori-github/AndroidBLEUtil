@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.AUDIO_INPUT_DESCRIPTION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Audio Input Description (Characteristics UUID: 0x2B7C)
@@ -45,9 +45,7 @@ public class AudioInputDescriptionAndroid extends AudioInputDescription implemen
          */
         @NonNull
         public AudioInputDescriptionAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(AUDIO_INPUT_DESCRIPTION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AudioInputDescriptionAndroid(bluetoothGattCharacteristic);
+            return new AudioInputDescriptionAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class AudioInputDescriptionAndroid extends AudioInputDescription implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B7C
      */
+    @Deprecated
     public AudioInputDescriptionAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AudioInputDescriptionAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class AudioInputDescriptionAndroid extends AudioInputDescription implemen
      * @param in Parcel
      */
     private AudioInputDescriptionAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

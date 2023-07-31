@@ -21,6 +21,7 @@ import java.util.UUID;
 
 /**
  * Running Speed and Cadence Service (Service UUID: 0x1814) callback
+ * @noinspection EmptyMethod
  */
 @SuppressWarnings("unused")
 public interface RunningSpeedAndCadenceServiceCallback {

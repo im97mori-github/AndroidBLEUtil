@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ELECTRIC_CURRENT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Electric Current (Characteristics UUID: 0x2AEE)
@@ -44,9 +44,7 @@ public class ElectricCurrentAndroid extends ElectricCurrent implements Parcelabl
          */
         @NonNull
         public ElectricCurrentAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ELECTRIC_CURRENT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ElectricCurrentAndroid(bluetoothGattCharacteristic);
+            return new ElectricCurrentAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ElectricCurrentAndroid extends ElectricCurrent implements Parcelabl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AEE
      */
+    @Deprecated
     public ElectricCurrentAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ElectricCurrentAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class ElectricCurrentAndroid extends ElectricCurrent implements Parcelabl
      * @param in Parcel
      */
     private ElectricCurrentAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

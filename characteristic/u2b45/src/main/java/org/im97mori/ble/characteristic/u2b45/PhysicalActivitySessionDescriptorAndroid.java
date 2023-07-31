@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.PHYSICAL_ACTIVITY_SESSION_DESCRIPTOR_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Session (Characteristics UUID: 0x2B45)
@@ -45,9 +45,7 @@ public class PhysicalActivitySessionDescriptorAndroid extends PhysicalActivitySe
          */
         @NonNull
         public PhysicalActivitySessionDescriptorAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PHYSICAL_ACTIVITY_SESSION_DESCRIPTOR_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new PhysicalActivitySessionDescriptorAndroid(bluetoothGattCharacteristic);
+            return new PhysicalActivitySessionDescriptorAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class PhysicalActivitySessionDescriptorAndroid extends PhysicalActivitySe
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B45
      */
+    @Deprecated
     public PhysicalActivitySessionDescriptorAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public PhysicalActivitySessionDescriptorAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class PhysicalActivitySessionDescriptorAndroid extends PhysicalActivitySe
      * @param in Parcel
      */
     private PhysicalActivitySessionDescriptorAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

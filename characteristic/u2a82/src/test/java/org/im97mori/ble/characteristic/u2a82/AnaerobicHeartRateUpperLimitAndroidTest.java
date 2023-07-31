@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a82;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -26,10 +24,7 @@ public class AnaerobicHeartRateUpperLimitAndroidTest {
         byte[] data = new byte[1];
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnaerobicHeartRateUpperLimitAndroid result1 = new AnaerobicHeartRateUpperLimitAndroid(bluetoothGattCharacteristic);
+        AnaerobicHeartRateUpperLimitAndroid result1 = new AnaerobicHeartRateUpperLimitAndroid(data);
         assertEquals(0x00, result1.getAnaerobicHeartRateUpperLimit());
     }
 
@@ -40,10 +35,7 @@ public class AnaerobicHeartRateUpperLimitAndroidTest {
         data[ 0] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnaerobicHeartRateUpperLimitAndroid result1 = new AnaerobicHeartRateUpperLimitAndroid(bluetoothGattCharacteristic);
+        AnaerobicHeartRateUpperLimitAndroid result1 = new AnaerobicHeartRateUpperLimitAndroid(data);
         assertEquals(0xff, result1.getAnaerobicHeartRateUpperLimit());
     }
 
@@ -62,10 +54,7 @@ public class AnaerobicHeartRateUpperLimitAndroidTest {
         data[ 0] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnaerobicHeartRateUpperLimitAndroid result1 = new AnaerobicHeartRateUpperLimitAndroid(bluetoothGattCharacteristic);
+        AnaerobicHeartRateUpperLimitAndroid result1 = new AnaerobicHeartRateUpperLimitAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -81,10 +70,7 @@ public class AnaerobicHeartRateUpperLimitAndroidTest {
         data[ 0] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnaerobicHeartRateUpperLimitAndroid result1 = new AnaerobicHeartRateUpperLimitAndroid(bluetoothGattCharacteristic);
+        AnaerobicHeartRateUpperLimitAndroid result1 = new AnaerobicHeartRateUpperLimitAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -95,10 +81,7 @@ public class AnaerobicHeartRateUpperLimitAndroidTest {
         data[ 0] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnaerobicHeartRateUpperLimitAndroid result1 = new AnaerobicHeartRateUpperLimitAndroid(bluetoothGattCharacteristic);
+        AnaerobicHeartRateUpperLimitAndroid result1 = new AnaerobicHeartRateUpperLimitAndroid(data);
         AnaerobicHeartRateUpperLimitAndroid result2 = AnaerobicHeartRateUpperLimitAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

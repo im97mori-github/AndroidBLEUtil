@@ -8,9 +8,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SERVER_SUPPORTED_FEATURES_CHARACTERISTIC;
-
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Server Supported Features (Characteristics UUID: 0x2B3A)
@@ -46,9 +45,7 @@ public class ServerSupportedFeaturesAndroid extends ServerSupportedFeatures impl
          */
         @NonNull
         public ServerSupportedFeaturesAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SERVER_SUPPORTED_FEATURES_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ServerSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+            return new ServerSupportedFeaturesAndroid(values);
         }
 
     };
@@ -58,8 +55,18 @@ public class ServerSupportedFeaturesAndroid extends ServerSupportedFeatures impl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B3A
      */
+    @Deprecated
     public ServerSupportedFeaturesAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ServerSupportedFeaturesAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +84,7 @@ public class ServerSupportedFeaturesAndroid extends ServerSupportedFeatures impl
      * @param in Parcel
      */
     private ServerSupportedFeaturesAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

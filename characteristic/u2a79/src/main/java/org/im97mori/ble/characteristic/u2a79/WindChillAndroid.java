@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.WIND_CHILL_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Wind Chill (Characteristics UUID: 0x2A79)
@@ -44,9 +44,7 @@ public class WindChillAndroid extends WindChill implements Parcelable {
          */
         @NonNull
         public WindChillAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WIND_CHILL_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new WindChillAndroid(bluetoothGattCharacteristic);
+            return new WindChillAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class WindChillAndroid extends WindChill implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A79
      */
+    @Deprecated
     public WindChillAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public WindChillAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class WindChillAndroid extends WindChill implements Parcelable {
      * @param in Parcel
      */
     private WindChillAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

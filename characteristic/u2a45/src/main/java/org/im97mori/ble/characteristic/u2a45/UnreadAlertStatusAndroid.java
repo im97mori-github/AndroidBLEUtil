@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.UNREAD_ALERT_STATUS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Unread Alert Status (Characteristics UUID: 0x2A45)
@@ -44,9 +44,7 @@ public class UnreadAlertStatusAndroid extends UnreadAlertStatus implements Parce
          */
         @NonNull
         public UnreadAlertStatusAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(UNREAD_ALERT_STATUS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new UnreadAlertStatusAndroid(bluetoothGattCharacteristic);
+            return new UnreadAlertStatusAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class UnreadAlertStatusAndroid extends UnreadAlertStatus implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A45
      */
+    @Deprecated
     public UnreadAlertStatusAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public UnreadAlertStatusAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class UnreadAlertStatusAndroid extends UnreadAlertStatus implements Parce
      * @param in Parcel
      */
     private UnreadAlertStatusAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

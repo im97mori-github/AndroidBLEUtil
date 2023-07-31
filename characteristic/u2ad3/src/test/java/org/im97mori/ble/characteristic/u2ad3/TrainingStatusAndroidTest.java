@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ad3;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,13 +8,13 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
+/** @noinspection DataFlowIssue*/
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -221,9 +220,9 @@ public class TrainingStatusAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -237,10 +236,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[0], result1.getFlags());
         assertTrue(result1.isFlagsTrainingStatusStringNotPresent());
         assertFalse(result1.isFlagsTrainingStatusStringPresent());
@@ -250,10 +246,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[0], result1.getFlags());
         assertFalse(result1.isFlagsTrainingStatusStringNotPresent());
         assertTrue(result1.isFlagsTrainingStatusStringPresent());
@@ -264,10 +257,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[0], result1.getFlags());
         assertTrue(result1.isFlagsExtendedStringNotPresent());
         assertFalse(result1.isFlagsExtendedStringPresent());
@@ -277,10 +267,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[0], result1.getFlags());
         assertFalse(result1.isFlagsExtendedStringNotPresent());
         assertTrue(result1.isFlagsExtendedStringPresent());
@@ -291,10 +278,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertTrue(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -318,10 +302,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertTrue(result1.isTrainingStatusIdle());
@@ -345,10 +326,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -372,10 +350,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -399,10 +374,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00205() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -426,10 +398,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00206() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -453,10 +422,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00207() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -480,10 +446,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00208() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -507,10 +470,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00209() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -534,10 +494,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00210() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -561,10 +518,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00211() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -588,10 +542,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00212() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -615,10 +566,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00213() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -642,10 +590,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00214() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -669,10 +614,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00215() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -696,10 +638,7 @@ public class TrainingStatusAndroidTest {
     public void test_constructor_00216() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertEquals(data[1], result1.getTrainingStatus());
         assertFalse(result1.isTrainingStatusOhter());
         assertFalse(result1.isTrainingStatusIdle());
@@ -735,10 +674,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -752,10 +688,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -769,10 +702,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -786,10 +716,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -803,10 +730,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -820,10 +744,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -837,10 +758,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -854,10 +772,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -871,10 +786,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00205() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -888,10 +800,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00206() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -905,10 +814,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00207() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -922,10 +828,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00208() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -939,10 +842,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00209() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -956,10 +856,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00210() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -973,10 +870,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00211() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -990,10 +884,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00212() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1007,10 +898,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00213() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1024,10 +912,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00214() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1041,10 +926,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00215() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1058,10 +940,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_1_00216() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1075,10 +954,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1086,10 +962,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1097,10 +970,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1108,10 +978,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1119,10 +986,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1130,10 +994,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1141,10 +1002,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1152,10 +1010,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1163,10 +1018,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00205() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1174,10 +1026,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00206() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1185,10 +1034,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00207() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1196,10 +1042,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00208() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1207,10 +1050,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00209() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1218,10 +1058,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00210() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1229,10 +1066,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00211() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1240,10 +1074,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00212() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1251,10 +1082,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00213() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1262,10 +1090,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00214() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1273,10 +1098,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00215() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1284,10 +1106,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_2_00216() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1295,10 +1114,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1307,10 +1123,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1319,10 +1132,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1331,10 +1141,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1343,10 +1150,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1355,10 +1159,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1367,10 +1168,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1379,10 +1177,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1391,10 +1186,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00205() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1403,10 +1195,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00206() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1415,10 +1204,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00207() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1427,10 +1213,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00208() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1439,10 +1222,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00209() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1451,10 +1231,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00210() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1463,10 +1240,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00211() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1475,10 +1249,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00212() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1487,10 +1258,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00213() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1499,10 +1267,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00214() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1511,10 +1276,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00215() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1523,10 +1285,7 @@ public class TrainingStatusAndroidTest {
     public void test_parcelable_3_00216() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TrainingStatusAndroid result1 = new TrainingStatusAndroid(bluetoothGattCharacteristic);
+        TrainingStatusAndroid result1 = new TrainingStatusAndroid(data);
         TrainingStatusAndroid result2 = TrainingStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

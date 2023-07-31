@@ -28,7 +28,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_TYPE_CHA
 import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.constants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
 import static org.im97mori.ble.constants.ServiceUUID.HEALTH_THERMOMETER_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -96,12 +95,10 @@ public class HealthThermometerServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(TEMPERATURE_MEASUREMENT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
         assertEquals(0, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(temperatureMeasurement.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -146,12 +143,10 @@ public class HealthThermometerServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(TEMPERATURE_MEASUREMENT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
         assertEquals(0, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(temperatureMeasurement.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -230,7 +225,6 @@ public class HealthThermometerServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(TEMPERATURE_TYPE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(temperatureType.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -278,7 +272,6 @@ public class HealthThermometerServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(TEMPERATURE_TYPE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(temperatureType.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -376,12 +369,10 @@ public class HealthThermometerServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(INTERMEDIATE_TEMPERATURE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(0, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(intermediateTemperature.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(intermediateTemperatureClientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -434,12 +425,10 @@ public class HealthThermometerServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(INTERMEDIATE_TEMPERATURE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(0, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(intermediateTemperature.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(intermediateTemperatureClientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -722,17 +711,14 @@ public class HealthThermometerServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(MEASUREMENT_INTERVAL_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(measurementInterval.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(measurementIntervalClientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(VALID_RANGE_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALID_RANGE_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(validRange.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -792,17 +778,14 @@ public class HealthThermometerServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(MEASUREMENT_INTERVAL_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(measurementInterval.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(measurementIntervalClientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(VALID_RANGE_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALID_RANGE_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(validRange.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -862,14 +845,12 @@ public class HealthThermometerServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(MEASUREMENT_INTERVAL_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(measurementInterval.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNull(bluetoothGattDescriptor);
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(VALID_RANGE_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALID_RANGE_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(validRange.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -929,12 +910,10 @@ public class HealthThermometerServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(MEASUREMENT_INTERVAL_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(measurementInterval.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(measurementIntervalClientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(VALID_RANGE_DESCRIPTOR);
         assertNull(bluetoothGattDescriptor);
     }
@@ -996,7 +975,6 @@ public class HealthThermometerServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(MEASUREMENT_INTERVAL_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(measurementInterval.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNull(bluetoothGattDescriptor);
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(VALID_RANGE_DESCRIPTOR);

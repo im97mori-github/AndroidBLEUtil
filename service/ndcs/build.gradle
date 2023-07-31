@@ -6,12 +6,12 @@ plugins {
 def target = serviceNdcsAndroid
 
 android {
-    compileSdkVersion globalCompileSdkVersion
-    buildToolsVersion globalBuildToolsVersion
+    compileSdk globalCompileSdkVersion
+    buildToolsVersion = globalBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion globalMinSdkVersion
-        targetSdkVersion globalTargetSdkVersion
+        minSdk globalMinSdkVersion
+        targetSdk globalTargetSdkVersion
     }
 
     buildTypes {

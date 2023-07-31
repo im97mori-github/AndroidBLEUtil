@@ -46,7 +46,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
 
     private static abstract class MockBLETask extends AbstractBLETask {
 
-        final AtomicBoolean isProccesing = new AtomicBoolean(true);
+        final AtomicBoolean isProcessing = new AtomicBoolean(true);
 
         @NonNull
         @Override
@@ -73,7 +73,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
 
             MOCK_BLE_CONNECTION.addTask(task);
 
-            while (task.isProccesing.get()) {
+            while (task.isProcessing.get()) {
                 try {
                     Thread.sleep(SLEEP_DURATION);
                 } catch (InterruptedException e) {
@@ -112,7 +112,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onBLEConnected(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -143,7 +143,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onBLEConnected(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -174,7 +174,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, ConnectTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -204,7 +204,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, ConnectTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -235,7 +235,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -265,7 +265,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onBLEConnectTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -295,7 +295,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onBLEDisconnected(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, DisconnectTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -325,7 +325,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onBLEDisconnected(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, DisconnectTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -381,7 +381,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onBLEConnected(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -433,7 +433,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, 1, MOCK_UUID, 2, new byte[0], argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -463,7 +463,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, ReadCharacteristicTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -493,7 +493,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, ReadCharacteristicTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -523,7 +523,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -553,7 +553,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicReadTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -583,7 +583,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, 1, MOCK_UUID, 2, new byte[0], argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -613,7 +613,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, 1, MOCK_UUID, 2, new byte[0], argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -643,7 +643,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, WriteCharacteristicTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -673,7 +673,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, WriteCharacteristicTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -703,7 +703,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -733,7 +733,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicWriteTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -764,7 +764,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDiscoverServiceSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, new ArrayList<>(), argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -795,7 +795,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDiscoverServiceSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, new ArrayList<>(), argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -826,7 +826,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDiscoverServiceFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, DiscoverServiceTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -857,7 +857,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDiscoverServiceFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, DiscoverServiceTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -888,7 +888,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDiscoverServiceTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -919,7 +919,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDiscoverServiceTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -948,7 +948,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicNotified(BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, 1, MOCK_UUID, 2, new byte[0]);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -979,7 +979,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, 1, MOCK_UUID, 2, MOCK_UUID, 3, new byte[0], argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1009,7 +1009,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, 1, MOCK_UUID, 2, MOCK_UUID, 3, new byte[0], argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1039,7 +1039,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, ReadDescriptorTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1069,7 +1069,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, ReadDescriptorTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1099,7 +1099,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1129,7 +1129,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDescriptorReadTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1159,7 +1159,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, 1, MOCK_UUID, 2, MOCK_UUID, 3, new byte[0], argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1189,7 +1189,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, 1, MOCK_UUID, 2, MOCK_UUID, 3, new byte[0], argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1219,7 +1219,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, WriteDescriptorTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1249,7 +1249,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, WriteDescriptorTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1279,7 +1279,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1309,7 +1309,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onDescriptorWriteTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, null, MOCK_UUID, null, MOCK_UUID, null, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1339,7 +1339,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onCharacteristicNotified(BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, 1, MOCK_UUID, 2, new byte[0]);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1370,7 +1370,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onRequestMtuSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1401,7 +1401,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onRequestMtuSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1432,7 +1432,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onRequestMtuFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, RequestMtuTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1463,7 +1463,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onRequestMtuFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, RequestMtuTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1494,7 +1494,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onRequestMtuTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1525,7 +1525,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onRequestMtuTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1556,7 +1556,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onReadPhySuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1587,7 +1587,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onReadPhySuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1618,7 +1618,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onReadPhyFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, ReadPhyTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1649,7 +1649,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onReadPhyFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, ReadPhyTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1680,7 +1680,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onReadPhyTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1711,7 +1711,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onReadPhyTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1742,7 +1742,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhySuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, 0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1773,7 +1773,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhySuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, 0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1804,7 +1804,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhyFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, SetPreferredPhyTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1835,7 +1835,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhyFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, SetPreferredPhyTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1866,7 +1866,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhyTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1897,7 +1897,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onSetPreferredPhyTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1928,7 +1928,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onReadRemoteRssiSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1959,7 +1959,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onReadRemoteRssiSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -1990,7 +1990,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onReadRemoteRssiFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, ReadRemoteRssiTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2021,7 +2021,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onReadRemoteRssiFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, ReadRemoteRssiTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2052,7 +2052,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onReadRemoteRssiTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2083,7 +2083,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onReadRemoteRssiTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2114,7 +2114,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onBeginReliableWriteSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2145,7 +2145,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onBeginReliableWriteSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2176,7 +2176,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onBeginReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BeginReliableWriteTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2207,7 +2207,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onBeginReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, BeginReliableWriteTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2238,7 +2238,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2269,7 +2269,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2300,7 +2300,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, ExecuteReliableWriteTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2331,7 +2331,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, ExecuteReliableWriteTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2362,7 +2362,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2393,7 +2393,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onExecuteReliableWriteTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2424,7 +2424,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2455,7 +2455,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2486,7 +2486,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, AbortReliableWriteTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2517,7 +2517,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, AbortReliableWriteTask.STATUS_CANCEL, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2548,7 +2548,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2579,7 +2579,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onAbortReliableWriteTimeout(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, 0, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2609,7 +2609,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onSetNotificationSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, 1, MOCK_UUID, 2, true, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2639,7 +2639,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onSetNotificationSuccess(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, 1, MOCK_UUID, 2, true, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2669,7 +2669,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onSetNotificationFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, 1, MOCK_UUID, 2, true, 3, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };
@@ -2701,7 +2701,7 @@ public class BLEConnectionTest extends AbstractCentralTest {
             @Override
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_CONNECTION.getBLECallback().onSetNotificationFailed(getTaskId(), BLETestUtilsAndroid.MOCK_DEVICE_0, MOCK_UUID, 1, MOCK_UUID, 2, true, 3, argument);
-                isProccesing.set(false);
+                isProcessing.set(false);
                 return true;
             }
         };

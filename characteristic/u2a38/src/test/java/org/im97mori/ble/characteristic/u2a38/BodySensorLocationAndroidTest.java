@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a38;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -22,18 +20,15 @@ import static org.junit.Assert.assertTrue;
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class BodySensorLocationAndroidTest {
 
-    @SuppressWarnings("ConstantConditions")
     @Test
     public void test_constructor001() {
         //@formatter:off
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = BodySensorLocation.BODY_SENSOR_LOCATION_OTHER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(bluetoothGattCharacteristic);
+        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(data);
         assertEquals(BodySensorLocation.BODY_SENSOR_LOCATION_OTHER, result1.getBodySensorLocation());
         assertTrue(result1.isBodySensorLocationOhter());
         assertFalse(result1.isBodySensorLocationChest());
@@ -51,10 +46,7 @@ public class BodySensorLocationAndroidTest {
         data[ 0] = BodySensorLocation.BODY_SENSOR_LOCATION_CHEST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(bluetoothGattCharacteristic);
+        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(data);
         assertEquals(BodySensorLocation.BODY_SENSOR_LOCATION_CHEST, result1.getBodySensorLocation());
         assertFalse(result1.isBodySensorLocationOhter());
         assertTrue(result1.isBodySensorLocationChest());
@@ -72,10 +64,7 @@ public class BodySensorLocationAndroidTest {
         data[ 0] = BodySensorLocation.BODY_SENSOR_LOCATION_WRIST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(bluetoothGattCharacteristic);
+        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(data);
         assertEquals(BodySensorLocation.BODY_SENSOR_LOCATION_WRIST, result1.getBodySensorLocation());
         assertFalse(result1.isBodySensorLocationOhter());
         assertFalse(result1.isBodySensorLocationChest());
@@ -93,10 +82,7 @@ public class BodySensorLocationAndroidTest {
         data[ 0] = BodySensorLocation.BODY_SENSOR_LOCATION_FINGER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(bluetoothGattCharacteristic);
+        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(data);
         assertEquals(BodySensorLocation.BODY_SENSOR_LOCATION_FINGER, result1.getBodySensorLocation());
         assertFalse(result1.isBodySensorLocationOhter());
         assertFalse(result1.isBodySensorLocationChest());
@@ -114,10 +100,7 @@ public class BodySensorLocationAndroidTest {
         data[ 0] = BodySensorLocation.BODY_SENSOR_LOCATION_HAND;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(bluetoothGattCharacteristic);
+        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(data);
         assertEquals(BodySensorLocation.BODY_SENSOR_LOCATION_HAND, result1.getBodySensorLocation());
         assertFalse(result1.isBodySensorLocationOhter());
         assertFalse(result1.isBodySensorLocationChest());
@@ -135,10 +118,7 @@ public class BodySensorLocationAndroidTest {
         data[ 0] = BodySensorLocation.BODY_SENSOR_LOCATION_EAR_LOBE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(bluetoothGattCharacteristic);
+        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(data);
         assertEquals(BodySensorLocation.BODY_SENSOR_LOCATION_EAR_LOBE, result1.getBodySensorLocation());
         assertFalse(result1.isBodySensorLocationOhter());
         assertFalse(result1.isBodySensorLocationChest());
@@ -156,10 +136,7 @@ public class BodySensorLocationAndroidTest {
         data[ 0] = BodySensorLocation.BODY_SENSOR_LOCATION_FOOT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(bluetoothGattCharacteristic);
+        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(data);
         assertEquals(BodySensorLocation.BODY_SENSOR_LOCATION_FOOT, result1.getBodySensorLocation());
         assertFalse(result1.isBodySensorLocationOhter());
         assertFalse(result1.isBodySensorLocationChest());
@@ -185,10 +162,7 @@ public class BodySensorLocationAndroidTest {
         data[ 0] = BodySensorLocation.BODY_SENSOR_LOCATION_CHEST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(bluetoothGattCharacteristic);
+        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -204,10 +178,7 @@ public class BodySensorLocationAndroidTest {
         data[ 0] = BodySensorLocation.BODY_SENSOR_LOCATION_CHEST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(bluetoothGattCharacteristic);
+        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -218,10 +189,7 @@ public class BodySensorLocationAndroidTest {
         data[ 0] = BodySensorLocation.BODY_SENSOR_LOCATION_CHEST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(bluetoothGattCharacteristic);
+        BodySensorLocationAndroid result1 = new BodySensorLocationAndroid(data);
         BodySensorLocationAndroid result2 = BodySensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

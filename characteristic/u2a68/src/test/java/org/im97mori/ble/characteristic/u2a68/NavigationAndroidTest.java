@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a68;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -46,10 +44,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsRemainigDistanceNotPresent());
         assertFalse(result1.isFlagsRemainigDistancePresent());
@@ -82,10 +77,7 @@ public class NavigationAndroidTest {
         data[ 8] = 0x07;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsRemainigDistanceNotPresent());
         assertTrue(result1.isFlagsRemainigDistancePresent());
@@ -117,10 +109,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsRemainigVerticalDistanceNotPresent());
         assertFalse(result1.isFlagsRemainigVerticalDistancePresent());
@@ -153,10 +142,7 @@ public class NavigationAndroidTest {
         data[ 8] = 0x07;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsRemainigVerticalDistanceNotPresent());
         assertTrue(result1.isFlagsRemainigVerticalDistancePresent());
@@ -188,10 +174,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsEstimatedTimeOfArrivalNotPresent());
         assertFalse(result1.isFlagsEstimatedTimeOfArrivalPresent());
@@ -228,10 +211,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsEstimatedTimeOfArrivalNotPresent());
         assertTrue(result1.isFlagsEstimatedTimeOfArrivalPresent());
@@ -274,10 +254,7 @@ public class NavigationAndroidTest {
         data[12] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsEstimatedTimeOfArrivalNotPresent());
         assertTrue(result1.isFlagsEstimatedTimeOfArrivalPresent());
@@ -320,10 +297,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsEstimatedTimeOfArrivalNotPresent());
         assertTrue(result1.isFlagsEstimatedTimeOfArrivalPresent());
@@ -366,10 +340,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsEstimatedTimeOfArrivalNotPresent());
         assertTrue(result1.isFlagsEstimatedTimeOfArrivalPresent());
@@ -412,10 +383,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsEstimatedTimeOfArrivalNotPresent());
         assertTrue(result1.isFlagsEstimatedTimeOfArrivalPresent());
@@ -458,10 +426,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsEstimatedTimeOfArrivalNotPresent());
         assertTrue(result1.isFlagsEstimatedTimeOfArrivalPresent());
@@ -504,10 +469,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsEstimatedTimeOfArrivalNotPresent());
         assertTrue(result1.isFlagsEstimatedTimeOfArrivalPresent());
@@ -550,10 +512,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsEstimatedTimeOfArrivalNotPresent());
         assertTrue(result1.isFlagsEstimatedTimeOfArrivalPresent());
@@ -596,10 +555,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsEstimatedTimeOfArrivalNotPresent());
         assertTrue(result1.isFlagsEstimatedTimeOfArrivalPresent());
@@ -642,10 +598,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsEstimatedTimeOfArrivalNotPresent());
         assertTrue(result1.isFlagsEstimatedTimeOfArrivalPresent());
@@ -688,10 +641,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsEstimatedTimeOfArrivalNotPresent());
         assertTrue(result1.isFlagsEstimatedTimeOfArrivalPresent());
@@ -734,10 +684,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsEstimatedTimeOfArrivalNotPresent());
         assertTrue(result1.isFlagsEstimatedTimeOfArrivalPresent());
@@ -780,10 +727,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsEstimatedTimeOfArrivalNotPresent());
         assertTrue(result1.isFlagsEstimatedTimeOfArrivalPresent());
@@ -819,10 +763,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsPositionStatusNoPosition());
         assertFalse(result1.isFlagsPositionStatusPositionOk());
@@ -854,10 +795,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsPositionStatusNoPosition());
         assertTrue(result1.isFlagsPositionStatusPositionOk());
@@ -889,10 +827,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsPositionStatusNoPosition());
         assertFalse(result1.isFlagsPositionStatusPositionOk());
@@ -924,10 +859,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsPositionStatusNoPosition());
         assertFalse(result1.isFlagsPositionStatusPositionOk());
@@ -959,10 +891,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsHeadingSourceBasedOnMovement());
         assertFalse(result1.isFlagsHeadingSourceBasedOnMagneticCompass());
@@ -992,10 +921,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsHeadingSourceBasedOnMovement());
         assertTrue(result1.isFlagsHeadingSourceBasedOnMagneticCompass());
@@ -1025,10 +951,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsNavigationIndicatorTypeToWaypoint());
         assertFalse(result1.isFlagsNavigationIndicatorTypeToDestination());
@@ -1058,10 +981,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsNavigationIndicatorTypeToWaypoint());
         assertTrue(result1.isFlagsNavigationIndicatorTypeToDestination());
@@ -1091,10 +1011,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsWaypointNotReached());
         assertFalse(result1.isFlagsWaypointReached());
@@ -1124,10 +1041,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsWaypointNotReached());
         assertTrue(result1.isFlagsWaypointReached());
@@ -1157,10 +1071,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsDestinationNotReached());
         assertFalse(result1.isFlagsDestinationReached());
@@ -1190,10 +1101,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsDestinationNotReached());
         assertTrue(result1.isFlagsDestinationReached());
@@ -1251,10 +1159,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1295,10 +1200,7 @@ public class NavigationAndroidTest {
         data[ 8] = 0x07;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1336,10 +1238,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1380,10 +1279,7 @@ public class NavigationAndroidTest {
         data[ 8] = 0x07;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1421,10 +1317,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1469,10 +1362,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1517,10 +1407,7 @@ public class NavigationAndroidTest {
         data[12] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1565,10 +1452,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1606,10 +1490,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1654,10 +1535,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1702,10 +1580,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1750,10 +1625,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1798,10 +1670,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1846,10 +1715,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1894,10 +1760,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1942,10 +1805,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1990,10 +1850,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2038,10 +1895,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2079,10 +1933,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2120,10 +1971,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2161,10 +2009,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2202,10 +2047,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2243,10 +2085,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2284,10 +2123,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2325,10 +2161,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2366,10 +2199,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2407,10 +2237,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2448,10 +2275,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2489,10 +2313,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2530,10 +2351,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2571,10 +2389,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2601,10 +2416,7 @@ public class NavigationAndroidTest {
         data[ 8] = 0x07;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2628,10 +2440,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2658,10 +2467,7 @@ public class NavigationAndroidTest {
         data[ 8] = 0x07;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2685,10 +2491,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2719,10 +2522,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2753,10 +2553,7 @@ public class NavigationAndroidTest {
         data[12] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2787,10 +2584,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2814,10 +2608,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2848,10 +2639,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2882,10 +2670,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2916,10 +2701,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2950,10 +2732,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2984,10 +2763,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3018,10 +2794,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3052,10 +2825,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3086,10 +2856,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3120,10 +2887,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3147,10 +2911,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3174,10 +2935,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3201,10 +2959,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3228,10 +2983,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3255,10 +3007,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3282,10 +3031,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3309,10 +3055,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3336,10 +3079,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3363,10 +3103,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3390,10 +3127,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3417,10 +3151,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3444,10 +3175,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3471,10 +3199,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3502,10 +3227,7 @@ public class NavigationAndroidTest {
         data[ 8] = 0x07;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3530,10 +3252,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3561,10 +3280,7 @@ public class NavigationAndroidTest {
         data[ 8] = 0x07;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3589,10 +3305,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3624,10 +3337,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3659,10 +3369,7 @@ public class NavigationAndroidTest {
         data[12] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3694,10 +3401,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3722,10 +3426,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3757,10 +3458,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3792,10 +3490,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3827,10 +3522,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3862,10 +3554,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3897,10 +3586,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3932,10 +3618,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3967,10 +3650,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4002,10 +3682,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4037,10 +3714,7 @@ public class NavigationAndroidTest {
         data[12] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4065,10 +3739,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4093,10 +3764,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4121,10 +3789,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4149,10 +3814,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4177,10 +3839,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4205,10 +3864,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4233,10 +3889,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4261,10 +3914,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4289,10 +3939,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4317,10 +3964,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4345,10 +3989,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4373,10 +4014,7 @@ public class NavigationAndroidTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        NavigationAndroid result1 = new NavigationAndroid(bluetoothGattCharacteristic);
+        NavigationAndroid result1 = new NavigationAndroid(data);
         NavigationAndroid result2 = NavigationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

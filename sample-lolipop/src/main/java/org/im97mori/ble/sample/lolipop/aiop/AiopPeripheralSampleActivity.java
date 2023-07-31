@@ -15,7 +15,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.core.AutomationIoUtils;
 import org.im97mori.ble.characteristic.u2a56.Digital;
 import org.im97mori.ble.characteristic.u2a58.Analog;
@@ -252,9 +251,7 @@ public class AiopPeripheralSampleActivity extends BaseActivity implements View.O
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else if (mAutomationIOProfileMockCallback.isStarted()) {
+        if (mAutomationIOProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {
             mConnectDisconnectButton.setText(R.string.start);

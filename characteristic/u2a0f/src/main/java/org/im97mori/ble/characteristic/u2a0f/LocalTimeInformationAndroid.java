@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.LOCAL_TIME_INFORMATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Local Time Information (Characteristics UUID: 0x2A0F)
@@ -44,9 +44,7 @@ public class LocalTimeInformationAndroid extends LocalTimeInformation implements
          */
         @NonNull
         public LocalTimeInformationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LOCAL_TIME_INFORMATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new LocalTimeInformationAndroid(bluetoothGattCharacteristic);
+            return new LocalTimeInformationAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class LocalTimeInformationAndroid extends LocalTimeInformation implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A0F
      */
+    @Deprecated
     public LocalTimeInformationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public LocalTimeInformationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class LocalTimeInformationAndroid extends LocalTimeInformation implements
      * @param in Parcel
      */
     private LocalTimeInformationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.VOC_CONCENTRATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * VOC Concentration (Characteristics UUID: 0x2BE7)
@@ -45,9 +45,7 @@ public class VocConcentrationAndroid extends VocConcentration implements Parcela
          */
         @NonNull
         public VocConcentrationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(VOC_CONCENTRATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new VocConcentrationAndroid(bluetoothGattCharacteristic);
+            return new VocConcentrationAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class VocConcentrationAndroid extends VocConcentration implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BE7
      */
+    @Deprecated
     public VocConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public VocConcentrationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class VocConcentrationAndroid extends VocConcentration implements Parcela
      * @param in Parcel
      */
     private VocConcentrationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

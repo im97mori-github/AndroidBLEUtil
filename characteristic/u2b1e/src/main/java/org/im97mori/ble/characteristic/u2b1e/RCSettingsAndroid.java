@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.RC_SETTINGS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * RC Settings (Characteristics UUID: 0x2B1E)
@@ -44,9 +44,7 @@ public class RCSettingsAndroid extends RCSettings implements Parcelable {
          */
         @NonNull
         public RCSettingsAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RC_SETTINGS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new RCSettingsAndroid(bluetoothGattCharacteristic);
+            return new RCSettingsAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class RCSettingsAndroid extends RCSettings implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B1E
      */
+    @Deprecated
     public RCSettingsAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public RCSettingsAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class RCSettingsAndroid extends RCSettings implements Parcelable {
      * @param in Parcel
      */
     private RCSettingsAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.GAIN_SETTINGS_ATTRIBUTE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Gain Settings Attribute (Characteristics UUID: 0x2B78)
@@ -45,9 +45,7 @@ public class GainSettingsAttributeAndroid extends GainSettingsAttribute implemen
          */
         @NonNull
         public GainSettingsAttributeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(GAIN_SETTINGS_ATTRIBUTE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new GainSettingsAttributeAndroid(bluetoothGattCharacteristic);
+            return new GainSettingsAttributeAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class GainSettingsAttributeAndroid extends GainSettingsAttribute implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B78
      */
+    @Deprecated
     public GainSettingsAttributeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public GainSettingsAttributeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class GainSettingsAttributeAndroid extends GainSettingsAttribute implemen
      * @param in Parcel
      */
     private GainSettingsAttributeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

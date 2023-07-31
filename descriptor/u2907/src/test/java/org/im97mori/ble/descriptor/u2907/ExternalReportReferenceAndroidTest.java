@@ -1,6 +1,9 @@
 package org.im97mori.ble.descriptor.u2907;
 
-import android.bluetooth.BluetoothGattDescriptor;
+import static org.im97mori.ble.BLEUtils.BASE_UUID;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,10 +13,6 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.util.UUID;
-
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
@@ -35,10 +34,7 @@ public class ExternalReportReferenceAndroidTest {
         UUID uuid = new UUID(BASE_UUID.getMostSignificantBits() | target, BASE_UUID.getLeastSignificantBits());
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ExternalReportReferenceAndroid result = new ExternalReportReferenceAndroid(bluetoothGattDescriptor);
+        ExternalReportReferenceAndroid result = new ExternalReportReferenceAndroid(value);
         assertArrayEquals(value, result.getExternalReportReference());
         assertEquals(uuid, result.getExternalReportReferenceUuid());
     }
@@ -61,10 +57,7 @@ public class ExternalReportReferenceAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ExternalReportReferenceAndroid result1 = new ExternalReportReferenceAndroid(bluetoothGattDescriptor);
+        ExternalReportReferenceAndroid result1 = new ExternalReportReferenceAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -81,10 +74,7 @@ public class ExternalReportReferenceAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ExternalReportReferenceAndroid result1 = new ExternalReportReferenceAndroid(bluetoothGattDescriptor);
+        ExternalReportReferenceAndroid result1 = new ExternalReportReferenceAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -96,10 +86,7 @@ public class ExternalReportReferenceAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ExternalReportReferenceAndroid result1 = new ExternalReportReferenceAndroid(bluetoothGattDescriptor);
+        ExternalReportReferenceAndroid result1 = new ExternalReportReferenceAndroid(value);
         ExternalReportReferenceAndroid result2 = ExternalReportReferenceAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

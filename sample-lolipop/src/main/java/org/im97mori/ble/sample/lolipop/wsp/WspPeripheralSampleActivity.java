@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.u2a0f.LocalTimeInformation;
 import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformation;
 import org.im97mori.ble.characteristic.u2a19.BatteryLevel;
@@ -133,9 +132,7 @@ public class WspPeripheralSampleActivity extends BaseActivity implements View.On
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else if (mWeightScaleProfileMockCallback.isStarted()) {
+        if (mWeightScaleProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {
             mConnectDisconnectButton.setText(R.string.start);

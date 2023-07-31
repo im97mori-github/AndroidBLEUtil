@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_MILLISECOND_24_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Time Millisecond 24 (Characteristics UUID: 0x2B15)
@@ -44,9 +44,7 @@ public class TimeMillisecond24Android extends TimeMillisecond24 implements Parce
          */
         @NonNull
         public TimeMillisecond24Android createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TIME_MILLISECOND_24_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TimeMillisecond24Android(bluetoothGattCharacteristic);
+            return new TimeMillisecond24Android(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class TimeMillisecond24Android extends TimeMillisecond24 implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B15
      */
+    @Deprecated
     public TimeMillisecond24Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TimeMillisecond24Android(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class TimeMillisecond24Android extends TimeMillisecond24 implements Parce
      * @param in Parcel
      */
     private TimeMillisecond24Android(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

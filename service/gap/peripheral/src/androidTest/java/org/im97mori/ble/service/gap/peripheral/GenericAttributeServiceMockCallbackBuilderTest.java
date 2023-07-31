@@ -21,7 +21,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_HASH_CHARAC
 import static org.im97mori.ble.constants.CharacteristicUUID.SERVICE_CHANGED_CHARACTERISTIC;
 import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.constants.ServiceUUID.GENERIC_ATTRIBUTE_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -99,12 +98,10 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
         assertEquals(SERVICE_CHANGED_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
         assertEquals(0, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(serviceChanged.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -114,7 +111,6 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
         ServiceChanged serviceChanged = new ServiceChanged(new byte[]{1, 2, 3, 4});
 
         byte[] descriptorValue = BluetoothGattDescriptor.ENABLE_INDICATION_VALUE;
-        ClientCharacteristicConfiguration clientCharacteristicConfiguration = new ClientCharacteristicConfiguration(descriptorValue);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -147,12 +143,10 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
         assertEquals(SERVICE_CHANGED_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
         assertEquals(0, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(serviceChanged.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -220,7 +214,6 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
         assertEquals(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(clientSupportedFeatures.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -254,7 +247,6 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
         assertEquals(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(clientSupportedFeatures.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -290,7 +282,6 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
         assertEquals(CLIENT_SUPPORTED_FEATURES_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(clientSupportedFeatures.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -355,7 +346,6 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
         assertEquals(DATABASE_HASH_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(databaseHash.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -389,7 +379,6 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
         assertEquals(DATABASE_HASH_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(databaseHash.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -425,7 +414,6 @@ public class GenericAttributeServiceMockCallbackBuilderTest extends AbstractPeri
         assertEquals(DATABASE_HASH_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(databaseHash.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test

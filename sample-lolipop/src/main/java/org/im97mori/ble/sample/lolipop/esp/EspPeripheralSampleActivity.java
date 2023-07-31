@@ -15,7 +15,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.u2a19.BatteryLevel;
 import org.im97mori.ble.characteristic.u2a2c.MagneticDeclination;
 import org.im97mori.ble.characteristic.u2a6c.Elevation;
@@ -1343,9 +1342,7 @@ public class EspPeripheralSampleActivity extends BaseActivity implements View.On
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else if (mEnvironmentalSensingProfileMockCallback.isStarted()) {
+        if (mEnvironmentalSensingProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {
             mConnectDisconnectButton.setText(R.string.start);

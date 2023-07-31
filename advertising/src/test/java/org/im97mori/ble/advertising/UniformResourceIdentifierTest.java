@@ -28,30 +28,30 @@ public class UniformResourceIdentifierTest {
     private static final byte[] data_00001;
     static {
         // http scheme
-        byte[] schemedata = Scheme.HTTP_SCHEME.toString().getBytes();
+        byte[] schemeData = Scheme.HTTP_SCHEME.toString().getBytes();
         String body = "//im97mori.org/";
 
         byte[] utf8data = body.getBytes();
-        byte[] data = new byte[utf8data.length + 2 + schemedata.length];
-        data[0] = (byte) (utf8data.length + schemedata.length + 1);
+        byte[] data = new byte[utf8data.length + 2 + schemeData.length];
+        data[0] = (byte) (utf8data.length + schemeData.length + 1);
         data[1] = URI_DATA_TYPE;
-        System.arraycopy(schemedata, 0, data, 2, schemedata.length);
-        System.arraycopy(utf8data, 0, data, 2 + schemedata.length, utf8data.length);
+        System.arraycopy(schemeData, 0, data, 2, schemeData.length);
+        System.arraycopy(utf8data, 0, data, 2 + schemeData.length, utf8data.length);
         data_00001 = data;
     }
 
     private static final byte[] data_00002;
     static {
         // example scheme
-        byte[] schemedata = Scheme.EXAMPLE_SCHEME.toString().getBytes();
+        byte[] schemeData = Scheme.EXAMPLE_SCHEME.toString().getBytes();
         String body = "//im97mori.org/";
 
         byte[] utf8data = body.getBytes();
-        byte[] data = new byte[utf8data.length + 2 + schemedata.length];
-        data[0] = (byte) (utf8data.length + schemedata.length + 1);
+        byte[] data = new byte[utf8data.length + 2 + schemeData.length];
+        data[0] = (byte) (utf8data.length + schemeData.length + 1);
         data[1] = URI_DATA_TYPE;
-        System.arraycopy(schemedata, 0, data, 2, schemedata.length);
-        System.arraycopy(utf8data, 0, data, 2 + schemedata.length, utf8data.length);
+        System.arraycopy(schemeData, 0, data, 2, schemeData.length);
+        System.arraycopy(utf8data, 0, data, 2 + schemeData.length, utf8data.length);
         data_00002 = data;
     }
     //@formatter:on
@@ -70,9 +70,9 @@ public class UniformResourceIdentifierTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {

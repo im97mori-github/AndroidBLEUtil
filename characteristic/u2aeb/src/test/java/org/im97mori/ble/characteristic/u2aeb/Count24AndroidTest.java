@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2aeb;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,13 +9,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -33,10 +31,7 @@ public class Count24AndroidTest {
         data[ 2] = (byte) (Count24.COUNT_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Count24Android result = new Count24Android(bluetoothGattCharacteristic);
+        Count24Android result = new Count24Android(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getCount());
         assertTrue(result.isCountValueIsNotKnown());
     }
@@ -50,10 +45,7 @@ public class Count24AndroidTest {
         data[ 2] = (byte) (Count24.COUNT_VALUE_MINIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Count24Android result = new Count24Android(bluetoothGattCharacteristic);
+        Count24Android result = new Count24Android(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getCount());
         assertFalse(result.isCountValueIsNotKnown());
     }
@@ -67,10 +59,7 @@ public class Count24AndroidTest {
         data[ 2] = (byte) (Count24.COUNT_VALUE_MAXIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Count24Android result = new Count24Android(bluetoothGattCharacteristic);
+        Count24Android result = new Count24Android(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getCount());
         assertFalse(result.isCountValueIsNotKnown());
     }
@@ -111,10 +100,7 @@ public class Count24AndroidTest {
         data[ 2] = (byte) (Count24.COUNT_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Count24Android result1 = new Count24Android(bluetoothGattCharacteristic);
+        Count24Android result1 = new Count24Android(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -132,10 +118,7 @@ public class Count24AndroidTest {
         data[ 2] = (byte) (Count24.COUNT_VALUE_MINIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Count24Android result1 = new Count24Android(bluetoothGattCharacteristic);
+        Count24Android result1 = new Count24Android(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -153,10 +136,7 @@ public class Count24AndroidTest {
         data[ 2] = (byte) (Count24.COUNT_VALUE_MAXIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Count24Android result1 = new Count24Android(bluetoothGattCharacteristic);
+        Count24Android result1 = new Count24Android(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -174,10 +154,7 @@ public class Count24AndroidTest {
         data[ 2] = (byte) (Count24.COUNT_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Count24Android result1 = new Count24Android(bluetoothGattCharacteristic);
+        Count24Android result1 = new Count24Android(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -190,10 +167,7 @@ public class Count24AndroidTest {
         data[ 2] = (byte) (Count24.COUNT_VALUE_MINIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Count24Android result1 = new Count24Android(bluetoothGattCharacteristic);
+        Count24Android result1 = new Count24Android(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -206,10 +180,7 @@ public class Count24AndroidTest {
         data[ 2] = (byte) (Count24.COUNT_VALUE_MAXIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Count24Android result1 = new Count24Android(bluetoothGattCharacteristic);
+        Count24Android result1 = new Count24Android(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -222,10 +193,7 @@ public class Count24AndroidTest {
         data[ 2] = (byte) (Count24.COUNT_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Count24Android result1 = new Count24Android(bluetoothGattCharacteristic);
+        Count24Android result1 = new Count24Android(data);
         Count24Android result2 = Count24Android.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -239,10 +207,7 @@ public class Count24AndroidTest {
         data[ 2] = (byte) (Count24.COUNT_VALUE_MINIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Count24Android result1 = new Count24Android(bluetoothGattCharacteristic);
+        Count24Android result1 = new Count24Android(data);
         Count24Android result2 = Count24Android.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -256,10 +221,7 @@ public class Count24AndroidTest {
         data[ 2] = (byte) (Count24.COUNT_VALUE_MAXIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Count24Android result1 = new Count24Android(bluetoothGattCharacteristic);
+        Count24Android result1 = new Count24Android(data);
         Count24Android result2 = Count24Android.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

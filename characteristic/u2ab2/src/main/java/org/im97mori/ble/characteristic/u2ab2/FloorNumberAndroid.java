@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.FLOOR_NUMBER_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Floor Number (Characteristics UUID: 0x2AB2)
@@ -44,9 +44,7 @@ public class FloorNumberAndroid extends FloorNumber implements Parcelable {
          */
         @NonNull
         public FloorNumberAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(FLOOR_NUMBER_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new FloorNumberAndroid(bluetoothGattCharacteristic);
+            return new FloorNumberAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class FloorNumberAndroid extends FloorNumber implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AB2
      */
+    @Deprecated
     public FloorNumberAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public FloorNumberAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class FloorNumberAndroid extends FloorNumber implements Parcelable {
      * @param in Parcel
      */
     private FloorNumberAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

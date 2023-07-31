@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TRACK_DURATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Track Duration (Characteristics UUID: 0x2B98)
@@ -45,9 +45,7 @@ public class TrackDurationAndroid extends TrackDuration implements Parcelable {
          */
         @NonNull
         public TrackDurationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRACK_DURATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TrackDurationAndroid(bluetoothGattCharacteristic);
+            return new TrackDurationAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class TrackDurationAndroid extends TrackDuration implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B98
      */
+    @Deprecated
     public TrackDurationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TrackDurationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class TrackDurationAndroid extends TrackDuration implements Parcelable {
      * @param in Parcel
      */
     private TrackDurationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

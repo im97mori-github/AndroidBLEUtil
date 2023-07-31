@@ -265,6 +265,11 @@ public class BasePhoneAlertStatusProfileCallback implements PhoneAlertStatusProf
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+
+    }
+
+    @Override
     public void onAlertStatusReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull AlertStatusAndroid alertStatusAndroid, @Nullable Bundle argument) {
 
     }

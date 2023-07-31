@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BOOLEAN_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Boolean (Characteristics UUID: 0x2AE2)
@@ -44,9 +44,7 @@ public class BLEBooleanAndroid extends BLEBoolean implements Parcelable {
          */
         @NonNull
         public BLEBooleanAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BOOLEAN_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BLEBooleanAndroid(bluetoothGattCharacteristic);
+            return new BLEBooleanAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class BLEBooleanAndroid extends BLEBoolean implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AE2
      */
+    @Deprecated
     public BLEBooleanAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BLEBooleanAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class BLEBooleanAndroid extends BLEBoolean implements Parcelable {
      * @param in Parcel
      */
     private BLEBooleanAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

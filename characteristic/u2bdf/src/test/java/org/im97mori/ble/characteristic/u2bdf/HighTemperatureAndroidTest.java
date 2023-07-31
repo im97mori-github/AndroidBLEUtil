@@ -1,12 +1,10 @@
 package org.im97mori.ble.characteristic.u2bdf;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -17,7 +15,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -53,6 +51,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     private static final byte[] data_00004;
     static {
         byte[] data = new byte[2];
+        //noinspection DataFlowIssue
         data[ 0] = (byte) HighTemperature.HIGH_TEMPERATURE_VALUE_IS_NOT_KNOWN;
         data[ 1] = (byte) (HighTemperature.HIGH_TEMPERATURE_VALUE_IS_NOT_KNOWN >> 8);
         data_00004 = data;
@@ -63,10 +62,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result1.geHighTemperature());
         assertEquals(BLEUtils.createSInt16(data, 0) * HighTemperature.HIGH_TEMPERATURE_RESOLUTION,
                 result1.geHighTemperatureDegreeCelsius(), 0);
@@ -78,10 +74,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result1.geHighTemperature());
         assertEquals(BLEUtils.createSInt16(data, 0) * HighTemperature.HIGH_TEMPERATURE_RESOLUTION,
                 result1.geHighTemperatureDegreeCelsius(), 0);
@@ -93,10 +86,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         assertTrue(result1.isValueIsNotValid());
         assertFalse(result1.isValueIsNotKnown());
     }
@@ -105,10 +95,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_constructor_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         assertFalse(result1.isValueIsNotValid());
         assertTrue(result1.isValueIsNotKnown());
     }
@@ -155,10 +142,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -172,10 +156,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -189,10 +170,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -206,10 +184,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_parcelable_1_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -223,10 +198,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -234,10 +206,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -245,10 +214,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -256,10 +222,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_parcelable_2_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -267,10 +230,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         HighTemperatureAndroid result2 = HighTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -279,10 +239,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         HighTemperatureAndroid result2 = HighTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -291,10 +248,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         HighTemperatureAndroid result2 = HighTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -303,10 +257,7 @@ public class HighTemperatureAndroidTest extends TestBase {
     public void test_parcelable_3_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HighTemperatureAndroid result1 = new HighTemperatureAndroid(bluetoothGattCharacteristic);
+        HighTemperatureAndroid result1 = new HighTemperatureAndroid(data);
         HighTemperatureAndroid result2 = HighTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

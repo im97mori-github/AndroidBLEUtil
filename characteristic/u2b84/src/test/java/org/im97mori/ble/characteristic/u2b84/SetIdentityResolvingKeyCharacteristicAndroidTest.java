@@ -1,12 +1,10 @@
 package org.im97mori.ble.characteristic.u2b84;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -76,10 +74,7 @@ public class SetIdentityResolvingKeyCharacteristicAndroidTest extends TestBase {
 	public void test_constructor_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(bluetoothGattCharacteristic);
+		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(data);
 		assertEquals(SetIdentityResolvingKeyCharacteristic.TYPE_ENCRYPTED_SIRK, result1.getType());
 		assertTrue(result1.isTypeEncryptedSirk());
 		assertFalse(result1.isTypePlainTextSirk());
@@ -90,10 +85,7 @@ public class SetIdentityResolvingKeyCharacteristicAndroidTest extends TestBase {
 	public void test_constructor_00002() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(bluetoothGattCharacteristic);
+		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(data);
 		assertEquals(SetIdentityResolvingKeyCharacteristic.TYPE_PLAIN_TEXT_SIRK, result1.getType());
 		assertFalse(result1.isTypeEncryptedSirk());
 		assertTrue(result1.isTypePlainTextSirk());
@@ -128,10 +120,7 @@ public class SetIdentityResolvingKeyCharacteristicAndroidTest extends TestBase {
 	public void test_parcelable_1_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(bluetoothGattCharacteristic);
+		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(data);
 		Parcel parcel = Parcel.obtain();
 		result1.writeToParcel(parcel, 0);
 		parcel.setDataPosition(0);
@@ -144,10 +133,7 @@ public class SetIdentityResolvingKeyCharacteristicAndroidTest extends TestBase {
 	public void test_parcelable_1_00002() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(bluetoothGattCharacteristic);
+		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(data);
 		Parcel parcel = Parcel.obtain();
 		result1.writeToParcel(parcel, 0);
 		parcel.setDataPosition(0);
@@ -161,10 +147,7 @@ public class SetIdentityResolvingKeyCharacteristicAndroidTest extends TestBase {
 		byte[] data = getData();
 
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(bluetoothGattCharacteristic);
+		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -173,10 +156,7 @@ public class SetIdentityResolvingKeyCharacteristicAndroidTest extends TestBase {
 		byte[] data = getData();
 
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(bluetoothGattCharacteristic);
+		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -184,10 +164,7 @@ public class SetIdentityResolvingKeyCharacteristicAndroidTest extends TestBase {
 	public void test_parcelable_3_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(bluetoothGattCharacteristic);
+		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(data);
 		SetIdentityResolvingKeyCharacteristicAndroid result2 = SetIdentityResolvingKeyCharacteristicAndroid.CREATOR.createFromByteArray(data);
 		assertArrayEquals(result1.getBytes(), result2.getBytes());
 	}
@@ -196,10 +173,7 @@ public class SetIdentityResolvingKeyCharacteristicAndroidTest extends TestBase {
 	public void test_parcelable_3_00002() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(bluetoothGattCharacteristic);
+		SetIdentityResolvingKeyCharacteristicAndroid result1 = new SetIdentityResolvingKeyCharacteristicAndroid(data);
 		SetIdentityResolvingKeyCharacteristicAndroid result2 = SetIdentityResolvingKeyCharacteristicAndroid.CREATOR.createFromByteArray(data);
 		assertArrayEquals(result1.getBytes(), result2.getBytes());
 	}

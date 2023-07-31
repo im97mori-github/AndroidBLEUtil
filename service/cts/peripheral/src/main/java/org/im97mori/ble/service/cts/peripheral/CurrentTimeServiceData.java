@@ -3,6 +3,7 @@ package org.im97mori.ble.service.cts.peripheral;
 import static org.im97mori.ble.constants.ServiceUUID.CURRENT_TIME_SERVICE;
 
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,9 @@ public class CurrentTimeServiceData extends ServiceData {
          */
         @Override
         @NonNull
+        @Deprecated
         public CurrentTimeServiceData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new CurrentTimeServiceData(in);
         }
 
@@ -93,11 +96,18 @@ public class CurrentTimeServiceData extends ServiceData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public CurrentTimeServiceData(@NonNull Parcel in) {
         super(in);
-        currentTime = in.readParcelable(this.getClass().getClassLoader());
-        localTimeInformation = in.readParcelable(this.getClass().getClassLoader());
-        referenceTimeInformation = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            currentTime = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            localTimeInformation = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            referenceTimeInformation = in.readParcelable(this.getClass().getClassLoader(), ReferenceTimeInformationCharacteristicData.class);
+        } else {
+            currentTime = in.readParcelable(this.getClass().getClassLoader());
+            localTimeInformation = in.readParcelable(this.getClass().getClassLoader());
+            referenceTimeInformation = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

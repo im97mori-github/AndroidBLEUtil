@@ -20,6 +20,7 @@ import java.util.UUID;
 
 /**
  * Phone Alert Status Service (Service UUID: 0x180E) callback
+ * @noinspection EmptyMethod
  */
 public interface PhoneAlertStatusServiceCallback {
 

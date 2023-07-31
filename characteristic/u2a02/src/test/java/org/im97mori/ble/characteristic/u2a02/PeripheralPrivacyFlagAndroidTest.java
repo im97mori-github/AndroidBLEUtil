@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a02;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -22,18 +20,15 @@ import static org.junit.Assert.assertTrue;
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class PeripheralPrivacyFlagAndroidTest {
 
-    @SuppressWarnings("ConstantConditions")
     @Test
     public void test_constructor001() {
         //@formatter:off
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = (byte) (PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_DISABLED_IN_THIS_DEVICE & 0xff);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PeripheralPrivacyFlagAndroid result1 = new PeripheralPrivacyFlagAndroid(bluetoothGattCharacteristic);
+        PeripheralPrivacyFlagAndroid result1 = new PeripheralPrivacyFlagAndroid(data);
         assertEquals(PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_DISABLED_IN_THIS_DEVICE, result1.getFlag());
         assertTrue(result1.isPrivacyDisabled());
         assertFalse(result1.isPrivacyEnabled());
@@ -46,10 +41,7 @@ public class PeripheralPrivacyFlagAndroidTest {
         data[ 0] = (byte) (PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_ENABLED_IN_THIS_DEVICE & 0xff);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PeripheralPrivacyFlagAndroid result1 = new PeripheralPrivacyFlagAndroid(bluetoothGattCharacteristic);
+        PeripheralPrivacyFlagAndroid result1 = new PeripheralPrivacyFlagAndroid(data);
         assertEquals(PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_ENABLED_IN_THIS_DEVICE, result1.getFlag());
         assertFalse(result1.isPrivacyDisabled());
         assertTrue(result1.isPrivacyEnabled());
@@ -70,10 +62,7 @@ public class PeripheralPrivacyFlagAndroidTest {
         data[ 0] = (byte) (PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_ENABLED_IN_THIS_DEVICE & 0xff);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PeripheralPrivacyFlagAndroid result1 = new PeripheralPrivacyFlagAndroid(bluetoothGattCharacteristic);
+        PeripheralPrivacyFlagAndroid result1 = new PeripheralPrivacyFlagAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -89,10 +78,7 @@ public class PeripheralPrivacyFlagAndroidTest {
         data[ 0] = (byte) (PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_ENABLED_IN_THIS_DEVICE & 0xff);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PeripheralPrivacyFlagAndroid result1 = new PeripheralPrivacyFlagAndroid(bluetoothGattCharacteristic);
+        PeripheralPrivacyFlagAndroid result1 = new PeripheralPrivacyFlagAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -103,10 +89,7 @@ public class PeripheralPrivacyFlagAndroidTest {
         data[ 0] = (byte) (PeripheralPrivacyFlag.FLAGS_PRIVACY_IS_ENABLED_IN_THIS_DEVICE & 0xff);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PeripheralPrivacyFlagAndroid result1 = new PeripheralPrivacyFlagAndroid(bluetoothGattCharacteristic);
+        PeripheralPrivacyFlagAndroid result1 = new PeripheralPrivacyFlagAndroid(data);
         PeripheralPrivacyFlagAndroid result2 = PeripheralPrivacyFlagAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

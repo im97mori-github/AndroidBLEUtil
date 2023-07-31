@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_AGGREGATE_FORMAT_DESCRIPTOR;
+import java.util.Objects;
 
 /**
  * Characteristic Aggregate Format (Descriptor UUID: 0x2905)
@@ -42,9 +42,7 @@ public class CharacteristicAggregateFormatAndroid extends CharacteristicAggregat
          */
         @NonNull
         public CharacteristicAggregateFormatAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(CHARACTERISTIC_AGGREGATE_FORMAT_DESCRIPTOR, 0);
-            bluetoothGattDescriptor.setValue(values);
-            return new CharacteristicAggregateFormatAndroid(bluetoothGattDescriptor);
+            return new CharacteristicAggregateFormatAndroid(values);
         }
 
     };
@@ -54,8 +52,18 @@ public class CharacteristicAggregateFormatAndroid extends CharacteristicAggregat
      *
      * @param bluetoothGattDescriptor Characteristics UUID: 0x2905
      */
+    @Deprecated
     public CharacteristicAggregateFormatAndroid(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         super(bluetoothGattDescriptor.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattDescriptor#getValue()">BluetoothGattDescriptor#getValue()</a>
+     */
+    public CharacteristicAggregateFormatAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -64,8 +72,7 @@ public class CharacteristicAggregateFormatAndroid extends CharacteristicAggregat
      * @param in Parcel
      */
     private CharacteristicAggregateFormatAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a50;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -35,10 +33,7 @@ public class PnpIdAndroidTest {
         data[ 6] = 0x07;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PnpIdAndroid result1 = new PnpIdAndroid(bluetoothGattCharacteristic);
+        PnpIdAndroid result1 = new PnpIdAndroid(data);
         assertEquals(PnpId.VENDOR_ID_SURCE_BLUETOOTH_SIG, result1.getVendorIdSource());
         assertEquals(0x0302, result1.getVendorId());
         assertEquals(0x0504, result1.getProductId());
@@ -60,10 +55,7 @@ public class PnpIdAndroidTest {
         data[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PnpIdAndroid result1 = new PnpIdAndroid(bluetoothGattCharacteristic);
+        PnpIdAndroid result1 = new PnpIdAndroid(data);
         assertEquals(PnpId.VENDOR_ID_SURCE_USB, result1.getVendorIdSource());
         assertEquals(0xff02, result1.getVendorId());
         assertEquals(0xff04, result1.getProductId());
@@ -99,10 +91,7 @@ public class PnpIdAndroidTest {
         data[ 6] = 0x07;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PnpIdAndroid result1 = new PnpIdAndroid(bluetoothGattCharacteristic);
+        PnpIdAndroid result1 = new PnpIdAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -127,10 +116,7 @@ public class PnpIdAndroidTest {
         data[ 6] = 0x07;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PnpIdAndroid result1 = new PnpIdAndroid(bluetoothGattCharacteristic);
+        PnpIdAndroid result1 = new PnpIdAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -147,10 +133,7 @@ public class PnpIdAndroidTest {
         data[ 6] = 0x07;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PnpIdAndroid result1 = new PnpIdAndroid(bluetoothGattCharacteristic);
+        PnpIdAndroid result1 = new PnpIdAndroid(data);
         PnpIdAndroid result2 = PnpIdAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

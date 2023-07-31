@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.VOLUME_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Volume Control Point (Characteristics UUID: 0x2B7E)
@@ -45,9 +45,7 @@ public class VolumeControlPointAndroid extends VolumeControlPoint implements Par
          */
         @NonNull
         public VolumeControlPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(VOLUME_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new VolumeControlPointAndroid(bluetoothGattCharacteristic);
+            return new VolumeControlPointAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class VolumeControlPointAndroid extends VolumeControlPoint implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B7E
      */
+    @Deprecated
     public VolumeControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public VolumeControlPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class VolumeControlPointAndroid extends VolumeControlPoint implements Par
      * @param in Parcel
      */
     private VolumeControlPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

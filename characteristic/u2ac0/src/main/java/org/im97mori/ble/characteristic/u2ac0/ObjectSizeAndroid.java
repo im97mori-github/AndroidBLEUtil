@@ -1,7 +1,5 @@
 package org.im97mori.ble.characteristic.u2ac0;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_SIZE_CHARACTERISTIC;
-
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,6 +7,8 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
+
+import java.util.Objects;
 
 /**
  * object size (Characteristics UUID: 0x2AC0)
@@ -44,9 +44,7 @@ public class ObjectSizeAndroid extends ObjectSize implements Parcelable {
          */
         @NonNull
         public ObjectSizeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(OBJECT_SIZE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ObjectSizeAndroid(bluetoothGattCharacteristic);
+            return new ObjectSizeAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ObjectSizeAndroid extends ObjectSize implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AC0
      */
+    @Deprecated
     public ObjectSizeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ObjectSizeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class ObjectSizeAndroid extends ObjectSize implements Parcelable {
      * @param in Parcel
      */
     private ObjectSizeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -9,6 +9,7 @@ import org.im97mori.ble.ByteArrayCreator;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -101,8 +102,7 @@ public class ListOf128BitServiceSolicitationUUIDsAndroid extends ListOf128BitSer
      * @param in Parcel
      */
     private ListOf128BitServiceSolicitationUUIDsAndroid(Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray(), 0, in.readInt());
+        super(Objects.requireNonNull(in.createByteArray()), 0, in.readInt());
     }
 
     /**

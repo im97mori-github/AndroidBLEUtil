@@ -22,6 +22,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/** @noinspection EmptyMethod, EmptyMethod, EmptyMethod, EmptyMethod, EmptyMethod */
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -67,6 +68,7 @@ public class FilteredScanCallbackTest {
                 list3.add(results);
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onScanFailed(int errorCode) {
 
@@ -118,6 +120,7 @@ public class FilteredScanCallbackTest {
                 list3.add(results);
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onScanFailed(int errorCode) {
 
@@ -166,6 +169,7 @@ public class FilteredScanCallbackTest {
                 list3.add(results);
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onScanFailed(int errorCode) {
 
@@ -216,6 +220,7 @@ public class FilteredScanCallbackTest {
                 list3.add(results);
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onScanFailed(int errorCode) {
 
@@ -236,10 +241,12 @@ public class FilteredScanCallbackTest {
         final AtomicInteger errorCodeValue = new AtomicInteger(firstValue);
 
         FilteredScanCallback callback = new FilteredScanCallback.Builder(new FilteredScanCallbackInterface() {
+            /** @noinspection EmptyMethod*/
             @Override
             public void onFilteredScanResult(int callbackType, @NonNull ScanResult result, @NonNull AdvertisingDataParser.AdvertisingDataParseResult parseResult) {
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onFilteredBatchScanResults(@NonNull List<ScanResult> results, @NonNull List<AdvertisingDataParser.AdvertisingDataParseResult> parseResults) {
             }
@@ -294,16 +301,19 @@ public class FilteredScanCallbackTest {
 
 
         FilteredScanCallback callback = new FilteredScanCallback.Builder(new FilteredScanCallbackInterface() {
+            /** @noinspection EmptyMethod*/
             @Override
             public void onFilteredScanResult(int callbackType, @NonNull ScanResult result, @NonNull AdvertisingDataParser.AdvertisingDataParseResult parseResult) {
 
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onFilteredBatchScanResults(@NonNull List<ScanResult> results, @NonNull List<AdvertisingDataParser.AdvertisingDataParseResult> parseResults) {
 
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onScanFailed(int errorCode) {
 
@@ -357,16 +367,19 @@ public class FilteredScanCallbackTest {
         };
 
         FilteredScanCallback callback = new FilteredScanCallback.Builder(new FilteredScanCallbackInterface() {
+            /** @noinspection EmptyMethod*/
             @Override
             public void onFilteredScanResult(int callbackType, @NonNull ScanResult result, @NonNull AdvertisingDataParser.AdvertisingDataParseResult parseResult) {
 
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onFilteredBatchScanResults(@NonNull List<ScanResult> results, @NonNull List<AdvertisingDataParser.AdvertisingDataParseResult> parseResults) {
 
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onScanFailed(int errorCode) {
 
@@ -418,16 +431,19 @@ public class FilteredScanCallbackTest {
         };
 
         FilteredScanCallback callback = new FilteredScanCallback.Builder(new FilteredScanCallbackInterface() {
+            /** @noinspection EmptyMethod*/
             @Override
             public void onFilteredScanResult(int callbackType, @NonNull ScanResult result, @NonNull AdvertisingDataParser.AdvertisingDataParseResult parseResult) {
 
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onFilteredBatchScanResults(@NonNull List<ScanResult> results, @NonNull List<AdvertisingDataParser.AdvertisingDataParseResult> parseResults) {
 
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onScanFailed(int errorCode) {
 
@@ -480,14 +496,17 @@ public class FilteredScanCallbackTest {
         };
 
         FilteredScanCallback callback = new FilteredScanCallback.Builder(new FilteredScanCallbackInterface() {
+            /** @noinspection EmptyMethod*/
             @Override
             public void onFilteredScanResult(int callbackType, @NonNull ScanResult result, @NonNull AdvertisingDataParser.AdvertisingDataParseResult parseResult) {
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onFilteredBatchScanResults(@NonNull List<ScanResult> results, @NonNull List<AdvertisingDataParser.AdvertisingDataParseResult> parseResults) {
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onScanFailed(int errorCode) {
             }
@@ -506,10 +525,12 @@ public class FilteredScanCallbackTest {
         final int secondValue = 1;
         final AtomicInteger errorCodeValue = new AtomicInteger(firstValue);
         ScanCallback scanCallback = new ScanCallback() {
+            /** @noinspection EmptyMethod*/
             @Override
             public void onScanResult(int callbackType, ScanResult result) {
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onBatchScanResults(List<ScanResult> results) {
             }
@@ -521,14 +542,17 @@ public class FilteredScanCallbackTest {
         };
 
         FilteredScanCallback callback = new FilteredScanCallback.Builder(new FilteredScanCallbackInterface() {
+            /** @noinspection EmptyMethod*/
             @Override
             public void onFilteredScanResult(int callbackType, @NonNull ScanResult result, @NonNull AdvertisingDataParser.AdvertisingDataParseResult parseResult) {
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onFilteredBatchScanResults(@NonNull List<ScanResult> results, @NonNull List<AdvertisingDataParser.AdvertisingDataParseResult> parseResults) {
             }
 
+            /** @noinspection EmptyMethod*/
             @Override
             public void onScanFailed(int errorCode) {
             }

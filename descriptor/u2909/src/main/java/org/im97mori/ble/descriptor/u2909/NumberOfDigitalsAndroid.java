@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.DescriptorUUID.NUMBER_OF_DIGITALS_DESCRIPTOR;
+import java.util.Objects;
 
 /**
  * Number of Digitals (Descriptor UUID: 0x2909)
@@ -42,9 +42,7 @@ public class NumberOfDigitalsAndroid extends NumberOfDigitals implements Parcela
          */
         @NonNull
         public NumberOfDigitalsAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(NUMBER_OF_DIGITALS_DESCRIPTOR, 0);
-            bluetoothGattDescriptor.setValue(values);
-            return new NumberOfDigitalsAndroid(bluetoothGattDescriptor);
+            return new NumberOfDigitalsAndroid(values);
         }
 
     };
@@ -54,8 +52,18 @@ public class NumberOfDigitalsAndroid extends NumberOfDigitals implements Parcela
      *
      * @param bluetoothGattDescriptor Characteristics UUID: 0x2909
      */
+    @Deprecated
     public NumberOfDigitalsAndroid(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         super(bluetoothGattDescriptor.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattDescriptor#getValue()">BluetoothGattDescriptor#getValue()</a>
+     */
+    public NumberOfDigitalsAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -73,8 +81,7 @@ public class NumberOfDigitalsAndroid extends NumberOfDigitals implements Parcela
      * @param in Parcel
      */
     private NumberOfDigitalsAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

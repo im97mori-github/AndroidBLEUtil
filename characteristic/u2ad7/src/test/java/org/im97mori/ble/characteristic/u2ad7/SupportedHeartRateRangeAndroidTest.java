@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ad7;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -46,9 +44,9 @@ public class SupportedHeartRateRangeAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -62,10 +60,7 @@ public class SupportedHeartRateRangeAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedHeartRateRangeAndroid result1 = new SupportedHeartRateRangeAndroid(bluetoothGattCharacteristic);
+        SupportedHeartRateRangeAndroid result1 = new SupportedHeartRateRangeAndroid(data);
         assertEquals(0x01, result1.getMinimumHeartRate());
         assertEquals(0x02, result1.getMaximumHeartRate());
         assertEquals(0x03, result1.getMinimumIncrement());
@@ -87,10 +82,7 @@ public class SupportedHeartRateRangeAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedHeartRateRangeAndroid result1 = new SupportedHeartRateRangeAndroid(bluetoothGattCharacteristic);
+        SupportedHeartRateRangeAndroid result1 = new SupportedHeartRateRangeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -104,10 +96,7 @@ public class SupportedHeartRateRangeAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedHeartRateRangeAndroid result1 = new SupportedHeartRateRangeAndroid(bluetoothGattCharacteristic);
+        SupportedHeartRateRangeAndroid result1 = new SupportedHeartRateRangeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -115,10 +104,7 @@ public class SupportedHeartRateRangeAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedHeartRateRangeAndroid result1 = new SupportedHeartRateRangeAndroid(bluetoothGattCharacteristic);
+        SupportedHeartRateRangeAndroid result1 = new SupportedHeartRateRangeAndroid(data);
         SupportedHeartRateRangeAndroid result2 = SupportedHeartRateRangeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

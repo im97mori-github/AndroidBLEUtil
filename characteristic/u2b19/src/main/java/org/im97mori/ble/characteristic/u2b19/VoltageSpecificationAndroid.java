@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.VOLTAGE_SPECIFICATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Voltage Specification (Characteristics UUID: 0x2B19)
@@ -44,9 +44,7 @@ public class VoltageSpecificationAndroid extends VoltageSpecification implements
          */
         @NonNull
         public VoltageSpecificationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(VOLTAGE_SPECIFICATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new VoltageSpecificationAndroid(bluetoothGattCharacteristic);
+            return new VoltageSpecificationAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class VoltageSpecificationAndroid extends VoltageSpecification implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B19
      */
+    @Deprecated
     public VoltageSpecificationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public VoltageSpecificationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class VoltageSpecificationAndroid extends VoltageSpecification implements
      * @param in Parcel
      */
     private VoltageSpecificationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

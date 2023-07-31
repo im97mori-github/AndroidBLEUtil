@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.INDOOR_BIKE_DATA_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Indoor Bike Data packet (Characteristics UUID: 0x2AD2)
@@ -44,9 +44,7 @@ public class IndoorBikeDataPacketAndroid extends IndoorBikeDataPacket implements
          */
         @NonNull
         public IndoorBikeDataPacketAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(INDOOR_BIKE_DATA_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+            return new IndoorBikeDataPacketAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class IndoorBikeDataPacketAndroid extends IndoorBikeDataPacket implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AD2
      */
+    @Deprecated
     public IndoorBikeDataPacketAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public IndoorBikeDataPacketAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -90,8 +98,7 @@ public class IndoorBikeDataPacketAndroid extends IndoorBikeDataPacket implements
      * @param in Parcel
      */
     private IndoorBikeDataPacketAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

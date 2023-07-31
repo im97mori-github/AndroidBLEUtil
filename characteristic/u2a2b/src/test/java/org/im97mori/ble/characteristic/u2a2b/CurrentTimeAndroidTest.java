@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a2b;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -44,10 +42,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(DateTimeUtils.YEAR_IS_NOT_KNOWN, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_IS_NOT_KNOWN, result1.getMonth());
         assertEquals(DateTimeUtils.DAY_OF_MONTH_IS_NOT_KNOWN, result1.getDay());
@@ -90,10 +85,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(1582, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_JANUARY, result1.getMonth());
         assertEquals(1, result1.getDay());
@@ -136,10 +128,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_FEBRUARY, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -182,10 +171,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_MARCH, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -228,10 +214,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_APRIL, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -274,10 +257,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_MAY, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -320,10 +300,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_JUNE, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -366,10 +343,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_NO_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_JULY, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -412,10 +386,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_AUGUST, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -458,10 +429,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_SEPTEMBER, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -504,10 +472,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_OCTOBER, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -550,10 +515,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_NOVEMBER, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -596,10 +558,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_DECEMBER, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -642,10 +601,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_DECEMBER, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -688,10 +644,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_DECEMBER, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -734,10 +687,7 @@ public class CurrentTimeAndroidTest {
                 | CurrentTime.ADJUST_REASON_CHANGE_OF_DST;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertEquals(9999, result1.getYear());
         assertEquals(DateTimeUtils.MONTH_DECEMBER, result1.getMonth());
         assertEquals(31, result1.getDay());
@@ -801,10 +751,7 @@ public class CurrentTimeAndroidTest {
         data[ 9] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -846,10 +793,7 @@ public class CurrentTimeAndroidTest {
         data[ 9] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -869,10 +813,7 @@ public class CurrentTimeAndroidTest {
         data[ 9] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CurrentTimeAndroid result1 = new CurrentTimeAndroid(bluetoothGattCharacteristic);
+        CurrentTimeAndroid result1 = new CurrentTimeAndroid(data);
         CurrentTimeAndroid result2 = CurrentTimeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

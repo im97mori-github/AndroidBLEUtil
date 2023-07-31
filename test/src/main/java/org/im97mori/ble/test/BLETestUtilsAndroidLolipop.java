@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 @SuppressWarnings("unused")
 public class BLETestUtilsAndroidLolipop extends BLETestUtilsAndroid {
 
+    @SuppressWarnings({"deprecation", "RedundantSuppression"})
     public static ScanResult createScanResult(@NonNull BluetoothDevice device
             , int eventType
             , int primaryPhy

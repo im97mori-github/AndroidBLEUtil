@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
+import java.util.Objects;
+
 /**
  * <p>
  * Peripheral Connection Interval Range(Slave Connection Interval Range)
@@ -88,8 +90,7 @@ public class PeripheralConnectionIntervalRangeAndroid extends PeripheralConnecti
      * @param in Parcel
      */
     private PeripheralConnectionIntervalRangeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray(), 0, in.readInt());
+        super(Objects.requireNonNull(in.createByteArray()), 0, in.readInt());
     }
 
     /**

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,6 +57,7 @@ public class IndexActivity extends Activity implements AdapterView.OnItemClickLi
     }
 
     @Override
+    @Deprecated
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -63,7 +65,11 @@ public class IndexActivity extends Activity implements AdapterView.OnItemClickLi
 
         PackageInfo packageInfo = null;
         try {
-            packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_ACTIVITIES);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.PackageInfoFlags.of(PackageManager.GET_ACTIVITIES));
+            } else {
+                packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_ACTIVITIES);
+            }
         } catch (PackageManager.NameNotFoundException e) {
             BLELogUtils.stackLog(e);
         }

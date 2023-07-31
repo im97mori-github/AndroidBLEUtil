@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.EXACT_TIME_256_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Exact Time 256 (Characteristics UUID: 0x2A0C)
@@ -44,9 +44,7 @@ public class ExactTime256Android extends ExactTime256 implements Parcelable {
          */
         @NonNull
         public ExactTime256Android createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(EXACT_TIME_256_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ExactTime256Android(bluetoothGattCharacteristic);
+            return new ExactTime256Android(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ExactTime256Android extends ExactTime256 implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A0C
      */
+    @Deprecated
     public ExactTime256Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ExactTime256Android(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -82,8 +90,7 @@ public class ExactTime256Android extends ExactTime256 implements Parcelable {
      * @param in Parcel
      */
     private ExactTime256Android(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

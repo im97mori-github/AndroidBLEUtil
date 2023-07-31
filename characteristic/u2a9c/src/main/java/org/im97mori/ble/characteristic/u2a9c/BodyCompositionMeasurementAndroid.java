@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 
+import java.util.Objects;
+
 /**
  * Body Composition Measurement (Characteristics UUID: 0x2A9C)
  */
@@ -94,8 +96,7 @@ public class BodyCompositionMeasurementAndroid extends BodyCompositionMeasuremen
      * @param in Parcel
      */
     private BodyCompositionMeasurementAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(new BodyCompositionMeasurementPacketAndroid[]{BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
+        super(new BodyCompositionMeasurementPacketAndroid[]{BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(Objects.requireNonNull(in.createByteArray()))});
     }
 
     /**

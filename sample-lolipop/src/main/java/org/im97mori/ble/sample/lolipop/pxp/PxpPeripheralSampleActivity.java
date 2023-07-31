@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.profile.pxp.peripheral.ProximityProfileMockCallback;
 import org.im97mori.ble.sample.lolipop.AlertDialogFragment;
@@ -89,9 +88,7 @@ public class PxpPeripheralSampleActivity extends BaseActivity implements View.On
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else if (mProximityProfileMockCallback.isStarted()) {
+        if (mProximityProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {
             mConnectDisconnectButton.setText(R.string.start);

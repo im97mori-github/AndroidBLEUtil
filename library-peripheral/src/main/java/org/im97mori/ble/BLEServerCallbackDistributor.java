@@ -135,6 +135,7 @@ public class BLEServerCallbackDistributor implements BLEServerCallback {
      * {@inheritDoc}
      */
     @Override
+    @Deprecated
     public boolean onServiceAddSuccess(@NonNull Integer taskId
             , @NonNull BLEServerConnection bleServerConnection
             , @NonNull BluetoothGattService bluetoothGattService

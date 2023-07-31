@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.PROTOCOL_MODE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Protocol Mode (Characteristics UUID: 0x2A4E)
@@ -44,9 +44,7 @@ public class ProtocolModeAndroid extends ProtocolMode implements Parcelable {
          */
         @NonNull
         public ProtocolModeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PROTOCOL_MODE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ProtocolModeAndroid(bluetoothGattCharacteristic);
+            return new ProtocolModeAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ProtocolModeAndroid extends ProtocolMode implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A4E
      */
+    @Deprecated
     public ProtocolModeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ProtocolModeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class ProtocolModeAndroid extends ProtocolMode implements Parcelable {
      * @param in Parcel
      */
     private ProtocolModeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

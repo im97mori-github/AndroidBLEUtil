@@ -13,7 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_FLOAT;
 import org.im97mori.ble.characteristic.core.TemperatureMeasurementUtils;
 import org.im97mori.ble.characteristic.core.TemperatureTypeUtils;
@@ -117,9 +116,7 @@ public class HtpPeripheralSampleActivity extends BaseActivity implements View.On
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else if (mHealthThermometerProfileMockCallback.isStarted()) {
+        if (mHealthThermometerProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {
             mConnectDisconnectButton.setText(R.string.start);

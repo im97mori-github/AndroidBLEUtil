@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b1a;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -38,10 +36,7 @@ public class VoltageStatisticsAndroidTest {
         data[ 8] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         assertEquals(VoltageUtils.VOLTAGE_VALUE_IS_NOT_KNOWN, result1.getAverageVoltageValue());
         assertEquals(VoltageUtils.VOLTAGE_VALUE_IS_NOT_KNOWN, result1.getStandardDeviationVoltageValue());
         assertEquals(VoltageUtils.VOLTAGE_VALUE_IS_NOT_KNOWN, result1.getMinimumVoltageValue());
@@ -64,10 +59,7 @@ public class VoltageStatisticsAndroidTest {
         data[ 8] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         assertEquals(0, result1.getAverageVoltageValue());
         assertEquals(0, result1.getStandardDeviationVoltageValue());
         assertEquals(0, result1.getMinimumVoltageValue());
@@ -90,10 +82,7 @@ public class VoltageStatisticsAndroidTest {
         data[ 8] = TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         assertEquals(65408, result1.getAverageVoltageValue());
         assertEquals(65408, result1.getStandardDeviationVoltageValue());
         assertEquals(65408, result1.getMinimumVoltageValue());
@@ -113,13 +102,10 @@ public class VoltageStatisticsAndroidTest {
         data[ 5] = 0x06;
         data[ 6] = 0x07;
         data[ 7] = 0x08;
-        data[ 6] = (byte) 253;
+        data[ 8] = (byte) 253;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result1.getAverageVoltageValue());
         assertEquals(BLEUtils.createUInt16(data, 2), result1.getStandardDeviationVoltageValue());
         assertEquals(BLEUtils.createUInt16(data, 4), result1.getMinimumVoltageValue());
@@ -139,13 +125,10 @@ public class VoltageStatisticsAndroidTest {
         data[ 5] = 0x06;
         data[ 6] = 0x07;
         data[ 7] = 0x08;
-        data[ 6] = 0x09;
+        data[ 8] = 0x09;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result1.getAverageVoltageValue());
         assertEquals(BLEUtils.createUInt16(data, 2), result1.getStandardDeviationVoltageValue());
         assertEquals(BLEUtils.createUInt16(data, 4), result1.getMinimumVoltageValue());
@@ -248,10 +231,7 @@ public class VoltageStatisticsAndroidTest {
         data[ 8] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -279,10 +259,7 @@ public class VoltageStatisticsAndroidTest {
         data[ 8] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -310,10 +287,7 @@ public class VoltageStatisticsAndroidTest {
         data[ 8] = TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -338,13 +312,10 @@ public class VoltageStatisticsAndroidTest {
         data[ 5] = 0x06;
         data[ 6] = 0x07;
         data[ 7] = 0x08;
-        data[ 6] = (byte) 253;
+        data[ 8] = (byte) 253;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -369,13 +340,10 @@ public class VoltageStatisticsAndroidTest {
         data[ 5] = 0x06;
         data[ 6] = 0x07;
         data[ 7] = 0x08;
-        data[ 6] = 0x09;
+        data[ 8] = 0x09;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -403,10 +371,7 @@ public class VoltageStatisticsAndroidTest {
         data[ 8] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -425,10 +390,7 @@ public class VoltageStatisticsAndroidTest {
         data[ 8] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -447,10 +409,7 @@ public class VoltageStatisticsAndroidTest {
         data[ 8] = TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -466,13 +425,10 @@ public class VoltageStatisticsAndroidTest {
         data[ 5] = 0x06;
         data[ 6] = 0x07;
         data[ 7] = 0x08;
-        data[ 6] = (byte) 253;
+        data[ 8] = (byte) 253;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -488,13 +444,10 @@ public class VoltageStatisticsAndroidTest {
         data[ 5] = 0x06;
         data[ 6] = 0x07;
         data[ 7] = 0x08;
-        data[ 6] = 0x09;
+        data[ 8] = 0x09;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -513,10 +466,7 @@ public class VoltageStatisticsAndroidTest {
         data[ 8] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         VoltageStatisticsAndroid result2 = VoltageStatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -536,10 +486,7 @@ public class VoltageStatisticsAndroidTest {
         data[ 8] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         VoltageStatisticsAndroid result2 = VoltageStatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -559,10 +506,7 @@ public class VoltageStatisticsAndroidTest {
         data[ 8] = TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         VoltageStatisticsAndroid result2 = VoltageStatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -579,13 +523,10 @@ public class VoltageStatisticsAndroidTest {
         data[ 5] = 0x06;
         data[ 6] = 0x07;
         data[ 7] = 0x08;
-        data[ 6] = (byte) 253;
+        data[ 8] = (byte) 253;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         VoltageStatisticsAndroid result2 = VoltageStatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -602,13 +543,10 @@ public class VoltageStatisticsAndroidTest {
         data[ 5] = 0x06;
         data[ 6] = 0x07;
         data[ 7] = 0x08;
-        data[ 6] = 0x09;
+        data[ 8] = 0x09;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+        VoltageStatisticsAndroid result1 = new VoltageStatisticsAndroid(data);
         VoltageStatisticsAndroid result2 = VoltageStatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

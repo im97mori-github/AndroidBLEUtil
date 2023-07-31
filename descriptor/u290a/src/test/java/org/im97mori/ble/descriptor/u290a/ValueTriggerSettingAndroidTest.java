@@ -1,6 +1,10 @@
 package org.im97mori.ble.descriptor.u290a;
 
-import android.bluetooth.BluetoothGattDescriptor;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,18 +15,12 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-@SuppressWarnings("ConstantConditions")
 public class ValueTriggerSettingAndroidTest {
 
     @Test
@@ -32,10 +30,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 0] = (byte) ValueTriggerSetting.NONE_0;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(value);
         assertTrue(result.isNone0());
         assertFalse(result.isAnalog1());
         assertFalse(result.isAnalog2());
@@ -55,10 +50,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(value);
         assertFalse(result.isNone0());
         assertTrue(result.isAnalog1());
         assertFalse(result.isAnalog2());
@@ -79,10 +71,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(value);
         assertFalse(result.isNone0());
         assertFalse(result.isAnalog1());
         assertTrue(result.isAnalog2());
@@ -103,10 +92,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(value);
         assertFalse(result.isNone0());
         assertFalse(result.isAnalog1());
         assertFalse(result.isAnalog2());
@@ -127,10 +113,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(value);
         assertFalse(result.isNone0());
         assertFalse(result.isAnalog1());
         assertFalse(result.isAnalog2());
@@ -153,10 +136,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(value);
         assertFalse(result.isNone0());
         assertFalse(result.isAnalog1());
         assertFalse(result.isAnalog2());
@@ -180,10 +160,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(value);
         assertFalse(result.isNone0());
         assertFalse(result.isAnalog1());
         assertFalse(result.isAnalog2());
@@ -203,10 +180,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 0] = (byte) ValueTriggerSetting.NONE_7;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result = new ValueTriggerSettingAndroid(value);
         assertFalse(result.isNone0());
         assertFalse(result.isAnalog1());
         assertFalse(result.isAnalog2());
@@ -338,10 +312,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 0] = (byte) ValueTriggerSetting.NONE_0;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -363,10 +334,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -388,10 +356,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -413,10 +378,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -438,10 +400,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -465,10 +424,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -492,10 +448,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -516,10 +469,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 0] = (byte) ValueTriggerSetting.NONE_7;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -659,10 +609,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 0] = (byte) ValueTriggerSetting.NONE_0;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -675,10 +622,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -691,10 +635,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -707,10 +648,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -723,10 +661,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -741,10 +676,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -759,10 +691,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -774,10 +703,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 0] = (byte) ValueTriggerSetting.NONE_7;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -892,10 +818,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 0] = (byte) ValueTriggerSetting.NONE_0;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -908,10 +831,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         ValueTriggerSettingAndroid result2 = ValueTriggerSettingAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -925,10 +845,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         ValueTriggerSettingAndroid result2 = ValueTriggerSettingAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -942,10 +859,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         ValueTriggerSettingAndroid result2 = ValueTriggerSettingAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -959,10 +873,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         ValueTriggerSettingAndroid result2 = ValueTriggerSettingAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -978,10 +889,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         ValueTriggerSettingAndroid result2 = ValueTriggerSettingAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -997,10 +905,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         ValueTriggerSettingAndroid result2 = ValueTriggerSettingAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1012,10 +917,7 @@ public class ValueTriggerSettingAndroidTest {
         value[ 0] = (byte) ValueTriggerSetting.NONE_7;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+        ValueTriggerSettingAndroid result1 = new ValueTriggerSettingAndroid(value);
         ValueTriggerSettingAndroid result2 = ValueTriggerSettingAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.POSITION_QUALITY_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Position Quality (Characteristics UUID: 0x2A69)
@@ -44,9 +44,7 @@ public class PositionQualityAndroid extends PositionQuality implements Parcelabl
          */
         @NonNull
         public PositionQualityAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POSITION_QUALITY_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new PositionQualityAndroid(bluetoothGattCharacteristic);
+            return new PositionQualityAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class PositionQualityAndroid extends PositionQuality implements Parcelabl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A69
      */
+    @Deprecated
     public PositionQualityAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public PositionQualityAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -66,8 +74,7 @@ public class PositionQualityAndroid extends PositionQuality implements Parcelabl
      * @param in Parcel
      */
     private PositionQualityAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

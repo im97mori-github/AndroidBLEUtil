@@ -443,6 +443,11 @@ public class FtmpCallbackSample extends FitnessMachineProfileMockCallback implem
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }

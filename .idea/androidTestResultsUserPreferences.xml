@@ -17,6 +17,19 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="-1625238223">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="208" />
+                  <entry key="Tests" value="478" />
+                  <entry key="motorola motorola edge 20 fusion" value="237" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="-1284526386">
           <value>
             <AndroidTestResultsTableState>
@@ -37,6 +50,7 @@
               <option name="preferredColumnWidths">
                 <map>
                   <entry key="Duration" value="90" />
+                  <entry key="Pixel_6_Pro_API_33" value="120" />
                   <entry key="Tests" value="360" />
                   <entry key="ZY22F8N7JB" value="120" />
                   <entry key="motorola&#10; motorola edge 20 fusion" value="120" />

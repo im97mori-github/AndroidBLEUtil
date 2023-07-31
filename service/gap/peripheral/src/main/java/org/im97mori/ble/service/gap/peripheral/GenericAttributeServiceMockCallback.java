@@ -254,8 +254,10 @@ public class GenericAttributeServiceMockCallback extends AbstractServiceMockCall
 
     /**
      * {@inheritDoc}
+     * @noinspection deprecation
      */
     @Override
+    @Deprecated
     public synchronized boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
         boolean result = super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
         if (result) {
@@ -328,8 +330,10 @@ public class GenericAttributeServiceMockCallback extends AbstractServiceMockCall
 
     /**
      * {@inheritDoc}
+     * @noinspection deprecation
      */
     @Override
+    @Deprecated
     public synchronized void onServiceRemoveSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
         int beforeServiceSize = mAvailableServiceMap.size();
         super.onServiceRemoveSuccess(taskId, bleServerConnection, bluetoothGattService, argument);

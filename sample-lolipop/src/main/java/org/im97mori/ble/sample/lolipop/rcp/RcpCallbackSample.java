@@ -582,6 +582,11 @@ public class RcpCallbackSample extends ReconnectionConfigurationProfileMockCallb
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }

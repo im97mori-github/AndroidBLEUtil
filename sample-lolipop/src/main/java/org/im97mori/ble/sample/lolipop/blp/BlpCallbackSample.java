@@ -378,6 +378,11 @@ public class BlpCallbackSample extends BloodPressureProfileMockCallback implemen
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }

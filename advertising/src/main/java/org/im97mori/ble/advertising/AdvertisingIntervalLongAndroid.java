@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
+import java.util.Objects;
+
 /**
  * <p>
  * Advertising Interval - long
@@ -88,8 +90,7 @@ public class AdvertisingIntervalLongAndroid extends AdvertisingIntervalLong impl
      * @param in Parcel
      */
     private AdvertisingIntervalLongAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray(), 0, in.readInt());
+        super(Objects.requireNonNull(in.createByteArray()), 0, in.readInt());
     }
 
     /**

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.VO2_MAX_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * VO2 Max (Characteristics UUID: 0x2A96)
@@ -44,9 +44,7 @@ public class VO2MaxAndroid extends VO2Max implements Parcelable {
          */
         @NonNull
         public VO2MaxAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(VO2_MAX_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new VO2MaxAndroid(bluetoothGattCharacteristic);
+            return new VO2MaxAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class VO2MaxAndroid extends VO2Max implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A96
      */
+    @Deprecated
     public VO2MaxAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public VO2MaxAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class VO2MaxAndroid extends VO2Max implements Parcelable {
      * @param in Parcel
      */
     private VO2MaxAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

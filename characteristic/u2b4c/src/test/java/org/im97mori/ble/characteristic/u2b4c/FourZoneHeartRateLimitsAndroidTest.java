@@ -1,10 +1,8 @@
 package org.im97mori.ble.characteristic.u2b4c;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -46,10 +44,7 @@ public class FourZoneHeartRateLimitsAndroidTest extends TestBase {
 	public void test_constructor_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(bluetoothGattCharacteristic);
+		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(data);
 		assertEquals(0x01, result1.getFourZoneHeartRateLimitsLightModerateLimit());
 		assertEquals(0x02, result1.getFourZoneHeartRateLimitsModerateHardLimit());
 		assertEquals(0x03, result1.getFourZoneHeartRateLimitsHardMaximumLimit());
@@ -59,10 +54,7 @@ public class FourZoneHeartRateLimitsAndroidTest extends TestBase {
 	public void test_constructor_00002() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(bluetoothGattCharacteristic);
+		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(data);
 		assertEquals(0xff, result1.getFourZoneHeartRateLimitsLightModerateLimit());
 		assertEquals(0xff, result1.getFourZoneHeartRateLimitsModerateHardLimit());
 		assertEquals(0xff, result1.getFourZoneHeartRateLimitsHardMaximumLimit());
@@ -86,10 +78,7 @@ public class FourZoneHeartRateLimitsAndroidTest extends TestBase {
 	public void test_parcelable_1_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(bluetoothGattCharacteristic);
+		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(data);
 		Parcel parcel = Parcel.obtain();
 		result1.writeToParcel(parcel, 0);
 		parcel.setDataPosition(0);
@@ -103,10 +92,7 @@ public class FourZoneHeartRateLimitsAndroidTest extends TestBase {
 	public void test_parcelable_1_00002() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(bluetoothGattCharacteristic);
+		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(data);
 		Parcel parcel = Parcel.obtain();
 		result1.writeToParcel(parcel, 0);
 		parcel.setDataPosition(0);
@@ -120,10 +106,7 @@ public class FourZoneHeartRateLimitsAndroidTest extends TestBase {
 	public void test_parcelable_2_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(bluetoothGattCharacteristic);
+		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -131,10 +114,7 @@ public class FourZoneHeartRateLimitsAndroidTest extends TestBase {
 	public void test_parcelable_2_00002() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(bluetoothGattCharacteristic);
+		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -142,10 +122,7 @@ public class FourZoneHeartRateLimitsAndroidTest extends TestBase {
 	public void test_parcelable_3_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(bluetoothGattCharacteristic);
+		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(data);
 		FourZoneHeartRateLimitsAndroid result2 = FourZoneHeartRateLimitsAndroid.CREATOR.createFromByteArray(data);
 		assertArrayEquals(result1.getBytes(), result2.getBytes());
 	}
@@ -154,10 +131,7 @@ public class FourZoneHeartRateLimitsAndroidTest extends TestBase {
 	public void test_parcelable_3_00002() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(bluetoothGattCharacteristic);
+		FourZoneHeartRateLimitsAndroid result1 = new FourZoneHeartRateLimitsAndroid(data);
 		FourZoneHeartRateLimitsAndroid result2 = FourZoneHeartRateLimitsAndroid.CREATOR.createFromByteArray(data);
 		assertArrayEquals(result1.getBytes(), result2.getBytes());
 	}

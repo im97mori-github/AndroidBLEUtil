@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_MEASUREMENT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Heart Rate Measurement (Characteristics UUID: 0x2A37)
@@ -44,9 +44,7 @@ public class HeartRateMeasurementAndroid extends HeartRateMeasurement implements
          */
         @NonNull
         public HeartRateMeasurementAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(HEART_RATE_MEASUREMENT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+            return new HeartRateMeasurementAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class HeartRateMeasurementAndroid extends HeartRateMeasurement implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A37
      */
+    @Deprecated
     public HeartRateMeasurementAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public HeartRateMeasurementAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -79,8 +87,7 @@ public class HeartRateMeasurementAndroid extends HeartRateMeasurement implements
      * @param in Parcel
      */
     private HeartRateMeasurementAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

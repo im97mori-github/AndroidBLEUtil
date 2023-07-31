@@ -1,9 +1,9 @@
 package org.im97mori.ble.sample.lolipop;
 
-import android.bluetooth.BluetoothAdapter;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFY_CHARACTERISTIC;
+import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_PRIMARY_SERVICE_1;
+
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothManager;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.Menu;
@@ -23,14 +23,9 @@ import org.im97mori.ble.task.NotifyTask;
 
 import java.util.LinkedList;
 
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFY_CHARACTERISTIC;
-import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_PRIMARY_SERVICE_1;
-
 public class PeripheralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
     private Button mConnectDisconnectButton;
-
-    private BluetoothAdapter mBluetoothAdapter;
 
     private ArrayAdapter<Pair<String, String>> mAdapter;
     private ListView mListView;
@@ -69,8 +64,6 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
         mListView.setAdapter(mAdapter);
 
         mConnectDisconnectButton.setOnClickListener(this);
-
-        mBluetoothAdapter = ((BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
 
         mBLEServerConnection = new BLEServerConnection(this);
         mBLEServerConnection.attach(new BLECallbackSample(this, this));
@@ -141,9 +134,7 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
     }
 
     protected void updateLayout() {
-        if (mBluetoothAdapter != null && !mBluetoothAdapter.isEnabled()) {
-            mBluetoothAdapter.enable();
-        } else if (mBLEServerConnection.isStarted()) {
+        if (mBLEServerConnection.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {
             mConnectDisconnectButton.setText(R.string.start);

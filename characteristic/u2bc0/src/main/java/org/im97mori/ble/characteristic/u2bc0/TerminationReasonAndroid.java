@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TERMINATION_REASON_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Termination Reason (Characteristics UUID: 0x2BC0)
@@ -45,9 +45,7 @@ public class TerminationReasonAndroid extends TerminationReason implements Parce
          */
         @NonNull
         public TerminationReasonAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TERMINATION_REASON_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TerminationReasonAndroid(bluetoothGattCharacteristic);
+            return new TerminationReasonAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class TerminationReasonAndroid extends TerminationReason implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BC0
      */
+    @Deprecated
     public TerminationReasonAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TerminationReasonAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class TerminationReasonAndroid extends TerminationReason implements Parce
      * @param in Parcel
      */
     private TerminationReasonAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

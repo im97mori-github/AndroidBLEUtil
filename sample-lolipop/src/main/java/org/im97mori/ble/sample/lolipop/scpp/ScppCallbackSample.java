@@ -395,6 +395,11 @@ public class ScppCallbackSample extends ScanParametersProfileMockCallback implem
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }

@@ -1,15 +1,12 @@
 package org.im97mori.ble;
 
-import android.os.Build;
-
 import androidx.test.filters.RequiresDevice;
-import androidx.test.filters.SdkSuppress;
 import androidx.test.rule.GrantPermissionRule;
 
 import org.junit.Rule;
 import org.junit.Test;
 
-@SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU)
+//@SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU)
 public class BLEUtilsAndroid33Test extends BaseBLEUtilsAndroidTest {
 
     @Rule
@@ -18,12 +15,14 @@ public class BLEUtilsAndroid33Test extends BaseBLEUtilsAndroidTest {
 
     @Test
     @RequiresDevice
+    @SuppressWarnings("deprecation")
     public void test_isBluetoothEnabled_00001() {
         super.test_isBluetoothEnabled_00001();
     }
 
     @Test
     @RequiresDevice
+    @SuppressWarnings("deprecation")
     public void test_isBluetoothEnabled_00002() {
         super.test_isBluetoothEnabled_00002();
     }

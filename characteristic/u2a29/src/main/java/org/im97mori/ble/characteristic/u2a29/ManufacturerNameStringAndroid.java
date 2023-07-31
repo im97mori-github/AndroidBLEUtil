@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.MANUFACTURER_NAME_STRING_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Manufacturer Name String (Characteristics UUID: 0x2A29)
@@ -44,9 +44,7 @@ public class ManufacturerNameStringAndroid extends ManufacturerNameString implem
          */
         @NonNull
         public ManufacturerNameStringAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MANUFACTURER_NAME_STRING_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ManufacturerNameStringAndroid(bluetoothGattCharacteristic);
+            return new ManufacturerNameStringAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ManufacturerNameStringAndroid extends ManufacturerNameString implem
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A29
      */
+    @Deprecated
     public ManufacturerNameStringAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ManufacturerNameStringAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class ManufacturerNameStringAndroid extends ManufacturerNameString implem
      * @param in Parcel
      */
     private ManufacturerNameStringAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

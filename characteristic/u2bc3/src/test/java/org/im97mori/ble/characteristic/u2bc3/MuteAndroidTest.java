@@ -1,12 +1,10 @@
 package org.im97mori.ble.characteristic.u2bc3;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -17,7 +15,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -29,6 +27,7 @@ public class MuteAndroidTest extends TestBase {
     private static final byte[] data_00001;
     static {
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = Mute.NOT_MUTED;
         data_00001 = data;
     }
@@ -53,10 +52,7 @@ public class MuteAndroidTest extends TestBase {
         byte[] data = getData();
 
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MuteAndroid result1 = new MuteAndroid(bluetoothGattCharacteristic);
+        MuteAndroid result1 = new MuteAndroid(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result1.getMute());
         assertTrue(result1.isNotMuted());
         assertFalse(result1.isMuted());
@@ -67,10 +63,7 @@ public class MuteAndroidTest extends TestBase {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MuteAndroid result1 = new MuteAndroid(bluetoothGattCharacteristic);
+        MuteAndroid result1 = new MuteAndroid(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result1.getMute());
         assertFalse(result1.isNotMuted());
         assertTrue(result1.isMuted());
@@ -81,10 +74,7 @@ public class MuteAndroidTest extends TestBase {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MuteAndroid result1 = new MuteAndroid(bluetoothGattCharacteristic);
+        MuteAndroid result1 = new MuteAndroid(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result1.getMute());
         assertFalse(result1.isNotMuted());
         assertFalse(result1.isMuted());
@@ -128,10 +118,7 @@ public class MuteAndroidTest extends TestBase {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MuteAndroid result1 = new MuteAndroid(bluetoothGattCharacteristic);
+        MuteAndroid result1 = new MuteAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -143,10 +130,7 @@ public class MuteAndroidTest extends TestBase {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MuteAndroid result1 = new MuteAndroid(bluetoothGattCharacteristic);
+        MuteAndroid result1 = new MuteAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -158,10 +142,7 @@ public class MuteAndroidTest extends TestBase {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MuteAndroid result1 = new MuteAndroid(bluetoothGattCharacteristic);
+        MuteAndroid result1 = new MuteAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -173,10 +154,7 @@ public class MuteAndroidTest extends TestBase {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MuteAndroid result1 = new MuteAndroid(bluetoothGattCharacteristic);
+        MuteAndroid result1 = new MuteAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -184,10 +162,7 @@ public class MuteAndroidTest extends TestBase {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MuteAndroid result1 = new MuteAndroid(bluetoothGattCharacteristic);
+        MuteAndroid result1 = new MuteAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -195,10 +170,7 @@ public class MuteAndroidTest extends TestBase {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MuteAndroid result1 = new MuteAndroid(bluetoothGattCharacteristic);
+        MuteAndroid result1 = new MuteAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -206,10 +178,7 @@ public class MuteAndroidTest extends TestBase {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MuteAndroid result1 = new MuteAndroid(bluetoothGattCharacteristic);
+        MuteAndroid result1 = new MuteAndroid(data);
         MuteAndroid result2 = MuteAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -218,10 +187,7 @@ public class MuteAndroidTest extends TestBase {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MuteAndroid result1 = new MuteAndroid(bluetoothGattCharacteristic);
+        MuteAndroid result1 = new MuteAndroid(data);
         MuteAndroid result2 = MuteAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -230,10 +196,7 @@ public class MuteAndroidTest extends TestBase {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MuteAndroid result1 = new MuteAndroid(bluetoothGattCharacteristic);
+        MuteAndroid result1 = new MuteAndroid(data);
         MuteAndroid result2 = MuteAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

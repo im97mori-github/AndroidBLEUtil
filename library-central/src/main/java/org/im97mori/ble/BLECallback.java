@@ -220,6 +220,7 @@ public interface BLECallback {
      * @param characteristicUUID       characteristic {@link UUID}
      * @param characteristicInstanceId task target characteristic Instance Id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link BLEConnection#onCharacteristicWrite(BluetoothGatt, BluetoothGattCharacteristic, int)} 3rd parameter
+     *                                 {@link BluetoothGatt#writeCharacteristic(BluetoothGattCharacteristic, byte[], int)} result
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_CHARACTERISTIC_NOT_FOUND}
      *                                 {@link org.im97mori.ble.task.WriteCharacteristicTask#STATUS_WRITE_CHARACTERISTIC_NOT_FOUND}
@@ -271,6 +272,7 @@ public interface BLECallback {
      * @param descriptorUUID           descriptor  {@link UUID}
      * @param descriptorInstanceId     task target descriptor Instance Id
      * @param status                   {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link BLEConnection#onDescriptorRead(BluetoothGatt, BluetoothGattDescriptor, int, byte[])} 3rd parameter
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
      *                                 {@link org.im97mori.ble.task.ReadDescriptorTask#STATUS_READ_DESCRIPTOR_FAILED}
@@ -323,6 +325,7 @@ public interface BLECallback {
      * @param characteristicInstanceId task target characteristic Instance Id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorInstanceId     task target descriptor Instance Id
      * @param status                   {@link BLEConnection#onDescriptorWrite(BluetoothGatt, BluetoothGattDescriptor, int)} 3rd parameter
+     *                                 {@link BluetoothGatt#writeDescriptor(BluetoothGattDescriptor, byte[])} result
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_CANCEL}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_DESCRIPTOR_NOT_FOUND}
      *                                 {@link org.im97mori.ble.task.WriteDescriptorTask#STATUS_WRITE_DESCRIPTOR_FAILED}
@@ -588,4 +591,11 @@ public interface BLECallback {
      */
     void onSetNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, int status, @Nullable Bundle argument);
 
+    /**
+     * Service Changed callback
+     *
+     * @param bluetoothDevice          BLE device
+     * @see org.im97mori.ble.task.ServiceChangedTask
+     */
+    void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice);
 }

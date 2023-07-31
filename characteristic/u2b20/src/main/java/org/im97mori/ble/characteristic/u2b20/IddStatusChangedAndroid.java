@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.IDD_STATUS_CHANGED_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * IDD Status Changed (Characteristics UUID: 0x2B20)
@@ -45,9 +45,7 @@ public class IddStatusChangedAndroid extends IddStatusChanged implements Parcela
          */
         @NonNull
         public IddStatusChangedAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(IDD_STATUS_CHANGED_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new IddStatusChangedAndroid(bluetoothGattCharacteristic);
+            return new IddStatusChangedAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class IddStatusChangedAndroid extends IddStatusChanged implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B20
      */
+    @Deprecated
     public IddStatusChangedAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public IddStatusChangedAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class IddStatusChangedAndroid extends IddStatusChanged implements Parcela
      * @param in Parcel
      */
     private IddStatusChangedAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_TIME_PARAMETERS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Device Time Parameters (Characteristics UUID: 0x2B8F)
@@ -45,9 +45,7 @@ public class DeviceTimeParametersAndroid extends DeviceTimeParameters implements
          */
         @NonNull
         public DeviceTimeParametersAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DEVICE_TIME_PARAMETERS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new DeviceTimeParametersAndroid(bluetoothGattCharacteristic);
+            return new DeviceTimeParametersAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class DeviceTimeParametersAndroid extends DeviceTimeParameters implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B8F
      */
+    @Deprecated
     public DeviceTimeParametersAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public DeviceTimeParametersAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class DeviceTimeParametersAndroid extends DeviceTimeParameters implements
      * @param in Parcel
      */
     private DeviceTimeParametersAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

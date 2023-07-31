@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b15;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,13 +9,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -33,10 +31,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = (byte) (TimeMillisecond24.TIME_MILLISECOND_24_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result = new TimeMillisecond24Android(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getTimeMillisecond24());
         assertTrue(result.isTimeMillisecond24IsNotKnown());
     }
@@ -50,10 +45,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result = new TimeMillisecond24Android(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getTimeMillisecond24());
         assertFalse(result.isTimeMillisecond24IsNotKnown());
         assertEquals(TimeMillisecond24.TIME_MILLISECOND_24_VALUE_MINIMUM, result.geTimeMillisecond24Second(), 0);
@@ -68,10 +60,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = (byte) (16777214 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result = new TimeMillisecond24Android(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getTimeMillisecond24());
         assertFalse(result.isTimeMillisecond24IsNotKnown());
         assertEquals(TimeMillisecond24.TIME_MILLISECOND_24_VALUE_MAXIMUM, result.geTimeMillisecond24Second(), 0);
@@ -86,10 +75,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = 1 >> 16;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result = new TimeMillisecond24Android(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getTimeMillisecond24());
         assertFalse(result.isTimeMillisecond24IsNotKnown());
         assertEquals(TimeMillisecond24.TIME_MILLISECOND_24_VALUE_UNIT * 1, result.geTimeMillisecond24Second(), 0);
@@ -153,10 +139,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = (byte) (TimeMillisecond24.TIME_MILLISECOND_24_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result1 = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result1 = new TimeMillisecond24Android(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -174,10 +157,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result1 = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result1 = new TimeMillisecond24Android(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -195,10 +175,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = (byte) (16777214 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result1 = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result1 = new TimeMillisecond24Android(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -216,10 +193,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = 1 >> 16;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result1 = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result1 = new TimeMillisecond24Android(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -237,10 +211,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = (byte) (TimeMillisecond24.TIME_MILLISECOND_24_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result1 = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result1 = new TimeMillisecond24Android(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -253,10 +224,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result1 = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result1 = new TimeMillisecond24Android(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -269,10 +237,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = (byte) (16777214 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result1 = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result1 = new TimeMillisecond24Android(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -285,10 +250,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = 1 >> 16;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result1 = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result1 = new TimeMillisecond24Android(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -301,10 +263,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = (byte) (TimeMillisecond24.TIME_MILLISECOND_24_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result1 = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result1 = new TimeMillisecond24Android(data);
         TimeMillisecond24Android result2 = TimeMillisecond24Android.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -318,10 +277,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result1 = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result1 = new TimeMillisecond24Android(data);
         TimeMillisecond24Android result2 = TimeMillisecond24Android.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -335,10 +291,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = (byte) (16777214 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result1 = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result1 = new TimeMillisecond24Android(data);
         TimeMillisecond24Android result2 = TimeMillisecond24Android.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -352,10 +305,7 @@ public class TimeMillisecond24AndroidTest {
         data[ 2] = 1 >> 16;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeMillisecond24Android result1 = new TimeMillisecond24Android(bluetoothGattCharacteristic);
+        TimeMillisecond24Android result1 = new TimeMillisecond24Android(data);
         TimeMillisecond24Android result2 = TimeMillisecond24Android.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

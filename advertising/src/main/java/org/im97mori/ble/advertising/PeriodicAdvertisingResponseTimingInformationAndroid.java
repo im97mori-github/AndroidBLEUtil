@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
+import java.util.Objects;
+
 /**
  * <p>
  * Periodic Advertising Response Timing Information
@@ -93,8 +95,7 @@ public class PeriodicAdvertisingResponseTimingInformationAndroid extends Periodi
      * @param in Parcel
      */
     private PeriodicAdvertisingResponseTimingInformationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray(), 0, in.readInt());
+        super(Objects.requireNonNull(in.createByteArray()), 0, in.readInt());
     }
 
     /**

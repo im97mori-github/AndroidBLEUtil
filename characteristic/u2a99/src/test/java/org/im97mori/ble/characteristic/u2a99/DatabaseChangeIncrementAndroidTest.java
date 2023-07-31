@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a99;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -30,10 +28,7 @@ public class DatabaseChangeIncrementAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DatabaseChangeIncrementAndroid result1 = new DatabaseChangeIncrementAndroid(bluetoothGattCharacteristic);
+        DatabaseChangeIncrementAndroid result1 = new DatabaseChangeIncrementAndroid(data);
         assertEquals(0x04030201, result1.getDatabaseChangeIncrement());
     }
 
@@ -47,10 +42,7 @@ public class DatabaseChangeIncrementAndroidTest {
         data[ 3] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DatabaseChangeIncrementAndroid result1 = new DatabaseChangeIncrementAndroid(bluetoothGattCharacteristic);
+        DatabaseChangeIncrementAndroid result1 = new DatabaseChangeIncrementAndroid(data);
         assertEquals(0xffffffffL, result1.getDatabaseChangeIncrement());
     }
 
@@ -72,10 +64,7 @@ public class DatabaseChangeIncrementAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DatabaseChangeIncrementAndroid result1 = new DatabaseChangeIncrementAndroid(bluetoothGattCharacteristic);
+        DatabaseChangeIncrementAndroid result1 = new DatabaseChangeIncrementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -94,10 +83,7 @@ public class DatabaseChangeIncrementAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DatabaseChangeIncrementAndroid result1 = new DatabaseChangeIncrementAndroid(bluetoothGattCharacteristic);
+        DatabaseChangeIncrementAndroid result1 = new DatabaseChangeIncrementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -111,10 +97,7 @@ public class DatabaseChangeIncrementAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DatabaseChangeIncrementAndroid result1 = new DatabaseChangeIncrementAndroid(bluetoothGattCharacteristic);
+        DatabaseChangeIncrementAndroid result1 = new DatabaseChangeIncrementAndroid(data);
         DatabaseChangeIncrementAndroid result2 = DatabaseChangeIncrementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

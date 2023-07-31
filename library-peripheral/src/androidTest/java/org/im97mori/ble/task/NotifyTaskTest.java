@@ -26,7 +26,7 @@ import org.junit.Test;
 import java.util.Random;
 import java.util.UUID;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 public class NotifyTaskTest extends AbstractPeripheralTest {
 
     @Test
@@ -54,6 +54,7 @@ public class NotifyTaskTest extends AbstractPeripheralTest {
 
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_createNotificationSentSuccessMessage_00001() {
         Message message = NotifyTask.createNotificationSentSuccessMessage(BLETestUtilsAndroid.MOCK_DEVICE_0);
 
@@ -61,7 +62,7 @@ public class NotifyTaskTest extends AbstractPeripheralTest {
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(NotifyTask.KEY_BLUETOOTH_DEVICE));
-        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(NotifyTask.KEY_BLUETOOTH_DEVICE));
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0.getAddress(), bundle.getString(NotifyTask.KEY_BLUETOOTH_DEVICE));
         assertTrue(bundle.containsKey(NotifyTask.KEY_NEXT_PROGRESS));
         assertEquals(NotifyTask.PROGRESS_NOTIFICATION_SUCCESS, bundle.getString(NotifyTask.KEY_NEXT_PROGRESS));
     }
@@ -76,14 +77,16 @@ public class NotifyTaskTest extends AbstractPeripheralTest {
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(NotifyTask.KEY_BLUETOOTH_DEVICE));
-        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(NotifyTask.KEY_BLUETOOTH_DEVICE));
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0.getAddress(), bundle.getString(NotifyTask.KEY_BLUETOOTH_DEVICE));
         assertTrue(bundle.containsKey(NotifyTask.KEY_STATUS));
         assertEquals(status, bundle.getInt(NotifyTask.KEY_STATUS));
         assertTrue(bundle.containsKey(NotifyTask.KEY_NEXT_PROGRESS));
         assertEquals(NotifyTask.PROGRESS_NOTIFICATION_ERROR, bundle.getString(NotifyTask.KEY_NEXT_PROGRESS));
     }
 
+    /** @noinspection deprecation*/
     @Test
+    @Deprecated
     public void test_doProcess_00001() {
         NotifyTask task = new NotifyTask(null
                 , null
@@ -100,7 +103,9 @@ public class NotifyTaskTest extends AbstractPeripheralTest {
         assertFalse(task.doProcess(new Message()));
     }
 
+    /** @noinspection deprecation*/
     @Test
+    @Deprecated
     public void test_cancel_00001() {
         Looper looper = null;
         try {
@@ -133,7 +138,9 @@ public class NotifyTaskTest extends AbstractPeripheralTest {
 
     }
 
+    /** @noinspection deprecation*/
     @Test
+    @Deprecated
     public void test_cancel_00002() {
         Looper looper = null;
         try {

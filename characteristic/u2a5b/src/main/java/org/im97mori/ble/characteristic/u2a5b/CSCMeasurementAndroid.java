@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CSC_MEASUREMENT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * CSC Measurement (Characteristics UUID: 0x2A5B)
@@ -44,9 +44,7 @@ public class CSCMeasurementAndroid extends CSCMeasurement implements Parcelable 
          */
         @NonNull
         public CSCMeasurementAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CSC_MEASUREMENT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new CSCMeasurementAndroid(bluetoothGattCharacteristic);
+            return new CSCMeasurementAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class CSCMeasurementAndroid extends CSCMeasurement implements Parcelable 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A5B
      */
+    @Deprecated
     public CSCMeasurementAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public CSCMeasurementAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -79,8 +87,7 @@ public class CSCMeasurementAndroid extends CSCMeasurement implements Parcelable 
      * @param in Parcel
      */
     private CSCMeasurementAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

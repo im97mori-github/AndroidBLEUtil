@@ -21,7 +21,7 @@ import java.util.Arrays;
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class ApearanceFilterTest {
+public class AppearanceFilterTest {
 
     @Test
     public void test_001() {

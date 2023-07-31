@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a24;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -24,10 +22,7 @@ public class ModelNumberStringAndroidTest {
     public void test_constructor001() {
         String modelNumber = "2JCIE-BU01";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(modelNumber.getBytes());
-
-        ModelNumberStringAndroid result1 = new ModelNumberStringAndroid(bluetoothGattCharacteristic);
+        ModelNumberStringAndroid result1 = new ModelNumberStringAndroid(modelNumber.getBytes());
         assertEquals(modelNumber, result1.getModelNumber());
     }
 
@@ -43,10 +38,7 @@ public class ModelNumberStringAndroidTest {
     public void test_parcelable001() {
         String modelNumber = "2JCIE-BU01";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(modelNumber.getBytes());
-
-        ModelNumberStringAndroid result1 = new ModelNumberStringAndroid(bluetoothGattCharacteristic);
+        ModelNumberStringAndroid result1 = new ModelNumberStringAndroid(modelNumber.getBytes());
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -60,10 +52,7 @@ public class ModelNumberStringAndroidTest {
     public void test_parcelable002() {
         String modelNumber = "2JCIE-BU01";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(modelNumber.getBytes());
-
-        ModelNumberStringAndroid result1 = new ModelNumberStringAndroid(bluetoothGattCharacteristic);
+        ModelNumberStringAndroid result1 = new ModelNumberStringAndroid(modelNumber.getBytes());
         byte[] resultData = result1.getBytes();
         assertArrayEquals(modelNumber.getBytes(), resultData);
     }
@@ -72,10 +61,7 @@ public class ModelNumberStringAndroidTest {
     public void test_parcelable003() {
         String modelNumber = "2JCIE-BU01";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(modelNumber.getBytes());
-
-        ModelNumberStringAndroid result1 = new ModelNumberStringAndroid(bluetoothGattCharacteristic);
+        ModelNumberStringAndroid result1 = new ModelNumberStringAndroid(modelNumber.getBytes());
         ModelNumberStringAndroid result2 = ModelNumberStringAndroid.CREATOR.createFromByteArray(modelNumber.getBytes());
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

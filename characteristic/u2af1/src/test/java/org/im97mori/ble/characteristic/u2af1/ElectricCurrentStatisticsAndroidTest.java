@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2af1;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,7 +10,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -37,10 +35,7 @@ public class ElectricCurrentStatisticsAndroidTest {
         data[ 7] = (byte) (ElectricCurrentUtils.CURRENT_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentStatisticsAndroid result = new ElectricCurrentStatisticsAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentStatisticsAndroid result = new ElectricCurrentStatisticsAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result.getAverageElectricCurrentValue());
         assertEquals(BLEUtils.createUInt16(data, 2), result.getStandardDeviationElectricCurrentValue());
         assertEquals(BLEUtils.createUInt16(data, 4), result.getMinimumElectricCurrentValue());
@@ -61,10 +56,7 @@ public class ElectricCurrentStatisticsAndroidTest {
         data[ 7] = (byte) (0 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentStatisticsAndroid result = new ElectricCurrentStatisticsAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentStatisticsAndroid result = new ElectricCurrentStatisticsAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result.getAverageElectricCurrentValue());
         assertEquals(BLEUtils.createUInt16(data, 2), result.getStandardDeviationElectricCurrentValue());
         assertEquals(BLEUtils.createUInt16(data, 4), result.getMinimumElectricCurrentValue());
@@ -85,10 +77,7 @@ public class ElectricCurrentStatisticsAndroidTest {
         data[ 7] = (byte) (65531 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentStatisticsAndroid result = new ElectricCurrentStatisticsAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentStatisticsAndroid result = new ElectricCurrentStatisticsAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result.getAverageElectricCurrentValue());
         assertEquals(BLEUtils.createUInt16(data, 2), result.getStandardDeviationElectricCurrentValue());
         assertEquals(BLEUtils.createUInt16(data, 4), result.getMinimumElectricCurrentValue());
@@ -151,10 +140,7 @@ public class ElectricCurrentStatisticsAndroidTest {
         data[ 7] = (byte) (ElectricCurrentUtils.CURRENT_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -180,10 +166,7 @@ public class ElectricCurrentStatisticsAndroidTest {
         data[ 7] = (byte) (0 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -209,10 +192,7 @@ public class ElectricCurrentStatisticsAndroidTest {
         data[ 7] = (byte) (65531 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -238,10 +218,7 @@ public class ElectricCurrentStatisticsAndroidTest {
         data[ 7] = (byte) (ElectricCurrentUtils.CURRENT_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -259,10 +236,7 @@ public class ElectricCurrentStatisticsAndroidTest {
         data[ 7] = (byte) (0 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -280,10 +254,7 @@ public class ElectricCurrentStatisticsAndroidTest {
         data[ 7] = (byte) (65531 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -301,10 +272,7 @@ public class ElectricCurrentStatisticsAndroidTest {
         data[ 7] = (byte) (ElectricCurrentUtils.CURRENT_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(data);
         ElectricCurrentStatisticsAndroid result2 = ElectricCurrentStatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -323,10 +291,7 @@ public class ElectricCurrentStatisticsAndroidTest {
         data[ 7] = (byte) (0 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(data);
         ElectricCurrentStatisticsAndroid result2 = ElectricCurrentStatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -345,10 +310,7 @@ public class ElectricCurrentStatisticsAndroidTest {
         data[ 7] = (byte) (65531 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentStatisticsAndroid result1 = new ElectricCurrentStatisticsAndroid(data);
         ElectricCurrentStatisticsAndroid result2 = ElectricCurrentStatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

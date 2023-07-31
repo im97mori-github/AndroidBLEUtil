@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.DAY_OF_WEEK_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Day of Week (Characteristics UUID: 0x2A09)
@@ -44,9 +44,7 @@ public class DayOfWeekAndroid extends DayOfWeek implements Parcelable {
          */
         @NonNull
         public DayOfWeekAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DAY_OF_WEEK_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new DayOfWeekAndroid(bluetoothGattCharacteristic);
+            return new DayOfWeekAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class DayOfWeekAndroid extends DayOfWeek implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A09
      */
+    @Deprecated
     public DayOfWeekAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public DayOfWeekAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class DayOfWeekAndroid extends DayOfWeek implements Parcelable {
      * @param in Parcel
      */
     private DayOfWeekAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

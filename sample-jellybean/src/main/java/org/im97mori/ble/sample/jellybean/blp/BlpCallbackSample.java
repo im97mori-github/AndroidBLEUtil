@@ -346,6 +346,11 @@ public class BlpCallbackSample implements BloodPressureProfileCallback {
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onScanFailed(int errorCode, @Nullable Bundle argument) {
         callback(errorCode);
     }

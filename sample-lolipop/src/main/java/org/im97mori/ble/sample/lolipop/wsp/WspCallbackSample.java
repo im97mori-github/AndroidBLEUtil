@@ -1997,6 +1997,11 @@ public class WspCallbackSample extends WeightScaleProfileMockCallback implements
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }

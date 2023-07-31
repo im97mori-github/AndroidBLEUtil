@@ -268,6 +268,11 @@ public class BaseTimeProfileCallback implements TimeProfileCallback {
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+
+    }
+
+    @Override
     public void onCurrentTimeReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull CurrentTimeAndroid currentTimeAndroid, @Nullable Bundle argument) {
 
     }

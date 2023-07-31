@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b16;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,11 +10,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -31,10 +29,7 @@ public class TimeSecond16AndroidTest {
         data[ 1] = (byte) (TimeSecond16Utils.TIME_SECOND_16_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSecond16Android result = new TimeSecond16Android(bluetoothGattCharacteristic);
+        TimeSecond16Android result = new TimeSecond16Android(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result.getTimeSecond16());
     }
 
@@ -46,10 +41,7 @@ public class TimeSecond16AndroidTest {
         data[ 1] = (byte) (TimeSecond16Utils.TIME_SECOND_16_VALUE_MINIMUM >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSecond16Android result = new TimeSecond16Android(bluetoothGattCharacteristic);
+        TimeSecond16Android result = new TimeSecond16Android(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result.getTimeSecond16());
     }
 
@@ -61,10 +53,7 @@ public class TimeSecond16AndroidTest {
         data[ 1] = (byte) (TimeSecond16Utils.TIME_SECOND_16_VALUE_MAXIMUM >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSecond16Android result = new TimeSecond16Android(bluetoothGattCharacteristic);
+        TimeSecond16Android result = new TimeSecond16Android(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result.getTimeSecond16());
     }
 
@@ -100,10 +89,7 @@ public class TimeSecond16AndroidTest {
         data[ 1] = (byte) (TimeSecond16Utils.TIME_SECOND_16_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSecond16Android result1 = new TimeSecond16Android(bluetoothGattCharacteristic);
+        TimeSecond16Android result1 = new TimeSecond16Android(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -120,10 +106,7 @@ public class TimeSecond16AndroidTest {
         data[ 1] = (byte) (TimeSecond16Utils.TIME_SECOND_16_VALUE_MINIMUM >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSecond16Android result1 = new TimeSecond16Android(bluetoothGattCharacteristic);
+        TimeSecond16Android result1 = new TimeSecond16Android(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -140,10 +123,7 @@ public class TimeSecond16AndroidTest {
         data[ 1] = (byte) (TimeSecond16Utils.TIME_SECOND_16_VALUE_MAXIMUM >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSecond16Android result1 = new TimeSecond16Android(bluetoothGattCharacteristic);
+        TimeSecond16Android result1 = new TimeSecond16Android(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -160,10 +140,7 @@ public class TimeSecond16AndroidTest {
         data[ 1] = (byte) (TimeSecond16Utils.TIME_SECOND_16_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSecond16Android result1 = new TimeSecond16Android(bluetoothGattCharacteristic);
+        TimeSecond16Android result1 = new TimeSecond16Android(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -175,10 +152,7 @@ public class TimeSecond16AndroidTest {
         data[ 1] = (byte) (TimeSecond16Utils.TIME_SECOND_16_VALUE_MINIMUM >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSecond16Android result1 = new TimeSecond16Android(bluetoothGattCharacteristic);
+        TimeSecond16Android result1 = new TimeSecond16Android(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -190,10 +164,7 @@ public class TimeSecond16AndroidTest {
         data[ 1] = (byte) (TimeSecond16Utils.TIME_SECOND_16_VALUE_MAXIMUM >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSecond16Android result1 = new TimeSecond16Android(bluetoothGattCharacteristic);
+        TimeSecond16Android result1 = new TimeSecond16Android(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -205,10 +176,7 @@ public class TimeSecond16AndroidTest {
         data[ 1] = (byte) (TimeSecond16Utils.TIME_SECOND_16_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSecond16Android result1 = new TimeSecond16Android(bluetoothGattCharacteristic);
+        TimeSecond16Android result1 = new TimeSecond16Android(data);
         TimeSecond16Android result2 = TimeSecond16Android.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -221,10 +189,7 @@ public class TimeSecond16AndroidTest {
         data[ 1] = (byte) (TimeSecond16Utils.TIME_SECOND_16_VALUE_MINIMUM >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSecond16Android result1 = new TimeSecond16Android(bluetoothGattCharacteristic);
+        TimeSecond16Android result1 = new TimeSecond16Android(data);
         TimeSecond16Android result2 = TimeSecond16Android.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -237,10 +202,7 @@ public class TimeSecond16AndroidTest {
         data[ 1] = (byte) (TimeSecond16Utils.TIME_SECOND_16_VALUE_MAXIMUM >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSecond16Android result1 = new TimeSecond16Android(bluetoothGattCharacteristic);
+        TimeSecond16Android result1 = new TimeSecond16Android(data);
         TimeSecond16Android result2 = TimeSecond16Android.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

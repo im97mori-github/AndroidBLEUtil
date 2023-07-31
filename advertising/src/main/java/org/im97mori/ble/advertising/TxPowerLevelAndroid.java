@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
+import java.util.Objects;
+
 /**
  * <p>
  * Tx Power Level
@@ -88,8 +90,7 @@ public class TxPowerLevelAndroid extends TxPowerLevel implements AdvertisingData
      * @param in Parcel
      */
     private TxPowerLevelAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray(), 0, in.readInt());
+        super(Objects.requireNonNull(in.createByteArray()), 0, in.readInt());
     }
 
     /**

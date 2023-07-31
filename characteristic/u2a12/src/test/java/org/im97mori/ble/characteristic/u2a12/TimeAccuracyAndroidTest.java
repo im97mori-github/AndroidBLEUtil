@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a12;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,13 +8,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings({"PointlessArithmeticExpression", "ConstantConditions"})
+@SuppressWarnings({"PointlessArithmeticExpression"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -30,10 +28,7 @@ public class TimeAccuracyAndroidTest {
         data[ 0] = (byte) TimeAccuracy.ACCURACY_OUT_OF_RANGE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeAccuracyAndroid result1 = new TimeAccuracyAndroid(bluetoothGattCharacteristic);
+        TimeAccuracyAndroid result1 = new TimeAccuracyAndroid(data);
         assertEquals(TimeAccuracy.ACCURACY_OUT_OF_RANGE, result1.getAccuracy());
         assertTrue(result1.isAccuracyOutOfRange());
         assertFalse(result1.isAccuracyUnknown());
@@ -46,10 +41,7 @@ public class TimeAccuracyAndroidTest {
         data[ 0] = (byte) TimeAccuracy.ACCURACY_UNKNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeAccuracyAndroid result1 = new TimeAccuracyAndroid(bluetoothGattCharacteristic);
+        TimeAccuracyAndroid result1 = new TimeAccuracyAndroid(data);
         assertEquals(TimeAccuracy.ACCURACY_UNKNOWN, result1.getAccuracy());
         assertFalse(result1.isAccuracyOutOfRange());
         assertTrue(result1.isAccuracyUnknown());
@@ -59,13 +51,11 @@ public class TimeAccuracyAndroidTest {
     public void test_constructor_00003() {
         //@formatter:off
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeAccuracyAndroid result1 = new TimeAccuracyAndroid(bluetoothGattCharacteristic);
+        TimeAccuracyAndroid result1 = new TimeAccuracyAndroid(data);
         assertEquals(0, result1.getAccuracy());
         assertFalse(result1.isAccuracyOutOfRange());
         assertFalse(result1.isAccuracyUnknown());
@@ -79,10 +69,7 @@ public class TimeAccuracyAndroidTest {
         data[ 0] = (byte) 253;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeAccuracyAndroid result1 = new TimeAccuracyAndroid(bluetoothGattCharacteristic);
+        TimeAccuracyAndroid result1 = new TimeAccuracyAndroid(data);
         assertEquals(253, result1.getAccuracy());
         assertFalse(result1.isAccuracyOutOfRange());
         assertFalse(result1.isAccuracyUnknown());
@@ -104,10 +91,7 @@ public class TimeAccuracyAndroidTest {
         data[ 0] = (byte) 253;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeAccuracyAndroid result1 = new TimeAccuracyAndroid(bluetoothGattCharacteristic);
+        TimeAccuracyAndroid result1 = new TimeAccuracyAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -123,10 +107,7 @@ public class TimeAccuracyAndroidTest {
         data[ 0] = (byte) 253;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeAccuracyAndroid result1 = new TimeAccuracyAndroid(bluetoothGattCharacteristic);
+        TimeAccuracyAndroid result1 = new TimeAccuracyAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -137,10 +118,7 @@ public class TimeAccuracyAndroidTest {
         data[ 0] = (byte) 253;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeAccuracyAndroid result1 = new TimeAccuracyAndroid(bluetoothGattCharacteristic);
+        TimeAccuracyAndroid result1 = new TimeAccuracyAndroid(data);
         TimeAccuracyAndroid result2 = TimeAccuracyAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

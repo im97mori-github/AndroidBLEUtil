@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_FLOAT;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.INTERMEDIATE_TEMPERATURE_CHARACTERISTIC;
+import java.util.Objects;
 
 
 /**
@@ -46,9 +46,7 @@ public class IntermediateTemperatureAndroid extends IntermediateTemperature impl
          */
         @NonNull
         public IntermediateTemperatureAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(INTERMEDIATE_TEMPERATURE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+            return new IntermediateTemperatureAndroid(values);
         }
 
     };
@@ -58,8 +56,18 @@ public class IntermediateTemperatureAndroid extends IntermediateTemperature impl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A1E
      */
+    @Deprecated
     public IntermediateTemperatureAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public IntermediateTemperatureAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
 
@@ -105,8 +113,7 @@ public class IntermediateTemperatureAndroid extends IntermediateTemperature impl
      * @param in Parcel
      */
     private IntermediateTemperatureAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

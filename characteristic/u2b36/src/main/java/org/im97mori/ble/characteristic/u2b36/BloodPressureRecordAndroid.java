@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 
+import java.util.Objects;
+
 /**
  * Blood Pressure Record (Characteristics UUID: 0x2B36)
  */
@@ -79,8 +81,7 @@ public class BloodPressureRecordAndroid extends BloodPressureRecord implements P
      * @param in Parcel
      */
     private BloodPressureRecordAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(new BloodPressureRecordPacketAndroid[]{BloodPressureRecordPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
+        super(new BloodPressureRecordPacketAndroid[]{BloodPressureRecordPacketAndroid.CREATOR.createFromByteArray(Objects.requireNonNull(in.createByteArray()))});
     }
 
     /**

@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEUtils;
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.u2aa5.BondManagementFeatures;
 import org.im97mori.ble.characteristic.u2b1d.RCFeature;
 import org.im97mori.ble.characteristic.u2b1e.RCSettings;
@@ -260,9 +259,7 @@ public class RcpPeripheralSampleActivity extends BaseActivity implements View.On
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else if (mReconnectionConfigurationProfileMockCallback.isStarted()) {
+        if (mReconnectionConfigurationProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {
             mConnectDisconnectButton.setText(R.string.start);

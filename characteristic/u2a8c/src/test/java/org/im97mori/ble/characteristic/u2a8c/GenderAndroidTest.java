@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a8c;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -22,18 +20,15 @@ import static org.junit.Assert.assertTrue;
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class GenderAndroidTest {
 
-    @SuppressWarnings("ConstantConditions")
     @Test
     public void test_constructor001() {
         //@formatter:off
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = Gender.GENDER_MALE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GenderAndroid result1 = new GenderAndroid(bluetoothGattCharacteristic);
+        GenderAndroid result1 = new GenderAndroid(data);
         assertEquals(Gender.GENDER_MALE, result1.getGender());
         assertTrue(result1.isGenderMale());
         assertFalse(result1.isGenderFemale());
@@ -47,10 +42,7 @@ public class GenderAndroidTest {
         data[ 0] = Gender.GENDER_FEMALE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GenderAndroid result1 = new GenderAndroid(bluetoothGattCharacteristic);
+        GenderAndroid result1 = new GenderAndroid(data);
         assertEquals(Gender.GENDER_FEMALE, result1.getGender());
         assertFalse(result1.isGenderMale());
         assertTrue(result1.isGenderFemale());
@@ -64,10 +56,7 @@ public class GenderAndroidTest {
         data[ 0] = Gender.GENDER_UNSPECIFIED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GenderAndroid result1 = new GenderAndroid(bluetoothGattCharacteristic);
+        GenderAndroid result1 = new GenderAndroid(data);
         assertEquals(Gender.GENDER_UNSPECIFIED, result1.getGender());
         assertFalse(result1.isGenderMale());
         assertFalse(result1.isGenderFemale());
@@ -89,10 +78,7 @@ public class GenderAndroidTest {
         data[ 0] = Gender.GENDER_FEMALE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GenderAndroid result1 = new GenderAndroid(bluetoothGattCharacteristic);
+        GenderAndroid result1 = new GenderAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -108,10 +94,7 @@ public class GenderAndroidTest {
         data[ 0] = Gender.GENDER_FEMALE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GenderAndroid result1 = new GenderAndroid(bluetoothGattCharacteristic);
+        GenderAndroid result1 = new GenderAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -122,10 +105,7 @@ public class GenderAndroidTest {
         data[ 0] = Gender.GENDER_FEMALE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GenderAndroid result1 = new GenderAndroid(bluetoothGattCharacteristic);
+        GenderAndroid result1 = new GenderAndroid(data);
         GenderAndroid result2 = GenderAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

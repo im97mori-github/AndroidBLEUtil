@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 
+import java.util.Objects;
+
 /**
  * Rower Data (Characteristics UUID: 0x2AD1)
  */
@@ -88,8 +90,7 @@ public class RowerDataAndroid extends RowerData implements Parcelable {
      * @param in Parcel
      */
     private RowerDataAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(new RowerDataPacketAndroid[]{RowerDataPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
+        super(new RowerDataPacketAndroid[]{RowerDataPacketAndroid.CREATOR.createFromByteArray(Objects.requireNonNull(in.createByteArray()))});
     }
 
     /**

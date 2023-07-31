@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TMAP_ROLE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * TMAP Role (Characteristics UUID: 0x2B51)
@@ -45,9 +45,7 @@ public class TmapRoleAndroid extends TmapRole implements Parcelable {
          */
         @NonNull
         public TmapRoleAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TMAP_ROLE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TmapRoleAndroid(bluetoothGattCharacteristic);
+            return new TmapRoleAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class TmapRoleAndroid extends TmapRole implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B51
      */
+    @Deprecated
     public TmapRoleAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TmapRoleAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class TmapRoleAndroid extends TmapRole implements Parcelable {
      * @param in Parcel
      */
     private TmapRoleAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

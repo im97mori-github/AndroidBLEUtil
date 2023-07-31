@@ -1,5 +1,6 @@
 package org.im97mori.ble.profile.wsp.peripheral;
 
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -32,7 +33,9 @@ public class WeightScaleProfileMockData extends MockData {
          */
         @Override
         @NonNull
+        @Deprecated
         public WeightScaleProfileMockData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new WeightScaleProfileMockData(in);
         }
 
@@ -108,13 +111,22 @@ public class WeightScaleProfileMockData extends MockData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public WeightScaleProfileMockData(@NonNull Parcel in) {
         super(in);
-        weightScale = in.readParcelable(this.getClass().getClassLoader());
-        deviceInformation = in.readParcelable(this.getClass().getClassLoader());
-        userData = in.readParcelable(this.getClass().getClassLoader());
-        batteryList = in.createTypedArrayList(ServiceData.CREATOR);
-        currentTime = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            weightScale = in.readParcelable(this.getClass().getClassLoader(), ServiceData.class);
+            deviceInformation = in.readParcelable(this.getClass().getClassLoader(), ServiceData.class);
+            userData = in.readParcelable(this.getClass().getClassLoader(), UserDataServiceData.class);
+            batteryList = in.createTypedArrayList(ServiceData.CREATOR);
+            currentTime = in.readParcelable(this.getClass().getClassLoader(), CurrentTimeServiceData.class);
+        } else {
+            weightScale = in.readParcelable(this.getClass().getClassLoader());
+            deviceInformation = in.readParcelable(this.getClass().getClassLoader());
+            userData = in.readParcelable(this.getClass().getClassLoader());
+            batteryList = in.createTypedArrayList(ServiceData.CREATOR);
+            currentTime = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

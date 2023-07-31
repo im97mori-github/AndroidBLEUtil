@@ -1,5 +1,6 @@
 package org.im97mori.ble.profile.lnp.peripheral;
 
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,9 @@ public class LocationAndNavigationProfileMockData extends MockData {
          */
         @Override
         @NonNull
+        @Deprecated
         public LocationAndNavigationProfileMockData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new LocationAndNavigationProfileMockData(in);
         }
 
@@ -89,10 +92,16 @@ public class LocationAndNavigationProfileMockData extends MockData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public LocationAndNavigationProfileMockData(@NonNull Parcel in) {
         super(in);
-        locationAndNavigation = in.readParcelable(this.getClass().getClassLoader());
-        deviceInformation = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            locationAndNavigation = in.readParcelable(this.getClass().getClassLoader(), LocationAndNavigationServiceData.class);
+            deviceInformation = in.readParcelable(this.getClass().getClassLoader(), ServiceData.class);
+        } else {
+            locationAndNavigation = in.readParcelable(this.getClass().getClassLoader());
+            deviceInformation = in.readParcelable(this.getClass().getClassLoader());
+        }
         batteryList = in.createTypedArrayList(ServiceData.CREATOR);
     }
 

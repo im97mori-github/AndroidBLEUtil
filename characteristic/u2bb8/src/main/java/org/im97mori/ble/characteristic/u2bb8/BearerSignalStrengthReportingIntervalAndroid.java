@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BEARER_SIGNAL_STRENGTH_REPORTING_INTERVAL_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Bearer Signal Strength Reporting Interval (Characteristics UUID: 0x2BB8)
@@ -45,9 +45,7 @@ public class BearerSignalStrengthReportingIntervalAndroid extends BearerSignalSt
          */
         @NonNull
         public BearerSignalStrengthReportingIntervalAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BEARER_SIGNAL_STRENGTH_REPORTING_INTERVAL_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BearerSignalStrengthReportingIntervalAndroid(bluetoothGattCharacteristic);
+            return new BearerSignalStrengthReportingIntervalAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BearerSignalStrengthReportingIntervalAndroid extends BearerSignalSt
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BB8
      */
+    @Deprecated
     public BearerSignalStrengthReportingIntervalAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BearerSignalStrengthReportingIntervalAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class BearerSignalStrengthReportingIntervalAndroid extends BearerSignalSt
      * @param in Parcel
      */
     private BearerSignalStrengthReportingIntervalAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

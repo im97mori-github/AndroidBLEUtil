@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CIE_13_3_1995_COLOR_RENDERING_INDEX_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * CIE 13.3-1995 Color Rendering Index (Characteristics UUID: 0x2AE7)
@@ -44,9 +44,7 @@ public class Cie13_3_1995ColorRenderingIndexAndroid extends Cie13_3_1995ColorRen
          */
         @NonNull
         public Cie13_3_1995ColorRenderingIndexAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CIE_13_3_1995_COLOR_RENDERING_INDEX_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new Cie13_3_1995ColorRenderingIndexAndroid(bluetoothGattCharacteristic);
+            return new Cie13_3_1995ColorRenderingIndexAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class Cie13_3_1995ColorRenderingIndexAndroid extends Cie13_3_1995ColorRen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AE7
      */
+    @Deprecated
     public Cie13_3_1995ColorRenderingIndexAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public Cie13_3_1995ColorRenderingIndexAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class Cie13_3_1995ColorRenderingIndexAndroid extends Cie13_3_1995ColorRen
      * @param in Parcel
      */
     private Cie13_3_1995ColorRenderingIndexAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

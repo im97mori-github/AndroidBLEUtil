@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Heart Rate Control Point (Characteristics UUID: 0x2A39)
@@ -44,9 +44,7 @@ public class HeartRateControlPointAndroid extends HeartRateControlPoint implemen
          */
         @NonNull
         public HeartRateControlPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(HEART_RATE_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new HeartRateControlPointAndroid(bluetoothGattCharacteristic);
+            return new HeartRateControlPointAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class HeartRateControlPointAndroid extends HeartRateControlPoint implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A39
      */
+    @Deprecated
     public HeartRateControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public HeartRateControlPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class HeartRateControlPointAndroid extends HeartRateControlPoint implemen
      * @param in Parcel
      */
     private HeartRateControlPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

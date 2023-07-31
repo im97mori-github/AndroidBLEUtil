@@ -1,7 +1,5 @@
 package org.im97mori.ble.characteristic.u2b35;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ENHANCED_INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC;
-
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,6 +8,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
+
+import java.util.Objects;
 
 /**
  * Enhanced Intermediate Cuff Pressure (Characteristics UUID: 0x2B35)
@@ -45,9 +45,7 @@ public class EnhancedIntermediateCuffPressureAndroid extends EnhancedIntermediat
          */
         @NonNull
         public EnhancedIntermediateCuffPressureAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ENHANCED_INTERMEDIATE_CUFF_PRESSURE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+            return new EnhancedIntermediateCuffPressureAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class EnhancedIntermediateCuffPressureAndroid extends EnhancedIntermediat
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B35
      */
+    @Deprecated
     public EnhancedIntermediateCuffPressureAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public EnhancedIntermediateCuffPressureAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -89,8 +97,7 @@ public class EnhancedIntermediateCuffPressureAndroid extends EnhancedIntermediat
      * @param in Parcel
      */
     private EnhancedIntermediateCuffPressureAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

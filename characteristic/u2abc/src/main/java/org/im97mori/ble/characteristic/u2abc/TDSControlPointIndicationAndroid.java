@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TDS_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * TDS Control Point Indication (Characteristics UUID: 0x2ABC)
@@ -44,9 +44,7 @@ public class TDSControlPointIndicationAndroid extends TDSControlPointIndication 
          */
         @NonNull
         public TDSControlPointIndicationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TDS_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TDSControlPointIndicationAndroid(bluetoothGattCharacteristic);
+            return new TDSControlPointIndicationAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class TDSControlPointIndicationAndroid extends TDSControlPointIndication 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2ABC
      */
+    @Deprecated
     public TDSControlPointIndicationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TDSControlPointIndicationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class TDSControlPointIndicationAndroid extends TDSControlPointIndication 
      * @param in Parcel
      */
     private TDSControlPointIndicationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ANALOG_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Analog (Characteristics UUID: 0x2A58)
@@ -44,9 +44,7 @@ public class AnalogAndroid extends Analog implements Parcelable {
          */
         @NonNull
         public AnalogAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ANALOG_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AnalogAndroid(bluetoothGattCharacteristic);
+            return new AnalogAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class AnalogAndroid extends Analog implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A58
      */
+    @Deprecated
     public AnalogAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AnalogAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -66,8 +74,7 @@ public class AnalogAndroid extends Analog implements Parcelable {
      * @param in Parcel
      */
     private AnalogAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -6,12 +6,12 @@ plugins {
 def target = profileTipPeripheralAndroid
 
 android {
-    compileSdkVersion globalCompileSdkVersion
-    buildToolsVersion globalBuildToolsVersion
+    compileSdk globalCompileSdkVersion
+    buildToolsVersion = globalBuildToolsVersion
 
     defaultConfig {
         minSdkVersion globalPeripheralMinSdkVersion
-        targetSdkVersion globalTargetSdkVersion
+        targetSdk globalTargetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

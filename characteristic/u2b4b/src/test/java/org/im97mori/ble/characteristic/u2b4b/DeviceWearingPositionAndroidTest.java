@@ -1,12 +1,10 @@
 package org.im97mori.ble.characteristic.u2b4b;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -16,7 +14,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -28,6 +26,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     private static final byte[] data_00001;
     static {
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = DeviceWearingPosition.DEVICE_WEARING_POSITION_OTHER;
         data_00001 = data;
     }
@@ -317,10 +316,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_OTHER, result1.getDeviceWearingPosition());
         assertTrue(result1.isDeviceWearingPositionOther());
         assertFalse(result1.isDeviceWearingPositionHead());
@@ -369,10 +365,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_HEAD, result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
         assertTrue(result1.isDeviceWearingPositionHead());
@@ -421,10 +414,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_HEAD_EAR, result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
         assertFalse(result1.isDeviceWearingPositionHead());
@@ -473,10 +463,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_HEAD_EAR_RIGHT, result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
         assertFalse(result1.isDeviceWearingPositionHead());
@@ -525,10 +512,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_HEAD_EAR_LEFT, result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
         assertFalse(result1.isDeviceWearingPositionHead());
@@ -577,10 +561,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_HEAD_NECK, result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
         assertFalse(result1.isDeviceWearingPositionHead());
@@ -629,10 +610,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_TRUNK, result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
         assertFalse(result1.isDeviceWearingPositionHead());
@@ -681,10 +659,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_TRUNK_PELVIS, result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
         assertFalse(result1.isDeviceWearingPositionHead());
@@ -733,10 +708,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_TRUNK_PELVIS_RIGHT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -786,10 +758,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_TRUNK_PELVIS_LEFT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -839,10 +808,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_TRUNK_THORAX, result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
         assertFalse(result1.isDeviceWearingPositionHead());
@@ -891,10 +857,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00012() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_TRUNK_THORAX_RIGHT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -944,10 +907,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00013() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_TRUNK_THORAX_LEFT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -997,10 +957,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00014() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_TRUNK_BACK, result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
         assertFalse(result1.isDeviceWearingPositionHead());
@@ -1049,10 +1006,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00015() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_UPPER_EXTREMITY, result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
         assertFalse(result1.isDeviceWearingPositionHead());
@@ -1101,10 +1055,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00016() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_UPPER_EXTREMITY_RIGHT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1154,10 +1105,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00017() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_UPPER_EXTREMITY_LEFT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1207,10 +1155,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00018() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_UPPER_EXTREMITY_WRIST,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1260,10 +1205,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00019() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_UPPER_EXTREMITY_WRIST_RIGHT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1313,10 +1255,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00020() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_UPPER_EXTREMITY_WRIST_LEFT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1366,10 +1305,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00021() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_UPPER_EXTREMITY_FINGER,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1419,10 +1355,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00022() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_UPPER_EXTREMITY_FINGER_RIGHT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1472,10 +1405,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00023() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_UPPER_EXTREMITY_FINGER_LEFT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1525,10 +1455,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00024() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_UPPER_EXTREMITY_HAND,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1578,10 +1505,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00025() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_UPPER_EXTREMITY_HAND_RIGHT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1631,10 +1555,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00026() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_UPPER_EXTREMITY_HAND_LEFT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1684,10 +1605,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00027() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_LOWER_EXTREMITY, result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
         assertFalse(result1.isDeviceWearingPositionHead());
@@ -1736,10 +1654,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00028() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_LOWER_EXTREMITY_RIGHT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1789,10 +1704,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00029() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_LOWER_EXTREMITY_LEFT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1842,10 +1754,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00030() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_LOWER_EXTREMITY_ANKLE,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1895,10 +1804,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00031() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_LOWER_EXTREMITY_ANKLE_RIGHT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -1948,10 +1854,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00032() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_LOWER_EXTREMITY_ANKLE_LEFT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -2001,10 +1904,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00033() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_LOWER_EXTREMITY_FOOT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -2054,10 +1954,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00034() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_LOWER_EXTREMITY_FOOT_RIGHT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -2107,10 +2004,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00035() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_LOWER_EXTREMITY_FOOT_LEFT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -2160,10 +2054,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00036() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_PANTS_POCKET, result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
         assertFalse(result1.isDeviceWearingPositionHead());
@@ -2212,10 +2103,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00037() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_PANTS_POCKET_RIGHT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -2265,10 +2153,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00038() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_PANTS_POCKET_LEFT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -2318,10 +2203,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00039() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_CHEST_POCKET, result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
         assertFalse(result1.isDeviceWearingPositionHead());
@@ -2370,10 +2252,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00040() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_CHEST_POCKET_RIGHT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -2423,10 +2302,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_constructor_00041() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertEquals(DeviceWearingPosition.DEVICE_WEARING_POSITION_CHEST_POCKET_LEFT,
                 result1.getDeviceWearingPosition());
         assertFalse(result1.isDeviceWearingPositionOther());
@@ -2525,10 +2401,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2540,10 +2413,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2555,10 +2425,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2570,10 +2437,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2585,10 +2449,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2600,10 +2461,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2615,10 +2473,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2630,10 +2485,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2645,10 +2497,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2660,10 +2509,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2675,10 +2521,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2690,10 +2533,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00012() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2705,10 +2545,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00013() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2720,10 +2557,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00014() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2735,10 +2569,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00015() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2750,10 +2581,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00016() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2765,10 +2593,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00017() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2780,10 +2605,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00018() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2795,10 +2617,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00019() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2810,10 +2629,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00020() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2825,10 +2641,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00021() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2840,10 +2653,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00022() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2855,10 +2665,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00023() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2870,10 +2677,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00024() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2885,10 +2689,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00025() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2900,10 +2701,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00026() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2915,10 +2713,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00027() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2930,10 +2725,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00028() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2945,10 +2737,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00029() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2960,10 +2749,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00030() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2975,10 +2761,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00031() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2990,10 +2773,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00032() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3005,10 +2785,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00033() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3020,10 +2797,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00034() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3035,10 +2809,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00035() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3050,10 +2821,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00036() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3065,10 +2833,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00037() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3080,10 +2845,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00038() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3095,10 +2857,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00039() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3110,10 +2869,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00040() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3125,10 +2881,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_1_00041() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3140,10 +2893,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3151,10 +2901,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3162,10 +2909,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3173,10 +2917,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3184,10 +2925,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3195,10 +2933,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3206,10 +2941,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3217,10 +2949,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3228,10 +2957,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3239,10 +2965,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3250,10 +2973,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3261,10 +2981,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00012() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3272,10 +2989,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00013() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3283,10 +2997,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00014() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3294,10 +3005,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00015() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3305,10 +3013,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00016() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3316,10 +3021,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00017() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3327,10 +3029,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00018() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3338,10 +3037,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00019() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3349,10 +3045,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00020() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3360,10 +3053,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00021() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3371,10 +3061,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00022() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3382,10 +3069,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00023() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3393,10 +3077,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00024() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3404,10 +3085,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00025() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3415,10 +3093,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00026() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3426,10 +3101,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00027() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3437,10 +3109,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00028() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3448,10 +3117,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00029() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3459,10 +3125,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00030() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3470,10 +3133,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00031() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3481,10 +3141,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00032() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3492,10 +3149,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00033() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3503,10 +3157,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00034() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3514,10 +3165,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00035() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3525,10 +3173,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00036() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3536,10 +3181,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00037() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3547,10 +3189,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00038() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3558,10 +3197,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00039() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3569,10 +3205,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00040() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3580,10 +3213,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_2_00041() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3591,10 +3221,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3603,10 +3230,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3615,10 +3239,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3627,10 +3248,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3639,10 +3257,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3651,10 +3266,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3663,10 +3275,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3675,10 +3284,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3687,10 +3293,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3699,10 +3302,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3711,10 +3311,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3724,10 +3321,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00012() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3736,10 +3330,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00013() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3748,10 +3339,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00014() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3760,10 +3348,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00015() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3772,10 +3357,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00016() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3784,10 +3366,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00017() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3796,10 +3375,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00018() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3808,10 +3384,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00019() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3820,10 +3393,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00020() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3832,10 +3402,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00021() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3845,10 +3412,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00022() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3857,10 +3421,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00023() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3869,10 +3430,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00024() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3881,10 +3439,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00025() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3893,10 +3448,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00026() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3905,10 +3457,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00027() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3917,10 +3466,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00028() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3929,10 +3475,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00029() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3941,10 +3484,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00030() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3953,10 +3493,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00031() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3966,10 +3503,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00032() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3978,10 +3512,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00033() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3990,10 +3521,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00034() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4002,10 +3530,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00035() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4014,10 +3539,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00036() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4026,10 +3548,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00037() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4038,10 +3557,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00038() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4050,10 +3566,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00039() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4062,10 +3575,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00040() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4074,10 +3584,7 @@ public class DeviceWearingPositionAndroidTest extends TestBase {
     public void test_parcelable_3_00041() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+        DeviceWearingPositionAndroid result1 = new DeviceWearingPositionAndroid(data);
         DeviceWearingPositionAndroid result2 = DeviceWearingPositionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

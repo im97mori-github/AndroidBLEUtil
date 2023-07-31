@@ -3,6 +3,7 @@ package org.im97mori.ble.service.ans.peripheral;
 import static org.im97mori.ble.constants.ServiceUUID.ALERT_NOTIFICATION_SERVICE;
 
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,9 @@ public class AlertNotificationServiceData extends ServiceData {
          */
         @Override
         @NonNull
+        @Deprecated
         public AlertNotificationServiceData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new AlertNotificationServiceData(in);
         }
 
@@ -114,13 +117,22 @@ public class AlertNotificationServiceData extends ServiceData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public AlertNotificationServiceData(@NonNull Parcel in) {
         super(in);
-        supportedNewAlertCategory = in.readParcelable(this.getClass().getClassLoader());
-        newAlert = in.readParcelable(this.getClass().getClassLoader());
-        supportedUnreadAlertCategory = in.readParcelable(this.getClass().getClassLoader());
-        unreadAlertStatus = in.readParcelable(this.getClass().getClassLoader());
-        alertNotificationControlPoint = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            supportedNewAlertCategory = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            newAlert = in.readParcelable(this.getClass().getClassLoader(), NewAlertCharacteristicData.class);
+            supportedUnreadAlertCategory = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            unreadAlertStatus = in.readParcelable(this.getClass().getClassLoader(), UnreadAlertStatusCharacteristicData.class);
+            alertNotificationControlPoint = in.readParcelable(this.getClass().getClassLoader(), AlertNotificationControlPointCharacteristicData.class);
+        } else {
+            supportedNewAlertCategory = in.readParcelable(this.getClass().getClassLoader());
+            newAlert = in.readParcelable(this.getClass().getClassLoader());
+            supportedUnreadAlertCategory = in.readParcelable(this.getClass().getClassLoader());
+            unreadAlertStatus = in.readParcelable(this.getClass().getClassLoader());
+            alertNotificationControlPoint = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

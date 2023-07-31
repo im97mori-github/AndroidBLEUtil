@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 
+import java.util.Objects;
+
 /**
  * Stair Climber Data (Characteristics UUID: 0x2AD0)
  */
@@ -84,8 +86,7 @@ public class StairClimberDataAndroid extends StairClimberData implements Parcela
      * @param in Parcel
      */
     private StairClimberDataAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(new StairClimberDataPacketAndroid[]{StairClimberDataPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
+        super(new StairClimberDataPacketAndroid[]{StairClimberDataPacketAndroid.CREATOR.createFromByteArray(Objects.requireNonNull(in.createByteArray()))});
     }
 
     /**

@@ -1,5 +1,6 @@
 package org.im97mori.ble.profile.rscp.peripheral;
 
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,9 @@ public class RunningSpeedAndCadenceProfileMockData extends MockData {
          */
         @Override
         @NonNull
+        @Deprecated
         public RunningSpeedAndCadenceProfileMockData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new RunningSpeedAndCadenceProfileMockData(in);
         }
 
@@ -80,10 +83,16 @@ public class RunningSpeedAndCadenceProfileMockData extends MockData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public RunningSpeedAndCadenceProfileMockData(@NonNull Parcel in) {
         super(in);
-        runningSpeedAndCadence = in.readParcelable(this.getClass().getClassLoader());
-        deviceInformation = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            runningSpeedAndCadence = in.readParcelable(this.getClass().getClassLoader(), RunningSpeedAndCadenceServiceData.class);
+            deviceInformation = in.readParcelable(this.getClass().getClassLoader(), ServiceData.class);
+        } else {
+            runningSpeedAndCadence = in.readParcelable(this.getClass().getClassLoader());
+            deviceInformation = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

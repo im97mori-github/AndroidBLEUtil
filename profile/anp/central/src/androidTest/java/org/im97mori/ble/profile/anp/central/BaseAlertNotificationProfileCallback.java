@@ -267,6 +267,11 @@ class BaseAlertNotificationProfileCallback implements AlertNotificationProfileCa
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+
+    }
+
+    @Override
     public void onSupportedNewAlertCategoryReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull SupportedNewAlertCategoryAndroid supportedNewAlertCategoryAndroid, @Nullable Bundle argument) {
 
     }

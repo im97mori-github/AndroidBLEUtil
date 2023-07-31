@@ -1,6 +1,8 @@
 package org.im97mori.ble.descriptor.u2906;
 
-import android.bluetooth.BluetoothGattDescriptor;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,10 +12,6 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
-
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
@@ -30,10 +28,7 @@ public class ValidRangeAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValidRangeAndroid result = new ValidRangeAndroid(bluetoothGattDescriptor);
+        ValidRangeAndroid result = new ValidRangeAndroid(value);
         assertArrayEquals(Arrays.copyOfRange(value, 0, 1), result.getLowerInclusiveValue());
         assertArrayEquals(Arrays.copyOfRange(value, 1, 2), result.getUpperInclusiveValue());
         assertEquals(0x01, result.getLowerInclusiveValueUint8());
@@ -50,10 +45,7 @@ public class ValidRangeAndroidTest {
         value[ 1] = (byte) 0xfe;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValidRangeAndroid result = new ValidRangeAndroid(bluetoothGattDescriptor);
+        ValidRangeAndroid result = new ValidRangeAndroid(value);
         assertArrayEquals(Arrays.copyOfRange(value, 0, 1), result.getLowerInclusiveValue());
         assertArrayEquals(Arrays.copyOfRange(value, 1, 2), result.getUpperInclusiveValue());
         assertEquals(0xff, result.getLowerInclusiveValueUint8());
@@ -72,10 +64,7 @@ public class ValidRangeAndroidTest {
         value[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValidRangeAndroid result = new ValidRangeAndroid(bluetoothGattDescriptor);
+        ValidRangeAndroid result = new ValidRangeAndroid(value);
         assertArrayEquals(Arrays.copyOfRange(value, 0, 2), result.getLowerInclusiveValue());
         assertArrayEquals(Arrays.copyOfRange(value, 2, 4), result.getUpperInclusiveValue());
         assertEquals(0x0201, result.getLowerInclusiveValueUint16());
@@ -94,10 +83,7 @@ public class ValidRangeAndroidTest {
         value[ 3] = (byte) 0xfe;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValidRangeAndroid result = new ValidRangeAndroid(bluetoothGattDescriptor);
+        ValidRangeAndroid result = new ValidRangeAndroid(value);
         assertArrayEquals(Arrays.copyOfRange(value, 0, 2), result.getLowerInclusiveValue());
         assertArrayEquals(Arrays.copyOfRange(value, 2, 4), result.getUpperInclusiveValue());
         assertEquals(0xffff, result.getLowerInclusiveValueUint16());
@@ -118,10 +104,7 @@ public class ValidRangeAndroidTest {
         value[ 5] = 0x06;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValidRangeAndroid result = new ValidRangeAndroid(bluetoothGattDescriptor);
+        ValidRangeAndroid result = new ValidRangeAndroid(value);
         assertArrayEquals(Arrays.copyOfRange(value, 0, 3), result.getLowerInclusiveValue());
         assertArrayEquals(Arrays.copyOfRange(value, 3, 6), result.getUpperInclusiveValue());
         assertEquals(0x030201, result.getLowerInclusiveValueUint24());
@@ -142,10 +125,7 @@ public class ValidRangeAndroidTest {
         value[ 5] = (byte) 0xfe;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValidRangeAndroid result = new ValidRangeAndroid(bluetoothGattDescriptor);
+        ValidRangeAndroid result = new ValidRangeAndroid(value);
         assertArrayEquals(Arrays.copyOfRange(value, 0, 3), result.getLowerInclusiveValue());
         assertArrayEquals(Arrays.copyOfRange(value, 3, 6), result.getUpperInclusiveValue());
         assertEquals(0x00ffffff, result.getLowerInclusiveValueUint24());
@@ -168,10 +148,7 @@ public class ValidRangeAndroidTest {
         value[ 7] = 0x08;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValidRangeAndroid result = new ValidRangeAndroid(bluetoothGattDescriptor);
+        ValidRangeAndroid result = new ValidRangeAndroid(value);
         assertArrayEquals(Arrays.copyOfRange(value, 0, 4), result.getLowerInclusiveValue());
         assertArrayEquals(Arrays.copyOfRange(value, 4, 8), result.getUpperInclusiveValue());
         assertEquals(0x04030201L, result.getLowerInclusiveValueUint32());
@@ -192,10 +169,7 @@ public class ValidRangeAndroidTest {
         value[ 7] = (byte) 0xfe;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValidRangeAndroid result = new ValidRangeAndroid(bluetoothGattDescriptor);
+        ValidRangeAndroid result = new ValidRangeAndroid(value);
         assertArrayEquals(Arrays.copyOfRange(value, 0, 4), result.getLowerInclusiveValue());
         assertArrayEquals(Arrays.copyOfRange(value, 4, 8), result.getUpperInclusiveValue());
         assertEquals(0xffffffffL, result.getLowerInclusiveValueUint32());
@@ -220,10 +194,7 @@ public class ValidRangeAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValidRangeAndroid result1 = new ValidRangeAndroid(bluetoothGattDescriptor);
+        ValidRangeAndroid result1 = new ValidRangeAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -241,10 +212,7 @@ public class ValidRangeAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValidRangeAndroid result1 = new ValidRangeAndroid(bluetoothGattDescriptor);
+        ValidRangeAndroid result1 = new ValidRangeAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -256,10 +224,7 @@ public class ValidRangeAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValidRangeAndroid result1 = new ValidRangeAndroid(bluetoothGattDescriptor);
+        ValidRangeAndroid result1 = new ValidRangeAndroid(value);
         ValidRangeAndroid result2 = ValidRangeAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -278,10 +243,7 @@ public class ValidRangeAndroidTest {
         value[ 7] = 0x08;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValidRangeAndroid result1 = new ValidRangeAndroid(bluetoothGattDescriptor);
+        ValidRangeAndroid result1 = new ValidRangeAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -305,10 +267,7 @@ public class ValidRangeAndroidTest {
         value[ 7] = 0x08;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValidRangeAndroid result1 = new ValidRangeAndroid(bluetoothGattDescriptor);
+        ValidRangeAndroid result1 = new ValidRangeAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -326,10 +285,7 @@ public class ValidRangeAndroidTest {
         value[ 7] = 0x08;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ValidRangeAndroid result1 = new ValidRangeAndroid(bluetoothGattDescriptor);
+        ValidRangeAndroid result1 = new ValidRangeAndroid(value);
         ValidRangeAndroid result2 = ValidRangeAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

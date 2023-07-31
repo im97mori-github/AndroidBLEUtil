@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.DescriptorUUID.VALUE_TRIGGER_SETTING_DESCRIPTOR;
+import java.util.Objects;
 
 /**
  * Value Trigger Setting (Descriptor UUID: 0x290A)
@@ -42,9 +42,7 @@ public class ValueTriggerSettingAndroid extends ValueTriggerSetting implements P
          */
         @NonNull
         public ValueTriggerSettingAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(VALUE_TRIGGER_SETTING_DESCRIPTOR, 0);
-            bluetoothGattDescriptor.setValue(values);
-            return new ValueTriggerSettingAndroid(bluetoothGattDescriptor);
+            return new ValueTriggerSettingAndroid(values);
         }
 
     };
@@ -54,8 +52,18 @@ public class ValueTriggerSettingAndroid extends ValueTriggerSetting implements P
      *
      * @param bluetoothGattDescriptor Characteristics UUID: 0x290A
      */
+    @Deprecated
     public ValueTriggerSettingAndroid(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         super(bluetoothGattDescriptor.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattDescriptor#getValue()">BluetoothGattDescriptor#getValue()</a>
+     */
+    public ValueTriggerSettingAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class ValueTriggerSettingAndroid extends ValueTriggerSetting implements P
      * @param in Parcel
      */
     private ValueTriggerSettingAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

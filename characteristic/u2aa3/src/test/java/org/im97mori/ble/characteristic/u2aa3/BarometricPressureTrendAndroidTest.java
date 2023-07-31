@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2aa3;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,13 +8,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -27,6 +25,7 @@ public class BarometricPressureTrendAndroidTest {
     private static final byte[] data_00001;
     static {
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = BarometricPressureTrend.BAROMETRIC_PRESSURE_TREND_UNKNOWN;
         data_00001 = data;
     }
@@ -109,9 +108,9 @@ public class BarometricPressureTrendAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -125,10 +124,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertEquals(BarometricPressureTrend.BAROMETRIC_PRESSURE_TREND_UNKNOWN, result1.getBarometricPressureTrend());
         assertTrue(result1.isBarometricPressureTrendUnknown());
         assertFalse(result1.isBarometricPressureTrendContinuouslyFalling());
@@ -146,10 +142,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertEquals(BarometricPressureTrend.BAROMETRIC_PRESSURE_TREND_CONTINUOUSLY_FALLING, result1.getBarometricPressureTrend());
         assertFalse(result1.isBarometricPressureTrendUnknown());
         assertTrue(result1.isBarometricPressureTrendContinuouslyFalling());
@@ -167,10 +160,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertEquals(BarometricPressureTrend.BAROMETRIC_PRESSURE_TREND_CONTINUOUSLY_RISING, result1.getBarometricPressureTrend());
         assertFalse(result1.isBarometricPressureTrendUnknown());
         assertFalse(result1.isBarometricPressureTrendContinuouslyFalling());
@@ -188,10 +178,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_constructor_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertEquals(BarometricPressureTrend.BAROMETRIC_PRESSURE_TREND_FALLING_THEN_STEADY, result1.getBarometricPressureTrend());
         assertFalse(result1.isBarometricPressureTrendUnknown());
         assertFalse(result1.isBarometricPressureTrendContinuouslyFalling());
@@ -209,10 +196,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_constructor_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertEquals(BarometricPressureTrend.BAROMETRIC_PRESSURE_TREND_RISING_THEN_STEADY, result1.getBarometricPressureTrend());
         assertFalse(result1.isBarometricPressureTrendUnknown());
         assertFalse(result1.isBarometricPressureTrendContinuouslyFalling());
@@ -230,10 +214,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_constructor_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertEquals(BarometricPressureTrend.BAROMETRIC_PRESSURE_TREND_FALLING_BEFORE_A_LESSER_RISE, result1.getBarometricPressureTrend());
         assertFalse(result1.isBarometricPressureTrendUnknown());
         assertFalse(result1.isBarometricPressureTrendContinuouslyFalling());
@@ -251,10 +232,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_constructor_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertEquals(BarometricPressureTrend.BAROMETRIC_PRESSURE_TREND_FALLING_BEFORE_A_GREATER_RISE, result1.getBarometricPressureTrend());
         assertFalse(result1.isBarometricPressureTrendUnknown());
         assertFalse(result1.isBarometricPressureTrendContinuouslyFalling());
@@ -272,10 +250,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_constructor_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertEquals(BarometricPressureTrend.BAROMETRIC_PRESSURE_TREND_RISING_BEFORE_A_GREATER_FALL, result1.getBarometricPressureTrend());
         assertFalse(result1.isBarometricPressureTrendUnknown());
         assertFalse(result1.isBarometricPressureTrendContinuouslyFalling());
@@ -293,10 +268,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_constructor_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertEquals(BarometricPressureTrend.BAROMETRIC_PRESSURE_TREND_RISING_BEFORE_A_LESSER_FALL, result1.getBarometricPressureTrend());
         assertFalse(result1.isBarometricPressureTrendUnknown());
         assertFalse(result1.isBarometricPressureTrendContinuouslyFalling());
@@ -314,10 +286,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_constructor_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertEquals(BarometricPressureTrend.BAROMETRIC_PRESSURE_TREND_STEADY, result1.getBarometricPressureTrend());
         assertFalse(result1.isBarometricPressureTrendUnknown());
         assertFalse(result1.isBarometricPressureTrendContinuouslyFalling());
@@ -335,10 +304,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -350,10 +316,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -365,10 +328,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -380,10 +340,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_1_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -395,10 +352,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_1_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -410,10 +364,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_1_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -425,10 +376,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_1_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -440,10 +388,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_1_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -455,10 +400,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_1_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -470,10 +412,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_1_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -493,10 +432,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -504,10 +440,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -515,10 +448,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -526,10 +456,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_2_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -537,10 +464,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_2_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -548,10 +472,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_2_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -559,10 +480,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_2_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -570,10 +488,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_2_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -581,10 +496,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_2_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -592,10 +504,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_2_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -603,10 +512,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         BarometricPressureTrendAndroid result2 = BarometricPressureTrendAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -615,10 +521,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         BarometricPressureTrendAndroid result2 = BarometricPressureTrendAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -627,10 +530,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         BarometricPressureTrendAndroid result2 = BarometricPressureTrendAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -639,10 +539,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_3_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         BarometricPressureTrendAndroid result2 = BarometricPressureTrendAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -651,10 +548,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_3_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         BarometricPressureTrendAndroid result2 = BarometricPressureTrendAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -663,10 +557,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_3_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         BarometricPressureTrendAndroid result2 = BarometricPressureTrendAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -675,10 +566,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_3_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         BarometricPressureTrendAndroid result2 = BarometricPressureTrendAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -687,10 +575,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_3_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         BarometricPressureTrendAndroid result2 = BarometricPressureTrendAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -699,10 +584,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_3_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         BarometricPressureTrendAndroid result2 = BarometricPressureTrendAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -711,10 +593,7 @@ public class BarometricPressureTrendAndroidTest {
     public void test_parcelable_3_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+        BarometricPressureTrendAndroid result1 = new BarometricPressureTrendAndroid(data);
         BarometricPressureTrendAndroid result2 = BarometricPressureTrendAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.PERCENTAGE_8_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Percentage 8 (Characteristics UUID: 0x2B04)
@@ -44,9 +44,7 @@ public class Percentage8Android extends Percentage8 implements Parcelable {
          */
         @NonNull
         public Percentage8Android createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PERCENTAGE_8_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new Percentage8Android(bluetoothGattCharacteristic);
+            return new Percentage8Android(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class Percentage8Android extends Percentage8 implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B04
      */
+    @Deprecated
     public Percentage8Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public Percentage8Android(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class Percentage8Android extends Percentage8 implements Parcelable {
      * @param in Parcel
      */
     private Percentage8Android(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

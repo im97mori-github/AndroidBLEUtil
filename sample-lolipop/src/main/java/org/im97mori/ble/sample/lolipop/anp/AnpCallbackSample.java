@@ -383,6 +383,11 @@ public class AnpCallbackSample extends AlertNotificationProfileMockCallback impl
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }

@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a6b;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,13 +10,12 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue */
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -35,10 +33,7 @@ public class LNControlPointAndroidTest {
         data[ 3] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 4), result1.getParameterValue());
     }
@@ -52,10 +47,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
         assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentInstantaneousSpeedLeaveAsDefault());
@@ -71,10 +63,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
         assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentInstantaneousSpeedLeaveAsDefault());
@@ -90,10 +79,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
         assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentTotalDistanceLeaveAsDefault());
@@ -109,10 +95,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
         assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentTotalDistanceLeaveAsDefault());
@@ -127,10 +110,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_LOCATION_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
         assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentLocationLeaveAsDefault());
@@ -146,10 +126,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_LOCATION_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
         assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentLocationLeaveAsDefault());
@@ -165,10 +142,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ELEVATION_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
         assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentElevationLeaveAsDefault());
@@ -184,10 +158,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ELEVATION_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
         assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentElevationLeaveAsDefault());
@@ -203,10 +174,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_HEADING_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
         assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentHeadingLeaveAsDefault());
@@ -222,10 +190,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_HEADING_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
         assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentHeadingLeaveAsDefault());
@@ -241,10 +206,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ROLLING_TIME_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
         assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentRollingTimeLeaveAsDefault());
@@ -260,10 +222,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ROLLING_TIME_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
         assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentRollingTimeLeaveAsDefault());
@@ -279,10 +238,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_UTC_TIME_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
         assertTrue(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentUtcTimeLeaveAsDefault());
@@ -298,10 +254,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_UTC_TIME_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
         assertFalse(result1.isParameterValueMaskLocationAndSpeedCharacteristicContentUtcTimeLeaveAsDefault());
@@ -316,10 +269,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_NAVIGATION_CONTROL, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 2), result1.getParameterValue());
     }
@@ -332,10 +282,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_NAVIGATION_CONTROL, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 2), result1.getParameterValue());
     }
@@ -348,10 +295,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_NAVIGATION_CONTROL, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 2), result1.getParameterValue());
     }
@@ -364,10 +308,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_NAVIGATION_CONTROL, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 2), result1.getParameterValue());
     }
@@ -380,10 +321,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_NAVIGATION_CONTROL, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 2), result1.getParameterValue());
     }
@@ -396,10 +334,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_NAVIGATION_CONTROL, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 2), result1.getParameterValue());
     }
@@ -413,10 +348,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_REQUEST_NUMBER_OF_ROUTES, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
     }
@@ -430,10 +362,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_REQUEST_NAME_OF_ROUTE, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
     }
@@ -447,10 +376,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_SELECT_ROUTE, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getParameterValue());
     }
@@ -463,10 +389,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_SET_FIX_RATE, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 2), result1.getParameterValue());
     }
@@ -481,10 +404,7 @@ public class LNControlPointAndroidTest {
         data[ 3] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_SET_ELEVATION, result1.getOpCodes());
         assertArrayEquals(Arrays.copyOfRange(data, 1, 4), result1.getParameterValue());
     }
@@ -498,10 +418,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_SUCCESS, result1.getResponseValue());
@@ -516,10 +433,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, result1.getResponseValue());
@@ -534,10 +448,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER, result1.getResponseValue());
@@ -552,10 +463,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SET_CUMULATIVE_VALUE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED, result1.getResponseValue());
@@ -570,10 +478,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_SUCCESS, result1.getResponseValue());
@@ -588,10 +493,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, result1.getResponseValue());
@@ -606,10 +508,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER, result1.getResponseValue());
@@ -624,10 +523,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED, result1.getResponseValue());
@@ -642,10 +538,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_NAVIGATION_CONTROL, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_SUCCESS, result1.getResponseValue());
@@ -660,10 +553,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_NAVIGATION_CONTROL, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, result1.getResponseValue());
@@ -678,10 +568,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_NAVIGATION_CONTROL, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER, result1.getResponseValue());
@@ -698,10 +585,7 @@ public class LNControlPointAndroidTest {
         data[ 4] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_REQUEST_NUMBER_OF_ROUTES, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_SUCCESS, result1.getResponseValue());
@@ -717,10 +601,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_REQUEST_NUMBER_OF_ROUTES, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, result1.getResponseValue());
@@ -735,10 +616,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_REQUEST_NUMBER_OF_ROUTES, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER, result1.getResponseValue());
@@ -753,10 +631,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_REQUEST_NUMBER_OF_ROUTES, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED, result1.getResponseValue());
@@ -772,10 +647,7 @@ public class LNControlPointAndroidTest {
         data[ 3] = 'a';
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_REQUEST_NAME_OF_ROUTE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_SUCCESS, result1.getResponseValue());
@@ -791,10 +663,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_REQUEST_NAME_OF_ROUTE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, result1.getResponseValue());
@@ -809,10 +678,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_REQUEST_NAME_OF_ROUTE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER, result1.getResponseValue());
@@ -827,10 +693,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_REQUEST_NAME_OF_ROUTE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED, result1.getResponseValue());
@@ -845,10 +708,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SELECT_ROUTE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_SUCCESS, result1.getResponseValue());
@@ -863,10 +723,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SELECT_ROUTE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, result1.getResponseValue());
@@ -881,10 +738,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SELECT_ROUTE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER, result1.getResponseValue());
@@ -899,10 +753,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SELECT_ROUTE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED, result1.getResponseValue());
@@ -917,10 +768,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SET_FIX_RATE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_SUCCESS, result1.getResponseValue());
@@ -935,10 +783,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SET_FIX_RATE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, result1.getResponseValue());
@@ -953,10 +798,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SET_FIX_RATE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER, result1.getResponseValue());
@@ -971,10 +813,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SET_FIX_RATE, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED, result1.getResponseValue());
@@ -989,10 +828,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SET_ELEVATION, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_SUCCESS, result1.getResponseValue());
@@ -1007,10 +843,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SET_ELEVATION, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, result1.getResponseValue());
@@ -1025,10 +858,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SET_ELEVATION, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER, result1.getResponseValue());
@@ -1043,10 +873,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertEquals(LNControlPoint.OP_CODES_RESPONSE_CODE, result1.getOpCodes());
         assertEquals(LNControlPoint.OP_CODES_SET_ELEVATION, result1.getRequestOpCode());
         assertEquals(LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED, result1.getResponseValue());
@@ -1078,10 +905,7 @@ public class LNControlPointAndroidTest {
         data[ 3] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertTrue(result1.isOpCodesSetCumulativeValue(result1.getOpCodes()));
         assertFalse(result1.isOpCodesMaskLocationAndSpeedCharacteristicContent(result1.getOpCodes()));
         assertFalse(result1.isOpCodesNavigationControl(result1.getOpCodes()));
@@ -1102,10 +926,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertFalse(result1.isOpCodesSetCumulativeValue(result1.getOpCodes()));
         assertTrue(result1.isOpCodesMaskLocationAndSpeedCharacteristicContent(result1.getOpCodes()));
         assertFalse(result1.isOpCodesNavigationControl(result1.getOpCodes()));
@@ -1125,10 +946,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertFalse(result1.isOpCodesSetCumulativeValue(result1.getOpCodes()));
         assertFalse(result1.isOpCodesMaskLocationAndSpeedCharacteristicContent(result1.getOpCodes()));
         assertTrue(result1.isOpCodesNavigationControl(result1.getOpCodes()));
@@ -1149,10 +967,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertFalse(result1.isOpCodesSetCumulativeValue(result1.getOpCodes()));
         assertFalse(result1.isOpCodesMaskLocationAndSpeedCharacteristicContent(result1.getOpCodes()));
         assertFalse(result1.isOpCodesNavigationControl(result1.getOpCodes()));
@@ -1173,10 +988,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertFalse(result1.isOpCodesSetCumulativeValue(result1.getOpCodes()));
         assertFalse(result1.isOpCodesMaskLocationAndSpeedCharacteristicContent(result1.getOpCodes()));
         assertFalse(result1.isOpCodesNavigationControl(result1.getOpCodes()));
@@ -1197,10 +1009,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertFalse(result1.isOpCodesSetCumulativeValue(result1.getOpCodes()));
         assertFalse(result1.isOpCodesMaskLocationAndSpeedCharacteristicContent(result1.getOpCodes()));
         assertFalse(result1.isOpCodesNavigationControl(result1.getOpCodes()));
@@ -1220,10 +1029,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertFalse(result1.isOpCodesSetCumulativeValue(result1.getOpCodes()));
         assertFalse(result1.isOpCodesMaskLocationAndSpeedCharacteristicContent(result1.getOpCodes()));
         assertFalse(result1.isOpCodesNavigationControl(result1.getOpCodes()));
@@ -1245,10 +1051,7 @@ public class LNControlPointAndroidTest {
         data[ 3] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertFalse(result1.isOpCodesSetCumulativeValue(result1.getOpCodes()));
         assertFalse(result1.isOpCodesMaskLocationAndSpeedCharacteristicContent(result1.getOpCodes()));
         assertFalse(result1.isOpCodesNavigationControl(result1.getOpCodes()));
@@ -1269,10 +1072,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertFalse(result1.isOpCodesSetCumulativeValue(result1.getOpCodes()));
         assertFalse(result1.isOpCodesMaskLocationAndSpeedCharacteristicContent(result1.getOpCodes()));
         assertFalse(result1.isOpCodesNavigationControl(result1.getOpCodes()));
@@ -1293,10 +1093,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertTrue(result1.isResponseValueSuccess(result1.getResponseValue()));
         assertFalse(result1.isResponseValueOpCodeNotSupported(result1.getResponseValue()));
         assertFalse(result1.isResponseValueInvalidParameter(result1.getResponseValue()));
@@ -1312,10 +1109,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertFalse(result1.isResponseValueSuccess(result1.getResponseValue()));
         assertTrue(result1.isResponseValueOpCodeNotSupported(result1.getResponseValue()));
         assertFalse(result1.isResponseValueInvalidParameter(result1.getResponseValue()));
@@ -1331,10 +1125,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertFalse(result1.isResponseValueSuccess(result1.getResponseValue()));
         assertFalse(result1.isResponseValueOpCodeNotSupported(result1.getResponseValue()));
         assertTrue(result1.isResponseValueInvalidParameter(result1.getResponseValue()));
@@ -1350,10 +1141,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertFalse(result1.isResponseValueSuccess(result1.getResponseValue()));
         assertFalse(result1.isResponseValueOpCodeNotSupported(result1.getResponseValue()));
         assertFalse(result1.isResponseValueInvalidParameter(result1.getResponseValue()));
@@ -1370,10 +1158,7 @@ public class LNControlPointAndroidTest {
         data[ 3] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1395,10 +1180,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1420,10 +1202,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1445,10 +1224,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1470,10 +1246,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1495,10 +1268,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_LOCATION_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1520,10 +1290,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_LOCATION_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1545,10 +1312,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ELEVATION_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1570,10 +1334,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ELEVATION_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1595,10 +1356,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_HEADING_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1620,10 +1378,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_HEADING_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1645,10 +1400,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ROLLING_TIME_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1670,10 +1422,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ROLLING_TIME_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1695,10 +1444,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_UTC_TIME_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1720,10 +1466,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_UTC_TIME_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1744,10 +1487,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1768,10 +1508,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1792,10 +1529,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1816,10 +1550,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1840,10 +1571,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1864,10 +1592,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1889,10 +1614,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1914,10 +1636,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1939,10 +1658,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1963,10 +1679,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1989,10 +1702,7 @@ public class LNControlPointAndroidTest {
         data[ 3] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2014,10 +1724,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2039,10 +1746,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2064,10 +1768,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2089,10 +1790,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2114,10 +1812,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2139,10 +1834,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2164,10 +1856,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2189,10 +1878,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2214,10 +1900,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2239,10 +1922,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2264,10 +1944,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2291,10 +1968,7 @@ public class LNControlPointAndroidTest {
         data[ 4] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2316,10 +1990,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2341,10 +2012,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2366,10 +2034,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2392,10 +2057,7 @@ public class LNControlPointAndroidTest {
         data[ 3] = 'a';
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2417,10 +2079,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2442,10 +2101,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2467,10 +2123,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2492,10 +2145,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2517,10 +2167,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2542,10 +2189,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2567,10 +2211,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2592,10 +2233,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2617,10 +2255,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2642,10 +2277,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2667,10 +2299,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2692,10 +2321,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2717,10 +2343,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2742,10 +2365,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2767,10 +2387,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2793,10 +2410,7 @@ public class LNControlPointAndroidTest {
         data[ 3] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2809,10 +2423,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2825,10 +2436,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2841,10 +2449,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2857,10 +2462,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2873,10 +2475,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_LOCATION_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2889,10 +2488,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_LOCATION_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2905,10 +2501,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ELEVATION_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2921,10 +2514,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ELEVATION_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2937,10 +2527,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_HEADING_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2953,10 +2540,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_HEADING_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2969,10 +2553,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ROLLING_TIME_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2985,10 +2566,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ROLLING_TIME_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3001,10 +2579,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_UTC_TIME_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3017,10 +2592,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_UTC_TIME_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3032,10 +2604,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3047,10 +2616,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3062,10 +2628,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3077,10 +2640,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3092,10 +2652,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3107,10 +2664,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3123,10 +2677,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3139,10 +2690,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3155,10 +2703,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3170,10 +2715,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3187,10 +2729,7 @@ public class LNControlPointAndroidTest {
         data[ 3] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3203,10 +2742,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3219,10 +2755,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3235,10 +2768,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3251,10 +2781,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3267,10 +2794,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3283,10 +2807,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3299,10 +2820,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3315,10 +2833,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3331,10 +2846,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3347,10 +2859,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3363,10 +2872,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3381,10 +2887,7 @@ public class LNControlPointAndroidTest {
         data[ 4] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3397,10 +2900,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3413,10 +2913,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3429,10 +2926,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3446,10 +2940,7 @@ public class LNControlPointAndroidTest {
         data[ 3] = 'a';
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3462,10 +2953,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3478,10 +2966,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3494,10 +2979,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3510,10 +2992,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3526,10 +3005,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3542,10 +3018,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3558,10 +3031,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3574,10 +3044,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3590,10 +3057,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3606,10 +3070,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3622,10 +3083,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3638,10 +3096,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3654,10 +3109,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3670,10 +3122,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3686,10 +3135,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3703,10 +3149,7 @@ public class LNControlPointAndroidTest {
         data[ 3] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3720,10 +3163,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3737,10 +3177,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_INSTANCE_SPEED_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3754,10 +3191,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3771,10 +3205,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_CONTENT_TOTAL_DISTANCE_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3788,10 +3219,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_LOCATION_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3805,10 +3233,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_LOCATION_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3822,10 +3247,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ELEVATION_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3839,10 +3261,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ELEVATION_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3856,10 +3275,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_HEADING_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3873,10 +3289,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_HEADING_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3890,10 +3303,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ROLLING_TIME_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3907,10 +3317,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_ROLLING_TIME_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3924,10 +3331,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_UTC_TIME_LEAVE_AS_DEFAULT >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3941,10 +3345,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.PARAMETER_VALUE_MASK_LOCATION_AND_SPEED_CHARACTERISTIC_UTC_TIME_TURN_OFF >> 8;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3957,10 +3358,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3973,10 +3371,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3989,10 +3384,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4005,10 +3397,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4021,10 +3410,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4037,10 +3423,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = LNControlPoint.PARAMETER_VALUE_NAVIGATION_CONTROL_05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4054,10 +3437,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4071,10 +3451,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4088,10 +3465,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4104,10 +3478,7 @@ public class LNControlPointAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4122,10 +3493,7 @@ public class LNControlPointAndroidTest {
         data[ 3] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4139,10 +3507,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4156,10 +3521,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4173,10 +3535,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4190,10 +3549,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4207,10 +3563,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4224,10 +3577,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4241,10 +3591,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4258,10 +3605,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4275,10 +3619,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4292,10 +3633,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4309,10 +3647,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4328,10 +3663,7 @@ public class LNControlPointAndroidTest {
         data[ 4] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4345,10 +3677,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4362,10 +3691,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4379,10 +3705,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4397,10 +3720,7 @@ public class LNControlPointAndroidTest {
         data[ 3] = 'a';
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4414,10 +3734,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4431,10 +3748,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4448,10 +3762,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4465,10 +3776,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4482,10 +3790,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4499,10 +3804,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4516,10 +3818,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4533,10 +3832,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4550,10 +3846,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4567,10 +3860,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4584,10 +3874,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4601,10 +3888,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4618,10 +3902,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4635,10 +3916,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4652,10 +3930,7 @@ public class LNControlPointAndroidTest {
         data[ 2] = LNControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNControlPointAndroid result1 = new LNControlPointAndroid(bluetoothGattCharacteristic);
+        LNControlPointAndroid result1 = new LNControlPointAndroid(data);
         LNControlPointAndroid result2 = LNControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

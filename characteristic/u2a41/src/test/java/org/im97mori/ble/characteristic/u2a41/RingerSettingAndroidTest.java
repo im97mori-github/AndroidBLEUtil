@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a41;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,13 +8,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -27,13 +25,11 @@ public class RingerSettingAndroidTest {
     public void test_constructor001() {
         //@formatter:off
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = RingerSetting.RINGER_SETTING_SILENT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RingerSettingAndroid result1 = new RingerSettingAndroid(bluetoothGattCharacteristic);
+        RingerSettingAndroid result1 = new RingerSettingAndroid(data);
         assertEquals(RingerSetting.RINGER_SETTING_SILENT, result1.getRingerSetting());
         assertTrue(result1.isRingerSettingSilent());
         assertFalse(result1.isRingerSettingNormal());
@@ -46,10 +42,7 @@ public class RingerSettingAndroidTest {
         data[ 0] = RingerSetting.RINGER_SETTING_NORMAL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RingerSettingAndroid result1 = new RingerSettingAndroid(bluetoothGattCharacteristic);
+        RingerSettingAndroid result1 = new RingerSettingAndroid(data);
         assertEquals(RingerSetting.RINGER_SETTING_NORMAL, result1.getRingerSetting());
         assertFalse(result1.isRingerSettingSilent());
         assertTrue(result1.isRingerSettingNormal());
@@ -70,10 +63,7 @@ public class RingerSettingAndroidTest {
         data[ 0] = RingerSetting.RINGER_SETTING_SILENT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RingerSettingAndroid result1 = new RingerSettingAndroid(bluetoothGattCharacteristic);
+        RingerSettingAndroid result1 = new RingerSettingAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -88,10 +78,7 @@ public class RingerSettingAndroidTest {
         data[ 0] = RingerSetting.RINGER_SETTING_SILENT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RingerSettingAndroid result1 = new RingerSettingAndroid(bluetoothGattCharacteristic);
+        RingerSettingAndroid result1 = new RingerSettingAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -102,10 +89,7 @@ public class RingerSettingAndroidTest {
         data[ 0] = RingerSetting.RINGER_SETTING_SILENT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RingerSettingAndroid result1 = new RingerSettingAndroid(bluetoothGattCharacteristic);
+        RingerSettingAndroid result1 = new RingerSettingAndroid(data);
         RingerSettingAndroid result2 = RingerSettingAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

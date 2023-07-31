@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BROADCAST_RECEIVE_STATE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Broadcast Receive State (Characteristics UUID: 0x2BC8)
@@ -45,9 +45,7 @@ public class BroadcastReceiveStateAndroid extends BroadcastReceiveState implemen
          */
         @NonNull
         public BroadcastReceiveStateAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BROADCAST_RECEIVE_STATE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BroadcastReceiveStateAndroid(bluetoothGattCharacteristic);
+            return new BroadcastReceiveStateAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BroadcastReceiveStateAndroid extends BroadcastReceiveState implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BC8
      */
+    @Deprecated
     public BroadcastReceiveStateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BroadcastReceiveStateAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class BroadcastReceiveStateAndroid extends BroadcastReceiveState implemen
      * @param in Parcel
      */
     private BroadcastReceiveStateAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CROSS_TRAINER_DATA_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Cross Trainer Data packet (Characteristics UUID: 0x2ACE)
@@ -44,9 +44,7 @@ public class CrossTrainerDataPacketAndroid extends CrossTrainerDataPacket implem
          */
         @NonNull
         public CrossTrainerDataPacketAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CROSS_TRAINER_DATA_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+            return new CrossTrainerDataPacketAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class CrossTrainerDataPacketAndroid extends CrossTrainerDataPacket implem
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2ACE
      */
+    @Deprecated
     public CrossTrainerDataPacketAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public CrossTrainerDataPacketAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -95,8 +103,7 @@ public class CrossTrainerDataPacketAndroid extends CrossTrainerDataPacket implem
      * @param in Parcel
      */
     private CrossTrainerDataPacketAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

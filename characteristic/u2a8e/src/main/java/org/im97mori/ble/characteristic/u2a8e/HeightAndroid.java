@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.HEIGHT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Height (Characteristics UUID: 0x2A8E)
@@ -44,9 +44,7 @@ public class HeightAndroid extends Height implements Parcelable {
          */
         @NonNull
         public HeightAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(HEIGHT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new HeightAndroid(bluetoothGattCharacteristic);
+            return new HeightAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class HeightAndroid extends Height implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A8E
      */
+    @Deprecated
     public HeightAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public HeightAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class HeightAndroid extends Height implements Parcelable {
      * @param in Parcel
      */
     private HeightAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

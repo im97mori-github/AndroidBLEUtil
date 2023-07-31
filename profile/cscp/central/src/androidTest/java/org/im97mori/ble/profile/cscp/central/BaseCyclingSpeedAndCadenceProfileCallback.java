@@ -275,6 +275,11 @@ public class BaseCyclingSpeedAndCadenceProfileCallback implements CyclingSpeedAn
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+
+    }
+
+    @Override
     public void onCSCFeatureReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull CSCFeatureAndroid cscFeatureAndroid, @Nullable Bundle argument) {
 
     }

@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a29;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -24,10 +22,7 @@ public class ManufacturerNameStringAndroidTest {
     public void test_constructor001() {
         String manufactureName = "OMRON";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(manufactureName.getBytes());
-
-        ManufacturerNameStringAndroid result1 = new ManufacturerNameStringAndroid(bluetoothGattCharacteristic);
+        ManufacturerNameStringAndroid result1 = new ManufacturerNameStringAndroid(manufactureName.getBytes());
         assertEquals(manufactureName, result1.getManufacturerName());
     }
 
@@ -43,10 +38,7 @@ public class ManufacturerNameStringAndroidTest {
     public void test_parcelable001() {
         String manufactureName = "OMRON";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(manufactureName.getBytes());
-
-        ManufacturerNameStringAndroid result1 = new ManufacturerNameStringAndroid(bluetoothGattCharacteristic);
+        ManufacturerNameStringAndroid result1 = new ManufacturerNameStringAndroid(manufactureName.getBytes());
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -59,10 +51,7 @@ public class ManufacturerNameStringAndroidTest {
     public void test_parcelable002() {
         String manufactureName = "OMRON";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(manufactureName.getBytes());
-
-        ManufacturerNameStringAndroid result1 = new ManufacturerNameStringAndroid(bluetoothGattCharacteristic);
+        ManufacturerNameStringAndroid result1 = new ManufacturerNameStringAndroid(manufactureName.getBytes());
         byte[] resultData = result1.getBytes();
         assertArrayEquals(manufactureName.getBytes(), resultData);
     }
@@ -71,10 +60,7 @@ public class ManufacturerNameStringAndroidTest {
     public void test_parcelable003() {
         String manufactureName = "OMRON";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(manufactureName.getBytes());
-
-        ManufacturerNameStringAndroid result1 = new ManufacturerNameStringAndroid(bluetoothGattCharacteristic);
+        ManufacturerNameStringAndroid result1 = new ManufacturerNameStringAndroid(manufactureName.getBytes());
         ManufacturerNameStringAndroid result2 = ManufacturerNameStringAndroid.CREATOR.createFromByteArray(manufactureName.getBytes());
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

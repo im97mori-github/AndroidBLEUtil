@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_SPEED_RANGE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Supported Speed Range (Characteristics UUID: 0x2AD4)
@@ -44,9 +44,7 @@ public class SupportedSpeedRangeAndroid extends SupportedSpeedRange implements P
          */
         @NonNull
         public SupportedSpeedRangeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SUPPORTED_SPEED_RANGE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new SupportedSpeedRangeAndroid(bluetoothGattCharacteristic);
+            return new SupportedSpeedRangeAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class SupportedSpeedRangeAndroid extends SupportedSpeedRange implements P
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AD4
      */
+    @Deprecated
     public SupportedSpeedRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public SupportedSpeedRangeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class SupportedSpeedRangeAndroid extends SupportedSpeedRange implements P
      * @param in Parcel
      */
     private SupportedSpeedRangeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

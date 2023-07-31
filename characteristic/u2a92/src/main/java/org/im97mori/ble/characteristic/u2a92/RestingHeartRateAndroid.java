@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.RESTING_HEART_RATE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Resting Heart Rate (Characteristics UUID: 0x2A92)
@@ -44,9 +44,7 @@ public class RestingHeartRateAndroid extends RestingHeartRate implements Parcela
          */
         @NonNull
         public RestingHeartRateAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RESTING_HEART_RATE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new RestingHeartRateAndroid(bluetoothGattCharacteristic);
+            return new RestingHeartRateAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class RestingHeartRateAndroid extends RestingHeartRate implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A92
      */
+    @Deprecated
     public RestingHeartRateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public RestingHeartRateAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class RestingHeartRateAndroid extends RestingHeartRate implements Parcela
      * @param in Parcel
      */
     private RestingHeartRateAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

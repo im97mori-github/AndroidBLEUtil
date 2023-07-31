@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BEARER_SIGNAL_STRENGTH_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Bearer Signal Strength (Characteristics UUID: 0x2BB7)
@@ -45,9 +45,7 @@ public class BearerSignalStrengthAndroid extends BearerSignalStrength implements
          */
         @NonNull
         public BearerSignalStrengthAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BEARER_SIGNAL_STRENGTH_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BearerSignalStrengthAndroid(bluetoothGattCharacteristic);
+            return new BearerSignalStrengthAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BearerSignalStrengthAndroid extends BearerSignalStrength implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BB7
      */
+    @Deprecated
     public BearerSignalStrengthAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BearerSignalStrengthAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class BearerSignalStrengthAndroid extends BearerSignalStrength implements
      * @param in Parcel
      */
     private BearerSignalStrengthAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

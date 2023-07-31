@@ -48,10 +48,16 @@ public class BondStateReceiver extends BroadcastReceiver {
      * {@inheritDoc}
      */
     @Override
+    @Deprecated
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
         if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
-            BluetoothDevice bluetoothDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+            BluetoothDevice bluetoothDevice;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                bluetoothDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE, BluetoothDevice.class);
+            } else {
+                bluetoothDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+            }
             if (mTargetBluetoothDevice.equals(bluetoothDevice)) {
                 int state = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, BluetoothDevice.BOND_NONE);
                 if (BluetoothDevice.BOND_NONE == state) {

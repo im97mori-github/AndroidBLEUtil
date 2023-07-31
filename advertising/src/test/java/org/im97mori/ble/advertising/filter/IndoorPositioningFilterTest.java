@@ -21,7 +21,6 @@ import java.util.Arrays;
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-@SuppressWarnings("ConstantConditions")
 public class IndoorPositioningFilterTest {
 
     @Test
@@ -75,6 +74,7 @@ public class IndoorPositioningFilterTest {
     }
 
 
+    /** @noinspection DataFlowIssue*/
     @Test
     public void test_101() {
         //@formatter:off

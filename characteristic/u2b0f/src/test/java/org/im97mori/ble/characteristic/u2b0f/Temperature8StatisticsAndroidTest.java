@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b0f;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -34,10 +32,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result = new Temperature8StatisticsAndroid(data);
         assertEquals(BLEUtils.createSInt8(data, 0), result.getAverage());
         assertEquals(BLEUtils.createSInt8(data, 1), result.getStandardDeviationValue());
         assertEquals(BLEUtils.createSInt8(data, 2), result.getMinimumValue());
@@ -56,10 +51,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result = new Temperature8StatisticsAndroid(data);
         assertEquals(BLEUtils.createSInt8(data, 0), result.getAverage());
         assertEquals(BLEUtils.createSInt8(data, 1), result.getStandardDeviationValue());
         assertEquals(BLEUtils.createSInt8(data, 2), result.getMinimumValue());
@@ -78,10 +70,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result = new Temperature8StatisticsAndroid(data);
         assertEquals(BLEUtils.createSInt8(data, 0), result.getAverage());
         assertEquals(BLEUtils.createSInt8(data, 1), result.getStandardDeviationValue());
         assertEquals(BLEUtils.createSInt8(data, 2), result.getMinimumValue());
@@ -100,10 +89,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = (byte) 253;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result = new Temperature8StatisticsAndroid(data);
         assertEquals(BLEUtils.createSInt8(data, 0), result.getAverage());
         assertEquals(BLEUtils.createSInt8(data, 1), result.getStandardDeviationValue());
         assertEquals(BLEUtils.createSInt8(data, 2), result.getMinimumValue());
@@ -122,10 +108,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result = new Temperature8StatisticsAndroid(data);
         assertEquals(BLEUtils.createSInt8(data, 0), result.getAverage());
         assertEquals(BLEUtils.createSInt8(data, 1), result.getStandardDeviationValue());
         assertEquals(BLEUtils.createSInt8(data, 2), result.getMinimumValue());
@@ -224,10 +207,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -251,10 +231,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -278,10 +255,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -305,10 +279,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = (byte) 253;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -332,10 +303,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -359,10 +327,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -377,10 +342,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -395,10 +357,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -413,10 +372,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = (byte) 253;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -431,10 +387,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -449,10 +402,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         Temperature8StatisticsAndroid result2 = Temperature8StatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -468,10 +418,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         Temperature8StatisticsAndroid result2 = Temperature8StatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -487,10 +434,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         Temperature8StatisticsAndroid result2 = Temperature8StatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -506,10 +450,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = (byte) 253;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         Temperature8StatisticsAndroid result2 = Temperature8StatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -525,10 +466,7 @@ public class Temperature8StatisticsAndroidTest {
         data[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(bluetoothGattCharacteristic);
+        Temperature8StatisticsAndroid result1 = new Temperature8StatisticsAndroid(data);
         Temperature8StatisticsAndroid result2 = Temperature8StatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

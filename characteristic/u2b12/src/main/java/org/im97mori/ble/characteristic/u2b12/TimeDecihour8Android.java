@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_DECIHOUR_8_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Time Decihour 8 (Characteristics UUID: 0x2B12)
@@ -44,9 +44,7 @@ public class TimeDecihour8Android extends TimeDecihour8 implements Parcelable {
          */
         @NonNull
         public TimeDecihour8Android createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TIME_DECIHOUR_8_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TimeDecihour8Android(bluetoothGattCharacteristic);
+            return new TimeDecihour8Android(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class TimeDecihour8Android extends TimeDecihour8 implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B12
      */
+    @Deprecated
     public TimeDecihour8Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TimeDecihour8Android(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class TimeDecihour8Android extends TimeDecihour8 implements Parcelable {
      * @param in Parcel
      */
     private TimeDecihour8Android(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

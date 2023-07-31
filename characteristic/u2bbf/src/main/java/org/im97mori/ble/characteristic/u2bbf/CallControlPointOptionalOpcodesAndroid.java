@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CALL_CONTROL_POINT_OPTIONAL_OPCODES_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Call Control Point Optional Opcodes (Characteristics UUID: 0x2BBF)
@@ -45,9 +45,7 @@ public class CallControlPointOptionalOpcodesAndroid extends CallControlPointOpti
          */
         @NonNull
         public CallControlPointOptionalOpcodesAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CALL_CONTROL_POINT_OPTIONAL_OPCODES_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new CallControlPointOptionalOpcodesAndroid(bluetoothGattCharacteristic);
+            return new CallControlPointOptionalOpcodesAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class CallControlPointOptionalOpcodesAndroid extends CallControlPointOpti
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BBF
      */
+    @Deprecated
     public CallControlPointOptionalOpcodesAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public CallControlPointOptionalOpcodesAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class CallControlPointOptionalOpcodesAndroid extends CallControlPointOpti
      * @param in Parcel
      */
     private CallControlPointOptionalOpcodesAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

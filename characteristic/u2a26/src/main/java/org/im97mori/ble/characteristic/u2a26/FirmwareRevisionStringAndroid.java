@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.FIRMWARE_REVISION_STRING_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Firmware Revision String (Characteristics UUID: 0x2A26)
@@ -44,9 +44,7 @@ public class FirmwareRevisionStringAndroid extends FirmwareRevisionString implem
          */
         @NonNull
         public FirmwareRevisionStringAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(FIRMWARE_REVISION_STRING_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new FirmwareRevisionStringAndroid(bluetoothGattCharacteristic);
+            return new FirmwareRevisionStringAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class FirmwareRevisionStringAndroid extends FirmwareRevisionString implem
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A26
      */
+    @Deprecated
     public FirmwareRevisionStringAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public FirmwareRevisionStringAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class FirmwareRevisionStringAndroid extends FirmwareRevisionString implem
      * @param in Parcel
      */
     private FirmwareRevisionStringAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

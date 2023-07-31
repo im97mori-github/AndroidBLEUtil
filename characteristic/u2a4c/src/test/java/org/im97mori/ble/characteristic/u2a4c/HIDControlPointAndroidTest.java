@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a4c;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,13 +8,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -27,6 +25,7 @@ public class HIDControlPointAndroidTest {
     private static final byte[] data_00001;
     static {
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = HIDControlPoint.HID_CONTROL_POINT_COMMAND_SUSPEND;
         data_00001 = data;
     }
@@ -53,9 +52,9 @@ public class HIDControlPointAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -69,10 +68,7 @@ public class HIDControlPointAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDControlPointAndroid result1 = new HIDControlPointAndroid(bluetoothGattCharacteristic);
+        HIDControlPointAndroid result1 = new HIDControlPointAndroid(data);
         assertEquals(HIDControlPoint.HID_CONTROL_POINT_COMMAND_SUSPEND, result1.getHidControlPointCommand());
         assertTrue(result1.isHidControlPointCommandSuspend());
         assertFalse(result1.isHidControlPointCommandExitSuspend());
@@ -82,10 +78,7 @@ public class HIDControlPointAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDControlPointAndroid result1 = new HIDControlPointAndroid(bluetoothGattCharacteristic);
+        HIDControlPointAndroid result1 = new HIDControlPointAndroid(data);
         assertEquals(HIDControlPoint.HID_CONTROL_POINT_COMMAND_EXIT_SUSPEND, result1.getHidControlPointCommand());
         assertFalse(result1.isHidControlPointCommandSuspend());
         assertTrue(result1.isHidControlPointCommandExitSuspend());
@@ -103,10 +96,7 @@ public class HIDControlPointAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDControlPointAndroid result1 = new HIDControlPointAndroid(bluetoothGattCharacteristic);
+        HIDControlPointAndroid result1 = new HIDControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -118,10 +108,7 @@ public class HIDControlPointAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDControlPointAndroid result1 = new HIDControlPointAndroid(bluetoothGattCharacteristic);
+        HIDControlPointAndroid result1 = new HIDControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -133,10 +120,7 @@ public class HIDControlPointAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDControlPointAndroid result1 = new HIDControlPointAndroid(bluetoothGattCharacteristic);
+        HIDControlPointAndroid result1 = new HIDControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -144,10 +128,7 @@ public class HIDControlPointAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDControlPointAndroid result1 = new HIDControlPointAndroid(bluetoothGattCharacteristic);
+        HIDControlPointAndroid result1 = new HIDControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -155,10 +136,7 @@ public class HIDControlPointAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDControlPointAndroid result1 = new HIDControlPointAndroid(bluetoothGattCharacteristic);
+        HIDControlPointAndroid result1 = new HIDControlPointAndroid(data);
         HIDControlPointAndroid result2 = HIDControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -167,10 +145,7 @@ public class HIDControlPointAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDControlPointAndroid result1 = new HIDControlPointAndroid(bluetoothGattCharacteristic);
+        HIDControlPointAndroid result1 = new HIDControlPointAndroid(data);
         HIDControlPointAndroid result2 = HIDControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BEARER_URI_SCHEMES_SUPPORTED_LIST_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Bearer URI Schemes Supported List (Characteristics UUID: 0x2BB6)
@@ -45,9 +45,7 @@ public class BearerUriSchemesSupportedListAndroid extends BearerUriSchemesSuppor
          */
         @NonNull
         public BearerUriSchemesSupportedListAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BEARER_URI_SCHEMES_SUPPORTED_LIST_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BearerUriSchemesSupportedListAndroid(bluetoothGattCharacteristic);
+            return new BearerUriSchemesSupportedListAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BearerUriSchemesSupportedListAndroid extends BearerUriSchemesSuppor
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BB6
      */
+    @Deprecated
     public BearerUriSchemesSupportedListAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BearerUriSchemesSupportedListAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class BearerUriSchemesSupportedListAndroid extends BearerUriSchemesSuppor
      * @param in Parcel
      */
     private BearerUriSchemesSupportedListAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

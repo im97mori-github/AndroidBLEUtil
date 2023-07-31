@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.STEP_CLIMBER_DATA_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Step Climber Data packet (Characteristics UUID: 0x2ACF)
@@ -44,9 +44,7 @@ public class StepClimberDataPacketAndroid extends StepClimberDataPacket implemen
          */
         @NonNull
         public StepClimberDataPacketAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(STEP_CLIMBER_DATA_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+            return new StepClimberDataPacketAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class StepClimberDataPacketAndroid extends StepClimberDataPacket implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2ACF
      */
+    @Deprecated
     public StepClimberDataPacketAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public StepClimberDataPacketAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -87,8 +95,7 @@ public class StepClimberDataPacketAndroid extends StepClimberDataPacket implemen
      * @param in Parcel
      */
     private StepClimberDataPacketAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

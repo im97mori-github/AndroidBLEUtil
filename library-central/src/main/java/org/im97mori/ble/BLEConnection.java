@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.HandlerThread;
 
+import androidx.annotation.DeprecatedSinceApi;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -32,6 +33,7 @@ import org.im97mori.ble.task.ReadDescriptorTask;
 import org.im97mori.ble.task.ReadPhyTask;
 import org.im97mori.ble.task.ReadRemoteRssiTask;
 import org.im97mori.ble.task.RequestMtuTask;
+import org.im97mori.ble.task.ServiceChangedTask;
 import org.im97mori.ble.task.SetNotifyTask;
 import org.im97mori.ble.task.SetPreferredPhyTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
@@ -486,6 +488,8 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * {@inheritDoc}
      */
     @Override
+    @DeprecatedSinceApi(api = Build.VERSION_CODES.TIRAMISU)
+    @Deprecated
     public synchronized void onCharacteristicRead(BluetoothGatt gatt
             , BluetoothGattCharacteristic characteristic
             , int status) {
@@ -512,6 +516,33 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * {@inheritDoc}
      */
     @Override
+    public void onCharacteristicRead(@NonNull BluetoothGatt gatt
+            , @NonNull BluetoothGattCharacteristic characteristic
+            , @NonNull byte[] value
+            , int status) {
+        // gatt instance is not matched
+        if (gatt != mBluetoothGatt) {
+            return;
+        }
+        try {
+            BluetoothGattService service = characteristic.getService();
+            if (BluetoothGatt.GATT_SUCCESS == status) {
+                mTaskHandler.sendProcessingMessage(ReadCharacteristicTask.createReadCharacteristicSuccessMessage(service.getUuid(), service.getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), value));
+            } else {
+                mTaskHandler.sendProcessingMessage(ReadCharacteristicTask.createReadCharacteristicErrorMessage(service.getUuid(), service.getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), status));
+            }
+
+            // if characteristic / descriptor callback, clear busy status
+            mTaskHandler.clearBusy();
+        } catch (Exception e) {
+            BLELogUtils.stackLog(e);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public synchronized void onCharacteristicWrite(BluetoothGatt gatt
             , BluetoothGattCharacteristic characteristic
             , int status) {
@@ -522,7 +553,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
         try {
             BluetoothGattService service = characteristic.getService();
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicSuccessMessage(service.getUuid(), service.getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), characteristic.getValue()));
+                mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicSuccessMessage(service.getUuid(), service.getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId()));
             } else {
                 mTaskHandler.sendProcessingMessage(WriteCharacteristicTask.createWriteCharacteristicErrorMessage(service.getUuid(), service.getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), status));
             }
@@ -538,6 +569,8 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
      * {@inheritDoc}
      */
     @Override
+    @DeprecatedSinceApi(api = Build.VERSION_CODES.TIRAMISU)
+    @Deprecated
     public synchronized void onCharacteristicChanged(BluetoothGatt gatt
             , BluetoothGattCharacteristic characteristic) {
         // gatt instance is not matched
@@ -554,8 +587,28 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
     /**
      * {@inheritDoc}
      */
+    @Override
+    public void onCharacteristicChanged(@NonNull BluetoothGatt gatt
+            , @NonNull BluetoothGattCharacteristic characteristic
+            , @NonNull byte[] value) {
+        // gatt instance is not matched
+        if (gatt != mBluetoothGatt) {
+            return;
+        }
+        try {
+            mTaskHandler.addHighPriorityTask(new NotifiedTask(this, characteristic.getService().getUuid(), characteristic.getService().getInstanceId(), characteristic.getUuid(), characteristic.getInstanceId(), value));
+        } catch (Exception e) {
+            BLELogUtils.stackLog(e);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @SuppressLint("MissingPermission")
     @Override
+    @DeprecatedSinceApi(api = Build.VERSION_CODES.TIRAMISU)
+    @Deprecated
     public synchronized void onDescriptorRead(BluetoothGatt gatt
             , BluetoothGattDescriptor descriptor
             , int status) {
@@ -570,11 +623,47 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             UUID descriptorUUID = descriptor.getUuid();
             if (BluetoothGatt.GATT_SUCCESS == status) {
                 if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                    ClientCharacteristicConfigurationAndroid clientCharacteristicConfiguration = new ClientCharacteristicConfigurationAndroid(descriptor);
+                    ClientCharacteristicConfigurationAndroid clientCharacteristicConfiguration = new ClientCharacteristicConfigurationAndroid(descriptor.getValue());
                     gatt.setCharacteristicNotification(descriptor.getCharacteristic(), clientCharacteristicConfiguration.isPropertiesNotificationsEnabled() || clientCharacteristicConfiguration.isPropertiesIndicationsEnabled());
                 }
                 // read descriptor task finished
                 mTaskHandler.sendProcessingMessage(ReadDescriptorTask.createReadDescriptorSuccessMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, BLEUtilsAndroid.getDescriptorInstanceId(descriptor), descriptor.getValue()));
+            } else {
+                mTaskHandler.sendProcessingMessage(ReadDescriptorTask.createReadDescriptorErrorMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, BLEUtilsAndroid.getDescriptorInstanceId(descriptor), status));
+            }
+
+            // if characteristic / descriptor callback, clear busy status
+            mTaskHandler.clearBusy();
+        } catch (Exception e) {
+            BLELogUtils.stackLog(e);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @SuppressLint("MissingPermission")
+    @Override
+    public void onDescriptorRead(@NonNull BluetoothGatt gatt
+            , @NonNull BluetoothGattDescriptor descriptor
+            , int status
+            , @NonNull byte[] value) {
+        // gatt instance is not matched
+        if (gatt != mBluetoothGatt) {
+            return;
+        }
+        try {
+            BluetoothGattCharacteristic characteristic = descriptor.getCharacteristic();
+            UUID characteristicUUID = characteristic.getUuid();
+            BluetoothGattService service = characteristic.getService();
+            UUID descriptorUUID = descriptor.getUuid();
+            if (BluetoothGatt.GATT_SUCCESS == status) {
+                if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
+                    ClientCharacteristicConfigurationAndroid clientCharacteristicConfiguration = new ClientCharacteristicConfigurationAndroid(value);
+                    gatt.setCharacteristicNotification(descriptor.getCharacteristic(), clientCharacteristicConfiguration.isPropertiesNotificationsEnabled() || clientCharacteristicConfiguration.isPropertiesIndicationsEnabled());
+                }
+                // read descriptor task finished
+                mTaskHandler.sendProcessingMessage(ReadDescriptorTask.createReadDescriptorSuccessMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, BLEUtilsAndroid.getDescriptorInstanceId(descriptor), value));
             } else {
                 mTaskHandler.sendProcessingMessage(ReadDescriptorTask.createReadDescriptorErrorMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, BLEUtilsAndroid.getDescriptorInstanceId(descriptor), status));
             }
@@ -604,7 +693,7 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
             UUID descriptorUUID = descriptor.getUuid();
             if (BluetoothGatt.GATT_SUCCESS == status) {
                 // write descriptor task finished
-                mTaskHandler.sendProcessingMessage(WriteDescriptorTask.createWriteDescriptorSuccessMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, BLEUtilsAndroid.getDescriptorInstanceId(descriptor), descriptor.getValue()));
+                mTaskHandler.sendProcessingMessage(WriteDescriptorTask.createWriteDescriptorSuccessMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, BLEUtilsAndroid.getDescriptorInstanceId(descriptor)));
             } else {
                 mTaskHandler.sendProcessingMessage(WriteDescriptorTask.createWriteDescriptorErrorMessage(service.getUuid(), service.getInstanceId(), characteristicUUID, characteristic.getInstanceId(), descriptorUUID, BLEUtilsAndroid.getDescriptorInstanceId(descriptor), status));
             }
@@ -687,6 +776,22 @@ public class BLEConnection extends BluetoothGattCallback implements BLECallbackD
                     mTaskHandler.sendProcessingMessage(RequestMtuTask.createRequestMtuErrorMessage(gatt, status));
                 }
             }
+        } catch (Exception e) {
+            BLELogUtils.stackLog(e);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onServiceChanged(@NonNull BluetoothGatt gatt) {
+        // gatt instance is not matched
+        if (gatt != mBluetoothGatt) {
+            return;
+        }
+        try {
+            mTaskHandler.addHighPriorityTask(new ServiceChangedTask(this));
         } catch (Exception e) {
             BLELogUtils.stackLog(e);
         }

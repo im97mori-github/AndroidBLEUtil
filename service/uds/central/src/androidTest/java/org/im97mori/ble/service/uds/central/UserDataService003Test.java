@@ -39,7 +39,7 @@ import static org.junit.Assert.assertNull;
 
 import androidx.test.filters.RequiresDevice;
 
-public class UserDataServiceTest_3 extends AbstractCentralTest {
+public class UserDataService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice

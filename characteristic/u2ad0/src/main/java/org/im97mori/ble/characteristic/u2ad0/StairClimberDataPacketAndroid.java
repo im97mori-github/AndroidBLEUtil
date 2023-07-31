@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.STAIR_CLIMBER_DATA_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Stair Climber Data packet (Characteristics UUID: 0x2AD0)
@@ -44,9 +44,7 @@ public class StairClimberDataPacketAndroid extends StairClimberDataPacket implem
          */
         @NonNull
         public StairClimberDataPacketAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(STAIR_CLIMBER_DATA_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new StairClimberDataPacketAndroid(bluetoothGattCharacteristic);
+            return new StairClimberDataPacketAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class StairClimberDataPacketAndroid extends StairClimberDataPacket implem
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AD0
      */
+    @Deprecated
     public StairClimberDataPacketAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public StairClimberDataPacketAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -87,8 +95,7 @@ public class StairClimberDataPacketAndroid extends StairClimberDataPacket implem
      * @param in Parcel
      */
     private StairClimberDataPacketAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

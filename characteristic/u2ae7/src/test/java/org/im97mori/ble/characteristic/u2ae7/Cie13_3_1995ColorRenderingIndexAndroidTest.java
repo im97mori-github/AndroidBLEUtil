@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ae7;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,10 +9,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
+@SuppressWarnings("NewClassNamingConvention")
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -28,10 +27,7 @@ public class Cie13_3_1995ColorRenderingIndexAndroidTest {
         data[ 0] = (byte) Cie13_3_1995ColorRenderingIndex.COLOR_RENDERING_INDEX_VALUE_MINIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Cie13_3_1995ColorRenderingIndexAndroid result = new Cie13_3_1995ColorRenderingIndexAndroid(bluetoothGattCharacteristic);
+        Cie13_3_1995ColorRenderingIndexAndroid result = new Cie13_3_1995ColorRenderingIndexAndroid(data);
         assertEquals(BLEUtils.createSInt8(data, 0), result.getColorRenderingIndex());
     }
 
@@ -42,10 +38,7 @@ public class Cie13_3_1995ColorRenderingIndexAndroidTest {
         data[ 0] = (byte) Cie13_3_1995ColorRenderingIndex.COLOR_RENDERING_INDEX_VALUE_MAXIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Cie13_3_1995ColorRenderingIndexAndroid result = new Cie13_3_1995ColorRenderingIndexAndroid(bluetoothGattCharacteristic);
+        Cie13_3_1995ColorRenderingIndexAndroid result = new Cie13_3_1995ColorRenderingIndexAndroid(data);
         assertEquals(BLEUtils.createSInt8(data, 0), result.getColorRenderingIndex());
     }
 
@@ -72,10 +65,7 @@ public class Cie13_3_1995ColorRenderingIndexAndroidTest {
         data[ 0] = (byte) Cie13_3_1995ColorRenderingIndex.COLOR_RENDERING_INDEX_VALUE_MINIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Cie13_3_1995ColorRenderingIndexAndroid result1 = new Cie13_3_1995ColorRenderingIndexAndroid(bluetoothGattCharacteristic);
+        Cie13_3_1995ColorRenderingIndexAndroid result1 = new Cie13_3_1995ColorRenderingIndexAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -91,10 +81,7 @@ public class Cie13_3_1995ColorRenderingIndexAndroidTest {
         data[ 0] = (byte) Cie13_3_1995ColorRenderingIndex.COLOR_RENDERING_INDEX_VALUE_MAXIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Cie13_3_1995ColorRenderingIndexAndroid result1 = new Cie13_3_1995ColorRenderingIndexAndroid(bluetoothGattCharacteristic);
+        Cie13_3_1995ColorRenderingIndexAndroid result1 = new Cie13_3_1995ColorRenderingIndexAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -110,10 +97,7 @@ public class Cie13_3_1995ColorRenderingIndexAndroidTest {
         data[ 0] = (byte) Cie13_3_1995ColorRenderingIndex.COLOR_RENDERING_INDEX_VALUE_MINIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Cie13_3_1995ColorRenderingIndexAndroid result1 = new Cie13_3_1995ColorRenderingIndexAndroid(bluetoothGattCharacteristic);
+        Cie13_3_1995ColorRenderingIndexAndroid result1 = new Cie13_3_1995ColorRenderingIndexAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -124,10 +108,7 @@ public class Cie13_3_1995ColorRenderingIndexAndroidTest {
         data[ 0] = (byte) Cie13_3_1995ColorRenderingIndex.COLOR_RENDERING_INDEX_VALUE_MAXIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Cie13_3_1995ColorRenderingIndexAndroid result1 = new Cie13_3_1995ColorRenderingIndexAndroid(bluetoothGattCharacteristic);
+        Cie13_3_1995ColorRenderingIndexAndroid result1 = new Cie13_3_1995ColorRenderingIndexAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -138,10 +119,7 @@ public class Cie13_3_1995ColorRenderingIndexAndroidTest {
         data[ 0] = (byte) Cie13_3_1995ColorRenderingIndex.COLOR_RENDERING_INDEX_VALUE_MINIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Cie13_3_1995ColorRenderingIndexAndroid result1 = new Cie13_3_1995ColorRenderingIndexAndroid(bluetoothGattCharacteristic);
+        Cie13_3_1995ColorRenderingIndexAndroid result1 = new Cie13_3_1995ColorRenderingIndexAndroid(data);
         Cie13_3_1995ColorRenderingIndexAndroid result2 = Cie13_3_1995ColorRenderingIndexAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -153,10 +131,7 @@ public class Cie13_3_1995ColorRenderingIndexAndroidTest {
         data[ 0] = (byte) Cie13_3_1995ColorRenderingIndex.COLOR_RENDERING_INDEX_VALUE_MAXIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        Cie13_3_1995ColorRenderingIndexAndroid result1 = new Cie13_3_1995ColorRenderingIndexAndroid(bluetoothGattCharacteristic);
+        Cie13_3_1995ColorRenderingIndexAndroid result1 = new Cie13_3_1995ColorRenderingIndexAndroid(data);
         Cie13_3_1995ColorRenderingIndexAndroid result2 = Cie13_3_1995ColorRenderingIndexAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

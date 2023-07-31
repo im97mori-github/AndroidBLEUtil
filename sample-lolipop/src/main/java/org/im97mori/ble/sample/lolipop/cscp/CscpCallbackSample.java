@@ -395,6 +395,11 @@ public class CscpCallbackSample extends CyclingSpeedAndCadenceProfileMockCallbac
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }

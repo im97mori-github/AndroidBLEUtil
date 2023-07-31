@@ -31,19 +31,25 @@ import static org.im97mori.ble.constants.CharacteristicUUID.USER_INDEX_CHARACTER
 import static org.im97mori.ble.constants.CharacteristicUUID.VO2_MAX_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.WAIST_CIRCUMFERENCE_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.USER_DATA_SERVICE;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import android.bluetooth.BluetoothGattService;
+import android.os.Parcel;
 
 import org.im97mori.ble.CharacteristicData;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
-public class UserDataServiceDataTest_getCharacteristicDataList {
+public class UserDataServiceDataParcelableTest {
 
     @Test
-    public void test_getCharacteristicDataList_00001() {
+    public void test_parcelable_00001() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -335,42 +341,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00002() {
+    public void test_parcelable_00002() {
         UDSCharacteristicData lastName = new UDSCharacteristicData(LAST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -654,41 +671,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00003() {
+    public void test_parcelable_00003() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -972,41 +1001,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00004() {
+    public void test_parcelable_00004() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -1290,41 +1331,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00005() {
+    public void test_parcelable_00005() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -1608,41 +1661,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00006() {
+    public void test_parcelable_00006() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -1926,41 +1991,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00007() {
+    public void test_parcelable_00007() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -2244,41 +2321,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00008() {
+    public void test_parcelable_00008() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -2562,41 +2651,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00009() {
+    public void test_parcelable_00009() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -2880,41 +2981,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00010() {
+    public void test_parcelable_00010() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -3198,41 +3311,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00011() {
+    public void test_parcelable_00011() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -3516,41 +3641,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00012() {
+    public void test_parcelable_00012() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -3834,41 +3971,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00013() {
+    public void test_parcelable_00013() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -4152,41 +4301,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00014() {
+    public void test_parcelable_00014() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -4470,41 +4631,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00015() {
+    public void test_parcelable_00015() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -4788,41 +4961,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00016() {
+    public void test_parcelable_00016() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -5106,41 +5291,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00017() {
+    public void test_parcelable_00017() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -5424,41 +5621,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00018() {
+    public void test_parcelable_00018() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -5742,41 +5951,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00019() {
+    public void test_parcelable_00019() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -6060,41 +6281,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00020() {
+    public void test_parcelable_00020() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -6378,41 +6611,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00021() {
+    public void test_parcelable_00021() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -6696,41 +6941,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00022() {
+    public void test_parcelable_00022() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -7014,41 +7271,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00023() {
+    public void test_parcelable_00023() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -7332,41 +7601,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00024() {
+    public void test_parcelable_00024() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -7650,41 +7931,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00025() {
+    public void test_parcelable_00025() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -7968,41 +8261,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00026() {
+    public void test_parcelable_00026() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -8286,41 +8591,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00027() {
+    public void test_parcelable_00027() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -8604,41 +8921,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00028() {
+    public void test_parcelable_00028() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -8922,41 +9251,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00029() {
+    public void test_parcelable_00029() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -9240,41 +9581,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00030() {
+    public void test_parcelable_00030() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -9558,41 +9911,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00031() {
+    public void test_parcelable_00031() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -9876,41 +10241,53 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , registeredUser);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint
-                , registeredUser).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
     @Test
-    public void test_getCharacteristicDataList_00032() {
+    public void test_parcelable_00032() {
         UDSCharacteristicData firstName = new UDSCharacteristicData(FIRST_NAME_CHARACTERISTIC
                 , 1
                 , 2
@@ -10194,37 +10571,49 @@ public class UserDataServiceDataTest_getCharacteristicDataList {
                 , userControlPoint
                 , null);
 
-        assertArrayEquals(Arrays.asList(firstName
-                , lastName
-                , emailAddress
-                , age
-                , dateOfBirth
-                , gender
-                , weight
-                , height
-                , vo2Max
-                , heartRateMax
-                , restingHeartRate
-                , maximumRecommendedHeartRate
-                , aerobicThreshold
-                , anaerobicThreshold
-                , sportTypeForAerobicAndAnaerobicThresholds
-                , dateOfThresholdAssessment
-                , waistCircumference
-                , hipCircumference
-                , fatBurnHeartRateLowerLimit
-                , fatBurnHeartRateUpperLimit
-                , aerobicHeartRateLowerLimit
-                , aerobicHeartRateUpperLimit
-                , anaerobicHeartRateLowerLimit
-                , anaerobicHeartRateUpperLimit
-                , fiveZoneHeartRateLimits
-                , threeZoneHeartRateLimits
-                , twoZoneHeartRateLimit
-                , language
-                , databaseChangeIncrement
-                , userIndex
-                , userControlPoint).toArray(), result1.getCharacteristicDataList().toArray());
+        Parcel parcel = Parcel.obtain();
+        result1.writeToParcel(parcel, 0);
+        parcel.setDataPosition(0);
+        UserDataServiceData result2 = UserDataServiceData.CREATOR.createFromParcel(parcel);
+
+        assertEquals(USER_DATA_SERVICE, result2.uuid);
+        assertEquals(BluetoothGattService.SERVICE_TYPE_PRIMARY, result2.type);
+        assertNotNull(result2.characteristicDataList);
+        assertTrue(result2.characteristicDataList.isEmpty());
+        assertEquals(result1.characteristicDataList.size(), result2.characteristicDataList.size());
+        assertArrayEquals(result1.characteristicDataList.toArray(), result2.characteristicDataList.toArray());
+        assertEquals(result1.firstName, result2.firstName);
+        assertEquals(result1.lastName, result2.lastName);
+        assertEquals(result1.emailAddress, result2.emailAddress);
+        assertEquals(result1.age, result2.age);
+        assertEquals(result1.dateOfBirth, result2.dateOfBirth);
+        assertEquals(result1.gender, result2.gender);
+        assertEquals(result1.weight, result2.weight);
+        assertEquals(result1.height, result2.height);
+        assertEquals(result1.vo2Max, result2.vo2Max);
+        assertEquals(result1.heartRateMax, result2.heartRateMax);
+        assertEquals(result1.restingHeartRate, result2.restingHeartRate);
+        assertEquals(result1.maximumRecommendedHeartRate, result2.maximumRecommendedHeartRate);
+        assertEquals(result1.aerobicThreshold, result2.aerobicThreshold);
+        assertEquals(result1.anaerobicThreshold, result2.anaerobicThreshold);
+        assertEquals(result1.sportTypeForAerobicAndAnaerobicThresholds, result2.sportTypeForAerobicAndAnaerobicThresholds);
+        assertEquals(result1.dateOfThresholdAssessment, result2.dateOfThresholdAssessment);
+        assertEquals(result1.waistCircumference, result2.waistCircumference);
+        assertEquals(result1.hipCircumference, result2.hipCircumference);
+        assertEquals(result1.fatBurnHeartRateLowerLimit, result2.fatBurnHeartRateLowerLimit);
+        assertEquals(result1.fatBurnHeartRateUpperLimit, result2.fatBurnHeartRateUpperLimit);
+        assertEquals(result1.aerobicHeartRateLowerLimit, result2.aerobicHeartRateLowerLimit);
+        assertEquals(result1.aerobicHeartRateUpperLimit, result2.aerobicHeartRateUpperLimit);
+        assertEquals(result1.anaerobicHeartRateLowerLimit, result2.anaerobicHeartRateLowerLimit);
+        assertEquals(result1.anaerobicHeartRateUpperLimit, result2.anaerobicHeartRateUpperLimit);
+        assertEquals(result1.fiveZoneHeartRateLimits, result2.fiveZoneHeartRateLimits);
+        assertEquals(result1.threeZoneHeartRateLimits, result2.threeZoneHeartRateLimits);
+        assertEquals(result1.twoZoneHeartRateLimit, result2.twoZoneHeartRateLimit);
+        assertEquals(result1.language, result2.language);
+        assertEquals(result1.databaseChangeIncrement, result2.databaseChangeIncrement);
+        assertEquals(result1.userIndex, result2.userIndex);
+        assertEquals(result1.userControlPoint, result2.userControlPoint);
+        assertEquals(result1.registeredUser, result2.registeredUser);
     }
 
 }

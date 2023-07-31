@@ -1,6 +1,9 @@
 package org.im97mori.ble.descriptor.u2902;
 
-import android.bluetooth.BluetoothGattDescriptor;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import android.os.Build;
 import android.os.Parcel;
 
@@ -8,11 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
@@ -74,9 +72,9 @@ public class ClientCharacteristicConfigurationAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -90,10 +88,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result = new ClientCharacteristicConfigurationAndroid(data);
         assertArrayEquals(data, result.getProperties());
         assertTrue(result.isPropertiesNotificationsDisabled());
         assertFalse(result.isPropertiesNotificationsEnabled());
@@ -103,10 +98,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result = new ClientCharacteristicConfigurationAndroid(data);
         assertArrayEquals(data, result.getProperties());
         assertFalse(result.isPropertiesNotificationsDisabled());
         assertTrue(result.isPropertiesNotificationsEnabled());
@@ -116,10 +108,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result = new ClientCharacteristicConfigurationAndroid(data);
         assertArrayEquals(data, result.getProperties());
         assertTrue(result.isPropertiesIndicationsDisabled());
         assertFalse(result.isPropertiesIndicationsEnabled());
@@ -129,10 +118,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_constructor_00004() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result = new ClientCharacteristicConfigurationAndroid(data);
         assertArrayEquals(data, result.getProperties());
         assertFalse(result.isPropertiesIndicationsDisabled());
         assertTrue(result.isPropertiesIndicationsEnabled());
@@ -142,10 +128,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -158,10 +141,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -174,10 +154,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -190,10 +167,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_parcelable_1_00004() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -206,10 +180,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -217,10 +188,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -228,10 +196,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -239,10 +204,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_parcelable_2_00004() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -250,10 +212,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(data);
         ClientCharacteristicConfigurationAndroid result2 = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -262,10 +221,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(data);
         ClientCharacteristicConfigurationAndroid result2 = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -274,10 +230,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(data);
         ClientCharacteristicConfigurationAndroid result2 = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -286,10 +239,7 @@ public class ClientCharacteristicConfigurationAndroidTest {
     public void test_parcelable_3_00004() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ClientCharacteristicConfigurationAndroid result1 = new ClientCharacteristicConfigurationAndroid(data);
         ClientCharacteristicConfigurationAndroid result2 = ClientCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

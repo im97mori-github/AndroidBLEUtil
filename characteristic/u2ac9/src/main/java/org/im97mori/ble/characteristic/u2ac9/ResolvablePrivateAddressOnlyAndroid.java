@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Resolvable Private Address Only (Characteristics UUID: 0x2AC9)
@@ -44,9 +44,7 @@ public class ResolvablePrivateAddressOnlyAndroid extends ResolvablePrivateAddres
          */
         @NonNull
         public ResolvablePrivateAddressOnlyAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ResolvablePrivateAddressOnlyAndroid(bluetoothGattCharacteristic);
+            return new ResolvablePrivateAddressOnlyAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ResolvablePrivateAddressOnlyAndroid extends ResolvablePrivateAddres
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AC9
      */
+    @Deprecated
     public ResolvablePrivateAddressOnlyAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ResolvablePrivateAddressOnlyAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class ResolvablePrivateAddressOnlyAndroid extends ResolvablePrivateAddres
      * @param in Parcel
      */
     private ResolvablePrivateAddressOnlyAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

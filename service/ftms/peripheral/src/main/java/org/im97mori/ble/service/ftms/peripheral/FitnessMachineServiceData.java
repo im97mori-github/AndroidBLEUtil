@@ -3,6 +3,7 @@ package org.im97mori.ble.service.ftms.peripheral;
 import static org.im97mori.ble.constants.ServiceUUID.FITNESS_MACHINE_SERVICE;
 
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,9 @@ public class FitnessMachineServiceData extends ServiceData {
          */
         @Override
         @NonNull
+        @Deprecated
         public FitnessMachineServiceData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new FitnessMachineServiceData(in);
         }
 
@@ -201,23 +204,42 @@ public class FitnessMachineServiceData extends ServiceData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public FitnessMachineServiceData(@NonNull Parcel in) {
         super(in);
-        fitnessMachineFeature = in.readParcelable(this.getClass().getClassLoader());
-        treadmillData = in.readParcelable(this.getClass().getClassLoader());
-        crossTrainerData = in.readParcelable(this.getClass().getClassLoader());
-        stepClimberData = in.readParcelable(this.getClass().getClassLoader());
-        stairClimberData = in.readParcelable(this.getClass().getClassLoader());
-        rowerData = in.readParcelable(this.getClass().getClassLoader());
-        indoorBikeData = in.readParcelable(this.getClass().getClassLoader());
-        trainingStatus = in.readParcelable(this.getClass().getClassLoader());
-        supportedSpeedRange = in.readParcelable(this.getClass().getClassLoader());
-        supportedInclinationRange = in.readParcelable(this.getClass().getClassLoader());
-        supportedResistanceLevelRange = in.readParcelable(this.getClass().getClassLoader());
-        supportedPowerRange = in.readParcelable(this.getClass().getClassLoader());
-        supportedHeartRateRange = in.readParcelable(this.getClass().getClassLoader());
-        fitnessMachineControlPoint = in.readParcelable(this.getClass().getClassLoader());
-        fitnessMachineStatus = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            fitnessMachineFeature = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            treadmillData = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            crossTrainerData = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            stepClimberData = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            stairClimberData = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            rowerData = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            indoorBikeData = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            trainingStatus = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            supportedSpeedRange = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            supportedInclinationRange = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            supportedResistanceLevelRange = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            supportedPowerRange = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            supportedHeartRateRange = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            fitnessMachineControlPoint = in.readParcelable(this.getClass().getClassLoader(), FitnessMachineControlPointCharacteristicData.class);
+            fitnessMachineStatus = in.readParcelable(this.getClass().getClassLoader(), FitnessMachineStatusCharacteristicData.class);
+        } else {
+            fitnessMachineFeature = in.readParcelable(this.getClass().getClassLoader());
+            treadmillData = in.readParcelable(this.getClass().getClassLoader());
+            crossTrainerData = in.readParcelable(this.getClass().getClassLoader());
+            stepClimberData = in.readParcelable(this.getClass().getClassLoader());
+            stairClimberData = in.readParcelable(this.getClass().getClassLoader());
+            rowerData = in.readParcelable(this.getClass().getClassLoader());
+            indoorBikeData = in.readParcelable(this.getClass().getClassLoader());
+            trainingStatus = in.readParcelable(this.getClass().getClassLoader());
+            supportedSpeedRange = in.readParcelable(this.getClass().getClassLoader());
+            supportedInclinationRange = in.readParcelable(this.getClass().getClassLoader());
+            supportedResistanceLevelRange = in.readParcelable(this.getClass().getClassLoader());
+            supportedPowerRange = in.readParcelable(this.getClass().getClassLoader());
+            supportedHeartRateRange = in.readParcelable(this.getClass().getClassLoader());
+            fitnessMachineControlPoint = in.readParcelable(this.getClass().getClassLoader());
+            fitnessMachineStatus = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

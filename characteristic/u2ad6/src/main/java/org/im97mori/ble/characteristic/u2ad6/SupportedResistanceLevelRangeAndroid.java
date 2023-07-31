@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.ByteArrayInterface;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Supported Resistance Level Range (Characteristics UUID: 0x2AD6)
@@ -45,9 +45,7 @@ public class SupportedResistanceLevelRangeAndroid extends SupportedResistanceLev
          */
         @NonNull
         public SupportedResistanceLevelRangeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SUPPORTED_RESISTANCE_LEVEL_RANGE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new SupportedResistanceLevelRangeAndroid(bluetoothGattCharacteristic);
+            return new SupportedResistanceLevelRangeAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class SupportedResistanceLevelRangeAndroid extends SupportedResistanceLev
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AD6
      */
+    @Deprecated
     public SupportedResistanceLevelRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public SupportedResistanceLevelRangeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -78,8 +86,7 @@ public class SupportedResistanceLevelRangeAndroid extends SupportedResistanceLev
      * @param in Parcel
      */
     private SupportedResistanceLevelRangeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

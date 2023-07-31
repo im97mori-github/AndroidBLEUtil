@@ -43,7 +43,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 
-public class UserDataServiceDataTest_hashCode {
+public class UserDataServiceDataHashCodeTest {
 
     @Test
     public void test_hashCode_00001() {

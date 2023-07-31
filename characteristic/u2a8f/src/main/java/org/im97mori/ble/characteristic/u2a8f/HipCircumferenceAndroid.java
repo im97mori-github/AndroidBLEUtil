@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.HIP_CIRCUMFERENCE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Hip Circumference (Characteristics UUID: 0x2A8F)
@@ -44,9 +44,7 @@ public class HipCircumferenceAndroid extends HipCircumference implements Parcela
          */
         @NonNull
         public HipCircumferenceAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(HIP_CIRCUMFERENCE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new HipCircumferenceAndroid(bluetoothGattCharacteristic);
+            return new HipCircumferenceAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class HipCircumferenceAndroid extends HipCircumference implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A8F
      */
+    @Deprecated
     public HipCircumferenceAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public HipCircumferenceAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class HipCircumferenceAndroid extends HipCircumference implements Parcela
      * @param in Parcel
      */
     private HipCircumferenceAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

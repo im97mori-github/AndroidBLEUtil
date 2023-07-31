@@ -1,10 +1,25 @@
 package org.im97mori.ble.service.ans.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.NEW_ALERT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.UNREAD_ALERT_STATUS_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.ALERT_NOTIFICATION_SERVICE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.os.Build;
+
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.characteristic.u2a47.SupportedNewAlertCategory;
 import org.im97mori.ble.characteristic.u2a48.SupportedUnreadAlertCategory;
@@ -14,22 +29,6 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.NEW_ALERT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.UNREAD_ALERT_STATUS_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ServiceUUID.ALERT_NOTIFICATION_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import androidx.test.filters.RequiresDevice;
-import androidx.test.filters.SdkSuppress;
 
 public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
@@ -335,7 +334,6 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(supportedNewAlertCategory.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -413,7 +411,6 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(supportedNewAlertCategory.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -491,7 +488,6 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(supportedNewAlertCategory.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -632,12 +628,10 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(NEW_ALERT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(0, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(null, bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -777,7 +771,6 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(supportedUnreadAlertCategory.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -855,7 +848,6 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(supportedUnreadAlertCategory.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -933,7 +925,6 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(SUPPORTED_UNREAD_ALERT_CATEGORY_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(supportedUnreadAlertCategory.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1074,12 +1065,10 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(UNREAD_ALERT_STATUS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(0, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(null, bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1217,7 +1206,6 @@ public class AlertNotificationServiceMockCallbackBuilderTest extends AbstractPer
         assertEquals(ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(null, bluetoothGattCharacteristic.getValue());
     }
 
     @Test

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SYSTEM_ID_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * System ID (Characteristics UUID: 0x2A23)
@@ -44,9 +44,7 @@ public class SystemIdAndroid extends SystemId implements Parcelable {
          */
         @NonNull
         public SystemIdAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SYSTEM_ID_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new SystemIdAndroid(bluetoothGattCharacteristic);
+            return new SystemIdAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class SystemIdAndroid extends SystemId implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A23
      */
+    @Deprecated
     public SystemIdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public SystemIdAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class SystemIdAndroid extends SystemId implements Parcelable {
      * @param in Parcel
      */
     private SystemIdAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

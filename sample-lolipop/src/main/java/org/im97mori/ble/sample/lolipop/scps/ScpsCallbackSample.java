@@ -334,6 +334,11 @@ public class ScpsCallbackSample extends ScanParametersServiceMockCallback implem
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
         super.onServerStarted();
@@ -357,7 +362,9 @@ public class ScpsCallbackSample extends ScanParametersServiceMockCallback implem
         super.onDeviceDisconnected(bleServerConnection, device);
     }
 
+    /** @noinspection deprecation*/
     @Override
+    @Deprecated
     public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
         callback(bluetoothGattService.getUuid());
         return super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
@@ -375,7 +382,9 @@ public class ScpsCallbackSample extends ScanParametersServiceMockCallback implem
         super.onServiceAddTimeout(taskId, bleServerConnection, bluetoothGattService, timeout, argument);
     }
 
+    /** @noinspection deprecation*/
     @Override
+    @Deprecated
     public void onServiceRemoveSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
         callback(argument);
         super.onServiceRemoveSuccess(taskId, bleServerConnection, bluetoothGattService, argument);

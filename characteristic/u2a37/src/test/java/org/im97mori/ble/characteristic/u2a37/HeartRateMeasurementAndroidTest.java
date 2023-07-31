@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a37;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,13 +11,12 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -37,10 +35,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertEquals(HeartRateMeasurement.FLAGS_HEART_RATE_VALUE_FORMAT_UINT8
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_NOT_SUPPORTED_0
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_NOT_PRESENT
@@ -62,10 +57,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertEquals(HeartRateMeasurement.FLAGS_HEART_RATE_VALUE_FORMAT_UINT16
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_NOT_SUPPORTED_0
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_NOT_PRESENT
@@ -86,10 +78,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertEquals(HeartRateMeasurement.FLAGS_HEART_RATE_VALUE_FORMAT_UINT8
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_NOT_SUPPORTED_0
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_NOT_PRESENT
@@ -110,10 +99,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertEquals(HeartRateMeasurement.FLAGS_HEART_RATE_VALUE_FORMAT_UINT8
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_NOT_SUPPORTED_1
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_NOT_PRESENT
@@ -134,10 +120,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertEquals(HeartRateMeasurement.FLAGS_HEART_RATE_VALUE_FORMAT_UINT8
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_SUPPORTED_BUT_NOT_DETECTED
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_NOT_PRESENT
@@ -158,10 +141,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertEquals(HeartRateMeasurement.FLAGS_HEART_RATE_VALUE_FORMAT_UINT8
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_SUPPORTED_AND_DETECTED
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_NOT_PRESENT
@@ -182,10 +162,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertEquals(HeartRateMeasurement.FLAGS_HEART_RATE_VALUE_FORMAT_UINT8
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_NOT_SUPPORTED_0
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_NOT_PRESENT
@@ -207,10 +184,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 3] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertEquals(HeartRateMeasurement.FLAGS_HEART_RATE_VALUE_FORMAT_UINT8
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_NOT_SUPPORTED_0
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_PRESENT
@@ -234,10 +208,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertEquals(HeartRateMeasurement.FLAGS_HEART_RATE_VALUE_FORMAT_UINT16
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_NOT_SUPPORTED_0
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_PRESENT
@@ -258,10 +229,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertEquals(HeartRateMeasurement.FLAGS_HEART_RATE_VALUE_FORMAT_UINT8
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_NOT_SUPPORTED_0
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_NOT_PRESENT
@@ -299,10 +267,7 @@ public class HeartRateMeasurementAndroidTest {
         data[19] = 0x13;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertEquals(HeartRateMeasurement.FLAGS_HEART_RATE_VALUE_FORMAT_UINT8
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_NOT_SUPPORTED_0
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_NOT_PRESENT
@@ -345,10 +310,7 @@ public class HeartRateMeasurementAndroidTest {
         data[18] = 0x12;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertEquals(HeartRateMeasurement.FLAGS_HEART_RATE_VALUE_FORMAT_UINT16
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_NOT_SUPPORTED_0
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_NOT_PRESENT
@@ -392,10 +354,7 @@ public class HeartRateMeasurementAndroidTest {
         data[19] = 0x13;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertEquals(HeartRateMeasurement.FLAGS_HEART_RATE_VALUE_FORMAT_UINT8
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_NOT_SUPPORTED_0
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_PRESENT
@@ -438,10 +397,7 @@ public class HeartRateMeasurementAndroidTest {
         data[18] = 0x12;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertEquals(HeartRateMeasurement.FLAGS_HEART_RATE_VALUE_FORMAT_UINT16
                 | HeartRateMeasurement.FLAGS_SENSOR_CONTACT_STATUS_NOT_SUPPORTED_0
                 | HeartRateMeasurement.FLAGS_ENERGY_EXPENDED_STATUS_PRESENT
@@ -483,10 +439,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -510,10 +463,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -536,10 +486,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -562,10 +509,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -588,10 +532,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -614,10 +555,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -640,10 +578,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -668,10 +603,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 3] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -697,10 +629,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -723,10 +652,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -767,10 +693,7 @@ public class HeartRateMeasurementAndroidTest {
         data[19] = 0x13;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -810,10 +733,7 @@ public class HeartRateMeasurementAndroidTest {
         data[18] = 0x12;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -854,10 +774,7 @@ public class HeartRateMeasurementAndroidTest {
         data[19] = 0x13;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -898,10 +815,7 @@ public class HeartRateMeasurementAndroidTest {
         //@formatter:on
 
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -924,10 +838,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -943,10 +854,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -961,10 +869,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -979,10 +884,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -997,10 +899,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1015,10 +914,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1033,10 +929,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1053,10 +946,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 3] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1074,10 +964,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1092,10 +979,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1128,10 +1012,7 @@ public class HeartRateMeasurementAndroidTest {
         data[19] = 0x13;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1163,10 +1044,7 @@ public class HeartRateMeasurementAndroidTest {
         data[18] = 0x12;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1199,10 +1077,7 @@ public class HeartRateMeasurementAndroidTest {
         data[19] = 0x13;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1234,10 +1109,7 @@ public class HeartRateMeasurementAndroidTest {
         data[18] = 0x12;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1252,10 +1124,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         HeartRateMeasurementAndroid result2 = HeartRateMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1272,10 +1141,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         HeartRateMeasurementAndroid result2 = HeartRateMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1291,10 +1157,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         HeartRateMeasurementAndroid result2 = HeartRateMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1310,10 +1173,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         HeartRateMeasurementAndroid result2 = HeartRateMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1329,10 +1189,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         HeartRateMeasurementAndroid result2 = HeartRateMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1348,10 +1205,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         HeartRateMeasurementAndroid result2 = HeartRateMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1367,10 +1221,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         HeartRateMeasurementAndroid result2 = HeartRateMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1388,10 +1239,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 3] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         HeartRateMeasurementAndroid result2 = HeartRateMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1410,10 +1258,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         HeartRateMeasurementAndroid result2 = HeartRateMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1429,10 +1274,7 @@ public class HeartRateMeasurementAndroidTest {
         data[ 1] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         HeartRateMeasurementAndroid result2 = HeartRateMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1466,10 +1308,7 @@ public class HeartRateMeasurementAndroidTest {
         data[19] = 0x13;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         HeartRateMeasurementAndroid result2 = HeartRateMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1502,10 +1341,7 @@ public class HeartRateMeasurementAndroidTest {
         data[18] = 0x12;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         HeartRateMeasurementAndroid result2 = HeartRateMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1539,10 +1375,7 @@ public class HeartRateMeasurementAndroidTest {
         data[19] = 0x13;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         HeartRateMeasurementAndroid result2 = HeartRateMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1575,10 +1408,7 @@ public class HeartRateMeasurementAndroidTest {
         data[18] = 0x12;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(bluetoothGattCharacteristic);
+        HeartRateMeasurementAndroid result1 = new HeartRateMeasurementAndroid(data);
         HeartRateMeasurementAndroid result2 = HeartRateMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

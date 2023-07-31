@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a7d;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -239,9 +238,9 @@ public class DescriptorValueChangedAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -255,10 +254,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result1.getFlags());
         assertTrue(result1.isFlagsSourceOfChangeServer());
         assertFalse(result1.isFlagsSourceOfChangeClient());
@@ -268,10 +264,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result1.getFlags());
         assertFalse(result1.isFlagsSourceOfChangeServer());
         assertTrue(result1.isFlagsSourceOfChangeClient());
@@ -281,10 +274,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_constructor_10001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result1.getFlags());
         assertTrue(result1.isFlagsChangeToOneOrMoreEsTriggerSettingDescriptorsFalse());
         assertFalse(result1.isFlagsChangeToOneOrMoreEsTriggerSettingDescriptorsTrue());
@@ -294,10 +284,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_constructor_10002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result1.getFlags());
         assertFalse(result1.isFlagsChangeToOneOrMoreEsTriggerSettingDescriptorsFalse());
         assertTrue(result1.isFlagsChangeToOneOrMoreEsTriggerSettingDescriptorsTrue());
@@ -307,10 +294,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_constructor_20001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result1.getFlags());
         assertTrue(result1.isFlagsChangeToEsConfigurationDescriptorFalse());
         assertFalse(result1.isFlagsChangeToEsConfigurationDescriptorTrue());
@@ -320,10 +304,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_constructor_20002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result1.getFlags());
         assertFalse(result1.isFlagsChangeToEsConfigurationDescriptorFalse());
         assertTrue(result1.isFlagsChangeToEsConfigurationDescriptorTrue());
@@ -333,10 +314,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_constructor_30001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result1.getFlags());
         assertTrue(result1.isFlagsChangeToEsMeasurementDescriptorFalse());
         assertFalse(result1.isFlagsChangeToEsMeasurementDescriptorTrue());
@@ -346,10 +324,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_constructor_30002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result1.getFlags());
         assertFalse(result1.isFlagsChangeToEsMeasurementDescriptorFalse());
         assertTrue(result1.isFlagsChangeToEsMeasurementDescriptorTrue());
@@ -359,10 +334,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_constructor_40001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result1.getFlags());
         assertTrue(result1.isFlagsChangeToCharacteristicUserDescriptionDescriptorFalse());
         assertFalse(result1.isFlagsChangeToCharacteristicUserDescriptionDescriptorTrue());
@@ -372,10 +344,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_constructor_40002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result1.getFlags());
         assertFalse(result1.isFlagsChangeToCharacteristicUserDescriptionDescriptorFalse());
         assertTrue(result1.isFlagsChangeToCharacteristicUserDescriptionDescriptorTrue());
@@ -385,10 +354,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_constructor_50001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 4), result1.getCharacteristicUUID());
 
         long lsb = BASE_UUID.getLeastSignificantBits();
@@ -405,10 +371,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_constructor_50002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 18), result1.getCharacteristicUUID());
 
         ByteBuffer bb = ByteBuffer.wrap(data, 2, 16).order(ByteOrder.LITTLE_ENDIAN);
@@ -433,10 +396,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -449,10 +409,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -465,10 +422,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_1_10001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -481,10 +435,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_1_10002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -497,10 +448,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_1_20001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -513,10 +461,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_1_20002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -529,10 +474,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_1_30001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -545,10 +487,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_1_30002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -561,10 +500,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_1_40001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -577,10 +513,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_1_40002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -593,10 +526,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_1_50001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -609,10 +539,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_1_50002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -625,10 +552,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -636,10 +560,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -647,10 +568,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_2_10001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -658,10 +576,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_2_10002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -669,10 +584,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_2_20001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -680,10 +592,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_2_20002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -691,10 +600,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_2_30001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -702,10 +608,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_2_30002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -713,10 +616,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_2_40001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -724,10 +624,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_2_40002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -735,10 +632,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_2_50001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -746,10 +640,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_2_50002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -757,10 +648,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         DescriptorValueChangedAndroid result2 = DescriptorValueChangedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -769,10 +657,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         DescriptorValueChangedAndroid result2 = DescriptorValueChangedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -781,10 +666,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_3_10001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         DescriptorValueChangedAndroid result2 = DescriptorValueChangedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -793,10 +675,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_3_10002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         DescriptorValueChangedAndroid result2 = DescriptorValueChangedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -805,10 +684,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_3_20001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         DescriptorValueChangedAndroid result2 = DescriptorValueChangedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -817,10 +693,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_3_20002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         DescriptorValueChangedAndroid result2 = DescriptorValueChangedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -829,10 +702,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_3_30001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         DescriptorValueChangedAndroid result2 = DescriptorValueChangedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -841,10 +711,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_3_30002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         DescriptorValueChangedAndroid result2 = DescriptorValueChangedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -853,10 +720,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_3_40001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         DescriptorValueChangedAndroid result2 = DescriptorValueChangedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -865,10 +729,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_3_40002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         DescriptorValueChangedAndroid result2 = DescriptorValueChangedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -877,10 +738,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_3_50001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         DescriptorValueChangedAndroid result2 = DescriptorValueChangedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -889,10 +747,7 @@ public class DescriptorValueChangedAndroidTest {
     public void test_parcelable_3_50002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+        DescriptorValueChangedAndroid result1 = new DescriptorValueChangedAndroid(data);
         DescriptorValueChangedAndroid result2 = DescriptorValueChangedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

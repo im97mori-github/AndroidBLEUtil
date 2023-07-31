@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a26;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -24,10 +22,7 @@ public class FirmwareRevisionStringAndroidTest {
     public void test_constructor001() {
         String firmwareRevision = "00.00";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes());
-
-        FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(bluetoothGattCharacteristic);
+        FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(firmwareRevision.getBytes());
         assertEquals(firmwareRevision, result1.getFirmwareRevision());
     }
 
@@ -35,10 +30,7 @@ public class FirmwareRevisionStringAndroidTest {
     public void test_constructor002() {
         String firmwareRevision = "99.99";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes());
-
-        FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(bluetoothGattCharacteristic);
+        FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(firmwareRevision.getBytes());
         assertEquals(firmwareRevision, result1.getFirmwareRevision());
     }
 
@@ -54,10 +46,7 @@ public class FirmwareRevisionStringAndroidTest {
     public void test_parcelable001() {
         String firmwareRevision = "00.00";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes());
-
-        FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(bluetoothGattCharacteristic);
+        FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(firmwareRevision.getBytes());
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -70,10 +59,7 @@ public class FirmwareRevisionStringAndroidTest {
     public void test_parcelable002() {
         String firmwareRevision = "12.34";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes());
-
-        FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(bluetoothGattCharacteristic);
+        FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(firmwareRevision.getBytes());
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -86,10 +72,7 @@ public class FirmwareRevisionStringAndroidTest {
     public void test_parcelable003() {
         String firmwareRevision = "12.34";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes());
-
-        FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(bluetoothGattCharacteristic);
+        FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(firmwareRevision.getBytes());
         byte[] resultData = result1.getBytes();
         assertArrayEquals(firmwareRevision.getBytes(), resultData);
     }
@@ -98,10 +81,7 @@ public class FirmwareRevisionStringAndroidTest {
     public void test_parcelable004() {
         String firmwareRevision = "12.34";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(firmwareRevision.getBytes());
-
-        FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(bluetoothGattCharacteristic);
+        FirmwareRevisionStringAndroid result1 = new FirmwareRevisionStringAndroid(firmwareRevision.getBytes());
         FirmwareRevisionStringAndroid result2 = FirmwareRevisionStringAndroid.CREATOR.createFromByteArray(firmwareRevision.getBytes());
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

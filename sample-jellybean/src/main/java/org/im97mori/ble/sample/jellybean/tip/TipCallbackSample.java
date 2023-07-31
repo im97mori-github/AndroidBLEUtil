@@ -360,6 +360,11 @@ public class TipCallbackSample implements TimeProfileCallback {
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onCurrentTimeReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull CurrentTimeAndroid currentTimeAndroid, @Nullable Bundle argument) {
         callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, currentTimeAndroid.getYear(), currentTimeAndroid.getMonth(), currentTimeAndroid.getDay(), currentTimeAndroid.getHours(), currentTimeAndroid.getMinutes(), currentTimeAndroid.getSeconds());
     }

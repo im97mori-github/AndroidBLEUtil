@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CGM_STATUS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * CGM Status (Characteristics UUID: 0x2AA9)
@@ -45,9 +45,7 @@ public class CgmStatusAndroid extends CgmStatus implements Parcelable {
          */
         @NonNull
         public CgmStatusAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CGM_STATUS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new CgmStatusAndroid(bluetoothGattCharacteristic);
+            return new CgmStatusAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class CgmStatusAndroid extends CgmStatus implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AA9
      */
+    @Deprecated
     public CgmStatusAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public CgmStatusAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class CgmStatusAndroid extends CgmStatus implements Parcelable {
      * @param in Parcel
      */
     private CgmStatusAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

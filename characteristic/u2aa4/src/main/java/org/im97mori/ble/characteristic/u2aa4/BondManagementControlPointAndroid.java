@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Bond Management Control Point (Characteristics UUID: 0x2AA4)
@@ -45,9 +45,7 @@ public class BondManagementControlPointAndroid extends BondManagementControlPoin
          */
         @NonNull
         public BondManagementControlPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+            return new BondManagementControlPointAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BondManagementControlPointAndroid extends BondManagementControlPoin
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AA4
      */
+    @Deprecated
     public BondManagementControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BondManagementControlPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class BondManagementControlPointAndroid extends BondManagementControlPoin
      * @param in Parcel
      */
     private BondManagementControlPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

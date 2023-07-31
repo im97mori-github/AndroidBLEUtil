@@ -6,12 +6,12 @@ plugins {
 def target = advertisingAndroid
 
 android {
-    compileSdkVersion globalCompileSdkVersion
-    buildToolsVersion globalBuildToolsVersion
+    compileSdk globalCompileSdkVersion
+    buildToolsVersion = globalBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion globalMinSdkVersion
-        targetSdkVersion globalTargetSdkVersion
+        minSdk globalMinSdkVersion
+        targetSdk globalTargetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -37,7 +37,7 @@ android {
 }
 
 dependencies {
-    api target['baseModule']
+    api target['baseModule'].toString()
     api apiCoreUtilsAndroid
     api androidxAnnotation
     testImplementation apiTestUtilAndroid

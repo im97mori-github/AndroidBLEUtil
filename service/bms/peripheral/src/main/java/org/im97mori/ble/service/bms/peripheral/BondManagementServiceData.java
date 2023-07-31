@@ -3,6 +3,7 @@ package org.im97mori.ble.service.bms.peripheral;
 import static org.im97mori.ble.constants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
 
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,9 @@ public class BondManagementServiceData extends ServiceData {
          */
         @Override
         @NonNull
+        @Deprecated
         public BondManagementServiceData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new BondManagementServiceData(in);
         }
 
@@ -84,10 +87,16 @@ public class BondManagementServiceData extends ServiceData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public BondManagementServiceData(@NonNull Parcel in) {
         super(in);
-        bondManagementFeature = in.readParcelable(this.getClass().getClassLoader());
-        bondManagementControlPoint = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            bondManagementFeature = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            bondManagementControlPoint = in.readParcelable(this.getClass().getClassLoader(), BondManagementControlPointCharacteristicData.class);
+        } else {
+            bondManagementFeature = in.readParcelable(this.getClass().getClassLoader());
+            bondManagementControlPoint = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

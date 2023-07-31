@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.IDD_STATUS_READER_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * IDD Status Reader Control Point (Characteristics UUID: 0x2B24)
@@ -45,9 +45,7 @@ public class IddStatusReaderControlPointAndroid extends IddStatusReaderControlPo
          */
         @NonNull
         public IddStatusReaderControlPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(IDD_STATUS_READER_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new IddStatusReaderControlPointAndroid(bluetoothGattCharacteristic);
+            return new IddStatusReaderControlPointAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class IddStatusReaderControlPointAndroid extends IddStatusReaderControlPo
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B24
      */
+    @Deprecated
     public IddStatusReaderControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public IddStatusReaderControlPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class IddStatusReaderControlPointAndroid extends IddStatusReaderControlPo
      * @param in Parcel
      */
     private IddStatusReaderControlPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.FITNESS_MACHINE_STATUS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Fitness Machine Status (Characteristics UUID: 0x2ADA)
@@ -44,9 +44,7 @@ public class FitnessMachineStatusAndroid extends FitnessMachineStatus implements
          */
         @NonNull
         public FitnessMachineStatusAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(FITNESS_MACHINE_STATUS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+            return new FitnessMachineStatusAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class FitnessMachineStatusAndroid extends FitnessMachineStatus implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2ADA
      */
+    @Deprecated
     public FitnessMachineStatusAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public FitnessMachineStatusAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class FitnessMachineStatusAndroid extends FitnessMachineStatus implements
      * @param in Parcel
      */
     private FitnessMachineStatusAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

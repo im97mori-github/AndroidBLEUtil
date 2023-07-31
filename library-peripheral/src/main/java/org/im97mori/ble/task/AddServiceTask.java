@@ -163,6 +163,7 @@ public class AddServiceTask extends AbstractBLETask {
      */
     @SuppressLint("MissingPermission")
     @Override
+    @Deprecated
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         BluetoothGattService bluetoothGattService;

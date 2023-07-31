@@ -51,7 +51,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings({"UnnecessaryLocalVariable", "WrapperTypeMayBePrimitive", "unused"})
-public class AutomationIOServiceTest_001 extends AbstractCentralTest {
+public class AutomationIOService001Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice

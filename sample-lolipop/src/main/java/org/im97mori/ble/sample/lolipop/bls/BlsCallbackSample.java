@@ -335,6 +335,11 @@ public class BlsCallbackSample extends BloodPressureServiceMockCallback implemen
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }
@@ -357,7 +362,9 @@ public class BlsCallbackSample extends BloodPressureServiceMockCallback implemen
         super.onDeviceDisconnected(bleServerConnection, device);
     }
 
+    /** @noinspection deprecation*/
     @Override
+    @Deprecated
     public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
         boolean result = super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
         if (result) {
@@ -376,7 +383,9 @@ public class BlsCallbackSample extends BloodPressureServiceMockCallback implemen
         callback(argument);
     }
 
+    /** @noinspection deprecation*/
     @Override
+    @Deprecated
     public void onServiceRemoveSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
         callback(argument);
         super.onServiceRemoveSuccess(taskId, bleServerConnection, bluetoothGattService, argument);

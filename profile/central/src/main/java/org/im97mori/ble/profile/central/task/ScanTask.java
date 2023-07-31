@@ -264,6 +264,7 @@ public class ScanTask extends AbstractBLETask {
      * {@inheritDoc}
      */
     @Override
+    @Deprecated
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
@@ -321,7 +322,12 @@ public class ScanTask extends AbstractBLETask {
         } else if (PROGRESS_SCAN_START.equals(mCurrentProgress)) {
             // current:scan start, next:device found
             if (PROGRESS_SCAN_FINISHED.equals(nextProgress)) {
-                List<BluetoothDevice> bluetoothDeviceList = bundle.getParcelableArrayList(KEY_BLUETOOTH_DEVICE);
+                List<BluetoothDevice> bluetoothDeviceList;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    bluetoothDeviceList = bundle.getParcelableArrayList(KEY_BLUETOOTH_DEVICE, BluetoothDevice.class);
+                } else {
+                    bluetoothDeviceList = bundle.getParcelableArrayList(KEY_BLUETOOTH_DEVICE);
+                }
                 if (bluetoothDeviceList != null) {
                     mFoundDeviceSet.addAll(bluetoothDeviceList);
                 }
@@ -354,6 +360,7 @@ public class ScanTask extends AbstractBLETask {
      * {@inheritDoc}
      */
     @Override
+    @Deprecated
     public void cancel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (mBluetoothLeScanner != null) {

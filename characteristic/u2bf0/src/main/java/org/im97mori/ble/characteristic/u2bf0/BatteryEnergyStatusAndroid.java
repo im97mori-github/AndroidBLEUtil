@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BATTERY_ENERGY_STATUS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Battery Energy Status (Characteristics UUID: 0x2BF0)
@@ -45,9 +45,7 @@ public class BatteryEnergyStatusAndroid extends BatteryEnergyStatus implements P
          */
         @NonNull
         public BatteryEnergyStatusAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_ENERGY_STATUS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BatteryEnergyStatusAndroid(bluetoothGattCharacteristic);
+            return new BatteryEnergyStatusAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BatteryEnergyStatusAndroid extends BatteryEnergyStatus implements P
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BF0
      */
+    @Deprecated
     public BatteryEnergyStatusAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BatteryEnergyStatusAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class BatteryEnergyStatusAndroid extends BatteryEnergyStatus implements P
      * @param in Parcel
      */
     private BatteryEnergyStatusAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

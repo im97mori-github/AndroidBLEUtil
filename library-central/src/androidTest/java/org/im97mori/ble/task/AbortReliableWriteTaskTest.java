@@ -21,7 +21,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 public class AbortReliableWriteTaskTest extends AbstractCentralTest {
 
     @Test
@@ -38,15 +38,19 @@ public class AbortReliableWriteTaskTest extends AbstractCentralTest {
         assertEquals(task, message.obj);
     }
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_doProcess_00001() {
         AbortReliableWriteTask task = new AbortReliableWriteTask(null, null, null, AbortReliableWriteTask.TIMEOUT_MILLIS, null);
         assertFalse(task.doProcess(new Message()));
     }
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_cancel_00001() {
         Looper looper = null;
         try {
@@ -67,8 +71,10 @@ public class AbortReliableWriteTaskTest extends AbstractCentralTest {
         }
     }
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_cancel_00002() {
         Looper looper = null;
         try {

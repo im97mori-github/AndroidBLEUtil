@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ESL_SENSOR_INFORMATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * ESL Sensor Information (Characteristics UUID: 0x2BFC)
@@ -45,9 +45,7 @@ public class EslSensorInformationAndroid extends EslSensorInformation implements
          */
         @NonNull
         public EslSensorInformationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ESL_SENSOR_INFORMATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new EslSensorInformationAndroid(bluetoothGattCharacteristic);
+            return new EslSensorInformationAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class EslSensorInformationAndroid extends EslSensorInformation implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BFC
      */
+    @Deprecated
     public EslSensorInformationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public EslSensorInformationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class EslSensorInformationAndroid extends EslSensorInformation implements
      * @param in Parcel
      */
     private EslSensorInformationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

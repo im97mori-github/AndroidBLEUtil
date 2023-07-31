@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.INCOMING_CALL_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Incoming Call (Characteristics UUID: 0x2BC1)
@@ -45,9 +45,7 @@ public class IncomingCallAndroid extends IncomingCall implements Parcelable {
          */
         @NonNull
         public IncomingCallAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(INCOMING_CALL_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new IncomingCallAndroid(bluetoothGattCharacteristic);
+            return new IncomingCallAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class IncomingCallAndroid extends IncomingCall implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BC1
      */
+    @Deprecated
     public IncomingCallAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public IncomingCallAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class IncomingCallAndroid extends IncomingCall implements Parcelable {
      * @param in Parcel
      */
     private IncomingCallAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

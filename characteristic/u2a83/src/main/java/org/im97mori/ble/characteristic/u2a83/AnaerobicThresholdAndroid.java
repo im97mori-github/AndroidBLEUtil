@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_THRESHOLD_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Anaerobic Threshold (Characteristics UUID: 0x2A83)
@@ -44,9 +44,7 @@ public class AnaerobicThresholdAndroid extends AnaerobicThreshold implements Par
          */
         @NonNull
         public AnaerobicThresholdAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ANAEROBIC_THRESHOLD_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AnaerobicThresholdAndroid(bluetoothGattCharacteristic);
+            return new AnaerobicThresholdAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class AnaerobicThresholdAndroid extends AnaerobicThreshold implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A83
      */
+    @Deprecated
     public AnaerobicThresholdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AnaerobicThresholdAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class AnaerobicThresholdAndroid extends AnaerobicThreshold implements Par
      * @param in Parcel
      */
     private AnaerobicThresholdAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

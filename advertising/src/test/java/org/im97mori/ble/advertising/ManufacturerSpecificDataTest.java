@@ -8,7 +8,6 @@ import android.os.Build;
 import android.os.Parcel;
 
 import org.im97mori.ble.BLEUtils;
-import org.im97mori.ble.advertising.ManufacturerSpecificDataAndroid;
 import org.im97mori.ble.constants.CompanyUUID;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +21,7 @@ import java.util.Arrays;
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-@SuppressWarnings({"ConstantConditions", "unused"})
+@SuppressWarnings({"unused"})
 public class ManufacturerSpecificDataTest {
 
     // google
@@ -195,9 +194,9 @@ public class ManufacturerSpecificDataTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {

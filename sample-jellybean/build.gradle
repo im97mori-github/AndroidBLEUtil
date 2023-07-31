@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion globalCompileSdkVersion
-    buildToolsVersion globalBuildToolsVersion
+    compileSdk globalCompileSdkVersion
+    buildToolsVersion = globalBuildToolsVersion
 
     defaultConfig {
         applicationId "org.im97mori.ble.sample.jellybean"
-        minSdkVersion globalMinSdkVersion
-        targetSdkVersion globalTargetSdkVersion
+        minSdk globalMinSdkVersion
+        targetSdk globalTargetSdkVersion
         versionCode 1
         versionName "1.0"
 

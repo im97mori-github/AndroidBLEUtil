@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ESL_RESPONSE_KEY_MATERIAL_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * ESL Response Key Material (Characteristics UUID: 0x2BF8)
@@ -45,9 +45,7 @@ public class EslResponseKeyMaterialAndroid extends EslResponseKeyMaterial implem
          */
         @NonNull
         public EslResponseKeyMaterialAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ESL_RESPONSE_KEY_MATERIAL_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new EslResponseKeyMaterialAndroid(bluetoothGattCharacteristic);
+            return new EslResponseKeyMaterialAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class EslResponseKeyMaterialAndroid extends EslResponseKeyMaterial implem
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BF8
      */
+    @Deprecated
     public EslResponseKeyMaterialAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public EslResponseKeyMaterialAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class EslResponseKeyMaterialAndroid extends EslResponseKeyMaterial implem
      * @param in Parcel
      */
     private EslResponseKeyMaterialAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

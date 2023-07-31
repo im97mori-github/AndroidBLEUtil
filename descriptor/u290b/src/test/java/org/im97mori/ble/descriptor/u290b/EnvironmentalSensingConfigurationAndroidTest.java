@@ -1,6 +1,10 @@
 package org.im97mori.ble.descriptor.u290b;
 
-import android.bluetooth.BluetoothGattDescriptor;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,12 +13,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -29,14 +28,10 @@ public class EnvironmentalSensingConfigurationAndroidTest {
         value[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingConfigurationAndroid result = new EnvironmentalSensingConfigurationAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingConfigurationAndroid result = new EnvironmentalSensingConfigurationAndroid(value);
         assertEquals(value[0], result.getTriggerLogicValue());
     }
 
-    @SuppressWarnings("ConstantConditions")
     @Test
     public void test_constructor002() {
         //@formatter:off
@@ -44,10 +39,7 @@ public class EnvironmentalSensingConfigurationAndroidTest {
         value[ 0] = (byte) EnvironmentalSensingConfigurationAndroid.TRIGGER_LOGIC_VALUE_BOOLAEN_AND;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingConfigurationAndroid result = new EnvironmentalSensingConfigurationAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingConfigurationAndroid result = new EnvironmentalSensingConfigurationAndroid(value);
         assertTrue(result.isTriggerLogicValueBooleanAnd());
         assertFalse(result.isTriggerLogicValueBooleanOr());
     }
@@ -59,10 +51,7 @@ public class EnvironmentalSensingConfigurationAndroidTest {
         value[ 0] = (byte) EnvironmentalSensingConfigurationAndroid.TRIGGER_LOGIC_VALUE_BOOLAEN_OR;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingConfigurationAndroid result = new EnvironmentalSensingConfigurationAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingConfigurationAndroid result = new EnvironmentalSensingConfigurationAndroid(value);
         assertFalse(result.isTriggerLogicValueBooleanAnd());
         assertTrue(result.isTriggerLogicValueBooleanOr());
     }
@@ -82,10 +71,7 @@ public class EnvironmentalSensingConfigurationAndroidTest {
         value[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingConfigurationAndroid result1 = new EnvironmentalSensingConfigurationAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingConfigurationAndroid result1 = new EnvironmentalSensingConfigurationAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -101,10 +87,7 @@ public class EnvironmentalSensingConfigurationAndroidTest {
         value[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingConfigurationAndroid result1 = new EnvironmentalSensingConfigurationAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingConfigurationAndroid result1 = new EnvironmentalSensingConfigurationAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -115,10 +98,7 @@ public class EnvironmentalSensingConfigurationAndroidTest {
         value[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingConfigurationAndroid result1 = new EnvironmentalSensingConfigurationAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingConfigurationAndroid result1 = new EnvironmentalSensingConfigurationAndroid(value);
         EnvironmentalSensingConfigurationAndroid result2 = EnvironmentalSensingConfigurationAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

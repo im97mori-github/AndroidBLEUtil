@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.IDD_FEATURES_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * IDD Features (Characteristics UUID: 0x2B23)
@@ -45,9 +45,7 @@ public class IddFeaturesAndroid extends IddFeatures implements Parcelable {
          */
         @NonNull
         public IddFeaturesAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(IDD_FEATURES_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new IddFeaturesAndroid(bluetoothGattCharacteristic);
+            return new IddFeaturesAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class IddFeaturesAndroid extends IddFeatures implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B23
      */
+    @Deprecated
     public IddFeaturesAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public IddFeaturesAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class IddFeaturesAndroid extends IddFeatures implements Parcelable {
      * @param in Parcel
      */
     private IddFeaturesAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

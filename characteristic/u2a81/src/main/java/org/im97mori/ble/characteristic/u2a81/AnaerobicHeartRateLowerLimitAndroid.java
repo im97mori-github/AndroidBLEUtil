@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Anaerobic Heart Rate Lower Limit (Characteristics UUID: 0x2A81)
@@ -44,9 +44,7 @@ public class AnaerobicHeartRateLowerLimitAndroid extends AnaerobicHeartRateLower
          */
         @NonNull
         public AnaerobicHeartRateLowerLimitAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AnaerobicHeartRateLowerLimitAndroid(bluetoothGattCharacteristic);
+            return new AnaerobicHeartRateLowerLimitAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class AnaerobicHeartRateLowerLimitAndroid extends AnaerobicHeartRateLower
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A81
      */
+    @Deprecated
     public AnaerobicHeartRateLowerLimitAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AnaerobicHeartRateLowerLimitAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class AnaerobicHeartRateLowerLimitAndroid extends AnaerobicHeartRateLower
      * @param in Parcel
      */
     private AnaerobicHeartRateLowerLimitAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -1,6 +1,7 @@
 package org.im97mori.ble.descriptor.u290f;
 
-import android.bluetooth.BluetoothGattDescriptor;
+import static org.junit.Assert.assertArrayEquals;
+
 import android.os.Build;
 import android.os.Parcel;
 
@@ -8,9 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
@@ -25,10 +23,7 @@ public class CompleteBrEdrTransportBlockDataAndroidTest {
         byte[] value = new byte[0];
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CompleteBrEdrTransportBlockDataAndroid result = new CompleteBrEdrTransportBlockDataAndroid(bluetoothGattDescriptor);
+        CompleteBrEdrTransportBlockDataAndroid result = new CompleteBrEdrTransportBlockDataAndroid(value);
         assertArrayEquals(value, result.getTransportData());
     }
 
@@ -39,10 +34,7 @@ public class CompleteBrEdrTransportBlockDataAndroidTest {
         value[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CompleteBrEdrTransportBlockDataAndroid result = new CompleteBrEdrTransportBlockDataAndroid(bluetoothGattDescriptor);
+        CompleteBrEdrTransportBlockDataAndroid result = new CompleteBrEdrTransportBlockDataAndroid(value);
         assertArrayEquals(value, result.getTransportData());
     }
 
@@ -52,10 +44,7 @@ public class CompleteBrEdrTransportBlockDataAndroidTest {
         byte[] value = new byte[0];
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CompleteBrEdrTransportBlockDataAndroid result1 = new CompleteBrEdrTransportBlockDataAndroid(bluetoothGattDescriptor);
+        CompleteBrEdrTransportBlockDataAndroid result1 = new CompleteBrEdrTransportBlockDataAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -71,10 +60,7 @@ public class CompleteBrEdrTransportBlockDataAndroidTest {
         value[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CompleteBrEdrTransportBlockDataAndroid result1 = new CompleteBrEdrTransportBlockDataAndroid(bluetoothGattDescriptor);
+        CompleteBrEdrTransportBlockDataAndroid result1 = new CompleteBrEdrTransportBlockDataAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -89,10 +75,7 @@ public class CompleteBrEdrTransportBlockDataAndroidTest {
         byte[] value = new byte[0];
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CompleteBrEdrTransportBlockDataAndroid result1 = new CompleteBrEdrTransportBlockDataAndroid(bluetoothGattDescriptor);
+        CompleteBrEdrTransportBlockDataAndroid result1 = new CompleteBrEdrTransportBlockDataAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -103,10 +86,7 @@ public class CompleteBrEdrTransportBlockDataAndroidTest {
         value[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CompleteBrEdrTransportBlockDataAndroid result1 = new CompleteBrEdrTransportBlockDataAndroid(bluetoothGattDescriptor);
+        CompleteBrEdrTransportBlockDataAndroid result1 = new CompleteBrEdrTransportBlockDataAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -116,10 +96,7 @@ public class CompleteBrEdrTransportBlockDataAndroidTest {
         byte[] value = new byte[0];
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CompleteBrEdrTransportBlockDataAndroid result1 = new CompleteBrEdrTransportBlockDataAndroid(bluetoothGattDescriptor);
+        CompleteBrEdrTransportBlockDataAndroid result1 = new CompleteBrEdrTransportBlockDataAndroid(value);
         CompleteBrEdrTransportBlockDataAndroid result2 = CompleteBrEdrTransportBlockDataAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -132,10 +109,7 @@ public class CompleteBrEdrTransportBlockDataAndroidTest {
         //@formatter:on
 
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CompleteBrEdrTransportBlockDataAndroid result1 = new CompleteBrEdrTransportBlockDataAndroid(bluetoothGattDescriptor);
+        CompleteBrEdrTransportBlockDataAndroid result1 = new CompleteBrEdrTransportBlockDataAndroid(value);
         CompleteBrEdrTransportBlockDataAndroid result2 = CompleteBrEdrTransportBlockDataAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

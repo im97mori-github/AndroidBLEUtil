@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Peripheral Privacy Flag (Characteristics UUID: 0x2A02)
@@ -44,9 +44,7 @@ public class PeripheralPrivacyFlagAndroid extends PeripheralPrivacyFlag implemen
          */
         @NonNull
         public PeripheralPrivacyFlagAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new PeripheralPrivacyFlagAndroid(bluetoothGattCharacteristic);
+            return new PeripheralPrivacyFlagAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class PeripheralPrivacyFlagAndroid extends PeripheralPrivacyFlag implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A02
      */
+    @Deprecated
     public PeripheralPrivacyFlagAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public PeripheralPrivacyFlagAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class PeripheralPrivacyFlagAndroid extends PeripheralPrivacyFlag implemen
      * @param in Parcel
      */
     private PeripheralPrivacyFlagAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

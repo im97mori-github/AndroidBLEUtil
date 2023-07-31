@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ELECTRIC_CURRENT_SPECIFICATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Electric Current Specification (Characteristics UUID: 0x2AF0)
@@ -44,9 +44,7 @@ public class ElectricCurrentSpecificationAndroid extends ElectricCurrentSpecific
          */
         @NonNull
         public ElectricCurrentSpecificationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ELECTRIC_CURRENT_SPECIFICATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ElectricCurrentSpecificationAndroid(bluetoothGattCharacteristic);
+            return new ElectricCurrentSpecificationAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ElectricCurrentSpecificationAndroid extends ElectricCurrentSpecific
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AF0
      */
+    @Deprecated
     public ElectricCurrentSpecificationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ElectricCurrentSpecificationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class ElectricCurrentSpecificationAndroid extends ElectricCurrentSpecific
      * @param in Parcel
      */
     private ElectricCurrentSpecificationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

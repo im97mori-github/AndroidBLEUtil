@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.INCOMING_CALL_TARGET_BEARER_URI_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Incoming Call Target Bearer URI (Characteristics UUID: 0x2BBC)
@@ -45,9 +45,7 @@ public class IncomingCallTargetBearerUriAndroid extends IncomingCallTargetBearer
          */
         @NonNull
         public IncomingCallTargetBearerUriAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(INCOMING_CALL_TARGET_BEARER_URI_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new IncomingCallTargetBearerUriAndroid(bluetoothGattCharacteristic);
+            return new IncomingCallTargetBearerUriAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class IncomingCallTargetBearerUriAndroid extends IncomingCallTargetBearer
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BBC
      */
+    @Deprecated
     public IncomingCallTargetBearerUriAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public IncomingCallTargetBearerUriAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class IncomingCallTargetBearerUriAndroid extends IncomingCallTargetBearer
      * @param in Parcel
      */
     private IncomingCallTargetBearerUriAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

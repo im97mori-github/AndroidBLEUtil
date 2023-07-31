@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.ByteArrayCreator;
 
+import java.util.Objects;
+
 /**
  * <p>
  * BIGInfo
@@ -151,8 +153,7 @@ public class BigInfoAndroid extends BigInfo implements AdvertisingDataInterfaceA
      * @param in Parcel
      */
     private BigInfoAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray(), 0, in.readInt());
+        super(Objects.requireNonNull(in.createByteArray()), 0, in.readInt());
     }
 
     /**

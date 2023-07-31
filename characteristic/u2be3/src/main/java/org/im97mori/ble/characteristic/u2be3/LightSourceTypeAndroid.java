@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.LIGHT_SOURCE_TYPE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Light Source Type (Characteristics UUID: 0x2BE3)
@@ -45,9 +45,7 @@ public class LightSourceTypeAndroid extends LightSourceType implements Parcelabl
          */
         @NonNull
         public LightSourceTypeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LIGHT_SOURCE_TYPE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new LightSourceTypeAndroid(bluetoothGattCharacteristic);
+            return new LightSourceTypeAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class LightSourceTypeAndroid extends LightSourceType implements Parcelabl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BE3
      */
+    @Deprecated
     public LightSourceTypeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public LightSourceTypeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class LightSourceTypeAndroid extends LightSourceType implements Parcelabl
      * @param in Parcel
      */
     private LightSourceTypeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

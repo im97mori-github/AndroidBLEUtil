@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.PARENT_GROUP_OBJECT_ID_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Parent Group Object ID (Characteristics UUID: 0x2B9F)
@@ -45,9 +45,7 @@ public class ParentGroupObjectIdAndroid extends ParentGroupObjectId implements P
          */
         @NonNull
         public ParentGroupObjectIdAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PARENT_GROUP_OBJECT_ID_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ParentGroupObjectIdAndroid(bluetoothGattCharacteristic);
+            return new ParentGroupObjectIdAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class ParentGroupObjectIdAndroid extends ParentGroupObjectId implements P
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B9F
      */
+    @Deprecated
     public ParentGroupObjectIdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ParentGroupObjectIdAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class ParentGroupObjectIdAndroid extends ParentGroupObjectId implements P
      * @param in Parcel
      */
     private ParentGroupObjectIdAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

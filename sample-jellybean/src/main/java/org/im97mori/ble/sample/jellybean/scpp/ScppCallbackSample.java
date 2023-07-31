@@ -356,6 +356,11 @@ public class ScppCallbackSample implements ScanParametersProfileCallback {
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onScanIntervalWindowWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull ScanIntervalWindowAndroid scanIntervalWindowAndroid, @Nullable Bundle argument) {
         callback(bluetoothDevice, serviceInstanceId, characteristicUUID, characteristicInstanceId, scanIntervalWindowAndroid.getLeScanInterval(), scanIntervalWindowAndroid.getLeScanWindow());
     }

@@ -16,6 +16,7 @@ import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.TaskHandler;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -113,9 +114,9 @@ public class ReadCharacteristicTask extends AbstractBLETask {
     @NonNull
     public static Message createReadCharacteristicSuccessMessage(@NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull byte[] values) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
+        bundle.putString(KEY_SERVICE_UUID, serviceUUID.toString());
         bundle.putInt(KEY_SERVICE_INSTANCE_ID, serviceInstanceId);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
+        bundle.putString(KEY_CHARACTERISTIC_UUID, characteristicUUID.toString());
         bundle.putInt(KEY_CHARACTERISTIC_INSTANCE_ID, characteristicInstanceId);
         bundle.putByteArray(KEY_VALUES, values);
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_CHARACTERISTIC_READ_SUCCESS);
@@ -137,9 +138,9 @@ public class ReadCharacteristicTask extends AbstractBLETask {
     @NonNull
     public static Message createReadCharacteristicErrorMessage(@NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int status) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
+        bundle.putString(KEY_SERVICE_UUID, serviceUUID.toString());
         bundle.putInt(KEY_SERVICE_INSTANCE_ID, serviceInstanceId);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
+        bundle.putString(KEY_CHARACTERISTIC_UUID, characteristicUUID.toString());
         bundle.putInt(KEY_CHARACTERISTIC_INSTANCE_ID, characteristicInstanceId);
         bundle.putInt(KEY_STATUS, status);
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_CHARACTERISTIC_READ_ERROR);
@@ -231,8 +232,8 @@ public class ReadCharacteristicTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, mServiceUUID);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, mCharacteristicUUID);
+        bundle.putString(KEY_SERVICE_UUID, mServiceUUID.toString());
+        bundle.putString(KEY_CHARACTERISTIC_UUID, mCharacteristicUUID.toString());
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_CHARACTERISTIC_READ_START);
         Message message = new Message();
         message.setData(bundle);
@@ -248,9 +249,9 @@ public class ReadCharacteristicTask extends AbstractBLETask {
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
-            UUID serviceUUID = (UUID) bundle.getSerializable(KEY_SERVICE_UUID);
+            UUID serviceUUID = UUID.fromString(bundle.getString(KEY_SERVICE_UUID));
             int serviceInstanceId = bundle.getInt(KEY_SERVICE_INSTANCE_ID);
-            UUID characteristicUUID = (UUID) bundle.getSerializable(KEY_CHARACTERISTIC_UUID);
+            UUID characteristicUUID = UUID.fromString(bundle.getString(KEY_CHARACTERISTIC_UUID));
             int characteristicInstanceId = bundle.getInt(KEY_CHARACTERISTIC_INSTANCE_ID);
             String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
@@ -342,14 +343,13 @@ public class ReadCharacteristicTask extends AbstractBLETask {
                     // current:read characteristic start, next:read characteristic success
                     if (PROGRESS_CHARACTERISTIC_READ_SUCCESS.equals(nextProgress)) {
                         byte[] value = bundle.getByteArray(KEY_VALUES);
-                        //noinspection ConstantConditions
                         mBLEConnection.getBLECallback().onCharacteristicReadSuccess(getTaskId()
                                 , mBLEConnection.getBluetoothDevice()
                                 , mServiceUUID
                                 , mServiceInstanceId
                                 , mCharacteristicUUID
                                 , mCharacteristicInstanceId
-                                , value
+                                , Objects.requireNonNull(value)
                                 , mArgument);
                     } else if (PROGRESS_CHARACTERISTIC_READ_ERROR.equals(nextProgress)) {
                         // current:read characteristic start, next:read characteristic error

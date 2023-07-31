@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_INTENSITY_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Luminous Intensity (Characteristics UUID: 0x2B01)
@@ -44,9 +44,7 @@ public class LuminousIntensityAndroid extends LuminousIntensity implements Parce
          */
         @NonNull
         public LuminousIntensityAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LUMINOUS_INTENSITY_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new LuminousIntensityAndroid(bluetoothGattCharacteristic);
+            return new LuminousIntensityAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class LuminousIntensityAndroid extends LuminousIntensity implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B01
      */
+    @Deprecated
     public LuminousIntensityAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public LuminousIntensityAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class LuminousIntensityAndroid extends LuminousIntensity implements Parce
      * @param in Parcel
      */
     private LuminousIntensityAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

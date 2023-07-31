@@ -1,6 +1,7 @@
 package org.im97mori.ble.characteristic.u2abf;
 
-import android.bluetooth.BluetoothGattCharacteristic;
+import static org.junit.Assert.assertArrayEquals;
+
 import android.os.Build;
 import android.os.Parcel;
 
@@ -13,9 +14,6 @@ import org.robolectric.annotation.Config;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.UUID;
-
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
@@ -32,10 +30,7 @@ public class ObjectTypeAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(value);
-
-        ObjectTypeAndroid result = new ObjectTypeAndroid(bluetoothGattCharacteristic);
+        ObjectTypeAndroid result = new ObjectTypeAndroid(value);
         assertArrayEquals(value, result.getObjectType());
     }
 
@@ -61,10 +56,7 @@ public class ObjectTypeAndroidTest {
         value[15] = 0x10;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(value);
-
-        ObjectTypeAndroid result = new ObjectTypeAndroid(bluetoothGattCharacteristic);
+        ObjectTypeAndroid result = new ObjectTypeAndroid(value);
         assertArrayEquals(value, result.getObjectType());
     }
 
@@ -122,10 +114,7 @@ public class ObjectTypeAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(value);
-
-        ObjectTypeAndroid result1 = new ObjectTypeAndroid(bluetoothGattCharacteristic);
+        ObjectTypeAndroid result1 = new ObjectTypeAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -156,10 +145,7 @@ public class ObjectTypeAndroidTest {
         value[15] = 0x10;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(value);
-
-        ObjectTypeAndroid result1 = new ObjectTypeAndroid(bluetoothGattCharacteristic);
+        ObjectTypeAndroid result1 = new ObjectTypeAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -176,10 +162,7 @@ public class ObjectTypeAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(value);
-
-        ObjectTypeAndroid result1 = new ObjectTypeAndroid(bluetoothGattCharacteristic);
+        ObjectTypeAndroid result1 = new ObjectTypeAndroid(value);
         byte[] resultData = result1.getBytes();
         assertArrayEquals(value, resultData);
     }
@@ -206,10 +189,7 @@ public class ObjectTypeAndroidTest {
         value[15] = 0x10;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(value);
-
-        ObjectTypeAndroid result1 = new ObjectTypeAndroid(bluetoothGattCharacteristic);
+        ObjectTypeAndroid result1 = new ObjectTypeAndroid(value);
         byte[] resultData = result1.getBytes();
         assertArrayEquals(value, resultData);
     }
@@ -222,10 +202,7 @@ public class ObjectTypeAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(value);
-
-        ObjectTypeAndroid result1 = new ObjectTypeAndroid(bluetoothGattCharacteristic);
+        ObjectTypeAndroid result1 = new ObjectTypeAndroid(value);
         ObjectTypeAndroid result2 = ObjectTypeAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -252,10 +229,7 @@ public class ObjectTypeAndroidTest {
         value[15] = 0x10;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(value);
-
-        ObjectTypeAndroid result1 = new ObjectTypeAndroid(bluetoothGattCharacteristic);
+        ObjectTypeAndroid result1 = new ObjectTypeAndroid(value);
         ObjectTypeAndroid result2 = ObjectTypeAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

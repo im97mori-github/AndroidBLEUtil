@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CHROMATICITY_COORDINATE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Chromaticity Coordinate (Characteristics UUID: 0x2B1C)
@@ -44,9 +44,7 @@ public class ChromaticityCoordinateAndroid extends ChromaticityCoordinate implem
          */
         @NonNull
         public ChromaticityCoordinateAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CHROMATICITY_COORDINATE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ChromaticityCoordinateAndroid(bluetoothGattCharacteristic);
+            return new ChromaticityCoordinateAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ChromaticityCoordinateAndroid extends ChromaticityCoordinate implem
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B1C
      */
+    @Deprecated
     public ChromaticityCoordinateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ChromaticityCoordinateAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class ChromaticityCoordinateAndroid extends ChromaticityCoordinate implem
      * @param in Parcel
      */
     private ChromaticityCoordinateAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

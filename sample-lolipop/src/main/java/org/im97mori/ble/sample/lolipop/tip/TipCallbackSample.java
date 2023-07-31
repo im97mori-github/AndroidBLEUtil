@@ -405,6 +405,11 @@ public class TipCallbackSample extends TimeProfileMockCallback implements TimePr
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }

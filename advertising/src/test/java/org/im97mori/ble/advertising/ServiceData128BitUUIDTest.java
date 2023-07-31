@@ -7,7 +7,6 @@ import static org.junit.Assert.assertEquals;
 import android.os.Build;
 import android.os.Parcel;
 
-import org.im97mori.ble.advertising.ServiceData128BitUUIDAndroid;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -23,7 +22,7 @@ import java.util.UUID;
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-@SuppressWarnings({"ConstantConditions", "unused"})
+@SuppressWarnings({"unused"})
 public class ServiceData128BitUUIDTest {
 
     //@formatter:off
@@ -477,9 +476,9 @@ public class ServiceData128BitUUIDTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {

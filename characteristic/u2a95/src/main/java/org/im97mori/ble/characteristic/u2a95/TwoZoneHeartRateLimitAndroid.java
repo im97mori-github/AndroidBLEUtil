@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Two Zone Heart Rate Limit (Characteristics UUID: 0x2A95)
@@ -44,9 +44,7 @@ public class TwoZoneHeartRateLimitAndroid extends TwoZoneHeartRateLimit implemen
          */
         @NonNull
         public TwoZoneHeartRateLimitAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TwoZoneHeartRateLimitAndroid(bluetoothGattCharacteristic);
+            return new TwoZoneHeartRateLimitAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class TwoZoneHeartRateLimitAndroid extends TwoZoneHeartRateLimit implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A95
      */
+    @Deprecated
     public TwoZoneHeartRateLimitAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TwoZoneHeartRateLimitAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class TwoZoneHeartRateLimitAndroid extends TwoZoneHeartRateLimit implemen
      * @param in Parcel
      */
     private TwoZoneHeartRateLimitAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

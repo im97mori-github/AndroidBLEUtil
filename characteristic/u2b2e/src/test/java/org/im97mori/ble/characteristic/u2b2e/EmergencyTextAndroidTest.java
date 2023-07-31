@@ -1,10 +1,8 @@
 package org.im97mori.ble.characteristic.u2b2e;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -48,10 +46,7 @@ public class EmergencyTextAndroidTest extends TestBase {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EmergencyTextAndroid result1 = new EmergencyTextAndroid(bluetoothGattCharacteristic);
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(data);
         assertEquals("0", result1.getEmergencyText());
     }
 
@@ -59,10 +54,7 @@ public class EmergencyTextAndroidTest extends TestBase {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EmergencyTextAndroid result1 = new EmergencyTextAndroid(bluetoothGattCharacteristic);
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(data);
         assertEquals("01234567890123456789", result1.getEmergencyText());
     }
 
@@ -70,10 +62,7 @@ public class EmergencyTextAndroidTest extends TestBase {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EmergencyTextAndroid result1 = new EmergencyTextAndroid(bluetoothGattCharacteristic);
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(data);
         assertEquals("01234567890123456789", result1.getEmergencyText());
     }
 
@@ -105,10 +94,7 @@ public class EmergencyTextAndroidTest extends TestBase {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EmergencyTextAndroid result1 = new EmergencyTextAndroid(bluetoothGattCharacteristic);
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -120,10 +106,7 @@ public class EmergencyTextAndroidTest extends TestBase {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EmergencyTextAndroid result1 = new EmergencyTextAndroid(bluetoothGattCharacteristic);
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -135,10 +118,7 @@ public class EmergencyTextAndroidTest extends TestBase {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EmergencyTextAndroid result1 = new EmergencyTextAndroid(bluetoothGattCharacteristic);
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -150,10 +130,7 @@ public class EmergencyTextAndroidTest extends TestBase {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EmergencyTextAndroid result1 = new EmergencyTextAndroid(bluetoothGattCharacteristic);
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -161,10 +138,7 @@ public class EmergencyTextAndroidTest extends TestBase {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EmergencyTextAndroid result1 = new EmergencyTextAndroid(bluetoothGattCharacteristic);
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -172,10 +146,7 @@ public class EmergencyTextAndroidTest extends TestBase {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EmergencyTextAndroid result1 = new EmergencyTextAndroid(bluetoothGattCharacteristic);
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, EmergencyTextAndroid.MAX_OCTETS), result1.getBytes());
     }
 
@@ -183,10 +154,7 @@ public class EmergencyTextAndroidTest extends TestBase {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EmergencyTextAndroid result1 = new EmergencyTextAndroid(bluetoothGattCharacteristic);
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(data);
         EmergencyTextAndroid result2 = EmergencyTextAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -195,10 +163,7 @@ public class EmergencyTextAndroidTest extends TestBase {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EmergencyTextAndroid result1 = new EmergencyTextAndroid(bluetoothGattCharacteristic);
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(data);
         EmergencyTextAndroid result2 = EmergencyTextAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -207,10 +172,7 @@ public class EmergencyTextAndroidTest extends TestBase {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EmergencyTextAndroid result1 = new EmergencyTextAndroid(bluetoothGattCharacteristic);
+        EmergencyTextAndroid result1 = new EmergencyTextAndroid(data);
         EmergencyTextAndroid result2 = EmergencyTextAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

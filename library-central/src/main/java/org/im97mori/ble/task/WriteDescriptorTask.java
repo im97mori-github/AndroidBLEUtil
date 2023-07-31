@@ -7,6 +7,8 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothStatusCodes;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.format.DateUtils;
@@ -76,11 +78,6 @@ public class WriteDescriptorTask extends AbstractBLETask {
     public static final String KEY_DESCRIPTOR_INSTANCE_ID = "KEY_DESCRIPTOR_INSTANCE_ID";
 
     /**
-     * KEY:VALUES
-     */
-    public static final String KEY_VALUES = "KEY_VALUES";
-
-    /**
      * KEY:STATUS
      */
     public static final String KEY_STATUS = "KEY_STATUS";
@@ -124,19 +121,17 @@ public class WriteDescriptorTask extends AbstractBLETask {
      * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param descriptorUUID           target descriptor UUID
      * @param descriptorInstanceId     task target descriptor instance id
-     * @param values                   {@link BluetoothGattDescriptor#getValue()}
      * @return write descriptor success {@link Message} instance
      */
     @NonNull
-    public static Message createWriteDescriptorSuccessMessage(@NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values) {
+    public static Message createWriteDescriptorSuccessMessage(@NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
+        bundle.putString(KEY_SERVICE_UUID, serviceUUID.toString());
         bundle.putInt(KEY_SERVICE_INSTANCE_ID, serviceInstanceId);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
+        bundle.putString(KEY_CHARACTERISTIC_UUID, characteristicUUID.toString());
         bundle.putInt(KEY_CHARACTERISTIC_INSTANCE_ID, characteristicInstanceId);
-        bundle.putSerializable(KEY_DESCRIPTOR_UUID, descriptorUUID);
+        bundle.putString(KEY_DESCRIPTOR_UUID, descriptorUUID.toString());
         bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
-        bundle.putByteArray(KEY_VALUES, values);
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_WRITE_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
@@ -158,11 +153,11 @@ public class WriteDescriptorTask extends AbstractBLETask {
     @NonNull
     public static Message createWriteDescriptorErrorMessage(@NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, int status) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
+        bundle.putString(KEY_SERVICE_UUID, serviceUUID.toString());
         bundle.putInt(KEY_SERVICE_INSTANCE_ID, serviceInstanceId);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
+        bundle.putString(KEY_CHARACTERISTIC_UUID, characteristicUUID.toString());
         bundle.putInt(KEY_CHARACTERISTIC_INSTANCE_ID, characteristicInstanceId);
-        bundle.putSerializable(KEY_DESCRIPTOR_UUID, descriptorUUID);
+        bundle.putString(KEY_DESCRIPTOR_UUID, descriptorUUID.toString());
         bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
         bundle.putInt(KEY_STATUS, status);
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_WRITE_ERROR);
@@ -278,9 +273,9 @@ public class WriteDescriptorTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, mServiceUUID);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, mCharacteristicUUID);
-        bundle.putSerializable(KEY_DESCRIPTOR_UUID, mDescriptorUUID);
+        bundle.putString(KEY_SERVICE_UUID, mServiceUUID.toString());
+        bundle.putString(KEY_CHARACTERISTIC_UUID, mCharacteristicUUID.toString());
+        bundle.putString(KEY_DESCRIPTOR_UUID, mDescriptorUUID.toString());
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_WRITE_START);
         Message message = new Message();
         message.setData(bundle);
@@ -293,14 +288,15 @@ public class WriteDescriptorTask extends AbstractBLETask {
      */
     @SuppressLint("MissingPermission")
     @Override
+    @Deprecated
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
-            UUID serviceUUID = (UUID) bundle.getSerializable(KEY_SERVICE_UUID);
+            UUID serviceUUID = UUID.fromString(bundle.getString(KEY_SERVICE_UUID));
             int serviceInstanceId = bundle.getInt(KEY_SERVICE_INSTANCE_ID);
-            UUID characteristicUUID = (UUID) bundle.getSerializable(KEY_CHARACTERISTIC_UUID);
+            UUID characteristicUUID = UUID.fromString(bundle.getString(KEY_CHARACTERISTIC_UUID));
             int characteristicInstanceId = bundle.getInt(KEY_CHARACTERISTIC_INSTANCE_ID);
-            UUID descriptorUUID = (UUID) bundle.getSerializable(KEY_DESCRIPTOR_UUID);
+            UUID descriptorUUID = UUID.fromString(bundle.getString(KEY_DESCRIPTOR_UUID));
             int descriptorInstanceId = bundle.getInt(KEY_DESCRIPTOR_INSTANCE_ID);
             String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
@@ -336,6 +332,8 @@ public class WriteDescriptorTask extends AbstractBLETask {
                             }
                         }
                     }
+
+                    int status = STATUS_WRITE_DESCRIPTOR_FAILED;
                     if (bluetoothGattService != null) {
                         BluetoothGattCharacteristic bluetoothGattCharacteristic = null;
                         if (mCharacteristicInstanceId == null) {
@@ -367,17 +365,22 @@ public class WriteDescriptorTask extends AbstractBLETask {
                             }
 
                             if (bluetoothGattDescriptor != null) {
-                                bluetoothGattDescriptor.setValue(mByteArray);
 
                                 // write descriptor
                                 mServiceInstanceId = bluetoothGattService.getInstanceId();
                                 mCharacteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
                                 mDescriptorInstanceId = BLEUtilsAndroid.getDescriptorInstanceId(bluetoothGattDescriptor);
                                 try {
-                                    result = mBluetoothGatt.writeDescriptor(bluetoothGattDescriptor);
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                                        status = mBluetoothGatt.writeDescriptor(bluetoothGattDescriptor, mByteArray);
+                                        result = status == BluetoothStatusCodes.SUCCESS;
+                                    } else {
+                                        bluetoothGattDescriptor.setValue(mByteArray);
+                                        result = mBluetoothGatt.writeDescriptor(bluetoothGattDescriptor);
+                                    }
 
                                     if (CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR.equals(descriptorUUID)) {
-                                        ClientCharacteristicConfigurationAndroid clientCharacteristicConfiguration = new ClientCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+                                        ClientCharacteristicConfigurationAndroid clientCharacteristicConfiguration = new ClientCharacteristicConfigurationAndroid(mByteArray);
                                         mBluetoothGatt.setCharacteristicNotification(bluetoothGattCharacteristic
                                                 , clientCharacteristicConfiguration.isPropertiesNotificationsEnabled()
                                                         || clientCharacteristicConfiguration.isPropertiesIndicationsEnabled());
@@ -416,7 +419,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
                                     , mCharacteristicInstanceId
                                     , mDescriptorUUID
                                     , mDescriptorInstanceId
-                                    , STATUS_WRITE_DESCRIPTOR_FAILED
+                                    , status
                                     , mArgument);
                         }
                     }
@@ -431,8 +434,6 @@ public class WriteDescriptorTask extends AbstractBLETask {
                         && mDescriptorInstanceId == descriptorInstanceId) {
                     // current:write descriptor start, next:write descriptor success
                     if (PROGRESS_DESCRIPTOR_WRITE_SUCCESS.equals(nextProgress)) {
-                        byte[] value = bundle.getByteArray(KEY_VALUES);
-                        //noinspection ConstantConditions
                         mBLEConnection.getBLECallback().onDescriptorWriteSuccess(getTaskId()
                                 , mBLEConnection.getBluetoothDevice()
                                 , mServiceUUID
@@ -441,7 +442,7 @@ public class WriteDescriptorTask extends AbstractBLETask {
                                 , mCharacteristicInstanceId
                                 , mDescriptorUUID
                                 , mDescriptorInstanceId
-                                , value
+                                , mByteArray
                                 , mArgument);
                     } else if (PROGRESS_DESCRIPTOR_WRITE_ERROR.equals(nextProgress)) {
                         // current:write descriptor start, next:write descriptor error

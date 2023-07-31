@@ -1,6 +1,8 @@
 package org.im97mori.ble.descriptor.u2905;
 
-import android.bluetooth.BluetoothGattDescriptor;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
 import android.os.Build;
 import android.os.Parcel;
 
@@ -8,10 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
@@ -28,10 +26,7 @@ public class CharacteristicAggregateFormatAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicAggregateFormatAndroid result = new CharacteristicAggregateFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicAggregateFormatAndroid result = new CharacteristicAggregateFormatAndroid(value);
         assertArrayEquals(value, result.getListOfHandles());
         assertEquals(value.length / 2, result.getSize());
         assertEquals((value[0] & 0xff) | ((value[1] & 0xff) << 8), result.getHandle(0));
@@ -47,10 +42,7 @@ public class CharacteristicAggregateFormatAndroidTest {
         value[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicAggregateFormatAndroid result = new CharacteristicAggregateFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicAggregateFormatAndroid result = new CharacteristicAggregateFormatAndroid(value);
         assertArrayEquals(value, result.getListOfHandles());
         assertEquals(value.length / 2, result.getSize());
         assertEquals((value[0] & 0xff) | ((value[1] & 0xff) << 8), result.getHandle(0));
@@ -65,10 +57,7 @@ public class CharacteristicAggregateFormatAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicAggregateFormatAndroid result1 = new CharacteristicAggregateFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicAggregateFormatAndroid result1 = new CharacteristicAggregateFormatAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -85,10 +74,7 @@ public class CharacteristicAggregateFormatAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicAggregateFormatAndroid result1 = new CharacteristicAggregateFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicAggregateFormatAndroid result1 = new CharacteristicAggregateFormatAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -100,10 +86,7 @@ public class CharacteristicAggregateFormatAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicAggregateFormatAndroid result1 = new CharacteristicAggregateFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicAggregateFormatAndroid result1 = new CharacteristicAggregateFormatAndroid(value);
         CharacteristicAggregateFormatAndroid result2 = CharacteristicAggregateFormatAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

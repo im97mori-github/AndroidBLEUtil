@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.DAY_DATE_TIME_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Day Date Time (Characteristics UUID: 0x2A0A)
@@ -44,9 +44,7 @@ public class DayDateTimeAndroid extends DayDateTime implements Parcelable {
          */
         @NonNull
         public DayDateTimeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DAY_DATE_TIME_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new DayDateTimeAndroid(bluetoothGattCharacteristic);
+            return new DayDateTimeAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class DayDateTimeAndroid extends DayDateTime implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A0A
      */
+    @Deprecated
     public DayDateTimeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public DayDateTimeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -81,8 +89,7 @@ public class DayDateTimeAndroid extends DayDateTime implements Parcelable {
      * @param in Parcel
      */
     private DayDateTimeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

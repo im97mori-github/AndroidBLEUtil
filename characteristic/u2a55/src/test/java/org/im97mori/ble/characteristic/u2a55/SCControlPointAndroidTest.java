@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a55;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -246,9 +244,9 @@ public class SCControlPointAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -262,10 +260,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertTrue(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -279,10 +274,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertTrue(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -295,10 +287,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -312,10 +301,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -328,10 +314,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -355,10 +338,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -382,10 +362,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00403() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -409,10 +386,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00404() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -436,10 +410,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -463,10 +434,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -490,10 +458,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -517,10 +482,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -544,10 +506,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -571,10 +530,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -598,10 +554,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -625,10 +578,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00604() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -652,10 +602,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -680,10 +627,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -708,10 +652,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -735,10 +676,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -762,10 +700,7 @@ public class SCControlPointAndroidTest {
     public void test_constructor_00705() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertEquals(data[0], result1.getOpCode());
         assertFalse(result1.isOpCodeSetCumulativeValue(result1.getOpCode()));
         assertFalse(result1.isOpCodeStartSensorCalibration(result1.getOpCode()));
@@ -807,10 +742,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -827,10 +759,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -847,10 +776,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -867,10 +793,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -887,10 +810,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -906,10 +826,7 @@ public class SCControlPointAndroidTest {
     @Test
     public void test_parcelable_1_00402() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -926,10 +843,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00403() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -946,10 +860,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00404() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -966,10 +877,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -986,10 +894,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1006,10 +911,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1026,10 +928,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1046,10 +945,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1066,10 +962,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1086,10 +979,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1106,10 +996,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00604() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1126,10 +1013,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1146,10 +1030,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1166,10 +1047,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1186,10 +1064,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1206,10 +1081,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_1_00705() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1226,10 +1098,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1237,10 +1106,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1248,10 +1114,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1259,10 +1122,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1270,20 +1130,14 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
     @Test
     public void test_parcelable_2_00402() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1291,10 +1145,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00403() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1302,10 +1153,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00404() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1313,10 +1161,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1324,10 +1169,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1335,10 +1177,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1346,10 +1185,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1357,10 +1193,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1368,10 +1201,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1379,10 +1209,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1390,10 +1217,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00604() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1401,10 +1225,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1412,10 +1233,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1423,10 +1241,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1434,10 +1249,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1445,10 +1257,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_2_00705() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1456,10 +1265,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1468,10 +1274,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1480,10 +1283,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1492,10 +1292,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1504,10 +1301,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1515,10 +1309,7 @@ public class SCControlPointAndroidTest {
     @Test
     public void test_parcelable_3_00402() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1527,10 +1318,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00403() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1539,10 +1327,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00404() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1551,10 +1336,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1563,10 +1345,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1575,10 +1354,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1587,10 +1363,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1599,10 +1372,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1611,10 +1381,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1623,10 +1390,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1635,10 +1399,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00604() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1647,10 +1408,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1659,10 +1417,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1671,10 +1426,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1683,10 +1435,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1695,10 +1444,7 @@ public class SCControlPointAndroidTest {
     public void test_parcelable_3_00705() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SCControlPointAndroid result1 = new SCControlPointAndroid(bluetoothGattCharacteristic);
+        SCControlPointAndroid result1 = new SCControlPointAndroid(data);
         SCControlPointAndroid result2 = SCControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

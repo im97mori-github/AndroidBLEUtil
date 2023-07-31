@@ -8,13 +8,13 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.DescriptorUUID.ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR;
+import java.util.Objects;
 
 /**
  * Environmental Sensing Measurement (Descriptor UUID: 0x290C)
  */
 @SuppressWarnings({"WeakerAccess"})
-public class EnvironmentalSensingMeasurementAndroid extends EnvironmentalSensingMeasurement implements  Parcelable {
+public class EnvironmentalSensingMeasurementAndroid extends EnvironmentalSensingMeasurement implements Parcelable {
 
     /**
      * @see ByteArrayCreator
@@ -42,9 +42,7 @@ public class EnvironmentalSensingMeasurementAndroid extends EnvironmentalSensing
          */
         @NonNull
         public EnvironmentalSensingMeasurementAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, 0);
-            bluetoothGattDescriptor.setValue(values);
-            return new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+            return new EnvironmentalSensingMeasurementAndroid(values);
         }
 
     };
@@ -54,8 +52,18 @@ public class EnvironmentalSensingMeasurementAndroid extends EnvironmentalSensing
      *
      * @param bluetoothGattDescriptor Characteristics UUID: 0x290C
      */
+    @Deprecated
     public EnvironmentalSensingMeasurementAndroid(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         super(bluetoothGattDescriptor.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattDescriptor#getValue()">BluetoothGattDescriptor#getValue()</a>
+     */
+    public EnvironmentalSensingMeasurementAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -64,8 +72,7 @@ public class EnvironmentalSensingMeasurementAndroid extends EnvironmentalSensing
      * @param in Parcel
      */
     private EnvironmentalSensingMeasurementAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

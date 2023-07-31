@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a9c;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -47,10 +45,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -104,10 +99,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -161,10 +153,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -225,10 +214,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -289,10 +275,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -353,10 +336,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -417,10 +397,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -481,10 +458,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -545,10 +519,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -609,10 +580,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -673,10 +641,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -737,10 +702,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -801,10 +763,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -865,10 +824,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -929,10 +885,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -993,10 +946,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1050,10 +1000,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1108,10 +1055,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 4] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1165,10 +1109,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1224,10 +1165,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1283,10 +1221,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1340,10 +1275,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1399,10 +1331,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1458,10 +1387,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1515,10 +1441,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1574,10 +1497,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1633,10 +1553,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1692,10 +1609,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1751,10 +1665,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1808,10 +1719,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1867,10 +1775,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1926,10 +1831,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1985,10 +1887,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2044,10 +1943,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2101,10 +1997,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2160,10 +2053,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2219,10 +2109,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2278,10 +2165,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2337,10 +2221,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2394,10 +2275,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2453,10 +2331,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2512,10 +2387,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2571,10 +2443,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2630,10 +2499,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2687,10 +2553,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2746,10 +2609,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2805,10 +2665,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2862,10 +2719,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2921,10 +2775,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2980,10 +2831,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3039,10 +2887,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3098,10 +2943,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3155,10 +2997,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3214,10 +3053,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3273,10 +3109,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3332,10 +3165,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3391,10 +3221,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3448,10 +3275,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3505,10 +3329,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3562,10 +3383,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3619,10 +3437,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = (byte) (BodyCompositionMeasurementAndroid.MEASUREMENT_UNSUCCESSFUL >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3676,10 +3491,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = (byte) (BodyCompositionMeasurementAndroid.MEASUREMENT_UNSUCCESSFUL >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3895,10 +3707,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3925,10 +3734,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3955,10 +3761,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3992,10 +3795,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4029,10 +3829,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4066,10 +3863,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4103,10 +3897,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4140,10 +3931,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4177,10 +3965,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4214,10 +3999,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4251,10 +4033,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4288,10 +4067,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4325,10 +4101,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4362,10 +4135,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4399,10 +4169,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4436,10 +4203,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4466,10 +4230,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4497,10 +4258,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 4] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4527,10 +4285,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4559,10 +4314,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4591,10 +4343,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4621,10 +4370,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4653,10 +4399,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4685,10 +4428,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4715,10 +4455,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4747,10 +4484,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4779,10 +4513,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4811,10 +4542,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4843,10 +4571,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4873,10 +4598,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4905,10 +4627,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4937,10 +4656,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4969,10 +4685,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5001,10 +4714,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5031,10 +4741,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5063,10 +4770,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5095,10 +4799,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5127,10 +4828,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5159,10 +4857,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5189,10 +4884,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5221,10 +4913,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5253,10 +4942,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5285,10 +4971,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5317,10 +5000,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5347,10 +5027,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5379,10 +5056,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5411,10 +5085,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5441,10 +5112,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5473,10 +5141,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5505,10 +5170,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5537,10 +5199,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5569,10 +5228,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5599,10 +5255,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5631,10 +5284,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5663,10 +5313,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5695,10 +5342,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5727,10 +5371,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5757,10 +5398,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5787,10 +5425,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5817,10 +5452,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5847,10 +5479,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = (byte) (BodyCompositionMeasurementAndroid.MEASUREMENT_UNSUCCESSFUL >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5877,10 +5506,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = (byte) (BodyCompositionMeasurementAndroid.MEASUREMENT_UNSUCCESSFUL >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 12), result1.getBytes());
     }
 
@@ -5933,10 +5559,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[29] = 0x1c;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5989,10 +5612,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[29] = 0x1c;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -6019,10 +5639,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6050,10 +5667,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6081,10 +5695,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6119,10 +5730,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6157,10 +5765,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6195,10 +5800,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6233,10 +5835,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6271,10 +5870,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6309,10 +5905,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6347,10 +5940,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6385,10 +5975,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6423,10 +6010,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6461,10 +6045,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6499,10 +6080,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6537,10 +6115,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6575,10 +6150,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6606,10 +6178,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6638,10 +6207,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 4] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6669,10 +6235,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -6701,10 +6264,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6734,10 +6294,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6765,10 +6322,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6798,10 +6352,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6831,10 +6382,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6862,10 +6410,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6895,10 +6440,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6928,10 +6470,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6961,10 +6500,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6994,10 +6530,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7025,10 +6558,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7058,10 +6588,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7091,10 +6618,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7124,10 +6648,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7157,10 +6678,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7188,10 +6706,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7221,10 +6736,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7254,10 +6766,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7287,10 +6796,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7320,10 +6826,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7351,10 +6854,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7384,10 +6884,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7417,10 +6914,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7450,10 +6944,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7483,10 +6974,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7514,10 +7002,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7547,10 +7032,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7580,10 +7062,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7611,10 +7090,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7644,10 +7120,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7677,10 +7150,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7710,10 +7180,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7743,10 +7210,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7774,10 +7238,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7807,10 +7268,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7840,10 +7298,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7873,10 +7328,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7906,10 +7358,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7937,10 +7386,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7968,10 +7414,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -7999,10 +7442,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8030,10 +7470,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = (byte) (BodyCompositionMeasurementAndroid.MEASUREMENT_UNSUCCESSFUL >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8061,10 +7498,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[ 3] = (byte) (BodyCompositionMeasurementAndroid.MEASUREMENT_UNSUCCESSFUL >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8118,10 +7552,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[29] = 0x1c;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8175,10 +7606,7 @@ public class BodyCompositionMeasurementPacketAndroidParcelableTest {
         data[29] = 0x1c;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         BodyCompositionMeasurementPacketAndroid result2 = BodyCompositionMeasurementPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

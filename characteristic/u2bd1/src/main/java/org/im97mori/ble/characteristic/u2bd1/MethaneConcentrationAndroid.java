@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.METHANE_CONCENTRATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Methane Concentration (Characteristics UUID: 0x2BD1)
@@ -45,9 +45,7 @@ public class MethaneConcentrationAndroid extends MethaneConcentration implements
          */
         @NonNull
         public MethaneConcentrationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(METHANE_CONCENTRATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new MethaneConcentrationAndroid(bluetoothGattCharacteristic);
+            return new MethaneConcentrationAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class MethaneConcentrationAndroid extends MethaneConcentration implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BD1
      */
+    @Deprecated
     public MethaneConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public MethaneConcentrationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class MethaneConcentrationAndroid extends MethaneConcentration implements
      * @param in Parcel
      */
     private MethaneConcentrationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

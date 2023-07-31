@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2aa4;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -176,9 +174,9 @@ public class BondManagementControlPointAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -192,10 +190,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_BOND_OF_REQUESTING_DEVICE_BR_EDR_LE, result1.getOpCode());
         assertTrue(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -213,10 +208,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_BOND_OF_REQUESTING_DEVICE_BR_EDR_LE, result1.getOpCode());
         assertTrue(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -234,10 +226,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_BOND_OF_REQUESTING_DEVICE_BR_EDR, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertTrue(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -255,10 +244,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_BOND_OF_REQUESTING_DEVICE_BR_EDR, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertTrue(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -276,10 +262,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_BOND_OF_REQUESTING_DEVICE_LE, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -297,10 +280,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_BOND_OF_REQUESTING_DEVICE_LE, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -318,10 +298,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_ALL_BONDS_ON_SERVER_BR_EDR_LE, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -339,10 +316,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_ALL_BONDS_ON_SERVER_BR_EDR_LE, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -360,10 +334,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_ALL_BONDS_ON_SERVER_BR_EDR, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -381,10 +352,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_ALL_BONDS_ON_SERVER_BR_EDR, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -402,10 +370,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_ALL_BONDS_ON_SERVER_LE, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -423,10 +388,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_ALL_BONDS_ON_SERVER_LE, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -444,10 +406,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_ALL_BUT_THE_ACTIVIE_BOND_ON_SERVER_BR_EDR_LE, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -465,10 +424,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_ALL_BUT_THE_ACTIVIE_BOND_ON_SERVER_BR_EDR_LE, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -486,10 +442,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_ALL_BUT_THE_ACTIVIE_BOND_ON_SERVER_BR_EDR, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -507,10 +460,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_ALL_BUT_THE_ACTIVIE_BOND_ON_SERVER_BR_EDR, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -528,10 +478,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_ALL_BUT_THE_ACTIVIE_BOND_ON_SERVER_LE, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -549,10 +496,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_constructor_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertEquals(BondManagementControlPoint.OP_CODE_DELETE_ALL_BUT_THE_ACTIVIE_BOND_ON_SERVER_LE, result1.getOpCode());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdrLe());
         assertFalse(result1.isOpCodeDeleteBondOfRequestingDeviceBrEdr());
@@ -580,10 +524,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -596,10 +537,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -612,10 +550,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -628,10 +563,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -644,10 +576,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -660,10 +589,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -676,10 +602,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -692,10 +615,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -708,10 +628,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -724,10 +641,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -740,10 +654,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -756,10 +667,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -772,10 +680,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -788,10 +693,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -804,10 +706,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -820,10 +719,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -836,10 +732,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -852,10 +745,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_1_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -868,10 +758,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -879,10 +766,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -890,10 +774,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -901,10 +782,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -912,10 +790,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -923,10 +798,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -934,10 +806,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -945,10 +814,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -956,10 +822,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -967,10 +830,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -978,10 +838,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -989,10 +846,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1000,10 +854,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1011,10 +862,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1022,10 +870,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1033,10 +878,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1044,10 +886,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1055,10 +894,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_2_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1066,10 +902,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1078,10 +911,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1090,10 +920,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1102,10 +929,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1114,10 +938,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1126,10 +947,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1138,10 +956,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1150,10 +965,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1162,10 +974,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1174,10 +983,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1186,10 +992,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1198,10 +1001,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1210,10 +1010,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1222,10 +1019,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1234,10 +1028,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1246,10 +1037,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1258,10 +1046,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1270,10 +1055,7 @@ public class BondManagementControlPointAndroidTest {
     public void test_parcelable_3_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(bluetoothGattCharacteristic);
+        BondManagementControlPointAndroid result1 = new BondManagementControlPointAndroid(data);
         BondManagementControlPointAndroid result2 = BondManagementControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

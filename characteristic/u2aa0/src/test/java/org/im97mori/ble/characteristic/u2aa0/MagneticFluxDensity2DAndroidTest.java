@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2aa0;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -47,9 +45,9 @@ public class MagneticFluxDensity2DAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -63,10 +61,7 @@ public class MagneticFluxDensity2DAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MagneticFluxDensity2DAndroid result1 = new MagneticFluxDensity2DAndroid(bluetoothGattCharacteristic);
+        MagneticFluxDensity2DAndroid result1 = new MagneticFluxDensity2DAndroid(data);
         assertEquals(0x0201, result1.getMagneticFluxDensityXAxis());
         assertEquals(MagneticFluxDensity2D.MAGNETIC_FLUX_DENSITY_X_AXIS_RESOLUTION * 0x0201, result1.getMagneticFluxDensityXAxisTesla(), 0);
         assertEquals(0x0403, result1.getMagneticFluxDensityYAxis());
@@ -87,10 +82,7 @@ public class MagneticFluxDensity2DAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MagneticFluxDensity2DAndroid result1 = new MagneticFluxDensity2DAndroid(bluetoothGattCharacteristic);
+        MagneticFluxDensity2DAndroid result1 = new MagneticFluxDensity2DAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -103,10 +95,7 @@ public class MagneticFluxDensity2DAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MagneticFluxDensity2DAndroid result1 = new MagneticFluxDensity2DAndroid(bluetoothGattCharacteristic);
+        MagneticFluxDensity2DAndroid result1 = new MagneticFluxDensity2DAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -114,10 +103,7 @@ public class MagneticFluxDensity2DAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        MagneticFluxDensity2DAndroid result1 = new MagneticFluxDensity2DAndroid(bluetoothGattCharacteristic);
+        MagneticFluxDensity2DAndroid result1 = new MagneticFluxDensity2DAndroid(data);
         MagneticFluxDensity2DAndroid result2 = MagneticFluxDensity2DAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

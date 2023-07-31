@@ -1,6 +1,8 @@
 package org.im97mori.ble.descriptor.u2901;
 
-import android.bluetooth.BluetoothGattDescriptor;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
 import android.os.Build;
 import android.os.Parcel;
 
@@ -8,10 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
@@ -27,10 +25,7 @@ public class CharacteristicUserDescriptionAndroidTest {
         byte[] value = text.getBytes();
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicUserDescriptionAndroid result = new CharacteristicUserDescriptionAndroid(bluetoothGattDescriptor);
+        CharacteristicUserDescriptionAndroid result = new CharacteristicUserDescriptionAndroid(value);
         assertEquals(text, result.getUserDescription());
     }
 
@@ -41,10 +36,7 @@ public class CharacteristicUserDescriptionAndroidTest {
         byte[] value = text.getBytes();
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicUserDescriptionAndroid result1 = new CharacteristicUserDescriptionAndroid(bluetoothGattDescriptor);
+        CharacteristicUserDescriptionAndroid result1 = new CharacteristicUserDescriptionAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -60,10 +52,7 @@ public class CharacteristicUserDescriptionAndroidTest {
         byte[] value = text.getBytes();
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicUserDescriptionAndroid result1 = new CharacteristicUserDescriptionAndroid(bluetoothGattDescriptor);
+        CharacteristicUserDescriptionAndroid result1 = new CharacteristicUserDescriptionAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -74,10 +63,7 @@ public class CharacteristicUserDescriptionAndroidTest {
         byte[] value = text.getBytes();
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicUserDescriptionAndroid result1 = new CharacteristicUserDescriptionAndroid(bluetoothGattDescriptor);
+        CharacteristicUserDescriptionAndroid result1 = new CharacteristicUserDescriptionAndroid(value);
         CharacteristicUserDescriptionAndroid result2 = CharacteristicUserDescriptionAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

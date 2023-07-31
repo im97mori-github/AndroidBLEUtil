@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a67;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -45,10 +43,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsInstantaneousSpeedNotPresent());
         assertFalse(result1.isFlagsInstantaneousSpeedPresent());
@@ -75,10 +70,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsInstantaneousSpeedNotPresent());
         assertTrue(result1.isFlagsInstantaneousSpeedPresent());
@@ -105,10 +97,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsTotalDistanceNotPresent());
         assertFalse(result1.isFlagsTotalDistancePresent());
@@ -136,10 +125,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 4] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsTotalDistanceNotPresent());
         assertTrue(result1.isFlagsTotalDistancePresent());
@@ -166,10 +152,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsLocationNotPresent());
         assertFalse(result1.isFlagsLocationPresent());
@@ -202,10 +185,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 9] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsLocationNotPresent());
         assertTrue(result1.isFlagsLocationPresent());
@@ -234,10 +214,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsElevationNotPresent());
         assertFalse(result1.isFlagsElevationPresent());
@@ -265,10 +242,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 4] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsElevationNotPresent());
         assertTrue(result1.isFlagsElevationPresent());
@@ -295,10 +269,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsHeadingNotPresent());
         assertFalse(result1.isFlagsHeadingPresent());
@@ -325,10 +296,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsHeadingNotPresent());
         assertTrue(result1.isFlagsHeadingPresent());
@@ -355,10 +323,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsRollingTimeNotPresent());
         assertFalse(result1.isFlagsRollingTimePresent());
@@ -384,10 +349,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 2] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsRollingTimeNotPresent());
         assertTrue(result1.isFlagsRollingTimePresent());
@@ -413,10 +375,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsUtcTimeNotPresent());
         assertFalse(result1.isFlagsUtcTimePresent());
@@ -448,10 +407,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsUtcTimeNotPresent());
         assertTrue(result1.isFlagsUtcTimePresent());
@@ -489,10 +445,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsUtcTimeNotPresent());
         assertTrue(result1.isFlagsUtcTimePresent());
@@ -530,10 +483,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsUtcTimeNotPresent());
         assertTrue(result1.isFlagsUtcTimePresent());
@@ -571,10 +521,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsUtcTimeNotPresent());
         assertTrue(result1.isFlagsUtcTimePresent());
@@ -612,10 +559,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsUtcTimeNotPresent());
         assertTrue(result1.isFlagsUtcTimePresent());
@@ -653,10 +597,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsUtcTimeNotPresent());
         assertTrue(result1.isFlagsUtcTimePresent());
@@ -694,10 +635,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsUtcTimeNotPresent());
         assertTrue(result1.isFlagsUtcTimePresent());
@@ -735,10 +673,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsUtcTimeNotPresent());
         assertTrue(result1.isFlagsUtcTimePresent());
@@ -776,10 +711,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsUtcTimeNotPresent());
         assertTrue(result1.isFlagsUtcTimePresent());
@@ -817,10 +749,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsUtcTimeNotPresent());
         assertTrue(result1.isFlagsUtcTimePresent());
@@ -858,10 +787,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsUtcTimeNotPresent());
         assertTrue(result1.isFlagsUtcTimePresent());
@@ -899,10 +825,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsUtcTimeNotPresent());
         assertTrue(result1.isFlagsUtcTimePresent());
@@ -940,10 +863,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsUtcTimeNotPresent());
         assertTrue(result1.isFlagsUtcTimePresent());
@@ -974,10 +894,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsPositionStatusNoPosition());
         assertFalse(result1.isFlagsPositionStatusPositionOk());
@@ -1004,10 +921,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsPositionStatusNoPosition());
         assertTrue(result1.isFlagsPositionStatusPositionOk());
@@ -1034,10 +948,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsPositionStatusNoPosition());
         assertFalse(result1.isFlagsPositionStatusPositionOk());
@@ -1064,10 +975,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsPositionStatusNoPosition());
         assertFalse(result1.isFlagsPositionStatusPositionOk());
@@ -1094,10 +1002,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsSpeedAndDistanceFormat2d());
         assertFalse(result1.isFlagsSpeedAndDistanceFormat3d());
@@ -1122,10 +1027,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsSpeedAndDistanceFormat2d());
         assertTrue(result1.isFlagsSpeedAndDistanceFormat3d());
@@ -1150,10 +1052,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsElevationSourcePositionSystem());
         assertFalse(result1.isFlagsElevationSourceBarometricAirPressure());
@@ -1180,10 +1079,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsElevationSourcePositionSystem());
         assertTrue(result1.isFlagsElevationSourceBarometricAirPressure());
@@ -1210,10 +1106,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsElevationSourcePositionSystem());
         assertFalse(result1.isFlagsElevationSourceBarometricAirPressure());
@@ -1240,10 +1133,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsElevationSourcePositionSystem());
         assertFalse(result1.isFlagsElevationSourceBarometricAirPressure());
@@ -1270,10 +1160,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsHeadingSourceHeadingBasedOnMovement());
         assertFalse(result1.isFlagsHeadingSourceHeadingBasedOnMagneticCompass());
@@ -1298,10 +1185,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsHeadingSourceHeadingBasedOnMovement());
         assertTrue(result1.isFlagsHeadingSourceHeadingBasedOnMagneticCompass());
@@ -1360,10 +1244,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1405,10 +1286,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1448,10 +1326,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1494,10 +1369,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 4] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1537,10 +1409,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1588,10 +1457,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 9] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1631,10 +1497,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1677,10 +1540,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 4] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1720,10 +1580,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1765,10 +1622,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1808,10 +1662,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1852,10 +1703,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 2] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1895,10 +1743,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1945,10 +1790,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1995,10 +1837,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2045,10 +1884,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2095,10 +1931,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2145,10 +1978,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2195,10 +2025,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2245,10 +2072,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2295,10 +2119,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2345,10 +2166,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2395,10 +2213,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2445,10 +2260,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2495,10 +2307,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2545,10 +2354,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2588,10 +2394,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2631,10 +2434,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2674,10 +2474,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2717,10 +2514,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2760,10 +2554,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2803,10 +2594,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2846,10 +2634,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2889,10 +2674,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2932,10 +2714,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2975,10 +2754,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3018,10 +2794,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3061,10 +2834,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3104,10 +2874,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3132,10 +2899,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3158,10 +2922,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3187,10 +2948,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 4] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3213,10 +2971,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3247,10 +3002,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 9] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3273,10 +3025,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3302,10 +3051,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 4] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3328,10 +3074,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3356,10 +3099,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3382,10 +3122,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3409,10 +3146,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 2] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3435,10 +3169,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3468,10 +3199,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3501,10 +3229,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3534,10 +3259,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3567,10 +3289,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3600,10 +3319,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3633,10 +3349,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3666,10 +3379,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3699,10 +3409,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3732,10 +3439,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3765,10 +3469,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3798,10 +3499,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3831,10 +3529,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3864,10 +3559,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3890,10 +3582,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3916,10 +3605,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3942,10 +3628,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3968,10 +3651,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3994,10 +3674,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4020,10 +3697,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4046,10 +3720,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4072,10 +3743,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4098,10 +3766,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4124,10 +3789,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4150,10 +3812,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4176,10 +3835,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4202,10 +3858,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4231,10 +3884,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4258,10 +3908,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4288,10 +3935,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 4] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4315,10 +3959,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4350,10 +3991,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 9] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4377,10 +4015,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4407,10 +4042,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 4] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4434,10 +4066,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4463,10 +4092,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4490,10 +4116,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4518,10 +4141,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 2] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4545,10 +4165,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4579,10 +4196,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4613,10 +4227,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4647,10 +4258,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4681,10 +4289,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4715,10 +4320,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4749,10 +4351,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4783,10 +4382,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4817,10 +4413,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4851,10 +4444,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4885,10 +4475,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4919,10 +4506,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4953,10 +4537,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4987,10 +4568,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 8] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5014,10 +4592,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5041,10 +4616,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5068,10 +4640,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5095,10 +4664,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5122,10 +4688,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5149,10 +4712,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5176,10 +4736,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5203,10 +4760,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5230,10 +4784,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5257,10 +4808,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5284,10 +4832,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5311,10 +4856,7 @@ public class LocationAndSpeedAndroidTest {
         data[ 1] = (byte) (flags >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(bluetoothGattCharacteristic);
+        LocationAndSpeedAndroid result1 = new LocationAndSpeedAndroid(data);
         LocationAndSpeedAndroid result2 = LocationAndSpeedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a13;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,13 +8,11 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings({"ConstantConditions"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -27,13 +24,11 @@ public class TimeSourceAndroidTest {
     public void test_constructor_00001() {
         //@formatter:off
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = (byte) TimeSource.TIME_SOURCE_UNKNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSourceAndroid result1 = new TimeSourceAndroid(bluetoothGattCharacteristic);
+        TimeSourceAndroid result1 = new TimeSourceAndroid(data);
         assertEquals(TimeSource.TIME_SOURCE_UNKNOWN, result1.getTimeSource());
         assertTrue(result1.isTimeSourceUnknown());
         assertFalse(result1.isTimeSourceNetworkTimeProtocol());
@@ -51,10 +46,7 @@ public class TimeSourceAndroidTest {
         data[ 0] = (byte) TimeSource.TIME_SOURCE_NETWORK_TIME_PROTOCOL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSourceAndroid result1 = new TimeSourceAndroid(bluetoothGattCharacteristic);
+        TimeSourceAndroid result1 = new TimeSourceAndroid(data);
         assertEquals(TimeSource.TIME_SOURCE_NETWORK_TIME_PROTOCOL, result1.getTimeSource());
         assertFalse(result1.isTimeSourceUnknown());
         assertTrue(result1.isTimeSourceNetworkTimeProtocol());
@@ -72,10 +64,7 @@ public class TimeSourceAndroidTest {
         data[ 0] = (byte) TimeSource.TIME_SOURCE_GPS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSourceAndroid result1 = new TimeSourceAndroid(bluetoothGattCharacteristic);
+        TimeSourceAndroid result1 = new TimeSourceAndroid(data);
         assertEquals(TimeSource.TIME_SOURCE_GPS, result1.getTimeSource());
         assertFalse(result1.isTimeSourceUnknown());
         assertFalse(result1.isTimeSourceNetworkTimeProtocol());
@@ -93,10 +82,7 @@ public class TimeSourceAndroidTest {
         data[ 0] = (byte) TimeSource.TIME_SOURCE_RADIO_TIME_SIGNAL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSourceAndroid result1 = new TimeSourceAndroid(bluetoothGattCharacteristic);
+        TimeSourceAndroid result1 = new TimeSourceAndroid(data);
         assertEquals(TimeSource.TIME_SOURCE_RADIO_TIME_SIGNAL, result1.getTimeSource());
         assertFalse(result1.isTimeSourceUnknown());
         assertFalse(result1.isTimeSourceNetworkTimeProtocol());
@@ -114,10 +100,7 @@ public class TimeSourceAndroidTest {
         data[ 0] = (byte) TimeSource.TIME_SOURCE_MANUAL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSourceAndroid result1 = new TimeSourceAndroid(bluetoothGattCharacteristic);
+        TimeSourceAndroid result1 = new TimeSourceAndroid(data);
         assertEquals(TimeSource.TIME_SOURCE_MANUAL, result1.getTimeSource());
         assertFalse(result1.isTimeSourceUnknown());
         assertFalse(result1.isTimeSourceNetworkTimeProtocol());
@@ -135,10 +118,7 @@ public class TimeSourceAndroidTest {
         data[ 0] = (byte) TimeSource.TIME_SOURCE_ATOMIC_CLOCK;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSourceAndroid result1 = new TimeSourceAndroid(bluetoothGattCharacteristic);
+        TimeSourceAndroid result1 = new TimeSourceAndroid(data);
         assertEquals(TimeSource.TIME_SOURCE_ATOMIC_CLOCK, result1.getTimeSource());
         assertFalse(result1.isTimeSourceUnknown());
         assertFalse(result1.isTimeSourceNetworkTimeProtocol());
@@ -156,10 +136,7 @@ public class TimeSourceAndroidTest {
         data[ 0] = (byte) TimeSource.TIME_SOURCE_CELLULAR_NETWORK;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSourceAndroid result1 = new TimeSourceAndroid(bluetoothGattCharacteristic);
+        TimeSourceAndroid result1 = new TimeSourceAndroid(data);
         assertEquals(TimeSource.TIME_SOURCE_CELLULAR_NETWORK, result1.getTimeSource());
         assertFalse(result1.isTimeSourceUnknown());
         assertFalse(result1.isTimeSourceNetworkTimeProtocol());
@@ -185,10 +162,7 @@ public class TimeSourceAndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSourceAndroid result1 = new TimeSourceAndroid(bluetoothGattCharacteristic);
+        TimeSourceAndroid result1 = new TimeSourceAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -204,10 +178,7 @@ public class TimeSourceAndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSourceAndroid result1 = new TimeSourceAndroid(bluetoothGattCharacteristic);
+        TimeSourceAndroid result1 = new TimeSourceAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -218,10 +189,7 @@ public class TimeSourceAndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeSourceAndroid result1 = new TimeSourceAndroid(bluetoothGattCharacteristic);
+        TimeSourceAndroid result1 = new TimeSourceAndroid(data);
         TimeSourceAndroid result2 = TimeSourceAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

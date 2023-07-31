@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BATTERY_INFORMATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Battery Information (Characteristics UUID: 0x2BEC)
@@ -45,9 +45,7 @@ public class BatteryInformationAndroid extends BatteryInformation implements Par
          */
         @NonNull
         public BatteryInformationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_INFORMATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BatteryInformationAndroid(bluetoothGattCharacteristic);
+            return new BatteryInformationAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BatteryInformationAndroid extends BatteryInformation implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BEC
      */
+    @Deprecated
     public BatteryInformationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BatteryInformationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class BatteryInformationAndroid extends BatteryInformation implements Par
      * @param in Parcel
      */
     private BatteryInformationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

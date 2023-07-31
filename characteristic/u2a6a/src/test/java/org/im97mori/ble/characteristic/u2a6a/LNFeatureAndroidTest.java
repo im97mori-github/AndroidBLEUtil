@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a6a;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -53,10 +51,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureInstantaneousSpeedNotSupported());
         assertFalse(result1.isLNFeatureInstantaneousSpeedSupported());
@@ -93,10 +88,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureInstantaneousSpeedNotSupported());
         assertTrue(result1.isLNFeatureInstantaneousSpeedSupported());
@@ -133,10 +125,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureTotalDistanceNotSupported());
         assertFalse(result1.isLNFeatureTotalDistanceSupported());
@@ -173,10 +162,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureTotalDistanceNotSupported());
         assertTrue(result1.isLNFeatureTotalDistanceSupported());
@@ -213,10 +199,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureLocationNotSupported());
         assertFalse(result1.isLNFeatureLocationSupported());
@@ -253,10 +236,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureLocationNotSupported());
         assertTrue(result1.isLNFeatureLocationSupported());
@@ -293,10 +273,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureElevationNotSupported());
         assertFalse(result1.isLNFeatureElevationSupported());
@@ -333,10 +310,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureElevationNotSupported());
         assertTrue(result1.isLNFeatureElevationSupported());
@@ -373,10 +347,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureHeadingNotSupported());
         assertFalse(result1.isLNFeatureHeadingSupported());
@@ -413,10 +384,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureHeadingNotSupported());
         assertTrue(result1.isLNFeatureHeadingSupported());
@@ -453,10 +421,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureRollingTimeNotSupported());
         assertFalse(result1.isLNFeatureRollingTimeSupported());
@@ -493,10 +458,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureRollingTimeNotSupported());
         assertTrue(result1.isLNFeatureRollingTimeSupported());
@@ -533,10 +495,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureUtcTimeNotSupported());
         assertFalse(result1.isLNFeatureUtcTimeSupported());
@@ -573,10 +532,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureUtcTimeNotSupported());
         assertTrue(result1.isLNFeatureUtcTimeSupported());
@@ -613,10 +569,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureRemainingDistanceNotSupported());
         assertFalse(result1.isLNFeatureRemainingDistanceSupported());
@@ -653,10 +606,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureRemainingDistanceNotSupported());
         assertTrue(result1.isLNFeatureRemainingDistanceSupported());
@@ -693,10 +643,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureRemainingVerticalDistanceNotSupported());
         assertFalse(result1.isLNFeatureRemainingVerticalDistanceSupported());
@@ -733,10 +680,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureRemainingVerticalDistanceNotSupported());
         assertTrue(result1.isLNFeatureRemainingVerticalDistanceSupported());
@@ -773,10 +717,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureEstimatedTimeOfArrivalNotSupported());
         assertFalse(result1.isLNFeatureEstimatedTimeOfArrivalSupported());
@@ -813,10 +754,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureEstimatedTimeOfArrivalNotSupported());
         assertTrue(result1.isLNFeatureEstimatedTimeOfArrivalSupported());
@@ -853,10 +791,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureNumberOfBeaconsInSolutionNotSupported());
         assertFalse(result1.isLNFeatureNumberOfBeaconsInSolutionSupported());
@@ -893,10 +828,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureNumberOfBeaconsInSolutionNotSupported());
         assertTrue(result1.isLNFeatureNumberOfBeaconsInSolutionSupported());
@@ -933,10 +865,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureNumberOfBeaconsInViewNotSupported());
         assertFalse(result1.isLNFeatureNumberOfBeaconsInViewSupported());
@@ -973,10 +902,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureNumberOfBeaconsInViewNotSupported());
         assertTrue(result1.isLNFeatureNumberOfBeaconsInViewSupported());
@@ -1013,10 +939,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureTimeToFirstFixNotSupported());
         assertFalse(result1.isLNFeatureTimeToFirstFixSupported());
@@ -1053,10 +976,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureTimeToFirstFixNotSupported());
         assertTrue(result1.isLNFeatureTimeToFirstFixSupported());
@@ -1093,10 +1013,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureEstimatedHorizontalPositionErrorNotSupported());
         assertFalse(result1.isLNFeatureEstimatedHorizontalPositionErrorSupported());
@@ -1133,10 +1050,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureEstimatedHorizontalPositionErrorNotSupported());
         assertTrue(result1.isLNFeatureEstimatedHorizontalPositionErrorSupported());
@@ -1173,10 +1087,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureEstimatedVerticalPositionErrorNotSupported());
         assertFalse(result1.isLNFeatureEstimatedVerticalPositionErrorSupported());
@@ -1213,10 +1124,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureEstimatedVerticalPositionErrorNotSupported());
         assertTrue(result1.isLNFeatureEstimatedVerticalPositionErrorSupported());
@@ -1253,10 +1161,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureHorizontalDilutionOfPrecisionNotSupported());
         assertFalse(result1.isLNFeatureHorizontalDilutionOfPrecisionSupported());
@@ -1293,10 +1198,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureHorizontalDilutionOfPrecisionNotSupported());
         assertTrue(result1.isLNFeatureHorizontalDilutionOfPrecisionSupported());
@@ -1333,10 +1235,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureVerticalDilutionOfPrecisionNotSupported());
         assertFalse(result1.isLNFeatureVerticalDilutionOfPrecisionSupported());
@@ -1373,10 +1272,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureVerticalDilutionOfPrecisionNotSupported());
         assertTrue(result1.isLNFeatureVerticalDilutionOfPrecisionSupported());
@@ -1413,10 +1309,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureLocationAndSpeedCharacteristicContentMaskingNotSupported());
         assertFalse(result1.isLNFeatureLocationAndSpeedCharacteristicContentMaskingSupported());
@@ -1453,10 +1346,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureLocationAndSpeedCharacteristicContentMaskingNotSupported());
         assertTrue(result1.isLNFeatureLocationAndSpeedCharacteristicContentMaskingSupported());
@@ -1493,10 +1383,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureFixRateSettingNotSupported());
         assertFalse(result1.isLNFeatureFixRateSettingSupported());
@@ -1533,10 +1420,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureFixRateSettingNotSupported());
         assertTrue(result1.isLNFeatureFixRateSettingSupported());
@@ -1573,10 +1457,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeatureElevationSettingNotSupported());
         assertFalse(result1.isLNFeatureElevationSettingSupported());
@@ -1613,10 +1494,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeatureElevationSettingNotSupported());
         assertTrue(result1.isLNFeatureElevationSettingSupported());
@@ -1653,10 +1531,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertTrue(result1.isLNFeaturePositionStatusNotSupported());
         assertFalse(result1.isLNFeaturePositionStatusSupported());
@@ -1693,10 +1568,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getLNFeature());
         assertFalse(result1.isLNFeaturePositionStatusNotSupported());
         assertTrue(result1.isLNFeaturePositionStatusSupported());
@@ -1733,10 +1605,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1775,10 +1644,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1817,10 +1683,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1859,10 +1722,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1901,10 +1761,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1943,10 +1800,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1985,10 +1839,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2027,10 +1878,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2069,10 +1917,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2111,10 +1956,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2153,10 +1995,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2195,10 +2034,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2237,10 +2073,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2279,10 +2112,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2321,10 +2151,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2363,10 +2190,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2405,10 +2229,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2447,10 +2268,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2489,10 +2307,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2531,10 +2346,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2573,10 +2385,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2615,10 +2424,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2657,10 +2463,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2678,10 +2481,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2720,10 +2520,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2762,10 +2559,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2804,10 +2598,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2846,10 +2637,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2888,10 +2676,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2930,10 +2715,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2972,10 +2754,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3014,10 +2793,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3056,10 +2832,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3098,10 +2871,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3140,10 +2910,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3182,10 +2949,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3224,10 +2988,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3266,10 +3027,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3308,10 +3066,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3350,10 +3105,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3392,10 +3144,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3434,10 +3183,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -3476,10 +3222,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3514,10 +3257,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3552,10 +3292,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3590,10 +3327,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3628,10 +3362,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3666,10 +3397,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3704,10 +3432,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3742,10 +3467,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3780,10 +3502,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3818,10 +3537,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3856,10 +3572,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3894,10 +3607,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3932,10 +3642,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3970,10 +3677,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4008,10 +3712,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4046,10 +3747,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4084,10 +3782,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4122,10 +3817,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4160,10 +3852,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4198,10 +3887,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4236,10 +3922,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4274,10 +3957,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4312,10 +3992,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4329,10 +4006,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4367,10 +4041,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4405,10 +4076,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4443,10 +4111,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4481,10 +4146,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4519,10 +4181,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4557,10 +4216,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4595,10 +4251,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4633,10 +4286,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4671,10 +4321,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4709,10 +4356,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4747,10 +4391,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4785,10 +4426,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4823,10 +4461,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4861,10 +4496,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4899,10 +4531,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4937,10 +4566,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -4975,10 +4601,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5013,10 +4636,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -5051,10 +4671,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5090,10 +4707,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5129,10 +4743,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5168,10 +4779,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5207,10 +4815,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5246,10 +4851,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5285,10 +4887,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5324,10 +4923,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5363,10 +4959,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5402,10 +4995,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5441,10 +5031,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5480,10 +5067,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5519,10 +5103,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5558,10 +5139,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5597,10 +5175,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5636,10 +5211,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5675,10 +5247,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5714,10 +5283,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5753,10 +5319,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5792,10 +5355,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5831,10 +5391,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5870,10 +5427,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5909,10 +5463,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -5927,10 +5478,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -5969,10 +5517,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6008,10 +5553,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6047,10 +5589,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6086,10 +5625,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6125,10 +5661,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6164,10 +5697,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6203,10 +5733,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6242,10 +5769,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6281,10 +5805,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6320,10 +5841,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6359,10 +5877,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6398,10 +5913,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6437,10 +5949,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6476,10 +5985,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6515,10 +6021,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6554,10 +6057,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6593,10 +6093,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -6632,10 +6129,7 @@ public class LNFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LNFeatureAndroid result1 = new LNFeatureAndroid(bluetoothGattCharacteristic);
+        LNFeatureAndroid result1 = new LNFeatureAndroid(data);
         LNFeatureAndroid result2 = LNFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

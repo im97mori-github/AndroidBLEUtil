@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2af3;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,10 +11,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
+@SuppressWarnings("ConstantConditions")
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -34,10 +33,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result = new EnergyInAPeriodOfDayAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getEnergyValue());
         assertEquals(BLEUtils.createUInt8(data, 3), result.getStartTime());
         assertEquals(BLEUtils.createUInt8(data, 4), result.getEndTime());
@@ -54,10 +50,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_MINIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result = new EnergyInAPeriodOfDayAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getEnergyValue());
         assertEquals(BLEUtils.createUInt8(data, 3), result.getStartTime());
         assertEquals(BLEUtils.createUInt8(data, 4), result.getEndTime());
@@ -74,10 +67,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_MAXIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result = new EnergyInAPeriodOfDayAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getEnergyValue());
         assertEquals(BLEUtils.createUInt8(data, 3), result.getStartTime());
         assertEquals(BLEUtils.createUInt8(data, 4), result.getEndTime());
@@ -94,10 +84,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result = new EnergyInAPeriodOfDayAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getEnergyValue());
         assertEquals(BLEUtils.createUInt8(data, 3), result.getStartTime());
         assertEquals(BLEUtils.createUInt8(data, 4), result.getEndTime());
@@ -162,10 +149,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -187,10 +171,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_MINIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -212,10 +193,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_MAXIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -237,10 +215,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -262,10 +237,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -280,10 +252,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_MINIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -298,10 +267,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_MAXIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -316,10 +282,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -334,10 +297,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(data);
         EnergyInAPeriodOfDayAndroid result2 = EnergyInAPeriodOfDayAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -353,10 +313,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_MINIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(data);
         EnergyInAPeriodOfDayAndroid result2 = EnergyInAPeriodOfDayAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -372,10 +329,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_MAXIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(data);
         EnergyInAPeriodOfDayAndroid result2 = EnergyInAPeriodOfDayAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -391,10 +345,7 @@ public class EnergyInAPeriodOfDayAndroidTest {
         data[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        EnergyInAPeriodOfDayAndroid result1 = new EnergyInAPeriodOfDayAndroid(data);
         EnergyInAPeriodOfDayAndroid result2 = EnergyInAPeriodOfDayAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

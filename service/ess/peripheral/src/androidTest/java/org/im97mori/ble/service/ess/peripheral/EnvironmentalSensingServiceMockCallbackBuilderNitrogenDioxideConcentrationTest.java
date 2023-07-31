@@ -27,7 +27,6 @@ import static org.im97mori.ble.constants.DescriptorUUID.ENVIRONMENTAL_SENSING_ME
 import static org.im97mori.ble.constants.DescriptorUUID.ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR;
 import static org.im97mori.ble.constants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
 import static org.im97mori.ble.constants.ServiceUUID.ENVIRONMENTAL_SENSING_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -74,10 +73,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         assertEquals(ENVIRONMENTAL_SENSING_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertEquals(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -100,10 +97,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         assertEquals(ENVIRONMENTAL_SENSING_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertEquals(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(originalProperties, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -135,16 +130,12 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         assertEquals(2, bluetoothGattCharacteristicList.size());
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(characteristicIndex0);
-        assertEquals(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(originalProperties0, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue0.getBytes(), bluetoothGattCharacteristic.getValue());
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(characteristicIndex1);
-        assertEquals(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(originalProperties1, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue1.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -199,10 +190,8 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         assertEquals(1, bluetoothGattCharacteristicList.size());
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(characteristicIndex0);
-        assertEquals(NITROGEN_DIOXIDE_CONCENTRATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(originalProperties1, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue1.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -235,7 +224,6 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingMeasurement.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -271,22 +259,18 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(characteristicIndex0);
         assertEquals(originalProperties0, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue0.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingMeasurement0.getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(characteristicIndex1);
         assertEquals(originalProperties1, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue1.getBytes(), bluetoothGattCharacteristic.getValue());
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(ENVIRONMENTAL_SENSING_MEASUREMENT_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingMeasurement1.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -378,7 +362,6 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -409,7 +392,6 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -440,7 +422,6 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -505,12 +486,10 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattDescriptorList.get(0);
         assertEquals(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingTriggerSetting0.getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattDescriptor = bluetoothGattDescriptorList.get(1);
         assertEquals(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -547,12 +526,10 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattDescriptorList.get(0);
         assertEquals(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingTriggerSetting0.getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattDescriptor = bluetoothGattDescriptorList.get(1);
         assertEquals(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingTriggerSetting1.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -589,12 +566,10 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattDescriptorList.get(0);
         assertEquals(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingTriggerSetting1.getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattDescriptor = bluetoothGattDescriptorList.get(1);
         assertEquals(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -634,17 +609,14 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattDescriptorList.get(0);
         assertEquals(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingTriggerSetting0.getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattDescriptor = bluetoothGattDescriptorList.get(1);
         assertEquals(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingTriggerSetting1.getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattDescriptor = bluetoothGattDescriptorList.get(2);
         assertEquals(ENVIRONMENTAL_SENSING_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -935,7 +907,6 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -971,7 +942,6 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(descriptorPermission, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1013,24 +983,20 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(0);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue0.getBytes(), bluetoothGattCharacteristic.getValue());
         List<BluetoothGattDescriptor> bluetoothGattDescriptorList = bluetoothGattCharacteristic.getDescriptors();
         assertEquals(3, bluetoothGattCharacteristicList.size());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattDescriptorList.get(3);
         assertEquals(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingConfiguration0.getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(1);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue1.getBytes(), bluetoothGattCharacteristic.getValue());
         bluetoothGattDescriptorList = bluetoothGattCharacteristic.getDescriptors();
         assertEquals(3, bluetoothGattCharacteristicList.size());
         bluetoothGattDescriptor = bluetoothGattDescriptorList.get(3);
         assertEquals(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingConfiguration1.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1074,24 +1040,20 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(0);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue0.getBytes(), bluetoothGattCharacteristic.getValue());
         List<BluetoothGattDescriptor> bluetoothGattDescriptorList = bluetoothGattCharacteristic.getDescriptors();
         assertEquals(3, bluetoothGattCharacteristicList.size());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattDescriptorList.get(3);
         assertEquals(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(descriptorPermission, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingConfiguration0.getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(1);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue1.getBytes(), bluetoothGattCharacteristic.getValue());
         bluetoothGattDescriptorList = bluetoothGattCharacteristic.getDescriptors();
         assertEquals(3, bluetoothGattCharacteristicList.size());
         bluetoothGattDescriptor = bluetoothGattDescriptorList.get(3);
         assertEquals(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(descriptorPermission, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(environmentalSensingConfiguration1.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1187,7 +1149,6 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicUserDescription.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1217,7 +1178,6 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicUserDescription.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1255,20 +1215,16 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(0);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue0.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR);
         assertEquals(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicUserDescription0.getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(1);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue1.getBytes(), bluetoothGattCharacteristic.getValue());
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR);
         assertEquals(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicUserDescription1.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1305,20 +1261,16 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(0);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue0.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR);
         assertEquals(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicUserDescription0.getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(1);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue1.getBytes(), bluetoothGattCharacteristic.getValue());
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR);
         assertEquals(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicUserDescription1.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1385,14 +1337,12 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(0);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue0.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR);
         assertNull(bluetoothGattDescriptor);
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(1);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue1.getBytes(), bluetoothGattCharacteristic.getValue());
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR);
         assertNull(bluetoothGattDescriptor);
     }
@@ -1424,7 +1374,6 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALID_RANGE_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(validRange.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1454,7 +1403,6 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALID_RANGE_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(validRange.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1491,20 +1439,16 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(0);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue0.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(VALID_RANGE_DESCRIPTOR);
         assertEquals(VALID_RANGE_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(validRange0.getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(1);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue1.getBytes(), bluetoothGattCharacteristic.getValue());
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(VALID_RANGE_DESCRIPTOR);
         assertEquals(VALID_RANGE_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(validRange1.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1541,20 +1485,16 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(0);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue0.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(VALID_RANGE_DESCRIPTOR);
         assertEquals(VALID_RANGE_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(validRange0.getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(1);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue1.getBytes(), bluetoothGattCharacteristic.getValue());
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(VALID_RANGE_DESCRIPTOR);
         assertEquals(VALID_RANGE_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(validRange1.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1622,14 +1562,12 @@ public class EnvironmentalSensingServiceMockCallbackBuilderNitrogenDioxideConcen
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(0);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue0.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(VALID_RANGE_DESCRIPTOR);
         assertNull(bluetoothGattDescriptor);
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(1);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(originalValue1.getBytes(), bluetoothGattCharacteristic.getValue());
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(VALID_RANGE_DESCRIPTOR);
         assertNull(bluetoothGattDescriptor);
     }

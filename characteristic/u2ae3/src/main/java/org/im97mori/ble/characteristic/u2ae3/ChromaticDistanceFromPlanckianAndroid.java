@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CHROMATIC_DISTANCE_FROM_PLANCKIAN_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Chromatic Distance From Planckian (Characteristics UUID: 0x2AE3)
@@ -44,9 +44,7 @@ public class ChromaticDistanceFromPlanckianAndroid extends ChromaticDistanceFrom
          */
         @NonNull
         public ChromaticDistanceFromPlanckianAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CHROMATIC_DISTANCE_FROM_PLANCKIAN_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ChromaticDistanceFromPlanckianAndroid(bluetoothGattCharacteristic);
+            return new ChromaticDistanceFromPlanckianAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ChromaticDistanceFromPlanckianAndroid extends ChromaticDistanceFrom
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AE3
      */
+    @Deprecated
     public ChromaticDistanceFromPlanckianAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ChromaticDistanceFromPlanckianAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class ChromaticDistanceFromPlanckianAndroid extends ChromaticDistanceFrom
      * @param in Parcel
      */
     private ChromaticDistanceFromPlanckianAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

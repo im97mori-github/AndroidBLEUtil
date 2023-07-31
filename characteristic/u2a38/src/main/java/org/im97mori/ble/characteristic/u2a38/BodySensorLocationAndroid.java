@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BODY_SENSOR_LOCATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Body Sensor Location (Characteristics UUID: 0x2A38)
@@ -44,9 +44,7 @@ public class BodySensorLocationAndroid extends BodySensorLocation implements Par
          */
         @NonNull
         public BodySensorLocationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BODY_SENSOR_LOCATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BodySensorLocationAndroid(bluetoothGattCharacteristic);
+            return new BodySensorLocationAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class BodySensorLocationAndroid extends BodySensorLocation implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A38
      */
+    @Deprecated
     public BodySensorLocationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BodySensorLocationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class BodySensorLocationAndroid extends BodySensorLocation implements Par
      * @param in Parcel
      */
     private BodySensorLocationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

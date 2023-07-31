@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CARDIO_RESPIRATORY_ACTIVITY_SUMMARY_DATA_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * CardioRespiratory Activity Summary Data (Characteristics UUID: 0x2B3F)
@@ -45,9 +45,7 @@ public class CardioRespiratoryActivitySummaryDataAndroid extends CardioRespirato
          */
         @NonNull
         public CardioRespiratoryActivitySummaryDataAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CARDIO_RESPIRATORY_ACTIVITY_SUMMARY_DATA_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new CardioRespiratoryActivitySummaryDataAndroid(bluetoothGattCharacteristic);
+            return new CardioRespiratoryActivitySummaryDataAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class CardioRespiratoryActivitySummaryDataAndroid extends CardioRespirato
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B3F
      */
+    @Deprecated
     public CardioRespiratoryActivitySummaryDataAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public CardioRespiratoryActivitySummaryDataAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class CardioRespiratoryActivitySummaryDataAndroid extends CardioRespirato
      * @param in Parcel
      */
     private CardioRespiratoryActivitySummaryDataAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

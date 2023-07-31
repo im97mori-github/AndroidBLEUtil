@@ -7,9 +7,9 @@ import org.junit.Test;
 import static org.im97mori.ble.constants.ServiceUUID.RECONNECTION_CONFIGURATION_SERVICE;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings("ConstantConditions")
 public class ReconnectionConfigurationProfileMockCallbackTest {
 
+    /** @noinspection DataFlowIssue*/
     @Test
     public void test_getServiceUUID_00001() {
         assertEquals(RECONNECTION_CONFIGURATION_SERVICE, new ReconnectionConfigurationProfileMockCallback(ApplicationProvider.getApplicationContext(), null, null).getServiceUUID());

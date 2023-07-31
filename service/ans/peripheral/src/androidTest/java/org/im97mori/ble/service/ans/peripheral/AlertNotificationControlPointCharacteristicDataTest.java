@@ -159,9 +159,9 @@ public class AlertNotificationControlPointCharacteristicDataTest {
                 , 0);
         assertEquals(firstNotifyUnreadAlertStatusImmediatelyResponseValue, characteristicData.notifyUnreadAlertStatusImmediatelyResponseValue);
 
-        int secondotifyUnreadAlertStatusImmediatelyResponseValue = 11;
-        characteristicData.notifyUnreadAlertStatusImmediatelyResponseValue = secondotifyUnreadAlertStatusImmediatelyResponseValue;
-        assertEquals(secondotifyUnreadAlertStatusImmediatelyResponseValue, characteristicData.notifyUnreadAlertStatusImmediatelyResponseValue);
+        int secondaryUnreadAlertStatusImmediatelyResponseValue = 11;
+        characteristicData.notifyUnreadAlertStatusImmediatelyResponseValue = secondaryUnreadAlertStatusImmediatelyResponseValue;
+        assertEquals(secondaryUnreadAlertStatusImmediatelyResponseValue, characteristicData.notifyUnreadAlertStatusImmediatelyResponseValue);
     }
 
     @Test

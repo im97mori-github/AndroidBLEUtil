@@ -37,7 +37,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings({"UnnecessaryLocalVariable", "unused"})
+/** @noinspection SameReturnValue, UnnecessaryLocalVariable */
 public class BodyCompositionServiceTest extends AbstractCentralTest {
 
     @Test

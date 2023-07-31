@@ -5,6 +5,8 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattServer;
 import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothStatusCodes;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.format.DateUtils;
@@ -37,9 +39,9 @@ public class NotifyTask extends AbstractBLETask {
     public static final int STATUS_CHARACTERISTIC_NOT_FOUND = -2;
 
     /**
-     * STATUS:NOTIFY_CHARACTERISTIC_CHANGED
+     * STATUS:NOTIFY_CHARACTERISTIC_CHANGE_FAILED
      */
-    public static final int STATUS_NOTIFY_CHARACTERISTIC_CHANGED = -3;
+    public static final int STATUS_NOTIFY_CHARACTERISTIC_CHANGE_FAILED = -3;
 
     /**
      * KEY:STATUS
@@ -90,7 +92,7 @@ public class NotifyTask extends AbstractBLETask {
     @NonNull
     public static Message createNotificationSentSuccessMessage(BluetoothDevice bluetoothDevice) {
         Bundle bundle = new Bundle();
-        bundle.putParcelable(KEY_BLUETOOTH_DEVICE, bluetoothDevice);
+        bundle.putString(KEY_BLUETOOTH_DEVICE, bluetoothDevice.toString());
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_NOTIFICATION_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
@@ -107,7 +109,7 @@ public class NotifyTask extends AbstractBLETask {
     @NonNull
     public static Message createNotificationSentErrorMessage(BluetoothDevice bluetoothDevice, int status) {
         Bundle bundle = new Bundle();
-        bundle.putParcelable(KEY_BLUETOOTH_DEVICE, bluetoothDevice);
+        bundle.putString(KEY_BLUETOOTH_DEVICE, bluetoothDevice.getAddress());
         bundle.putInt(KEY_STATUS, status);
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_NOTIFICATION_ERROR);
         Message message = new Message();
@@ -235,6 +237,7 @@ public class NotifyTask extends AbstractBLETask {
      */
     @SuppressLint("MissingPermission")
     @Override
+    @Deprecated
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
@@ -265,6 +268,8 @@ public class NotifyTask extends AbstractBLETask {
                             break;
                         }
                     }
+
+                    int status = STATUS_NOTIFY_CHARACTERISTIC_CHANGE_FAILED;
                     if (bluetoothGattService != null) {
                         List<BluetoothGattCharacteristic> characteristicList = bluetoothGattService.getCharacteristics();
                         for (BluetoothGattCharacteristic targetBluetoothGattCharacteristic : characteristicList) {
@@ -274,11 +279,15 @@ public class NotifyTask extends AbstractBLETask {
                             }
                         }
                         if (bluetoothGattCharacteristic != null) {
-                            bluetoothGattCharacteristic.setValue(mByteArray);
-
                             // notification(indication)
                             try {
-                                result = mBluetoothGattServer.notifyCharacteristicChanged(mBluetoothDevice, bluetoothGattCharacteristic, mIsConfirm);
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                                    status = mBluetoothGattServer.notifyCharacteristicChanged(mBluetoothDevice, bluetoothGattCharacteristic, mIsConfirm, mByteArray);
+                                    result = status == BluetoothStatusCodes.SUCCESS;
+                                } else {
+                                    bluetoothGattCharacteristic.setValue(mByteArray);
+                                    result = mBluetoothGattServer.notifyCharacteristicChanged(mBluetoothDevice, bluetoothGattCharacteristic, mIsConfirm);
+                                }
                             } catch (Exception e) {
                                 BLEPeripheralLogUtils.stackLog(e);
                             }
@@ -310,7 +319,7 @@ public class NotifyTask extends AbstractBLETask {
                                     , mServiceInstanceId
                                     , mCharacteristicUUID
                                     , mCharacteristicInstanceId
-                                    , STATUS_NOTIFY_CHARACTERISTIC_CHANGED
+                                    , status
                                     , mArgument);
                         }
                     }
@@ -318,30 +327,32 @@ public class NotifyTask extends AbstractBLETask {
                     mCurrentProgress = nextProgress;
                 }
             } else if (PROGRESS_NOTIFICATION_START.equals(mCurrentProgress)) {
-                if (PROGRESS_NOTIFICATION_SUCCESS.equals(nextProgress)) {
-                    // current:notification start, next:notification success
+                if (mBluetoothDevice.getAddress().equals(bundle.getString(KEY_BLUETOOTH_DEVICE))) {
+                    if (PROGRESS_NOTIFICATION_SUCCESS.equals(nextProgress)) {
+                        // current:notification start, next:notification success
 
-                    mBLEServerConnection.getBLEServerCallback().onNotificationSuccess(getTaskId()
-                            , mBLEServerConnection
-                            , mBluetoothDevice
-                            , mServiceUUID
-                            , mServiceInstanceId
-                            , mCharacteristicUUID
-                            , mCharacteristicInstanceId
-                            , mByteArray
-                            , mArgument);
-                } else if (PROGRESS_NOTIFICATION_ERROR.equals(nextProgress)) {
-                    // current:notification start, next:notification error
+                        mBLEServerConnection.getBLEServerCallback().onNotificationSuccess(getTaskId()
+                                , mBLEServerConnection
+                                , mBluetoothDevice
+                                , mServiceUUID
+                                , mServiceInstanceId
+                                , mCharacteristicUUID
+                                , mCharacteristicInstanceId
+                                , mByteArray
+                                , mArgument);
+                    } else if (PROGRESS_NOTIFICATION_ERROR.equals(nextProgress)) {
+                        // current:notification start, next:notification error
 
-                    mBLEServerConnection.getBLEServerCallback().onNotificationFailed(getTaskId()
-                            , mBLEServerConnection
-                            , mBluetoothDevice
-                            , mServiceUUID
-                            , mServiceInstanceId
-                            , mCharacteristicUUID
-                            , mCharacteristicInstanceId
-                            , bundle.getInt(KEY_STATUS)
-                            , mArgument);
+                        mBLEServerConnection.getBLEServerCallback().onNotificationFailed(getTaskId()
+                                , mBLEServerConnection
+                                , mBluetoothDevice
+                                , mServiceUUID
+                                , mServiceInstanceId
+                                , mCharacteristicUUID
+                                , mCharacteristicInstanceId
+                                , bundle.getInt(KEY_STATUS)
+                                , mArgument);
+                    }
                 }
 
                 mCurrentProgress = PROGRESS_FINISHED;

@@ -245,12 +245,12 @@ public class SCControlPointCharacteristicDataTest {
                 , SCControlPoint.OP_CODE_RESPONSE_CODE
                 , SCControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
                 , new byte[0]).getBytes();
-        int firstStartSensorCalibrationResponseValueeResponseValue = 4;
+        int firstStartSensorCalibrationResponseValueResponseValue = 4;
         SCControlPointCharacteristicData scControlPointCharacteristicData = new SCControlPointCharacteristicData(descriptorDataList
                 , 1
                 , 2
                 , 3
-                , firstStartSensorCalibrationResponseValueeResponseValue
+                , firstStartSensorCalibrationResponseValueResponseValue
                 , 5
                 , 6
                 , new byte[]{7});
@@ -260,7 +260,7 @@ public class SCControlPointCharacteristicDataTest {
                 , 0
                 , 0
                 , SCControlPoint.OP_CODE_START_SENSOR_CALIBRATION
-                , firstStartSensorCalibrationResponseValueeResponseValue
+                , firstStartSensorCalibrationResponseValueResponseValue
                 , new byte[0]).getBytes();
         scControlPointCharacteristicData.currentData = new SCControlPoint(SCControlPoint.OP_CODE_START_SENSOR_CALIBRATION
                 , 0

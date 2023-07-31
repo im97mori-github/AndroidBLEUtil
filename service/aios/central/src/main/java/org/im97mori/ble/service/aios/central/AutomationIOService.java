@@ -1,5 +1,18 @@
 package org.im97mori.ble.service.aios.central;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.AGGREGATE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.ANALOG_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.DIGITAL_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.NUMBER_OF_DIGITALS_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.TIME_TRIGGER_SETTING_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.VALUE_TRIGGER_SETTING_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.AUTOMATION_IO_SERVICE;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
@@ -16,7 +29,6 @@ import org.im97mori.ble.characteristic.u2a56.DigitalAndroid;
 import org.im97mori.ble.characteristic.u2a58.Analog;
 import org.im97mori.ble.characteristic.u2a58.AnalogAndroid;
 import org.im97mori.ble.characteristic.u2a5a.AggregateAndroid;
-import org.im97mori.ble.descriptor.u2900.CharacteristicExtendedProperties;
 import org.im97mori.ble.descriptor.u2900.CharacteristicExtendedPropertiesAndroid;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescription;
 import org.im97mori.ble.descriptor.u2901.CharacteristicUserDescriptionAndroid;
@@ -35,22 +47,11 @@ import org.im97mori.ble.task.ReadDescriptorTask;
 import org.im97mori.ble.task.WriteCharacteristicTask;
 import org.im97mori.ble.task.WriteDescriptorTask;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.AGGREGATE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.ANALOG_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.DIGITAL_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.NUMBER_OF_DIGITALS_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.TIME_TRIGGER_SETTING_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.VALUE_TRIGGER_SETTING_DESCRIPTOR;
-import static org.im97mori.ble.constants.ServiceUUID.AUTOMATION_IO_SERVICE;
 
 public class AutomationIOService extends AbstractCentralService {
 
@@ -70,9 +71,19 @@ public class AutomationIOService extends AbstractCentralService {
     private final List<BluetoothGattCharacteristic> mDigitalList = new LinkedList<>();
 
     /**
+     * Digital's Characteristic User Description writable status map
+     */
+    private final Map<Integer, Boolean> mDigitalCharacteristicUserDescriptionWritable = new HashMap<>();
+
+    /**
      * Analog Characteristic list
      */
     private final List<BluetoothGattCharacteristic> mAnalogList = new LinkedList<>();
+
+    /**
+     * Analog's Characteristic User Description writable status map
+     */
+    private final Map<Integer, Boolean> mAnalogCharacteristicUserDescriptionWritable = new HashMap<>();
 
     /**
      * Aggregate characteristic flag
@@ -114,7 +125,9 @@ public class AutomationIOService extends AbstractCentralService {
     public synchronized void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument) {
         if (mBLEConnection.getBluetoothDevice().equals(bluetoothDevice)) {
             mDigitalList.clear();
+            mDigitalCharacteristicUserDescriptionWritable.clear();
             mAnalogList.clear();
+            mAnalogCharacteristicUserDescriptionWritable.clear();
             mIsAggregateSupported = false;
             mIsAggregateReadable = false;
             mCanAggregateNotify = false;
@@ -316,7 +329,9 @@ public class AutomationIOService extends AbstractCentralService {
                 } else if (CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR.equals(descriptorUUID)) {
                     mAutomationIOServiceCallback.onDigitalCharacteristicUserDescriptionReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, CharacteristicUserDescriptionAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onDigitalCharacteristicExtendedPropertiesReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, CharacteristicExtendedPropertiesAndroid.CREATOR.createFromByteArray(values), argument);
+                    CharacteristicExtendedPropertiesAndroid characteristicExtendedPropertiesAndroid = CharacteristicExtendedPropertiesAndroid.CREATOR.createFromByteArray(values);
+                    mDigitalCharacteristicUserDescriptionWritable.put(descriptorInstanceId, characteristicExtendedPropertiesAndroid.isPropertiesWritableAuxiliariesEnabled());
+                    mAutomationIOServiceCallback.onDigitalCharacteristicExtendedPropertiesReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, characteristicExtendedPropertiesAndroid, argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
                     mAutomationIOServiceCallback.onDigitalValueTriggerSettingReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, ValueTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (TIME_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
@@ -333,7 +348,9 @@ public class AutomationIOService extends AbstractCentralService {
                 } else if (CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR.equals(descriptorUUID)) {
                     mAutomationIOServiceCallback.onAnalogCharacteristicUserDescriptionReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, CharacteristicUserDescriptionAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR.equals(descriptorUUID)) {
-                    mAutomationIOServiceCallback.onAnalogCharacteristicExtendedPropertiesReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, CharacteristicExtendedPropertiesAndroid.CREATOR.createFromByteArray(values), argument);
+                    CharacteristicExtendedPropertiesAndroid characteristicExtendedPropertiesAndroid = CharacteristicExtendedPropertiesAndroid.CREATOR.createFromByteArray(values);
+                    mAnalogCharacteristicUserDescriptionWritable.put(descriptorInstanceId, characteristicExtendedPropertiesAndroid.isPropertiesWritableAuxiliariesEnabled());
+                    mAutomationIOServiceCallback.onAnalogCharacteristicExtendedPropertiesReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, characteristicExtendedPropertiesAndroid, argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
                     mAutomationIOServiceCallback.onAnalogValueTriggerSettingReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, ValueTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (TIME_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
@@ -895,17 +912,7 @@ public class AutomationIOService extends AbstractCentralService {
      * @return {@code true}:target Digital Characteristic's Characteristic User Description Descriptor is writable, {@code false}:not writable or Characteristic Extended Properties value not stored
      */
     public synchronized boolean isDigitalCharacteristicUserDescriptionWritable(int index) {
-        boolean result = false;
-        if (hasDigitalCharacteristicUserDescription(index)) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = getDescriptor(mDigitalList, CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, index);
-            if (bluetoothGattDescriptor != null) {
-                byte[] value = bluetoothGattDescriptor.getValue();
-                if (value != null && new CharacteristicExtendedProperties(value).isPropertiesWritableAuxiliariesEnabled()) {
-                    result = true;
-                }
-            }
-        }
-        return result;
+        return Boolean.TRUE.equals(mDigitalCharacteristicUserDescriptionWritable.get(index));
     }
 
     /**
@@ -1105,17 +1112,7 @@ public class AutomationIOService extends AbstractCentralService {
      * @return {@code true}:target Analog Characteristic's Characteristic User Description Descriptor is writable, {@code false}:not writable
      */
     public synchronized boolean isAnalogCharacteristicUserDescriptionWritable(int index) {
-        boolean result = false;
-        if (hasAnalogCharacteristicUserDescription(index)) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = getDescriptor(mAnalogList, CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, index);
-            if (bluetoothGattDescriptor != null) {
-                byte[] value = bluetoothGattDescriptor.getValue();
-                if (value != null && new CharacteristicExtendedProperties(value).isPropertiesWritableAuxiliariesEnabled()) {
-                    result = true;
-                }
-            }
-        }
-        return result;
+        return Boolean.TRUE.equals(mAnalogCharacteristicUserDescriptionWritable.get(index));
     }
 
     /**

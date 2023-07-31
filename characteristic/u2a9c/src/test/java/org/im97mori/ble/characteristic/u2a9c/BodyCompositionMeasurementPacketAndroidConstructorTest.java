@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a9c;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 
 import org.im97mori.ble.characteristic.core.DateTimeUtils;
@@ -11,7 +10,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -48,10 +46,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsMeasurementUnitSI());
         assertFalse(result1.isFlagsMeasurementUnitImperial());
@@ -80,10 +75,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsMeasurementUnitSI());
         assertTrue(result1.isFlagsMeasurementUnitImperial());
@@ -112,10 +104,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsTimeStampNotPresent());
         assertFalse(result1.isFlagsTimeStampPresent());
@@ -151,10 +140,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[10] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsTimeStampNotPresent());
         assertTrue(result1.isFlagsTimeStampPresent());
@@ -196,10 +182,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[10] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsTimeStampNotPresent());
         assertTrue(result1.isFlagsTimeStampPresent());
@@ -241,10 +224,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsTimeStampNotPresent());
         assertTrue(result1.isFlagsTimeStampPresent());
@@ -286,10 +266,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsTimeStampNotPresent());
         assertTrue(result1.isFlagsTimeStampPresent());
@@ -331,10 +308,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsTimeStampNotPresent());
         assertTrue(result1.isFlagsTimeStampPresent());
@@ -376,10 +350,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsTimeStampNotPresent());
         assertTrue(result1.isFlagsTimeStampPresent());
@@ -421,10 +392,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsTimeStampNotPresent());
         assertTrue(result1.isFlagsTimeStampPresent());
@@ -466,10 +434,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsTimeStampNotPresent());
         assertTrue(result1.isFlagsTimeStampPresent());
@@ -511,10 +476,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsTimeStampNotPresent());
         assertTrue(result1.isFlagsTimeStampPresent());
@@ -556,10 +518,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsTimeStampNotPresent());
         assertTrue(result1.isFlagsTimeStampPresent());
@@ -601,10 +560,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsTimeStampNotPresent());
         assertTrue(result1.isFlagsTimeStampPresent());
@@ -646,10 +602,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsTimeStampNotPresent());
         assertTrue(result1.isFlagsTimeStampPresent());
@@ -691,10 +644,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[10] = 58;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsTimeStampNotPresent());
         assertTrue(result1.isFlagsTimeStampPresent());
@@ -729,10 +679,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsUserIdNotPresent());
         assertFalse(result1.isFlagsUserIdPresent());
@@ -762,10 +709,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 4] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsUserIdNotPresent());
         assertTrue(result1.isFlagsUserIdPresent());
@@ -795,10 +739,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsBasalMetabolismNotPresent());
         assertFalse(result1.isFlagsBasalMetabolismPresent());
@@ -829,10 +770,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsBasalMetabolismNotPresent());
         assertTrue(result1.isFlagsBasalMetabolismPresent());
@@ -865,10 +803,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsBasalMetabolismNotPresent());
         assertTrue(result1.isFlagsBasalMetabolismPresent());
@@ -899,10 +834,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsMusclePercentageNotPresent());
         assertFalse(result1.isFlagsMusclePercentagePresent());
@@ -933,10 +865,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsMusclePercentageNotPresent());
         assertTrue(result1.isFlagsMusclePercentagePresent());
@@ -969,10 +898,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsMusclePercentageNotPresent());
         assertTrue(result1.isFlagsMusclePercentagePresent());
@@ -1003,10 +929,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsMuscleMassNotPresent());
         assertFalse(result1.isFlagsMuscleMassPresent());
@@ -1037,10 +960,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsMuscleMassNotPresent());
         assertTrue(result1.isFlagsMuscleMassPresent());
@@ -1073,10 +993,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsMuscleMassNotPresent());
         assertTrue(result1.isFlagsMuscleMassPresent());
@@ -1109,10 +1026,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsMuscleMassNotPresent());
         assertTrue(result1.isFlagsMuscleMassPresent());
@@ -1145,10 +1059,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsMuscleMassNotPresent());
         assertTrue(result1.isFlagsMuscleMassPresent());
@@ -1179,10 +1090,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsFatFreeMassNotPresent());
         assertFalse(result1.isFlagsFatFreeMassPresent());
@@ -1213,10 +1121,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsFatFreeMassNotPresent());
         assertTrue(result1.isFlagsFatFreeMassPresent());
@@ -1249,10 +1154,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsFatFreeMassNotPresent());
         assertTrue(result1.isFlagsFatFreeMassPresent());
@@ -1285,10 +1187,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsFatFreeMassNotPresent());
         assertTrue(result1.isFlagsFatFreeMassPresent());
@@ -1321,10 +1220,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsFatFreeMassNotPresent());
         assertTrue(result1.isFlagsFatFreeMassPresent());
@@ -1355,10 +1251,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsSoftLeanMassNotPresent());
         assertFalse(result1.isFlagsSoftLeanMassPresent());
@@ -1389,10 +1282,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsSoftLeanMassNotPresent());
         assertTrue(result1.isFlagsSoftLeanMassPresent());
@@ -1425,10 +1315,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsSoftLeanMassNotPresent());
         assertTrue(result1.isFlagsSoftLeanMassPresent());
@@ -1461,10 +1348,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsSoftLeanMassNotPresent());
         assertTrue(result1.isFlagsSoftLeanMassPresent());
@@ -1497,10 +1381,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsSoftLeanMassNotPresent());
         assertTrue(result1.isFlagsSoftLeanMassPresent());
@@ -1531,10 +1412,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsBodyWaterMassNotPresent());
         assertFalse(result1.isFlagsBodyWaterMassPresent());
@@ -1565,10 +1443,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsBodyWaterMassNotPresent());
         assertTrue(result1.isFlagsBodyWaterMassPresent());
@@ -1601,10 +1476,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsBodyWaterMassNotPresent());
         assertTrue(result1.isFlagsBodyWaterMassPresent());
@@ -1637,10 +1509,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsBodyWaterMassNotPresent());
         assertTrue(result1.isFlagsBodyWaterMassPresent());
@@ -1673,10 +1542,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsBodyWaterMassNotPresent());
         assertTrue(result1.isFlagsBodyWaterMassPresent());
@@ -1707,10 +1573,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsImpedanceNotPresent());
         assertFalse(result1.isFlagsImpedancePresent());
@@ -1741,10 +1604,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsImpedanceNotPresent());
         assertTrue(result1.isFlagsImpedancePresent());
@@ -1777,10 +1637,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsImpedanceNotPresent());
         assertTrue(result1.isFlagsImpedancePresent());
@@ -1811,10 +1668,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsWeightNotPresent());
         assertFalse(result1.isFlagsWeightPresent());
@@ -1845,10 +1699,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsWeightNotPresent());
         assertTrue(result1.isFlagsWeightPresent());
@@ -1881,10 +1732,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsWeightNotPresent());
         assertTrue(result1.isFlagsWeightPresent());
@@ -1917,10 +1765,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsWeightNotPresent());
         assertTrue(result1.isFlagsWeightPresent());
@@ -1953,10 +1798,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsWeightNotPresent());
         assertTrue(result1.isFlagsWeightPresent());
@@ -1987,10 +1829,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsHeightNotPresent());
         assertFalse(result1.isFlagsHeightPresent());
@@ -2021,10 +1860,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsHeightNotPresent());
         assertTrue(result1.isFlagsHeightPresent());
@@ -2057,10 +1893,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsHeightNotPresent());
         assertTrue(result1.isFlagsHeightPresent());
@@ -2093,10 +1926,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsHeightNotPresent());
         assertTrue(result1.isFlagsHeightPresent());
@@ -2129,10 +1959,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsHeightNotPresent());
         assertTrue(result1.isFlagsHeightPresent());
@@ -2163,10 +1990,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isFlagsNotMultiplePacketMeasurement());
         assertFalse(result1.isFlagsMultiplePacketMeasurement());
@@ -2195,10 +2019,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isFlagsNotMultiplePacketMeasurement());
         assertTrue(result1.isFlagsMultiplePacketMeasurement());
@@ -2227,10 +2048,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(result1.isMeasurementSuccessful());
         assertFalse(result1.isMeasurementUnsuccessful());
@@ -2259,10 +2077,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = (byte) (BodyCompositionMeasurement.MEASUREMENT_UNSUCCESSFUL >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isMeasurementSuccessful());
         assertTrue(result1.isMeasurementUnsuccessful());
@@ -2291,10 +2106,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[ 3] = (byte) (BodyCompositionMeasurement.MEASUREMENT_UNSUCCESSFUL >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(result1.isMeasurementSuccessful());
         assertTrue(result1.isMeasurementUnsuccessful());
@@ -2349,10 +2161,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[29] = 0x1c;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertEquals(0x0201, result1.getBodyFatPercentage());
         assertTrue(result1.isMeasurementSuccessful());
@@ -2424,10 +2233,7 @@ public class BodyCompositionMeasurementPacketAndroidConstructorTest {
         data[29] = 0x1c;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(bluetoothGattCharacteristic);
+        BodyCompositionMeasurementPacketAndroid result1 = new BodyCompositionMeasurementPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertEquals(0x0201, result1.getBodyFatPercentage());
         assertTrue(result1.isMeasurementSuccessful());

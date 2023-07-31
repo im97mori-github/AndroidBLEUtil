@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BATTERY_TIME_STATUS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Battery Time Status (Characteristics UUID: 0x2BEE)
@@ -45,9 +45,7 @@ public class BatteryTimeStatusAndroid extends BatteryTimeStatus implements Parce
          */
         @NonNull
         public BatteryTimeStatusAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_TIME_STATUS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BatteryTimeStatusAndroid(bluetoothGattCharacteristic);
+            return new BatteryTimeStatusAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BatteryTimeStatusAndroid extends BatteryTimeStatus implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BEE
      */
+    @Deprecated
     public BatteryTimeStatusAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BatteryTimeStatusAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class BatteryTimeStatusAndroid extends BatteryTimeStatus implements Parce
      * @param in Parcel
      */
     private BatteryTimeStatusAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

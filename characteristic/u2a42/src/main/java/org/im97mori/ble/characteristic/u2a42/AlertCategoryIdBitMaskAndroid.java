@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_CATEGORY_ID_BIT_MASK_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Alert Category ID Bit Mask (Characteristics UUID: 0x2A42)
@@ -44,9 +44,7 @@ public class AlertCategoryIdBitMaskAndroid extends AlertCategoryIdBitMask implem
          */
         @NonNull
         public AlertCategoryIdBitMaskAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ALERT_CATEGORY_ID_BIT_MASK_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+            return new AlertCategoryIdBitMaskAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class AlertCategoryIdBitMaskAndroid extends AlertCategoryIdBitMask implem
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A42
      */
+    @Deprecated
     public AlertCategoryIdBitMaskAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AlertCategoryIdBitMaskAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -66,8 +74,7 @@ public class AlertCategoryIdBitMaskAndroid extends AlertCategoryIdBitMask implem
      * @param in Parcel
      */
     private AlertCategoryIdBitMaskAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

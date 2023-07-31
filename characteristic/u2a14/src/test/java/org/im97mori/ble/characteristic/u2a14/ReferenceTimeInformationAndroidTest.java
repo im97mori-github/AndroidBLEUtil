@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a14;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 import android.text.format.DateUtils;
@@ -10,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -33,10 +31,7 @@ public class ReferenceTimeInformationAndroidTest {
         data[ 3] = (byte) ReferenceTimeInformation.DAYS_SINCE_UPDATE_255_OR_MORE_HOURS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(bluetoothGattCharacteristic);
+        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(data);
         assertEquals(ReferenceTimeInformation.TIME_SOURCE_UNKNOWN, result1.getTimeSource());
         assertTrue(result1.isTimeSourceNotKnown());
         assertFalse(result1.isTimeSourceNetworkTimeProtocol());
@@ -75,10 +70,7 @@ public class ReferenceTimeInformationAndroidTest {
         data[ 3] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(bluetoothGattCharacteristic);
+        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(data);
         assertEquals(ReferenceTimeInformation.TIME_SOURCE_NETWORK_TIME_PROTOCOL, result1.getTimeSource());
         assertFalse(result1.isTimeSourceNotKnown());
         assertTrue(result1.isTimeSourceNetworkTimeProtocol());
@@ -113,10 +105,7 @@ public class ReferenceTimeInformationAndroidTest {
         data[ 3] = 23;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(bluetoothGattCharacteristic);
+        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(data);
         assertEquals(ReferenceTimeInformation.TIME_SOURCE_GPS, result1.getTimeSource());
         assertFalse(result1.isTimeSourceNotKnown());
         assertFalse(result1.isTimeSourceNetworkTimeProtocol());
@@ -150,10 +139,7 @@ public class ReferenceTimeInformationAndroidTest {
         data[ 3] = 23;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(bluetoothGattCharacteristic);
+        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(data);
         assertEquals(ReferenceTimeInformation.TIME_SOURCE_RADIO_TIME_SIGNAL, result1.getTimeSource());
         assertFalse(result1.isTimeSourceNotKnown());
         assertFalse(result1.isTimeSourceNetworkTimeProtocol());
@@ -189,10 +175,7 @@ public class ReferenceTimeInformationAndroidTest {
         data[ 3] = 23;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(bluetoothGattCharacteristic);
+        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(data);
         assertEquals(ReferenceTimeInformation.TIME_SOURCE_MANUAL, result1.getTimeSource());
         assertFalse(result1.isTimeSourceNotKnown());
         assertFalse(result1.isTimeSourceNetworkTimeProtocol());
@@ -228,10 +211,7 @@ public class ReferenceTimeInformationAndroidTest {
         data[ 3] = 23;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(bluetoothGattCharacteristic);
+        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(data);
         assertEquals(ReferenceTimeInformation.TIME_SOURCE_ATOMIC_CLOCK, result1.getTimeSource());
         assertFalse(result1.isTimeSourceNotKnown());
         assertFalse(result1.isTimeSourceNetworkTimeProtocol());
@@ -267,10 +247,7 @@ public class ReferenceTimeInformationAndroidTest {
         data[ 3] = 23;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(bluetoothGattCharacteristic);
+        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(data);
         assertEquals(ReferenceTimeInformation.TIME_SOURCE_CELLULAR_NETWORK, result1.getTimeSource());
         assertFalse(result1.isTimeSourceNotKnown());
         assertFalse(result1.isTimeSourceNetworkTimeProtocol());
@@ -320,10 +297,7 @@ public class ReferenceTimeInformationAndroidTest {
         data[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(bluetoothGattCharacteristic);
+        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -359,10 +333,7 @@ public class ReferenceTimeInformationAndroidTest {
         data[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(bluetoothGattCharacteristic);
+        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -375,10 +346,7 @@ public class ReferenceTimeInformationAndroidTest {
         data[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(bluetoothGattCharacteristic);
+        ReferenceTimeInformationAndroid result1 = new ReferenceTimeInformationAndroid(data);
         ReferenceTimeInformationAndroid result2 = ReferenceTimeInformationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

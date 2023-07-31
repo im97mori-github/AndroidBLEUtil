@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ENCRYPTED_DATA_KEY_MATERIAL_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Encrypted Data Key Material (Characteristics UUID: 0x2B88)
@@ -44,9 +44,7 @@ public class EncryptedDataKeyMaterialAndroid extends EncryptedDataKeyMaterial im
          */
         @NonNull
         public EncryptedDataKeyMaterialAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ENCRYPTED_DATA_KEY_MATERIAL_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new EncryptedDataKeyMaterialAndroid(bluetoothGattCharacteristic);
+            return new EncryptedDataKeyMaterialAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class EncryptedDataKeyMaterialAndroid extends EncryptedDataKeyMaterial im
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B88
      */
+    @Deprecated
     public EncryptedDataKeyMaterialAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public EncryptedDataKeyMaterialAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class EncryptedDataKeyMaterialAndroid extends EncryptedDataKeyMaterial im
      * @param in Parcel
      */
     private EncryptedDataKeyMaterialAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

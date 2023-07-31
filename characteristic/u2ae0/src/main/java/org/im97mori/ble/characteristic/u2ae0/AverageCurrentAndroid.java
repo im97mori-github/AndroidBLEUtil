@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.AVERAGE_CURRENT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Average Current (Characteristics UUID: 0x2AE0)
@@ -44,9 +44,7 @@ public class AverageCurrentAndroid extends AverageCurrent implements Parcelable 
          */
         @NonNull
         public AverageCurrentAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(AVERAGE_CURRENT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AverageCurrentAndroid(bluetoothGattCharacteristic);
+            return new AverageCurrentAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class AverageCurrentAndroid extends AverageCurrent implements Parcelable 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AE0
      */
+    @Deprecated
     public AverageCurrentAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AverageCurrentAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class AverageCurrentAndroid extends AverageCurrent implements Parcelable 
      * @param in Parcel
      */
     private AverageCurrentAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

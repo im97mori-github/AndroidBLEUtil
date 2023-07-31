@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ENERGY_IN_A_PERIOD_OF_DAY_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Energy In A Period Of Day (Characteristics UUID: 0x2AF3)
@@ -44,9 +44,7 @@ public class EnergyInAPeriodOfDayAndroid extends EnergyInAPeriodOfDay implements
          */
         @NonNull
         public EnergyInAPeriodOfDayAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ENERGY_IN_A_PERIOD_OF_DAY_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new EnergyInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+            return new EnergyInAPeriodOfDayAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class EnergyInAPeriodOfDayAndroid extends EnergyInAPeriodOfDay implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AF3
      */
+    @Deprecated
     public EnergyInAPeriodOfDayAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public EnergyInAPeriodOfDayAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class EnergyInAPeriodOfDayAndroid extends EnergyInAPeriodOfDay implements
      * @param in Parcel
      */
     private EnergyInAPeriodOfDayAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

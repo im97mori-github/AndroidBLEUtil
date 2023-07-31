@@ -1,9 +1,7 @@
 package org.im97mori.ble.characteristic.u2b2d;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -39,10 +37,7 @@ public class EmergencyIdAndroidTest extends TestBase {
 	public void test_constructor_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		EmergencyIdAndroid result1 = new EmergencyIdAndroid(bluetoothGattCharacteristic);
+		EmergencyIdAndroid result1 = new EmergencyIdAndroid(data);
 		assertArrayEquals(data, result1.getEmergencyId());
 	}
 
@@ -50,10 +45,7 @@ public class EmergencyIdAndroidTest extends TestBase {
 	public void test_parcelable_1_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		EmergencyIdAndroid result1 = new EmergencyIdAndroid(bluetoothGattCharacteristic);
+		EmergencyIdAndroid result1 = new EmergencyIdAndroid(data);
 		Parcel parcel = Parcel.obtain();
 		result1.writeToParcel(parcel, 0);
 		parcel.setDataPosition(0);
@@ -65,10 +57,7 @@ public class EmergencyIdAndroidTest extends TestBase {
 	public void test_parcelable_2_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		EmergencyIdAndroid result1 = new EmergencyIdAndroid(bluetoothGattCharacteristic);
+		EmergencyIdAndroid result1 = new EmergencyIdAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -76,10 +65,7 @@ public class EmergencyIdAndroidTest extends TestBase {
 	public void test_parcelable_3_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		EmergencyIdAndroid result1 = new EmergencyIdAndroid(bluetoothGattCharacteristic);
+		EmergencyIdAndroid result1 = new EmergencyIdAndroid(data);
 		EmergencyIdAndroid result2 = EmergencyIdAndroid.CREATOR.createFromByteArray(data);
 		assertArrayEquals(result1.getBytes(), result2.getBytes());
 	}

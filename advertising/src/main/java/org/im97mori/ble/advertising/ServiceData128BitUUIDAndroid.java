@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -90,8 +91,7 @@ public class ServiceData128BitUUIDAndroid extends ServiceData128BitUUID implemen
      * @param in Parcel
      */
     private ServiceData128BitUUIDAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray(), 0, in.readInt());
+        super(Objects.requireNonNull(in.createByteArray()), 0, in.readInt());
     }
 
     /**

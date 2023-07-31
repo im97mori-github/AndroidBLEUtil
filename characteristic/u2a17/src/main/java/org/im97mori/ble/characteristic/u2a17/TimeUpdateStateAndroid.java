@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_UPDATE_STATE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Time Update State (Characteristics UUID: 0x2A17)
@@ -44,9 +44,7 @@ public class TimeUpdateStateAndroid extends TimeUpdateState implements Parcelabl
          */
         @NonNull
         public TimeUpdateStateAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TIME_UPDATE_STATE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+            return new TimeUpdateStateAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class TimeUpdateStateAndroid extends TimeUpdateState implements Parcelabl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A17
      */
+    @Deprecated
     public TimeUpdateStateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TimeUpdateStateAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class TimeUpdateStateAndroid extends TimeUpdateState implements Parcelabl
      * @param in Parcel
      */
     private TimeUpdateStateAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

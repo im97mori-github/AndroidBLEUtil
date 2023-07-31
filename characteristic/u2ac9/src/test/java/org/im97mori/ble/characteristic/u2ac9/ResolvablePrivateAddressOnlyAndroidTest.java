@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ac9;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -26,14 +24,11 @@ public class ResolvablePrivateAddressOnlyAndroidTest {
     public void test_constructor001() {
         //@formatter:off
         byte[] data = new byte[1];
-        //noinspection ConstantConditions
-data[ 0] = (byte) (ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 & 0xff);
+        //noinspection DataFlowIssue
+        data[ 0] = (byte) (ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 & 0xff);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ResolvablePrivateAddressOnlyAndroid result1 = new ResolvablePrivateAddressOnlyAndroid(bluetoothGattCharacteristic);
+        ResolvablePrivateAddressOnlyAndroid result1 = new ResolvablePrivateAddressOnlyAndroid(data);
         assertEquals(ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0, result1.getResolvablePrivateAddress());
         assertTrue(result1.isResolvablePrivateAddress0());
     }
@@ -45,10 +40,7 @@ data[ 0] = (byte) (ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 & 0
         data[ 0] = (byte) (ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 + 1 & 0xff);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ResolvablePrivateAddressOnlyAndroid result1 = new ResolvablePrivateAddressOnlyAndroid(bluetoothGattCharacteristic);
+        ResolvablePrivateAddressOnlyAndroid result1 = new ResolvablePrivateAddressOnlyAndroid(data);
         assertEquals(ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 + 1, result1.getResolvablePrivateAddress());
         assertFalse(result1.isResolvablePrivateAddress0());
     }
@@ -68,10 +60,7 @@ data[ 0] = (byte) (ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 & 0
         data[ 0] = (byte) (ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 + 1 & 0xff);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ResolvablePrivateAddressOnlyAndroid result1 = new ResolvablePrivateAddressOnlyAndroid(bluetoothGattCharacteristic);
+        ResolvablePrivateAddressOnlyAndroid result1 = new ResolvablePrivateAddressOnlyAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -87,10 +76,7 @@ data[ 0] = (byte) (ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 & 0
         data[ 0] = (byte) (ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 + 1 & 0xff);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ResolvablePrivateAddressOnlyAndroid result1 = new ResolvablePrivateAddressOnlyAndroid(bluetoothGattCharacteristic);
+        ResolvablePrivateAddressOnlyAndroid result1 = new ResolvablePrivateAddressOnlyAndroid(data);
         byte[] resultData = result1.getBytes();
         assertArrayEquals(data, resultData);
     }
@@ -102,10 +88,7 @@ data[ 0] = (byte) (ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 & 0
         data[ 0] = (byte) (ResolvablePrivateAddressOnly.RESOLVABLE_PRIVATE_ADDRESS_0 + 1 & 0xff);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ResolvablePrivateAddressOnlyAndroid result1 = new ResolvablePrivateAddressOnlyAndroid(bluetoothGattCharacteristic);
+        ResolvablePrivateAddressOnlyAndroid result1 = new ResolvablePrivateAddressOnlyAndroid(data);
         ResolvablePrivateAddressOnlyAndroid result2 = ResolvablePrivateAddressOnlyAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

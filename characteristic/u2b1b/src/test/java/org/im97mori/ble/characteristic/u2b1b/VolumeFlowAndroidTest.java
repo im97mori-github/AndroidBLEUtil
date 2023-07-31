@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b1b;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,13 +9,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -32,10 +30,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = (byte) (VolumeFlow.VOLUME_FLOW_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         assertEquals(VolumeFlow.VOLUME_FLOW_VALUE_IS_NOT_KNOWN, result1.getVolumeFlow());
         assertTrue(result1.isVolumeFlowValueIsNotKnown());
     }
@@ -48,10 +43,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result1.getVolumeFlow());
         assertFalse(result1.isVolumeFlowValueIsNotKnown());
         assertEquals(VolumeFlow.VOLUME_FLOW_VALUE_MINIMUM, result1.getVolumeFlowLitterPerSecond(), 0);
@@ -65,10 +57,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = (byte) (65534 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result1.getVolumeFlow());
         assertFalse(result1.isVolumeFlowValueIsNotKnown());
         assertEquals(VolumeFlow.VOLUME_FLOW_VALUE_MAXIMUM, result1.getVolumeFlowLitterPerSecond(), 0);
@@ -82,10 +71,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result1.getVolumeFlow());
         assertFalse(result1.isVolumeFlowValueIsNotKnown());
         assertEquals(VolumeFlow.VOLUME_FLOW_VALUE_UNIT * BLEUtils.createUInt16(data, 0), result1.getVolumeFlowLitterPerSecond(), 0);
@@ -138,10 +124,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = (byte) (VolumeFlow.VOLUME_FLOW_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -158,10 +141,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -178,10 +158,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = (byte) (65534 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -198,10 +175,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -218,10 +192,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = (byte) (VolumeFlow.VOLUME_FLOW_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -233,10 +204,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -248,10 +216,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = (byte) (65534 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -263,10 +228,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -278,10 +240,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = (byte) (VolumeFlow.VOLUME_FLOW_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         VolumeFlowAndroid result2 = VolumeFlowAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -294,10 +253,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         VolumeFlowAndroid result2 = VolumeFlowAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -310,10 +266,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = (byte) (65534 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         VolumeFlowAndroid result2 = VolumeFlowAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -326,10 +279,7 @@ public class VolumeFlowAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        VolumeFlowAndroid result1 = new VolumeFlowAndroid(bluetoothGattCharacteristic);
+        VolumeFlowAndroid result1 = new VolumeFlowAndroid(data);
         VolumeFlowAndroid result2 = VolumeFlowAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

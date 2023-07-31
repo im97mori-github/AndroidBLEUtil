@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a95;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -27,10 +25,7 @@ public class TwoZoneHeartRateLimitAndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TwoZoneHeartRateLimitAndroid result1 = new TwoZoneHeartRateLimitAndroid(bluetoothGattCharacteristic);
+        TwoZoneHeartRateLimitAndroid result1 = new TwoZoneHeartRateLimitAndroid(data);
         assertEquals(0x01, result1.getTwoZoneHeartRateLimitFatBurnFitnessLimit());
     }
 
@@ -41,10 +36,7 @@ public class TwoZoneHeartRateLimitAndroidTest {
         data[ 0] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TwoZoneHeartRateLimitAndroid result1 = new TwoZoneHeartRateLimitAndroid(bluetoothGattCharacteristic);
+        TwoZoneHeartRateLimitAndroid result1 = new TwoZoneHeartRateLimitAndroid(data);
         assertEquals(0xff, result1.getTwoZoneHeartRateLimitFatBurnFitnessLimit());
     }
 
@@ -63,10 +55,7 @@ public class TwoZoneHeartRateLimitAndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TwoZoneHeartRateLimitAndroid result1 = new TwoZoneHeartRateLimitAndroid(bluetoothGattCharacteristic);
+        TwoZoneHeartRateLimitAndroid result1 = new TwoZoneHeartRateLimitAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -82,10 +71,7 @@ public class TwoZoneHeartRateLimitAndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TwoZoneHeartRateLimitAndroid result1 = new TwoZoneHeartRateLimitAndroid(bluetoothGattCharacteristic);
+        TwoZoneHeartRateLimitAndroid result1 = new TwoZoneHeartRateLimitAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -96,10 +82,7 @@ public class TwoZoneHeartRateLimitAndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TwoZoneHeartRateLimitAndroid result1 = new TwoZoneHeartRateLimitAndroid(bluetoothGattCharacteristic);
+        TwoZoneHeartRateLimitAndroid result1 = new TwoZoneHeartRateLimitAndroid(data);
         TwoZoneHeartRateLimitAndroid result2 = TwoZoneHeartRateLimitAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

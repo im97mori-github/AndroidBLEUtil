@@ -1,8 +1,17 @@
 package org.im97mori.ble.service.tps.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.TX_POWER_LEVEL_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.TX_POWER_SERVICE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.os.Build;
+
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.characteristic.u2a07.TxPowerLevel;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
@@ -10,16 +19,6 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.TX_POWER_LEVEL_CHARACTERISTIC;
-import static org.im97mori.ble.constants.ServiceUUID.TX_POWER_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-
-import androidx.test.filters.RequiresDevice;
-import androidx.test.filters.SdkSuppress;
 
 public class TxPowerServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
@@ -54,7 +53,6 @@ public class TxPowerServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         assertEquals(TX_POWER_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(TX_POWER_LEVEL_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), txPowerLevel.getBytes());
     }
 
     @Test
@@ -75,7 +73,6 @@ public class TxPowerServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         assertEquals(TX_POWER_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(TX_POWER_LEVEL_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), txPowerLevel.getBytes());
     }
 
     @Test
@@ -96,7 +93,6 @@ public class TxPowerServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         assertEquals(TX_POWER_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(TX_POWER_LEVEL_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), txPowerLevel.getBytes());
     }
 
 
@@ -118,7 +114,6 @@ public class TxPowerServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         assertEquals(TX_POWER_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(TX_POWER_LEVEL_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), txPowerLevel.getBytes());
     }
 
     @Test

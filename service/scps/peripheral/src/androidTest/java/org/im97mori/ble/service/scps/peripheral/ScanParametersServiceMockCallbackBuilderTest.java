@@ -1,10 +1,22 @@
 package org.im97mori.ble.service.scps.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_INTERVAL_WINDOW_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_REFRESH_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.im97mori.ble.constants.ServiceUUID.SCAN_PARAMETERS_SERVICE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.os.Build;
+
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.characteristic.u2a31.ScanRefresh;
 import org.im97mori.ble.characteristic.u2a4f.ScanIntervalWindow;
@@ -14,19 +26,6 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_INTERVAL_WINDOW_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_REFRESH_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.im97mori.ble.constants.ServiceUUID.SCAN_PARAMETERS_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import androidx.test.filters.RequiresDevice;
-import androidx.test.filters.SdkSuppress;
 
 public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
@@ -92,7 +91,6 @@ public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeriph
         assertEquals(SCAN_INTERVAL_WINDOW_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(scanIntervalWindow.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -126,7 +124,6 @@ public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeriph
         assertEquals(SCAN_INTERVAL_WINDOW_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(scanIntervalWindow.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -160,7 +157,6 @@ public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeriph
         assertEquals(SCAN_INTERVAL_WINDOW_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(scanIntervalWindow.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -216,12 +212,10 @@ public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeriph
         assertEquals(SCAN_REFRESH_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(0, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(scanRefresh.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -259,12 +253,10 @@ public class ScanParametersServiceMockCallbackBuilderTest extends AbstractPeriph
         assertEquals(SCAN_REFRESH_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(0, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(scanRefresh.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test

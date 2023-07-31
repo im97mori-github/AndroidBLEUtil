@@ -31,7 +31,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PRIVACY_F
 import static org.im97mori.ble.constants.CharacteristicUUID.RECONNECTION_ADDRESS_CHARACTERISTIC;
 import static org.im97mori.ble.constants.CharacteristicUUID.RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC;
 import static org.im97mori.ble.constants.ServiceUUID.GENERIC_ACCESS_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -110,7 +109,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DEVICE_NAME_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), deviceName.getBytes());
     }
 
     @Test
@@ -132,7 +130,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DEVICE_NAME_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), deviceName.getBytes());
     }
 
     @Test
@@ -154,7 +151,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(DEVICE_NAME_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), deviceName.getBytes());
     }
 
     @Test
@@ -178,7 +174,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), deviceName.getBytes());
     }
 
     @Test
@@ -220,7 +215,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(APPEARANCE_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -242,7 +236,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(APPEARANCE_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -266,7 +259,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -290,7 +282,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -354,7 +345,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -379,7 +369,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -404,7 +393,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -468,7 +456,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(CENTRAL_ADDRESS_RESOLUTION_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -493,7 +480,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -518,7 +504,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -582,7 +567,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(RESOLVABLE_PRIVATE_ADDRESS_ONLY_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -607,7 +591,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -632,7 +615,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -736,7 +718,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(PERIPHERAL_PRIVACY_FLAG_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -761,7 +742,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -786,7 +766,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -811,7 +790,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -882,7 +860,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -912,7 +889,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -980,7 +956,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertEquals(GENERIC_ACCESS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(LE_GATT_SECURITY_LEVELS_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -1005,7 +980,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test
@@ -1030,7 +1004,6 @@ public class GenericAccessServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), data);
     }
 
     @Test

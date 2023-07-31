@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.core.SensorLocationUtils;
 import org.im97mori.ble.characteristic.u2a53.RSCMeasurement;
 import org.im97mori.ble.characteristic.u2a54.RSCFeature;
@@ -137,9 +136,7 @@ public class RscpPeripheralSampleActivity extends BaseActivity implements View.O
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else if (mRunningSpeedAndCadenceProfileMockCallback.isStarted()) {
+        if (mRunningSpeedAndCadenceProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {
             mConnectDisconnectButton.setText(R.string.start);

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CURRENT_TRACK_OBJECT_ID_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Current Track Object ID (Characteristics UUID: 0x2B9D)
@@ -45,9 +45,7 @@ public class CurrentTrackObjectIdAndroid extends CurrentTrackObjectId implements
          */
         @NonNull
         public CurrentTrackObjectIdAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CURRENT_TRACK_OBJECT_ID_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new CurrentTrackObjectIdAndroid(bluetoothGattCharacteristic);
+            return new CurrentTrackObjectIdAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class CurrentTrackObjectIdAndroid extends CurrentTrackObjectId implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B9D
      */
+    @Deprecated
     public CurrentTrackObjectIdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public CurrentTrackObjectIdAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class CurrentTrackObjectIdAndroid extends CurrentTrackObjectId implements
      * @param in Parcel
      */
     private CurrentTrackObjectIdAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

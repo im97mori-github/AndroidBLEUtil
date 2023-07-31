@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Alert Notification Control Point (Characteristics UUID: 0x2A44)
@@ -44,9 +44,7 @@ public class AlertNotificationControlPointAndroid extends AlertNotificationContr
          */
         @NonNull
         public AlertNotificationControlPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ALERT_NOTIFICATION_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+            return new AlertNotificationControlPointAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class AlertNotificationControlPointAndroid extends AlertNotificationContr
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A44
      */
+    @Deprecated
     public AlertNotificationControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AlertNotificationControlPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class AlertNotificationControlPointAndroid extends AlertNotificationContr
      * @param in Parcel
      */
     private AlertNotificationControlPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

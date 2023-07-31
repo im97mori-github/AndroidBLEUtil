@@ -1,7 +1,5 @@
 package org.im97mori.ble.characteristic.u2a01;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.APPEARANCE_CHARACTERISTIC;
-
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,6 +7,8 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
+
+import java.util.Objects;
 
 /**
  * Appearance (Characteristics UUID: 0x2A01)
@@ -44,9 +44,7 @@ public class AppearanceAndroid extends Appearance implements Parcelable {
          */
         @NonNull
         public AppearanceAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(APPEARANCE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AppearanceAndroid(bluetoothGattCharacteristic);
+            return new AppearanceAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class AppearanceAndroid extends Appearance implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A01
      */
+    @Deprecated
     public AppearanceAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AppearanceAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class AppearanceAndroid extends Appearance implements Parcelable {
      * @param in Parcel
      */
     private AppearanceAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2acd;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -750,9 +748,9 @@ public class TreadmillDataPacketAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -766,10 +764,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(TreadmillDataUtils.isFlagsMoreDataFalse(result1.getFlags()));
         assertFalse(TreadmillDataUtils.isFlagsMoreDataTrue(result1.getFlags()));
@@ -780,10 +775,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(TreadmillDataUtils.isFlagsMoreDataFalse(result1.getFlags()));
         assertTrue(TreadmillDataUtils.isFlagsMoreDataTrue(result1.getFlags()));
@@ -793,10 +785,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(TreadmillDataUtils.isFlagsAverageSpeedNotPresent(result1.getFlags()));
         assertFalse(TreadmillDataUtils.isFlagsAverageSpeedPresent(result1.getFlags()));
@@ -806,10 +795,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(TreadmillDataUtils.isFlagsAverageSpeedNotPresent(result1.getFlags()));
         assertTrue(TreadmillDataUtils.isFlagsAverageSpeedPresent(result1.getFlags()));
@@ -820,10 +806,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(TreadmillDataUtils.isFlagsTotalDistanceNotPresent(result1.getFlags()));
         assertFalse(TreadmillDataUtils.isFlagsTotalDistancePresent(result1.getFlags()));
@@ -833,10 +816,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(TreadmillDataUtils.isFlagsTotalDistanceNotPresent(result1.getFlags()));
         assertTrue(TreadmillDataUtils.isFlagsTotalDistancePresent(result1.getFlags()));
@@ -847,10 +827,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(TreadmillDataUtils.isFlagsInclinationAndRampAngleSettingNotPresent(result1.getFlags()));
         assertFalse(TreadmillDataUtils.isFlagsInclinationAndRampAngleSettingPresent(result1.getFlags()));
@@ -860,10 +837,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(TreadmillDataUtils.isFlagsInclinationAndRampAngleSettingNotPresent(result1.getFlags()));
         assertTrue(TreadmillDataUtils.isFlagsInclinationAndRampAngleSettingPresent(result1.getFlags()));
@@ -875,10 +849,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(TreadmillDataUtils.isFlagsElevationGainNotPresent(result1.getFlags()));
         assertFalse(TreadmillDataUtils.isFlagsElevationGainPresent(result1.getFlags()));
@@ -888,10 +859,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(TreadmillDataUtils.isFlagsElevationGainNotPresent(result1.getFlags()));
         assertTrue(TreadmillDataUtils.isFlagsElevationGainPresent(result1.getFlags()));
@@ -903,10 +871,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(TreadmillDataUtils.isFlagsInstantaneousPaceNotPresent(result1.getFlags()));
         assertFalse(TreadmillDataUtils.isFlagsInstantaneousPacePresent(result1.getFlags()));
@@ -916,10 +881,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(TreadmillDataUtils.isFlagsInstantaneousPaceNotPresent(result1.getFlags()));
         assertTrue(TreadmillDataUtils.isFlagsInstantaneousPacePresent(result1.getFlags()));
@@ -930,10 +892,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(TreadmillDataUtils.isFlagsAveragePaceNotPresent(result1.getFlags()));
         assertFalse(TreadmillDataUtils.isFlagsAveragePacePresent(result1.getFlags()));
@@ -943,10 +902,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(TreadmillDataUtils.isFlagsAveragePaceNotPresent(result1.getFlags()));
         assertTrue(TreadmillDataUtils.isFlagsAveragePacePresent(result1.getFlags()));
@@ -957,10 +913,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(TreadmillDataUtils.isFlagsExpendedEnergyNotPresent(result1.getFlags()));
         assertFalse(TreadmillDataUtils.isFlagsExpendedEnergyPresent(result1.getFlags()));
@@ -970,10 +923,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(TreadmillDataUtils.isFlagsExpendedEnergyNotPresent(result1.getFlags()));
         assertTrue(TreadmillDataUtils.isFlagsExpendedEnergyPresent(result1.getFlags()));
@@ -986,10 +936,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(TreadmillDataUtils.isFlagsHeartRateNotPresent(result1.getFlags()));
         assertFalse(TreadmillDataUtils.isFlagsHeartRatePresent(result1.getFlags()));
@@ -999,10 +946,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(TreadmillDataUtils.isFlagsHeartRateNotPresent(result1.getFlags()));
         assertTrue(TreadmillDataUtils.isFlagsHeartRatePresent(result1.getFlags()));
@@ -1013,10 +957,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(TreadmillDataUtils.isFlagsMetabolicEquivalentNotPresent(result1.getFlags()));
         assertFalse(TreadmillDataUtils.isFlagsMetabolicEquivalentPresent(result1.getFlags()));
@@ -1026,10 +967,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(TreadmillDataUtils.isFlagsMetabolicEquivalentNotPresent(result1.getFlags()));
         assertTrue(TreadmillDataUtils.isFlagsMetabolicEquivalentPresent(result1.getFlags()));
@@ -1040,10 +978,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(TreadmillDataUtils.isFlagsElapsedTimeNotPresent(result1.getFlags()));
         assertFalse(TreadmillDataUtils.isFlagsElapsedTimePresent(result1.getFlags()));
@@ -1053,10 +988,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(TreadmillDataUtils.isFlagsElapsedTimeNotPresent(result1.getFlags()));
         assertTrue(TreadmillDataUtils.isFlagsElapsedTimePresent(result1.getFlags()));
@@ -1067,10 +999,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(TreadmillDataUtils.isFlagsRemainingTimeNotPresent(result1.getFlags()));
         assertFalse(TreadmillDataUtils.isFlagsRemainingTimePresent(result1.getFlags()));
@@ -1080,10 +1009,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(TreadmillDataUtils.isFlagsRemainingTimeNotPresent(result1.getFlags()));
         assertTrue(TreadmillDataUtils.isFlagsRemainingTimePresent(result1.getFlags()));
@@ -1094,10 +1020,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(TreadmillDataUtils.isFlagsForceOnBeltAndPowerOutputNotPresent(result1.getFlags()));
         assertFalse(TreadmillDataUtils.isFlagsForceOnBeltAndPowerOutputPresent(result1.getFlags()));
@@ -1107,10 +1030,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_constructor_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(TreadmillDataUtils.isFlagsForceOnBeltAndPowerOutputNotPresent(result1.getFlags()));
         assertTrue(TreadmillDataUtils.isFlagsForceOnBeltAndPowerOutputPresent(result1.getFlags()));
@@ -1166,10 +1086,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1199,10 +1116,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1232,10 +1146,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1265,10 +1176,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1298,10 +1206,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1331,10 +1236,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1364,10 +1266,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1397,10 +1296,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1430,10 +1326,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1463,10 +1356,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1496,10 +1386,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1529,10 +1416,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1562,10 +1446,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1595,10 +1476,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1628,10 +1506,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1661,10 +1536,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1694,10 +1566,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1727,10 +1596,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1760,10 +1626,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1793,10 +1656,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1826,10 +1686,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1859,10 +1716,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1892,10 +1746,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1925,10 +1776,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1958,10 +1806,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1991,10 +1836,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_1_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2024,10 +1866,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2035,10 +1874,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2046,10 +1882,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2057,10 +1890,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2068,10 +1898,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2079,10 +1906,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2090,10 +1914,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2101,10 +1922,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2112,10 +1930,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2123,10 +1938,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2134,10 +1946,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2145,10 +1954,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2156,10 +1962,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2167,10 +1970,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2178,10 +1978,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2189,10 +1986,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2200,10 +1994,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2211,10 +2002,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2222,10 +2010,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2233,10 +2018,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2244,10 +2026,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2255,10 +2034,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2266,10 +2042,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2277,10 +2050,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2288,10 +2058,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2299,10 +2066,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_2_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2310,10 +2074,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2322,10 +2083,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2334,10 +2092,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2346,10 +2101,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2358,10 +2110,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2370,10 +2119,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2382,10 +2128,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2394,10 +2137,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2406,10 +2146,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2418,10 +2155,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2430,10 +2164,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2442,10 +2173,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2454,10 +2182,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2466,10 +2191,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2478,10 +2200,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2490,10 +2209,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2502,10 +2218,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2514,10 +2227,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2526,10 +2236,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2538,10 +2245,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2550,10 +2254,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2562,10 +2263,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2574,10 +2272,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2586,10 +2281,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2598,10 +2290,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2610,10 +2299,7 @@ public class TreadmillDataPacketAndroidTest {
     public void test_parcelable_3_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(bluetoothGattCharacteristic);
+        TreadmillDataPacketAndroid result1 = new TreadmillDataPacketAndroid(data);
         TreadmillDataPacketAndroid result2 = TreadmillDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -46,7 +46,6 @@ import org.im97mori.ble.BLEConnection;
 import org.im97mori.ble.BLEConnectionHolder;
 import org.im97mori.ble.BLELogUtils;
 import org.im97mori.ble.BLESyncConnection;
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.CompleteListOf128BitServiceUUIDsAndroid;
 import org.im97mori.ble.advertising.FlagsAndroid;
@@ -347,43 +346,35 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
                     , SAMPLE_READABLE_DESCRIPTOR
                     , ReadDescriptorTask.TIMEOUT_MILLIS);
         } else if (R.id.write_notification == item.getItemId()) {
-            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, 0);
-            descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
             mBleConnection.createWriteDescriptorTask(
                     SAMPLE_PRIMARY_SERVICE_1
                     , SAMPLE_NOTIFY_CHARACTERISTIC
                     , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
-                    , new ClientCharacteristicConfigurationAndroid(descriptor)
+                    , new ClientCharacteristicConfigurationAndroid(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
             );
         } else if (R.id.write_indication == item.getItemId()) {
-            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, 0);
-            descriptor.setValue(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
             mBleConnection.createWriteDescriptorTask(
                     SAMPLE_PRIMARY_SERVICE_1
                     , SAMPLE_INDICATE_CHARACTERISTIC
                     , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
-                    , new ClientCharacteristicConfigurationAndroid(descriptor)
+                    , new ClientCharacteristicConfigurationAndroid(BluetoothGattDescriptor.ENABLE_INDICATION_VALUE)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
             );
         } else if (R.id.write_notification_stop == item.getItemId()) {
-            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, 0);
-            descriptor.setValue(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
             mBleConnection.createWriteDescriptorTask(
                     SAMPLE_PRIMARY_SERVICE_1
                     , SAMPLE_NOTIFY_CHARACTERISTIC
                     , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
-                    , new ClientCharacteristicConfigurationAndroid(descriptor)
+                    , new ClientCharacteristicConfigurationAndroid(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
             );
         } else if (R.id.write_indication_stop == item.getItemId()) {
-            BluetoothGattDescriptor descriptor = new BluetoothGattDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, 0);
-            descriptor.setValue(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
             mBleConnection.createWriteDescriptorTask(
                     SAMPLE_PRIMARY_SERVICE_1
                     , SAMPLE_INDICATE_CHARACTERISTIC
                     , CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR
-                    , new ClientCharacteristicConfigurationAndroid(descriptor)
+                    , new ClientCharacteristicConfigurationAndroid(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE)
                     , WriteDescriptorTask.TIMEOUT_MILLIS
             );
         } else if (R.id.read_characteristic_sync == item.getItemId()) {
@@ -747,9 +738,7 @@ public class CentralSampleActivity extends BaseActivity implements View.OnClickL
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else if (mBluetoothLeScanner == null) {
+        if (mBluetoothLeScanner == null) {
             mConnectDisconnectButton.setVisibility(View.GONE);
         } else {
             mConnectDisconnectButton.setVisibility(View.VISIBLE);

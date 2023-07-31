@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2afd;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -33,10 +31,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (LuminousEnergy.LUMINOUS_ENERGY_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result = new LuminousEnergyAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getLuminousEnergy());
         assertTrue(result.isLuminousEnergyValueIsNotKnown());
     }
@@ -50,10 +45,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (((int) (LuminousEnergy.LUMINOUS_ENERGY_VALUE_MINIMUM / LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result = new LuminousEnergyAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getLuminousEnergy());
         assertFalse(result.isLuminousEnergyValueIsNotKnown());
         assertEquals(BLEUtils.createUInt24(data, 0) * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEnergyLumenHour(), 0);
@@ -68,10 +60,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (((int) (LuminousEnergy.LUMINOUS_ENERGY_VALUE_MAXIMUM / LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result = new LuminousEnergyAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getLuminousEnergy());
         assertFalse(result.isLuminousEnergyValueIsNotKnown());
         assertEquals(BLEUtils.createUInt24(data, 0) * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEnergyLumenHour(), 0);
@@ -86,10 +75,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (1 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result = new LuminousEnergyAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getLuminousEnergy());
         assertFalse(result.isLuminousEnergyValueIsNotKnown());
         assertEquals(BLEUtils.createUInt24(data, 0) * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEnergyLumenHour(), 0);
@@ -104,10 +90,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (16777213 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result = new LuminousEnergyAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getLuminousEnergy());
         assertFalse(result.isLuminousEnergyValueIsNotKnown());
         assertEquals(BLEUtils.createUInt24(data, 0) * LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT, result.getLuminousEnergyLumenHour(), 0);
@@ -191,10 +174,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (LuminousEnergy.LUMINOUS_ENERGY_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -212,10 +192,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (((int) (LuminousEnergy.LUMINOUS_ENERGY_VALUE_MINIMUM / LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -233,10 +210,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (((int) (LuminousEnergy.LUMINOUS_ENERGY_VALUE_MAXIMUM / LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -254,10 +228,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (1 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -275,10 +246,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (16777213 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -296,10 +264,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (LuminousEnergy.LUMINOUS_ENERGY_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -312,10 +277,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (((int) (LuminousEnergy.LUMINOUS_ENERGY_VALUE_MINIMUM / LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -328,10 +290,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (((int) (LuminousEnergy.LUMINOUS_ENERGY_VALUE_MAXIMUM / LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -344,10 +303,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (1 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -360,10 +316,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (16777213 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -376,10 +329,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (LuminousEnergy.LUMINOUS_ENERGY_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         LuminousEnergyAndroid result2 = LuminousEnergyAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -393,10 +343,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (((int) (LuminousEnergy.LUMINOUS_ENERGY_VALUE_MINIMUM / LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         LuminousEnergyAndroid result2 = LuminousEnergyAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -410,10 +357,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (((int) (LuminousEnergy.LUMINOUS_ENERGY_VALUE_MAXIMUM / LuminousEnergy.LUMINOUS_ENERGY_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         LuminousEnergyAndroid result2 = LuminousEnergyAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -427,10 +371,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (1 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         LuminousEnergyAndroid result2 = LuminousEnergyAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -444,10 +385,7 @@ public class LuminousEnergyAndroidTest {
         data[ 2] = (byte) (16777213 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(bluetoothGattCharacteristic);
+        LuminousEnergyAndroid result1 = new LuminousEnergyAndroid(data);
         LuminousEnergyAndroid result2 = LuminousEnergyAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

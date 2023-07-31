@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a07;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -27,10 +25,7 @@ public class TxPowerLevelAndroidTest {
         data[ 0] = (byte) 0x9c;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(bluetoothGattCharacteristic);
+        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(data);
         assertEquals(0xffffff9c, result1.getTxPower());
     }
 
@@ -41,10 +36,7 @@ public class TxPowerLevelAndroidTest {
         data[ 0] = 0x14;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(bluetoothGattCharacteristic);
+        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(data);
         assertEquals(0x14, result1.getTxPower());
     }
 
@@ -63,10 +55,7 @@ public class TxPowerLevelAndroidTest {
         data[ 0] = 0x14;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(bluetoothGattCharacteristic);
+        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -82,10 +71,7 @@ public class TxPowerLevelAndroidTest {
         data[ 0] = 0x64;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(bluetoothGattCharacteristic);
+        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -96,10 +82,7 @@ public class TxPowerLevelAndroidTest {
         data[ 0] = 0x64;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(bluetoothGattCharacteristic);
+        TxPowerLevelAndroid result1 = new TxPowerLevelAndroid(data);
         TxPowerLevelAndroid result2 = TxPowerLevelAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

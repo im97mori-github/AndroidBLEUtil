@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b1d;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,7 +10,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -1207,9 +1205,9 @@ public class RCFeatureAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -1223,10 +1221,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertFalse(result1.isE2eCrcNotSupported());
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
     }
@@ -1235,10 +1230,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertTrue(result1.isE2eCrcNotSupported());
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
     }
@@ -1247,10 +1239,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesE2eCrcNotSupported());
         assertFalse(result1.isRcFeaturesE2eCrcSupported());
@@ -1260,10 +1249,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesE2eCrcNotSupported());
         assertTrue(result1.isRcFeaturesE2eCrcSupported());
@@ -1273,10 +1259,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesEnableDisconnectNotSupported());
         assertFalse(result1.isRcFeaturesEnableDisconnectSupported());
@@ -1286,10 +1269,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesEnableDisconnectNotSupported());
         assertTrue(result1.isRcFeaturesEnableDisconnectSupported());
@@ -1299,10 +1279,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesReadyForDisconnectNotSupported());
         assertFalse(result1.isRcFeaturesReadyForDisconnectSupported());
@@ -1312,10 +1289,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesReadyForDisconnectNotSupported());
         assertTrue(result1.isRcFeaturesReadyForDisconnectSupported());
@@ -1325,10 +1299,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesProposeReconnectionTimeoutNotSupported());
         assertFalse(result1.isRcFeaturesProposeReconnectionTimeoutSupported());
@@ -1338,10 +1309,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesProposeReconnectionTimeoutNotSupported());
         assertTrue(result1.isRcFeaturesProposeReconnectionTimeoutSupported());
@@ -1351,10 +1319,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesProposeConnectionIntervalNotSupported());
         assertFalse(result1.isRcFeaturesProposeConnectionIntervalSupported());
@@ -1364,10 +1329,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesProposeConnectionIntervalNotSupported());
         assertTrue(result1.isRcFeaturesProposeConnectionIntervalSupported());
@@ -1377,10 +1339,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesProposeSlaveLatencyNotSupported());
         assertFalse(result1.isRcFeaturesProposeSlaveLatencySupported());
@@ -1390,10 +1349,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesProposeSlaveLatencyNotSupported());
         assertTrue(result1.isRcFeaturesProposeSlaveLatencySupported());
@@ -1403,10 +1359,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesProposeSupervisionTimeoutNotSupported());
         assertFalse(result1.isRcFeaturesProposeSupervisionTimeoutSupported());
@@ -1416,10 +1369,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesProposeSupervisionTimeoutNotSupported());
         assertTrue(result1.isRcFeaturesProposeSupervisionTimeoutSupported());
@@ -1429,10 +1379,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesProposeAdvertisementIntervalNotSupported());
         assertFalse(result1.isRcFeaturesProposeAdvertisementIntervalSupported());
@@ -1442,10 +1389,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesProposeAdvertisementIntervalNotSupported());
         assertTrue(result1.isRcFeaturesProposeAdvertisementIntervalSupported());
@@ -1455,10 +1399,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesProposeAdvertisementCountNotSupported());
         assertFalse(result1.isRcFeaturesProposeAdvertisementCountSupported());
@@ -1468,10 +1409,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesProposeAdvertisementCountNotSupported());
         assertTrue(result1.isRcFeaturesProposeAdvertisementCountSupported());
@@ -1481,10 +1419,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesProposeAdvertisementRepetitionTimeNotSupported());
         assertFalse(result1.isRcFeaturesProposeAdvertisementRepetitionTimeSupported());
@@ -1494,10 +1429,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesProposeAdvertisementRepetitionTimeNotSupported());
         assertTrue(result1.isRcFeaturesProposeAdvertisementRepetitionTimeSupported());
@@ -1507,10 +1439,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesAdvertisementConfiguration1NotSupported());
         assertFalse(result1.isRcFeaturesAdvertisementConfiguration1Supported());
@@ -1520,10 +1449,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesAdvertisementConfiguration1NotSupported());
         assertTrue(result1.isRcFeaturesAdvertisementConfiguration1Supported());
@@ -1533,10 +1459,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesAdvertisementConfiguration2NotSupported());
         assertFalse(result1.isRcFeaturesAdvertisementConfiguration2Supported());
@@ -1546,10 +1469,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesAdvertisementConfiguration2NotSupported());
         assertTrue(result1.isRcFeaturesAdvertisementConfiguration2Supported());
@@ -1559,10 +1479,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesAdvertisementConfiguration3NotSupported());
         assertFalse(result1.isRcFeaturesAdvertisementConfiguration3Supported());
@@ -1572,10 +1489,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesAdvertisementConfiguration3NotSupported());
         assertTrue(result1.isRcFeaturesAdvertisementConfiguration3Supported());
@@ -1585,10 +1499,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesAdvertisementConfiguration4NotSupported());
         assertFalse(result1.isRcFeaturesAdvertisementConfiguration4Supported());
@@ -1598,10 +1509,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesAdvertisementConfiguration4NotSupported());
         assertTrue(result1.isRcFeaturesAdvertisementConfiguration4Supported());
@@ -1611,10 +1519,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesUpgradeToLescOnlyNotSupported());
         assertFalse(result1.isRcFeaturesUpgradeToLescOnlySupported());
@@ -1624,10 +1529,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesUpgradeToLescOnlyNotSupported());
         assertTrue(result1.isRcFeaturesUpgradeToLescOnlySupported());
@@ -1637,10 +1539,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesNextPairingOobNotSupported());
         assertFalse(result1.isRcFeaturesNextPairingOobSupported());
@@ -1650,10 +1549,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesNextPairingOobNotSupported());
         assertTrue(result1.isRcFeaturesNextPairingOobSupported());
@@ -1663,10 +1559,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesUseOfWhiteListNotSupported());
         assertFalse(result1.isRcFeaturesUseOfWhiteListSupported());
@@ -1676,10 +1569,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesUseOfWhiteListNotSupported());
         assertTrue(result1.isRcFeaturesUseOfWhiteListSupported());
@@ -1689,10 +1579,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertTrue(result1.isRcFeaturesLimitedAccessNotSupported());
         assertFalse(result1.isRcFeaturesLimitedAccessSupported());
@@ -1702,10 +1589,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 5), result1.getRcFeatures());
         assertFalse(result1.isRcFeaturesLimitedAccessNotSupported());
         assertTrue(result1.isRcFeaturesLimitedAccessSupported());
@@ -1715,10 +1599,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 6), result1.getRcFeatures());
     }
 
@@ -1727,10 +1608,7 @@ public class RCFeatureAndroidTest {
     public void test_constructor_01902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 2, 7), result1.getRcFeatures());
     }
 
@@ -1748,10 +1626,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1764,10 +1639,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1780,10 +1652,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1796,10 +1665,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1812,10 +1678,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1828,10 +1691,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1844,10 +1704,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1860,10 +1717,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1876,10 +1730,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1892,10 +1743,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1908,10 +1756,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1924,10 +1769,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1940,10 +1782,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1956,10 +1795,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1972,10 +1808,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1988,10 +1821,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2004,10 +1834,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2020,10 +1847,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2036,10 +1860,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2052,10 +1873,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2068,10 +1886,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2084,10 +1899,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2100,10 +1912,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2116,10 +1925,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2132,10 +1938,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2148,10 +1951,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2164,10 +1964,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2180,10 +1977,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2196,10 +1990,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2212,10 +2003,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2228,10 +2016,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2244,10 +2029,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2260,10 +2042,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2276,10 +2055,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2292,10 +2068,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2308,10 +2081,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2324,10 +2094,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2340,10 +2107,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2356,10 +2120,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2372,10 +2133,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_1_01902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2388,10 +2146,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2399,10 +2154,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2410,10 +2162,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2421,10 +2170,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2432,10 +2178,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2443,10 +2186,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2454,10 +2194,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2465,10 +2202,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2476,10 +2210,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2487,10 +2218,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2498,10 +2226,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2509,10 +2234,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2520,10 +2242,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2531,10 +2250,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2542,10 +2258,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2553,10 +2266,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2564,10 +2274,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2575,10 +2282,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2586,10 +2290,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2597,10 +2298,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2608,10 +2306,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2619,10 +2314,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2630,10 +2322,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2641,10 +2330,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2652,10 +2338,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2663,10 +2346,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2674,10 +2354,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2685,10 +2362,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2696,10 +2370,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2707,10 +2378,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2718,10 +2386,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2729,10 +2394,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2740,10 +2402,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2751,10 +2410,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2762,10 +2418,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2773,10 +2426,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2784,10 +2434,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2795,10 +2442,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2806,10 +2450,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2817,10 +2458,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_2_01902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2828,10 +2466,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2840,10 +2475,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2852,10 +2484,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2864,10 +2493,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2876,10 +2502,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2888,10 +2511,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2900,10 +2520,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2912,10 +2529,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2924,10 +2538,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2936,10 +2547,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2948,10 +2556,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2960,10 +2565,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2972,10 +2574,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2984,10 +2583,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2996,10 +2592,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3008,10 +2601,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3020,10 +2610,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3032,10 +2619,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3044,10 +2628,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3056,10 +2637,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3068,10 +2646,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3080,10 +2655,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3092,10 +2664,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3104,10 +2673,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3116,10 +2682,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3128,10 +2691,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3140,10 +2700,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3152,10 +2709,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3164,10 +2718,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3176,10 +2727,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3188,10 +2736,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3200,10 +2745,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3212,10 +2754,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3224,10 +2763,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3236,10 +2772,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3248,10 +2781,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3260,10 +2790,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3272,10 +2799,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3284,10 +2808,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3296,10 +2817,7 @@ public class RCFeatureAndroidTest {
     public void test_parcelable_3_01902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RCFeatureAndroid result1 = new RCFeatureAndroid(bluetoothGattCharacteristic);
+        RCFeatureAndroid result1 = new RCFeatureAndroid(data);
         RCFeatureAndroid result2 = RCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

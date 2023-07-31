@@ -536,4 +536,14 @@ public abstract class AbstractCentralService implements BLECallback {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        if (mBLECallback != null) {
+            mBLECallback.onServiceChanged(bluetoothDevice);
+        }
+    }
+
 }

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.DEW_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Dew Point (Characteristics UUID: 0x2A7B)
@@ -44,9 +44,7 @@ public class DewPointAndroid extends DewPoint implements Parcelable {
          */
         @NonNull
         public DewPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DEW_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new DewPointAndroid(bluetoothGattCharacteristic);
+            return new DewPointAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class DewPointAndroid extends DewPoint implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A7B
      */
+    @Deprecated
     public DewPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public DewPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class DewPointAndroid extends DewPoint implements Parcelable {
      * @param in Parcel
      */
     private DewPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

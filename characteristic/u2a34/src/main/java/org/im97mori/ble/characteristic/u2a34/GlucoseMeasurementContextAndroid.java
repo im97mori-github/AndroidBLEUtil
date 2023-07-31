@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.GLUCOSE_MEASUREMENT_CONTEXT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Glucose Measurement Context (Characteristics UUID: 0x2A34)
@@ -45,9 +45,7 @@ public class GlucoseMeasurementContextAndroid extends GlucoseMeasurementContext 
          */
         @NonNull
         public GlucoseMeasurementContextAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(GLUCOSE_MEASUREMENT_CONTEXT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new GlucoseMeasurementContextAndroid(bluetoothGattCharacteristic);
+            return new GlucoseMeasurementContextAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class GlucoseMeasurementContextAndroid extends GlucoseMeasurementContext 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A34
      */
+    @Deprecated
     public GlucoseMeasurementContextAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public GlucoseMeasurementContextAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class GlucoseMeasurementContextAndroid extends GlucoseMeasurementContext 
      * @param in Parcel
      */
     private GlucoseMeasurementContextAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

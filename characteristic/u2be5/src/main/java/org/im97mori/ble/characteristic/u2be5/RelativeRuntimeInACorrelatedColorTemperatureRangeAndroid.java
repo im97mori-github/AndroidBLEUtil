@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_RUNTIME_IN_A_CORRELATED_COLOR_TEMPERATURE_RANGE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Relative Runtime in a Correlated Color Temperature Range (Characteristics UUID: 0x2BE5)
@@ -45,9 +45,7 @@ public class RelativeRuntimeInACorrelatedColorTemperatureRangeAndroid extends Re
          */
         @NonNull
         public RelativeRuntimeInACorrelatedColorTemperatureRangeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RELATIVE_RUNTIME_IN_A_CORRELATED_COLOR_TEMPERATURE_RANGE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new RelativeRuntimeInACorrelatedColorTemperatureRangeAndroid(bluetoothGattCharacteristic);
+            return new RelativeRuntimeInACorrelatedColorTemperatureRangeAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class RelativeRuntimeInACorrelatedColorTemperatureRangeAndroid extends Re
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BE5
      */
+    @Deprecated
     public RelativeRuntimeInACorrelatedColorTemperatureRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public RelativeRuntimeInACorrelatedColorTemperatureRangeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class RelativeRuntimeInACorrelatedColorTemperatureRangeAndroid extends Re
      * @param in Parcel
      */
     private RelativeRuntimeInACorrelatedColorTemperatureRangeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

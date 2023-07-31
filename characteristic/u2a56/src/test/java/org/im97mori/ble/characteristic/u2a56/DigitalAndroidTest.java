@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a56;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,10 +9,9 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -28,10 +26,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_INACTIVE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getDigital());
     }
 
@@ -42,10 +37,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_ACTIVE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getDigital());
     }
 
@@ -56,10 +48,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_TRI_STATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getDigital());
     }
 
@@ -70,10 +59,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_OUTPUT_STATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getDigital());
     }
 
@@ -84,10 +70,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_INACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getDigital());
     }
 
@@ -98,10 +81,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_ACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getDigital());
     }
 
@@ -112,10 +92,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_TRI_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getDigital());
     }
 
@@ -126,10 +103,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_OUTPUT_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getDigital());
     }
 
@@ -141,10 +115,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_INACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getDigital());
     }
 
@@ -156,10 +127,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_ACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getDigital());
     }
 
@@ -171,10 +139,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_TRI_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getDigital());
     }
 
@@ -186,10 +151,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_OUTPUT_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getDigital());
     }
 
@@ -200,10 +162,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_INACTIVE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -218,10 +177,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_ACTIVE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -236,10 +192,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_TRI_STATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -254,10 +207,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_OUTPUT_STATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -272,10 +222,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_INACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -290,10 +237,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_ACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -308,10 +252,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_TRI_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -326,10 +267,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_OUTPUT_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -345,10 +283,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_INACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -364,10 +299,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_ACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -383,10 +315,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_TRI_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -402,10 +331,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_OUTPUT_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -420,10 +346,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_INACTIVE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -434,10 +357,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_ACTIVE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -448,10 +368,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_TRI_STATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -462,10 +379,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_OUTPUT_STATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -476,10 +390,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_INACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -490,10 +401,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_ACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -504,10 +412,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_TRI_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -518,10 +423,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_OUTPUT_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -533,10 +435,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_INACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -548,10 +447,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_ACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -563,10 +459,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_TRI_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -578,10 +471,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_OUTPUT_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -592,10 +482,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_INACTIVE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         DigitalAndroid result2 = DigitalAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -607,10 +494,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_ACTIVE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         DigitalAndroid result2 = DigitalAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -622,10 +506,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_TRI_STATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         DigitalAndroid result2 = DigitalAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -637,10 +518,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_OUTPUT_STATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         DigitalAndroid result2 = DigitalAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -652,10 +530,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_INACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         DigitalAndroid result2 = DigitalAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -667,10 +542,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_ACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         DigitalAndroid result2 = DigitalAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -682,10 +554,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_TRI_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         DigitalAndroid result2 = DigitalAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -697,10 +566,7 @@ public class DigitalAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_OUTPUT_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         DigitalAndroid result2 = DigitalAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -713,10 +579,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_INACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         DigitalAndroid result2 = DigitalAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -729,10 +592,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_ACTIVE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         DigitalAndroid result2 = DigitalAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -745,10 +605,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_TRI_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         DigitalAndroid result2 = DigitalAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -761,10 +618,7 @@ public class DigitalAndroidTest {
         data[ 1] = AutomationIoUtils.DIGITAL_OUTPUT_STATE << 2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DigitalAndroid result1 = new DigitalAndroid(bluetoothGattCharacteristic);
+        DigitalAndroid result1 = new DigitalAndroid(data);
         DigitalAndroid result2 = DigitalAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

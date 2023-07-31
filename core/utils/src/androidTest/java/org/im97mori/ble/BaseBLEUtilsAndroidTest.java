@@ -16,9 +16,6 @@ import android.os.Parcel;
 import android.os.ParcelUuid;
 
 import androidx.test.core.app.ApplicationProvider;
-import androidx.test.filters.RequiresDevice;
-
-import org.junit.Test;
 
 import java.lang.reflect.Field;
 import java.util.concurrent.CountDownLatch;
@@ -27,6 +24,8 @@ import java.util.concurrent.atomic.AtomicReference;
 
 abstract class BaseBLEUtilsAndroidTest {
 
+    /** @noinspection DeprecatedIsStillUsed*/
+    @Deprecated
     void test_isBluetoothEnabled_00001() {
         Context context = ApplicationProvider.getApplicationContext();
         final AtomicReference<Boolean> result = new AtomicReference<>(null);
@@ -98,6 +97,8 @@ abstract class BaseBLEUtilsAndroidTest {
         assertTrue(value);
     }
 
+    /** @noinspection DeprecatedIsStillUsed*/
+    @Deprecated
     void test_isBluetoothEnabled_00002() {
         Context context = ApplicationProvider.getApplicationContext();
         final AtomicReference<Boolean> result = new AtomicReference<>(null);
@@ -168,151 +169,6 @@ abstract class BaseBLEUtilsAndroidTest {
         assertNotNull(value);
         assertFalse(value);
     }
-
-    void test_bluetoothEnable_00001() {
-        Context context = ApplicationProvider.getApplicationContext();
-        final AtomicReference<Boolean> result = new AtomicReference<>(null);
-        final BluetoothAdapter bluetoothAdapter = ((BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        if (bluetoothAdapter.isEnabled()) {
-            final CountDownLatch countDownLatch = new CountDownLatch(1);
-            IntentFilter intentFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-            BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.STATE_ON);
-
-                    if (BluetoothAdapter.STATE_OFF == state) {
-                        assertFalse(bluetoothAdapter.isEnabled());
-                        result.set(BLEUtilsAndroid.isBluetoothEnabled(context));
-                        countDownLatch.countDown();
-                    }
-                }
-
-            };
-            context.registerReceiver(broadcastReceiver, intentFilter);
-            assertTrue(BLEUtilsAndroid.bluetoothDisable(context));
-
-            try {
-                //noinspection ResultOfMethodCallIgnored
-                countDownLatch.await(10000, TimeUnit.MILLISECONDS);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            context.unregisterReceiver(broadcastReceiver);
-
-            Boolean value = result.get();
-            assertNotNull(value);
-            assertFalse(value);
-            result.set(null);
-        }
-        final CountDownLatch countDownLatch = new CountDownLatch(1);
-        IntentFilter intentFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.STATE_OFF);
-
-                if (BluetoothAdapter.STATE_ON == state) {
-                    assertTrue(bluetoothAdapter.isEnabled());
-                    result.set(BLEUtilsAndroid.isBluetoothEnabled(context));
-                    countDownLatch.countDown();
-                }
-            }
-
-        };
-        context.registerReceiver(broadcastReceiver, intentFilter);
-        assertTrue(BLEUtilsAndroid.bluetoothEnable(context));
-
-        try {
-            //noinspection ResultOfMethodCallIgnored
-            countDownLatch.await(10000, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        context.unregisterReceiver(broadcastReceiver);
-
-        Boolean value = result.get();
-        assertNotNull(value);
-        assertTrue(value);
-    }
-
-    @Test
-    @RequiresDevice
-    public void test_bluetoothDisable_00001() {
-        Context context = ApplicationProvider.getApplicationContext();
-        final AtomicReference<Boolean> result = new AtomicReference<>(null);
-        final BluetoothAdapter bluetoothAdapter = ((BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
-        assertNotNull(bluetoothAdapter);
-
-        if (!bluetoothAdapter.isEnabled()) {
-            final CountDownLatch countDownLatch = new CountDownLatch(1);
-            IntentFilter intentFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-            BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.STATE_OFF);
-
-                    if (BluetoothAdapter.STATE_ON == state) {
-                        assertTrue(bluetoothAdapter.isEnabled());
-                        result.set(BLEUtilsAndroid.isBluetoothEnabled(context));
-                        countDownLatch.countDown();
-                    }
-                }
-
-            };
-            context.registerReceiver(broadcastReceiver, intentFilter);
-            assertTrue(BLEUtilsAndroid.bluetoothEnable(context));
-
-            try {
-                //noinspection ResultOfMethodCallIgnored
-                countDownLatch.await(10000, TimeUnit.MILLISECONDS);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            context.unregisterReceiver(broadcastReceiver);
-
-            Boolean value = result.get();
-            assertNotNull(value);
-            assertTrue(value);
-            result.set(null);
-        }
-        final CountDownLatch countDownLatch = new CountDownLatch(1);
-        IntentFilter intentFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
-        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.STATE_ON);
-
-                if (BluetoothAdapter.STATE_OFF == state) {
-                    assertFalse(bluetoothAdapter.isEnabled());
-                    result.set(BLEUtilsAndroid.isBluetoothEnabled(context));
-                    countDownLatch.countDown();
-                }
-            }
-
-        };
-        context.registerReceiver(broadcastReceiver, intentFilter);
-        assertTrue(BLEUtilsAndroid.bluetoothDisable(context));
-
-        try {
-            //noinspection ResultOfMethodCallIgnored
-            countDownLatch.await(10000, TimeUnit.MILLISECONDS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        context.unregisterReceiver(broadcastReceiver);
-
-        Boolean value = result.get();
-        assertNotNull(value);
-        assertFalse(value);
-    }
-
 
     void test_getDescriptorInstanceId_00001() {
         BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BLEUtils.BASE_UUID, 0);

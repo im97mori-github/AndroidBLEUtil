@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.OBJECT_ID_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * object ID (Characteristics UUID: 0x2AC3)
@@ -44,9 +44,7 @@ public class ObjectIdAndroid extends ObjectId implements Parcelable {
          */
         @NonNull
         public ObjectIdAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(OBJECT_ID_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ObjectIdAndroid(bluetoothGattCharacteristic);
+            return new ObjectIdAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ObjectIdAndroid extends ObjectId implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AC3
      */
+    @Deprecated
     public ObjectIdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ObjectIdAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class ObjectIdAndroid extends ObjectId implements Parcelable {
      * @param in Parcel
      */
     private ObjectIdAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

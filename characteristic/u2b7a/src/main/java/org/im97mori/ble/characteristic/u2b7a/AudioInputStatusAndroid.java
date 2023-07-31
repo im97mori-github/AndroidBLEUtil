@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.AUDIO_INPUT_STATUS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Audio Input Status (Characteristics UUID: 0x2B7A)
@@ -45,9 +45,7 @@ public class AudioInputStatusAndroid extends AudioInputStatus implements Parcela
          */
         @NonNull
         public AudioInputStatusAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(AUDIO_INPUT_STATUS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AudioInputStatusAndroid(bluetoothGattCharacteristic);
+            return new AudioInputStatusAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class AudioInputStatusAndroid extends AudioInputStatus implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B7A
      */
+    @Deprecated
     public AudioInputStatusAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AudioInputStatusAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class AudioInputStatusAndroid extends AudioInputStatus implements Parcela
      * @param in Parcel
      */
     private AudioInputStatusAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

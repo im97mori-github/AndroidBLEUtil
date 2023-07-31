@@ -6,12 +6,12 @@ plugins {
 def target = serviceGapCentralAndroid
 
 android {
-    compileSdkVersion globalCompileSdkVersion
-    buildToolsVersion globalBuildToolsVersion
+    compileSdk globalCompileSdkVersion
+    buildToolsVersion = globalBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion globalMinSdkVersion
-        targetSdkVersion globalTargetSdkVersion
+        minSdk globalMinSdkVersion
+        targetSdk globalTargetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

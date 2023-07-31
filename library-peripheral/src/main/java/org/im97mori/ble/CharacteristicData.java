@@ -159,7 +159,7 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
      * @param in Parcel
      */
     public CharacteristicData(@NonNull Parcel in) {
-        uuid = (UUID) in.readSerializable();
+        uuid = UUID.fromString(in.readString());
         property = in.readInt();
         permission = in.readInt();
         descriptorDataList = in.createTypedArrayList(DescriptorData.CREATOR);
@@ -264,7 +264,7 @@ public class CharacteristicData implements Parcelable, ByteArrayInterface {
      */
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeSerializable(uuid);
+        dest.writeString(uuid.toString());
         dest.writeInt(property);
         dest.writeInt(permission);
         DescriptorData[] descriptorDataList = new DescriptorData[this.descriptorDataList.size()];

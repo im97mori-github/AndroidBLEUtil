@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_RANGE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Temperature Range (Characteristics UUID: 0x2B10)
@@ -44,9 +44,7 @@ public class TemperatureRangeAndroid extends TemperatureRange implements Parcela
          */
         @NonNull
         public TemperatureRangeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_RANGE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TemperatureRangeAndroid(bluetoothGattCharacteristic);
+            return new TemperatureRangeAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class TemperatureRangeAndroid extends TemperatureRange implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B10
      */
+    @Deprecated
     public TemperatureRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TemperatureRangeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class TemperatureRangeAndroid extends TemperatureRange implements Parcela
      * @param in Parcel
      */
     private TemperatureRangeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

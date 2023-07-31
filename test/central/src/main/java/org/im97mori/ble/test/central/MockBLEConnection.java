@@ -14,6 +14,7 @@ import org.im97mori.ble.test.BLETestUtilsAndroid;
 
 import java.util.UUID;
 
+/** @noinspection unused*/
 public class MockBLEConnection extends BLEConnection {
 
     protected Boolean mIsConnected;

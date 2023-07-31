@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b0b;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,11 +11,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -33,10 +31,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result = new RelativeValueInAPeriodOfDayAndroid(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result.getRelativeValue());
         assertEquals(BLEUtils.createUInt8(data, 1), result.getStartTime());
         assertEquals(BLEUtils.createUInt8(data, 2), result.getEndTime());
@@ -51,10 +46,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result = new RelativeValueInAPeriodOfDayAndroid(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result.getRelativeValue());
         assertEquals(BLEUtils.createUInt8(data, 1), result.getStartTime());
         assertEquals(BLEUtils.createUInt8(data, 2), result.getEndTime());
@@ -69,10 +61,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = (byte) 240;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result = new RelativeValueInAPeriodOfDayAndroid(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result.getRelativeValue());
         assertEquals(BLEUtils.createUInt8(data, 1), result.getStartTime());
         assertEquals(BLEUtils.createUInt8(data, 2), result.getEndTime());
@@ -87,10 +76,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result = new RelativeValueInAPeriodOfDayAndroid(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result.getRelativeValue());
         assertEquals(BLEUtils.createUInt8(data, 1), result.getStartTime());
         assertEquals(BLEUtils.createUInt8(data, 2), result.getEndTime());
@@ -153,10 +139,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -176,10 +159,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -199,10 +179,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = (byte) 240;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -222,10 +199,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -245,10 +219,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -261,10 +232,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -277,10 +245,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = (byte) 240;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -293,10 +258,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -309,10 +271,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = (byte) TimeDecihour8Utils.TIME_DECIHOUR_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(data);
         RelativeValueInAPeriodOfDayAndroid result2 = RelativeValueInAPeriodOfDayAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -326,10 +285,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(data);
         RelativeValueInAPeriodOfDayAndroid result2 = RelativeValueInAPeriodOfDayAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -343,10 +299,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = (byte) 240;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(data);
         RelativeValueInAPeriodOfDayAndroid result2 = RelativeValueInAPeriodOfDayAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -360,10 +313,7 @@ public class RelativeValueInAPeriodOfDayAndroidTest {
         data[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+        RelativeValueInAPeriodOfDayAndroid result1 = new RelativeValueInAPeriodOfDayAndroid(data);
         RelativeValueInAPeriodOfDayAndroid result2 = RelativeValueInAPeriodOfDayAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

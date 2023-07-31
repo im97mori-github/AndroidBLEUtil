@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2abc;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -13,7 +12,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -68,9 +66,9 @@ public class TDSControlPointAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -84,10 +82,7 @@ public class TDSControlPointAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TDSControlPointAndroid result1 = new TDSControlPointAndroid(bluetoothGattCharacteristic);
+        TDSControlPointAndroid result1 = new TDSControlPointAndroid(data);
         assertEquals(TDSControlPointUtils.OP_CODE_ACTIVATE_TRANSPORT, result1.getOpCode());
         assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_BLUETOOTH_SIG, result1.getOrganizationId());
         assertArrayEquals(new byte[0], result1.getParameter());
@@ -97,10 +92,7 @@ public class TDSControlPointAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TDSControlPointAndroid result1 = new TDSControlPointAndroid(bluetoothGattCharacteristic);
+        TDSControlPointAndroid result1 = new TDSControlPointAndroid(data);
         assertEquals(TDSControlPointUtils.OP_CODE_ACTIVATE_TRANSPORT, result1.getOpCode());
         assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLICANCE_NEIGHBOR_AWARENESS_NETWORKING, result1.getOrganizationId());
         assertArrayEquals(Arrays.copyOfRange(data, 2, 3), result1.getParameter());
@@ -110,10 +102,7 @@ public class TDSControlPointAndroidTest {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TDSControlPointAndroid result1 = new TDSControlPointAndroid(bluetoothGattCharacteristic);
+        TDSControlPointAndroid result1 = new TDSControlPointAndroid(data);
         assertEquals(TDSControlPointUtils.OP_CODE_ACTIVATE_TRANSPORT, result1.getOpCode());
         assertEquals(TransportDiscoveryServiceUtils.ORGANIZATION_ID_WIFI_ALLIANCE_SERVICE_ADVERTISEMENT, result1.getOrganizationId());
         assertArrayEquals(Arrays.copyOfRange(data, 2, 4), result1.getParameter());
@@ -135,10 +124,7 @@ public class TDSControlPointAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TDSControlPointAndroid result1 = new TDSControlPointAndroid(bluetoothGattCharacteristic);
+        TDSControlPointAndroid result1 = new TDSControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -152,10 +138,7 @@ public class TDSControlPointAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TDSControlPointAndroid result1 = new TDSControlPointAndroid(bluetoothGattCharacteristic);
+        TDSControlPointAndroid result1 = new TDSControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -169,10 +152,7 @@ public class TDSControlPointAndroidTest {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TDSControlPointAndroid result1 = new TDSControlPointAndroid(bluetoothGattCharacteristic);
+        TDSControlPointAndroid result1 = new TDSControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -186,10 +166,7 @@ public class TDSControlPointAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TDSControlPointAndroid result1 = new TDSControlPointAndroid(bluetoothGattCharacteristic);
+        TDSControlPointAndroid result1 = new TDSControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -197,10 +174,7 @@ public class TDSControlPointAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TDSControlPointAndroid result1 = new TDSControlPointAndroid(bluetoothGattCharacteristic);
+        TDSControlPointAndroid result1 = new TDSControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -208,10 +182,7 @@ public class TDSControlPointAndroidTest {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TDSControlPointAndroid result1 = new TDSControlPointAndroid(bluetoothGattCharacteristic);
+        TDSControlPointAndroid result1 = new TDSControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -219,10 +190,7 @@ public class TDSControlPointAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TDSControlPointAndroid result1 = new TDSControlPointAndroid(bluetoothGattCharacteristic);
+        TDSControlPointAndroid result1 = new TDSControlPointAndroid(data);
         TDSControlPointAndroid result2 = TDSControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -231,10 +199,7 @@ public class TDSControlPointAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TDSControlPointAndroid result1 = new TDSControlPointAndroid(bluetoothGattCharacteristic);
+        TDSControlPointAndroid result1 = new TDSControlPointAndroid(data);
         TDSControlPointAndroid result2 = TDSControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -243,10 +208,7 @@ public class TDSControlPointAndroidTest {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TDSControlPointAndroid result1 = new TDSControlPointAndroid(bluetoothGattCharacteristic);
+        TDSControlPointAndroid result1 = new TDSControlPointAndroid(data);
         TDSControlPointAndroid result2 = TDSControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

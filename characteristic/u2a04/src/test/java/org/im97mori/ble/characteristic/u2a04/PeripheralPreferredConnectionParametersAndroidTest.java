@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a04;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -35,10 +33,7 @@ public class PeripheralPreferredConnectionParametersAndroidTest {
         data[ 7] = (byte) (0x01 & 0xff);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PeripheralPreferredConnectionParametersAndroid result1 = new PeripheralPreferredConnectionParametersAndroid(bluetoothGattCharacteristic);
+        PeripheralPreferredConnectionParametersAndroid result1 = new PeripheralPreferredConnectionParametersAndroid(data);
         assertEquals(0x0010, result1.getMinimumConnectionInterval());
         assertEquals(20, result1.getMinimumConnectionIntervalMillis(), 0);
         assertEquals(0x0020, result1.getMaximumConnectionInterval());
@@ -76,10 +71,7 @@ public class PeripheralPreferredConnectionParametersAndroidTest {
         data[ 7] = (byte) (0x01 & 0xff);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PeripheralPreferredConnectionParametersAndroid result1 = new PeripheralPreferredConnectionParametersAndroid(bluetoothGattCharacteristic);
+        PeripheralPreferredConnectionParametersAndroid result1 = new PeripheralPreferredConnectionParametersAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -105,10 +97,7 @@ public class PeripheralPreferredConnectionParametersAndroidTest {
         data[ 7] = (byte) (0x01 & 0xff);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PeripheralPreferredConnectionParametersAndroid result1 = new PeripheralPreferredConnectionParametersAndroid(bluetoothGattCharacteristic);
+        PeripheralPreferredConnectionParametersAndroid result1 = new PeripheralPreferredConnectionParametersAndroid(data);
         byte[] resultData = result1.getBytes();
         assertArrayEquals(data, resultData);
     }
@@ -127,10 +116,7 @@ public class PeripheralPreferredConnectionParametersAndroidTest {
         data[ 7] = (byte) (0x01 & 0xff);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PeripheralPreferredConnectionParametersAndroid result1 = new PeripheralPreferredConnectionParametersAndroid(bluetoothGattCharacteristic);
+        PeripheralPreferredConnectionParametersAndroid result1 = new PeripheralPreferredConnectionParametersAndroid(data);
         PeripheralPreferredConnectionParametersAndroid result2 = PeripheralPreferredConnectionParametersAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

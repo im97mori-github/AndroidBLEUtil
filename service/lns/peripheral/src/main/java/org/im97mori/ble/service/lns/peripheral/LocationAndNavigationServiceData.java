@@ -3,6 +3,7 @@ package org.im97mori.ble.service.lns.peripheral;
 import static org.im97mori.ble.constants.ServiceUUID.LOCATION_AND_NAVIGATION_SERVICE;
 
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,9 @@ public class LocationAndNavigationServiceData extends ServiceData {
          */
         @Override
         @NonNull
+        @Deprecated
         public LocationAndNavigationServiceData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new LocationAndNavigationServiceData(in);
         }
 
@@ -111,13 +114,22 @@ public class LocationAndNavigationServiceData extends ServiceData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public LocationAndNavigationServiceData(@NonNull Parcel in) {
         super(in);
-        lnFeature = in.readParcelable(this.getClass().getClassLoader());
-        locationAndSpeed = in.readParcelable(this.getClass().getClassLoader());
-        positionQuality = in.readParcelable(this.getClass().getClassLoader());
-        lnControlPoint = in.readParcelable(this.getClass().getClassLoader());
-        navigation = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            lnFeature = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            locationAndSpeed = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            positionQuality = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            lnControlPoint = in.readParcelable(this.getClass().getClassLoader(), LNControlPointCharacteristicData.class);
+            navigation = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+        } else {
+            lnFeature = in.readParcelable(this.getClass().getClassLoader());
+            locationAndSpeed = in.readParcelable(this.getClass().getClassLoader());
+            positionQuality = in.readParcelable(this.getClass().getClassLoader());
+            lnControlPoint = in.readParcelable(this.getClass().getClassLoader());
+            navigation = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

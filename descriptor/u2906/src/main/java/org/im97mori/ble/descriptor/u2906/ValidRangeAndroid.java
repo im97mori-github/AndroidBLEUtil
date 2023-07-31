@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
+import java.util.Objects;
 
 /**
  * Valid Range (Descriptor UUID: 0x2906)
@@ -42,9 +42,7 @@ public class ValidRangeAndroid extends ValidRange implements Parcelable {
          */
         @NonNull
         public ValidRangeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(VALID_RANGE_DESCRIPTOR, 0);
-            bluetoothGattDescriptor.setValue(values);
-            return new ValidRangeAndroid(bluetoothGattDescriptor);
+            return new ValidRangeAndroid(values);
         }
 
     };
@@ -54,8 +52,18 @@ public class ValidRangeAndroid extends ValidRange implements Parcelable {
      *
      * @param bluetoothGattDescriptor Characteristics UUID: 0x2906
      */
+    @Deprecated
     public ValidRangeAndroid(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         super(bluetoothGattDescriptor.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattDescriptor#getValue()">BluetoothGattDescriptor#getValue()</a>
+     */
+    public ValidRangeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -74,8 +82,7 @@ public class ValidRangeAndroid extends ValidRange implements Parcelable {
      * @param in Parcel
      */
     private ValidRangeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -1,10 +1,8 @@
 package org.im97mori.ble.characteristic.u2a01;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -29,10 +27,7 @@ public class AppearanceAndroidTest {
         data[ 1] = (byte) (AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AppearanceAndroid result1 = new AppearanceAndroid(bluetoothGattCharacteristic);
+        AppearanceAndroid result1 = new AppearanceAndroid(data);
         assertEquals(AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY,
                 result1.getAppearanceValue());
         assertEquals((AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY >> 6) & 0b00000011_11111111,
@@ -82,10 +77,7 @@ public class AppearanceAndroidTest {
         data[ 1] = (byte) (AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY >> 8);
         //@formatter:off
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AppearanceAndroid result1 = new AppearanceAndroid(bluetoothGattCharacteristic);
+        AppearanceAndroid result1 = new AppearanceAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -104,10 +96,7 @@ public class AppearanceAndroidTest {
         data[ 1] = (byte) (AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY >> 8);
         //@formatter:off
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AppearanceAndroid result1 = new AppearanceAndroid(bluetoothGattCharacteristic);
+        AppearanceAndroid result1 = new AppearanceAndroid(data);
         byte[] resultData = result1.getBytes();
         assertArrayEquals(data, resultData);
     }
@@ -120,10 +109,7 @@ public class AppearanceAndroidTest {
         data[ 1] = (byte) (AppearanceValues.LOCATION_AND_NAVIGATION_POD_APPEARANCE_SUB_CATEGORY >> 8);
         //@formatter:off
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AppearanceAndroid result1 = new AppearanceAndroid(bluetoothGattCharacteristic);
+        AppearanceAndroid result1 = new AppearanceAndroid(data);
         AppearanceAndroid result2 = AppearanceAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

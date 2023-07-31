@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 
+import java.util.Objects;
+
 /**
  * Treadmill Data (Characteristics UUID: 0x2ACD)
  */
@@ -89,8 +91,7 @@ public class TreadmillDataAndroid extends TreadmillData implements Parcelable {
      * @param in Parcel
      */
     private TreadmillDataAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(new TreadmillDataPacketAndroid[]{TreadmillDataPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
+        super(new TreadmillDataPacketAndroid[]{TreadmillDataPacketAndroid.CREATOR.createFromByteArray(Objects.requireNonNull(in.createByteArray()))});
     }
 
     /**

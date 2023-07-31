@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a9f;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -31,10 +29,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = 0x32;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_REGISTER_NEW_USER, result1.getOpCode());
         assertEquals(0x3231, result1.getConsentCode());
     }
@@ -49,10 +44,7 @@ public class UserControlPointAndroidTest {
         data[ 3] = 0x33;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_CONSENT, result1.getOpCode());
         assertEquals(0x31, result1.getUserIndex());
         assertEquals(0x3332, result1.getConsentCode());
@@ -65,10 +57,7 @@ public class UserControlPointAndroidTest {
         data[ 0] = UserControlPoint.OP_CODE_DELETE_USER_DATA;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_DELETE_USER_DATA, result1.getOpCode());
     }
 
@@ -79,10 +68,7 @@ public class UserControlPointAndroidTest {
         data[ 0] = UserControlPoint.OP_CODE_LIST_ALL_USERS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_LIST_ALL_USERS, result1.getOpCode());
     }
 
@@ -94,10 +80,7 @@ public class UserControlPointAndroidTest {
         data[ 1] = 0x31;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_DELETE_USERS, result1.getOpCode());
         assertEquals(0x31, result1.getUserIndex());
     }
@@ -112,10 +95,7 @@ public class UserControlPointAndroidTest {
         data[ 3] = 0x31;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertEquals(UserControlPoint.OP_CODE_REGISTER_NEW_USER, result1.getRequestOpCode());
         assertEquals(UserControlPoint.RESPONSE_VALUE_SUCCESS, result1.getResponseValue());
@@ -131,10 +111,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = UserControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertEquals(UserControlPoint.OP_CODE_CONSENT, result1.getRequestOpCode());
         assertEquals(UserControlPoint.RESPONSE_VALUE_SUCCESS, result1.getResponseValue());
@@ -149,10 +126,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = UserControlPoint.RESPONSE_VALUE_SUCCESS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertEquals(UserControlPoint.OP_CODE_DELETE_USER_DATA, result1.getRequestOpCode());
         assertEquals(UserControlPoint.RESPONSE_VALUE_SUCCESS, result1.getResponseValue());
@@ -168,10 +142,7 @@ public class UserControlPointAndroidTest {
         data[ 3] = 0x31;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertEquals(UserControlPoint.OP_CODE_LIST_ALL_USERS, result1.getRequestOpCode());
         assertEquals(UserControlPoint.RESPONSE_VALUE_SUCCESS, result1.getResponseValue());
@@ -188,10 +159,7 @@ public class UserControlPointAndroidTest {
         data[ 3] = 0x31;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertEquals(UserControlPoint.OP_CODE_DELETE_USERS, result1.getRequestOpCode());
         assertEquals(UserControlPoint.RESPONSE_VALUE_SUCCESS, result1.getResponseValue());
@@ -207,10 +175,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = UserControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertEquals(0x31, result1.getRequestOpCode());
         assertEquals(UserControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED, result1.getResponseValue());
@@ -225,10 +190,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = UserControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertEquals(UserControlPoint.OP_CODE_REGISTER_NEW_USER, result1.getRequestOpCode());
         assertEquals(UserControlPoint.RESPONSE_VALUE_INVALID_PARAMETER, result1.getResponseValue());
@@ -243,10 +205,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = UserControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertEquals(UserControlPoint.OP_CODE_CONSENT, result1.getRequestOpCode());
         assertEquals(UserControlPoint.RESPONSE_VALUE_INVALID_PARAMETER, result1.getResponseValue());
@@ -261,10 +220,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = UserControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertEquals(UserControlPoint.OP_CODE_DELETE_USERS, result1.getRequestOpCode());
         assertEquals(UserControlPoint.RESPONSE_VALUE_INVALID_PARAMETER, result1.getResponseValue());
@@ -279,10 +235,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = UserControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertEquals(UserControlPoint.OP_CODE_REGISTER_NEW_USER, result1.getRequestOpCode());
         assertEquals(UserControlPoint.RESPONSE_VALUE_OPERATION_FAILED, result1.getResponseValue());
@@ -297,10 +250,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = UserControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertEquals(UserControlPoint.OP_CODE_CONSENT, result1.getRequestOpCode());
         assertEquals(UserControlPoint.RESPONSE_VALUE_OPERATION_FAILED, result1.getResponseValue());
@@ -315,10 +265,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = UserControlPoint.RESPONSE_VALUE_USER_NOT_AUTHORIZED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertEquals(UserControlPoint.OP_CODE_DELETE_USER_DATA, result1.getRequestOpCode());
         assertEquals(UserControlPoint.RESPONSE_VALUE_USER_NOT_AUTHORIZED, result1.getResponseValue());
@@ -333,10 +280,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = UserControlPoint.RESPONSE_VALUE_USER_NOT_AUTHORIZED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertEquals(UserControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertEquals(UserControlPoint.OP_CODE_CONSENT, result1.getRequestOpCode());
         assertEquals(UserControlPoint.RESPONSE_VALUE_USER_NOT_AUTHORIZED, result1.getResponseValue());
@@ -368,10 +312,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = 0x32;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertTrue(result1.isOpCodeRegisterNewUser(result1.getOpCode()));
         assertFalse(result1.isOpCodeConsent(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteUserData(result1.getOpCode()));
@@ -390,10 +331,7 @@ public class UserControlPointAndroidTest {
         data[ 3] = 0x33;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertFalse(result1.isOpCodeRegisterNewUser(result1.getOpCode()));
         assertTrue(result1.isOpCodeConsent(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteUserData(result1.getOpCode()));
@@ -409,10 +347,7 @@ public class UserControlPointAndroidTest {
         data[ 0] = UserControlPoint.OP_CODE_DELETE_USER_DATA;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertFalse(result1.isOpCodeRegisterNewUser(result1.getOpCode()));
         assertFalse(result1.isOpCodeConsent(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteUserData(result1.getOpCode()));
@@ -428,10 +363,7 @@ public class UserControlPointAndroidTest {
         data[ 0] = UserControlPoint.OP_CODE_LIST_ALL_USERS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertFalse(result1.isOpCodeRegisterNewUser(result1.getOpCode()));
         assertFalse(result1.isOpCodeConsent(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteUserData(result1.getOpCode()));
@@ -448,10 +380,7 @@ public class UserControlPointAndroidTest {
         data[ 1] = 0x31;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertFalse(result1.isOpCodeRegisterNewUser(result1.getOpCode()));
         assertFalse(result1.isOpCodeConsent(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteUserData(result1.getOpCode()));
@@ -470,10 +399,7 @@ public class UserControlPointAndroidTest {
         data[ 3] = 0x31;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertFalse(result1.isOpCodeRegisterNewUser(result1.getOpCode()));
         assertFalse(result1.isOpCodeConsent(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteUserData(result1.getOpCode()));
@@ -492,10 +418,7 @@ public class UserControlPointAndroidTest {
         data[ 3] = 0x31;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertTrue(result1.isResponseValueSuccess(result1.getResponseValue()));
         assertFalse(result1.isResponseValueOpCodeNotSupported(result1.getResponseValue()));
         assertFalse(result1.isResponseValueInvalidParameter(result1.getResponseValue()));
@@ -512,10 +435,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = UserControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertFalse(result1.isResponseValueSuccess(result1.getResponseValue()));
         assertTrue(result1.isResponseValueOpCodeNotSupported(result1.getResponseValue()));
         assertFalse(result1.isResponseValueInvalidParameter(result1.getResponseValue()));
@@ -532,10 +452,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = UserControlPoint.RESPONSE_VALUE_INVALID_PARAMETER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertFalse(result1.isResponseValueSuccess(result1.getResponseValue()));
         assertFalse(result1.isResponseValueOpCodeNotSupported(result1.getResponseValue()));
         assertTrue(result1.isResponseValueInvalidParameter(result1.getResponseValue()));
@@ -552,10 +469,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = UserControlPoint.RESPONSE_VALUE_OPERATION_FAILED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertFalse(result1.isResponseValueSuccess(result1.getResponseValue()));
         assertFalse(result1.isResponseValueOpCodeNotSupported(result1.getResponseValue()));
         assertFalse(result1.isResponseValueInvalidParameter(result1.getResponseValue()));
@@ -572,10 +486,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = UserControlPoint.RESPONSE_VALUE_USER_NOT_AUTHORIZED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertFalse(result1.isResponseValueSuccess(result1.getResponseValue()));
         assertFalse(result1.isResponseValueOpCodeNotSupported(result1.getResponseValue()));
         assertFalse(result1.isResponseValueInvalidParameter(result1.getResponseValue()));
@@ -592,10 +503,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = 0x32;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -615,10 +523,7 @@ public class UserControlPointAndroidTest {
         data[ 3] = 0x33;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -635,10 +540,7 @@ public class UserControlPointAndroidTest {
         data[ 0] = UserControlPoint.OP_CODE_DELETE_USER_DATA;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -655,10 +557,7 @@ public class UserControlPointAndroidTest {
         data[ 0] = UserControlPoint.OP_CODE_LIST_ALL_USERS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -676,10 +575,7 @@ public class UserControlPointAndroidTest {
         data[ 1] = 0x31;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -698,10 +594,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = 0x32;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -715,10 +608,7 @@ public class UserControlPointAndroidTest {
         data[ 3] = 0x33;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -729,10 +619,7 @@ public class UserControlPointAndroidTest {
         data[ 0] = UserControlPoint.OP_CODE_DELETE_USER_DATA;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -743,10 +630,7 @@ public class UserControlPointAndroidTest {
         data[ 0] = UserControlPoint.OP_CODE_LIST_ALL_USERS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -758,10 +642,7 @@ public class UserControlPointAndroidTest {
         data[ 1] = 0x31;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -774,10 +655,7 @@ public class UserControlPointAndroidTest {
         data[ 2] = 0x32;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         UserControlPointAndroid result2 = UserControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -792,10 +670,7 @@ public class UserControlPointAndroidTest {
         data[ 3] = 0x33;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         UserControlPointAndroid result2 = UserControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -807,10 +682,7 @@ public class UserControlPointAndroidTest {
         data[ 0] = UserControlPoint.OP_CODE_DELETE_USER_DATA;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         UserControlPointAndroid result2 = UserControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -822,10 +694,7 @@ public class UserControlPointAndroidTest {
         data[ 0] = UserControlPoint.OP_CODE_LIST_ALL_USERS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         UserControlPointAndroid result2 = UserControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -838,10 +707,7 @@ public class UserControlPointAndroidTest {
         data[ 1] = 0x31;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        UserControlPointAndroid result1 = new UserControlPointAndroid(bluetoothGattCharacteristic);
+        UserControlPointAndroid result1 = new UserControlPointAndroid(data);
         UserControlPointAndroid result2 = UserControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

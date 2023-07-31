@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SOURCE_AUDIO_LOCATIONS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Source Audio Locations (Characteristics UUID: 0x2BCC)
@@ -45,9 +45,7 @@ public class SourceAudioLocationsAndroid extends SourceAudioLocations implements
          */
         @NonNull
         public SourceAudioLocationsAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SOURCE_AUDIO_LOCATIONS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new SourceAudioLocationsAndroid(bluetoothGattCharacteristic);
+            return new SourceAudioLocationsAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class SourceAudioLocationsAndroid extends SourceAudioLocations implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BCC
      */
+    @Deprecated
     public SourceAudioLocationsAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public SourceAudioLocationsAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class SourceAudioLocationsAndroid extends SourceAudioLocations implements
      * @param in Parcel
      */
     private SourceAudioLocationsAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

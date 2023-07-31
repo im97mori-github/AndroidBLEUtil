@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a8b;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -30,10 +28,7 @@ public class FiveZoneHeartRateLimitsAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FiveZoneHeartRateLimitsAndroid result1 = new FiveZoneHeartRateLimitsAndroid(bluetoothGattCharacteristic);
+        FiveZoneHeartRateLimitsAndroid result1 = new FiveZoneHeartRateLimitsAndroid(data);
         assertEquals(0x01, result1.getFiveZoneHeartRateLimitsVeryLightLightLimit());
         assertEquals(0x02, result1.getFiveZoneHeartRateLimitsLightModerateLimit());
         assertEquals(0x03, result1.getFiveZoneHeartRateLimitsModerateHardLimit());
@@ -50,10 +45,7 @@ public class FiveZoneHeartRateLimitsAndroidTest {
         data[ 3] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FiveZoneHeartRateLimitsAndroid result1 = new FiveZoneHeartRateLimitsAndroid(bluetoothGattCharacteristic);
+        FiveZoneHeartRateLimitsAndroid result1 = new FiveZoneHeartRateLimitsAndroid(data);
         assertEquals(0xff, result1.getFiveZoneHeartRateLimitsVeryLightLightLimit());
         assertEquals(0xff, result1.getFiveZoneHeartRateLimitsLightModerateLimit());
         assertEquals(0xff, result1.getFiveZoneHeartRateLimitsModerateHardLimit());
@@ -84,10 +76,7 @@ public class FiveZoneHeartRateLimitsAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FiveZoneHeartRateLimitsAndroid result1 = new FiveZoneHeartRateLimitsAndroid(bluetoothGattCharacteristic);
+        FiveZoneHeartRateLimitsAndroid result1 = new FiveZoneHeartRateLimitsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -109,10 +98,7 @@ public class FiveZoneHeartRateLimitsAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FiveZoneHeartRateLimitsAndroid result1 = new FiveZoneHeartRateLimitsAndroid(bluetoothGattCharacteristic);
+        FiveZoneHeartRateLimitsAndroid result1 = new FiveZoneHeartRateLimitsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -126,10 +112,7 @@ public class FiveZoneHeartRateLimitsAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FiveZoneHeartRateLimitsAndroid result1 = new FiveZoneHeartRateLimitsAndroid(bluetoothGattCharacteristic);
+        FiveZoneHeartRateLimitsAndroid result1 = new FiveZoneHeartRateLimitsAndroid(data);
         FiveZoneHeartRateLimitsAndroid result2 = FiveZoneHeartRateLimitsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

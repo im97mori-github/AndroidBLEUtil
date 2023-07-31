@@ -6,12 +6,12 @@ plugins {
 def target = testUtilAndroid
 
 android {
-    compileSdkVersion globalCompileSdkVersion
-    buildToolsVersion globalBuildToolsVersion
+    compileSdk globalCompileSdkVersion
+    buildToolsVersion = globalBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion globalMinSdkVersion
-        targetSdkVersion globalTargetSdkVersion
+        minSdk globalMinSdkVersion
+        targetSdk globalTargetSdkVersion
     }
 
     buildTypes {
@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    api target['baseModule']
+    api target['baseModule'].toString()
     api androidxTestRunner
     api androidxTestCore
     api androidxTestRules

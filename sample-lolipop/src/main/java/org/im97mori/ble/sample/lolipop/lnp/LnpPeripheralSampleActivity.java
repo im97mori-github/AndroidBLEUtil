@@ -1,5 +1,7 @@
 package org.im97mori.ble.sample.lolipop.lnp;
 
+import static org.im97mori.ble.constants.UnitUUID.PERCENTAGE_UNIT;
+
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
@@ -15,7 +17,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.u2a19.BatteryLevel;
 import org.im97mori.ble.characteristic.u2a67.LocationAndSpeed;
 import org.im97mori.ble.characteristic.u2a68.Navigation;
@@ -32,8 +33,6 @@ import org.im97mori.ble.sample.lolipop.R;
 import org.im97mori.ble.sample.lolipop.SampleCallback;
 
 import java.util.LinkedList;
-
-import static org.im97mori.ble.constants.UnitUUID.PERCENTAGE_UNIT;
 
 public class LnpPeripheralSampleActivity extends BaseActivity implements View.OnClickListener, AlertDialogFragment.AlertDialogFragmentCallback, SampleCallback {
 
@@ -126,9 +125,7 @@ public class LnpPeripheralSampleActivity extends BaseActivity implements View.On
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else if (mLocationAndNavigationProfileMockCallback.isStarted()) {
+        if (mLocationAndNavigationProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {
             mConnectDisconnectButton.setText(R.string.start);

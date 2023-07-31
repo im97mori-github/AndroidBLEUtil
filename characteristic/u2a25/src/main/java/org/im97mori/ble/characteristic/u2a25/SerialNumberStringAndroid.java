@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SERIAL_NUMBER_STRING_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Serial Number String (Characteristics UUID: 0x2A25)
@@ -44,9 +44,7 @@ public class SerialNumberStringAndroid extends SerialNumberString implements Par
          */
         @NonNull
         public SerialNumberStringAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SERIAL_NUMBER_STRING_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new SerialNumberStringAndroid(bluetoothGattCharacteristic);
+            return new SerialNumberStringAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class SerialNumberStringAndroid extends SerialNumberString implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A25
      */
+    @Deprecated
     public SerialNumberStringAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public SerialNumberStringAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class SerialNumberStringAndroid extends SerialNumberString implements Par
      * @param in Parcel
      */
     private SerialNumberStringAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b05;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,11 +10,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -32,10 +30,7 @@ public class PowerAndroidTest {
         data[ 2] = (byte) (PowerUtils.POWER_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PowerAndroid result = new PowerAndroid(bluetoothGattCharacteristic);
+        PowerAndroid result = new PowerAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getPower());
     }
 
@@ -48,10 +43,7 @@ public class PowerAndroidTest {
         data[ 2] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PowerAndroid result = new PowerAndroid(bluetoothGattCharacteristic);
+        PowerAndroid result = new PowerAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getPower());
     }
 
@@ -64,10 +56,7 @@ public class PowerAndroidTest {
         data[ 2] = (byte) (16777214 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PowerAndroid result = new PowerAndroid(bluetoothGattCharacteristic);
+        PowerAndroid result = new PowerAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getPower());
     }
 
@@ -104,10 +93,7 @@ public class PowerAndroidTest {
         data[ 2] = (byte) (PowerUtils.POWER_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PowerAndroid result1 = new PowerAndroid(bluetoothGattCharacteristic);
+        PowerAndroid result1 = new PowerAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -125,10 +111,7 @@ public class PowerAndroidTest {
         data[ 2] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PowerAndroid result1 = new PowerAndroid(bluetoothGattCharacteristic);
+        PowerAndroid result1 = new PowerAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -146,10 +129,7 @@ public class PowerAndroidTest {
         data[ 2] = (byte) (16777214 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PowerAndroid result1 = new PowerAndroid(bluetoothGattCharacteristic);
+        PowerAndroid result1 = new PowerAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -167,10 +147,7 @@ public class PowerAndroidTest {
         data[ 2] = (byte) (PowerUtils.POWER_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PowerAndroid result1 = new PowerAndroid(bluetoothGattCharacteristic);
+        PowerAndroid result1 = new PowerAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -183,10 +160,7 @@ public class PowerAndroidTest {
         data[ 2] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PowerAndroid result1 = new PowerAndroid(bluetoothGattCharacteristic);
+        PowerAndroid result1 = new PowerAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -199,10 +173,7 @@ public class PowerAndroidTest {
         data[ 2] = (byte) (16777214 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PowerAndroid result1 = new PowerAndroid(bluetoothGattCharacteristic);
+        PowerAndroid result1 = new PowerAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -215,10 +186,7 @@ public class PowerAndroidTest {
         data[ 2] = (byte) (PowerUtils.POWER_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PowerAndroid result1 = new PowerAndroid(bluetoothGattCharacteristic);
+        PowerAndroid result1 = new PowerAndroid(data);
         PowerAndroid result2 = PowerAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -232,10 +200,7 @@ public class PowerAndroidTest {
         data[ 2] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PowerAndroid result1 = new PowerAndroid(bluetoothGattCharacteristic);
+        PowerAndroid result1 = new PowerAndroid(data);
         PowerAndroid result2 = PowerAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -249,10 +214,7 @@ public class PowerAndroidTest {
         data[ 2] = (byte) (16777214 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        PowerAndroid result1 = new PowerAndroid(bluetoothGattCharacteristic);
+        PowerAndroid result1 = new PowerAndroid(data);
         PowerAndroid result2 = PowerAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Cycling Power Control Point (Characteristics UUID: 0x2A66)
@@ -44,9 +44,7 @@ public class CyclingPowerControlPointAndroid extends CyclingPowerControlPoint im
          */
         @NonNull
         public CyclingPowerControlPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CYCLING_POWER_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new CyclingPowerControlPointAndroid(bluetoothGattCharacteristic);
+            return new CyclingPowerControlPointAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class CyclingPowerControlPointAndroid extends CyclingPowerControlPoint im
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A66
      */
+    @Deprecated
     public CyclingPowerControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public CyclingPowerControlPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -79,8 +87,7 @@ public class CyclingPowerControlPointAndroid extends CyclingPowerControlPoint im
      * @param in Parcel
      */
     private CyclingPowerControlPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

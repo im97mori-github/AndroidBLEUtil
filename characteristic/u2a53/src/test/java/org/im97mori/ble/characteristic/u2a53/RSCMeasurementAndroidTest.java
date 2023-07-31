@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a53;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -108,10 +106,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         assertEquals(data[0], result1.getFlags());
         assertTrue(result1.isFlagsInstantaneousStrideLengthNotPresent());
         assertFalse(result1.isFlagsInstantaneousStrideLengthPresent());
@@ -125,10 +120,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         assertEquals(data[0], result1.getFlags());
         assertFalse(result1.isFlagsInstantaneousStrideLengthNotPresent());
         assertTrue(result1.isFlagsInstantaneousStrideLengthPresent());
@@ -145,10 +137,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         assertEquals(data[0], result1.getFlags());
         assertTrue(result1.isFlagsTotalDistanceNotPresent());
         assertFalse(result1.isFlagsTotalDistancePresent());
@@ -162,10 +151,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         assertEquals(data[0], result1.getFlags());
         assertFalse(result1.isFlagsTotalDistanceNotPresent());
         assertTrue(result1.isFlagsTotalDistancePresent());
@@ -181,10 +167,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         assertEquals(data[0], result1.getFlags());
         assertTrue(result1.isFlagsWalkingOrRunningStatusBitsWalking());
         assertFalse(result1.isFlagsWalkingOrRunningStatusBitsRunning());
@@ -196,10 +179,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         assertEquals(data[0], result1.getFlags());
         assertFalse(result1.isFlagsWalkingOrRunningStatusBitsWalking());
         assertTrue(result1.isFlagsWalkingOrRunningStatusBitsRunning());
@@ -227,10 +207,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -245,10 +222,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -263,10 +237,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -281,10 +252,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -299,10 +267,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -317,10 +282,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_1_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -335,10 +297,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -346,10 +305,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -357,10 +313,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -368,10 +321,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -379,10 +329,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -390,10 +337,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -401,10 +345,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         RSCMeasurementAndroid result2 = RSCMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -413,10 +354,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         RSCMeasurementAndroid result2 = RSCMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -425,10 +363,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         RSCMeasurementAndroid result2 = RSCMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -437,10 +372,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         RSCMeasurementAndroid result2 = RSCMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -449,10 +381,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         RSCMeasurementAndroid result2 = RSCMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -461,10 +390,7 @@ public class RSCMeasurementAndroidTest extends TestBase {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(bluetoothGattCharacteristic);
+        RSCMeasurementAndroid result1 = new RSCMeasurementAndroid(data);
         RSCMeasurementAndroid result2 = RSCMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

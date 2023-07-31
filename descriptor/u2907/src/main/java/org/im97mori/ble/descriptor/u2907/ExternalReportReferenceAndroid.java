@@ -8,9 +8,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
+import java.util.Objects;
 import java.util.UUID;
-
-import static org.im97mori.ble.constants.DescriptorUUID.EXTERNAL_REPORT_REFERENCE_DESCRIPTOR;
 
 /**
  * External Report Reference (Descriptor UUID: 0x2907)
@@ -44,9 +43,7 @@ public class ExternalReportReferenceAndroid extends ExternalReportReference impl
          */
         @NonNull
         public ExternalReportReferenceAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(EXTERNAL_REPORT_REFERENCE_DESCRIPTOR, 0);
-            bluetoothGattDescriptor.setValue(values);
-            return new ExternalReportReferenceAndroid(bluetoothGattDescriptor);
+            return new ExternalReportReferenceAndroid(values);
         }
 
     };
@@ -56,8 +53,18 @@ public class ExternalReportReferenceAndroid extends ExternalReportReference impl
      *
      * @param bluetoothGattDescriptor Characteristics UUID: 0x2907
      */
+    @Deprecated
     public ExternalReportReferenceAndroid(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         super(bluetoothGattDescriptor.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattDescriptor#getValue()">BluetoothGattDescriptor#getValue()</a>
+     */
+    public ExternalReportReferenceAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +83,7 @@ public class ExternalReportReferenceAndroid extends ExternalReportReference impl
      * @param in Parcel
      */
     private ExternalReportReferenceAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

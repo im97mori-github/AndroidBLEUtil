@@ -1,6 +1,10 @@
 package org.im97mori.ble.descriptor.u290e;
 
-import android.bluetooth.BluetoothGattDescriptor;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,18 +13,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-@SuppressWarnings("ConstantConditions")
 public class TimeTriggerSettingAndroidTest {
 
     @Test
@@ -31,10 +29,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result = new TimeTriggerSettingAndroid(value);
         assertTrue(result.isConditionNoTimeBasedTriggeringUsed());
         assertFalse(result.isConditionIndicatesOrNotifiedIUnconditionallyAfterASettableTime());
         assertFalse(result.isConditionNotIndicatedOrNotifiedMoreOftenThanASettableTime());
@@ -52,10 +47,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result = new TimeTriggerSettingAndroid(value);
         assertFalse(result.isConditionNoTimeBasedTriggeringUsed());
         assertTrue(result.isConditionIndicatesOrNotifiedIUnconditionallyAfterASettableTime());
         assertFalse(result.isConditionNotIndicatedOrNotifiedMoreOftenThanASettableTime());
@@ -73,10 +65,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result = new TimeTriggerSettingAndroid(value);
         assertFalse(result.isConditionNoTimeBasedTriggeringUsed());
         assertFalse(result.isConditionIndicatesOrNotifiedIUnconditionallyAfterASettableTime());
         assertTrue(result.isConditionNotIndicatedOrNotifiedMoreOftenThanASettableTime());
@@ -93,10 +82,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result = new TimeTriggerSettingAndroid(value);
         assertFalse(result.isConditionNoTimeBasedTriggeringUsed());
         assertFalse(result.isConditionIndicatesOrNotifiedIUnconditionallyAfterASettableTime());
         assertFalse(result.isConditionNotIndicatedOrNotifiedMoreOftenThanASettableTime());
@@ -152,10 +138,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -177,10 +160,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -202,10 +182,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -226,10 +203,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -297,10 +271,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -314,10 +285,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -331,10 +299,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -347,10 +312,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -415,10 +377,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(value);
         TimeTriggerSettingAndroid result2 = TimeTriggerSettingAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -433,10 +392,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(value);
         TimeTriggerSettingAndroid result2 = TimeTriggerSettingAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -451,10 +407,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(value);
         TimeTriggerSettingAndroid result2 = TimeTriggerSettingAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -468,10 +421,7 @@ public class TimeTriggerSettingAndroidTest {
         value[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+        TimeTriggerSettingAndroid result1 = new TimeTriggerSettingAndroid(value);
         TimeTriggerSettingAndroid result2 = TimeTriggerSettingAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

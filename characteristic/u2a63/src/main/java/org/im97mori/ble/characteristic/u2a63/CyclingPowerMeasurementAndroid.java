@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CYCLING_POWER_MEASUREMENT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Cycling Power Measurement (Characteristics UUID: 0x2A63)
@@ -44,9 +44,7 @@ public class CyclingPowerMeasurementAndroid extends CyclingPowerMeasurement impl
          */
         @NonNull
         public CyclingPowerMeasurementAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CYCLING_POWER_MEASUREMENT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new CyclingPowerMeasurementAndroid(bluetoothGattCharacteristic);
+            return new CyclingPowerMeasurementAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class CyclingPowerMeasurementAndroid extends CyclingPowerMeasurement impl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A63
      */
+    @Deprecated
     public CyclingPowerMeasurementAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public CyclingPowerMeasurementAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -90,8 +98,7 @@ public class CyclingPowerMeasurementAndroid extends CyclingPowerMeasurement impl
      * @param in Parcel
      */
     private CyclingPowerMeasurementAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

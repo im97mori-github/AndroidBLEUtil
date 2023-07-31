@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_HEART_RATE_RANGE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Supported Heart Rate Range (Characteristics UUID: 0x2AD7)
@@ -44,9 +44,7 @@ public class SupportedHeartRateRangeAndroid extends SupportedHeartRateRange impl
          */
         @NonNull
         public SupportedHeartRateRangeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SUPPORTED_HEART_RATE_RANGE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new SupportedHeartRateRangeAndroid(bluetoothGattCharacteristic);
+            return new SupportedHeartRateRangeAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class SupportedHeartRateRangeAndroid extends SupportedHeartRateRange impl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AD7
      */
+    @Deprecated
     public SupportedHeartRateRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public SupportedHeartRateRangeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class SupportedHeartRateRangeAndroid extends SupportedHeartRateRange impl
      * @param in Parcel
      */
     private SupportedHeartRateRangeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

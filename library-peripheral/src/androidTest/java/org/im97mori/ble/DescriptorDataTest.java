@@ -80,13 +80,13 @@ public class DescriptorDataTest {
 
     @Test
     public void test_setPermission_00001() {
-        int firstPermisttion = 1;
-        DescriptorData descriptorData = new DescriptorData(UUID.randomUUID(), firstPermisttion, 2, 3, null);
-        assertEquals(firstPermisttion, descriptorData.permission);
+        int firstPermission = 1;
+        DescriptorData descriptorData = new DescriptorData(UUID.randomUUID(), firstPermission, 2, 3, null);
+        assertEquals(firstPermission, descriptorData.permission);
 
-        int secondPermisttion = 11;
-        descriptorData.permission = secondPermisttion;
-        assertEquals(secondPermisttion, descriptorData.permission);
+        int secondPermission = 11;
+        descriptorData.permission = secondPermission;
+        assertEquals(secondPermission, descriptorData.permission);
     }
 
     @Test

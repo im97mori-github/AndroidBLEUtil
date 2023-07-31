@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_WEARING_POSITION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Device Wearing Position (Characteristics UUID: 0x2B4B)
@@ -44,9 +44,7 @@ public class DeviceWearingPositionAndroid extends DeviceWearingPosition implemen
          */
         @NonNull
         public DeviceWearingPositionAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DEVICE_WEARING_POSITION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new DeviceWearingPositionAndroid(bluetoothGattCharacteristic);
+            return new DeviceWearingPositionAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class DeviceWearingPositionAndroid extends DeviceWearingPosition implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B4B
      */
+    @Deprecated
     public DeviceWearingPositionAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public DeviceWearingPositionAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class DeviceWearingPositionAndroid extends DeviceWearingPosition implemen
      * @param in Parcel
      */
     private DeviceWearingPositionAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

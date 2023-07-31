@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.LN_FEATURE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * LN Feature (Characteristics UUID: 0x2A6A)
@@ -44,9 +44,7 @@ public class LNFeatureAndroid extends LNFeature implements Parcelable {
          */
         @NonNull
         public LNFeatureAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LN_FEATURE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new LNFeatureAndroid(bluetoothGattCharacteristic);
+            return new LNFeatureAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class LNFeatureAndroid extends LNFeature implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A6A
      */
+    @Deprecated
     public LNFeatureAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public LNFeatureAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -66,8 +74,7 @@ public class LNFeatureAndroid extends LNFeature implements Parcelable {
      * @param in Parcel
      */
     private LNFeatureAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

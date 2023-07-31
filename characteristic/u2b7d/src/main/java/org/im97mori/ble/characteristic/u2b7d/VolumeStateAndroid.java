@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.VOLUME_STATE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Volume State (Characteristics UUID: 0x2B7D)
@@ -45,9 +45,7 @@ public class VolumeStateAndroid extends VolumeState implements Parcelable {
          */
         @NonNull
         public VolumeStateAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(VOLUME_STATE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new VolumeStateAndroid(bluetoothGattCharacteristic);
+            return new VolumeStateAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class VolumeStateAndroid extends VolumeState implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B7D
      */
+    @Deprecated
     public VolumeStateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public VolumeStateAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class VolumeStateAndroid extends VolumeState implements Parcelable {
      * @param in Parcel
      */
     private VolumeStateAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BOOT_MOUSE_INPUT_REPORT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Boot Mouse Input Report (Characteristics UUID: 0x2A33)
@@ -44,9 +44,7 @@ public class BootMouseInputReportAndroid extends BootMouseInputReport implements
          */
         @NonNull
         public BootMouseInputReportAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BOOT_MOUSE_INPUT_REPORT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BootMouseInputReportAndroid(bluetoothGattCharacteristic);
+            return new BootMouseInputReportAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class BootMouseInputReportAndroid extends BootMouseInputReport implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A33
      */
+    @Deprecated
     public BootMouseInputReportAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BootMouseInputReportAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -66,8 +74,7 @@ public class BootMouseInputReportAndroid extends BootMouseInputReport implements
      * @param in Parcel
      */
     private BootMouseInputReportAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -1,12 +1,10 @@
 package org.im97mori.ble.characteristic.u2ac7;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -20,7 +18,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -32,6 +30,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     private static final byte[] data_00001;
     static {
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = (byte) ObjectListFilter.FILTER_NO_FILTER;
 		data_00001 = data;
 	}
@@ -1239,10 +1238,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00001() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_NO_FILTER, result1.getFilter());
 		assertTrue(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1261,10 +1257,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00101() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_NAME_STARTS_WITH, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertTrue(result1.isFilterNameStartsWith());
@@ -1284,10 +1277,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00201() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_NAME_ENDS_WITH, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1307,10 +1297,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00301() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_NAME_CONTAINS, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1330,10 +1317,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00401() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_NAME_IS_EXACTLY, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1353,10 +1337,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00501() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_OBJECT_TYPE, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1376,10 +1357,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00502() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_OBJECT_TYPE, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1399,10 +1377,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00601() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1433,10 +1408,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00602() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1467,10 +1439,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00603() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1501,10 +1470,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00604() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1535,10 +1501,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00605() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1569,10 +1532,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00606() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1603,10 +1563,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00607() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1637,10 +1594,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00608() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1671,10 +1625,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00609() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1705,10 +1656,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00610() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1739,10 +1687,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00611() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1773,10 +1718,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00612() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1807,10 +1749,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00613() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1841,10 +1780,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00614() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1875,10 +1811,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00615() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1909,10 +1842,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00616() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1943,10 +1873,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00617() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -1977,10 +1904,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00618() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2011,10 +1935,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00619() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2045,10 +1966,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00620() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2079,10 +1997,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00621() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2113,10 +2028,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00622() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2147,10 +2059,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00623() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2181,10 +2090,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00624() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2215,10 +2121,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00625() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2249,10 +2152,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00626() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CREATED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2283,10 +2183,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00701() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2317,10 +2214,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00702() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2351,10 +2245,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00703() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2385,10 +2276,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00704() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2419,10 +2307,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00705() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2453,10 +2338,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00706() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2487,10 +2369,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00707() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2521,10 +2400,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00708() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2555,10 +2431,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00709() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2589,10 +2462,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00710() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2623,10 +2493,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00711() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2657,10 +2524,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00712() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2691,10 +2555,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00713() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2725,10 +2586,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00714() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2759,10 +2617,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00715() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2793,10 +2648,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00716() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2827,10 +2679,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00717() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2861,10 +2710,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00718() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2895,10 +2741,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00719() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2929,10 +2772,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00720() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2963,10 +2803,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00721() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -2997,10 +2834,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00722() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -3031,10 +2865,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00723() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -3065,10 +2896,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00724() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -3099,10 +2927,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00725() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -3133,10 +2958,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00726() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MODIFIED_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -3167,10 +2989,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00801() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_CURRENT_SIZE_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -3191,10 +3010,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_00901() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_ALLOCATED_SIZE_BETWEEN, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -3215,10 +3031,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_constructor_1_01001() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertEquals(ObjectListFilter.FILTER_MARKED_OBJECTS, result1.getFilter());
 		assertFalse(result1.isFilterNoFilter());
 		assertFalse(result1.isFilterNameStartsWith());
@@ -6103,10 +5916,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6135,10 +5945,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6167,10 +5974,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6199,10 +6003,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6231,10 +6032,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6263,10 +6061,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6295,10 +6090,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6327,10 +6119,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6359,10 +6148,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6391,10 +6177,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6423,10 +6206,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00604() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6455,10 +6235,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00605() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6487,10 +6264,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00606() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6519,10 +6293,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00607() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6551,10 +6322,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00608() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6583,10 +6351,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00609() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6615,10 +6380,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00610() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6647,10 +6409,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00611() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6679,10 +6438,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00612() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6711,10 +6467,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00613() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6743,10 +6496,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00614() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6775,10 +6525,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00615() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6807,10 +6554,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00616() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6839,10 +6583,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00617() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6871,10 +6612,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00618() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6903,10 +6641,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00619() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6935,10 +6670,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00620() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6967,10 +6699,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00621() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6999,10 +6728,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00622() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7031,10 +6757,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00623() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7063,10 +6786,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00624() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7095,10 +6815,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00625() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7127,10 +6844,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00626() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7159,10 +6873,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7191,10 +6902,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7223,10 +6931,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7255,10 +6960,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7287,10 +6989,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00705() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7319,10 +7018,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00706() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7351,10 +7047,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00707() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7383,10 +7076,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00708() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7415,10 +7105,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00709() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7447,10 +7134,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00710() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7479,10 +7163,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00711() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7511,10 +7192,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00712() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7543,10 +7221,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00713() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7575,10 +7250,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00714() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7607,10 +7279,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00715() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7639,10 +7308,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00716() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7671,10 +7337,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00717() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7703,10 +7366,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00718() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7735,10 +7395,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00719() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7767,10 +7424,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00720() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7799,10 +7453,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00721() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7831,10 +7482,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00722() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7863,10 +7511,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00723() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7895,10 +7540,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00724() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7927,10 +7569,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00725() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7959,10 +7598,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00726() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7991,10 +7627,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8023,10 +7656,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8055,10 +7685,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_1_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8087,10 +7714,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00001() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8098,10 +7722,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00101() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8109,10 +7730,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00201() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8120,10 +7738,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00301() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8131,10 +7746,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00401() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8142,10 +7754,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00501() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8153,10 +7762,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00502() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8164,10 +7770,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00601() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8175,10 +7778,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00602() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8186,10 +7786,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00603() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8197,10 +7794,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00604() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8208,10 +7802,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00605() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8219,10 +7810,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00606() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8230,10 +7818,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00607() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8241,10 +7826,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00608() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8252,10 +7834,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00609() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8263,10 +7842,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00610() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8274,10 +7850,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00611() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8285,10 +7858,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00612() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8296,10 +7866,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00613() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8307,10 +7874,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00614() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8318,10 +7882,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00615() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8329,10 +7890,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00616() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8340,10 +7898,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00617() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8351,10 +7906,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00618() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8362,10 +7914,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00619() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8373,10 +7922,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00620() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8384,10 +7930,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00621() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8395,10 +7938,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00622() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8406,10 +7946,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00623() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8417,10 +7954,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00624() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8428,10 +7962,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00625() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8439,10 +7970,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00626() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8450,10 +7978,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00701() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8461,10 +7986,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00702() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8472,10 +7994,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00703() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8483,10 +8002,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00704() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8494,10 +8010,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00705() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8505,10 +8018,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00706() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8516,10 +8026,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00707() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8527,10 +8034,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00708() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8538,10 +8042,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00709() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8549,10 +8050,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00710() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8560,10 +8058,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00711() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8571,10 +8066,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00712() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8582,10 +8074,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00713() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8593,10 +8082,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00714() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8604,10 +8090,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00715() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8615,10 +8098,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00716() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8626,10 +8106,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00717() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8637,10 +8114,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00718() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8648,10 +8122,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00719() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8659,10 +8130,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00720() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8670,10 +8138,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00721() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8681,10 +8146,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00722() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8692,10 +8154,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00723() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8703,10 +8162,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00724() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8714,10 +8170,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00725() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8725,10 +8178,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00726() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8736,10 +8186,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00801() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8747,10 +8194,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_00901() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8758,10 +8202,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
 	public void test_parcelable_2_01001() {
 		byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -8769,10 +8210,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8781,10 +8219,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8793,10 +8228,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8805,10 +8237,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8817,10 +8246,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8829,10 +8255,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8841,10 +8264,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8853,10 +8273,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8865,10 +8282,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8877,10 +8291,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8889,10 +8300,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00604() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8901,10 +8309,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00605() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8913,10 +8318,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00606() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8925,10 +8327,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00607() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8937,10 +8336,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00608() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8949,10 +8345,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00609() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8961,10 +8354,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00610() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8973,10 +8363,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00611() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8985,10 +8372,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00612() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8997,10 +8381,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00613() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9009,10 +8390,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00614() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9021,10 +8399,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00615() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9033,10 +8408,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00616() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9045,10 +8417,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00617() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9057,10 +8426,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00618() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9069,10 +8435,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00619() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9081,10 +8444,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00621() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9093,10 +8453,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00622() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9105,10 +8462,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00623() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9117,10 +8471,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00624() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9129,10 +8480,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00625() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9141,10 +8489,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00626() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9153,10 +8498,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9165,10 +8507,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9177,10 +8516,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9189,10 +8525,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9201,10 +8534,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00705() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9213,10 +8543,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00706() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9225,10 +8552,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00707() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9237,10 +8561,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00708() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9249,10 +8570,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00709() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9261,10 +8579,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00710() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9273,10 +8588,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00711() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9285,10 +8597,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00712() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9297,10 +8606,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00713() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9309,10 +8615,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00714() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9321,10 +8624,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00715() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9333,10 +8633,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00716() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9345,10 +8642,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00717() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9357,10 +8651,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00718() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9369,10 +8660,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00719() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9381,10 +8669,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00721() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9393,10 +8678,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00722() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9405,10 +8687,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00723() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9417,10 +8696,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00724() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9429,10 +8705,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00725() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9441,10 +8714,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00726() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9453,10 +8723,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9465,10 +8732,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9477,10 +8741,7 @@ public class ObjectListFilterAndroidTest extends TestBase {
     public void test_parcelable_3_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(bluetoothGattCharacteristic);
+        ObjectListFilterAndroid result1 = new ObjectListFilterAndroid(data);
         ObjectListFilterAndroid result2 = ObjectListFilterAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

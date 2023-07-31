@@ -85,7 +85,7 @@ public class ServiceData implements Parcelable {
      * @param in Parcel
      */
     public ServiceData(@NonNull Parcel in) {
-        uuid = (UUID) in.readSerializable();
+        uuid = UUID.fromString(in.readString());
         type = in.readInt();
         characteristicDataList = in.createTypedArrayList(CharacteristicData.CREATOR);
     }
@@ -110,7 +110,7 @@ public class ServiceData implements Parcelable {
      */
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeSerializable(uuid);
+        dest.writeString(uuid.toString());
         dest.writeInt(type);
         CharacteristicData[] characteristicDataArray = new CharacteristicData[characteristicDataList.size()];
         dest.writeTypedArray(characteristicDataList.toArray(characteristicDataArray), flags);

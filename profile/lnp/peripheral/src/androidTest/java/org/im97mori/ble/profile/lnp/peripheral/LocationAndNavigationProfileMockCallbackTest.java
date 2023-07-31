@@ -7,9 +7,9 @@ import org.junit.Test;
 import static org.im97mori.ble.constants.ServiceUUID.LOCATION_AND_NAVIGATION_SERVICE;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings("ConstantConditions")
 public class LocationAndNavigationProfileMockCallbackTest {
 
+    /** @noinspection DataFlowIssue*/
     @Test
     public void test_getServiceUUID_00001() {
         assertEquals(LOCATION_AND_NAVIGATION_SERVICE, new LocationAndNavigationProfileMockCallback(ApplicationProvider.getApplicationContext(), null, null, null).getServiceUUID());

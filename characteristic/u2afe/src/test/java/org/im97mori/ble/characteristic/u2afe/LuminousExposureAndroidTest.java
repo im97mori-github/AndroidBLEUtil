@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2afe;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -33,10 +31,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (LuminousExposure.LUMINOUS_EXPOSURE_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result = new LuminousExposureAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getLuminousExposure());
         assertTrue(result.isLuminousExposureValueIsNotKnown());
     }
@@ -50,10 +45,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (((int) (LuminousExposure.LUMINOUS_EXPOSURE_VALUE_MINIMUM / LuminousExposure.LUMINOUS_EXPOSURE_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result = new LuminousExposureAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getLuminousExposure());
         assertFalse(result.isLuminousExposureValueIsNotKnown());
         assertEquals(BLEUtils.createUInt24(data, 0) * LuminousExposure.LUMINOUS_EXPOSURE_VALUE_UNIT, result.getLuminousExposureLumenHour(), 0);
@@ -68,10 +60,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (((int) (LuminousExposure.LUMINOUS_EXPOSURE_VALUE_MAXIMUM / LuminousExposure.LUMINOUS_EXPOSURE_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result = new LuminousExposureAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getLuminousExposure());
         assertFalse(result.isLuminousExposureValueIsNotKnown());
         assertEquals(BLEUtils.createUInt24(data, 0) * LuminousExposure.LUMINOUS_EXPOSURE_VALUE_UNIT, result.getLuminousExposureLumenHour(), 0);
@@ -86,10 +75,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (1 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result = new LuminousExposureAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getLuminousExposure());
         assertFalse(result.isLuminousExposureValueIsNotKnown());
         assertEquals(BLEUtils.createUInt24(data, 0) * LuminousExposure.LUMINOUS_EXPOSURE_VALUE_UNIT, result.getLuminousExposureLumenHour(), 0);
@@ -104,10 +90,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (16777213 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result = new LuminousExposureAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getLuminousExposure());
         assertFalse(result.isLuminousExposureValueIsNotKnown());
         assertEquals(BLEUtils.createUInt24(data, 0) * LuminousExposure.LUMINOUS_EXPOSURE_VALUE_UNIT, result.getLuminousExposureLumenHour(), 0);
@@ -191,10 +174,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (LuminousExposure.LUMINOUS_EXPOSURE_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -212,10 +192,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (((int) (LuminousExposure.LUMINOUS_EXPOSURE_VALUE_MINIMUM / LuminousExposure.LUMINOUS_EXPOSURE_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -233,10 +210,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (((int) (LuminousExposure.LUMINOUS_EXPOSURE_VALUE_MAXIMUM / LuminousExposure.LUMINOUS_EXPOSURE_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -254,10 +228,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (1 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -275,10 +246,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (16777213 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -296,10 +264,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (LuminousExposure.LUMINOUS_EXPOSURE_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -312,10 +277,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (((int) (LuminousExposure.LUMINOUS_EXPOSURE_VALUE_MINIMUM / LuminousExposure.LUMINOUS_EXPOSURE_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -328,10 +290,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (((int) (LuminousExposure.LUMINOUS_EXPOSURE_VALUE_MAXIMUM / LuminousExposure.LUMINOUS_EXPOSURE_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -344,10 +303,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (1 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -360,10 +316,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (16777213 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -376,10 +329,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (LuminousExposure.LUMINOUS_EXPOSURE_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         LuminousExposureAndroid result2 = LuminousExposureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -393,10 +343,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (((int) (LuminousExposure.LUMINOUS_EXPOSURE_VALUE_MINIMUM / LuminousExposure.LUMINOUS_EXPOSURE_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         LuminousExposureAndroid result2 = LuminousExposureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -410,10 +357,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (((int) (LuminousExposure.LUMINOUS_EXPOSURE_VALUE_MAXIMUM / LuminousExposure.LUMINOUS_EXPOSURE_VALUE_UNIT)) >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         LuminousExposureAndroid result2 = LuminousExposureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -427,10 +371,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (1 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         LuminousExposureAndroid result2 = LuminousExposureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -444,10 +385,7 @@ public class LuminousExposureAndroidTest {
         data[ 2] = (byte) (16777213 >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LuminousExposureAndroid result1 = new LuminousExposureAndroid(bluetoothGattCharacteristic);
+        LuminousExposureAndroid result1 = new LuminousExposureAndroid(data);
         LuminousExposureAndroid result2 = LuminousExposureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

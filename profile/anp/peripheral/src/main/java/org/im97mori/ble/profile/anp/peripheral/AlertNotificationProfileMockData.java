@@ -1,5 +1,6 @@
 package org.im97mori.ble.profile.anp.peripheral;
 
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -30,7 +31,9 @@ public class AlertNotificationProfileMockData extends MockData {
          */
         @Override
         @NonNull
+        @Deprecated
         public AlertNotificationProfileMockData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new AlertNotificationProfileMockData(in);
         }
 
@@ -67,9 +70,14 @@ public class AlertNotificationProfileMockData extends MockData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public AlertNotificationProfileMockData(@NonNull Parcel in) {
         super(in);
-        alertNotification = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            alertNotification = in.readParcelable(this.getClass().getClassLoader(), AlertNotificationServiceData.class);
+        } else {
+            alertNotification = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

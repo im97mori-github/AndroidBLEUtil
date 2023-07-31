@@ -25,7 +25,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue */
 public class ReadCharacteristicTaskTest extends AbstractCentralTest {
 
     @Test
@@ -40,9 +40,9 @@ public class ReadCharacteristicTaskTest extends AbstractCentralTest {
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(ReadCharacteristicTask.KEY_SERVICE_UUID));
+        assertEquals(serviceUUID, UUID.fromString(bundle.getString(ReadCharacteristicTask.KEY_SERVICE_UUID)));
         assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, UUID.fromString(bundle.getString(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID)));
         assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_NEXT_PROGRESS));
         assertEquals(ReadCharacteristicTask.PROGRESS_CHARACTERISTIC_READ_START, bundle.getString(ReadCharacteristicTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
@@ -62,11 +62,11 @@ public class ReadCharacteristicTaskTest extends AbstractCentralTest {
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(ReadCharacteristicTask.KEY_SERVICE_UUID));
+        assertEquals(serviceUUID, UUID.fromString(bundle.getString(ReadCharacteristicTask.KEY_SERVICE_UUID)));
         assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_SERVICE_INSTANCE_ID));
         assertEquals(serviceInstanceId, bundle.getInt(ReadCharacteristicTask.KEY_SERVICE_INSTANCE_ID));
         assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, UUID.fromString(bundle.getString(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID)));
         assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertEquals(characteristicInstanceId, bundle.getInt(ReadCharacteristicTask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_VALUES));
@@ -89,11 +89,11 @@ public class ReadCharacteristicTaskTest extends AbstractCentralTest {
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(ReadCharacteristicTask.KEY_SERVICE_UUID));
+        assertEquals(serviceUUID, UUID.fromString(bundle.getString(ReadCharacteristicTask.KEY_SERVICE_UUID)));
         assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_SERVICE_INSTANCE_ID));
         assertEquals(serviceInstanceId, bundle.getInt(ReadCharacteristicTask.KEY_SERVICE_INSTANCE_ID));
         assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, UUID.fromString(bundle.getString(ReadCharacteristicTask.KEY_CHARACTERISTIC_UUID)));
         assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertEquals(characteristicInstanceId, bundle.getInt(ReadCharacteristicTask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertTrue(bundle.containsKey(ReadCharacteristicTask.KEY_STATUS));

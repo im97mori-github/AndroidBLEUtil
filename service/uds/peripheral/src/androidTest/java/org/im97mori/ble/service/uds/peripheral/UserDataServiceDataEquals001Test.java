@@ -40,7 +40,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class UserDataServiceDataTest_equals_1 {
+public class UserDataServiceDataEquals001Test {
 
     @Test
     public void test_equals_00001() {
@@ -8044,7 +8044,7 @@ public class UserDataServiceDataTest_equals_1 {
                 , new byte[]{5}
                 , 6);
 
-        UDSCharacteristicData secondnaerobicHeartRateLowerLimit = new UDSCharacteristicData(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC
+        UDSCharacteristicData secondAnaerobicHeartRateLowerLimit = new UDSCharacteristicData(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC
                 , 11
                 , 22
                 , Collections.emptyList()
@@ -8108,7 +8108,7 @@ public class UserDataServiceDataTest_equals_1 {
                 , firstFatBurnHeartRateUpperLimit
                 , firstAerobicHeartRateLowerLimit
                 , firstAerobicHeartRateUpperLimit
-                , secondnaerobicHeartRateLowerLimit
+                , secondAnaerobicHeartRateLowerLimit
                 , firstAnaerobicHeartRateUpperLimit
                 , firstFiveZoneHeartRateLimits
                 , firstThreeZoneHeartRateLimits

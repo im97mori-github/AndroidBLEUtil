@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.GROUP_OBJECT_TYPE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Group Object Type (Characteristics UUID: 0x2BAC)
@@ -45,9 +45,7 @@ public class GroupObjectTypeAndroid extends GroupObjectType implements Parcelabl
          */
         @NonNull
         public GroupObjectTypeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(GROUP_OBJECT_TYPE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new GroupObjectTypeAndroid(bluetoothGattCharacteristic);
+            return new GroupObjectTypeAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class GroupObjectTypeAndroid extends GroupObjectType implements Parcelabl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BAC
      */
+    @Deprecated
     public GroupObjectTypeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public GroupObjectTypeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class GroupObjectTypeAndroid extends GroupObjectType implements Parcelabl
      * @param in Parcel
      */
     private GroupObjectTypeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

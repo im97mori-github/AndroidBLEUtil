@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ada;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -279,9 +277,9 @@ public class FitnessMachineStatusAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -295,10 +293,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_RESET, result1.getOpCode());
         assertTrue(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -328,10 +323,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_FITNESS_MACHINE_STOPPED_OR_PAUSED_BY_THE_USER, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertTrue(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -364,10 +356,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_FITNESS_MACHINE_STOPPED_OR_PAUSED_BY_THE_USER, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertTrue(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -400,10 +389,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_FITNESS_MACHINE_STOPPED_BY_SAFETY_KEY, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -433,10 +419,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_FITNESS_MACHINE_STARTED_OR_RESUMED_BY_THE_USER, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -466,10 +449,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_TARGET_SPEED_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -501,10 +481,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_TARGET_INCLINE_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -536,10 +513,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_TARGET_RESISTANCE_LEVEL_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -571,10 +545,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_TARGET_POWER_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -605,10 +576,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_TARGET_HEART_RATE_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -639,10 +607,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_TARGETED_EXPENDED_ENERGY_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -673,10 +638,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_TARGETED_NUMBER_OF_STEPS_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -707,10 +669,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_TARGETED_NUMBER_OF_STRIDES_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -741,10 +700,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_TARGETED_DISTANCE_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -775,10 +731,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_TARGETED_TRAINING_TIME_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -809,10 +762,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_TARGETED_TIME_IN_TWO_HEART_RATE_ZONES_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -844,10 +794,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_TARGETED_TIME_IN_THREE_HEART_RATE_ZONES_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -880,10 +827,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_TARGETED_TIME_IN_FIVE_HEART_RATE_ZONES_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -918,10 +862,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_01701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_INDOOR_BIKE_SIMULATION_PARAMETERS_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -963,10 +904,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_01801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_WHEEL_CIRCUMFERENCE_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -998,10 +936,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_01901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_SPIN_DOWN_STATUS, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -1035,10 +970,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_01902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_SPIN_DOWN_STATUS, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -1072,10 +1004,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_01903() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_SPIN_DOWN_STATUS, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -1109,10 +1038,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_01904() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_SPIN_DOWN_STATUS, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -1146,10 +1072,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_02001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_TARGETED_CADENCE_CHANGED, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -1181,10 +1104,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_constructor_02101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertEquals(FitnessMachineStatus.OP_CODE_CONTROL_PERMISSION_LOST, result1.getOpCode());
         assertFalse(result1.isOpCodeReset());
         assertFalse(result1.isOpCodeFitnessMachineStoppedOrPausedByTheUser());
@@ -1224,10 +1144,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1240,10 +1157,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1256,10 +1170,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1272,10 +1183,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1288,10 +1196,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1304,10 +1209,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1320,10 +1222,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1336,10 +1235,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1352,10 +1248,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1368,10 +1261,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1384,10 +1274,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1400,10 +1287,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1416,10 +1300,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1432,10 +1313,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1448,10 +1326,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1464,10 +1339,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1480,10 +1352,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1496,10 +1365,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1512,10 +1378,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_01701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1528,10 +1391,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_01801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1544,10 +1404,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_01901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1560,10 +1417,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_01902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1576,10 +1430,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_01903() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1592,10 +1443,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_01904() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1608,10 +1456,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_02001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1624,10 +1469,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_1_02101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1640,10 +1482,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1651,10 +1490,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1662,10 +1498,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1673,10 +1506,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1684,10 +1514,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1695,10 +1522,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1706,10 +1530,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1717,10 +1538,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1728,10 +1546,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1739,10 +1554,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1750,10 +1562,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1761,10 +1570,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1772,10 +1578,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1783,10 +1586,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1794,10 +1594,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1805,10 +1602,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1816,10 +1610,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1827,10 +1618,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1838,10 +1626,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_01701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1849,10 +1634,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_01801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1860,10 +1642,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_01901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1871,10 +1650,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_01902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1882,10 +1658,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_01903() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1893,10 +1666,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_01904() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1904,10 +1674,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_02001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1915,10 +1682,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_2_02101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1926,10 +1690,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1938,10 +1699,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1950,10 +1708,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1962,10 +1717,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1974,10 +1726,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1986,10 +1735,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1998,10 +1744,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2010,10 +1753,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2022,10 +1762,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2034,10 +1771,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2046,10 +1780,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2058,10 +1789,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2070,10 +1798,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2082,10 +1807,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2094,10 +1816,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2106,10 +1825,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2118,10 +1834,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2130,10 +1843,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2142,10 +1852,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_01701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2154,10 +1861,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_01801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2166,10 +1870,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_01901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2178,10 +1879,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_01902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2190,10 +1888,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_01903() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2202,10 +1897,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_01904() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2214,10 +1906,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_02001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2226,10 +1915,7 @@ public class FitnessMachineStatusAndroidTest {
     public void test_parcelable_3_02101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(bluetoothGattCharacteristic);
+        FitnessMachineStatusAndroid result1 = new FitnessMachineStatusAndroid(data);
         FitnessMachineStatusAndroid result2 = FitnessMachineStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

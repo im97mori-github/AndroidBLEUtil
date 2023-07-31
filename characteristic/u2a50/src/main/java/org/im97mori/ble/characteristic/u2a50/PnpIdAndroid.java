@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.PNP_ID_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * PnP ID (Characteristics UUID: 0x2A50)
@@ -44,9 +44,7 @@ public class PnpIdAndroid extends PnpId implements Parcelable {
          */
         @NonNull
         public PnpIdAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PNP_ID_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new PnpIdAndroid(bluetoothGattCharacteristic);
+            return new PnpIdAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class PnpIdAndroid extends PnpId implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A50
      */
+    @Deprecated
     public PnpIdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public PnpIdAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -78,8 +86,7 @@ public class PnpIdAndroid extends PnpId implements Parcelable {
      * @param in Parcel
      */
     private PnpIdAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

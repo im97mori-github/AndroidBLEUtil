@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ace;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -880,9 +878,9 @@ public class CrossTrainerDataPacketAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -896,10 +894,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsMoreDataFalse(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsMoreDataTrue(result1.getFlags()));
@@ -910,10 +905,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsMoreDataFalse(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsMoreDataTrue(result1.getFlags()));
@@ -923,10 +915,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsAverageSpeedNotPresent(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsAverageSpeedPresent(result1.getFlags()));
@@ -936,10 +925,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsAverageSpeedNotPresent(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsAverageSpeedPresent(result1.getFlags()));
@@ -950,10 +936,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsTotalDistanceNotPresent(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsTotalDistancePresent(result1.getFlags()));
@@ -963,10 +946,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsTotalDistanceNotPresent(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsTotalDistancePresent(result1.getFlags()));
@@ -977,10 +957,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsStepCountNotPresent(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsStepCountPresent(result1.getFlags()));
@@ -990,10 +967,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsStepCountNotPresent(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsStepCountPresent(result1.getFlags()));
@@ -1005,10 +979,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsStrideCountNotPresent(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsStrideCountPresent(result1.getFlags()));
@@ -1018,10 +989,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsStrideCountNotPresent(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsStrideCountPresent(result1.getFlags()));
@@ -1032,10 +1000,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsElevationGainNotPresent(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsElevationGainPresent(result1.getFlags()));
@@ -1045,10 +1010,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsElevationGainNotPresent(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsElevationGainPresent(result1.getFlags()));
@@ -1060,10 +1022,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsInclinationAndRampAngleSettingNotPresent(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsInclinationAndRampAngleSettingPresent(result1.getFlags()));
@@ -1073,10 +1032,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsInclinationAndRampAngleSettingNotPresent(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsInclinationAndRampAngleSettingPresent(result1.getFlags()));
@@ -1088,10 +1044,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsResistanceLevelNotPresent(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsResistanceLevelPresent(result1.getFlags()));
@@ -1101,10 +1054,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsResistanceLevelNotPresent(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsResistanceLevelPresent(result1.getFlags()));
@@ -1115,10 +1065,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsInstantaneousPowerNotPresent(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsInstantaneousPowerPresent(result1.getFlags()));
@@ -1128,10 +1075,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsInstantaneousPowerNotPresent(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsInstantaneousPowerPresent(result1.getFlags()));
@@ -1142,10 +1086,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsAveragePowerNotPresent(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsAveragePowerPresent(result1.getFlags()));
@@ -1155,10 +1096,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsAveragePowerNotPresent(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsAveragePowerPresent(result1.getFlags()));
@@ -1169,10 +1107,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsExpendedEnergyNotPresent(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsExpendedEnergyPresent(result1.getFlags()));
@@ -1182,10 +1117,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsExpendedEnergyNotPresent(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsExpendedEnergyPresent(result1.getFlags()));
@@ -1198,10 +1130,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsHeartRateNotPresent(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsHeartRatePresent(result1.getFlags()));
@@ -1211,10 +1140,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsHeartRateNotPresent(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsHeartRatePresent(result1.getFlags()));
@@ -1225,10 +1151,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsMetabolicEquivalentNotPresent(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsMetabolicEquivalentPresent(result1.getFlags()));
@@ -1238,10 +1161,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsMetabolicEquivalentNotPresent(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsMetabolicEquivalentPresent(result1.getFlags()));
@@ -1252,10 +1172,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsElapsedTimeNotPresent(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsElapsedTimePresent(result1.getFlags()));
@@ -1265,10 +1182,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsElapsedTimeNotPresent(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsElapsedTimePresent(result1.getFlags()));
@@ -1279,10 +1193,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsRemainingTimeNotPresent(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsRemainingTimePresent(result1.getFlags()));
@@ -1292,10 +1203,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsRemainingTimeNotPresent(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsRemainingTimePresent(result1.getFlags()));
@@ -1306,10 +1214,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertTrue(CrossTrainerDataUtils.isFlagsMovementDirectionForward(result1.getFlags()));
         assertFalse(CrossTrainerDataUtils.isFlagsMovementDirectionBackward(result1.getFlags()));
@@ -1319,10 +1224,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_constructor_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getFlags());
         assertFalse(CrossTrainerDataUtils.isFlagsMovementDirectionForward(result1.getFlags()));
         assertTrue(CrossTrainerDataUtils.isFlagsMovementDirectionBackward(result1.getFlags()));
@@ -1332,10 +1234,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1366,10 +1265,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1400,10 +1296,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1434,10 +1327,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1468,10 +1358,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1502,10 +1389,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1536,10 +1420,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1570,10 +1451,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1604,10 +1482,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1638,10 +1513,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1672,10 +1544,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1706,10 +1575,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1740,10 +1606,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1774,10 +1637,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1808,10 +1668,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1842,10 +1699,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1876,10 +1730,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1910,10 +1761,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1944,10 +1792,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1978,10 +1823,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2012,10 +1854,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2046,10 +1885,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2080,10 +1916,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2114,10 +1947,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2148,10 +1978,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2182,10 +2009,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2216,10 +2040,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2250,10 +2071,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2284,10 +2102,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2318,10 +2133,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2352,10 +2164,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2386,10 +2195,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_1_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2468,10 +2274,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2479,10 +2282,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2490,10 +2290,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2501,10 +2298,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2512,10 +2306,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2523,10 +2314,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2534,10 +2322,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2545,10 +2330,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2556,10 +2338,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2567,10 +2346,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2578,10 +2354,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2589,10 +2362,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2600,10 +2370,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2611,10 +2378,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2622,10 +2386,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2633,10 +2394,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2644,10 +2402,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2655,10 +2410,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2666,10 +2418,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2677,10 +2426,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2688,10 +2434,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2699,10 +2442,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2710,10 +2450,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2721,10 +2458,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2732,10 +2466,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2743,10 +2474,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2754,10 +2482,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2765,10 +2490,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2776,10 +2498,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2787,10 +2506,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2798,10 +2514,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2809,10 +2522,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_2_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2820,10 +2530,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2832,10 +2539,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2844,10 +2548,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2856,10 +2557,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2868,10 +2566,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2880,10 +2575,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2892,10 +2584,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2904,10 +2593,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2916,10 +2602,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2928,10 +2611,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2940,10 +2620,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2952,10 +2629,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2964,10 +2638,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2976,10 +2647,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2988,10 +2656,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3000,10 +2665,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3012,10 +2674,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3024,10 +2683,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3036,10 +2692,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3048,10 +2701,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3060,10 +2710,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3072,10 +2719,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3084,10 +2728,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3096,10 +2737,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3108,10 +2746,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3120,10 +2755,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3132,10 +2764,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3144,10 +2773,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3156,10 +2782,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3168,10 +2791,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3180,10 +2800,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3192,10 +2809,7 @@ public class CrossTrainerDataPacketAndroidTest {
     public void test_parcelable_3_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(bluetoothGattCharacteristic);
+        CrossTrainerDataPacketAndroid result1 = new CrossTrainerDataPacketAndroid(data);
         CrossTrainerDataPacketAndroid result2 = CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

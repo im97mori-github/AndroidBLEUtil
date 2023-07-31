@@ -340,6 +340,11 @@ public class DisCallbackSample extends DeviceInformationServiceMockCallback impl
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }
@@ -362,7 +367,9 @@ public class DisCallbackSample extends DeviceInformationServiceMockCallback impl
         super.onDeviceDisconnected(bleServerConnection, device);
     }
 
+    /** @noinspection deprecation*/
     @Override
+    @Deprecated
     public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
         boolean result = super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
         if (result) {
@@ -381,7 +388,9 @@ public class DisCallbackSample extends DeviceInformationServiceMockCallback impl
         callback(argument);
     }
 
+    /** @noinspection deprecation*/
     @Override
+    @Deprecated
     public void onServiceRemoveSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
         callback(argument);
         super.onServiceRemoveSuccess(taskId, bleServerConnection, bluetoothGattService, argument);

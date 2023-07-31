@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.STEP_COUNTER_ACTIVITY_SUMMARY_DATA_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Step Counter Activity Summary Data (Characteristics UUID: 0x2B40)
@@ -45,9 +45,7 @@ public class StepCounterActivitySummaryDataAndroid extends StepCounterActivitySu
          */
         @NonNull
         public StepCounterActivitySummaryDataAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(STEP_COUNTER_ACTIVITY_SUMMARY_DATA_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new StepCounterActivitySummaryDataAndroid(bluetoothGattCharacteristic);
+            return new StepCounterActivitySummaryDataAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class StepCounterActivitySummaryDataAndroid extends StepCounterActivitySu
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B40
      */
+    @Deprecated
     public StepCounterActivitySummaryDataAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public StepCounterActivitySummaryDataAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class StepCounterActivitySummaryDataAndroid extends StepCounterActivitySu
      * @param in Parcel
      */
     private StepCounterActivitySummaryDataAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

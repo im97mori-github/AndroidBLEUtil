@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.IDD_COMMAND_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * IDD Command Control Point (Characteristics UUID: 0x2B25)
@@ -45,9 +45,7 @@ public class IddCommandControlPointAndroid extends IddCommandControlPoint implem
          */
         @NonNull
         public IddCommandControlPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(IDD_COMMAND_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new IddCommandControlPointAndroid(bluetoothGattCharacteristic);
+            return new IddCommandControlPointAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class IddCommandControlPointAndroid extends IddCommandControlPoint implem
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B25
      */
+    @Deprecated
     public IddCommandControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public IddCommandControlPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class IddCommandControlPointAndroid extends IddCommandControlPoint implem
      * @param in Parcel
      */
     private IddCommandControlPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

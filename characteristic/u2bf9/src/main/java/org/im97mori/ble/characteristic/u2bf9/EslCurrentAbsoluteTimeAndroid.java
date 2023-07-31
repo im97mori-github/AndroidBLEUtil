@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ESL_CURRENT_ABSOLUTE_TIME_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * ESL Current Absolute Time (Characteristics UUID: 0x2BF9)
@@ -45,9 +45,7 @@ public class EslCurrentAbsoluteTimeAndroid extends EslCurrentAbsoluteTime implem
          */
         @NonNull
         public EslCurrentAbsoluteTimeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ESL_CURRENT_ABSOLUTE_TIME_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new EslCurrentAbsoluteTimeAndroid(bluetoothGattCharacteristic);
+            return new EslCurrentAbsoluteTimeAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class EslCurrentAbsoluteTimeAndroid extends EslCurrentAbsoluteTime implem
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BF9
      */
+    @Deprecated
     public EslCurrentAbsoluteTimeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public EslCurrentAbsoluteTimeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class EslCurrentAbsoluteTimeAndroid extends EslCurrentAbsoluteTime implem
      * @param in Parcel
      */
     private EslCurrentAbsoluteTimeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -1,12 +1,10 @@
 package org.im97mori.ble.characteristic.u2a52;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -18,7 +16,8 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
+/** @noinspection DataFlowIssue*/
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -1011,10 +1010,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1060,10 +1056,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1109,10 +1102,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1158,10 +1148,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1207,10 +1194,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1256,10 +1240,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1305,10 +1286,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1354,10 +1332,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1403,10 +1378,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1452,10 +1424,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1501,10 +1470,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1550,10 +1516,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00012() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1599,10 +1562,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00013() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1648,10 +1608,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00014() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1697,10 +1654,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00015() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_STORED_RECORDS, result1.getOpCode());
         assertTrue(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1746,10 +1700,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1795,10 +1746,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1844,10 +1792,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1893,10 +1838,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00104() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1942,10 +1884,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00105() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -1991,10 +1930,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00106() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2040,10 +1976,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00107() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2089,10 +2022,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00108() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2138,10 +2068,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00109() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2187,10 +2114,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00110() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2236,10 +2160,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00111() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2285,10 +2206,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00112() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2334,10 +2252,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00113() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2383,10 +2298,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00114() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2432,10 +2344,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00115() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_DELETE_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertTrue(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2481,10 +2390,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_ABORT_OPERATION, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2530,10 +2436,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2579,10 +2482,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2628,10 +2528,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2677,10 +2574,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2726,10 +2620,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00305() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2775,10 +2666,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00306() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2824,10 +2712,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00307() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2873,10 +2758,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00308() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2922,10 +2804,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00309() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -2971,10 +2850,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00310() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3020,10 +2896,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00311() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3069,10 +2942,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00312() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3118,10 +2988,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00313() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3167,10 +3034,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00314() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3216,10 +3080,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00315() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_REPORT_NUMBER_OF_STORED_RECORDS, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3265,10 +3126,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_NUMBER_OF_STORED_RECORDS_RESPONSE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3314,10 +3172,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3363,10 +3218,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3412,10 +3264,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3461,10 +3310,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3510,10 +3356,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00505() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3559,10 +3402,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00506() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3608,10 +3448,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00507() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3657,10 +3494,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00508() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3706,10 +3540,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00509() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3755,10 +3586,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00510() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3804,10 +3632,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00511() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3853,10 +3678,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00512() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3902,10 +3724,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00513() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -3951,10 +3770,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00514() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4000,10 +3816,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00515() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4049,10 +3862,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00516() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4098,10 +3908,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00517() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4147,10 +3954,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00518() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4196,10 +4000,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00519() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4245,10 +4046,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00520() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4294,10 +4092,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00521() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4343,10 +4138,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00522() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4392,10 +4184,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00523() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4441,10 +4230,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00524() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4490,10 +4276,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00525() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4539,10 +4322,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00526() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4588,10 +4368,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00527() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4637,10 +4414,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00528() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4686,10 +4460,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00529() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4735,10 +4506,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00530() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4784,10 +4552,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00531() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4833,10 +4598,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00532() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4882,10 +4644,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00533() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4931,10 +4690,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00534() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -4980,10 +4736,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00535() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5029,10 +4782,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00536() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5078,10 +4828,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5127,10 +4874,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5176,10 +4920,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5225,10 +4966,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00604() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5274,10 +5012,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00605() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5323,10 +5058,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00606() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5372,10 +5104,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00607() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5421,10 +5150,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00608() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5470,10 +5196,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00609() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5519,10 +5242,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00610() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5568,10 +5288,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00611() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5617,10 +5334,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00612() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5666,10 +5380,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00613() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5715,10 +5426,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00614() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5764,10 +5472,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00615() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5813,10 +5518,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_constructor_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertEquals(RecordAccessControlPoint.OP_CODE_COMBINED_REPORT_RESPONSE, result1.getOpCode());
         assertFalse(result1.isOpCodeReportStoredRecords(result1.getOpCode()));
         assertFalse(result1.isOpCodeDeleteStoredRecords(result1.getOpCode()));
@@ -5874,10 +5576,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -5891,10 +5590,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -5908,10 +5604,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -5925,10 +5618,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -5942,10 +5632,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -5959,10 +5646,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -5976,10 +5660,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -5993,10 +5674,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6010,10 +5688,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6027,10 +5702,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6044,10 +5716,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6061,10 +5730,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00012() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6078,10 +5744,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00013() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6095,10 +5758,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00014() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6112,10 +5772,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00015() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6129,10 +5786,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6146,10 +5800,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6163,10 +5814,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6180,10 +5828,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00104() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6197,10 +5842,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00105() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6214,10 +5856,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00106() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6231,10 +5870,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00107() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6248,10 +5884,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00108() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6265,10 +5898,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00109() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6282,10 +5912,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00110() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6299,10 +5926,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00111() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6316,10 +5940,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00112() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6333,10 +5954,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00113() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6350,10 +5968,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00114() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6367,10 +5982,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00115() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6384,10 +5996,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6401,10 +6010,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6418,10 +6024,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6435,10 +6038,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6452,10 +6052,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6469,10 +6066,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00305() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6486,10 +6080,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00306() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6503,10 +6094,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00307() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6520,10 +6108,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00308() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6537,10 +6122,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00309() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6554,10 +6136,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00310() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6571,10 +6150,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00311() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6588,10 +6164,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00312() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6605,10 +6178,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00313() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6622,10 +6192,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00314() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6639,10 +6206,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00315() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6656,10 +6220,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6673,10 +6234,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6690,10 +6248,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6707,10 +6262,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6724,10 +6276,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6741,10 +6290,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00505() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6758,10 +6304,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00506() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6775,10 +6318,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00507() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6792,10 +6332,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00508() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6809,10 +6346,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00509() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6826,10 +6360,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00510() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6843,10 +6374,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00511() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6860,10 +6388,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00512() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6877,10 +6402,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00513() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6894,10 +6416,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00514() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6911,10 +6430,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00515() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6928,10 +6444,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00516() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6945,10 +6458,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00517() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6962,10 +6472,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00518() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6979,10 +6486,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00519() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -6996,10 +6500,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00520() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7013,10 +6514,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00521() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7030,10 +6528,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00522() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7047,10 +6542,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00523() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7064,10 +6556,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00524() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7081,10 +6570,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00525() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7098,10 +6584,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00526() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7115,10 +6598,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00527() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7132,10 +6612,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00528() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7149,10 +6626,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00529() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7166,10 +6640,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00530() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7183,10 +6654,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00531() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7200,10 +6668,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00532() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7217,10 +6682,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00533() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7234,10 +6696,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00534() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7251,10 +6710,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00535() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7268,10 +6724,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00536() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7285,10 +6738,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7302,10 +6752,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7319,10 +6766,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7336,10 +6780,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00604() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7353,10 +6794,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00605() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7370,10 +6808,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00606() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7387,10 +6822,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00607() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7404,10 +6836,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00608() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7421,10 +6850,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00609() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7438,10 +6864,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00610() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7455,10 +6878,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00611() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7472,10 +6892,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00612() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7489,10 +6906,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00613() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7506,10 +6920,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00614() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7523,10 +6934,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00615() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7540,10 +6948,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7557,10 +6962,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7568,10 +6970,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7579,10 +6978,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7590,10 +6986,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7601,10 +6994,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7612,10 +7002,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7623,10 +7010,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7634,10 +7018,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7645,10 +7026,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7656,10 +7034,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7667,10 +7042,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7678,10 +7050,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00012() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7689,10 +7058,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00013() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7700,10 +7066,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00014() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7711,10 +7074,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00015() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7722,10 +7082,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7733,10 +7090,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7744,10 +7098,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7755,10 +7106,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00104() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7766,10 +7114,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00105() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7777,10 +7122,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00106() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7788,10 +7130,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00107() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7799,10 +7138,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00108() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7810,10 +7146,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00109() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7821,10 +7154,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00110() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7832,10 +7162,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00111() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7843,10 +7170,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00112() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7854,10 +7178,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00113() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7865,10 +7186,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00114() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7876,10 +7194,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00115() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7887,10 +7202,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7898,10 +7210,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7909,10 +7218,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7920,10 +7226,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7931,10 +7234,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7942,10 +7242,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00305() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7953,10 +7250,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00306() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7964,10 +7258,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00307() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7975,10 +7266,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00308() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7986,10 +7274,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00309() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -7997,10 +7282,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00310() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8008,10 +7290,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00311() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8019,10 +7298,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00312() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8030,10 +7306,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00313() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8041,10 +7314,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00314() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8052,10 +7322,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00315() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8063,10 +7330,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8074,10 +7338,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8085,10 +7346,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8096,10 +7354,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8107,10 +7362,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8118,10 +7370,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00505() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8129,10 +7378,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00506() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8140,10 +7386,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00507() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8151,10 +7394,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00508() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8162,10 +7402,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00509() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8173,10 +7410,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00510() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8184,10 +7418,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00511() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8195,10 +7426,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00512() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8206,10 +7434,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00513() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8217,10 +7442,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00514() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8228,10 +7450,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00515() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8239,10 +7458,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00516() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8250,10 +7466,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00517() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8261,10 +7474,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00518() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8272,10 +7482,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00519() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8283,10 +7490,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00520() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8294,10 +7498,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00521() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8305,10 +7506,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00522() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8316,10 +7514,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00523() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8327,10 +7522,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00524() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8338,10 +7530,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00525() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8349,10 +7538,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00526() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8360,10 +7546,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00527() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8371,10 +7554,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00528() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8382,10 +7562,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00529() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8393,10 +7570,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00530() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8404,10 +7578,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00531() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8415,10 +7586,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00532() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8426,10 +7594,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00533() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8437,10 +7602,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00534() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8448,10 +7610,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00535() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8459,10 +7618,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00536() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8470,10 +7626,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8481,10 +7634,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8492,10 +7642,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8503,10 +7650,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00604() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8514,10 +7658,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00605() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8525,10 +7666,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00606() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8536,10 +7674,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00607() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8547,10 +7682,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00608() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8558,10 +7690,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00609() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8569,10 +7698,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00610() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8580,10 +7706,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00611() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8591,10 +7714,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00612() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8602,10 +7722,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00613() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8613,10 +7730,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00614() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8624,10 +7738,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00615() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8635,10 +7746,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -8646,10 +7754,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8658,10 +7763,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8670,10 +7772,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8682,10 +7781,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8694,10 +7790,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8706,10 +7799,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8718,10 +7808,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8730,10 +7817,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8742,10 +7826,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8754,10 +7835,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8766,10 +7844,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8778,10 +7853,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00012() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8790,10 +7862,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00013() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8802,10 +7871,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00014() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8814,10 +7880,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00015() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8826,10 +7889,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8838,10 +7898,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8850,10 +7907,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8862,10 +7916,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00104() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8874,10 +7925,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00105() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8886,10 +7934,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00106() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8898,10 +7943,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00107() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8910,10 +7952,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00108() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8922,10 +7961,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00109() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8934,10 +7970,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00110() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8946,10 +7979,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00111() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8958,10 +7988,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00112() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8970,10 +7997,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00113() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8982,10 +8006,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00114() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -8994,10 +8015,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00115() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9006,10 +8024,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9018,10 +8033,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9030,10 +8042,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9042,10 +8051,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9054,10 +8060,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9066,10 +8069,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00305() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9078,10 +8078,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00306() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9090,10 +8087,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00307() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9102,10 +8096,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00308() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9114,10 +8105,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00309() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9126,10 +8114,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00310() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9138,10 +8123,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00311() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9150,10 +8132,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00312() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9162,10 +8141,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00313() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9174,10 +8150,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00314() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9186,10 +8159,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00315() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9198,10 +8168,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9210,10 +8177,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9222,10 +8186,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9234,10 +8195,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9246,10 +8204,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9258,10 +8213,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00505() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9270,10 +8222,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00506() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9282,10 +8231,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00507() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9294,10 +8240,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00508() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9306,10 +8249,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00509() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9318,10 +8258,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00510() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9330,10 +8267,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00511() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9342,10 +8276,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00512() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9354,10 +8285,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00513() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9366,10 +8294,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00514() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9378,10 +8303,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00515() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9390,10 +8312,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00516() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9402,10 +8321,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00517() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9414,10 +8330,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00518() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9426,10 +8339,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00519() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9438,10 +8348,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00520() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9450,10 +8357,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00521() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9462,10 +8366,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00522() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9474,10 +8375,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00523() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9486,10 +8384,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00524() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9498,10 +8393,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00525() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9510,10 +8402,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00526() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9522,10 +8411,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00527() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9534,10 +8420,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00528() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9546,10 +8429,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00529() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9558,10 +8438,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00530() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9570,10 +8447,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00531() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9582,10 +8456,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00532() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9594,10 +8465,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00533() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9606,10 +8474,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00534() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9618,10 +8483,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00535() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9630,10 +8492,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00536() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9642,10 +8501,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9654,10 +8510,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9666,10 +8519,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9678,10 +8528,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00604() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9690,10 +8537,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00605() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9702,10 +8546,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00606() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9714,10 +8555,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00607() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9726,10 +8564,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00608() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9738,10 +8573,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00609() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9750,10 +8582,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00610() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9762,10 +8591,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00611() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9774,10 +8600,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00612() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9786,10 +8609,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00613() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9798,10 +8618,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00614() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9810,10 +8627,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00615() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -9822,10 +8636,7 @@ public class RecordAccessControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+        RecordAccessControlPointAndroid result1 = new RecordAccessControlPointAndroid(data);
         RecordAccessControlPointAndroid result2 = RecordAccessControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -34,7 +34,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.WAIST_CIRCUMFERENCE_
 import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_CHARACTERISTIC;
 import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.constants.ServiceUUID.USER_DATA_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -87,7 +86,6 @@ import org.junit.Test;
 import java.util.LinkedList;
 import java.util.List;
 
-@SuppressWarnings("ConstantConditions")
 public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
     @Test
@@ -220,7 +218,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFirstName_00001() {
         String firstNameString = "First Name";
-        FirstName firstName = new FirstName(firstNameString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -259,7 +256,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FIRST_NAME_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(firstName.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -306,7 +302,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FIRST_NAME_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(firstName.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -353,7 +348,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FIRST_NAME_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(firstName.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -402,7 +396,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FIRST_NAME_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(firstName.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -443,7 +436,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLastName_00001() {
         String lastNameString = "Last Name";
-        LastName lastName = new LastName(lastNameString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -482,7 +474,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(LAST_NAME_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(lastName.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -529,7 +520,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(LAST_NAME_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(lastName.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -576,7 +566,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(LAST_NAME_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(lastName.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -625,7 +614,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(LAST_NAME_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(lastName.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -666,7 +654,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addEmailAddress_00001() {
         String emailAddressString = "Email Address";
-        EmailAddress emailAddress = new EmailAddress(emailAddressString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -705,7 +692,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(EMAIL_ADDRESS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(emailAddress.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -752,7 +738,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(EMAIL_ADDRESS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(emailAddress.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -799,7 +784,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(EMAIL_ADDRESS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(emailAddress.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -848,7 +832,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(EMAIL_ADDRESS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(emailAddress.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -889,7 +872,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAge_00001() {
         int ageInt = 1;
-        Age age = new Age(ageInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -928,7 +910,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AGE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(age.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -975,7 +956,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AGE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(age.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1022,7 +1002,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AGE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(age.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1071,7 +1050,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AGE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(age.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1114,7 +1092,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         int yearInt = 1;
         int monthInt = 2;
         int dayInt = 3;
-        DateOfBirth dateOfBirth = new DateOfBirth(yearInt, monthInt, dayInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -1153,7 +1130,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(DATE_OF_BIRTH_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(dateOfBirth.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1202,7 +1178,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(DATE_OF_BIRTH_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(dateOfBirth.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1251,7 +1226,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(DATE_OF_BIRTH_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(dateOfBirth.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1302,7 +1276,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(DATE_OF_BIRTH_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(dateOfBirth.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1345,7 +1318,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addGender_00001() {
         int genderInt = Gender.GENDER_MALE;
-        Gender gender = new Gender(genderInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -1384,7 +1356,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(GENDER_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(gender.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1431,7 +1402,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(GENDER_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(gender.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1478,7 +1448,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(GENDER_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(gender.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1527,7 +1496,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(GENDER_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(gender.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1568,7 +1536,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWeight_00001() {
         int weightInt = 1;
-        Weight weight = new Weight(weightInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -1607,7 +1574,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(WEIGHT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(weight.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1654,7 +1620,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(WEIGHT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(weight.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1701,7 +1666,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(WEIGHT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(weight.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1750,7 +1714,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(WEIGHT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(weight.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1791,7 +1754,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeight_00001() {
         int heightInt = 1;
-        Height height = new Height(heightInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -1830,7 +1792,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(HEIGHT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(height.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1877,7 +1838,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(HEIGHT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(height.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1924,7 +1884,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(HEIGHT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(height.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1973,7 +1932,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(HEIGHT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(height.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2014,7 +1972,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addVO2Max_00001() {
         int vo2MaxInt = 1;
-        VO2Max vo2Max = new VO2Max(vo2MaxInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -2053,7 +2010,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(VO2_MAX_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(vo2Max.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2100,7 +2056,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(VO2_MAX_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(vo2Max.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2147,7 +2102,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(VO2_MAX_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(vo2Max.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2196,7 +2150,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(VO2_MAX_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(vo2Max.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2237,7 +2190,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHeartRateMax_00001() {
         int heartRateMaxInt = 1;
-        HeartRateMax heartRateMax = new HeartRateMax(heartRateMaxInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -2276,7 +2228,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(HEART_RATE_MAX_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(heartRateMax.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2323,7 +2274,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(HEART_RATE_MAX_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(heartRateMax.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2370,7 +2320,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(HEART_RATE_MAX_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(heartRateMax.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2419,7 +2368,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(HEART_RATE_MAX_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(heartRateMax.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2460,7 +2408,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addRestingHeartRate_00001() {
         int restingHeartRateInt = 1;
-        RestingHeartRate restingHeartRate = new RestingHeartRate(restingHeartRateInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -2499,7 +2446,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(RESTING_HEART_RATE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(restingHeartRate.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2546,7 +2492,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(RESTING_HEART_RATE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(restingHeartRate.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2593,7 +2538,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(RESTING_HEART_RATE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(restingHeartRate.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2642,7 +2586,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(RESTING_HEART_RATE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(restingHeartRate.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2683,7 +2626,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addMaximumRecommendedHeartRate_00001() {
         int maximumRecommendedHeartRateInt = 1;
-        MaximumRecommendedHeartRate maximumRecommendedHeartRate = new MaximumRecommendedHeartRate(maximumRecommendedHeartRateInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -2722,7 +2664,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(maximumRecommendedHeartRate.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2769,7 +2710,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(maximumRecommendedHeartRate.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2816,7 +2756,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(maximumRecommendedHeartRate.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2865,7 +2804,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(maximumRecommendedHeartRate.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2906,7 +2844,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicThreshold_00001() {
         int aerobicThresholdInt = 1;
-        AerobicThreshold aerobicThreshold = new AerobicThreshold(aerobicThresholdInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -2945,7 +2882,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AEROBIC_THRESHOLD_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(aerobicThreshold.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -2992,7 +2928,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AEROBIC_THRESHOLD_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(aerobicThreshold.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3039,7 +2974,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AEROBIC_THRESHOLD_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(aerobicThreshold.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3088,7 +3022,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AEROBIC_THRESHOLD_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(aerobicThreshold.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3129,7 +3062,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicThreshold_00001() {
         int anaerobicThresholdInt = 1;
-        AnaerobicThreshold anaerobicThreshold = new AnaerobicThreshold(anaerobicThresholdInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -3168,7 +3100,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(ANAEROBIC_THRESHOLD_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(anaerobicThreshold.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3215,7 +3146,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(ANAEROBIC_THRESHOLD_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(anaerobicThreshold.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3262,7 +3192,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(ANAEROBIC_THRESHOLD_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(anaerobicThreshold.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3311,7 +3240,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(ANAEROBIC_THRESHOLD_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(anaerobicThreshold.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3352,7 +3280,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addSportTypeForAerobicAndAnaerobicThresholds_00001() {
         int sportTypeForAerobicAndAnaerobicThresholdsInt = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_UNSPECIFIED;
-        SportTypeForAerobicAndAnaerobicThresholds sportTypeForAerobicAndAnaerobicThresholds = new SportTypeForAerobicAndAnaerobicThresholds(sportTypeForAerobicAndAnaerobicThresholdsInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -3391,7 +3318,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(sportTypeForAerobicAndAnaerobicThresholds.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3438,7 +3364,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(sportTypeForAerobicAndAnaerobicThresholds.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3485,7 +3410,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(sportTypeForAerobicAndAnaerobicThresholds.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3534,7 +3458,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(sportTypeForAerobicAndAnaerobicThresholds.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3577,7 +3500,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         int yearInt = 1;
         int monthInt = 2;
         int dayInt = 3;
-        DateOfThresholdAssessment dateOfThresholdAssessment = new DateOfThresholdAssessment(yearInt, monthInt, dayInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -3616,7 +3538,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(dateOfThresholdAssessment.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3665,7 +3586,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(dateOfThresholdAssessment.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3714,7 +3634,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(dateOfThresholdAssessment.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3765,7 +3684,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(dateOfThresholdAssessment.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3808,7 +3726,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addWaistCircumference_00001() {
         int waistCircumferenceInt = 1;
-        WaistCircumference waistCircumference = new WaistCircumference(waistCircumferenceInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -3847,7 +3764,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(WAIST_CIRCUMFERENCE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(waistCircumference.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3894,7 +3810,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(WAIST_CIRCUMFERENCE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(waistCircumference.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3941,7 +3856,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(WAIST_CIRCUMFERENCE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(waistCircumference.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -3990,7 +3904,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(WAIST_CIRCUMFERENCE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(waistCircumference.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4031,7 +3944,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addHipCircumference_00001() {
         int hipCircumferenceInt = 1;
-        HipCircumference hipCircumference = new HipCircumference(hipCircumferenceInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -4070,7 +3982,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(HIP_CIRCUMFERENCE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(hipCircumference.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4117,7 +4028,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(HIP_CIRCUMFERENCE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(hipCircumference.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4164,7 +4074,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(HIP_CIRCUMFERENCE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(hipCircumference.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4213,7 +4122,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(HIP_CIRCUMFERENCE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(hipCircumference.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4254,7 +4162,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFatBurnHeartRateLowerLimit_00001() {
         int fatBurnHeartRateLowerLimitInt = 1;
-        FatBurnHeartRateLowerLimit fatBurnHeartRateLowerLimit = new FatBurnHeartRateLowerLimit(fatBurnHeartRateLowerLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -4293,7 +4200,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(fatBurnHeartRateLowerLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4340,7 +4246,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(fatBurnHeartRateLowerLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4387,7 +4292,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(fatBurnHeartRateLowerLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4436,7 +4340,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FAT_BURN_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(fatBurnHeartRateLowerLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4477,7 +4380,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addFatBurnHeartRateUpperLimit_00001() {
         int fatBurnHeartRateUpperLimitInt = 1;
-        FatBurnHeartRateUpperLimit fatBurnHeartRateUpperLimit = new FatBurnHeartRateUpperLimit(fatBurnHeartRateUpperLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -4516,7 +4418,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(fatBurnHeartRateUpperLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4563,7 +4464,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(fatBurnHeartRateUpperLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4610,7 +4510,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(fatBurnHeartRateUpperLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4659,7 +4558,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(fatBurnHeartRateUpperLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4700,7 +4598,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicHeartRateLowerLimit_00001() {
         int aerobicHeartRateLowerLimitInt = 1;
-        AerobicHeartRateLowerLimit aerobicHeartRateLowerLimit = new AerobicHeartRateLowerLimit(aerobicHeartRateLowerLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -4739,7 +4636,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(aerobicHeartRateLowerLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4786,7 +4682,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(aerobicHeartRateLowerLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4833,7 +4728,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(aerobicHeartRateLowerLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4882,7 +4776,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(aerobicHeartRateLowerLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -4923,7 +4816,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAerobicHeartRateUpperLimit_00001() {
         int aerobicHeartRateUpperLimitInt = 1;
-        AerobicHeartRateUpperLimit aerobicHeartRateUpperLimit = new AerobicHeartRateUpperLimit(aerobicHeartRateUpperLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -4962,7 +4854,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(aerobicHeartRateUpperLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5009,7 +4900,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(aerobicHeartRateUpperLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5056,7 +4946,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(aerobicHeartRateUpperLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5105,7 +4994,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(aerobicHeartRateUpperLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5146,7 +5034,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicHeartRateLowerLimit_00001() {
         int anaerobicHeartRateLowerLimitInt = 1;
-        AnaerobicHeartRateLowerLimit anaerobicHeartRateLowerLimit = new AnaerobicHeartRateLowerLimit(anaerobicHeartRateLowerLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -5185,7 +5072,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(anaerobicHeartRateLowerLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5232,7 +5118,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(anaerobicHeartRateLowerLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5279,7 +5164,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(anaerobicHeartRateLowerLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5328,7 +5212,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(ANAEROBIC_HEART_RATE_LOWER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(anaerobicHeartRateLowerLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5369,7 +5252,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addAnaerobicHeartRateUpperLimit_00001() {
         int anaerobicHeartRateUpperLimitInt = 1;
-        AnaerobicHeartRateUpperLimit anaerobicHeartRateUpperLimit = new AnaerobicHeartRateUpperLimit(anaerobicHeartRateUpperLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -5408,7 +5290,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(anaerobicHeartRateUpperLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5455,7 +5336,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(anaerobicHeartRateUpperLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5502,7 +5382,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(anaerobicHeartRateUpperLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5551,7 +5430,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(ANAEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(anaerobicHeartRateUpperLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5595,7 +5473,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         int fiveZoneHeartRateLimitsLightModerateLimitInt = 2;
         int fiveZoneHeartRateLimitsModerateHardLimitInt = 3;
         int fiveZoneHeartRateLimitsHardMaximumLimitInt = 4;
-        FiveZoneHeartRateLimits fiveZoneHeartRateLimits = new FiveZoneHeartRateLimits(fiveZoneHeartRateLimitsVeryLightLightLimitInt, fiveZoneHeartRateLimitsLightModerateLimitInt, fiveZoneHeartRateLimitsModerateHardLimitInt, fiveZoneHeartRateLimitsHardMaximumLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -5634,7 +5511,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(fiveZoneHeartRateLimits.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5684,7 +5560,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(fiveZoneHeartRateLimits.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5734,7 +5609,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(fiveZoneHeartRateLimits.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5786,7 +5660,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(fiveZoneHeartRateLimits.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5831,7 +5704,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     public void test_addThreeZoneHeartRateLimits_00001() {
         int threeZoneHeartRateLimitsLightFatBurnModerateAerobicLimitInt = 1;
         int threeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimitInt = 2;
-        ThreeZoneHeartRateLimits threeZoneHeartRateLimits = new ThreeZoneHeartRateLimits(threeZoneHeartRateLimitsLightFatBurnModerateAerobicLimitInt, threeZoneHeartRateLimitsModerateAerobicHardAnaerobicLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -5870,7 +5742,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(threeZoneHeartRateLimits.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5918,7 +5789,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(threeZoneHeartRateLimits.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -5966,7 +5836,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(threeZoneHeartRateLimits.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6016,7 +5885,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(THREE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(threeZoneHeartRateLimits.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6058,7 +5926,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addTwoZoneHeartRateLimit_00001() {
         int twoZoneHeartRateLimitFatBurnFitnessLimitInt = 1;
-        TwoZoneHeartRateLimit twoZoneHeartRateLimit = new TwoZoneHeartRateLimit(twoZoneHeartRateLimitFatBurnFitnessLimitInt);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -6097,7 +5964,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(twoZoneHeartRateLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6144,7 +6010,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(twoZoneHeartRateLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6191,7 +6056,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(twoZoneHeartRateLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6240,7 +6104,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(TWO_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(twoZoneHeartRateLimit.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6281,7 +6144,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)
     public void test_addLanguage_00001() {
         String languageString = "language";
-        Language language = new Language(languageString);
 
         final List<BluetoothGattService> bluetoothGattServiceList = new LinkedList<>();
         MOCK_BLE_SERVER_CONNECTION.setCreateAddServiceTaskBluetoothGattServiceList(bluetoothGattServiceList);
@@ -6320,7 +6182,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(LANGUAGE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(language.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6367,7 +6228,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(LANGUAGE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(language.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6414,7 +6274,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(LANGUAGE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(language.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6463,7 +6322,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(LANGUAGE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(language.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6543,12 +6401,10 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(new byte[0], bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -6600,12 +6456,10 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(new byte[0], bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -6657,7 +6511,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(new byte[0], bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNull(bluetoothGattDescriptor);
     }
@@ -6736,7 +6589,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(USER_INDEX_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(new byte[0], bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6783,7 +6635,6 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(USER_INDEX_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(new byte[0], bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6860,12 +6711,10 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(REGISTERED_USER_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
         assertEquals(0, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(new byte[0], bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -6916,12 +6765,10 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(REGISTERED_USER_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
         assertEquals(0, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(new byte[0], bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -7041,12 +6888,10 @@ public class UserDataServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(USER_CONTROL_POINT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_INDICATE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(new byte[0], bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test

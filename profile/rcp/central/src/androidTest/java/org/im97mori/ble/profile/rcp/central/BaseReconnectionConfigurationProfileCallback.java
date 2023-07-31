@@ -267,6 +267,11 @@ public class BaseReconnectionConfigurationProfileCallback implements Reconnectio
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+
+    }
+
+    @Override
     public void onBondManagementControlPointWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull BondManagementControlPointAndroid bondManagementControlPointAndroid, @Nullable Bundle argument) {
 
     }

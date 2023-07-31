@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a1e;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -14,7 +13,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -40,10 +38,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_NOT_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -65,10 +60,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_FAHRENHEIT
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_NOT_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -90,10 +82,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_NOT_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -121,10 +110,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -158,10 +144,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -195,10 +178,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -232,10 +212,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -269,10 +246,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -306,10 +280,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -343,10 +314,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -380,10 +348,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -417,10 +382,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -454,10 +416,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -491,10 +450,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -528,10 +484,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -565,10 +518,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -595,10 +545,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_NOT_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_NOT_PRESENT, result1.getFlags());
@@ -620,10 +567,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_ARMPIT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_NOT_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_PRESENT, result1.getFlags());
@@ -655,10 +599,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_BODY_GENERAL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_NOT_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_PRESENT, result1.getFlags());
@@ -690,10 +631,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_EAR_USUALLY_EAR_LOBE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_NOT_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_PRESENT, result1.getFlags());
@@ -725,10 +663,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_FINGER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_NOT_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_PRESENT, result1.getFlags());
@@ -760,10 +695,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_GASTRO_INTESTINAL_TRACT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_NOT_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_PRESENT, result1.getFlags());
@@ -795,10 +727,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_MOUTH;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_NOT_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_PRESENT, result1.getFlags());
@@ -830,10 +759,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_RECTUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_NOT_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_PRESENT, result1.getFlags());
@@ -865,10 +791,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_TOE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_NOT_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_PRESENT, result1.getFlags());
@@ -900,10 +823,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_TYMPANUM_EAR_DRUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertEquals(TemperatureMeasurementUtils.FLAGS_TEMPERATURE_UNITS_CELSIUS
                 | TemperatureMeasurementUtils.FLAGS_TIME_STAMP_NOT_PRESENT
                 | TemperatureMeasurementUtils.FLAGS_TEMPERATURE_TYPE_PRESENT, result1.getFlags());
@@ -986,10 +906,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1019,10 +936,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1052,10 +966,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1092,10 +1003,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1132,10 +1040,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1172,10 +1077,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1212,10 +1114,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1252,10 +1151,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1292,10 +1188,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1332,10 +1225,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1372,10 +1262,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1412,10 +1299,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1452,10 +1336,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1492,10 +1373,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1532,10 +1410,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1572,10 +1447,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1605,10 +1477,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1639,10 +1508,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_ARMPIT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1673,10 +1539,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_BODY_GENERAL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1707,10 +1570,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_EAR_USUALLY_EAR_LOBE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1741,10 +1601,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_FINGER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1775,10 +1632,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_GASTRO_INTESTINAL_TRACT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1809,10 +1663,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_MOUTH;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1843,10 +1694,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_RECTUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1877,10 +1725,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_TOE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1911,10 +1756,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_TYMPANUM_EAR_DRUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1944,10 +1786,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1964,10 +1803,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1984,10 +1820,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2011,10 +1844,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2038,10 +1868,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2065,10 +1892,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2092,10 +1916,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2119,10 +1940,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2146,10 +1964,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2173,10 +1988,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2200,10 +2012,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2227,10 +2036,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2254,10 +2060,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2281,10 +2084,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2308,10 +2108,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2335,10 +2132,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2355,10 +2149,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2376,10 +2167,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_ARMPIT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2397,10 +2185,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_BODY_GENERAL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2418,10 +2203,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_EAR_USUALLY_EAR_LOBE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2439,10 +2221,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_FINGER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2460,10 +2239,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_GASTRO_INTESTINAL_TRACT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2481,10 +2257,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_MOUTH;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2502,10 +2275,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_RECTUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2523,10 +2293,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_TOE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2544,10 +2311,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_TYMPANUM_EAR_DRUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2564,10 +2328,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2585,10 +2346,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2606,10 +2364,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2634,10 +2389,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2662,10 +2414,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2690,10 +2439,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2718,10 +2464,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2746,10 +2489,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2774,10 +2514,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2802,10 +2539,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2830,10 +2564,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2858,10 +2589,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2886,10 +2614,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2914,10 +2639,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2942,10 +2664,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2970,10 +2689,7 @@ public class IntermediateTemperatureAndroidTest {
         data[11] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2991,10 +2707,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 4] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3013,10 +2726,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_ARMPIT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3035,10 +2745,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_BODY_GENERAL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3057,10 +2764,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_EAR_USUALLY_EAR_LOBE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3079,10 +2783,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_FINGER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3101,10 +2802,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_GASTRO_INTESTINAL_TRACT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3123,10 +2821,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_MOUTH;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3145,10 +2840,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_RECTUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3167,10 +2859,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_TOE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3189,10 +2878,7 @@ public class IntermediateTemperatureAndroidTest {
         data[ 5] = TemperatureTypeUtils.TEMPERATURE_TEXT_DESCRIPTION_TYPE_TYMPANUM_EAR_DRUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(bluetoothGattCharacteristic);
+        IntermediateTemperatureAndroid result1 = new IntermediateTemperatureAndroid(data);
         IntermediateTemperatureAndroid result2 = IntermediateTemperatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

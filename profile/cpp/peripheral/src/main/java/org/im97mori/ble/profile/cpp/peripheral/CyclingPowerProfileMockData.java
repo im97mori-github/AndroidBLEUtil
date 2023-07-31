@@ -1,5 +1,6 @@
 package org.im97mori.ble.profile.cpp.peripheral;
 
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,9 @@ public class CyclingPowerProfileMockData extends MockData {
          */
         @Override
         @NonNull
+        @Deprecated
         public CyclingPowerProfileMockData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new CyclingPowerProfileMockData(in);
         }
 
@@ -89,10 +92,16 @@ public class CyclingPowerProfileMockData extends MockData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public CyclingPowerProfileMockData(@NonNull Parcel in) {
         super(in);
-        cyclingPower = in.readParcelable(this.getClass().getClassLoader());
-        deviceInformation = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            cyclingPower = in.readParcelable(this.getClass().getClassLoader(), CyclingPowerServiceData.class);
+            deviceInformation = in.readParcelable(this.getClass().getClassLoader(), ServiceData.class);
+        } else {
+            cyclingPower = in.readParcelable(this.getClass().getClassLoader());
+            deviceInformation = in.readParcelable(this.getClass().getClassLoader());
+        }
         batteryList = in.createTypedArrayList(ServiceData.CREATOR);
     }
 

@@ -394,6 +394,11 @@ public class FmpCallbackSample extends FindMeProfileMockCallback implements Find
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }

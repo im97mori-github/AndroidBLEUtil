@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_8_IN_A_PERIOD_OF_DAY_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Temperature 8 In A Period Of Day (Characteristics UUID: 0x2B0E)
@@ -44,9 +44,7 @@ public class Temperature8InAPeriodOfDayAndroid extends Temperature8InAPeriodOfDa
          */
         @NonNull
         public Temperature8InAPeriodOfDayAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_8_IN_A_PERIOD_OF_DAY_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new Temperature8InAPeriodOfDayAndroid(bluetoothGattCharacteristic);
+            return new Temperature8InAPeriodOfDayAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class Temperature8InAPeriodOfDayAndroid extends Temperature8InAPeriodOfDa
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B0E
      */
+    @Deprecated
     public Temperature8InAPeriodOfDayAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public Temperature8InAPeriodOfDayAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class Temperature8InAPeriodOfDayAndroid extends Temperature8InAPeriodOfDa
      * @param in Parcel
      */
     private Temperature8InAPeriodOfDayAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

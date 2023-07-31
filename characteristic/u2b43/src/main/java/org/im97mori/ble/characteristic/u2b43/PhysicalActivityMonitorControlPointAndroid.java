@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.PHYSICAL_ACTIVITY_MONITOR_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Physical Activity Monitor Control Point (Characteristics UUID: 0x2B43)
@@ -45,9 +45,7 @@ public class PhysicalActivityMonitorControlPointAndroid extends PhysicalActivity
          */
         @NonNull
         public PhysicalActivityMonitorControlPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PHYSICAL_ACTIVITY_MONITOR_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new PhysicalActivityMonitorControlPointAndroid(bluetoothGattCharacteristic);
+            return new PhysicalActivityMonitorControlPointAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class PhysicalActivityMonitorControlPointAndroid extends PhysicalActivity
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B43
      */
+    @Deprecated
     public PhysicalActivityMonitorControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public PhysicalActivityMonitorControlPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class PhysicalActivityMonitorControlPointAndroid extends PhysicalActivity
      * @param in Parcel
      */
     private PhysicalActivityMonitorControlPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

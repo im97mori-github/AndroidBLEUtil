@@ -366,6 +366,11 @@ public class AiopCallbackSample implements AutomationIOProfileCallback {
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onDigitalReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull DigitalAndroid digitalAndroid, @Nullable Bundle argument) {
         callback(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, index, Arrays.toString(digitalAndroid.getDigital()));
     }

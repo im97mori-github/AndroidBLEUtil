@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a65;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -36,9 +34,9 @@ public class CyclingPowerFeatureAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -65,10 +63,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeaturePedalPowerBalanceNotSupported());
         assertFalse(result1.isCyclingPowerFeaturePedalPowerBalanceSupported());
@@ -91,10 +86,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeaturePedalPowerBalanceNotSupported());
         assertTrue(result1.isCyclingPowerFeaturePedalPowerBalanceSupported());
@@ -117,10 +109,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureAccumulatedTorqueNotSupported());
         assertFalse(result1.isCyclingPowerFeatureAccumulatedTorqueSupported());
@@ -143,10 +132,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureAccumulatedTorqueNotSupported());
         assertTrue(result1.isCyclingPowerFeatureAccumulatedTorqueSupported());
@@ -169,10 +155,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureWheelRevolutionDataNotSupported());
         assertFalse(result1.isCyclingPowerFeatureWheelRevolutionDataSupported());
@@ -195,10 +178,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureWheelRevolutionDataNotSupported());
         assertTrue(result1.isCyclingPowerFeatureWheelRevolutionDataSupported());
@@ -221,10 +201,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureCrankRevolutionDataNotSupported());
         assertFalse(result1.isCyclingPowerFeatureCrankRevolutionDataSupported());
@@ -247,10 +224,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureCrankRevolutionDataNotSupported());
         assertTrue(result1.isCyclingPowerFeatureCrankRevolutionDataSupported());
@@ -273,10 +247,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureExtremeMagnitudesNotSupported());
         assertFalse(result1.isCyclingPowerFeatureExtremeMagnitudesSupported());
@@ -299,10 +270,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureExtremeMagnitudesNotSupported());
         assertTrue(result1.isCyclingPowerFeatureExtremeMagnitudesSupported());
@@ -325,10 +293,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureExtremeAnglesNotSupported());
         assertFalse(result1.isCyclingPowerFeatureExtremeAnglesSupported());
@@ -352,10 +317,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureExtremeAnglesNotSupported());
         assertTrue(result1.isCyclingPowerFeatureExtremeAnglesSupported());
@@ -378,10 +340,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureTopAndBottomDeadSpotAnglesNotSupported());
         assertFalse(result1.isCyclingPowerFeatureTopAndBottomDeadSpotAnglesSupported());
@@ -404,10 +363,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureTopAndBottomDeadSpotAnglesNotSupported());
         assertTrue(result1.isCyclingPowerFeatureTopAndBottomDeadSpotAnglesSupported());
@@ -430,10 +386,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureAccumulatedEnergyNotSupported());
         assertFalse(result1.isCyclingPowerFeatureAccumulatedEnergySupported());
@@ -456,10 +409,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureAccumulatedEnergyNotSupported());
         assertTrue(result1.isCyclingPowerFeatureAccumulatedEnergySupported());
@@ -482,10 +432,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureOffsetCompensationIndicatorNotSupported());
         assertFalse(result1.isCyclingPowerFeatureOffsetCompensationIndicatorSupported());
@@ -508,10 +455,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureOffsetCompensationIndicatorNotSupported());
         assertTrue(result1.isCyclingPowerFeatureOffsetCompensationIndicatorSupported());
@@ -534,10 +478,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureOffsetCompensationNotSupported());
         assertFalse(result1.isCyclingPowerFeatureOffsetCompensationSupported());
@@ -560,10 +501,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureOffsetCompensationNotSupported());
         assertTrue(result1.isCyclingPowerFeatureOffsetCompensationSupported());
@@ -586,10 +524,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureCyclingPowerMeasurementCharacteristicContentMaskingNotSupported());
         assertFalse(result1.isCyclingPowerFeatureCyclingPowerMeasurementCharacteristicContentMaskingSupported());
@@ -612,10 +547,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureCyclingPowerMeasurementCharacteristicContentMaskingNotSupported());
         assertTrue(result1.isCyclingPowerFeatureCyclingPowerMeasurementCharacteristicContentMaskingSupported());
@@ -638,10 +570,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureCyclingMultipleSensorLocationsNotSupported());
         assertFalse(result1.isCyclingPowerFeatureCyclingMultipleSensorLocationsSupported());
@@ -664,10 +593,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureCyclingMultipleSensorLocationsNotSupported());
         assertTrue(result1.isCyclingPowerFeatureCyclingMultipleSensorLocationsSupported());
@@ -690,10 +616,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureCrankLengthAdjustmentNotSupported());
         assertFalse(result1.isCyclingPowerFeatureCrankLengthAdjustmentSupported());
@@ -716,10 +639,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureCrankLengthAdjustmentNotSupported());
         assertTrue(result1.isCyclingPowerFeatureCrankLengthAdjustmentSupported());
@@ -742,10 +662,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureChainLengthAdjustmentNotSupported());
         assertFalse(result1.isCyclingPowerFeatureChainLengthAdjustmentSupported());
@@ -768,10 +685,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureChainLengthAdjustmentNotSupported());
         assertTrue(result1.isCyclingPowerFeatureChainLengthAdjustmentSupported());
@@ -794,10 +708,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureChainWeightAdjustmentNotSupported());
         assertFalse(result1.isCyclingPowerFeatureChainWeightAdjustmentSupported());
@@ -820,10 +731,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureChainWeightAdjustmentNotSupported());
         assertTrue(result1.isCyclingPowerFeatureChainWeightAdjustmentSupported());
@@ -846,10 +754,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureSpanLengthAdjustmentNotSupported());
         assertFalse(result1.isCyclingPowerFeatureSpanLengthAdjustmentSupported());
@@ -872,10 +777,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureSpanLengthAdjustmentNotSupported());
         assertTrue(result1.isCyclingPowerFeatureSpanLengthAdjustmentSupported());
@@ -898,10 +800,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureSensorMeasurementContextForceBased());
         assertFalse(result1.isCyclingPowerFeatureSensorMeasurementContextTorqueBased());
@@ -924,10 +823,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureSensorMeasurementContextForceBased());
         assertTrue(result1.isCyclingPowerFeatureSensorMeasurementContextTorqueBased());
@@ -950,10 +846,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureInstantaneousMeasurementDirectionNotSupported());
         assertFalse(result1.isCyclingPowerFeatureInstantaneousMeasurementDirectionSupported());
@@ -976,10 +869,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureInstantaneousMeasurementDirectionNotSupported());
         assertTrue(result1.isCyclingPowerFeatureInstantaneousMeasurementDirectionSupported());
@@ -1002,10 +892,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureFactoryCalibrationDateNotSupported());
         assertFalse(result1.isCyclingPowerFeatureFactoryCalibrationDateSupported());
@@ -1028,10 +915,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureFactoryCalibrationDateNotSupported());
         assertTrue(result1.isCyclingPowerFeatureFactoryCalibrationDateSupported());
@@ -1054,10 +938,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureEnhancedOffsetCompensationNotSupported());
         assertFalse(result1.isCyclingPowerFeatureEnhancedOffsetCompensationSupported());
@@ -1080,10 +961,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_01902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureEnhancedOffsetCompensationNotSupported());
         assertTrue(result1.isCyclingPowerFeatureEnhancedOffsetCompensationSupported());
@@ -1106,10 +984,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_02001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertTrue(result1.isCyclingPowerFeatureCyclingPowerDistributeSystemSupportUnspecified());
         assertFalse(result1.isCyclingPowerFeatureCyclingPowerDistributeSystemSupportNotForUse());
@@ -1133,10 +1008,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_02002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureCyclingPowerDistributeSystemSupportUnspecified());
         assertTrue(result1.isCyclingPowerFeatureCyclingPowerDistributeSystemSupportNotForUse());
@@ -1161,10 +1033,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_constructor_02003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getCyclingPowerFeature());
         assertFalse(result1.isCyclingPowerFeatureCyclingPowerDistributeSystemSupportUnspecified());
         assertFalse(result1.isCyclingPowerFeatureCyclingPowerDistributeSystemSupportNotForUse());
@@ -1175,10 +1044,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1190,10 +1056,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1205,10 +1068,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1220,10 +1080,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1235,10 +1092,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1250,10 +1104,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1265,10 +1116,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1280,10 +1128,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1295,10 +1140,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1310,10 +1152,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1325,10 +1164,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1341,10 +1177,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1356,10 +1189,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1371,10 +1201,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1386,10 +1213,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1401,10 +1225,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1416,10 +1237,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1431,10 +1249,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1446,10 +1261,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1461,10 +1273,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1476,10 +1285,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1491,10 +1297,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1506,10 +1309,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1521,10 +1321,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1536,10 +1333,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1551,10 +1345,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1566,10 +1357,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1581,10 +1369,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1596,10 +1381,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1611,10 +1393,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1626,10 +1405,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1641,10 +1417,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1656,10 +1429,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1671,10 +1441,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1686,10 +1453,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1701,10 +1465,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1716,10 +1477,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1731,10 +1489,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1746,10 +1501,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1761,10 +1513,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_01902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1776,10 +1525,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_02001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1791,10 +1537,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_02002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1806,10 +1549,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_1_02003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1821,10 +1561,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1832,10 +1569,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1843,10 +1577,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1854,10 +1585,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1865,10 +1593,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1876,10 +1601,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1887,10 +1609,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1898,10 +1617,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1909,10 +1625,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1920,10 +1633,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1931,10 +1641,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
 
     }
@@ -1943,10 +1650,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1954,10 +1658,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1965,10 +1666,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1976,10 +1674,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1987,10 +1682,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1998,10 +1690,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2009,10 +1698,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2020,10 +1706,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2031,10 +1714,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2042,10 +1722,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2053,10 +1730,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2064,10 +1738,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2075,10 +1746,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2086,10 +1754,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2097,10 +1762,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2108,10 +1770,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2119,10 +1778,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2130,10 +1786,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2141,10 +1794,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2152,10 +1802,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2163,10 +1810,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2174,10 +1818,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2185,10 +1826,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2196,10 +1834,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2207,10 +1842,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2218,10 +1850,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2229,10 +1858,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2240,10 +1866,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2251,10 +1874,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_01902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2262,10 +1882,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_02001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2273,10 +1890,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_02002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2284,10 +1898,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_2_02003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2295,10 +1906,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2307,10 +1915,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2319,10 +1924,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2331,10 +1933,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2343,10 +1942,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2355,10 +1951,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2367,10 +1960,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2379,10 +1969,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2391,10 +1978,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2403,10 +1987,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2415,10 +1996,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2427,10 +2005,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2439,10 +2014,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2451,10 +2023,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2463,10 +2032,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2475,10 +2041,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2487,10 +2050,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2499,10 +2059,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2511,10 +2068,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2523,10 +2077,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2535,10 +2086,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2547,10 +2095,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2559,10 +2104,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2571,10 +2113,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2583,10 +2122,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2595,10 +2131,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2607,10 +2140,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2619,10 +2149,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2631,10 +2158,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2643,10 +2167,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2655,10 +2176,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2667,10 +2185,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2679,10 +2194,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2691,10 +2203,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2703,10 +2212,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2715,10 +2221,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2727,10 +2230,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2739,10 +2239,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2751,10 +2248,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2763,10 +2257,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_01902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2775,10 +2266,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_02001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2787,10 +2275,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_02002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2799,10 +2284,7 @@ public class CyclingPowerFeatureAndroidTest {
     public void test_parcelable_3_02003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(bluetoothGattCharacteristic);
+        CyclingPowerFeatureAndroid result1 = new CyclingPowerFeatureAndroid(data);
         CyclingPowerFeatureAndroid result2 = CyclingPowerFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

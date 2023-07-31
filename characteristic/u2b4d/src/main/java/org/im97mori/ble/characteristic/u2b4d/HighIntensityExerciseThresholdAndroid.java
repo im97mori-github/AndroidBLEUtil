@@ -1,7 +1,5 @@
 package org.im97mori.ble.characteristic.u2b4d;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.HIGH_INTENSITY_EXERCISE_THRESHOLD_CHARACTERISTIC;
-
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,6 +7,8 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
+
+import java.util.Objects;
 
 /**
  * High Intensity Exercise Threshold (Characteristics UUID: 0x2B4D)
@@ -44,9 +44,7 @@ public class HighIntensityExerciseThresholdAndroid extends HighIntensityExercise
          */
         @NonNull
         public HighIntensityExerciseThresholdAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(HIGH_INTENSITY_EXERCISE_THRESHOLD_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new HighIntensityExerciseThresholdAndroid(bluetoothGattCharacteristic);
+            return new HighIntensityExerciseThresholdAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class HighIntensityExerciseThresholdAndroid extends HighIntensityExercise
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B4D
      */
+    @Deprecated
     public HighIntensityExerciseThresholdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public HighIntensityExerciseThresholdAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -83,8 +91,7 @@ public class HighIntensityExerciseThresholdAndroid extends HighIntensityExercise
      * @param in Parcel
      */
     private HighIntensityExerciseThresholdAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

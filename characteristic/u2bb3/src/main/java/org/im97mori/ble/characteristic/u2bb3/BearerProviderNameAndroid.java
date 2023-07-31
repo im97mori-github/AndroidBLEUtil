@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BEARER_PROVIDER_NAME_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Bearer Provider Name (Characteristics UUID: 0x2BB3)
@@ -45,9 +45,7 @@ public class BearerProviderNameAndroid extends BearerProviderName implements Par
          */
         @NonNull
         public BearerProviderNameAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BEARER_PROVIDER_NAME_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BearerProviderNameAndroid(bluetoothGattCharacteristic);
+            return new BearerProviderNameAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BearerProviderNameAndroid extends BearerProviderName implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BB3
      */
+    @Deprecated
     public BearerProviderNameAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BearerProviderNameAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class BearerProviderNameAndroid extends BearerProviderName implements Par
      * @param in Parcel
      */
     private BearerProviderNameAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

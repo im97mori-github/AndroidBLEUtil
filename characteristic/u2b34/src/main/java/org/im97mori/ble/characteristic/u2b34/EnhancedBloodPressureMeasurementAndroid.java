@@ -1,7 +1,5 @@
 package org.im97mori.ble.characteristic.u2b34;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ENHANCED_BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC;
-
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,6 +8,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
+
+import java.util.Objects;
 
 /**
  * Enhanced Blood Pressure Measurement (Characteristics UUID: 0x2B34)
@@ -45,9 +45,7 @@ public class EnhancedBloodPressureMeasurementAndroid extends EnhancedBloodPressu
          */
         @NonNull
         public EnhancedBloodPressureMeasurementAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ENHANCED_BLOOD_PRESSURE_MEASUREMENT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new EnhancedBloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+            return new EnhancedBloodPressureMeasurementAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class EnhancedBloodPressureMeasurementAndroid extends EnhancedBloodPressu
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B34
      */
+    @Deprecated
     public EnhancedBloodPressureMeasurementAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public EnhancedBloodPressureMeasurementAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -139,8 +147,7 @@ public class EnhancedBloodPressureMeasurementAndroid extends EnhancedBloodPressu
      * @param in Parcel
      */
     private EnhancedBloodPressureMeasurementAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -48,7 +48,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class UserDataServiceDataTest_constructor {
+public class UserDataServiceDataConstructorTest {
 
     @Test
     public void test_constructor_00001() {

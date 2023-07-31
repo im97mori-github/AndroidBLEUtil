@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR;
+import java.util.Objects;
 
 /**
  * Characteristic Extended Properties (Descriptor UUID: 0x2900)
@@ -42,9 +42,7 @@ public class CharacteristicExtendedPropertiesAndroid extends CharacteristicExten
          */
         @NonNull
         public CharacteristicExtendedPropertiesAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, 0);
-            bluetoothGattDescriptor.setValue(values);
-            return new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+            return new CharacteristicExtendedPropertiesAndroid(values);
         }
 
     };
@@ -54,8 +52,18 @@ public class CharacteristicExtendedPropertiesAndroid extends CharacteristicExten
      *
      * @param bluetoothGattDescriptor Characteristics UUID: 0x2900
      */
+    @Deprecated
     public CharacteristicExtendedPropertiesAndroid(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         super(bluetoothGattDescriptor.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattDescriptor#getValue()">BluetoothGattDescriptor#getValue()</a>
+     */
+    public CharacteristicExtendedPropertiesAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -74,8 +82,7 @@ public class CharacteristicExtendedPropertiesAndroid extends CharacteristicExten
      * @param in Parcel
      */
     private CharacteristicExtendedPropertiesAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

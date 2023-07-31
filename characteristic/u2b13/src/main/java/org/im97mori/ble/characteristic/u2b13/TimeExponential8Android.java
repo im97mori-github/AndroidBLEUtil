@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_EXPONENTIAL_8_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Time Exponential 8 (Characteristics UUID: 0x2B13)
@@ -44,9 +44,7 @@ public class TimeExponential8Android extends TimeExponential8 implements Parcela
          */
         @NonNull
         public TimeExponential8Android createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TIME_EXPONENTIAL_8_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TimeExponential8Android(bluetoothGattCharacteristic);
+            return new TimeExponential8Android(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class TimeExponential8Android extends TimeExponential8 implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B13
      */
+    @Deprecated
     public TimeExponential8Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TimeExponential8Android(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class TimeExponential8Android extends TimeExponential8 implements Parcela
      * @param in Parcel
      */
     private TimeExponential8Android(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

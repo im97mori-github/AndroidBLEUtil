@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SEDENTARY_INTERVAL_NOTIFICATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Sedentary Interval Notification (Characteristics UUID: 0x2B4F)
@@ -44,9 +44,7 @@ public class SedentaryIntervalNotificationAndroid extends SedentaryIntervalNotif
          */
         @NonNull
         public SedentaryIntervalNotificationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SEDENTARY_INTERVAL_NOTIFICATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new SedentaryIntervalNotificationAndroid(bluetoothGattCharacteristic);
+            return new SedentaryIntervalNotificationAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class SedentaryIntervalNotificationAndroid extends SedentaryIntervalNotif
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B4F
      */
+    @Deprecated
     public SedentaryIntervalNotificationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public SedentaryIntervalNotificationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class SedentaryIntervalNotificationAndroid extends SedentaryIntervalNotif
      * @param in Parcel
      */
     private SedentaryIntervalNotificationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

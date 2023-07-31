@@ -763,6 +763,14 @@ public abstract class AbstractCentralProfile implements FilteredScanCallbackInte
     }
 
     /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        // do nothing
+    }
+
+    /**
      * @see GenericAccessService#isDeviceNameCharacteristicWritable()
      */
     @Nullable

@@ -1,10 +1,8 @@
 package org.im97mori.ble.characteristic.u2abe;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -48,10 +46,7 @@ public class ObjectNameAndroidTest extends TestBase {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
+        ObjectNameAndroid result1 = new ObjectNameAndroid(data);
         assertEquals("0", result1.getObjectName());
     }
 
@@ -59,10 +54,7 @@ public class ObjectNameAndroidTest extends TestBase {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
+        ObjectNameAndroid result1 = new ObjectNameAndroid(data);
         assertEquals(
                 "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
                 result1.getObjectName());
@@ -72,10 +64,7 @@ public class ObjectNameAndroidTest extends TestBase {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
+        ObjectNameAndroid result1 = new ObjectNameAndroid(data);
         assertEquals(
                 "012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
                 result1.getObjectName());
@@ -111,10 +100,7 @@ public class ObjectNameAndroidTest extends TestBase {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
+        ObjectNameAndroid result1 = new ObjectNameAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -126,10 +112,7 @@ public class ObjectNameAndroidTest extends TestBase {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
+        ObjectNameAndroid result1 = new ObjectNameAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -141,10 +124,7 @@ public class ObjectNameAndroidTest extends TestBase {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
+        ObjectNameAndroid result1 = new ObjectNameAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -156,10 +136,7 @@ public class ObjectNameAndroidTest extends TestBase {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
+        ObjectNameAndroid result1 = new ObjectNameAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -167,10 +144,7 @@ public class ObjectNameAndroidTest extends TestBase {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
+        ObjectNameAndroid result1 = new ObjectNameAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -178,10 +152,7 @@ public class ObjectNameAndroidTest extends TestBase {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
+        ObjectNameAndroid result1 = new ObjectNameAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, ObjectName.MAX_OCTETS), result1.getBytes());
     }
 
@@ -189,10 +160,7 @@ public class ObjectNameAndroidTest extends TestBase {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
+        ObjectNameAndroid result1 = new ObjectNameAndroid(data);
         ObjectNameAndroid result2 = ObjectNameAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -201,10 +169,7 @@ public class ObjectNameAndroidTest extends TestBase {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
+        ObjectNameAndroid result1 = new ObjectNameAndroid(data);
         ObjectNameAndroid result2 = ObjectNameAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -213,10 +178,7 @@ public class ObjectNameAndroidTest extends TestBase {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectNameAndroid result1 = new ObjectNameAndroid(bluetoothGattCharacteristic);
+        ObjectNameAndroid result1 = new ObjectNameAndroid(data);
         ObjectNameAndroid result2 = ObjectNameAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

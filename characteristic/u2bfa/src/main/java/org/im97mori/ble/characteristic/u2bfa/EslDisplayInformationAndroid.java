@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ESL_DISPLAY_INFORMATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * ESL Display Information (Characteristics UUID: 0x2BFA)
@@ -45,9 +45,7 @@ public class EslDisplayInformationAndroid extends EslDisplayInformation implemen
          */
         @NonNull
         public EslDisplayInformationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ESL_DISPLAY_INFORMATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new EslDisplayInformationAndroid(bluetoothGattCharacteristic);
+            return new EslDisplayInformationAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class EslDisplayInformationAndroid extends EslDisplayInformation implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BFA
      */
+    @Deprecated
     public EslDisplayInformationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public EslDisplayInformationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class EslDisplayInformationAndroid extends EslDisplayInformation implemen
      * @param in Parcel
      */
     private EslDisplayInformationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

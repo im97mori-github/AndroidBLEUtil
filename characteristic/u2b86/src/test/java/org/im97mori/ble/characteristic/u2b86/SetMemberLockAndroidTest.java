@@ -1,12 +1,10 @@
 package org.im97mori.ble.characteristic.u2b86;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -45,10 +43,7 @@ public class SetMemberLockAndroidTest extends TestBase {
 	public void test_constructor_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetMemberLockAndroid result1 = new SetMemberLockAndroid(bluetoothGattCharacteristic);
+		SetMemberLockAndroid result1 = new SetMemberLockAndroid(data);
 		assertEquals(BLEUtils.createUInt8(data, 0), result1.getSetMemberLock());
 		assertTrue(result1.isSetMemberLockUnlocked());
 		assertFalse(result1.isSetMemberLockLocked());
@@ -58,10 +53,7 @@ public class SetMemberLockAndroidTest extends TestBase {
 	public void test_constructor_00002() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetMemberLockAndroid result1 = new SetMemberLockAndroid(bluetoothGattCharacteristic);
+		SetMemberLockAndroid result1 = new SetMemberLockAndroid(data);
 		assertEquals(BLEUtils.createUInt8(data, 0), result1.getSetMemberLock());
 		assertFalse(result1.isSetMemberLockUnlocked());
 		assertTrue(result1.isSetMemberLockLocked());
@@ -91,10 +83,7 @@ public class SetMemberLockAndroidTest extends TestBase {
 	public void test_parcelable_1_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetMemberLockAndroid result1 = new SetMemberLockAndroid(bluetoothGattCharacteristic);
+		SetMemberLockAndroid result1 = new SetMemberLockAndroid(data);
 		Parcel parcel = Parcel.obtain();
 		result1.writeToParcel(parcel, 0);
 		parcel.setDataPosition(0);
@@ -106,10 +95,7 @@ public class SetMemberLockAndroidTest extends TestBase {
 	public void test_parcelable_1_00002() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetMemberLockAndroid result1 = new SetMemberLockAndroid(bluetoothGattCharacteristic);
+		SetMemberLockAndroid result1 = new SetMemberLockAndroid(data);
 		Parcel parcel = Parcel.obtain();
 		result1.writeToParcel(parcel, 0);
 		parcel.setDataPosition(0);
@@ -121,10 +107,7 @@ public class SetMemberLockAndroidTest extends TestBase {
 	public void test_parcelable_2_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetMemberLockAndroid result1 = new SetMemberLockAndroid(bluetoothGattCharacteristic);
+		SetMemberLockAndroid result1 = new SetMemberLockAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -132,10 +115,7 @@ public class SetMemberLockAndroidTest extends TestBase {
 	public void test_parcelable_2_00002() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetMemberLockAndroid result1 = new SetMemberLockAndroid(bluetoothGattCharacteristic);
+		SetMemberLockAndroid result1 = new SetMemberLockAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -143,10 +123,7 @@ public class SetMemberLockAndroidTest extends TestBase {
 	public void test_parcelable_3_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetMemberLockAndroid result1 = new SetMemberLockAndroid(bluetoothGattCharacteristic);
+		SetMemberLockAndroid result1 = new SetMemberLockAndroid(data);
 		SetMemberLockAndroid result2 = SetMemberLockAndroid.CREATOR.createFromByteArray(data);
 		assertArrayEquals(result1.getBytes(), result2.getBytes());
 	}
@@ -155,10 +132,7 @@ public class SetMemberLockAndroidTest extends TestBase {
 	public void test_parcelable_3_00002() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetMemberLockAndroid result1 = new SetMemberLockAndroid(bluetoothGattCharacteristic);
+		SetMemberLockAndroid result1 = new SetMemberLockAndroid(data);
 		SetMemberLockAndroid result2 = SetMemberLockAndroid.CREATOR.createFromByteArray(data);
 		assertArrayEquals(result1.getBytes(), result2.getBytes());
 	}

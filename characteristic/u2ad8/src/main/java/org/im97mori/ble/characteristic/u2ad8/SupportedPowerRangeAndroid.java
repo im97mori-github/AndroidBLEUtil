@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_POWER_RANGE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Supported Power Range (Characteristics UUID: 0x2AD8)
@@ -44,9 +44,7 @@ public class SupportedPowerRangeAndroid extends SupportedPowerRange implements P
          */
         @NonNull
         public SupportedPowerRangeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SUPPORTED_POWER_RANGE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new SupportedPowerRangeAndroid(bluetoothGattCharacteristic);
+            return new SupportedPowerRangeAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class SupportedPowerRangeAndroid extends SupportedPowerRange implements P
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AD8
      */
+    @Deprecated
     public SupportedPowerRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public SupportedPowerRangeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class SupportedPowerRangeAndroid extends SupportedPowerRange implements P
      * @param in Parcel
      */
     private SupportedPowerRangeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

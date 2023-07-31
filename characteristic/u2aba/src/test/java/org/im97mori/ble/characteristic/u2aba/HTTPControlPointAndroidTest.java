@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2aba;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -117,9 +115,9 @@ public class HTTPControlPointAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -133,10 +131,7 @@ public class HTTPControlPointAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertEquals(HTTPControlPoint.OP_CODE_HTTP_GET_REQUEST, result1.getOpCode());
         assertTrue(result1.isOpCodeHttpGetRequest());
         assertFalse(result1.isOpCodeHttpHeadRequest());
@@ -155,10 +150,7 @@ public class HTTPControlPointAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertEquals(HTTPControlPoint.OP_CODE_HTTP_HEAD_REQUEST, result1.getOpCode());
         assertFalse(result1.isOpCodeHttpGetRequest());
         assertTrue(result1.isOpCodeHttpHeadRequest());
@@ -177,10 +169,7 @@ public class HTTPControlPointAndroidTest {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertEquals(HTTPControlPoint.OP_CODE_HTTP_POST_REQUEST, result1.getOpCode());
         assertFalse(result1.isOpCodeHttpGetRequest());
         assertFalse(result1.isOpCodeHttpHeadRequest());
@@ -199,10 +188,7 @@ public class HTTPControlPointAndroidTest {
     public void test_constructor_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertEquals(HTTPControlPoint.OP_CODE_HTTP_PUT_REQUEST, result1.getOpCode());
         assertFalse(result1.isOpCodeHttpGetRequest());
         assertFalse(result1.isOpCodeHttpHeadRequest());
@@ -221,10 +207,7 @@ public class HTTPControlPointAndroidTest {
     public void test_constructor_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertEquals(HTTPControlPoint.OP_CODE_HTTP_DELETE_REQUEST, result1.getOpCode());
         assertFalse(result1.isOpCodeHttpGetRequest());
         assertFalse(result1.isOpCodeHttpHeadRequest());
@@ -243,10 +226,7 @@ public class HTTPControlPointAndroidTest {
     public void test_constructor_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertEquals(HTTPControlPoint.OP_CODE_HTTPS_GET_REQUEST, result1.getOpCode());
         assertFalse(result1.isOpCodeHttpGetRequest());
         assertFalse(result1.isOpCodeHttpHeadRequest());
@@ -265,10 +245,7 @@ public class HTTPControlPointAndroidTest {
     public void test_constructor_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertEquals(HTTPControlPoint.OP_CODE_HTTPS_HEAD_REQUEST, result1.getOpCode());
         assertFalse(result1.isOpCodeHttpGetRequest());
         assertFalse(result1.isOpCodeHttpHeadRequest());
@@ -287,10 +264,7 @@ public class HTTPControlPointAndroidTest {
     public void test_constructor_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertEquals(HTTPControlPoint.OP_CODE_HTTPS_POST_REQUEST, result1.getOpCode());
         assertFalse(result1.isOpCodeHttpGetRequest());
         assertFalse(result1.isOpCodeHttpHeadRequest());
@@ -309,10 +283,7 @@ public class HTTPControlPointAndroidTest {
     public void test_constructor_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertEquals(HTTPControlPoint.OP_CODE_HTTPS_PUT_REQUEST, result1.getOpCode());
         assertFalse(result1.isOpCodeHttpGetRequest());
         assertFalse(result1.isOpCodeHttpHeadRequest());
@@ -331,10 +302,7 @@ public class HTTPControlPointAndroidTest {
     public void test_constructor_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertEquals(HTTPControlPoint.OP_CODE_HTTPS_DELETE_REQUEST, result1.getOpCode());
         assertFalse(result1.isOpCodeHttpGetRequest());
         assertFalse(result1.isOpCodeHttpHeadRequest());
@@ -353,10 +321,7 @@ public class HTTPControlPointAndroidTest {
     public void test_constructor_00011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertEquals(HTTPControlPoint.OP_CODE_HTTP_REQUEST_CANCEL, result1.getOpCode());
         assertFalse(result1.isOpCodeHttpGetRequest());
         assertFalse(result1.isOpCodeHttpHeadRequest());
@@ -383,10 +348,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -398,10 +360,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -413,10 +372,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -428,10 +384,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_1_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -443,10 +396,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_1_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -458,10 +408,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_1_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -473,10 +420,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_1_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -488,10 +432,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_1_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -503,10 +444,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_1_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -518,10 +456,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_1_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -533,10 +468,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_1_00011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -548,10 +480,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -559,10 +488,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -570,10 +496,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -581,10 +504,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_2_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -592,10 +512,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_2_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -603,10 +520,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_2_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -614,10 +528,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_2_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -625,10 +536,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_2_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -636,10 +544,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_2_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -647,10 +552,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_2_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -658,10 +560,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_2_00011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -669,10 +568,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         HTTPControlPointAndroid result2 = HTTPControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -681,10 +577,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         HTTPControlPointAndroid result2 = HTTPControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -693,10 +586,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         HTTPControlPointAndroid result2 = HTTPControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -705,10 +595,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_3_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         HTTPControlPointAndroid result2 = HTTPControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -717,10 +604,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_3_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         HTTPControlPointAndroid result2 = HTTPControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -729,10 +613,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_3_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         HTTPControlPointAndroid result2 = HTTPControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -741,10 +622,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_3_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         HTTPControlPointAndroid result2 = HTTPControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -753,10 +631,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_3_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         HTTPControlPointAndroid result2 = HTTPControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -765,10 +640,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_3_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         HTTPControlPointAndroid result2 = HTTPControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -777,10 +649,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_3_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         HTTPControlPointAndroid result2 = HTTPControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -789,10 +658,7 @@ public class HTTPControlPointAndroidTest {
     public void test_parcelable_3_00011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(bluetoothGattCharacteristic);
+        HTTPControlPointAndroid result1 = new HTTPControlPointAndroid(data);
         HTTPControlPointAndroid result2 = HTTPControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

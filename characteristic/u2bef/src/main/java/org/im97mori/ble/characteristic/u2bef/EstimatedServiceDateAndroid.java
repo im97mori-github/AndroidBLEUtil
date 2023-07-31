@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ESTIMATED_SERVICE_DATE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Estimated Service Date (Characteristics UUID: 0x2BEF)
@@ -45,9 +45,7 @@ public class EstimatedServiceDateAndroid extends EstimatedServiceDate implements
          */
         @NonNull
         public EstimatedServiceDateAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ESTIMATED_SERVICE_DATE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new EstimatedServiceDateAndroid(bluetoothGattCharacteristic);
+            return new EstimatedServiceDateAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class EstimatedServiceDateAndroid extends EstimatedServiceDate implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BEF
      */
+    @Deprecated
     public EstimatedServiceDateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public EstimatedServiceDateAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class EstimatedServiceDateAndroid extends EstimatedServiceDate implements
      * @param in Parcel
      */
     private EstimatedServiceDateAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

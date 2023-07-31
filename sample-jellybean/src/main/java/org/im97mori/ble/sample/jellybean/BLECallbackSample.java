@@ -320,4 +320,9 @@ public class BLECallbackSample implements BLECallback {
         callback(notificationStatus, status, argument);
     }
 
+    @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
 }

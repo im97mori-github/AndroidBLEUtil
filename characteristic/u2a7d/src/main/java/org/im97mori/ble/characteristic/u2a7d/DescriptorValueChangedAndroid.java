@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Descriptor Value Changed (Characteristics UUID: 0x2A7D)
@@ -44,9 +44,7 @@ public class DescriptorValueChangedAndroid extends DescriptorValueChanged implem
          */
         @NonNull
         public DescriptorValueChangedAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DESCRIPTOR_VALUE_CHANGED_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new DescriptorValueChangedAndroid(bluetoothGattCharacteristic);
+            return new DescriptorValueChangedAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class DescriptorValueChangedAndroid extends DescriptorValueChanged implem
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A7D
      */
+    @Deprecated
     public DescriptorValueChangedAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public DescriptorValueChangedAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class DescriptorValueChangedAndroid extends DescriptorValueChanged implem
      * @param in Parcel
      */
     private DescriptorValueChangedAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

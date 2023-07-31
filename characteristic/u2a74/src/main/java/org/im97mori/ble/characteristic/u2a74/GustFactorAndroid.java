@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.GUST_FACTOR_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Gust Factor (Characteristics UUID: 0x2A74)
@@ -44,9 +44,7 @@ public class GustFactorAndroid extends GustFactor implements Parcelable {
          */
         @NonNull
         public GustFactorAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(GUST_FACTOR_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new GustFactorAndroid(bluetoothGattCharacteristic);
+            return new GustFactorAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class GustFactorAndroid extends GustFactor implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A74
      */
+    @Deprecated
     public GustFactorAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public GustFactorAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class GustFactorAndroid extends GustFactor implements Parcelable {
      * @param in Parcel
      */
     private GustFactorAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

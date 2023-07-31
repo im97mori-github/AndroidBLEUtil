@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2aee;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,11 +10,11 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings({"PointlessBitwiseExpression", "ConstantConditions"})
+/** @noinspection DataFlowIssue*/
+@SuppressWarnings({"PointlessBitwiseExpression"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -31,10 +30,7 @@ public class ElectricCurrentAndroidTest {
         data[ 1] = (byte) (ElectricCurrentUtils.CURRENT_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentAndroid result = new ElectricCurrentAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentAndroid result = new ElectricCurrentAndroid(data);
         assertEquals(ElectricCurrentUtils.CURRENT_VALUE_IS_NOT_KNOWN, result.getCurrent());
     }
 
@@ -46,10 +42,7 @@ public class ElectricCurrentAndroidTest {
         data[ 1] = (byte) (0 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentAndroid result = new ElectricCurrentAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentAndroid result = new ElectricCurrentAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result.getCurrent());
     }
 
@@ -61,10 +54,7 @@ public class ElectricCurrentAndroidTest {
         data[ 1] = (byte) (65534 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentAndroid result = new ElectricCurrentAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentAndroid result = new ElectricCurrentAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result.getCurrent());
     }
 
@@ -100,10 +90,7 @@ public class ElectricCurrentAndroidTest {
         data[ 1] = (byte) (ElectricCurrentUtils.CURRENT_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -120,10 +107,7 @@ public class ElectricCurrentAndroidTest {
         data[ 1] = (byte) (0 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -140,10 +124,7 @@ public class ElectricCurrentAndroidTest {
         data[ 1] = (byte) (65534 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -160,10 +141,7 @@ public class ElectricCurrentAndroidTest {
         data[ 1] = (byte) (ElectricCurrentUtils.CURRENT_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -175,10 +153,7 @@ public class ElectricCurrentAndroidTest {
         data[ 1] = (byte) (0 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -190,10 +165,7 @@ public class ElectricCurrentAndroidTest {
         data[ 1] = (byte) (65534 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -205,10 +177,7 @@ public class ElectricCurrentAndroidTest {
         data[ 1] = (byte) (ElectricCurrentUtils.CURRENT_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(data);
         ElectricCurrentAndroid result2 = ElectricCurrentAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -221,10 +190,7 @@ public class ElectricCurrentAndroidTest {
         data[ 1] = (byte) (0 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(data);
         ElectricCurrentAndroid result2 = ElectricCurrentAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -237,10 +203,7 @@ public class ElectricCurrentAndroidTest {
         data[ 1] = (byte) (65534 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(bluetoothGattCharacteristic);
+        ElectricCurrentAndroid result1 = new ElectricCurrentAndroid(data);
         ElectricCurrentAndroid result2 = ElectricCurrentAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

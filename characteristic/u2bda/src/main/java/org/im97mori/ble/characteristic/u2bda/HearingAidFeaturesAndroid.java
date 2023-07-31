@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.HEARING_AID_FEATURES_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Hearing Aid Features (Characteristics UUID: 0x2BDA)
@@ -45,9 +45,7 @@ public class HearingAidFeaturesAndroid extends HearingAidFeatures implements Par
          */
         @NonNull
         public HearingAidFeaturesAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(HEARING_AID_FEATURES_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new HearingAidFeaturesAndroid(bluetoothGattCharacteristic);
+            return new HearingAidFeaturesAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class HearingAidFeaturesAndroid extends HearingAidFeatures implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BDA
      */
+    @Deprecated
     public HearingAidFeaturesAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public HearingAidFeaturesAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class HearingAidFeaturesAndroid extends HearingAidFeatures implements Par
      * @param in Parcel
      */
     private HearingAidFeaturesAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

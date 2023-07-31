@@ -22,7 +22,7 @@ import org.im97mori.ble.TaskHandler;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
 import org.junit.Test;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 public class RemoveServiceTaskTest extends AbstractPeripheralTest {
 
     @Test

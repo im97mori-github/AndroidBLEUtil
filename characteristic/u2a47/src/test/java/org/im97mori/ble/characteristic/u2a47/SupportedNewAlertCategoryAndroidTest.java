@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a47;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,13 +9,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -39,10 +37,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 0] = (byte) flags1;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         assertEquals(flags1, result1.getCategoryIdBitMask0());
     }
 
@@ -61,10 +56,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 0] = (byte) flags1;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         assertEquals(flags1, result1.getCategoryIdBitMask0());
     }
 
@@ -86,10 +78,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 1] = (byte) flags2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         assertEquals(flags1, result1.getCategoryIdBitMask0());
         assertEquals(flags2, result1.getCategoryIdBitMask1());
     }
@@ -112,10 +101,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 1] = (byte) flags2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         assertEquals(flags1, result1.getCategoryIdBitMask0());
         assertEquals(flags2, result1.getCategoryIdBitMask1());
     }
@@ -217,10 +203,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 0] = (byte) flags1;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -244,10 +227,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 0] = (byte) flags1;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -274,10 +254,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 1] = (byte) flags2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -304,10 +281,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 1] = (byte) flags2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -331,10 +305,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 0] = (byte) flags1;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -353,10 +324,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 0] = (byte) flags1;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -378,10 +346,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 1] = (byte) flags2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -403,10 +368,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 1] = (byte) flags2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -425,10 +387,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 0] = (byte) flags1;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         SupportedNewAlertCategoryAndroid result2 = SupportedNewAlertCategoryAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -448,10 +407,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 0] = (byte) flags1;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         SupportedNewAlertCategoryAndroid result2 = SupportedNewAlertCategoryAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -474,10 +430,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 1] = (byte) flags2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         SupportedNewAlertCategoryAndroid result2 = SupportedNewAlertCategoryAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -500,10 +453,7 @@ public class SupportedNewAlertCategoryAndroidTest {
         data[ 1] = (byte) flags2;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+        SupportedNewAlertCategoryAndroid result1 = new SupportedNewAlertCategoryAndroid(data);
         SupportedNewAlertCategoryAndroid result2 = SupportedNewAlertCategoryAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

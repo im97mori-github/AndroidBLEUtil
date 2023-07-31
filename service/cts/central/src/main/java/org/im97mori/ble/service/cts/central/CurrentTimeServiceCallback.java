@@ -20,6 +20,7 @@ import java.util.UUID;
 
 /**
  * Current Time Service (Service UUID: 0x1805) callback
+ * @noinspection EmptyMethod
  */
 @SuppressWarnings("unused")
 public interface CurrentTimeServiceCallback {

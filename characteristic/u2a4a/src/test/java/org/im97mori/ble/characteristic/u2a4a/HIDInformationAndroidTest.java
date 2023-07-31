@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a4a;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -83,9 +81,9 @@ public class HIDInformationAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -99,10 +97,7 @@ public class HIDInformationAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         assertEquals(0x0201, result1.getBcdhid());
         assertEquals(0x03, result1.getBcountrycode());
         assertEquals(HIDInformation.FLAGS_REMOTE_WAKE_FALSE
@@ -117,10 +112,7 @@ public class HIDInformationAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         assertEquals(0x0201, result1.getBcdhid());
         assertEquals(0x03, result1.getBcountrycode());
         assertEquals(HIDInformation.FLAGS_REMOTE_WAKE_TRUE
@@ -135,10 +127,7 @@ public class HIDInformationAndroidTest {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         assertEquals(0x0201, result1.getBcdhid());
         assertEquals(0x03, result1.getBcountrycode());
         assertEquals(HIDInformation.FLAGS_REMOTE_WAKE_FALSE
@@ -153,10 +142,7 @@ public class HIDInformationAndroidTest {
     public void test_constructor_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         assertEquals(0x0201, result1.getBcdhid());
         assertEquals(0x03, result1.getBcountrycode());
         assertEquals(HIDInformation.FLAGS_REMOTE_WAKE_TRUE
@@ -183,10 +169,7 @@ public class HIDInformationAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -200,10 +183,7 @@ public class HIDInformationAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -217,10 +197,7 @@ public class HIDInformationAndroidTest {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -234,10 +211,7 @@ public class HIDInformationAndroidTest {
     public void test_parcelable_1_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -251,10 +225,7 @@ public class HIDInformationAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -262,10 +233,7 @@ public class HIDInformationAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -273,10 +241,7 @@ public class HIDInformationAndroidTest {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -284,10 +249,7 @@ public class HIDInformationAndroidTest {
     public void test_parcelable_2_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -295,10 +257,7 @@ public class HIDInformationAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         HIDInformationAndroid result2 = HIDInformationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -307,10 +266,7 @@ public class HIDInformationAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         HIDInformationAndroid result2 = HIDInformationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -319,10 +275,7 @@ public class HIDInformationAndroidTest {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         HIDInformationAndroid result2 = HIDInformationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -331,10 +284,7 @@ public class HIDInformationAndroidTest {
     public void test_parcelable_3_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HIDInformationAndroid result1 = new HIDInformationAndroid(bluetoothGattCharacteristic);
+        HIDInformationAndroid result1 = new HIDInformationAndroid(data);
         HIDInformationAndroid result2 = HIDInformationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

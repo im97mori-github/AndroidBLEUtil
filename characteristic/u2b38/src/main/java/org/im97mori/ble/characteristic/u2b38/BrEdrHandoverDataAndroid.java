@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BR_EDR_HANDOVER_DATA_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * BR-EDR Handover Data (Characteristics UUID: 0x2B38)
@@ -45,9 +45,7 @@ public class BrEdrHandoverDataAndroid extends BrEdrHandoverData implements Parce
          */
         @NonNull
         public BrEdrHandoverDataAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BR_EDR_HANDOVER_DATA_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BrEdrHandoverDataAndroid(bluetoothGattCharacteristic);
+            return new BrEdrHandoverDataAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BrEdrHandoverDataAndroid extends BrEdrHandoverData implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B38
      */
+    @Deprecated
     public BrEdrHandoverDataAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BrEdrHandoverDataAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class BrEdrHandoverDataAndroid extends BrEdrHandoverData implements Parce
      * @param in Parcel
      */
     private BrEdrHandoverDataAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

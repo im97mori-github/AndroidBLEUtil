@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a5a;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,10 +11,9 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -32,10 +30,7 @@ public class AggregateAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AggregateAndroid result1 = new AggregateAndroid(bluetoothGattCharacteristic);
+        AggregateAndroid result1 = new AggregateAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 1), result1.getInputBits(1));
         assertArrayEquals(Arrays.copyOfRange(data, 1, 3), result1.getAnalogInput(1));
     }
@@ -47,10 +42,7 @@ public class AggregateAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_ACTIVE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AggregateAndroid result1 = new AggregateAndroid(bluetoothGattCharacteristic);
+        AggregateAndroid result1 = new AggregateAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 1), result1.getInputBits(1));
         assertArrayEquals(Arrays.copyOfRange(data, 1, 1), result1.getAnalogInput(1));
     }
@@ -63,10 +55,7 @@ public class AggregateAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AggregateAndroid result1 = new AggregateAndroid(bluetoothGattCharacteristic);
+        AggregateAndroid result1 = new AggregateAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 0), result1.getInputBits(0));
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getAnalogInput(0));
     }
@@ -80,10 +69,7 @@ public class AggregateAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AggregateAndroid result1 = new AggregateAndroid(bluetoothGattCharacteristic);
+        AggregateAndroid result1 = new AggregateAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -99,10 +85,7 @@ public class AggregateAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_ACTIVE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AggregateAndroid result1 = new AggregateAndroid(bluetoothGattCharacteristic);
+        AggregateAndroid result1 = new AggregateAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -119,10 +102,7 @@ public class AggregateAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AggregateAndroid result1 = new AggregateAndroid(bluetoothGattCharacteristic);
+        AggregateAndroid result1 = new AggregateAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -140,10 +120,7 @@ public class AggregateAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AggregateAndroid result1 = new AggregateAndroid(bluetoothGattCharacteristic);
+        AggregateAndroid result1 = new AggregateAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -154,10 +131,7 @@ public class AggregateAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_ACTIVE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AggregateAndroid result1 = new AggregateAndroid(bluetoothGattCharacteristic);
+        AggregateAndroid result1 = new AggregateAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -169,10 +143,7 @@ public class AggregateAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AggregateAndroid result1 = new AggregateAndroid(bluetoothGattCharacteristic);
+        AggregateAndroid result1 = new AggregateAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -185,10 +156,7 @@ public class AggregateAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AggregateAndroid result1 = new AggregateAndroid(bluetoothGattCharacteristic);
+        AggregateAndroid result1 = new AggregateAndroid(data);
         AggregateAndroid result2 = AggregateAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -200,10 +168,7 @@ public class AggregateAndroidTest {
         data[ 0] = AutomationIoUtils.DIGITAL_ACTIVE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AggregateAndroid result1 = new AggregateAndroid(bluetoothGattCharacteristic);
+        AggregateAndroid result1 = new AggregateAndroid(data);
         AggregateAndroid result2 = AggregateAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -216,10 +181,7 @@ public class AggregateAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AggregateAndroid result1 = new AggregateAndroid(bluetoothGattCharacteristic);
+        AggregateAndroid result1 = new AggregateAndroid(data);
         AggregateAndroid result2 = AggregateAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

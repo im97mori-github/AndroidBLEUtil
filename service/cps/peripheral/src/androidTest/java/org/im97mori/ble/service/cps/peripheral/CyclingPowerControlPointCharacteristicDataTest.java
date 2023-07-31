@@ -1240,12 +1240,12 @@ public class CyclingPowerControlPointCharacteristicDataTest {
                 , CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
                 , CyclingPowerControlPoint.RESPONSE_VALUE_OP_CODE_NOT_SUPPORTED
                 , new byte[0]).getBytes();
-        int firstUdateSensorLocationResponseValue = 4;
+        int firstUpdateSensorLocationResponseValue = 4;
         CyclingPowerControlPointCharacteristicData cyclingPowerControlPointCharacteristicData = new CyclingPowerControlPointCharacteristicData(descriptorDataList
                 , 1
                 , 2
                 , 3
-                , firstUdateSensorLocationResponseValue
+                , firstUpdateSensorLocationResponseValue
                 , 5
                 , new byte[]{6}
                 , 7
@@ -1274,7 +1274,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
         byte[] secondData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_RESPONSE_CODE
                 , new byte[0]
                 , CyclingPowerControlPoint.OP_CODES_UPDATE_SENSOR_LOCATION
-                , firstUdateSensorLocationResponseValue
+                , firstUpdateSensorLocationResponseValue
                 , new byte[0]).getBytes();
         cyclingPowerControlPointCharacteristicData.currentData = new CyclingPowerControlPoint(CyclingPowerControlPoint.OP_CODES_UPDATE_SENSOR_LOCATION
                 , new byte[1]
@@ -4321,7 +4321,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
         int firstStartEnhancedOffsetCompensationResponseValue = 26;
         byte[] firstStartEnhancedOffsetCompensationResponseParameter = new byte[]{27};
 
-        byte[] secoondRequestSpanLengthResponseParameter = new byte[]{118};
+        byte[] secondRequestSpanLengthResponseParameter = new byte[]{118};
 
         CyclingPowerControlPointCharacteristicData result1 = new CyclingPowerControlPointCharacteristicData(firstDescriptorDataList
                 , firstResponseCode
@@ -4369,7 +4369,7 @@ public class CyclingPowerControlPointCharacteristicDataTest {
                 , firstRequestChainWeightResponseParameter
                 , firstSetSpanLengthResponseValue
                 , firstRequestSpanLengthResponseValue
-                , secoondRequestSpanLengthResponseParameter
+                , secondRequestSpanLengthResponseParameter
                 , firstStartOffsetCompensationResponseValue
                 , firstStartOffsetCompensationResponseParameter
                 , firstMaskCyclingPowerMeasurementCharacteristicContentResponseValue

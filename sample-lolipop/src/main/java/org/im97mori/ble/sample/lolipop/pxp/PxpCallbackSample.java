@@ -464,6 +464,11 @@ public class PxpCallbackSample extends ProximityProfileMockCallback implements P
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }

@@ -1,12 +1,10 @@
 package org.im97mori.ble.characteristic.u2b36;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -89,10 +87,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_constructor_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertFalse(result1.isSegmentationHeaderNotFirstSegment());
         assertTrue(result1.isSegmentationHeaderFirstSegment());
@@ -110,10 +105,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_constructor_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertFalse(result1.isSegmentationHeaderNotFirstSegment());
         assertTrue(result1.isSegmentationHeaderFirstSegment());
@@ -129,10 +121,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_constructor_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertTrue(result1.isSegmentationHeaderNotFirstSegment());
         assertFalse(result1.isSegmentationHeaderFirstSegment());
@@ -148,10 +137,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_constructor_1_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertTrue(result1.isSegmentationHeaderNotFirstSegment());
         assertFalse(result1.isSegmentationHeaderFirstSegment());
@@ -249,10 +235,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -268,10 +251,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -287,10 +267,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -306,10 +283,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_parcelable_1_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -325,10 +299,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -336,10 +307,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -347,10 +315,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -358,10 +323,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_parcelable_2_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -369,10 +331,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         BloodPressureRecordPacketAndroid result2 = BloodPressureRecordPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -381,10 +340,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         BloodPressureRecordPacketAndroid result2 = BloodPressureRecordPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -393,10 +349,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         BloodPressureRecordPacketAndroid result2 = BloodPressureRecordPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -405,10 +358,7 @@ public class BloodPressureRecordPacketAndroidTest extends TestBase {
     public void test_parcelable_3_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(bluetoothGattCharacteristic);
+        BloodPressureRecordPacketAndroid result1 = new BloodPressureRecordPacketAndroid(data);
         BloodPressureRecordPacketAndroid result2 = BloodPressureRecordPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

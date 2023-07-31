@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a3f;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,13 +8,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -30,13 +28,11 @@ public class AlertStatusAndroidTest {
                 | AlertStatus.ALERT_STATUS_DISPLAY_ALERT_STATUS_NOT_ACTIVE;
         //@formatter:off
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         assertEquals(flags, result1.getAlertStatus());
         assertTrue(result1.isAlertStatusRingerStateNotActive());
         assertFalse(result1.isAlertStatusRingerStateActive());
@@ -52,10 +48,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         assertEquals(flags, result1.getAlertStatus());
         assertFalse(result1.isAlertStatusRingerStateNotActive());
         assertTrue(result1.isAlertStatusRingerStateActive());
@@ -71,10 +64,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         assertEquals(flags, result1.getAlertStatus());
         assertTrue(result1.isAlertStatusVibrateStateNotActive());
         assertFalse(result1.isAlertStatusVibrateStateActive());
@@ -90,10 +80,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         assertEquals(flags, result1.getAlertStatus());
         assertFalse(result1.isAlertStatusVibrateStateNotActive());
         assertTrue(result1.isAlertStatusVibrateStateActive());
@@ -109,10 +96,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         assertEquals(flags, result1.getAlertStatus());
         assertTrue(result1.isAlertStatusDisplayAlertStatusNotActive());
         assertFalse(result1.isAlertStatusDisplayAlertStatusActive());
@@ -128,10 +112,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         assertEquals(flags, result1.getAlertStatus());
         assertFalse(result1.isAlertStatusDisplayAlertStatusNotActive());
         assertTrue(result1.isAlertStatusDisplayAlertStatusActive());
@@ -155,10 +136,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -176,10 +154,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -197,10 +172,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -218,10 +190,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -239,10 +208,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -260,10 +226,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -281,10 +244,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -299,10 +259,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -316,10 +273,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -333,10 +287,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -350,10 +301,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
     @Test
@@ -366,10 +314,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -383,10 +328,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         AlertStatusAndroid result2 = AlertStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -401,10 +343,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         AlertStatusAndroid result2 = AlertStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -419,10 +358,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         AlertStatusAndroid result2 = AlertStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -437,10 +373,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         AlertStatusAndroid result2 = AlertStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -455,10 +388,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         AlertStatusAndroid result2 = AlertStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -473,10 +403,7 @@ public class AlertStatusAndroidTest {
         data[ 0] = (byte) flags;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertStatusAndroid result1 = new AlertStatusAndroid(bluetoothGattCharacteristic);
+        AlertStatusAndroid result1 = new AlertStatusAndroid(data);
         AlertStatusAndroid result2 = AlertStatusAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

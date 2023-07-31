@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BOOT_KEYBOARD_OUTPUT_REPORT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Boot Keyboard Output Report (Characteristics UUID: 0x2A32)
@@ -44,9 +44,7 @@ public class BootKeyboardOutputReportAndroid extends BootKeyboardOutputReport im
          */
         @NonNull
         public BootKeyboardOutputReportAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BOOT_KEYBOARD_OUTPUT_REPORT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BootKeyboardOutputReportAndroid(bluetoothGattCharacteristic);
+            return new BootKeyboardOutputReportAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class BootKeyboardOutputReportAndroid extends BootKeyboardOutputReport im
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A32
      */
+    @Deprecated
     public BootKeyboardOutputReportAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BootKeyboardOutputReportAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -66,8 +74,7 @@ public class BootKeyboardOutputReportAndroid extends BootKeyboardOutputReport im
      * @param in Parcel
      */
     private BootKeyboardOutputReportAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -3,6 +3,7 @@ package org.im97mori.ble.service.rcs.peripheral;
 import static org.im97mori.ble.constants.ServiceUUID.RECONNECTION_CONFIGURATION_SERVICE;
 
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,9 @@ public class ReconnectionConfigurationServiceData extends ServiceData {
          */
         @Override
         @NonNull
+        @Deprecated
         public ReconnectionConfigurationServiceData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new ReconnectionConfigurationServiceData(in);
         }
 
@@ -93,11 +96,18 @@ public class ReconnectionConfigurationServiceData extends ServiceData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public ReconnectionConfigurationServiceData(@NonNull Parcel in) {
         super(in);
-        rcFeature = in.readParcelable(this.getClass().getClassLoader());
-        rcSettings = in.readParcelable(this.getClass().getClassLoader());
-        reconnectionConfigurationControlPoint = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            rcFeature = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            rcSettings = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            reconnectionConfigurationControlPoint = in.readParcelable(this.getClass().getClassLoader(), ReconnectionConfigurationControlPointCharacteristicData.class);
+        } else {
+            rcFeature = in.readParcelable(this.getClass().getClassLoader());
+            rcSettings = in.readParcelable(this.getClass().getClassLoader());
+            reconnectionConfigurationControlPoint = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

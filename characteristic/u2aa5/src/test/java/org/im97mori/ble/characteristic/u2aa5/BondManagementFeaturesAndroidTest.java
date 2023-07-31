@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2aa5;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,7 +10,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -1200,9 +1198,9 @@ public class BondManagementFeaturesAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -1216,10 +1214,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertTrue(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrLeNotSupported());
         assertFalse(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrLeSupported());
@@ -1229,10 +1224,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrLeNotSupported());
         assertTrue(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrLeSupported());
@@ -1244,10 +1236,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrLeNotSupported());
         assertTrue(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrLeSupported());
@@ -1259,10 +1248,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertTrue(result1.createOperand().contains("1"));
         assertFalse(result1.createOperand().contains("2"));
         assertFalse(result1.createOperand().contains("3"));
@@ -1278,10 +1264,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertTrue(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrNotSupported());
         assertFalse(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrSupported());
@@ -1291,10 +1274,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrNotSupported());
         assertTrue(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrSupported());
@@ -1306,10 +1286,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrNotSupported());
         assertTrue(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionBrEdrSupported());
@@ -1321,10 +1298,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00104() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertFalse(result1.createOperand().contains("1"));
         assertTrue(result1.createOperand().contains("2"));
         assertFalse(result1.createOperand().contains("3"));
@@ -1340,10 +1314,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertTrue(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionLeNotSupported());
         assertFalse(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionLeSupported());
@@ -1353,10 +1324,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionLeNotSupported());
         assertTrue(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionLeSupported());
@@ -1368,10 +1336,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionLeNotSupported());
         assertTrue(result1.isBondManagementFeaturesDeleteBondOfCurrentConnectionLeSupported());
@@ -1383,10 +1348,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertFalse(result1.createOperand().contains("1"));
         assertFalse(result1.createOperand().contains("2"));
         assertTrue(result1.createOperand().contains("3"));
@@ -1402,10 +1364,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertTrue(result1.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrLeNotSupported());
         assertFalse(result1.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrLeSupported());
@@ -1415,10 +1374,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrLeNotSupported());
         assertTrue(result1.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrLeSupported());
@@ -1430,10 +1386,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrLeNotSupported());
         assertTrue(result1.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrLeSupported());
@@ -1445,10 +1398,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertFalse(result1.createOperand().contains("1"));
         assertFalse(result1.createOperand().contains("2"));
         assertFalse(result1.createOperand().contains("3"));
@@ -1464,10 +1414,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertTrue(result1.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrNotSupported());
         assertFalse(result1.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrSupported());
@@ -1477,10 +1424,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrNotSupported());
         assertTrue(result1.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrSupported());
@@ -1492,10 +1436,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00403() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrNotSupported());
         assertTrue(result1.isBondManagementFeaturesRemoveAllBondsOnServerBrEdrSupported());
@@ -1507,10 +1448,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00404() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertFalse(result1.createOperand().contains("1"));
         assertFalse(result1.createOperand().contains("2"));
         assertFalse(result1.createOperand().contains("3"));
@@ -1526,10 +1464,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertTrue(result1.isBondManagementFeaturesRemoveAllBondsOnServerLeNotSupported());
         assertFalse(result1.isBondManagementFeaturesRemoveAllBondsOnServerLeSupported());
@@ -1539,10 +1474,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesRemoveAllBondsOnServerLeNotSupported());
         assertTrue(result1.isBondManagementFeaturesRemoveAllBondsOnServerLeSupported());
@@ -1554,10 +1486,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesRemoveAllBondsOnServerLeNotSupported());
         assertTrue(result1.isBondManagementFeaturesRemoveAllBondsOnServerLeSupported());
@@ -1569,10 +1498,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertFalse(result1.createOperand().contains("1"));
         assertFalse(result1.createOperand().contains("2"));
         assertFalse(result1.createOperand().contains("3"));
@@ -1588,10 +1514,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertTrue(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrLeNotSupported());
         assertFalse(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrLeSupported());
@@ -1601,10 +1524,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrLeNotSupported());
         assertTrue(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrLeSupported());
@@ -1616,10 +1536,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrLeNotSupported());
         assertTrue(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrLeSupported());
@@ -1631,10 +1548,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00604() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertFalse(result1.createOperand().contains("1"));
         assertFalse(result1.createOperand().contains("2"));
         assertFalse(result1.createOperand().contains("3"));
@@ -1650,10 +1564,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertTrue(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrNotSupported());
         assertFalse(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrSupported());
@@ -1663,10 +1574,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrNotSupported());
         assertTrue(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrSupported());
@@ -1678,10 +1586,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrNotSupported());
         assertTrue(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerBrEdrSupported());
@@ -1693,10 +1598,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertFalse(result1.createOperand().contains("1"));
         assertFalse(result1.createOperand().contains("2"));
         assertFalse(result1.createOperand().contains("3"));
@@ -1712,10 +1614,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertTrue(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerLeNotSupported());
         assertFalse(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerLeSupported());
@@ -1725,10 +1624,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerLeNotSupported());
         assertTrue(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerLeSupported());
@@ -1740,10 +1636,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00803() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerLeNotSupported());
         assertTrue(result1.isBondManagementFeaturesRemoveAllButTheActiveBondOnServerLeSupported());
@@ -1755,10 +1648,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00804() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertFalse(result1.createOperand().contains("1"));
         assertFalse(result1.createOperand().contains("2"));
         assertFalse(result1.createOperand().contains("3"));
@@ -1774,10 +1664,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertTrue(result1.isBondManagementFeaturesIdentifyYourselfNotSupported());
         assertFalse(result1.isBondManagementFeaturesIdentifyYourselfSupported());
@@ -1787,10 +1674,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesIdentifyYourselfNotSupported());
         assertTrue(result1.isBondManagementFeaturesIdentifyYourselfSupported());
@@ -1800,10 +1684,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertTrue(result1.isBondManagementFeaturesFeatureExtensionFalse());
         assertFalse(result1.isBondManagementFeaturesFeatureExtensionTrue());
@@ -1813,10 +1694,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_constructor_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 3), result1.getBondManagementFeatures());
         assertFalse(result1.isBondManagementFeaturesFeatureExtensionFalse());
         assertTrue(result1.isBondManagementFeaturesFeatureExtensionTrue());
@@ -1827,10 +1705,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1842,10 +1717,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1857,10 +1729,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1872,10 +1741,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1887,10 +1753,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1902,10 +1765,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1917,10 +1777,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1932,10 +1789,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00104() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1947,10 +1801,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1962,10 +1813,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1977,10 +1825,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1992,10 +1837,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2007,10 +1849,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2022,10 +1861,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2037,10 +1873,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2052,10 +1885,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2067,10 +1897,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2082,10 +1909,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2097,10 +1921,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00403() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2112,10 +1933,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00404() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2127,10 +1945,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2142,10 +1957,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2157,10 +1969,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2172,10 +1981,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2187,10 +1993,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2202,10 +2005,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2217,10 +2017,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2232,10 +2029,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00604() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2247,10 +2041,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2262,10 +2053,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2277,10 +2065,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2292,10 +2077,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2307,10 +2089,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2322,10 +2101,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2337,10 +2113,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00803() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2352,10 +2125,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00804() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2367,10 +2137,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2382,10 +2149,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2397,10 +2161,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2412,10 +2173,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_1_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2428,10 +2186,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2439,10 +2194,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2450,10 +2202,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2461,10 +2210,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2472,10 +2218,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2483,10 +2226,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2494,10 +2234,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2505,10 +2242,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00104() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2516,10 +2250,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2527,10 +2258,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2538,10 +2266,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2549,10 +2274,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2560,10 +2282,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2571,10 +2290,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2582,10 +2298,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2593,10 +2306,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2604,10 +2314,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2615,10 +2322,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2626,10 +2330,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00403() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2637,10 +2338,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00404() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2648,10 +2346,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2659,10 +2354,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2670,10 +2362,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2681,10 +2370,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2692,10 +2378,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2703,10 +2386,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2714,10 +2394,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2725,10 +2402,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00604() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2736,10 +2410,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2747,10 +2418,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2758,10 +2426,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2769,10 +2434,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2780,10 +2442,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2791,10 +2450,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2802,10 +2458,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00803() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2813,10 +2466,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00804() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2824,10 +2474,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2835,10 +2482,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2846,10 +2490,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2857,10 +2498,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_2_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2868,10 +2506,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2880,10 +2515,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2892,10 +2524,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2904,10 +2533,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2916,10 +2542,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2928,10 +2551,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2940,10 +2560,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2952,10 +2569,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00104() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2964,10 +2578,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2976,10 +2587,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2988,10 +2596,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3000,10 +2605,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3012,10 +2614,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3024,10 +2623,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3036,10 +2632,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3048,10 +2641,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3060,10 +2650,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3072,10 +2659,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3084,10 +2668,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00403() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3096,10 +2677,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00404() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3108,10 +2686,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3120,10 +2695,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3132,10 +2704,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3144,10 +2713,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3156,10 +2722,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3168,10 +2731,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3180,10 +2740,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3192,10 +2749,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00604() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3204,10 +2758,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3216,10 +2767,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3228,10 +2776,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3240,10 +2785,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3252,10 +2794,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3264,10 +2803,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3276,10 +2812,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00803() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3288,10 +2821,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00804() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3300,10 +2830,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3312,10 +2839,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3324,10 +2848,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3336,10 +2857,7 @@ public class BondManagementFeaturesAndroidTest {
     public void test_parcelable_3_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(bluetoothGattCharacteristic);
+        BondManagementFeaturesAndroid result1 = new BondManagementFeaturesAndroid(data);
         BondManagementFeaturesAndroid result2 = BondManagementFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -35,9 +35,11 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/** @noinspection deprecation*/
 public class GenericAttributeServiceMockCallbackTest extends AbstractPeripheralTest {
 
     @Test
+    @Deprecated
     public void test_onServiceAddSuccess_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -56,6 +58,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripheralT
 
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_onServiceAddSuccess_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -80,6 +83,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripheralT
     }
 
     @Test
+    @Deprecated
     public void test_onServiceRemoveSuccess_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -98,6 +102,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripheralT
 
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_onServiceRemoveSuccess_00002() {
         final AtomicInteger atomicInteger = new AtomicInteger(0);
 
@@ -144,12 +149,13 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripheralT
 
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_updateGenericAttributeServiceStatus_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         UUID characteristicUUID = DATABASE_HASH_CHARACTERISTIC;
         int characteristicInstanceId = 1;
-        int charactereisticProperties = BluetoothGattCharacteristic.PROPERTY_READ;
+        int characteristicProperties = BluetoothGattCharacteristic.PROPERTY_READ;
         int characteristicPermissions = BluetoothGattCharacteristic.PERMISSION_READ;
         int characteristicKeySize = 16;
         int characteristicWriteType = BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT;
@@ -158,7 +164,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripheralT
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(characteristicUUID
                 , characteristicInstanceId
-                , charactereisticProperties
+                , characteristicProperties
                 , characteristicPermissions
                 , characteristicKeySize
                 , characteristicWriteType
@@ -172,7 +178,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripheralT
         BluetoothGattService bluetoothGattService = BLETestUtilsAndroid.createBluetoothGattService(serviceUuid, serviceInstanceId, serviceType, Collections.singletonList(bluetoothGattCharacteristic));
 
         CharacteristicData characteristicData = new CharacteristicData(characteristicUUID
-                , charactereisticProperties
+                , characteristicProperties
                 , characteristicPermissions
                 , Collections.emptyList()
                 , 0
@@ -201,6 +207,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripheralT
 
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_updateGenericAttributeServiceStatus_00003() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
@@ -212,14 +219,14 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripheralT
 
         UUID characteristicUUID = SERVICE_CHANGED_CHARACTERISTIC;
         int characteristicInstanceId = 2;
-        int charactereisticProperties = BluetoothGattCharacteristic.PROPERTY_INDICATE;
+        int characteristicProperties = BluetoothGattCharacteristic.PROPERTY_INDICATE;
         int characteristicPermissions = 0;
         int characteristicKeySize = 16;
         int characteristicWriteType = BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT;
 
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(characteristicUUID
                 , characteristicInstanceId
-                , charactereisticProperties
+                , characteristicProperties
                 , characteristicPermissions
                 , characteristicKeySize
                 , characteristicWriteType
@@ -238,7 +245,7 @@ public class GenericAttributeServiceMockCallbackTest extends AbstractPeripheralT
                 , 0
                 , BluetoothGattDescriptor.ENABLE_INDICATION_VALUE);
         CharacteristicData characteristicData = new CharacteristicData(characteristicUUID
-                , charactereisticProperties
+                , characteristicProperties
                 , characteristicPermissions
                 , Collections.singletonList(descriptorData)
                 , 0

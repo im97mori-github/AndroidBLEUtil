@@ -10,6 +10,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattServer;
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Pair;
@@ -157,11 +158,9 @@ public abstract class BaseMockCallback implements BLEServerCallback {
                         characteristicData.uuid
                         , characteristicData.property
                         , characteristicData.permission);
-                bluetoothGattCharacteristic.setValue(characteristicData.getBytes());
                 for (DescriptorData descriptorData : characteristicData.getDescriptorDataList()) {
                     bluetoothGattDescriptor = new BluetoothGattDescriptor(descriptorData.uuid
                             , descriptorData.permission);
-                    bluetoothGattDescriptor.setValue(descriptorData.data);
                     bluetoothGattCharacteristic.addDescriptor(bluetoothGattDescriptor);
                 }
                 bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -228,6 +227,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      * {@inheritDoc}
      */
     @Override
+    @Deprecated
     public synchronized boolean onServiceAddSuccess(@NonNull Integer taskId
             , @NonNull BLEServerConnection bleServerConnection
             , @NonNull BluetoothGattService bluetoothGattService
@@ -237,7 +237,12 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         UUID serviceUUID = bluetoothGattService.getUuid();
         int serviceInstanceId = bluetoothGattService.getInstanceId();
         if (argument != null) {
-            ServiceData serviceData = argument.getParcelable(KEY_SERVICE_DATA);
+            ServiceData serviceData;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                serviceData = argument.getParcelable(KEY_SERVICE_DATA, ServiceData.class);
+            } else {
+                serviceData = argument.getParcelable(KEY_SERVICE_DATA);
+            }
             Pair<UUID, Integer> servicePair = Pair.create(serviceUUID, serviceInstanceId);
             if (serviceData != null && mMockData.serviceDataList.contains(serviceData) && !mAvailableServiceMap.containsKey(servicePair)) {
                 mAvailableServiceMap.put(servicePair, bluetoothGattService);
@@ -284,6 +289,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      * {@inheritDoc}
      */
     @Override
+    @Deprecated
     public synchronized void onServiceRemoveSuccess(@NonNull Integer taskId
             , @NonNull BLEServerConnection bleServerConnection
             , @NonNull BluetoothGattService bluetoothGattService
@@ -291,7 +297,12 @@ public abstract class BaseMockCallback implements BLEServerCallback {
         UUID serviceUUID = bluetoothGattService.getUuid();
         int serviceInstanceId = bluetoothGattService.getInstanceId();
         if (argument != null) {
-            ServiceData serviceData = argument.getParcelable(KEY_SERVICE_DATA);
+            ServiceData serviceData;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                serviceData = argument.getParcelable(KEY_SERVICE_DATA, ServiceData.class);
+            } else {
+                serviceData = argument.getParcelable(KEY_SERVICE_DATA);
+            }
             Pair<UUID, Integer> servicePair = Pair.create(serviceUUID, serviceInstanceId);
             if (serviceData != null && mAvailableServiceMap.containsKey(servicePair)) {
                 mAvailableServiceMap.remove(servicePair);

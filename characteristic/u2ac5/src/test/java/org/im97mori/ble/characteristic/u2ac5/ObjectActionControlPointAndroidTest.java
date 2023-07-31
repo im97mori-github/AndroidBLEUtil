@@ -1,12 +1,10 @@
 package org.im97mori.ble.characteristic.u2ac5;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -765,10 +763,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_CREATE, result1.getOpCode());
         assertTrue(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -786,10 +781,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_DELETE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertTrue(result1.isOpCodeDelete(result1.getOpCode()));
@@ -805,10 +797,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_CALCULATE_CHECKSUM, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -826,10 +815,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_EXECUTE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -846,10 +832,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_READ, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -867,10 +850,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_WRITE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -891,10 +871,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_WRITE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -915,10 +892,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_ABORT, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -934,10 +908,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -973,10 +944,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1012,10 +980,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1051,10 +1016,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1090,10 +1052,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00705() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1129,10 +1088,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00706() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1168,10 +1124,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00707() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1207,10 +1160,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00708() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1246,10 +1196,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00709() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1285,10 +1232,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00710() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1324,10 +1268,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1363,10 +1304,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1402,10 +1340,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00803() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1441,10 +1376,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00804() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1480,10 +1412,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00805() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1519,10 +1448,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00806() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1558,10 +1484,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00807() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1597,10 +1520,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00808() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1636,10 +1556,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00809() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1675,10 +1592,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00810() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1714,10 +1628,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1753,10 +1664,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1792,10 +1700,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00903() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1831,10 +1736,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00904() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1870,10 +1772,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00905() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1909,10 +1808,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00906() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1948,10 +1844,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00907() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -1987,10 +1880,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00908() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2026,10 +1916,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00909() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2065,10 +1952,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_00910() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2104,10 +1988,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2143,10 +2024,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2182,10 +2060,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2221,10 +2096,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2260,10 +2132,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2299,10 +2168,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2338,10 +2204,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2377,10 +2240,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2416,10 +2276,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2455,10 +2312,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2494,10 +2348,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2533,10 +2384,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2572,10 +2420,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2611,10 +2456,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01104() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2650,10 +2492,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01105() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2689,10 +2528,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01106() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2728,10 +2564,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01107() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2767,10 +2600,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01108() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2806,10 +2636,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01109() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2845,10 +2672,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01110() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2884,10 +2708,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2923,10 +2744,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -2962,10 +2780,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3001,10 +2816,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3040,10 +2852,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01205() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3079,10 +2888,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01206() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3118,10 +2924,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01207() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3157,10 +2960,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01208() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3196,10 +2996,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01209() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3235,10 +3032,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01210() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3274,10 +3068,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3313,10 +3104,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3352,10 +3140,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3391,10 +3176,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3430,10 +3212,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01305() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3469,10 +3248,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01306() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3508,10 +3284,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01307() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3547,10 +3320,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01308() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3586,10 +3356,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01309() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -3625,10 +3392,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_constructor_1_01310() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertEquals(ObjectActionControlPoint.OP_CODE_RESPONSE_CODE, result1.getOpCode());
         assertFalse(result1.isOpCodeCreate(result1.getOpCode()));
         assertFalse(result1.isOpCodeDelete(result1.getOpCode()));
@@ -7187,10 +6951,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7213,10 +6974,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7239,10 +6997,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7265,10 +7020,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7291,10 +7043,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7317,10 +7066,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7343,10 +7089,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7369,10 +7112,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7395,10 +7135,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7421,10 +7158,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7447,10 +7181,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7473,10 +7204,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7499,10 +7227,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00705() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7525,10 +7250,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00706() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7551,10 +7273,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00707() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7577,10 +7296,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00708() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7603,10 +7319,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00709() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7629,10 +7342,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00710() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7655,10 +7365,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7681,10 +7388,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7707,10 +7411,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00803() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7733,10 +7434,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00804() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7759,10 +7457,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00805() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7785,10 +7480,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00806() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7811,10 +7503,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00807() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7837,10 +7526,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00808() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7863,10 +7549,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00809() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7889,10 +7572,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00810() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7915,10 +7595,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7941,10 +7618,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7967,10 +7641,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00903() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7993,10 +7664,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00904() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8019,10 +7687,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00905() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8045,10 +7710,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00906() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8071,10 +7733,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00907() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8097,10 +7756,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00908() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8123,10 +7779,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00909() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8149,10 +7802,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_00910() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8175,10 +7825,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8201,10 +7848,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8227,10 +7871,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8253,10 +7894,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8279,10 +7917,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8305,10 +7940,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8331,10 +7963,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8357,10 +7986,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8383,10 +8009,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8409,10 +8032,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8435,10 +8055,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8461,10 +8078,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8487,10 +8101,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8513,10 +8124,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01104() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8539,10 +8147,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01105() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8565,10 +8170,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01106() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8591,10 +8193,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01107() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8617,10 +8216,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01108() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8643,10 +8239,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01109() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8669,10 +8262,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01110() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8695,10 +8285,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8721,10 +8308,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8747,10 +8331,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8773,10 +8354,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8799,10 +8377,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01205() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8825,10 +8400,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01206() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8851,10 +8423,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01207() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8877,10 +8446,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01208() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8903,10 +8469,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01209() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8929,10 +8492,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01210() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8955,10 +8515,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8981,10 +8538,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9007,10 +8561,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9033,10 +8584,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9059,10 +8607,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01305() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9085,10 +8630,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01306() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9111,10 +8653,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01307() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9137,10 +8676,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01308() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9163,10 +8699,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01309() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9189,10 +8722,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_1_01310() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9215,10 +8745,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9226,10 +8753,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9237,10 +8761,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9248,10 +8769,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9259,10 +8777,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9270,10 +8785,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9281,10 +8793,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9292,10 +8801,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9303,10 +8809,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9314,10 +8817,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9325,10 +8825,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9336,10 +8833,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9347,10 +8841,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00705() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9358,10 +8849,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00706() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9369,10 +8857,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00707() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9380,10 +8865,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00708() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9391,10 +8873,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00709() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9402,10 +8881,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00710() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9413,10 +8889,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9424,10 +8897,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9435,10 +8905,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00803() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9446,10 +8913,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00804() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9457,10 +8921,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00805() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9468,10 +8929,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00806() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9479,10 +8937,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00807() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9490,10 +8945,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00808() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9501,10 +8953,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00809() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9512,10 +8961,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00810() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9523,10 +8969,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9534,10 +8977,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9545,10 +8985,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00903() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9556,10 +8993,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00904() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9567,10 +9001,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00905() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9578,10 +9009,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00906() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9589,10 +9017,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00907() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9600,10 +9025,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00908() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9611,10 +9033,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00909() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9622,10 +9041,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_00910() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9633,10 +9049,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9644,10 +9057,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9655,10 +9065,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9666,10 +9073,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9677,10 +9081,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9688,10 +9089,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9699,10 +9097,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9710,10 +9105,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9721,10 +9113,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9732,10 +9121,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9743,10 +9129,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9754,10 +9137,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9765,10 +9145,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9776,10 +9153,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01104() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9787,10 +9161,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01105() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9798,10 +9169,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01106() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9809,10 +9177,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01107() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9820,10 +9185,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01108() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9831,10 +9193,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01109() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9842,10 +9201,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01110() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9853,10 +9209,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9864,10 +9217,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9875,10 +9225,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9886,10 +9233,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9897,10 +9241,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01205() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9908,10 +9249,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01206() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9919,10 +9257,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01207() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9930,10 +9265,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01208() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9941,10 +9273,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01209() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9952,10 +9281,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01210() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9963,10 +9289,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9974,10 +9297,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9985,10 +9305,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9996,10 +9313,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10007,10 +9321,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01305() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10018,10 +9329,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01306() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10029,10 +9337,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01307() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10040,10 +9345,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01308() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10051,10 +9353,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01309() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10062,10 +9361,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_2_01310() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10073,10 +9369,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10085,10 +9378,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10097,10 +9387,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10109,10 +9396,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10121,10 +9405,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10133,10 +9414,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10145,10 +9423,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10157,10 +9432,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10169,10 +9441,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10181,10 +9450,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10193,10 +9459,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10205,10 +9468,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10217,10 +9477,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00705() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10229,10 +9486,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00706() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10241,10 +9495,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00707() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10253,10 +9504,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00708() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10265,10 +9513,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00709() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10277,10 +9522,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00710() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10289,10 +9531,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10301,10 +9540,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10313,10 +9549,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00803() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10325,10 +9558,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00804() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10337,10 +9567,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00805() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10349,10 +9576,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00806() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10361,10 +9585,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00807() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10373,10 +9594,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00808() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10385,10 +9603,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00809() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10397,10 +9612,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00810() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10409,10 +9621,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10421,10 +9630,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10433,10 +9639,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00903() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10445,10 +9648,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00904() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10457,10 +9657,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00905() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10469,10 +9666,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00906() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10481,10 +9675,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00907() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10493,10 +9684,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00908() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10505,10 +9693,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00909() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10517,10 +9702,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_00910() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10529,10 +9711,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10541,10 +9720,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10553,10 +9729,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10565,10 +9738,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10577,10 +9747,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10589,10 +9756,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10601,10 +9765,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10613,10 +9774,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10625,10 +9783,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10637,10 +9792,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10649,10 +9801,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10661,10 +9810,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10673,10 +9819,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10685,10 +9828,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01104() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10697,10 +9837,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01105() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10709,10 +9846,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01106() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10721,10 +9855,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01107() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10733,10 +9864,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01108() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10745,10 +9873,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01109() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10757,10 +9882,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01110() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10769,10 +9891,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10781,10 +9900,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10793,10 +9909,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10805,10 +9918,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10817,10 +9927,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01205() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10829,10 +9936,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01206() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10841,10 +9945,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01207() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10853,10 +9954,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01208() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10865,10 +9963,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01209() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10877,10 +9972,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01210() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10889,10 +9981,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10901,10 +9990,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10913,10 +9999,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10925,10 +10008,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10937,10 +10017,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01305() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10949,10 +10026,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01306() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10961,10 +10035,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01307() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10973,10 +10044,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01308() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10985,10 +10053,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01309() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -10997,10 +10062,7 @@ public class ObjectActionControlPointAndroidTest extends TestBase {
     public void test_parcelable_3_01310() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(bluetoothGattCharacteristic);
+        ObjectActionControlPointAndroid result1 = new ObjectActionControlPointAndroid(data);
         ObjectActionControlPointAndroid result2 = ObjectActionControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

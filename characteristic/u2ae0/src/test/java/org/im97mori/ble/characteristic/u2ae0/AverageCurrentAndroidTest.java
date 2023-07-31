@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ae0;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,11 +10,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings({"ConstantConditions"})
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -32,10 +30,7 @@ public class AverageCurrentAndroidTest {
         data[ 2] = TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AverageCurrentAndroid result1 = new AverageCurrentAndroid(bluetoothGattCharacteristic);
+        AverageCurrentAndroid result1 = new AverageCurrentAndroid(data);
         assertEquals(ElectricCurrentUtils.CURRENT_VALUE_IS_NOT_KNOWN, result1.getElectricCurrentValue());
         assertEquals(TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS, result1.getSensingDuration());
     }
@@ -49,10 +44,7 @@ public class AverageCurrentAndroidTest {
         data[ 2] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AverageCurrentAndroid result1 = new AverageCurrentAndroid(bluetoothGattCharacteristic);
+        AverageCurrentAndroid result1 = new AverageCurrentAndroid(data);
         assertEquals(0x0100, result1.getElectricCurrentValue());
         assertEquals(TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE, result1.getSensingDuration());
     }
@@ -66,10 +58,7 @@ public class AverageCurrentAndroidTest {
         data[ 2] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AverageCurrentAndroid result1 = new AverageCurrentAndroid(bluetoothGattCharacteristic);
+        AverageCurrentAndroid result1 = new AverageCurrentAndroid(data);
         assertEquals(0x0100, result1.getElectricCurrentValue());
         assertEquals(TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN, result1.getSensingDuration());
     }
@@ -83,10 +72,7 @@ public class AverageCurrentAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AverageCurrentAndroid result1 = new AverageCurrentAndroid(bluetoothGattCharacteristic);
+        AverageCurrentAndroid result1 = new AverageCurrentAndroid(data);
         assertEquals(0x0100, result1.getElectricCurrentValue());
         assertEquals(0x02, result1.getSensingDuration());
     }
@@ -140,10 +126,7 @@ public class AverageCurrentAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AverageCurrentAndroid result1 = new AverageCurrentAndroid(bluetoothGattCharacteristic);
+        AverageCurrentAndroid result1 = new AverageCurrentAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -162,10 +145,7 @@ public class AverageCurrentAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AverageCurrentAndroid result1 = new AverageCurrentAndroid(bluetoothGattCharacteristic);
+        AverageCurrentAndroid result1 = new AverageCurrentAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -178,10 +158,7 @@ public class AverageCurrentAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AverageCurrentAndroid result1 = new AverageCurrentAndroid(bluetoothGattCharacteristic);
+        AverageCurrentAndroid result1 = new AverageCurrentAndroid(data);
         AverageCurrentAndroid result2 = AverageCurrentAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

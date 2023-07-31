@@ -272,6 +272,11 @@ public class BaseAutomationIOProfileCallback implements AutomationIOProfileCallb
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+
+    }
+
+    @Override
     public void onDigitalReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @Nullable Integer index, @NonNull DigitalAndroid digitalAndroid, @Nullable Bundle argument) {
 
     }

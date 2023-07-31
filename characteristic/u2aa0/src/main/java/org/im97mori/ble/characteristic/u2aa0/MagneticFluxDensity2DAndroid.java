@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Magnetic Flux Density - 2D (Characteristics UUID: 0x2AA0)
@@ -44,9 +44,7 @@ public class MagneticFluxDensity2DAndroid extends MagneticFluxDensity2D implemen
          */
         @NonNull
         public MagneticFluxDensity2DAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MAGNETIC_FLUX_DENSITY_2D_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new MagneticFluxDensity2DAndroid(bluetoothGattCharacteristic);
+            return new MagneticFluxDensity2DAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class MagneticFluxDensity2DAndroid extends MagneticFluxDensity2D implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AA0
      */
+    @Deprecated
     public MagneticFluxDensity2DAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public MagneticFluxDensity2DAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class MagneticFluxDensity2DAndroid extends MagneticFluxDensity2D implemen
      * @param in Parcel
      */
     private MagneticFluxDensity2DAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -3,6 +3,7 @@ package org.im97mori.ble.service.cscs.peripheral;
 import static org.im97mori.ble.constants.ServiceUUID.CYCLING_SPEED_AND_CADENCE_SERVICE;
 
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,9 @@ public class CyclingSpeedAndCadenceServiceData extends ServiceData {
          */
         @Override
         @NonNull
+        @Deprecated
         public CyclingSpeedAndCadenceServiceData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new CyclingSpeedAndCadenceServiceData(in);
         }
 
@@ -102,12 +105,20 @@ public class CyclingSpeedAndCadenceServiceData extends ServiceData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public CyclingSpeedAndCadenceServiceData(@NonNull Parcel in) {
         super(in);
-        cscMeasurement = in.readParcelable(this.getClass().getClassLoader());
-        cscFeature = in.readParcelable(this.getClass().getClassLoader());
-        sensorLocation = in.readParcelable(this.getClass().getClassLoader());
-        scControlPoint = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            cscMeasurement = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            cscFeature = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            sensorLocation = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            scControlPoint = in.readParcelable(this.getClass().getClassLoader(), SCControlPointCharacteristicData.class);
+        } else {
+            cscMeasurement = in.readParcelable(this.getClass().getClassLoader());
+            cscFeature = in.readParcelable(this.getClass().getClassLoader());
+            sensorLocation = in.readParcelable(this.getClass().getClassLoader());
+            scControlPoint = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

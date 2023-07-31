@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_RUNTIME_IN_A_CURRENT_RANGE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Relative Runtime In A Current Range (Characteristics UUID: 0x2B07)
@@ -44,9 +44,7 @@ public class RelativeRuntimeInACurrentRangeAndroid extends RelativeRuntimeInACur
          */
         @NonNull
         public RelativeRuntimeInACurrentRangeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RELATIVE_RUNTIME_IN_A_CURRENT_RANGE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+            return new RelativeRuntimeInACurrentRangeAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class RelativeRuntimeInACurrentRangeAndroid extends RelativeRuntimeInACur
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B07
      */
+    @Deprecated
     public RelativeRuntimeInACurrentRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public RelativeRuntimeInACurrentRangeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class RelativeRuntimeInACurrentRangeAndroid extends RelativeRuntimeInACur
      * @param in Parcel
      */
     private RelativeRuntimeInACurrentRangeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

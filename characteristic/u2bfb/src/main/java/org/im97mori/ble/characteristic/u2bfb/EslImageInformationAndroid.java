@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ESL_IMAGE_INFORMATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * ESL Image Information (Characteristics UUID: 0x2BFB)
@@ -45,9 +45,7 @@ public class EslImageInformationAndroid extends EslImageInformation implements P
          */
         @NonNull
         public EslImageInformationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ESL_IMAGE_INFORMATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new EslImageInformationAndroid(bluetoothGattCharacteristic);
+            return new EslImageInformationAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class EslImageInformationAndroid extends EslImageInformation implements P
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BFB
      */
+    @Deprecated
     public EslImageInformationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public EslImageInformationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class EslImageInformationAndroid extends EslImageInformation implements P
      * @param in Parcel
      */
     private EslImageInformationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

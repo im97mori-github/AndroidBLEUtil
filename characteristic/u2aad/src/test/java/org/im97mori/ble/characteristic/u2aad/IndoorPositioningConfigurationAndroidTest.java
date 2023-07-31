@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2aad;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,11 +9,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -33,6 +31,7 @@ public class IndoorPositioningConfigurationAndroidTest {
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_FLOOR_NUMBER_IN_ADVERTISING_PACKETS_FLOOR_NUMBER_IS_NOT_PRESENT
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_UNCERTAINTY_IN_ADVERTISING_PACKETS_UNCERTAINTY_IS_NOT_PRESENT
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_LOCATION_NAME_AVAILABLE_IN_THE_GATT_DATABASE_LOCATION_NAME_IS_NOT_PRESENT;
+        //noinspection DataFlowIssue
         data[ 0] = (byte) flags;
         data_00001 = data;
     }
@@ -136,9 +135,9 @@ public class IndoorPositioningConfigurationAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -152,10 +151,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         assertEquals(IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_COORDINATES_IN_ADVERTISING_PACKETS_COORDINATES_ARE_NOT_PRESENT
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_COORDINATE_SYSTEM_USED_IN_ADVERTISING_PACKETS_WGS84_COORDINATE_SYSTEM
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_TX_POWER_FIELD_IN_ADVERTISING_PACKETS_TX_POWER_IS_NOT_PRESENT
@@ -169,10 +165,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         assertEquals(IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_COORDINATES_IN_ADVERTISING_PACKETS_COORDINATES_ARE_PRESENT
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_COORDINATE_SYSTEM_USED_IN_ADVERTISING_PACKETS_WGS84_COORDINATE_SYSTEM
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_TX_POWER_FIELD_IN_ADVERTISING_PACKETS_TX_POWER_IS_NOT_PRESENT
@@ -186,10 +179,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         assertEquals(IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_COORDINATES_IN_ADVERTISING_PACKETS_COORDINATES_ARE_PRESENT
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_COORDINATE_SYSTEM_USED_IN_ADVERTISING_PACKETS_LOCAL_COORDINATE_SYSTEM
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_TX_POWER_FIELD_IN_ADVERTISING_PACKETS_TX_POWER_IS_NOT_PRESENT
@@ -203,10 +193,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_constructor_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         assertEquals(IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_COORDINATES_IN_ADVERTISING_PACKETS_COORDINATES_ARE_NOT_PRESENT
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_COORDINATE_SYSTEM_USED_IN_ADVERTISING_PACKETS_WGS84_COORDINATE_SYSTEM
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_TX_POWER_FIELD_IN_ADVERTISING_PACKETS_TX_POWER_IS_PRESENT
@@ -220,10 +207,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_constructor_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         assertEquals(IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_COORDINATES_IN_ADVERTISING_PACKETS_COORDINATES_ARE_NOT_PRESENT
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_COORDINATE_SYSTEM_USED_IN_ADVERTISING_PACKETS_WGS84_COORDINATE_SYSTEM
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_TX_POWER_FIELD_IN_ADVERTISING_PACKETS_TX_POWER_IS_NOT_PRESENT
@@ -237,10 +221,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_constructor_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         assertEquals(IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_COORDINATES_IN_ADVERTISING_PACKETS_COORDINATES_ARE_NOT_PRESENT
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_COORDINATE_SYSTEM_USED_IN_ADVERTISING_PACKETS_WGS84_COORDINATE_SYSTEM
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_TX_POWER_FIELD_IN_ADVERTISING_PACKETS_TX_POWER_IS_NOT_PRESENT
@@ -254,10 +235,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_constructor_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         assertEquals(IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_COORDINATES_IN_ADVERTISING_PACKETS_COORDINATES_ARE_NOT_PRESENT
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_COORDINATE_SYSTEM_USED_IN_ADVERTISING_PACKETS_WGS84_COORDINATE_SYSTEM
                 | IndoorPositioningUtils.INDOOR_POSITIONING_CONFIGURATION_PRESENCE_OF_TX_POWER_FIELD_IN_ADVERTISING_PACKETS_TX_POWER_IS_NOT_PRESENT
@@ -279,10 +257,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -294,10 +269,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -309,10 +281,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -324,10 +293,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_1_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -339,10 +305,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_1_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -354,10 +317,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_1_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -369,10 +329,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_1_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -384,10 +341,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -395,10 +349,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -406,10 +357,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -417,10 +365,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_2_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -428,10 +373,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_2_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -439,10 +381,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_2_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -450,10 +389,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_2_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -461,10 +397,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         IndoorPositioningConfigurationAndroid result2 = IndoorPositioningConfigurationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -473,10 +406,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         IndoorPositioningConfigurationAndroid result2 = IndoorPositioningConfigurationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -485,10 +415,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         IndoorPositioningConfigurationAndroid result2 = IndoorPositioningConfigurationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -497,10 +424,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_3_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         IndoorPositioningConfigurationAndroid result2 = IndoorPositioningConfigurationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -509,10 +433,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_3_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         IndoorPositioningConfigurationAndroid result2 = IndoorPositioningConfigurationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -521,10 +442,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_3_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         IndoorPositioningConfigurationAndroid result2 = IndoorPositioningConfigurationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -533,10 +451,7 @@ public class IndoorPositioningConfigurationAndroidTest {
     public void test_parcelable_3_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(bluetoothGattCharacteristic);
+        IndoorPositioningConfigurationAndroid result1 = new IndoorPositioningConfigurationAndroid(data);
         IndoorPositioningConfigurationAndroid result2 = IndoorPositioningConfigurationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

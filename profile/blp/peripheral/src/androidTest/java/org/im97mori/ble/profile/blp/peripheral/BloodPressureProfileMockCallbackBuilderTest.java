@@ -26,7 +26,6 @@ import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-@SuppressWarnings("ConstantConditions")
 public class BloodPressureProfileMockCallbackBuilderTest {
 
     @Test
@@ -553,26 +552,26 @@ public class BloodPressureProfileMockCallbackBuilderTest {
     @Test
     public void test_addBloodPressureMeasurement_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        int bpmflags = 1;
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{4, 5}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{8, 9}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{10, 11}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{12, 13}, 0);
-        int bpmyear = 14;
-        int bpmmonth = 15;
-        int bpmday = 16;
-        int bpmhours = 17;
-        int bpmminutes = 18;
-        int bpmseconds = 19;
-        IEEE_11073_20601_SFLOAT bpmpulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{20, 21}, 0);
-        int bpmuserId = 22;
-        byte[] bpmmeasurementStatus = new byte[]{23};
-        final BloodPressureMeasurement bloodPressureMeasurement = new BloodPressureMeasurement(bpmflags, bpmbloodPressureMeasurementCompoundValueSystolicMmhg, bpmbloodPressureMeasurementCompoundValueDiastolicMmhg, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmbloodPressureMeasurementCompoundValueSystolicKpa, bpmbloodPressureMeasurementCompoundValueDiastolicKpa, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmyear, bpmmonth, bpmday, bpmhours, bpmminutes, bpmseconds, bpmpulseRate, bpmuserId, bpmmeasurementStatus);
+        int bpmFlags = 1;
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{4, 5}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{8, 9}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{10, 11}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{12, 13}, 0);
+        int bpmYear = 14;
+        int bpmMonth = 15;
+        int bpmDay = 16;
+        int bpmHours = 17;
+        int bpmMinutes = 18;
+        int bpmSeconds = 19;
+        IEEE_11073_20601_SFLOAT bpmPulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{20, 21}, 0);
+        int bpmUserId = 22;
+        byte[] bpmMeasurementStatus = new byte[]{23};
+        final BloodPressureMeasurement bloodPressureMeasurement = new BloodPressureMeasurement(bpmFlags, bpmBloodPressureMeasurementCompoundValueSystolicMmhg, bpmBloodPressureMeasurementCompoundValueDiastolicMmhg, bpmBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmBloodPressureMeasurementCompoundValueSystolicKpa, bpmBloodPressureMeasurementCompoundValueDiastolicKpa, bpmBloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmYear, bpmMonth, bpmDay, bpmHours, bpmMinutes, bpmSeconds, bpmPulseRate, bpmUserId, bpmMeasurementStatus);
 
-        byte[] bpmdescriptorValue = BluetoothGattDescriptor.ENABLE_INDICATION_VALUE;
-        final ClientCharacteristicConfiguration bpmclientCharacteristicConfiguration = new ClientCharacteristicConfiguration(bpmdescriptorValue);
+        byte[] bpmDescriptorValue = BluetoothGattDescriptor.ENABLE_INDICATION_VALUE;
+        final ClientCharacteristicConfiguration bpmclientCharacteristicConfiguration = new ClientCharacteristicConfiguration(bpmDescriptorValue);
 
         Context context = ApplicationProvider.getApplicationContext();
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
@@ -597,26 +596,26 @@ public class BloodPressureProfileMockCallbackBuilderTest {
     public void test_addBloodPressureMeasurement_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
-        int bpmflags = 1;
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{4, 5}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{8, 9}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{10, 11}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{12, 13}, 0);
-        int bpmyear = 14;
-        int bpmmonth = 15;
-        int bpmday = 16;
-        int bpmhours = 17;
-        int bpmminutes = 18;
-        int bpmseconds = 19;
-        IEEE_11073_20601_SFLOAT bpmpulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{20, 21}, 0);
-        int bpmuserId = 22;
-        byte[] bpmmeasurementStatus = new byte[]{23};
-        final BloodPressureMeasurement bloodPressureMeasurement = new BloodPressureMeasurement(bpmflags, bpmbloodPressureMeasurementCompoundValueSystolicMmhg, bpmbloodPressureMeasurementCompoundValueDiastolicMmhg, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmbloodPressureMeasurementCompoundValueSystolicKpa, bpmbloodPressureMeasurementCompoundValueDiastolicKpa, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmyear, bpmmonth, bpmday, bpmhours, bpmminutes, bpmseconds, bpmpulseRate, bpmuserId, bpmmeasurementStatus);
+        int bpmFlags = 1;
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{4, 5}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{8, 9}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{10, 11}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{12, 13}, 0);
+        int bpmYear = 14;
+        int bpmMonth = 15;
+        int bpmDay = 16;
+        int bpmHours = 17;
+        int bpmMinutes = 18;
+        int bpmSeconds = 19;
+        IEEE_11073_20601_SFLOAT bpmPulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{20, 21}, 0);
+        int bpmUserId = 22;
+        byte[] bpmMeasurementStatus = new byte[]{23};
+        final BloodPressureMeasurement bloodPressureMeasurement = new BloodPressureMeasurement(bpmFlags, bpmBloodPressureMeasurementCompoundValueSystolicMmhg, bpmBloodPressureMeasurementCompoundValueDiastolicMmhg, bpmBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmBloodPressureMeasurementCompoundValueSystolicKpa, bpmBloodPressureMeasurementCompoundValueDiastolicKpa, bpmBloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmYear, bpmMonth, bpmDay, bpmHours, bpmMinutes, bpmSeconds, bpmPulseRate, bpmUserId, bpmMeasurementStatus);
 
-        byte[] bpmdescriptorValue = BluetoothGattDescriptor.ENABLE_INDICATION_VALUE;
-        final ClientCharacteristicConfiguration bpmclientCharacteristicConfiguration = new ClientCharacteristicConfiguration(bpmdescriptorValue);
+        byte[] bpmDescriptorValue = BluetoothGattDescriptor.ENABLE_INDICATION_VALUE;
+        final ClientCharacteristicConfiguration bpmclientCharacteristicConfiguration = new ClientCharacteristicConfiguration(bpmDescriptorValue);
 
         final int originalCharacteristicResponseCode = 38;
         final long originalCharacteristicDelay = 39;
@@ -672,29 +671,29 @@ public class BloodPressureProfileMockCallbackBuilderTest {
     @Test
     public void test_addIntermediateCuffPressure_00001() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        int icpflags = 1;
+        int icpFlags = 1;
         IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3}, 0);
         IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{4, 5}, 0);
         IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueDiastolicUnused = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7}, 0);
         IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueMeanArterialPressureUnused = new IEEE_11073_20601_SFLOAT(new byte[]{8, 9}, 0);
-        int icpyear = 10;
-        int icpmonth = 11;
-        int icpday = 12;
-        int icphours = 13;
-        int icpminutes = 14;
-        int icpseconds = 15;
-        IEEE_11073_20601_SFLOAT icppulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{16, 17}, 0);
-        int icpuserId = 18;
-        byte[] icpmeasurementStatus = new byte[]{19};
-        final IntermediateCuffPressure intermediateCuffPressure = new IntermediateCuffPressure(icpflags
+        int icpYear = 10;
+        int icpMonth = 11;
+        int icpDay = 12;
+        int icpHours = 13;
+        int icpMinutes = 14;
+        int icpSeconds = 15;
+        IEEE_11073_20601_SFLOAT icpPulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{16, 17}, 0);
+        int icpUserId = 18;
+        byte[] icpMeasurementStatus = new byte[]{19};
+        final IntermediateCuffPressure intermediateCuffPressure = new IntermediateCuffPressure(icpFlags
                 , intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg
                 , intermediateCuffPressureCompoundValueCurrentCuffPressureKpa
                 , intermediateCuffPressureCompoundValueDiastolicUnused
                 , intermediateCuffPressureCompoundValueMeanArterialPressureUnused
-                , icpyear, icpmonth, icpday, icphours, icpminutes, icpseconds, icppulseRate, icpuserId, icpmeasurementStatus);
+                , icpYear, icpMonth, icpDay, icpHours, icpMinutes, icpSeconds, icpPulseRate, icpUserId, icpMeasurementStatus);
 
-        byte[] icpdescriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
-        final ClientCharacteristicConfiguration icpclientCharacteristicConfiguration = new ClientCharacteristicConfiguration(icpdescriptorValue);
+        byte[] icpDescriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
+        final ClientCharacteristicConfiguration icpclientCharacteristicConfiguration = new ClientCharacteristicConfiguration(icpDescriptorValue);
 
         Context context = ApplicationProvider.getApplicationContext();
         DeviceInformationServiceMockCallback.Builder<DeviceInformationServiceMockCallback> deviceInformationServiceMockCallbackBuilder = new DeviceInformationServiceMockCallback.Builder<>();
@@ -719,29 +718,29 @@ public class BloodPressureProfileMockCallbackBuilderTest {
     @Test
     public void test_addIntermediateCuffPressure_00002() {
         final AtomicBoolean atomicBoolean = new AtomicBoolean(false);
-        int icpflags = 1;
+        int icpFlags = 1;
         IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3}, 0);
         IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueCurrentCuffPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{4, 5}, 0);
         IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueDiastolicUnused = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7}, 0);
         IEEE_11073_20601_SFLOAT intermediateCuffPressureCompoundValueMeanArterialPressureUnused = new IEEE_11073_20601_SFLOAT(new byte[]{8, 9}, 0);
-        int icpyear = 10;
-        int icpmonth = 11;
-        int icpday = 12;
-        int icphours = 13;
-        int icpminutes = 14;
-        int icpseconds = 15;
-        IEEE_11073_20601_SFLOAT icppulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{16, 17}, 0);
-        int icpuserId = 18;
-        byte[] icpmeasurementStatus = new byte[]{19};
-        final IntermediateCuffPressure intermediateCuffPressure = new IntermediateCuffPressure(icpflags
+        int icpYear = 10;
+        int icpMonth = 11;
+        int icpDay = 12;
+        int icpHours = 13;
+        int icpMinutes = 14;
+        int icpSeconds = 15;
+        IEEE_11073_20601_SFLOAT icpPulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{16, 17}, 0);
+        int icpUserId = 18;
+        byte[] icpMeasurementStatus = new byte[]{19};
+        final IntermediateCuffPressure intermediateCuffPressure = new IntermediateCuffPressure(icpFlags
                 , intermediateCuffPressureCompoundValueCurrentCuffPressureMmhg
                 , intermediateCuffPressureCompoundValueCurrentCuffPressureKpa
                 , intermediateCuffPressureCompoundValueDiastolicUnused
                 , intermediateCuffPressureCompoundValueMeanArterialPressureUnused
-                , icpyear, icpmonth, icpday, icphours, icpminutes, icpseconds, icppulseRate, icpuserId, icpmeasurementStatus);
+                , icpYear, icpMonth, icpDay, icpHours, icpMinutes, icpSeconds, icpPulseRate, icpUserId, icpMeasurementStatus);
 
-        byte[] icpdescriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
-        final ClientCharacteristicConfiguration icpclientCharacteristicConfiguration = new ClientCharacteristicConfiguration(icpdescriptorValue);
+        byte[] icpDescriptorValue = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE;
+        final ClientCharacteristicConfiguration icpclientCharacteristicConfiguration = new ClientCharacteristicConfiguration(icpDescriptorValue);
 
         final int originalCharacteristicResponseCode = 75;
         final long originalCharacteristicDelay = 76;
@@ -1017,26 +1016,26 @@ public class BloodPressureProfileMockCallbackBuilderTest {
 
     @Test
     public void test_build_00301() {
-        int bpmflags = 1;
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{4, 5}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{8, 9}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{10, 11}, 0);
-        IEEE_11073_20601_SFLOAT bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{12, 13}, 0);
-        int bpmyear = 14;
-        int bpmmonth = 15;
-        int bpmday = 16;
-        int bpmhours = 17;
-        int bpmminutes = 18;
-        int bpmseconds = 19;
-        IEEE_11073_20601_SFLOAT bpmpulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{20, 21}, 0);
-        int bpmuserId = 22;
-        byte[] bpmmeasurementStatus = new byte[]{23};
-        BloodPressureMeasurement bloodPressureMeasurement = new BloodPressureMeasurement(bpmflags, bpmbloodPressureMeasurementCompoundValueSystolicMmhg, bpmbloodPressureMeasurementCompoundValueDiastolicMmhg, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmbloodPressureMeasurementCompoundValueSystolicKpa, bpmbloodPressureMeasurementCompoundValueDiastolicKpa, bpmbloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmyear, bpmmonth, bpmday, bpmhours, bpmminutes, bpmseconds, bpmpulseRate, bpmuserId, bpmmeasurementStatus);
+        int bpmFlags = 1;
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueSystolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{2, 3}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueDiastolicMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{4, 5}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg = new IEEE_11073_20601_SFLOAT(new byte[]{6, 7}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueSystolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{8, 9}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueDiastolicKpa = new IEEE_11073_20601_SFLOAT(new byte[]{10, 11}, 0);
+        IEEE_11073_20601_SFLOAT bpmBloodPressureMeasurementCompoundValueMeanArterialPressureKpa = new IEEE_11073_20601_SFLOAT(new byte[]{12, 13}, 0);
+        int bpmYear = 14;
+        int bpmMonth = 15;
+        int bpmDay = 16;
+        int bpmHours = 17;
+        int bpmMinutes = 18;
+        int bpmSeconds = 19;
+        IEEE_11073_20601_SFLOAT bpmPulseRate = new IEEE_11073_20601_SFLOAT(new byte[]{20, 21}, 0);
+        int bpmUserId = 22;
+        byte[] bpmMeasurementStatus = new byte[]{23};
+        BloodPressureMeasurement bloodPressureMeasurement = new BloodPressureMeasurement(bpmFlags, bpmBloodPressureMeasurementCompoundValueSystolicMmhg, bpmBloodPressureMeasurementCompoundValueDiastolicMmhg, bpmBloodPressureMeasurementCompoundValueMeanArterialPressureMmhg, bpmBloodPressureMeasurementCompoundValueSystolicKpa, bpmBloodPressureMeasurementCompoundValueDiastolicKpa, bpmBloodPressureMeasurementCompoundValueMeanArterialPressureKpa, bpmYear, bpmMonth, bpmDay, bpmHours, bpmMinutes, bpmSeconds, bpmPulseRate, bpmUserId, bpmMeasurementStatus);
 
-        byte[] bpmdescriptorValue = BluetoothGattDescriptor.ENABLE_INDICATION_VALUE;
-        ClientCharacteristicConfiguration bpmclientCharacteristicConfiguration = new ClientCharacteristicConfiguration(bpmdescriptorValue);
+        byte[] bpmDescriptorValue = BluetoothGattDescriptor.ENABLE_INDICATION_VALUE;
+        ClientCharacteristicConfiguration bpmclientCharacteristicConfiguration = new ClientCharacteristicConfiguration(bpmDescriptorValue);
 
         boolean isBodyMovementDetectionFeatureSupported = false;
         boolean isCuffFitDetectionSupported = false;

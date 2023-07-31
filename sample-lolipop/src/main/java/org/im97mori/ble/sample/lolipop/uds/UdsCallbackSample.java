@@ -364,6 +364,11 @@ public class UdsCallbackSample extends UserDataServiceMockCallback implements Us
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }
@@ -386,7 +391,9 @@ public class UdsCallbackSample extends UserDataServiceMockCallback implements Us
         super.onDeviceDisconnected(bleServerConnection, device);
     }
 
+    /** @noinspection deprecation*/
     @Override
+    @Deprecated
     public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
         callback(bluetoothGattService.getUuid());
         return super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
@@ -402,7 +409,9 @@ public class UdsCallbackSample extends UserDataServiceMockCallback implements Us
         callback(argument);
     }
 
+    /** @noinspection deprecation*/
     @Override
+    @Deprecated
     public void onServiceRemoveSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
         callback(argument);
         super.onServiceRemoveSuccess(taskId, bleServerConnection, bluetoothGattService, argument);

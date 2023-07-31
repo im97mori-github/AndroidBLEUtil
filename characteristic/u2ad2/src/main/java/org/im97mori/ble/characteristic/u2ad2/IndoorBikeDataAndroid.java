@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 
+import java.util.Objects;
+
 /**
  * Indoor Bike Data (Characteristics UUID: 0x2AD2)
  */
@@ -87,8 +89,7 @@ public class IndoorBikeDataAndroid extends IndoorBikeData implements Parcelable 
      * @param in Parcel
      */
     private IndoorBikeDataAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
+        super(new IndoorBikeDataPacketAndroid[]{IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(Objects.requireNonNull(in.createByteArray()))});
     }
 
     /**

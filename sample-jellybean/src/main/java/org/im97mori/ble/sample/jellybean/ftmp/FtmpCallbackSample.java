@@ -412,6 +412,11 @@ public class FtmpCallbackSample implements FitnessMachineProfileCallback {
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+
+    }
+
+    @Override
     public void onFitnessMachineFeatureReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull FitnessMachineFeatureAndroid fitnessMachineFeatureAndroid, @Nullable Bundle argument) {
         callback(Arrays.toString(fitnessMachineFeatureAndroid.getFitnessMachineFeatures()), Arrays.toString(fitnessMachineFeatureAndroid.getTargetSettingFeatures()), argument);
     }

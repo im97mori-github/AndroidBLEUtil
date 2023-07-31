@@ -25,7 +25,7 @@ import org.junit.Test;
 
 import java.util.Random;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @Suppress
 public class BaseAddServiceTaskTest extends AbstractPeripheralTest {
 
@@ -76,7 +76,9 @@ public class BaseAddServiceTaskTest extends AbstractPeripheralTest {
         assertEquals(AddServiceTask.PROGRESS_ADD_SERVICE_ERROR, bundle.getString(AddServiceTask.KEY_NEXT_PROGRESS));
     }
 
+    /** @noinspection deprecation*/
     @Test
+    @Deprecated
     public void test_doProcess_00001() {
         AddServiceTask task = new AddServiceTask(MOCK_BLE_SERVER_CONNECTION
                 , null
@@ -86,7 +88,9 @@ public class BaseAddServiceTaskTest extends AbstractPeripheralTest {
         assertFalse(task.doProcess(new Message()));
     }
 
+    /** @noinspection deprecation*/
     @Test
+    @Deprecated
     public void test_cancel_00001() {
         Looper looper = null;
         try {
@@ -111,7 +115,9 @@ public class BaseAddServiceTaskTest extends AbstractPeripheralTest {
         }
     }
 
+    /** @noinspection deprecation*/
     @Test
+    @Deprecated
     public void test_cancel_00002() {
         Looper looper = null;
         try {

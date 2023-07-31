@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.OZONE_CONCENTRATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Ozone Concentration (Characteristics UUID: 0x2BD4)
@@ -45,9 +45,7 @@ public class OzoneConcentrationAndroid extends OzoneConcentration implements Par
          */
         @NonNull
         public OzoneConcentrationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(OZONE_CONCENTRATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new OzoneConcentrationAndroid(bluetoothGattCharacteristic);
+            return new OzoneConcentrationAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class OzoneConcentrationAndroid extends OzoneConcentration implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BD4
      */
+    @Deprecated
     public OzoneConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public OzoneConcentrationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class OzoneConcentrationAndroid extends OzoneConcentration implements Par
      * @param in Parcel
      */
     private OzoneConcentrationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_EFFICACY_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Luminous Efficacy (Characteristics UUID: 0x2AFC)
@@ -44,9 +44,7 @@ public class LuminousEfficacyAndroid extends LuminousEfficacy implements Parcela
          */
         @NonNull
         public LuminousEfficacyAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LUMINOUS_EFFICACY_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new LuminousEfficacyAndroid(bluetoothGattCharacteristic);
+            return new LuminousEfficacyAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class LuminousEfficacyAndroid extends LuminousEfficacy implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AFC
      */
+    @Deprecated
     public LuminousEfficacyAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public LuminousEfficacyAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class LuminousEfficacyAndroid extends LuminousEfficacy implements Parcela
      * @param in Parcel
      */
     private LuminousEfficacyAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

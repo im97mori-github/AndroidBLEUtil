@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ad0;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -421,9 +419,9 @@ public class StairClimberDataAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -604,9 +602,6 @@ public class StairClimberDataAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -630,9 +625,6 @@ public class StairClimberDataAndroidTest {
     @Test
     public void test_parcelable_1_00002() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -658,9 +650,6 @@ public class StairClimberDataAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -684,9 +673,6 @@ public class StairClimberDataAndroidTest {
     @Test
     public void test_parcelable_1_00102() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -712,9 +698,6 @@ public class StairClimberDataAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -738,9 +721,6 @@ public class StairClimberDataAndroidTest {
     @Test
     public void test_parcelable_1_00202() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -766,9 +746,6 @@ public class StairClimberDataAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -792,9 +769,6 @@ public class StairClimberDataAndroidTest {
     @Test
     public void test_parcelable_1_00302() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -820,9 +794,6 @@ public class StairClimberDataAndroidTest {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -847,10 +818,7 @@ public class StairClimberDataAndroidTest {
     public void test_parcelable_1_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StairClimberDataPacketAndroid result1 = new StairClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StairClimberDataPacketAndroid result1 = new StairClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -873,9 +841,6 @@ public class StairClimberDataAndroidTest {
     @Test
     public void test_parcelable_1_00501() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -901,9 +866,6 @@ public class StairClimberDataAndroidTest {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -927,9 +889,6 @@ public class StairClimberDataAndroidTest {
     @Test
     public void test_parcelable_1_00601() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -955,9 +914,6 @@ public class StairClimberDataAndroidTest {
     public void test_parcelable_1_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -981,9 +937,6 @@ public class StairClimberDataAndroidTest {
     @Test
     public void test_parcelable_1_00701() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -1009,9 +962,6 @@ public class StairClimberDataAndroidTest {
     public void test_parcelable_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -1035,9 +985,6 @@ public class StairClimberDataAndroidTest {
     @Test
     public void test_parcelable_1_00801() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -1063,9 +1010,6 @@ public class StairClimberDataAndroidTest {
     public void test_parcelable_1_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -1090,9 +1034,6 @@ public class StairClimberDataAndroidTest {
     public void test_parcelable_1_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -1116,9 +1057,6 @@ public class StairClimberDataAndroidTest {
     @Test
     public void test_parcelable_1_00902() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         StairClimberDataAndroid result1 = new StairClimberDataAndroid(StairClimberDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -1216,10 +1154,7 @@ public class StairClimberDataAndroidTest {
     public void test_parcelable_2_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StairClimberDataPacketAndroid result1 = new StairClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StairClimberDataPacketAndroid result1 = new StairClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1404,10 +1339,7 @@ public class StairClimberDataAndroidTest {
     public void test_parcelable_3_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StairClimberDataPacketAndroid result1 = new StairClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StairClimberDataPacketAndroid result1 = new StairClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);

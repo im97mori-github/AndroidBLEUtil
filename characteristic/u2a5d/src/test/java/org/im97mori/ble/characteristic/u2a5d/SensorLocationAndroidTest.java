@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a5d;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,11 +9,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -26,6 +24,7 @@ public class SensorLocationAndroidTest {
     private static final byte[] data_001;
     static {
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = SensorLocationUtils.SENSOR_LOCATION_OTHER;
         data_001 = data;
     }
@@ -157,9 +156,9 @@ public class SensorLocationAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -173,10 +172,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_OTHER, result1.getSensorLocation());
     }
 
@@ -184,10 +180,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_TOP_OF_SHOE, result1.getSensorLocation());
     }
 
@@ -195,10 +188,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_IN_SHOE, result1.getSensorLocation());
     }
 
@@ -206,10 +196,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_HIP, result1.getSensorLocation());
     }
 
@@ -217,10 +204,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_FRONT_WHEEL, result1.getSensorLocation());
     }
 
@@ -228,10 +212,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_LEFT_CRANK, result1.getSensorLocation());
     }
 
@@ -239,10 +220,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_RIGHT_CRANK, result1.getSensorLocation());
     }
 
@@ -250,10 +228,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_LEFT_PEDAL, result1.getSensorLocation());
     }
 
@@ -261,10 +236,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_RIGHT_PEDAL, result1.getSensorLocation());
     }
 
@@ -272,10 +244,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_FRONT_HUB, result1.getSensorLocation());
     }
 
@@ -283,10 +252,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_REAR_DROPOUT, result1.getSensorLocation());
     }
 
@@ -294,10 +260,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_012() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_CHAINSTAY, result1.getSensorLocation());
     }
 
@@ -305,10 +268,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_013() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_REAR_WHEEL, result1.getSensorLocation());
     }
 
@@ -316,10 +276,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_014() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_REAR_HUB, result1.getSensorLocation());
     }
 
@@ -327,10 +284,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_015() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_CHEST, result1.getSensorLocation());
     }
 
@@ -338,10 +292,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_016() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_SPIDER, result1.getSensorLocation());
     }
 
@@ -349,10 +300,7 @@ public class SensorLocationAndroidTest {
     public void test_constructor_017() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertEquals(SensorLocationUtils.SENSOR_LOCATION_CHAIN_RING, result1.getSensorLocation());
     }
 
@@ -368,10 +316,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -383,10 +328,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -398,10 +340,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -413,10 +352,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -428,10 +364,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -443,10 +376,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -458,10 +388,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -473,10 +400,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -488,10 +412,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -503,10 +424,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -518,10 +436,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -533,10 +448,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_012() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -548,10 +460,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_013() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -563,10 +472,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_014() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -578,10 +484,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_015() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -593,10 +496,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_016() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -608,10 +508,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_1_017() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -623,10 +520,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -634,10 +528,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -645,10 +536,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -656,10 +544,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -667,10 +552,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -678,10 +560,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -689,10 +568,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -700,10 +576,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -711,10 +584,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -722,10 +592,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -733,10 +600,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -744,10 +608,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_012() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -755,10 +616,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_013() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -766,10 +624,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_014() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -777,10 +632,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_015() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -788,10 +640,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_016() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -799,10 +648,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_2_017() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -810,10 +656,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -822,10 +665,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -834,10 +674,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -846,10 +683,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -858,10 +692,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -870,10 +701,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -882,10 +710,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -894,10 +719,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -906,10 +728,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -918,10 +737,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -930,10 +746,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_011() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -942,10 +755,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_012() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -954,10 +764,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_013() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -966,10 +773,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_014() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -978,10 +782,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_015() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -990,10 +791,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_016() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1002,10 +800,7 @@ public class SensorLocationAndroidTest {
     public void test_parcelable_3_017() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SensorLocationAndroid result1 = new SensorLocationAndroid(bluetoothGattCharacteristic);
+        SensorLocationAndroid result1 = new SensorLocationAndroid(data);
         SensorLocationAndroid result2 = SensorLocationAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

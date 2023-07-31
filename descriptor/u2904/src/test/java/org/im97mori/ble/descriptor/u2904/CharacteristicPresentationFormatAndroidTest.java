@@ -1,6 +1,10 @@
 package org.im97mori.ble.descriptor.u2904;
 
-import android.bluetooth.BluetoothGattDescriptor;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import android.os.Build;
 import android.os.Parcel;
 import android.util.Log;
@@ -11,12 +15,6 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
-
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
@@ -38,10 +36,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = 0x07;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertEquals(CharacteristicPresentationFormatAndroid.FORMAT_BOOLEAN, result.getFormat());
         assertEquals(2, result.getExponent());
         assertEquals(0x0403, result.getUnit());
@@ -62,10 +57,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertTrue(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -108,10 +100,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertTrue(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -154,10 +143,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         Log.d("aaa", String.valueOf(result.getFormat()));
         Log.d("aaa", String.valueOf(result.getFormat() & CharacteristicPresentationFormatAndroid.FORMAT_BOOLEAN));
         Log.d("aaa", String.valueOf((result.getFormat() & CharacteristicPresentationFormatAndroid.FORMAT_BOOLEAN) == CharacteristicPresentationFormatAndroid.FORMAT_BOOLEAN));
@@ -203,10 +189,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -249,10 +232,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -295,10 +275,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -341,10 +318,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -387,10 +361,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -433,10 +404,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -479,10 +447,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -525,10 +490,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -571,10 +533,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -617,10 +576,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -663,10 +619,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -709,10 +662,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -755,10 +705,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -801,10 +748,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -847,10 +791,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -893,10 +834,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -939,10 +877,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -985,10 +920,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -1031,10 +963,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -1077,10 +1006,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -1123,10 +1049,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -1169,10 +1092,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -1215,10 +1135,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -1261,10 +1178,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isFormatBoolean());
         assertFalse(result.isFormatUnsigned2BitInteger());
         assertFalse(result.isFormatUnsigned4BitInteger());
@@ -1307,10 +1221,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertFalse(result.isNamespaceBluetoothSigAssignedNumbers());
     }
 
@@ -1327,10 +1238,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result = new CharacteristicPresentationFormatAndroid(value);
         assertTrue(result.isNamespaceBluetoothSigAssignedNumbers());
     }
 
@@ -1363,10 +1271,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = 0x07;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result1 = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result1 = new CharacteristicPresentationFormatAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1392,10 +1297,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = 0x07;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result1 = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result1 = new CharacteristicPresentationFormatAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -1412,10 +1314,7 @@ public class CharacteristicPresentationFormatAndroidTest {
         value[ 6] = 0x07;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        CharacteristicPresentationFormatAndroid result1 = new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+        CharacteristicPresentationFormatAndroid result1 = new CharacteristicPresentationFormatAndroid(value);
         CharacteristicPresentationFormatAndroid result2 = CharacteristicPresentationFormatAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

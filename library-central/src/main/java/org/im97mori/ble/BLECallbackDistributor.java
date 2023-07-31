@@ -1214,4 +1214,18 @@ public class BLECallbackDistributor implements BLECallback {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        for (BLECallback bleCallback : mSubscriberInterface.getSubscriberCallbackSet()) {
+            try {
+                bleCallback.onServiceChanged(bluetoothDevice);
+            } catch (Exception e) {
+                BLELogUtils.stackLog(e);
+            }
+        }
+    }
+
 }

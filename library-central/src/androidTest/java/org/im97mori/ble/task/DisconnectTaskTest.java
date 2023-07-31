@@ -17,7 +17,7 @@ import org.im97mori.ble.BaseBLECallback;
 import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.junit.Test;
 
-@SuppressWarnings({"ConstantConditions", "unused"})
+/** @noinspection DataFlowIssue */
 public class DisconnectTaskTest extends AbstractCentralTest {
 
     @Test

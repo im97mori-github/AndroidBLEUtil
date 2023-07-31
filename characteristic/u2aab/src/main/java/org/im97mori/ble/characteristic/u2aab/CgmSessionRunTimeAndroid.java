@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CGM_SESSION_RUN_TIME_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * CGM Session Run Time (Characteristics UUID: 0x2AAB)
@@ -45,9 +45,7 @@ public class CgmSessionRunTimeAndroid extends CgmSessionRunTime implements Parce
          */
         @NonNull
         public CgmSessionRunTimeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CGM_SESSION_RUN_TIME_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new CgmSessionRunTimeAndroid(bluetoothGattCharacteristic);
+            return new CgmSessionRunTimeAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class CgmSessionRunTimeAndroid extends CgmSessionRunTime implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AAB
      */
+    @Deprecated
     public CgmSessionRunTimeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public CgmSessionRunTimeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class CgmSessionRunTimeAndroid extends CgmSessionRunTime implements Parce
      * @param in Parcel
      */
     private CgmSessionRunTimeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

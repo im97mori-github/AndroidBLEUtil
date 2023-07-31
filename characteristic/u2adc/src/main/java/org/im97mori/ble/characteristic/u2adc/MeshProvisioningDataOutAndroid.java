@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.MESH_PROVISIONING_DATA_OUT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Mesh Provisioning Data Out (Characteristics UUID: 0x2ADC)
@@ -45,9 +45,7 @@ public class MeshProvisioningDataOutAndroid extends MeshProvisioningDataOut impl
          */
         @NonNull
         public MeshProvisioningDataOutAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MESH_PROVISIONING_DATA_OUT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new MeshProvisioningDataOutAndroid(bluetoothGattCharacteristic);
+            return new MeshProvisioningDataOutAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class MeshProvisioningDataOutAndroid extends MeshProvisioningDataOut impl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2ADC
      */
+    @Deprecated
     public MeshProvisioningDataOutAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public MeshProvisioningDataOutAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class MeshProvisioningDataOutAndroid extends MeshProvisioningDataOut impl
      * @param in Parcel
      */
     private MeshProvisioningDataOutAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

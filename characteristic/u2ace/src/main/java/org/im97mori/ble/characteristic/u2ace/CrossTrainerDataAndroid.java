@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 
+import java.util.Objects;
+
 /**
  * Cross Trainer Data (Characteristics UUID: 0x2ACE)
  */
@@ -63,8 +65,7 @@ public class CrossTrainerDataAndroid extends CrossTrainerData implements Parcela
      * @param in Parcel
      */
     private CrossTrainerDataAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(new CrossTrainerDataPacketAndroid[]{CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(in.createByteArray())});
+        super(new CrossTrainerDataPacketAndroid[]{CrossTrainerDataPacketAndroid.CREATOR.createFromByteArray(Objects.requireNonNull(in.createByteArray()))});
     }
 
     /**

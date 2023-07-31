@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
+import java.util.Objects;
+
 /**
  * <p>
  * Shortened Local Name
@@ -87,8 +89,7 @@ public class ShortenedLocalNameAndroid extends ShortenedLocalName implements Adv
      * @param in Parcel
      */
     private ShortenedLocalNameAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray(), 0, in.readInt());
+        super(Objects.requireNonNull(in.createByteArray()), 0, in.readInt());
     }
 
     /**

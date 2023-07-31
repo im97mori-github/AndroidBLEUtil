@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.core.CrossTrainerDataUtils;
 import org.im97mori.ble.characteristic.core.IndoorBikeDataUtils;
 import org.im97mori.ble.characteristic.core.RowerDataUtils;
@@ -264,9 +263,7 @@ public class FtmpPeripheralSampleActivity extends BaseActivity implements View.O
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else if (mFitnessMachineProfileMockCallback.isStarted()) {
+        if (mFitnessMachineProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {
             mConnectDisconnectButton.setText(R.string.start);

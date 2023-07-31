@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.AVAILABLE_AUDIO_CONTEXTS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Available Audio Contexts  (Characteristics UUID: 0x2BCD)
@@ -45,9 +45,7 @@ public class AvailableAudioContextsAndroid extends AvailableAudioContexts implem
          */
         @NonNull
         public AvailableAudioContextsAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(AVAILABLE_AUDIO_CONTEXTS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AvailableAudioContextsAndroid(bluetoothGattCharacteristic);
+            return new AvailableAudioContextsAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class AvailableAudioContextsAndroid extends AvailableAudioContexts implem
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BCD
      */
+    @Deprecated
     public AvailableAudioContextsAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AvailableAudioContextsAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class AvailableAudioContextsAndroid extends AvailableAudioContexts implem
      * @param in Parcel
      */
     private AvailableAudioContextsAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

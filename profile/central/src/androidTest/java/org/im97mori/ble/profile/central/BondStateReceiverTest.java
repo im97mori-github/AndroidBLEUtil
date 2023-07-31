@@ -20,8 +20,10 @@ import static org.junit.Assert.assertTrue;
 
 public class BondStateReceiverTest {
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_onReceive_00001() {
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), baseProfileCallback) {
@@ -43,8 +45,10 @@ public class BondStateReceiverTest {
         assertFalse(baseAbstractCentralProfile.result.get());
     }
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_onReceive_00101() {
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), baseProfileCallback) {
@@ -66,8 +70,10 @@ public class BondStateReceiverTest {
         assertFalse(baseAbstractCentralProfile.result.get());
     }
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_onReceive_00102() {
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), baseProfileCallback) {
@@ -89,8 +95,10 @@ public class BondStateReceiverTest {
         assertFalse(baseAbstractCentralProfile.result.get());
     }
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_onReceive_00201() {
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), baseProfileCallback) {
@@ -114,8 +122,10 @@ public class BondStateReceiverTest {
         assertFalse(baseAbstractCentralProfile.result.get());
     }
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_onReceive_00202() {
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
         BaseAbstractCentralProfile baseAbstractCentralProfile = new BaseAbstractCentralProfile(ApplicationProvider.getApplicationContext(), baseProfileCallback) {
@@ -140,8 +150,10 @@ public class BondStateReceiverTest {
         assertFalse(baseAbstractCentralProfile.result.get());
     }
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_onReceive_00203() {
         final AtomicReference<BluetoothDevice> atomicReference = new AtomicReference<>(null);
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
@@ -165,8 +177,10 @@ public class BondStateReceiverTest {
         assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, atomicReference.get());
     }
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_onReceive_00204() {
         final AtomicReference<BluetoothDevice> atomicReference = new AtomicReference<>(null);
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
@@ -190,8 +204,10 @@ public class BondStateReceiverTest {
         assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, atomicReference.get());
     }
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_onReceive_00301() {
         final AtomicReference<BluetoothDevice> atomicReference = new AtomicReference<>(null);
         BaseProfileCallback baseProfileCallback = new BaseProfileCallback();
@@ -215,8 +231,10 @@ public class BondStateReceiverTest {
         assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, atomicReference.get());
     }
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_onReceive_00302() {
         final AtomicReference<BluetoothDevice> atomicReference1 = new AtomicReference<>(null);
         final AtomicReference<BluetoothDevice> atomicReference2 = new AtomicReference<>(null);

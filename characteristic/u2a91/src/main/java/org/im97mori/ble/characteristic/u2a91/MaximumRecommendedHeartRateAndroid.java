@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Maximum Recommended Heart Rate (Characteristics UUID: 0x2A91)
@@ -44,9 +44,7 @@ public class MaximumRecommendedHeartRateAndroid extends MaximumRecommendedHeartR
          */
         @NonNull
         public MaximumRecommendedHeartRateAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MAXIMUM_RECOMMENDED_HEART_RATE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new MaximumRecommendedHeartRateAndroid(bluetoothGattCharacteristic);
+            return new MaximumRecommendedHeartRateAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class MaximumRecommendedHeartRateAndroid extends MaximumRecommendedHeartR
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A91
      */
+    @Deprecated
     public MaximumRecommendedHeartRateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public MaximumRecommendedHeartRateAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class MaximumRecommendedHeartRateAndroid extends MaximumRecommendedHeartR
      * @param in Parcel
      */
     private MaximumRecommendedHeartRateAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

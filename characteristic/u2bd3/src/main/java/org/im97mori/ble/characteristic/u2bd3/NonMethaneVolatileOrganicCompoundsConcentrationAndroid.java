@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Non-Methane Volatile Organic Compounds Concentration (Characteristics UUID: 0x2BD3)
@@ -45,9 +45,7 @@ public class NonMethaneVolatileOrganicCompoundsConcentrationAndroid extends NonM
          */
         @NonNull
         public NonMethaneVolatileOrganicCompoundsConcentrationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(NON_METHANE_VOLATILE_ORGANIC_COMPOUNDS_CONCENTRATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new NonMethaneVolatileOrganicCompoundsConcentrationAndroid(bluetoothGattCharacteristic);
+            return new NonMethaneVolatileOrganicCompoundsConcentrationAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class NonMethaneVolatileOrganicCompoundsConcentrationAndroid extends NonM
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BD3
      */
+    @Deprecated
     public NonMethaneVolatileOrganicCompoundsConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public NonMethaneVolatileOrganicCompoundsConcentrationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class NonMethaneVolatileOrganicCompoundsConcentrationAndroid extends NonM
      * @param in Parcel
      */
     private NonMethaneVolatileOrganicCompoundsConcentrationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

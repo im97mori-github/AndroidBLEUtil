@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CHROMATICITY_TOLERANCE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Chromaticity Tolerance (Characteristics UUID: 0x2AE6)
@@ -44,9 +44,7 @@ public class ChromaticityToleranceAndroid extends ChromaticityTolerance implemen
          */
         @NonNull
         public ChromaticityToleranceAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CHROMATICITY_TOLERANCE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ChromaticityToleranceAndroid(bluetoothGattCharacteristic);
+            return new ChromaticityToleranceAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ChromaticityToleranceAndroid extends ChromaticityTolerance implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AE6
      */
+    @Deprecated
     public ChromaticityToleranceAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ChromaticityToleranceAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class ChromaticityToleranceAndroid extends ChromaticityTolerance implemen
      * @param in Parcel
      */
     private ChromaticityToleranceAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

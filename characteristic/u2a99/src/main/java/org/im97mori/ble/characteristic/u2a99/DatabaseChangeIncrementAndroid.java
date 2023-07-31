@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.DATABASE_CHANGE_INCREMENT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Database Change Increment (Characteristics UUID: 0x2A99)
@@ -44,9 +44,7 @@ public class DatabaseChangeIncrementAndroid extends DatabaseChangeIncrement impl
          */
         @NonNull
         public DatabaseChangeIncrementAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DATABASE_CHANGE_INCREMENT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new DatabaseChangeIncrementAndroid(bluetoothGattCharacteristic);
+            return new DatabaseChangeIncrementAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class DatabaseChangeIncrementAndroid extends DatabaseChangeIncrement impl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A99
      */
+    @Deprecated
     public DatabaseChangeIncrementAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public DatabaseChangeIncrementAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class DatabaseChangeIncrementAndroid extends DatabaseChangeIncrement impl
      * @param in Parcel
      */
     private DatabaseChangeIncrementAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SLEEP_ACTIVITY_SUMMARY_DATA_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Sleep Activity Summary Data (Characteristics UUID: 0x2B42)
@@ -45,9 +45,7 @@ public class SleepActivitySummaryDataAndroid extends SleepActivitySummaryData im
          */
         @NonNull
         public SleepActivitySummaryDataAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SLEEP_ACTIVITY_SUMMARY_DATA_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new SleepActivitySummaryDataAndroid(bluetoothGattCharacteristic);
+            return new SleepActivitySummaryDataAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class SleepActivitySummaryDataAndroid extends SleepActivitySummaryData im
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B42
      */
+    @Deprecated
     public SleepActivitySummaryDataAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public SleepActivitySummaryDataAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class SleepActivitySummaryDataAndroid extends SleepActivitySummaryData im
      * @param in Parcel
      */
     private SleepActivitySummaryDataAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

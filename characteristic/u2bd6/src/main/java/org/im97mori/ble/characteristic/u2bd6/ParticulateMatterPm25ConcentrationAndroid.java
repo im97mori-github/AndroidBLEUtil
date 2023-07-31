@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreator;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Particulate Matter - PM2.5 Concentration (Characteristics UUID: 0x2BD6)
@@ -45,9 +45,7 @@ public class ParticulateMatterPm25ConcentrationAndroid extends ParticulateMatter
          */
         @NonNull
         public ParticulateMatterPm25ConcentrationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PARTICULATE_MATTER_PM2_5_CONCENTRATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ParticulateMatterPm25ConcentrationAndroid(bluetoothGattCharacteristic);
+            return new ParticulateMatterPm25ConcentrationAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class ParticulateMatterPm25ConcentrationAndroid extends ParticulateMatter
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BD6
      */
+    @Deprecated
     public ParticulateMatterPm25ConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ParticulateMatterPm25ConcentrationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class ParticulateMatterPm25ConcentrationAndroid extends ParticulateMatter
      * @param in Parcel
      */
     private ParticulateMatterPm25ConcentrationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

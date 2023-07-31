@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
+import java.util.Objects;
 
 /**
  * Characteristic Presentation Format (Descriptor UUID: 0x2904)
@@ -42,9 +42,7 @@ public class CharacteristicPresentationFormatAndroid extends CharacteristicPrese
          */
         @NonNull
         public CharacteristicPresentationFormatAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, 0);
-            bluetoothGattDescriptor.setValue(values);
-            return new CharacteristicPresentationFormatAndroid(bluetoothGattDescriptor);
+            return new CharacteristicPresentationFormatAndroid(values);
         }
 
     };
@@ -54,8 +52,18 @@ public class CharacteristicPresentationFormatAndroid extends CharacteristicPrese
      *
      * @param bluetoothGattDescriptor Characteristics UUID: 0x2904
      */
+    @Deprecated
     public CharacteristicPresentationFormatAndroid(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         super(bluetoothGattDescriptor.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattDescriptor#getValue()">BluetoothGattDescriptor#getValue()</a>
+     */
+    public CharacteristicPresentationFormatAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class CharacteristicPresentationFormatAndroid extends CharacteristicPrese
      * @param in Parcel
      */
     private CharacteristicPresentationFormatAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SEARCH_RESULTS_OBJECT_ID_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Search Results Object ID (Characteristics UUID: 0x2BA6)
@@ -45,9 +45,7 @@ public class SearchResultsObjectIdAndroid extends SearchResultsObjectId implemen
          */
         @NonNull
         public SearchResultsObjectIdAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SEARCH_RESULTS_OBJECT_ID_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new SearchResultsObjectIdAndroid(bluetoothGattCharacteristic);
+            return new SearchResultsObjectIdAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class SearchResultsObjectIdAndroid extends SearchResultsObjectId implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BA6
      */
+    @Deprecated
     public SearchResultsObjectIdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public SearchResultsObjectIdAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class SearchResultsObjectIdAndroid extends SearchResultsObjectId implemen
      * @param in Parcel
      */
     private SearchResultsObjectIdAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -6,12 +6,12 @@ plugins {
 def target = characteristicU2adbAndroid
 
 android {
-    compileSdkVersion globalCompileSdkVersion
-    buildToolsVersion globalBuildToolsVersion
+    compileSdk globalCompileSdkVersion
+    buildToolsVersion = globalBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion globalMinSdkVersion
-        targetSdkVersion globalTargetSdkVersion
+        minSdk globalMinSdkVersion
+        targetSdk globalTargetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -40,7 +40,7 @@ dependencies {
     api apiCoreConstantsCharacteristic
     api apiCharacteristicCore
     api apiCoreUtilsAndroid
-    api target['baseModule']
+    api target['baseModule'].toString()
     api androidxAnnotation
     testImplementation apiTestUtilAndroid
     testImplementation robolectric

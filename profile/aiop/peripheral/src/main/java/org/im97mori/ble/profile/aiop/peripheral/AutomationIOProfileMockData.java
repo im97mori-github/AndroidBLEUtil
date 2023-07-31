@@ -1,5 +1,6 @@
 package org.im97mori.ble.profile.aiop.peripheral;
 
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -30,7 +31,9 @@ public class AutomationIOProfileMockData extends MockData {
          */
         @Override
         @NonNull
+        @Deprecated
         public AutomationIOProfileMockData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new AutomationIOProfileMockData(in);
         }
 
@@ -67,9 +70,14 @@ public class AutomationIOProfileMockData extends MockData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public AutomationIOProfileMockData(@NonNull Parcel in) {
         super(in);
-        automationIO = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            automationIO = in.readParcelable(this.getClass().getClassLoader(), AutomationIOServiceData.class);
+        } else {
+            automationIO = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

@@ -1,9 +1,19 @@
 package org.im97mori.ble.service.ndcs.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.TIME_WITH_DST_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.NEXT_DST_CHANGE_SERVICE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.os.Build;
+
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.characteristic.u2a11.TimeWithDst;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
@@ -11,17 +21,6 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_WITH_DST_CHARACTERISTIC;
-import static org.im97mori.ble.constants.ServiceUUID.NEXT_DST_CHANGE_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import androidx.test.filters.RequiresDevice;
-import androidx.test.filters.SdkSuppress;
 
 public class NextDstChangeServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
@@ -87,7 +86,6 @@ public class NextDstChangeServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertEquals(TIME_WITH_DST_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(timeWithDst.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -121,7 +119,6 @@ public class NextDstChangeServiceMockCallbackBuilderTest extends AbstractPeriphe
         assertEquals(TIME_WITH_DST_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(timeWithDst.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test

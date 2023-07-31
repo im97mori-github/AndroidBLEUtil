@@ -185,7 +185,7 @@ public interface BLEServerCallback {
      * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
      * @param status                   {@link NotifyTask#STATUS_CANCEL}
      *                                 {@link NotifyTask#STATUS_CHARACTERISTIC_NOT_FOUND}
-     *                                 {@link NotifyTask#STATUS_NOTIFY_CHARACTERISTIC_CHANGED}
+     *                                 {@link NotifyTask#STATUS_NOTIFY_CHARACTERISTIC_CHANGE_FAILED}
      * @param argument                 callback argument
      * @see NotifyTask
      */

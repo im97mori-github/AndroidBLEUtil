@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 
 import androidx.test.filters.RequiresDevice;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 public class NotifiedTaskTest extends AbstractCentralTest {
 
     @Test

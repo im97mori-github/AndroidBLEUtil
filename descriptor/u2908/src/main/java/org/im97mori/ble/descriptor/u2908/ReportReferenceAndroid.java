@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.DescriptorUUID.REPORT_REFERENCE_DESCRIPTOR;
+import java.util.Objects;
 
 /**
  * Report Reference (Descriptor UUID: 0x2908)
@@ -42,9 +42,7 @@ public class ReportReferenceAndroid extends ReportReference implements Parcelabl
          */
         @NonNull
         public ReportReferenceAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(REPORT_REFERENCE_DESCRIPTOR, 0);
-            bluetoothGattDescriptor.setValue(values);
-            return new ReportReferenceAndroid(bluetoothGattDescriptor);
+            return new ReportReferenceAndroid(values);
         }
 
     };
@@ -54,8 +52,18 @@ public class ReportReferenceAndroid extends ReportReference implements Parcelabl
      *
      * @param bluetoothGattDescriptor Characteristics UUID: 0x2908
      */
+    @Deprecated
     public ReportReferenceAndroid(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         super(bluetoothGattDescriptor.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattDescriptor#getValue()">BluetoothGattDescriptor#getValue()</a>
+     */
+    public ReportReferenceAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -74,8 +82,7 @@ public class ReportReferenceAndroid extends ReportReference implements Parcelabl
      * @param in Parcel
      */
     private ReportReferenceAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

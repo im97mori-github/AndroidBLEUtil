@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.MESH_PROXY_DATA_OUT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Mesh Proxy Data Out (Characteristics UUID: 0x2ADE)
@@ -45,9 +45,7 @@ public class MeshProxyDataOutAndroid extends MeshProxyDataOut implements Parcela
          */
         @NonNull
         public MeshProxyDataOutAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MESH_PROXY_DATA_OUT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new MeshProxyDataOutAndroid(bluetoothGattCharacteristic);
+            return new MeshProxyDataOutAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class MeshProxyDataOutAndroid extends MeshProxyDataOut implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2ADE
      */
+    @Deprecated
     public MeshProxyDataOutAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public MeshProxyDataOutAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class MeshProxyDataOutAndroid extends MeshProxyDataOut implements Parcela
      * @param in Parcel
      */
     private MeshProxyDataOutAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

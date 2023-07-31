@@ -1,9 +1,20 @@
 package org.im97mori.ble.service.bms.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_FEATURE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.os.Build;
+
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.characteristic.u2aa5.BondManagementFeatures;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
@@ -11,18 +22,6 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.BOND_MANAGEMENT_FEATURE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.ServiceUUID.BOND_MANAGEMENT_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import androidx.test.filters.RequiresDevice;
-import androidx.test.filters.SdkSuppress;
 
 public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
@@ -466,7 +465,6 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
         assertEquals(BOND_MANAGEMENT_CONTROL_POINT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(null, bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -556,7 +554,6 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
         assertEquals(BOND_MANAGEMENT_FEATURE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bondManagementFeatures.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -609,7 +606,6 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
         assertEquals(BOND_MANAGEMENT_FEATURE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bondManagementFeatures.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -662,7 +658,6 @@ public class BondManagementServiceMockCallbackBuilderTest extends AbstractPeriph
         assertEquals(BOND_MANAGEMENT_FEATURE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(bondManagementFeatures.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test

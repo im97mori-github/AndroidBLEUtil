@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ACTIVITY_CURRENT_SESSION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Activity Current Session (Characteristics UUID: 0x2B44)
@@ -45,9 +45,7 @@ public class ActivityCurrentSessionAndroid extends ActivityCurrentSession implem
          */
         @NonNull
         public ActivityCurrentSessionAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ACTIVITY_CURRENT_SESSION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ActivityCurrentSessionAndroid(bluetoothGattCharacteristic);
+            return new ActivityCurrentSessionAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class ActivityCurrentSessionAndroid extends ActivityCurrentSession implem
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B44
      */
+    @Deprecated
     public ActivityCurrentSessionAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ActivityCurrentSessionAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class ActivityCurrentSessionAndroid extends ActivityCurrentSession implem
      * @param in Parcel
      */
     private ActivityCurrentSessionAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

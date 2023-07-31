@@ -6,12 +6,12 @@ plugins {
 def target = serviceEssCentralAndroid
 
 android {
-    compileSdkVersion globalCompileSdkVersion
-    buildToolsVersion globalBuildToolsVersion
+    compileSdk globalCompileSdkVersion
+    buildToolsVersion = globalBuildToolsVersion
 
     defaultConfig {
         minSdkVersion globalDescriptorInstanceIdMinSdkVersion
-        targetSdkVersion globalTargetSdkVersion
+        targetSdk globalTargetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

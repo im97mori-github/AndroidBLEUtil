@@ -1,12 +1,10 @@
 package org.im97mori.ble.characteristic.u2b4a;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -16,7 +14,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -28,6 +26,7 @@ public class HandednessAndroidTest extends TestBase {
     private static final byte[] data_00001;
     static {
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = Handedness.HANDEDNESS_LEFT_HANDED;
         data_00001 = data;
     }
@@ -58,10 +57,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         assertEquals(Handedness.HANDEDNESS_LEFT_HANDED, result1.getHandedness());
         assertTrue(result1.isHandednessLeftHanded());
         assertFalse(result1.isHandednessRightHanded());
@@ -73,10 +69,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         assertEquals(Handedness.HANDEDNESS_RIGHT_HANDED, result1.getHandedness());
         assertFalse(result1.isHandednessLeftHanded());
         assertTrue(result1.isHandednessRightHanded());
@@ -88,10 +81,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         assertEquals(Handedness.HANDEDNESS_AMBIDEXTROUS, result1.getHandedness());
         assertFalse(result1.isHandednessLeftHanded());
         assertFalse(result1.isHandednessRightHanded());
@@ -103,10 +93,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_constructor_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         assertEquals(Handedness.HANDEDNESS_UNSPECIFIED, result1.getHandedness());
         assertFalse(result1.isHandednessLeftHanded());
         assertFalse(result1.isHandednessRightHanded());
@@ -166,10 +153,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -181,10 +165,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -196,10 +177,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -211,10 +189,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_parcelable_1_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -226,10 +201,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -237,10 +209,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -248,10 +217,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -259,10 +225,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_parcelable_2_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -270,10 +233,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         HandednessAndroid result2 = HandednessAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -282,10 +242,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         HandednessAndroid result2 = HandednessAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -294,10 +251,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         HandednessAndroid result2 = HandednessAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -306,10 +260,7 @@ public class HandednessAndroidTest extends TestBase {
     public void test_parcelable_3_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HandednessAndroid result1 = new HandednessAndroid(bluetoothGattCharacteristic);
+        HandednessAndroid result1 = new HandednessAndroid(data);
         HandednessAndroid result2 = HandednessAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

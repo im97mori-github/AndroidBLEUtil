@@ -82,7 +82,7 @@ public class BondTask extends AbstractBLETask {
     @NonNull
     public static Message createBondSuccessMessage(@NonNull BluetoothDevice bluetoothDevice) {
         Bundle bundle = new Bundle();
-        bundle.putParcelable(KEY_BLUETOOTH_DEVICE, bluetoothDevice);
+        bundle.putString(KEY_BLUETOOTH_DEVICE, bluetoothDevice.getAddress());
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_BOND_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
@@ -98,7 +98,7 @@ public class BondTask extends AbstractBLETask {
     @NonNull
     public static Message createBondErrorMessage(@NonNull BluetoothDevice bluetoothDevice) {
         Bundle bundle = new Bundle();
-        bundle.putParcelable(KEY_BLUETOOTH_DEVICE, bluetoothDevice);
+        bundle.putString(KEY_BLUETOOTH_DEVICE, bluetoothDevice.getAddress());
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_BOND_ERROR);
         Message message = new Message();
         message.setData(bundle);
@@ -182,6 +182,7 @@ public class BondTask extends AbstractBLETask {
     /**
      * {@inheritDoc}
      */
+    @SuppressLint("UnspecifiedRegisterReceiverFlag")
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
@@ -196,7 +197,11 @@ public class BondTask extends AbstractBLETask {
             // current:init, next:bond start
             if (this == message.obj && PROGRESS_BOND_START.equals(nextProgress)) {
 
-                mContext.registerReceiver(mBondStateReceiver, BondStateReceiver.createIntentFilter());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    mContext.registerReceiver(mBondStateReceiver, BondStateReceiver.createIntentFilter(), Context.RECEIVER_NOT_EXPORTED);
+                } else {
+                    mContext.registerReceiver(mBondStateReceiver, BondStateReceiver.createIntentFilter());
+                }
 
                 if (mTargetBluetoothDevice.createBond()) {
                     // set timeout message
@@ -211,8 +216,7 @@ public class BondTask extends AbstractBLETask {
                 mCurrentProgress = nextProgress;
             }
         } else if (PROGRESS_BOND_START.equals(mCurrentProgress)) {
-            BluetoothDevice bluetoothDevice = bundle.getParcelable(KEY_BLUETOOTH_DEVICE);
-            if (mTargetBluetoothDevice.equals(bluetoothDevice)) {
+            if (mTargetBluetoothDevice.getAddress().equals(bundle.getString(KEY_BLUETOOTH_DEVICE))) {
                 // current:bond start, next:bond success
                 if (PROGRESS_BOND_SUCCESS.equals(nextProgress)) {
                     mContext.unregisterReceiver(mBondStateReceiver);

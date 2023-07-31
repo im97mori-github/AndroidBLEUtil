@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2afb;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,7 +10,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -31,10 +29,7 @@ public class IlluminanceAndroidTest {
         data[ 2] = (byte) (IlluminanceUtils.ILLUMINANCE_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IlluminanceAndroid result = new IlluminanceAndroid(bluetoothGattCharacteristic);
+        IlluminanceAndroid result = new IlluminanceAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getIlluminance());
     }
 
@@ -47,10 +42,7 @@ public class IlluminanceAndroidTest {
         data[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IlluminanceAndroid result = new IlluminanceAndroid(bluetoothGattCharacteristic);
+        IlluminanceAndroid result = new IlluminanceAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getIlluminance());
     }
 
@@ -79,10 +71,7 @@ public class IlluminanceAndroidTest {
         data[ 2] = (byte) (IlluminanceUtils.ILLUMINANCE_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IlluminanceAndroid result1 = new IlluminanceAndroid(bluetoothGattCharacteristic);
+        IlluminanceAndroid result1 = new IlluminanceAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -100,10 +89,7 @@ public class IlluminanceAndroidTest {
         data[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IlluminanceAndroid result1 = new IlluminanceAndroid(bluetoothGattCharacteristic);
+        IlluminanceAndroid result1 = new IlluminanceAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -121,10 +107,7 @@ public class IlluminanceAndroidTest {
         data[ 2] = (byte) (IlluminanceUtils.ILLUMINANCE_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IlluminanceAndroid result1 = new IlluminanceAndroid(bluetoothGattCharacteristic);
+        IlluminanceAndroid result1 = new IlluminanceAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -137,10 +120,7 @@ public class IlluminanceAndroidTest {
         data[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IlluminanceAndroid result1 = new IlluminanceAndroid(bluetoothGattCharacteristic);
+        IlluminanceAndroid result1 = new IlluminanceAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -153,10 +133,7 @@ public class IlluminanceAndroidTest {
         data[ 2] = (byte) (IlluminanceUtils.ILLUMINANCE_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IlluminanceAndroid result1 = new IlluminanceAndroid(bluetoothGattCharacteristic);
+        IlluminanceAndroid result1 = new IlluminanceAndroid(data);
         IlluminanceAndroid result2 = IlluminanceAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -170,10 +147,7 @@ public class IlluminanceAndroidTest {
         data[ 2] = 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IlluminanceAndroid result1 = new IlluminanceAndroid(bluetoothGattCharacteristic);
+        IlluminanceAndroid result1 = new IlluminanceAndroid(data);
         IlluminanceAndroid result2 = IlluminanceAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

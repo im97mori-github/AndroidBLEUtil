@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.LUMINOUS_EXPOSURE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Luminous Exposure (Characteristics UUID: 0x2AFE)
@@ -44,9 +44,7 @@ public class LuminousExposureAndroid extends LuminousExposure implements Parcela
          */
         @NonNull
         public LuminousExposureAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LUMINOUS_EXPOSURE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new LuminousExposureAndroid(bluetoothGattCharacteristic);
+            return new LuminousExposureAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class LuminousExposureAndroid extends LuminousExposure implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AFE
      */
+    @Deprecated
     public LuminousExposureAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public LuminousExposureAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class LuminousExposureAndroid extends LuminousExposure implements Parcela
      * @param in Parcel
      */
     private LuminousExposureAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

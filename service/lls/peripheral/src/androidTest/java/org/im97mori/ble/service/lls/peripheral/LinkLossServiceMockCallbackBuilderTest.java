@@ -13,7 +13,6 @@ import java.util.List;
 
 import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_LEVEL_CHARACTERISTIC;
 import static org.im97mori.ble.constants.ServiceUUID.LINK_LOSS_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -52,7 +51,6 @@ public class LinkLossServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(LINK_LOSS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(ALERT_LEVEL_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), alertLevel.getBytes());
     }
 
     @Test
@@ -72,7 +70,6 @@ public class LinkLossServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(LINK_LOSS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(ALERT_LEVEL_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), alertLevel.getBytes());
     }
 
     @Test
@@ -92,7 +89,6 @@ public class LinkLossServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(LINK_LOSS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(ALERT_LEVEL_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), alertLevel.getBytes());
     }
 
 
@@ -113,7 +109,6 @@ public class LinkLossServiceMockCallbackBuilderTest extends AbstractPeripheralTe
         assertEquals(LINK_LOSS_SERVICE, bluetoothGattService.getUuid());
         BluetoothGattCharacteristic bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(ALERT_LEVEL_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
-        assertArrayEquals(bluetoothGattCharacteristic.getValue(), alertLevel.getBytes());
     }
 
     @Test

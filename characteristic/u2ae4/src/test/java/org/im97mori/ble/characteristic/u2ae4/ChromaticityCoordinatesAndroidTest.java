@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ae4;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -31,10 +29,7 @@ public class ChromaticityCoordinatesAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticityCoordinatesAndroid result = new ChromaticityCoordinatesAndroid(bluetoothGattCharacteristic);
+        ChromaticityCoordinatesAndroid result = new ChromaticityCoordinatesAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result.getChromaticityXCoordinate());
         assertEquals(BLEUtils.createUInt16(data, 2), result.getChromaticityYCoordinate());
     }
@@ -59,10 +54,7 @@ public class ChromaticityCoordinatesAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticityCoordinatesAndroid result1 = new ChromaticityCoordinatesAndroid(bluetoothGattCharacteristic);
+        ChromaticityCoordinatesAndroid result1 = new ChromaticityCoordinatesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -82,10 +74,7 @@ public class ChromaticityCoordinatesAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticityCoordinatesAndroid result1 = new ChromaticityCoordinatesAndroid(bluetoothGattCharacteristic);
+        ChromaticityCoordinatesAndroid result1 = new ChromaticityCoordinatesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -99,10 +88,7 @@ public class ChromaticityCoordinatesAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticityCoordinatesAndroid result1 = new ChromaticityCoordinatesAndroid(bluetoothGattCharacteristic);
+        ChromaticityCoordinatesAndroid result1 = new ChromaticityCoordinatesAndroid(data);
         ChromaticityCoordinatesAndroid result2 = ChromaticityCoordinatesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

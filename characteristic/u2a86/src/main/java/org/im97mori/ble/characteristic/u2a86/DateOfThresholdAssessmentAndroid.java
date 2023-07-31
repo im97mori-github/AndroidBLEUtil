@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Date of Threshold Assessment (Characteristics UUID: 0x2A86)
@@ -44,9 +44,7 @@ public class DateOfThresholdAssessmentAndroid extends DateOfThresholdAssessment 
          */
         @NonNull
         public DateOfThresholdAssessmentAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DATE_OF_THRESHOLD_ASSESSMENT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new DateOfThresholdAssessmentAndroid(bluetoothGattCharacteristic);
+            return new DateOfThresholdAssessmentAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class DateOfThresholdAssessmentAndroid extends DateOfThresholdAssessment 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A86
      */
+    @Deprecated
     public DateOfThresholdAssessmentAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public DateOfThresholdAssessmentAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class DateOfThresholdAssessmentAndroid extends DateOfThresholdAssessment 
      * @param in Parcel
      */
     private DateOfThresholdAssessmentAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

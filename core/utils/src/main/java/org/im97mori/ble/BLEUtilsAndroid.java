@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import org.im97mori.stacklog.LogUtils;
 
 import java.lang.reflect.Method;
+import java.util.Objects;
 
 /**
  * BLE Core Utilities for Android
@@ -49,6 +50,7 @@ public class BLEUtilsAndroid extends BLEUtils {
      */
     @SuppressLint("MissingPermission")
     @DeprecatedSinceApi(api = Build.VERSION_CODES.TIRAMISU)
+    @Deprecated
     public static boolean bluetoothEnable(@NonNull Context context) {
         boolean result = false;
         BluetoothManager bluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
@@ -68,6 +70,7 @@ public class BLEUtilsAndroid extends BLEUtils {
      */
     @SuppressLint("MissingPermission")
     @DeprecatedSinceApi(api = Build.VERSION_CODES.TIRAMISU)
+    @Deprecated
     public static boolean bluetoothDisable(@NonNull Context context) {
         boolean result = false;
         BluetoothManager bluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
@@ -86,7 +89,7 @@ public class BLEUtilsAndroid extends BLEUtils {
      * @param bluetoothGattDescriptor {@link BluetoothGattDescriptor} instance
      * @return descriptor instance id(like {@link BluetoothGattService#getInstanceId()} or {@link BluetoothGattCharacteristic#getInstanceId()})
      */
-    @SuppressWarnings({"JavaReflectionMemberAccess", "ConstantConditions"})
+    @SuppressWarnings({"JavaReflectionMemberAccess"})
     @SuppressLint({"SoonBlockedPrivateApi", "DiscouragedPrivateApi"})
     public static int getDescriptorInstanceId(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         int descriptorInstanceId;
@@ -94,13 +97,15 @@ public class BLEUtilsAndroid extends BLEUtils {
             Parcel parcel = Parcel.obtain();
             bluetoothGattDescriptor.writeToParcel(parcel, 0);
             parcel.setDataPosition(0);
-            parcel.readParcelable(bluetoothGattDescriptor.getClass().getClassLoader());
+            parcel.readString();
+            parcel.readLong();
+            parcel.readLong();
             descriptorInstanceId = parcel.readInt();
             parcel.recycle();
         } else if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
             try {
                 Method method = BluetoothGattDescriptor.class.getDeclaredMethod("getInstanceId");
-                descriptorInstanceId = (int) method.invoke(bluetoothGattDescriptor);
+                descriptorInstanceId = (int) Objects.requireNonNull(method.invoke(bluetoothGattDescriptor));
             } catch (Exception e) {
                 LogUtils.stackLog(Log.getStackTraceString(e));
                 descriptorInstanceId = 0;

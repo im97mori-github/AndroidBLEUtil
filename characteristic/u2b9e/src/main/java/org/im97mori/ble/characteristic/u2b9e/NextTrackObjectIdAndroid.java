@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.NEXT_TRACK_OBJECT_ID_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Next Track Object ID (Characteristics UUID: 0x2B9E)
@@ -45,9 +45,7 @@ public class NextTrackObjectIdAndroid extends NextTrackObjectId implements Parce
          */
         @NonNull
         public NextTrackObjectIdAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(NEXT_TRACK_OBJECT_ID_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new NextTrackObjectIdAndroid(bluetoothGattCharacteristic);
+            return new NextTrackObjectIdAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class NextTrackObjectIdAndroid extends NextTrackObjectId implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B9E
      */
+    @Deprecated
     public NextTrackObjectIdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public NextTrackObjectIdAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class NextTrackObjectIdAndroid extends NextTrackObjectId implements Parce
      * @param in Parcel
      */
     private NextTrackObjectIdAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

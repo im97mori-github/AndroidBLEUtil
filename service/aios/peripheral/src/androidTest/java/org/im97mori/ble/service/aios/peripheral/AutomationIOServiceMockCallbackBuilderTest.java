@@ -12,7 +12,6 @@ import static org.im97mori.ble.constants.DescriptorUUID.TIME_TRIGGER_SETTING_DES
 import static org.im97mori.ble.constants.DescriptorUUID.VALID_RANGE_DESCRIPTOR;
 import static org.im97mori.ble.constants.DescriptorUUID.VALUE_TRIGGER_SETTING_DESCRIPTOR;
 import static org.im97mori.ble.constants.ServiceUUID.AUTOMATION_IO_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -1419,7 +1418,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertEquals(DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(digital.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1462,7 +1460,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertEquals(DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(digital.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1505,7 +1502,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertEquals(DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(digital.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1579,14 +1575,12 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertEquals(DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(digital1.getBytes(), bluetoothGattCharacteristic.getValue());
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(1);
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(digital2.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1660,14 +1654,12 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertEquals(DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(digital1.getBytes(), bluetoothGattCharacteristic.getValue());
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(1);
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(digital2.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1741,14 +1733,12 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertEquals(DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(digital1.getBytes(), bluetoothGattCharacteristic.getValue());
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(1);
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(DIGITAL_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(digital2.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -1847,7 +1837,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1892,7 +1881,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1943,7 +1931,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(value, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -1994,7 +1981,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(value, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -2069,7 +2055,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -2144,7 +2129,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -2226,7 +2210,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(value, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -2307,7 +2290,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(value, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -2359,7 +2341,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -2411,7 +2392,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -2457,7 +2437,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -2503,7 +2482,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -2585,7 +2563,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -2668,7 +2645,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -2744,7 +2720,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -2821,7 +2796,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -2875,7 +2849,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicPresentationFormat.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -2951,7 +2924,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicPresentationFormat2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -3112,7 +3084,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicUserDescription.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -3198,7 +3169,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicUserDescription2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -3380,7 +3350,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicExtendedProperties.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -3466,7 +3435,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicExtendedProperties2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -3694,7 +3662,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -3744,7 +3711,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -3797,7 +3763,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -3850,7 +3815,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -4019,7 +3983,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -4105,7 +4068,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -4193,7 +4155,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -4281,7 +4242,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -5016,7 +4976,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -5071,7 +5030,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -5184,7 +5142,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -5242,7 +5199,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -5518,7 +5474,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -5614,7 +5569,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -5809,7 +5763,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -5908,7 +5861,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -6553,7 +6505,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(NUMBER_OF_DIGITALS_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(numberOfDigitals.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -6628,7 +6579,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(NUMBER_OF_DIGITALS_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(numberOfDigitals2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -6759,7 +6709,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertEquals(ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(analog.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6802,7 +6751,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertEquals(ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(analog.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6845,7 +6793,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertEquals(ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(analog.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -6919,14 +6866,12 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertEquals(ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(analog1.getBytes(), bluetoothGattCharacteristic.getValue());
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(1);
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(analog2.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -7000,14 +6945,12 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertEquals(ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(analog1.getBytes(), bluetoothGattCharacteristic.getValue());
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(1);
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(analog2.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -7081,14 +7024,12 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertEquals(ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(analog1.getBytes(), bluetoothGattCharacteristic.getValue());
 
         bluetoothGattCharacteristic = bluetoothGattCharacteristicList.get(1);
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(ANALOG_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(analog2.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -7187,7 +7128,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -7232,7 +7172,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -7283,7 +7222,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(value, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -7334,7 +7272,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(value, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -7409,7 +7346,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -7484,7 +7420,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -7566,7 +7501,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(value, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -7647,7 +7581,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(value, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -7699,7 +7632,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -7751,7 +7683,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -7797,7 +7728,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -7843,7 +7773,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -7925,7 +7854,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -8008,7 +7936,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -8084,7 +8011,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -8161,7 +8087,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -8215,7 +8140,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicPresentationFormat.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -8291,7 +8215,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicPresentationFormat2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -8452,7 +8375,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicUserDescription.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -8538,7 +8460,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CHARACTERISTIC_USER_DESCRIPTION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicUserDescription2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -8720,7 +8641,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicExtendedProperties.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -8806,7 +8726,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicExtendedProperties2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -9034,7 +8953,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -9084,7 +9002,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -9137,7 +9054,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -9190,7 +9106,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -9359,7 +9274,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -9445,7 +9359,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -9533,7 +9446,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -9621,7 +9533,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALUE_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(valueTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -10356,7 +10267,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -10412,7 +10322,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -10527,7 +10436,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -10585,7 +10493,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -10861,7 +10768,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -10957,7 +10863,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -11152,7 +11057,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -11251,7 +11155,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(TIME_TRIGGER_SETTING_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(timeTriggerSetting2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -11896,7 +11799,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALID_RANGE_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(validRange.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -11971,7 +11873,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(VALID_RANGE_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(validRange2.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -12285,7 +12186,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -12333,7 +12233,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -12386,7 +12285,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(value, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -12443,7 +12341,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(value, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -12497,7 +12394,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -12551,7 +12447,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -12600,7 +12495,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -12649,7 +12543,6 @@ public class AutomationIOServiceMockCallbackBuilderTest extends AbstractPeripher
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
 }

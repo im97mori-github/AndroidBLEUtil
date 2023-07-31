@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a8f;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -28,10 +26,7 @@ public class HipCircumferenceAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HipCircumferenceAndroid result1 = new HipCircumferenceAndroid(bluetoothGattCharacteristic);
+        HipCircumferenceAndroid result1 = new HipCircumferenceAndroid(data);
         assertEquals(0x0201, result1.getHipCircumference());
         assertEquals(HipCircumference.HIP_CIRCUMFERENCE_RESOLUTION * 0x0201, result1.getHipCircumferenceMeters(), 0);
     }
@@ -44,10 +39,7 @@ public class HipCircumferenceAndroidTest {
         data[ 1] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HipCircumferenceAndroid result1 = new HipCircumferenceAndroid(bluetoothGattCharacteristic);
+        HipCircumferenceAndroid result1 = new HipCircumferenceAndroid(data);
         assertEquals(0xffff, result1.getHipCircumference());
         assertEquals(HipCircumference.HIP_CIRCUMFERENCE_RESOLUTION * 0xffff, result1.getHipCircumferenceMeters(), 0);
     }
@@ -68,10 +60,7 @@ public class HipCircumferenceAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HipCircumferenceAndroid result1 = new HipCircumferenceAndroid(bluetoothGattCharacteristic);
+        HipCircumferenceAndroid result1 = new HipCircumferenceAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -88,10 +77,7 @@ public class HipCircumferenceAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HipCircumferenceAndroid result1 = new HipCircumferenceAndroid(bluetoothGattCharacteristic);
+        HipCircumferenceAndroid result1 = new HipCircumferenceAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -103,10 +89,7 @@ public class HipCircumferenceAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HipCircumferenceAndroid result1 = new HipCircumferenceAndroid(bluetoothGattCharacteristic);
+        HipCircumferenceAndroid result1 = new HipCircumferenceAndroid(data);
         HipCircumferenceAndroid result2 = HipCircumferenceAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

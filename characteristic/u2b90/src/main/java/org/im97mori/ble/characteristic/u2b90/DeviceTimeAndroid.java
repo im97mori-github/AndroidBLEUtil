@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.DEVICE_TIME_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Device Time (Characteristics UUID: 0x2B90)
@@ -45,9 +45,7 @@ public class DeviceTimeAndroid extends DeviceTime implements Parcelable {
          */
         @NonNull
         public DeviceTimeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DEVICE_TIME_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new DeviceTimeAndroid(bluetoothGattCharacteristic);
+            return new DeviceTimeAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class DeviceTimeAndroid extends DeviceTime implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B90
      */
+    @Deprecated
     public DeviceTimeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public DeviceTimeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class DeviceTimeAndroid extends DeviceTime implements Parcelable {
      * @param in Parcel
      */
     private DeviceTimeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

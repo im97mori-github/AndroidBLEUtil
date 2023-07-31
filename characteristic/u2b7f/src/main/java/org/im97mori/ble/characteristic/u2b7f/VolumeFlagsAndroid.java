@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.VOLUME_FLAGS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Volume Flags (Characteristics UUID: 0x2B7F)
@@ -45,9 +45,7 @@ public class VolumeFlagsAndroid extends VolumeFlags implements Parcelable {
          */
         @NonNull
         public VolumeFlagsAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(VOLUME_FLAGS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new VolumeFlagsAndroid(bluetoothGattCharacteristic);
+            return new VolumeFlagsAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class VolumeFlagsAndroid extends VolumeFlags implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B7F
      */
+    @Deprecated
     public VolumeFlagsAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public VolumeFlagsAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class VolumeFlagsAndroid extends VolumeFlags implements Parcelable {
      * @param in Parcel
      */
     private VolumeFlagsAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

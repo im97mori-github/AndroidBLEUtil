@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreator;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * <p>
@@ -91,8 +92,7 @@ public class ChannelMapUpdateIndicationAndroid extends ChannelMapUpdateIndicatio
      * @param in Parcel
      */
     private ChannelMapUpdateIndicationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray(), 0, in.readInt());
+        super(Objects.requireNonNull(in.createByteArray()), 0, in.readInt());
     }
 
     /**

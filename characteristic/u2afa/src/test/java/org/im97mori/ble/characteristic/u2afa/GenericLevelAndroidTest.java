@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2afa;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -35,10 +33,7 @@ public class GenericLevelAndroidTest {
         data[ 5] = 0x06;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GlobalTradeItemNumberAndroid result = new GlobalTradeItemNumberAndroid(bluetoothGattCharacteristic);
+        GlobalTradeItemNumberAndroid result = new GlobalTradeItemNumberAndroid(data);
         assertEquals(BLEUtils.createUInt48(data, 0), result.getGlobalTradeItemNumber());
     }
 
@@ -54,10 +49,7 @@ public class GenericLevelAndroidTest {
         data[ 5] = (byte) (12345678912343L >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GlobalTradeItemNumberAndroid result = new GlobalTradeItemNumberAndroid(bluetoothGattCharacteristic);
+        GlobalTradeItemNumberAndroid result = new GlobalTradeItemNumberAndroid(data);
         assertEquals(BLEUtils.createUInt48(data, 0), result.getGlobalTradeItemNumber());
         assertTrue(result.isValid());
     }
@@ -74,10 +66,7 @@ public class GenericLevelAndroidTest {
         data[ 5] = (byte) (12345678912344L >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GlobalTradeItemNumberAndroid result = new GlobalTradeItemNumberAndroid(bluetoothGattCharacteristic);
+        GlobalTradeItemNumberAndroid result = new GlobalTradeItemNumberAndroid(data);
         assertEquals(BLEUtils.createUInt48(data, 0), result.getGlobalTradeItemNumber());
         assertFalse(result.isValid());
     }
@@ -120,10 +109,7 @@ public class GenericLevelAndroidTest {
         data[ 5] = 0x06;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(bluetoothGattCharacteristic);
+        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -144,10 +130,7 @@ public class GenericLevelAndroidTest {
         data[ 5] = (byte) (12345678912343L >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(bluetoothGattCharacteristic);
+        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -168,10 +151,7 @@ public class GenericLevelAndroidTest {
         data[ 5] = (byte) (12345678912344L >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(bluetoothGattCharacteristic);
+        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -192,10 +172,7 @@ public class GenericLevelAndroidTest {
         data[ 5] = 0x06;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(bluetoothGattCharacteristic);
+        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -211,10 +188,7 @@ public class GenericLevelAndroidTest {
         data[ 5] = (byte) (12345678912343L >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(bluetoothGattCharacteristic);
+        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -230,10 +204,7 @@ public class GenericLevelAndroidTest {
         data[ 5] = (byte) (12345678912344L >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(bluetoothGattCharacteristic);
+        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -249,10 +220,7 @@ public class GenericLevelAndroidTest {
         data[ 5] = 0x06;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(bluetoothGattCharacteristic);
+        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(data);
         GlobalTradeItemNumberAndroid result2 = GlobalTradeItemNumberAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -269,10 +237,7 @@ public class GenericLevelAndroidTest {
         data[ 5] = (byte) (12345678912343L >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(bluetoothGattCharacteristic);
+        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(data);
         GlobalTradeItemNumberAndroid result2 = GlobalTradeItemNumberAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -289,10 +254,7 @@ public class GenericLevelAndroidTest {
         data[ 5] = (byte) (12345678912344L >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(bluetoothGattCharacteristic);
+        GlobalTradeItemNumberAndroid result1 = new GlobalTradeItemNumberAndroid(data);
         GlobalTradeItemNumberAndroid result2 = GlobalTradeItemNumberAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

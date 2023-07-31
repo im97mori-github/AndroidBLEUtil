@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_CHANGE_LOG_DATA_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Time Change Log Data (Characteristics UUID: 0x2B92)
@@ -45,9 +45,7 @@ public class TimeChangeLogDataAndroid extends TimeChangeLogData implements Parce
          */
         @NonNull
         public TimeChangeLogDataAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TIME_CHANGE_LOG_DATA_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TimeChangeLogDataAndroid(bluetoothGattCharacteristic);
+            return new TimeChangeLogDataAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class TimeChangeLogDataAndroid extends TimeChangeLogData implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B92
      */
+    @Deprecated
     public TimeChangeLogDataAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TimeChangeLogDataAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class TimeChangeLogDataAndroid extends TimeChangeLogData implements Parce
      * @param in Parcel
      */
     private TimeChangeLogDataAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

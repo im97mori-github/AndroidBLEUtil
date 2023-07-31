@@ -1,5 +1,6 @@
 package org.im97mori.ble.service.tip.peripheral;
 
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,9 @@ public class TimeProfileMockData extends MockData {
          */
         @Override
         @NonNull
+        @Deprecated
         public TimeProfileMockData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new TimeProfileMockData(in);
         }
 
@@ -89,11 +92,18 @@ public class TimeProfileMockData extends MockData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public TimeProfileMockData(@NonNull Parcel in) {
         super(in);
-        currentTime = in.readParcelable(this.getClass().getClassLoader());
-        nextDstChange = in.readParcelable(this.getClass().getClassLoader());
-        referenceTimeUpdate = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            currentTime = in.readParcelable(this.getClass().getClassLoader(), CurrentTimeServiceData.class);
+            nextDstChange = in.readParcelable(this.getClass().getClassLoader(), ServiceData.class);
+            referenceTimeUpdate = in.readParcelable(this.getClass().getClassLoader(), ServiceData.class);
+        } else {
+            currentTime = in.readParcelable(this.getClass().getClassLoader());
+            nextDstChange = in.readParcelable(this.getClass().getClassLoader());
+            referenceTimeUpdate = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

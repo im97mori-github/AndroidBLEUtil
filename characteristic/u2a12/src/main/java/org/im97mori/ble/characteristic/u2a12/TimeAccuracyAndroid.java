@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_ACCURACY_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Time Accuracy (Characteristics UUID: 0x2A12)
@@ -44,9 +44,7 @@ public class TimeAccuracyAndroid extends TimeAccuracy implements Parcelable {
          */
         @NonNull
         public TimeAccuracyAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TIME_ACCURACY_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TimeAccuracyAndroid(bluetoothGattCharacteristic);
+            return new TimeAccuracyAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class TimeAccuracyAndroid extends TimeAccuracy implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A12
      */
+    @Deprecated
     public TimeAccuracyAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TimeAccuracyAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class TimeAccuracyAndroid extends TimeAccuracy implements Parcelable {
      * @param in Parcel
      */
     private TimeAccuracyAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -16,7 +16,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.profile.blp.central.BloodPressureProfile;
 import org.im97mori.ble.profile.central.task.BondTask;
 import org.im97mori.ble.sample.lolipop.AlertDialogFragment;
@@ -119,9 +118,9 @@ public class BlpCentralSampleActivity extends BaseActivity implements View.OnCli
             mBluetoothDevice = null;
             updateLayout();
         } else if (R.id.has_device_information_service == item.getItemId()) {
-            addRow("hasUserDataService",  mBloodPressureProfile.hasDeviceInformationService());
+            addRow("hasUserDataService", mBloodPressureProfile.hasDeviceInformationService());
         } else if (R.id.has_system_id == item.getItemId()) {
-            addRow("hasSystemId",  mBloodPressureProfile.hasSystemId());
+            addRow("hasSystemId", mBloodPressureProfile.hasSystemId());
         } else if (R.id.read_manufacturer_name == item.getItemId()) {
             mBloodPressureProfile.getManufacturerNameString();
         } else if (R.id.read_model_number == item.getItemId()) {
@@ -131,7 +130,7 @@ public class BlpCentralSampleActivity extends BaseActivity implements View.OnCli
         } else if (R.id.stop_indicate_blood_pressure_measurement == item.getItemId()) {
             mBloodPressureProfile.stopBloodPressureMeasurementIndication();
         } else if (R.id.has_intermediate_cuff_pressure == item.getItemId()) {
-            addRow("isIntermediateCuffPressureSupported",  mBloodPressureProfile.isIntermediateCuffPressureSupported());
+            addRow("isIntermediateCuffPressureSupported", mBloodPressureProfile.isIntermediateCuffPressureSupported());
         } else if (R.id.start_notify_intermediate_cuff_pressure == item.getItemId()) {
             mBloodPressureProfile.startIntermediateCuffPressureNotification();
         } else if (R.id.stop_notify_intermediate_cuff_pressure == item.getItemId()) {
@@ -144,21 +143,17 @@ public class BlpCentralSampleActivity extends BaseActivity implements View.OnCli
 
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else {
-            mConnectDisconnectButton.setVisibility(View.VISIBLE);
-            if (mBloodPressureProfile.isConnected()) {
-                mConnectDisconnectButton.setText(R.string.disconnect);
-            } else if (mBluetoothDevice != null) {
-                if (BluetoothDevice.BOND_BONDED == mBluetoothDevice.getBondState()) {
-                    mConnectDisconnectButton.setText(R.string.connect);
-                } else {
-                    mConnectDisconnectButton.setText(R.string.bond);
-                }
+        mConnectDisconnectButton.setVisibility(View.VISIBLE);
+        if (mBloodPressureProfile.isConnected()) {
+            mConnectDisconnectButton.setText(R.string.disconnect);
+        } else if (mBluetoothDevice != null) {
+            if (BluetoothDevice.BOND_BONDED == mBluetoothDevice.getBondState()) {
+                mConnectDisconnectButton.setText(R.string.connect);
             } else {
-                mConnectDisconnectButton.setText(R.string.scan_start);
+                mConnectDisconnectButton.setText(R.string.bond);
             }
+        } else {
+            mConnectDisconnectButton.setText(R.string.scan_start);
         }
         invalidateOptionsMenu();
     }

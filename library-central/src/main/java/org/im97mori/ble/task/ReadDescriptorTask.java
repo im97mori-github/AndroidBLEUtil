@@ -18,6 +18,7 @@ import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.TaskHandler;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -127,11 +128,11 @@ public class ReadDescriptorTask extends AbstractBLETask {
     @NonNull
     public static Message createReadDescriptorSuccessMessage(@NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
+        bundle.putString(KEY_SERVICE_UUID, serviceUUID.toString());
         bundle.putInt(KEY_SERVICE_INSTANCE_ID, serviceInstanceId);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
+        bundle.putString(KEY_CHARACTERISTIC_UUID, characteristicUUID.toString());
         bundle.putInt(KEY_CHARACTERISTIC_INSTANCE_ID, characteristicInstanceId);
-        bundle.putSerializable(KEY_DESCRIPTOR_UUID, descriptorUUID);
+        bundle.putString(KEY_DESCRIPTOR_UUID, descriptorUUID.toString());
         bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
         bundle.putByteArray(KEY_VALUES, values);
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_READ_SUCCESS);
@@ -155,11 +156,11 @@ public class ReadDescriptorTask extends AbstractBLETask {
     @NonNull
     public static Message createReadDescriptorErrorMessage(@NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, int status) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
+        bundle.putString(KEY_SERVICE_UUID, serviceUUID.toString());
         bundle.putInt(KEY_SERVICE_INSTANCE_ID, serviceInstanceId);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
+        bundle.putString(KEY_CHARACTERISTIC_UUID, characteristicUUID.toString());
         bundle.putInt(KEY_CHARACTERISTIC_INSTANCE_ID, characteristicInstanceId);
-        bundle.putSerializable(KEY_DESCRIPTOR_UUID, descriptorUUID);
+        bundle.putString(KEY_DESCRIPTOR_UUID, descriptorUUID.toString());
         bundle.putInt(KEY_DESCRIPTOR_INSTANCE_ID, descriptorInstanceId);
         bundle.putInt(KEY_STATUS, status);
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_READ_ERROR);
@@ -267,9 +268,9 @@ public class ReadDescriptorTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, mServiceUUID);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, mCharacteristicUUID);
-        bundle.putSerializable(KEY_DESCRIPTOR_UUID, mDescriptorUUID);
+        bundle.putString(KEY_SERVICE_UUID, mServiceUUID.toString());
+        bundle.putString(KEY_CHARACTERISTIC_UUID, mCharacteristicUUID.toString());
+        bundle.putString(KEY_DESCRIPTOR_UUID, mDescriptorUUID.toString());
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_DESCRIPTOR_READ_START);
         Message message = new Message();
         message.setData(bundle);
@@ -285,11 +286,11 @@ public class ReadDescriptorTask extends AbstractBLETask {
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
-            UUID serviceUUID = (UUID) bundle.getSerializable(KEY_SERVICE_UUID);
+            UUID serviceUUID = UUID.fromString(bundle.getString(KEY_SERVICE_UUID));
             int serviceInstanceId = bundle.getInt(KEY_SERVICE_INSTANCE_ID);
-            UUID characteristicUUID = (UUID) bundle.getSerializable(KEY_CHARACTERISTIC_UUID);
+            UUID characteristicUUID = UUID.fromString(bundle.getString(KEY_CHARACTERISTIC_UUID));
             int characteristicInstanceId = bundle.getInt(KEY_CHARACTERISTIC_INSTANCE_ID);
-            UUID descriptorUUID = (UUID) bundle.getSerializable(KEY_DESCRIPTOR_UUID);
+            UUID descriptorUUID = UUID.fromString(bundle.getString(KEY_DESCRIPTOR_UUID));
             int descriptorInstanceId = bundle.getInt(KEY_DESCRIPTOR_INSTANCE_ID);
             String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
@@ -409,7 +410,6 @@ public class ReadDescriptorTask extends AbstractBLETask {
                     // current:read descriptor start, next:read descriptor success
                     if (PROGRESS_DESCRIPTOR_READ_SUCCESS.equals(nextProgress)) {
                         byte[] value = bundle.getByteArray(KEY_VALUES);
-                        //noinspection ConstantConditions
                         mBLEConnection.getBLECallback().onDescriptorReadSuccess(getTaskId()
                                 , mBLEConnection.getBluetoothDevice()
                                 , mServiceUUID
@@ -418,7 +418,7 @@ public class ReadDescriptorTask extends AbstractBLETask {
                                 , mCharacteristicInstanceId
                                 , mDescriptorUUID
                                 , mDescriptorInstanceId
-                                , value
+                                , Objects.requireNonNull(value)
                                 , mArgument);
                     } else if (PROGRESS_DESCRIPTOR_READ_ERROR.equals(nextProgress)) {
                         // current:read descriptor start, next:read descriptor error

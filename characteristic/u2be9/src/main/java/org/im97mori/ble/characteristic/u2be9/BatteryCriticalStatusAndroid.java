@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BATTERY_CRITICAL_STATUS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Battery Critical Status (Characteristics UUID: 0x2BE9)
@@ -45,9 +45,7 @@ public class BatteryCriticalStatusAndroid extends BatteryCriticalStatus implemen
          */
         @NonNull
         public BatteryCriticalStatusAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_CRITICAL_STATUS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BatteryCriticalStatusAndroid(bluetoothGattCharacteristic);
+            return new BatteryCriticalStatusAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BatteryCriticalStatusAndroid extends BatteryCriticalStatus implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BE9
      */
+    @Deprecated
     public BatteryCriticalStatusAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BatteryCriticalStatusAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class BatteryCriticalStatusAndroid extends BatteryCriticalStatus implemen
      * @param in Parcel
      */
     private BatteryCriticalStatusAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

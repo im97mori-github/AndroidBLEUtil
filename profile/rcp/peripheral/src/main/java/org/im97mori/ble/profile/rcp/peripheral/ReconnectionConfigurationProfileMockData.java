@@ -1,5 +1,6 @@
 package org.im97mori.ble.profile.rcp.peripheral;
 
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -32,7 +33,9 @@ public class ReconnectionConfigurationProfileMockData extends MockData {
          */
         @Override
         @NonNull
+        @Deprecated
         public ReconnectionConfigurationProfileMockData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new ReconnectionConfigurationProfileMockData(in);
         }
 
@@ -81,10 +84,16 @@ public class ReconnectionConfigurationProfileMockData extends MockData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public ReconnectionConfigurationProfileMockData(@NonNull Parcel in) {
         super(in);
-        reconnectionConfiguration = in.readParcelable(this.getClass().getClassLoader());
-        bondManagement = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            reconnectionConfiguration = in.readParcelable(this.getClass().getClassLoader(), ReconnectionConfigurationServiceData.class);
+            bondManagement = in.readParcelable(this.getClass().getClassLoader(), BondManagementServiceData.class);
+        } else {
+            reconnectionConfiguration = in.readParcelable(this.getClass().getClassLoader());
+            bondManagement = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

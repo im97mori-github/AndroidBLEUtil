@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BSS_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * BSS Control Point (Characteristics UUID: 0x2B2B)
@@ -45,9 +45,7 @@ public class BssControlPointAndroid extends BssControlPoint implements Parcelabl
          */
         @NonNull
         public BssControlPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BSS_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BssControlPointAndroid(bluetoothGattCharacteristic);
+            return new BssControlPointAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BssControlPointAndroid extends BssControlPoint implements Parcelabl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B2B
      */
+    @Deprecated
     public BssControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BssControlPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class BssControlPointAndroid extends BssControlPoint implements Parcelabl
      * @param in Parcel
      */
     private BssControlPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

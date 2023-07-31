@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.ByteArrayCreator;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * <p>
@@ -89,8 +90,7 @@ public class FlagsAndroid extends Flags implements AdvertisingDataInterfaceAndro
      * @param in Parcel
      */
     private FlagsAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray(), 0, in.readInt());
+        super(Objects.requireNonNull(in.createByteArray()), 0, in.readInt());
     }
 
     /**

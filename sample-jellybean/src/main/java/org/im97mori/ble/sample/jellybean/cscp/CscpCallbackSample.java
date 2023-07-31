@@ -367,6 +367,11 @@ public class CscpCallbackSample implements CyclingSpeedAndCadenceProfileCallback
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onCSCFeatureReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull CSCFeatureAndroid cscFeatureAndroid, @Nullable Bundle argument) {
         callback(Arrays.toString(cscFeatureAndroid.getCscFeature()), argument);
     }

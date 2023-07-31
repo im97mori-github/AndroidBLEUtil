@@ -6,12 +6,12 @@ plugins {
 def target = descriptorU2905Android
 
 android {
-    compileSdkVersion globalCompileSdkVersion
-    buildToolsVersion globalBuildToolsVersion
+    compileSdk globalCompileSdkVersion
+    buildToolsVersion = globalBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion globalMinSdkVersion
-        targetSdkVersion globalTargetSdkVersion
+        minSdk globalMinSdkVersion
+        targetSdk globalTargetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,7 +38,7 @@ android {
 
 dependencies {
     api apiCoreConstantsDescriptor
-    api target['baseModule']
+    api target['baseModule'].toString()
     api apiCoreUtilsAndroid
     testImplementation apiTestUtilAndroid
     testImplementation robolectric

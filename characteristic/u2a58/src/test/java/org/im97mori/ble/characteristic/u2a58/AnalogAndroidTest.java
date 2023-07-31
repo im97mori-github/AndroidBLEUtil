@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a58;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 
 @RunWith(RobolectricTestRunner.class)
@@ -27,10 +25,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getAnalog());
     }
 
@@ -42,10 +37,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getAnalog());
     }
 
@@ -57,10 +49,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getAnalog());
     }
 
@@ -72,10 +61,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getAnalog());
     }
 
@@ -87,10 +73,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getAnalog());
     }
 
@@ -102,10 +85,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getAnalog());
     }
 
@@ -117,10 +97,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getAnalog());
     }
 
@@ -132,10 +109,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getAnalog());
     }
 
@@ -147,10 +121,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getAnalog());
     }
 
@@ -162,10 +133,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getAnalog());
     }
 
@@ -177,10 +145,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getAnalog());
     }
 
@@ -192,10 +157,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getAnalog());
     }
 
@@ -207,10 +169,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getAnalog());
     }
 
@@ -222,10 +181,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -241,10 +197,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -260,10 +213,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -279,10 +229,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -298,10 +245,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -317,10 +261,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -336,10 +277,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -355,10 +293,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -374,10 +309,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -393,10 +325,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -412,10 +341,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -431,10 +357,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -450,10 +373,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -469,10 +389,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -484,10 +401,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -499,10 +413,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -514,10 +425,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -529,10 +437,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -544,10 +449,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -559,10 +461,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -574,10 +473,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -589,10 +485,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -604,10 +497,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -619,10 +509,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -634,10 +521,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -649,10 +533,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -664,10 +545,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         AnalogAndroid result2 = AnalogAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -680,10 +558,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         AnalogAndroid result2 = AnalogAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -696,10 +571,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         AnalogAndroid result2 = AnalogAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -712,10 +584,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         AnalogAndroid result2 = AnalogAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -728,10 +597,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         AnalogAndroid result2 = AnalogAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -744,10 +610,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         AnalogAndroid result2 = AnalogAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -760,10 +623,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         AnalogAndroid result2 = AnalogAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -776,10 +636,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         AnalogAndroid result2 = AnalogAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -792,10 +649,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         AnalogAndroid result2 = AnalogAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -808,10 +662,7 @@ public class AnalogAndroidTest {
         data[ 1] = 0x08;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         AnalogAndroid result2 = AnalogAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -824,10 +675,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         AnalogAndroid result2 = AnalogAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -840,10 +688,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x82;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         AnalogAndroid result2 = AnalogAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -856,10 +701,7 @@ public class AnalogAndroidTest {
         data[ 1] = (byte) 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnalogAndroid result1 = new AnalogAndroid(bluetoothGattCharacteristic);
+        AnalogAndroid result1 = new AnalogAndroid(data);
         AnalogAndroid result2 = AnalogAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

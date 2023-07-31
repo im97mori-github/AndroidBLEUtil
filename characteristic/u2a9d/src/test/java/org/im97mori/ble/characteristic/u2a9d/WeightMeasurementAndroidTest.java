@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a9d;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,13 +10,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue */
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -37,10 +35,7 @@ public class WeightMeasurementAndroidTest {
         data[ 2] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -70,10 +65,7 @@ public class WeightMeasurementAndroidTest {
         data[ 2] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -104,10 +96,7 @@ public class WeightMeasurementAndroidTest {
         data[ 2] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_IMPERIAL
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -137,10 +126,7 @@ public class WeightMeasurementAndroidTest {
         data[ 2] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_IMPERIAL
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -177,10 +163,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -221,10 +204,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -265,10 +245,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -309,10 +286,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -353,10 +327,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -397,10 +368,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -441,10 +409,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -485,10 +450,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -529,10 +491,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -573,10 +532,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -617,10 +573,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -661,10 +614,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -705,10 +655,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -743,10 +690,7 @@ public class WeightMeasurementAndroidTest {
         data[ 3] = (byte) UserIndexUtils.USER_ID_UNKNOWN_USER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_TRUE
@@ -776,10 +720,7 @@ public class WeightMeasurementAndroidTest {
         data[ 3] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_TRUE
@@ -809,10 +750,7 @@ public class WeightMeasurementAndroidTest {
         data[ 3] = (byte) 254;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_TRUE
@@ -845,10 +783,7 @@ public class WeightMeasurementAndroidTest {
         data[ 6] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -884,10 +819,7 @@ public class WeightMeasurementAndroidTest {
         data[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -923,10 +855,7 @@ public class WeightMeasurementAndroidTest {
         data[ 6] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_IMPERIAL
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -962,10 +891,7 @@ public class WeightMeasurementAndroidTest {
         data[ 6] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_IMPERIAL
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -997,10 +923,7 @@ public class WeightMeasurementAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -1028,10 +951,7 @@ public class WeightMeasurementAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_IMPERIAL
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -1066,10 +986,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0x09;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -1110,10 +1027,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0x09;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_IMPERIAL
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -1148,10 +1062,7 @@ public class WeightMeasurementAndroidTest {
         data[ 3] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_TRUE
@@ -1181,10 +1092,7 @@ public class WeightMeasurementAndroidTest {
         data[ 3] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_IMPERIAL
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_TRUE
@@ -1221,10 +1129,7 @@ public class WeightMeasurementAndroidTest {
         data[10] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_TRUE
@@ -1267,10 +1172,7 @@ public class WeightMeasurementAndroidTest {
         data[10] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_IMPERIAL
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_TRUE
@@ -1309,10 +1211,7 @@ public class WeightMeasurementAndroidTest {
         data[ 6] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -1348,10 +1247,7 @@ public class WeightMeasurementAndroidTest {
         data[ 6] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_IMPERIAL
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -1394,10 +1290,7 @@ public class WeightMeasurementAndroidTest {
         data[13] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -1446,10 +1339,7 @@ public class WeightMeasurementAndroidTest {
         data[13] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_IMPERIAL
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_FALSE
@@ -1492,10 +1382,7 @@ public class WeightMeasurementAndroidTest {
         data[ 7] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_TRUE
@@ -1533,10 +1420,7 @@ public class WeightMeasurementAndroidTest {
         data[ 7] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_IMPERIAL
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_FALSE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_TRUE
@@ -1581,10 +1465,7 @@ public class WeightMeasurementAndroidTest {
         data[14] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_SI
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_TRUE
@@ -1635,10 +1516,7 @@ public class WeightMeasurementAndroidTest {
         data[14] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertEquals(WeightMeasurement.FLAG_MEASUREMENT_UNITS_IMPERIAL
                         | WeightMeasurement.FLAG_TIME_STAMP_PRESENT_TRUE
                         | WeightMeasurement.FLAG_USER_ID_PRESENT_TRUE
@@ -1709,10 +1587,7 @@ public class WeightMeasurementAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1757,10 +1632,7 @@ public class WeightMeasurementAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1812,10 +1684,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0x09;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1867,10 +1736,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0x09;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1916,10 +1782,7 @@ public class WeightMeasurementAndroidTest {
         data[ 3] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1965,10 +1828,7 @@ public class WeightMeasurementAndroidTest {
         data[ 3] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2021,10 +1881,7 @@ public class WeightMeasurementAndroidTest {
         data[10] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2077,10 +1934,7 @@ public class WeightMeasurementAndroidTest {
         data[10] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2129,10 +1983,7 @@ public class WeightMeasurementAndroidTest {
         data[ 6] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2181,10 +2032,7 @@ public class WeightMeasurementAndroidTest {
         data[ 6] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2240,10 +2088,7 @@ public class WeightMeasurementAndroidTest {
         data[13] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2299,10 +2144,7 @@ public class WeightMeasurementAndroidTest {
         data[13] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2352,10 +2194,7 @@ public class WeightMeasurementAndroidTest {
         data[ 7] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2405,10 +2244,7 @@ public class WeightMeasurementAndroidTest {
         data[ 7] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2465,10 +2301,7 @@ public class WeightMeasurementAndroidTest {
         data[14] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2525,10 +2358,7 @@ public class WeightMeasurementAndroidTest {
         data[14] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2573,10 +2403,7 @@ public class WeightMeasurementAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2592,10 +2419,7 @@ public class WeightMeasurementAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2618,10 +2442,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0x09;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2644,10 +2465,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0x09;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2664,10 +2482,7 @@ public class WeightMeasurementAndroidTest {
         data[ 3] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2684,10 +2499,7 @@ public class WeightMeasurementAndroidTest {
         data[ 3] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2711,10 +2523,7 @@ public class WeightMeasurementAndroidTest {
         data[10] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2738,10 +2547,7 @@ public class WeightMeasurementAndroidTest {
         data[10] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2761,10 +2567,7 @@ public class WeightMeasurementAndroidTest {
         data[ 6] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2784,10 +2587,7 @@ public class WeightMeasurementAndroidTest {
         data[ 6] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2814,10 +2614,7 @@ public class WeightMeasurementAndroidTest {
         data[13] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2844,10 +2641,7 @@ public class WeightMeasurementAndroidTest {
         data[13] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2868,10 +2662,7 @@ public class WeightMeasurementAndroidTest {
         data[ 7] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2892,10 +2683,7 @@ public class WeightMeasurementAndroidTest {
         data[ 7] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2923,10 +2711,7 @@ public class WeightMeasurementAndroidTest {
         data[14] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2954,10 +2739,7 @@ public class WeightMeasurementAndroidTest {
         data[14] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2973,10 +2755,7 @@ public class WeightMeasurementAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2993,10 +2772,7 @@ public class WeightMeasurementAndroidTest {
         data[ 2] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3020,10 +2796,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0x09;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3047,10 +2820,7 @@ public class WeightMeasurementAndroidTest {
         data[ 9] = 0x09;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3068,10 +2838,7 @@ public class WeightMeasurementAndroidTest {
         data[ 3] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3089,10 +2856,7 @@ public class WeightMeasurementAndroidTest {
         data[ 3] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3117,10 +2881,7 @@ public class WeightMeasurementAndroidTest {
         data[10] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3145,10 +2906,7 @@ public class WeightMeasurementAndroidTest {
         data[10] = 0x0a;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3169,10 +2927,7 @@ public class WeightMeasurementAndroidTest {
         data[ 6] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3193,10 +2948,7 @@ public class WeightMeasurementAndroidTest {
         data[ 6] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3224,10 +2976,7 @@ public class WeightMeasurementAndroidTest {
         data[13] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3255,10 +3004,7 @@ public class WeightMeasurementAndroidTest {
         data[13] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3280,10 +3026,7 @@ public class WeightMeasurementAndroidTest {
         data[ 7] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3305,10 +3048,7 @@ public class WeightMeasurementAndroidTest {
         data[ 7] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3337,10 +3077,7 @@ public class WeightMeasurementAndroidTest {
         data[14] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3369,10 +3106,7 @@ public class WeightMeasurementAndroidTest {
         data[14] = 0x0e;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+        WeightMeasurementAndroid result1 = new WeightMeasurementAndroid(data);
         WeightMeasurementAndroid result2 = WeightMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

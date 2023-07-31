@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b12;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,11 +10,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings({"ConstantConditions"})
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -30,10 +28,7 @@ public class TimeDecihour8AndroidTest {
         data[ 0] = (byte) EnergyUtils.ENERGY_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeDecihour8Android result = new TimeDecihour8Android(bluetoothGattCharacteristic);
+        TimeDecihour8Android result = new TimeDecihour8Android(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result.getTimeDecihour8());
     }
 
@@ -44,10 +39,7 @@ public class TimeDecihour8AndroidTest {
         data[ 0] = (byte) EnergyUtils.ENERGY_VALUE_MINIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeDecihour8Android result = new TimeDecihour8Android(bluetoothGattCharacteristic);
+        TimeDecihour8Android result = new TimeDecihour8Android(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result.getTimeDecihour8());
     }
 
@@ -58,10 +50,7 @@ public class TimeDecihour8AndroidTest {
         data[ 0] = (byte) EnergyUtils.ENERGY_VALUE_MAXIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeDecihour8Android result = new TimeDecihour8Android(bluetoothGattCharacteristic);
+        TimeDecihour8Android result = new TimeDecihour8Android(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result.getTimeDecihour8());
     }
 
@@ -96,10 +85,7 @@ public class TimeDecihour8AndroidTest {
         data[ 0] = (byte) EnergyUtils.ENERGY_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeDecihour8Android result1 = new TimeDecihour8Android(bluetoothGattCharacteristic);
+        TimeDecihour8Android result1 = new TimeDecihour8Android(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -115,10 +101,7 @@ public class TimeDecihour8AndroidTest {
         data[ 0] = (byte) EnergyUtils.ENERGY_VALUE_MINIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeDecihour8Android result1 = new TimeDecihour8Android(bluetoothGattCharacteristic);
+        TimeDecihour8Android result1 = new TimeDecihour8Android(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -134,10 +117,7 @@ public class TimeDecihour8AndroidTest {
         data[ 0] = (byte) EnergyUtils.ENERGY_VALUE_MAXIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeDecihour8Android result1 = new TimeDecihour8Android(bluetoothGattCharacteristic);
+        TimeDecihour8Android result1 = new TimeDecihour8Android(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -153,10 +133,7 @@ public class TimeDecihour8AndroidTest {
         data[ 0] = (byte) EnergyUtils.ENERGY_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeDecihour8Android result1 = new TimeDecihour8Android(bluetoothGattCharacteristic);
+        TimeDecihour8Android result1 = new TimeDecihour8Android(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -167,10 +144,7 @@ public class TimeDecihour8AndroidTest {
         data[ 0] = (byte) EnergyUtils.ENERGY_VALUE_MINIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeDecihour8Android result1 = new TimeDecihour8Android(bluetoothGattCharacteristic);
+        TimeDecihour8Android result1 = new TimeDecihour8Android(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -181,10 +155,7 @@ public class TimeDecihour8AndroidTest {
         data[ 0] = (byte) EnergyUtils.ENERGY_VALUE_MAXIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeDecihour8Android result1 = new TimeDecihour8Android(bluetoothGattCharacteristic);
+        TimeDecihour8Android result1 = new TimeDecihour8Android(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -195,10 +166,7 @@ public class TimeDecihour8AndroidTest {
         data[ 0] = (byte) EnergyUtils.ENERGY_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeDecihour8Android result1 = new TimeDecihour8Android(bluetoothGattCharacteristic);
+        TimeDecihour8Android result1 = new TimeDecihour8Android(data);
         TimeDecihour8Android result2 = TimeDecihour8Android.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -210,10 +178,7 @@ public class TimeDecihour8AndroidTest {
         data[ 0] = (byte) EnergyUtils.ENERGY_VALUE_MINIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeDecihour8Android result1 = new TimeDecihour8Android(bluetoothGattCharacteristic);
+        TimeDecihour8Android result1 = new TimeDecihour8Android(data);
         TimeDecihour8Android result2 = TimeDecihour8Android.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -225,10 +190,7 @@ public class TimeDecihour8AndroidTest {
         data[ 0] = (byte) EnergyUtils.ENERGY_VALUE_MAXIMUM;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeDecihour8Android result1 = new TimeDecihour8Android(bluetoothGattCharacteristic);
+        TimeDecihour8Android result1 = new TimeDecihour8Android(data);
         TimeDecihour8Android result2 = TimeDecihour8Android.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

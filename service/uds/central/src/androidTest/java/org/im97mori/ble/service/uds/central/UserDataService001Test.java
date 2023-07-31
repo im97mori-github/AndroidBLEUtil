@@ -87,7 +87,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class UserDataServiceTest_1 extends AbstractCentralTest {
+public class UserDataService001Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice

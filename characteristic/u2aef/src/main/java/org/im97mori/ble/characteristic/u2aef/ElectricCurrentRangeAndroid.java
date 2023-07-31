@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ELECTRIC_CURRENT_RANGE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Electric Current Range (Characteristics UUID: 0x2AEF)
@@ -44,9 +44,7 @@ public class ElectricCurrentRangeAndroid extends ElectricCurrentRange implements
          */
         @NonNull
         public ElectricCurrentRangeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ELECTRIC_CURRENT_RANGE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ElectricCurrentRangeAndroid(bluetoothGattCharacteristic);
+            return new ElectricCurrentRangeAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ElectricCurrentRangeAndroid extends ElectricCurrentRange implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AEF
      */
+    @Deprecated
     public ElectricCurrentRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ElectricCurrentRangeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class ElectricCurrentRangeAndroid extends ElectricCurrentRange implements
      * @param in Parcel
      */
     private ElectricCurrentRangeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

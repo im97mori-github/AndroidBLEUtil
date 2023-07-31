@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a35;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -15,7 +14,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -46,10 +44,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -79,10 +74,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_KPA
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -112,10 +104,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -149,10 +138,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -192,10 +178,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -235,10 +218,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -278,10 +258,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -321,10 +298,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -364,10 +338,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -407,10 +378,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -450,10 +418,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -493,10 +458,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -536,10 +498,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -579,10 +538,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -622,10 +578,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -665,10 +618,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -701,10 +651,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -733,10 +680,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (0x0004 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_PRESENT
@@ -764,10 +708,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -795,10 +736,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 7] = (byte) UserIndexUtils.USER_ID_UNKNOWN_USER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -827,10 +765,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 7] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -858,10 +793,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -896,10 +828,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -946,10 +875,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -996,10 +922,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -1046,10 +969,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -1096,10 +1016,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -1146,10 +1063,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -1196,10 +1110,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -1256,10 +1167,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[18] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_PRESENT
@@ -1316,10 +1224,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[18] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertEquals(BloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_KPA
                 | BloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | BloodPressureMeasurementUtils.FLAG_PULSE_RATE_PRESENT
@@ -1396,10 +1301,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1439,10 +1341,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1482,10 +1381,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1532,10 +1428,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1582,10 +1475,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1632,10 +1522,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1682,10 +1569,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1732,10 +1616,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1782,10 +1663,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1832,10 +1710,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1882,10 +1757,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1932,10 +1804,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1982,10 +1851,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2032,10 +1898,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2082,10 +1945,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2132,10 +1992,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2175,10 +2032,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2220,10 +2074,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (0x0004 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2263,10 +2114,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2307,10 +2155,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 7] = (byte) UserIndexUtils.USER_ID_UNKNOWN_USER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2351,10 +2196,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 7] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2394,10 +2236,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2445,10 +2284,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2496,10 +2332,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2547,10 +2380,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2598,10 +2428,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2649,10 +2476,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2700,10 +2524,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2751,10 +2572,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2812,10 +2630,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[18] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2873,10 +2688,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[18] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2916,10 +2728,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2940,10 +2749,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2964,10 +2770,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2995,10 +2798,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3026,10 +2826,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3057,10 +2854,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3088,10 +2882,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3119,10 +2910,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3150,10 +2938,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3181,10 +2966,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3212,10 +2994,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3243,10 +3022,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3274,10 +3050,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3305,10 +3078,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3336,10 +3106,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3367,10 +3134,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3391,10 +3155,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3417,10 +3178,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (0x0004 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3441,10 +3199,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3466,10 +3221,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 7] = (byte) UserIndexUtils.USER_ID_UNKNOWN_USER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3491,10 +3243,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 7] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3515,10 +3264,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3547,10 +3293,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3579,10 +3322,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3611,10 +3351,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3643,10 +3380,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3675,10 +3409,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3707,10 +3438,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3739,10 +3467,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3781,10 +3506,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[18] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3823,10 +3545,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[18] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -3847,10 +3566,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3872,10 +3588,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3897,10 +3610,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3929,10 +3639,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3961,10 +3668,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 59;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -3993,10 +3697,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4025,10 +3726,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4057,10 +3755,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4089,10 +3784,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4121,10 +3813,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4153,10 +3842,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4185,10 +3871,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4217,10 +3900,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4249,10 +3929,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4281,10 +3958,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4313,10 +3987,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[13] = 0;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4338,10 +4009,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4365,10 +4033,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (0x0004 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4390,10 +4055,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4416,10 +4078,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 7] = (byte) UserIndexUtils.USER_ID_UNKNOWN_USER;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4442,10 +4101,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 7] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4467,10 +4123,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4500,10 +4153,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4533,10 +4183,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4566,10 +4213,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4599,10 +4243,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4632,10 +4273,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4665,10 +4303,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4698,10 +4333,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[ 8] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4741,10 +4373,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[18] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -4784,10 +4413,7 @@ public class BloodPressureMeasurementAndroidTest {
         data[18] = (byte) (measurementStatusFlag >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(bluetoothGattCharacteristic);
+        BloodPressureMeasurementAndroid result1 = new BloodPressureMeasurementAndroid(data);
         BloodPressureMeasurementAndroid result2 = BloodPressureMeasurementAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

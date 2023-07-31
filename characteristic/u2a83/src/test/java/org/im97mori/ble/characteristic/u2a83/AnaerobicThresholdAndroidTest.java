@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a83;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -26,10 +24,7 @@ public class AnaerobicThresholdAndroidTest {
         byte[] data = new byte[1];
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnaerobicThresholdAndroid result1 = new AnaerobicThresholdAndroid(bluetoothGattCharacteristic);
+        AnaerobicThresholdAndroid result1 = new AnaerobicThresholdAndroid(data);
         assertEquals(0x00, result1.getAnaerobicThreshold());
     }
 
@@ -40,10 +35,7 @@ public class AnaerobicThresholdAndroidTest {
         data[ 0] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnaerobicThresholdAndroid result1 = new AnaerobicThresholdAndroid(bluetoothGattCharacteristic);
+        AnaerobicThresholdAndroid result1 = new AnaerobicThresholdAndroid(data);
         assertEquals(0xff, result1.getAnaerobicThreshold());
     }
 
@@ -62,10 +54,7 @@ public class AnaerobicThresholdAndroidTest {
         data[ 0] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnaerobicThresholdAndroid result1 = new AnaerobicThresholdAndroid(bluetoothGattCharacteristic);
+        AnaerobicThresholdAndroid result1 = new AnaerobicThresholdAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -81,10 +70,7 @@ public class AnaerobicThresholdAndroidTest {
         data[ 0] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnaerobicThresholdAndroid result1 = new AnaerobicThresholdAndroid(bluetoothGattCharacteristic);
+        AnaerobicThresholdAndroid result1 = new AnaerobicThresholdAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -95,10 +81,7 @@ public class AnaerobicThresholdAndroidTest {
         data[ 0] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AnaerobicThresholdAndroid result1 = new AnaerobicThresholdAndroid(bluetoothGattCharacteristic);
+        AnaerobicThresholdAndroid result1 = new AnaerobicThresholdAndroid(data);
         AnaerobicThresholdAndroid result2 = AnaerobicThresholdAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

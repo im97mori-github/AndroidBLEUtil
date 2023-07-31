@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a93;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -22,18 +20,15 @@ import static org.junit.Assert.assertTrue;
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
 
-    @SuppressWarnings("ConstantConditions")
     @Test
     public void test_constructor001() {
         //@formatter:off
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_UNSPECIFIED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         assertEquals(SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_UNSPECIFIED, result1.getSportTypeForAerobicAndAnaerobicThresholds());
         assertTrue(result1.isSportTypeForAerobicAndAnaerobicThresholdsUnspecified());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsRunning());
@@ -56,10 +51,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_RUNNING;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         assertEquals(SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_RUNNING, result1.getSportTypeForAerobicAndAnaerobicThresholds());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsUnspecified());
         assertTrue(result1.isSportTypeForAerobicAndAnaerobicThresholdsRunning());
@@ -82,10 +74,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CYCLING;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         assertEquals(SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CYCLING, result1.getSportTypeForAerobicAndAnaerobicThresholds());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsUnspecified());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsRunning());
@@ -108,10 +97,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_ROWING;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         assertEquals(SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_ROWING, result1.getSportTypeForAerobicAndAnaerobicThresholds());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsUnspecified());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsRunning());
@@ -134,10 +120,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CROSS_TRAINING;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         assertEquals(SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CROSS_TRAINING, result1.getSportTypeForAerobicAndAnaerobicThresholds());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsUnspecified());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsRunning());
@@ -160,10 +143,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CLIMBING;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         assertEquals(SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_CLIMBING, result1.getSportTypeForAerobicAndAnaerobicThresholds());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsUnspecified());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsRunning());
@@ -186,10 +166,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_SKIING;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         assertEquals(SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_SKIING, result1.getSportTypeForAerobicAndAnaerobicThresholds());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsUnspecified());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsRunning());
@@ -212,10 +189,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_SKATING;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         assertEquals(SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_SKATING, result1.getSportTypeForAerobicAndAnaerobicThresholds());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsUnspecified());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsRunning());
@@ -238,10 +212,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_ARM_EXERCISING;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         assertEquals(SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_ARM_EXERCISING, result1.getSportTypeForAerobicAndAnaerobicThresholds());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsUnspecified());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsRunning());
@@ -264,10 +235,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_LOWER_BODY_EXERCISING;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         assertEquals(SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_LOWER_BODY_EXERCISING, result1.getSportTypeForAerobicAndAnaerobicThresholds());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsUnspecified());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsRunning());
@@ -290,10 +258,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_UPPER_BODY_EXERCISING;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         assertEquals(SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_UPPER_BODY_EXERCISING, result1.getSportTypeForAerobicAndAnaerobicThresholds());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsUnspecified());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsRunning());
@@ -316,10 +281,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_WHOLE_BODY_EXERCISING;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         assertEquals(SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_WHOLE_BODY_EXERCISING, result1.getSportTypeForAerobicAndAnaerobicThresholds());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsUnspecified());
         assertFalse(result1.isSportTypeForAerobicAndAnaerobicThresholdsRunning());
@@ -350,10 +312,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_RUNNING;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -369,10 +328,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_RUNNING;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -383,10 +339,7 @@ public class SportTypeForAerobicAndAnaerobicThresholdsAndroidTest {
         data[ 0] = SportTypeForAerobicAndAnaerobicThresholds.SPORT_TYPE_FOR_AEROBIC_AND_ANAEROBIC_THRESHOLDS_RUNNING;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(bluetoothGattCharacteristic);
+        SportTypeForAerobicAndAnaerobicThresholdsAndroid result1 = new SportTypeForAerobicAndAnaerobicThresholdsAndroid(data);
         SportTypeForAerobicAndAnaerobicThresholdsAndroid result2 = SportTypeForAerobicAndAnaerobicThresholdsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

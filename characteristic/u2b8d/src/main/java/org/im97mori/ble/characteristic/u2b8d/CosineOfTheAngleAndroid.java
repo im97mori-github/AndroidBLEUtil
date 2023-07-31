@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.COSINE_OF_THE_ANGLE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Cosine of the Angle (Characteristics UUID: 0x2B8D)
@@ -45,9 +45,7 @@ public class CosineOfTheAngleAndroid extends CosineOfTheAngle implements Parcela
          */
         @NonNull
         public CosineOfTheAngleAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(COSINE_OF_THE_ANGLE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new CosineOfTheAngleAndroid(bluetoothGattCharacteristic);
+            return new CosineOfTheAngleAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class CosineOfTheAngleAndroid extends CosineOfTheAngle implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B8D
      */
+    @Deprecated
     public CosineOfTheAngleAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public CosineOfTheAngleAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class CosineOfTheAngleAndroid extends CosineOfTheAngle implements Parcela
      * @param in Parcel
      */
     private CosineOfTheAngleAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

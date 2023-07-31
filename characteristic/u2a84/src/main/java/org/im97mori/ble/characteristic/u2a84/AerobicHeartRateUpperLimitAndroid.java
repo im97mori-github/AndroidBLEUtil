@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Aerobic Heart Rate Upper Limit (Characteristics UUID: 0x2A84)
@@ -44,9 +44,7 @@ public class AerobicHeartRateUpperLimitAndroid extends AerobicHeartRateUpperLimi
          */
         @NonNull
         public AerobicHeartRateUpperLimitAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(AEROBIC_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AerobicHeartRateUpperLimitAndroid(bluetoothGattCharacteristic);
+            return new AerobicHeartRateUpperLimitAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class AerobicHeartRateUpperLimitAndroid extends AerobicHeartRateUpperLimi
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A84
      */
+    @Deprecated
     public AerobicHeartRateUpperLimitAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AerobicHeartRateUpperLimitAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class AerobicHeartRateUpperLimitAndroid extends AerobicHeartRateUpperLimi
      * @param in Parcel
      */
     private AerobicHeartRateUpperLimitAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

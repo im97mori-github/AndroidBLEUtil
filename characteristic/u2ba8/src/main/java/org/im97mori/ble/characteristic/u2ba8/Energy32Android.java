@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ENERGY_32_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Energy 32 (Characteristics UUID: 0x2BA8)
@@ -45,9 +45,7 @@ public class Energy32Android extends Energy32 implements Parcelable {
          */
         @NonNull
         public Energy32Android createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ENERGY_32_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new Energy32Android(bluetoothGattCharacteristic);
+            return new Energy32Android(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class Energy32Android extends Energy32 implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BA8
      */
+    @Deprecated
     public Energy32Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public Energy32Android(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class Energy32Android extends Energy32 implements Parcelable {
      * @param in Parcel
      */
     private Energy32Android(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

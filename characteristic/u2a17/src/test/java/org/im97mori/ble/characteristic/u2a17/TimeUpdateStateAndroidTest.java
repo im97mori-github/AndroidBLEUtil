@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a17;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,13 +8,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -31,10 +29,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_SUCCESSFUL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertEquals(TimeUpdateState.CURRENT_STATE_IDLE, result1.getCurrentState());
         assertTrue(result1.isCurrentStateIdle());
         assertFalse(result1.isCurrentStateUpdatePending());
@@ -48,10 +43,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_SUCCESSFUL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertEquals(TimeUpdateState.CURRENT_STATE_UPDATE_PENDING, result1.getCurrentState());
         assertFalse(result1.isCurrentStateIdle());
         assertTrue(result1.isCurrentStateUpdatePending());
@@ -65,10 +57,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_SUCCESSFUL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertEquals(TimeUpdateState.RESULT_SUCCESSFUL, result1.getResult());
         assertTrue(result1.isResultSuccessful());
         assertFalse(result1.isResultCanceled());
@@ -86,10 +75,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_CANCELED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertEquals(TimeUpdateState.RESULT_CANCELED, result1.getResult());
         assertFalse(result1.isResultSuccessful());
         assertTrue(result1.isResultCanceled());
@@ -107,10 +93,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_NO_CONNECTION_TO_REFERENCE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertEquals(TimeUpdateState.RESULT_NO_CONNECTION_TO_REFERENCE, result1.getResult());
         assertFalse(result1.isResultSuccessful());
         assertFalse(result1.isResultCanceled());
@@ -128,10 +111,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_REFERENCE_RESPONDED_WITH_AN_ERROR;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertEquals(TimeUpdateState.RESULT_REFERENCE_RESPONDED_WITH_AN_ERROR, result1.getResult());
         assertFalse(result1.isResultSuccessful());
         assertFalse(result1.isResultCanceled());
@@ -149,10 +129,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_TIMEOUT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertEquals(TimeUpdateState.RESULT_TIMEOUT, result1.getResult());
         assertFalse(result1.isResultSuccessful());
         assertFalse(result1.isResultCanceled());
@@ -170,10 +147,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_UPDATE_NOT_ATTEMPTED_AFTER_RESET;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertEquals(TimeUpdateState.RESULT_UPDATE_NOT_ATTEMPTED_AFTER_RESET, result1.getResult());
         assertFalse(result1.isResultSuccessful());
         assertFalse(result1.isResultCanceled());
@@ -201,10 +175,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_SUCCESSFUL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -222,10 +193,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_SUCCESSFUL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -243,10 +211,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_SUCCESSFUL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -264,10 +229,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_CANCELED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -285,10 +247,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_NO_CONNECTION_TO_REFERENCE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -306,10 +265,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_REFERENCE_RESPONDED_WITH_AN_ERROR;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -327,10 +283,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_TIMEOUT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -348,10 +301,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_UPDATE_NOT_ATTEMPTED_AFTER_RESET;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -369,10 +319,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_SUCCESSFUL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -384,10 +331,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_SUCCESSFUL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -399,10 +343,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_SUCCESSFUL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -414,10 +355,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_CANCELED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -429,10 +367,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_NO_CONNECTION_TO_REFERENCE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -444,10 +379,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_REFERENCE_RESPONDED_WITH_AN_ERROR;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -459,10 +391,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_TIMEOUT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -474,10 +403,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_UPDATE_NOT_ATTEMPTED_AFTER_RESET;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -489,10 +415,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_SUCCESSFUL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         TimeUpdateStateAndroid result2 = TimeUpdateStateAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -505,10 +428,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_SUCCESSFUL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         TimeUpdateStateAndroid result2 = TimeUpdateStateAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -521,10 +441,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_SUCCESSFUL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         TimeUpdateStateAndroid result2 = TimeUpdateStateAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -537,10 +454,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_CANCELED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         TimeUpdateStateAndroid result2 = TimeUpdateStateAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -553,10 +467,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_NO_CONNECTION_TO_REFERENCE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         TimeUpdateStateAndroid result2 = TimeUpdateStateAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -569,10 +480,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_REFERENCE_RESPONDED_WITH_AN_ERROR;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         TimeUpdateStateAndroid result2 = TimeUpdateStateAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -585,10 +493,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_TIMEOUT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         TimeUpdateStateAndroid result2 = TimeUpdateStateAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -601,10 +506,7 @@ public class TimeUpdateStateAndroidTest {
         data[ 1] = TimeUpdateState.RESULT_UPDATE_NOT_ATTEMPTED_AFTER_RESET;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(bluetoothGattCharacteristic);
+        TimeUpdateStateAndroid result1 = new TimeUpdateStateAndroid(data);
         TimeUpdateStateAndroid result2 = TimeUpdateStateAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -1,5 +1,10 @@
 package org.im97mori.ble.task;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Bundle;
@@ -20,13 +25,7 @@ import org.junit.Test;
 import java.util.Random;
 import java.util.UUID;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue */
 public class WriteCharacteristicTaskTest extends AbstractCentralTest {
 
     @Test
@@ -51,9 +50,9 @@ public class WriteCharacteristicTaskTest extends AbstractCentralTest {
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(WriteCharacteristicTask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(WriteCharacteristicTask.KEY_SERVICE_UUID));
+        assertEquals(serviceUUID, UUID.fromString(bundle.getString(WriteCharacteristicTask.KEY_SERVICE_UUID)));
         assertTrue(bundle.containsKey(WriteCharacteristicTask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(WriteCharacteristicTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, UUID.fromString(bundle.getString(WriteCharacteristicTask.KEY_CHARACTERISTIC_UUID)));
         assertTrue(bundle.containsKey(WriteCharacteristicTask.KEY_NEXT_PROGRESS));
         assertEquals(WriteCharacteristicTask.PROGRESS_CHARACTERISTIC_WRITE_START, bundle.getString(WriteCharacteristicTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
@@ -66,22 +65,19 @@ public class WriteCharacteristicTaskTest extends AbstractCentralTest {
         int serviceInstanceId = 1;
         UUID characteristicUUID = UUID.randomUUID();
         int characteristicInstanceId = 2;
-        byte[] original = new byte[0];
-        Message message = WriteCharacteristicTask.createWriteCharacteristicSuccessMessage(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, original);
+        Message message = WriteCharacteristicTask.createWriteCharacteristicSuccessMessage(serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId);
 
         assertNotNull(message);
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(WriteCharacteristicTask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(WriteCharacteristicTask.KEY_SERVICE_UUID));
+        assertEquals(serviceUUID, UUID.fromString(bundle.getString(WriteCharacteristicTask.KEY_SERVICE_UUID)));
         assertTrue(bundle.containsKey(WriteCharacteristicTask.KEY_SERVICE_INSTANCE_ID));
         assertEquals(serviceInstanceId, bundle.getInt(WriteCharacteristicTask.KEY_SERVICE_INSTANCE_ID));
         assertTrue(bundle.containsKey(WriteCharacteristicTask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(WriteCharacteristicTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, UUID.fromString(bundle.getString(WriteCharacteristicTask.KEY_CHARACTERISTIC_UUID)));
         assertTrue(bundle.containsKey(WriteCharacteristicTask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertEquals(characteristicInstanceId, bundle.getInt(WriteCharacteristicTask.KEY_CHARACTERISTIC_INSTANCE_ID));
-        assertTrue(bundle.containsKey(WriteCharacteristicTask.KEY_VALUES));
-        assertArrayEquals(original, bundle.getByteArray(WriteCharacteristicTask.KEY_VALUES));
         assertTrue(bundle.containsKey(WriteCharacteristicTask.KEY_NEXT_PROGRESS));
         assertEquals(WriteCharacteristicTask.PROGRESS_CHARACTERISTIC_WRITE_SUCCESS, bundle.getString(WriteCharacteristicTask.KEY_NEXT_PROGRESS));
     }
@@ -100,11 +96,11 @@ public class WriteCharacteristicTaskTest extends AbstractCentralTest {
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(WriteCharacteristicTask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(WriteCharacteristicTask.KEY_SERVICE_UUID));
+        assertEquals(serviceUUID, UUID.fromString(bundle.getString(WriteCharacteristicTask.KEY_SERVICE_UUID)));
         assertTrue(bundle.containsKey(WriteCharacteristicTask.KEY_SERVICE_INSTANCE_ID));
         assertEquals(serviceInstanceId, bundle.getInt(WriteCharacteristicTask.KEY_SERVICE_INSTANCE_ID));
         assertTrue(bundle.containsKey(WriteCharacteristicTask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(WriteCharacteristicTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, UUID.fromString(bundle.getString(WriteCharacteristicTask.KEY_CHARACTERISTIC_UUID)));
         assertTrue(bundle.containsKey(WriteCharacteristicTask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertEquals(characteristicInstanceId, bundle.getInt(WriteCharacteristicTask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertTrue(bundle.containsKey(WriteCharacteristicTask.KEY_STATUS));
@@ -113,8 +109,10 @@ public class WriteCharacteristicTaskTest extends AbstractCentralTest {
         assertEquals(WriteCharacteristicTask.PROGRESS_CHARACTERISTIC_WRITE_ERROR, bundle.getString(WriteCharacteristicTask.KEY_NEXT_PROGRESS));
     }
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_doProcess_00001() {
         UUID serviceUUID = UUID.randomUUID();
         UUID characteristicUUID = UUID.randomUUID();
@@ -122,8 +120,10 @@ public class WriteCharacteristicTaskTest extends AbstractCentralTest {
         assertFalse(task.doProcess(new Message()));
     }
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_cancel_00001() {
         Looper looper = null;
         try {
@@ -144,8 +144,10 @@ public class WriteCharacteristicTaskTest extends AbstractCentralTest {
         }
     }
 
+    /** @noinspection deprecation*/
     @Test
     @RequiresDevice
+    @Deprecated
     public void test_cancel_00002() {
         Looper looper = null;
         try {

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Fat Burn Heart Rate Upper Limit (Characteristics UUID: 0x2A89)
@@ -44,9 +44,7 @@ public class FatBurnHeartRateUpperLimitAndroid extends FatBurnHeartRateUpperLimi
          */
         @NonNull
         public FatBurnHeartRateUpperLimitAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(FAT_BURN_HEART_RATE_UPPER_LIMIT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new FatBurnHeartRateUpperLimitAndroid(bluetoothGattCharacteristic);
+            return new FatBurnHeartRateUpperLimitAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class FatBurnHeartRateUpperLimitAndroid extends FatBurnHeartRateUpperLimi
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A89
      */
+    @Deprecated
     public FatBurnHeartRateUpperLimitAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public FatBurnHeartRateUpperLimitAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class FatBurnHeartRateUpperLimitAndroid extends FatBurnHeartRateUpperLimi
      * @param in Parcel
      */
     private FatBurnHeartRateUpperLimitAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

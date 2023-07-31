@@ -811,6 +811,11 @@ public class LnpCallbackSample extends LocationAndNavigationProfileMockCallback 
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Five Zone Heart Rate Limits (Characteristics UUID: 0x2A8B)
@@ -44,9 +44,7 @@ public class FiveZoneHeartRateLimitsAndroid extends FiveZoneHeartRateLimits impl
          */
         @NonNull
         public FiveZoneHeartRateLimitsAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(FIVE_ZONE_HEART_RATE_LIMITS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new FiveZoneHeartRateLimitsAndroid(bluetoothGattCharacteristic);
+            return new FiveZoneHeartRateLimitsAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class FiveZoneHeartRateLimitsAndroid extends FiveZoneHeartRateLimits impl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A8B
      */
+    @Deprecated
     public FiveZoneHeartRateLimitsAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public FiveZoneHeartRateLimitsAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -78,8 +86,7 @@ public class FiveZoneHeartRateLimitsAndroid extends FiveZoneHeartRateLimits impl
      * @param in Parcel
      */
     private FiveZoneHeartRateLimitsAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

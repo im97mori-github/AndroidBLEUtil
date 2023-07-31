@@ -25,7 +25,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue */
 public class ReadDescriptorTaskTest extends AbstractCentralTest {
 
     @Test
@@ -41,11 +41,11 @@ public class ReadDescriptorTaskTest extends AbstractCentralTest {
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(ReadDescriptorTask.KEY_SERVICE_UUID));
+        assertEquals(serviceUUID, UUID.fromString(bundle.getString(ReadDescriptorTask.KEY_SERVICE_UUID)));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(ReadDescriptorTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, UUID.fromString(bundle.getString(ReadDescriptorTask.KEY_CHARACTERISTIC_UUID)));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_DESCRIPTOR_UUID));
-        assertEquals(descriptorUUID, bundle.getSerializable(ReadDescriptorTask.KEY_DESCRIPTOR_UUID));
+        assertEquals(descriptorUUID, UUID.fromString(bundle.getString(ReadDescriptorTask.KEY_DESCRIPTOR_UUID)));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_NEXT_PROGRESS));
         assertEquals(ReadDescriptorTask.PROGRESS_DESCRIPTOR_READ_START, bundle.getString(ReadDescriptorTask.KEY_NEXT_PROGRESS));
         assertEquals(task, message.obj);
@@ -67,15 +67,15 @@ public class ReadDescriptorTaskTest extends AbstractCentralTest {
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(ReadDescriptorTask.KEY_SERVICE_UUID));
+        assertEquals(serviceUUID, UUID.fromString(bundle.getString(ReadDescriptorTask.KEY_SERVICE_UUID)));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_SERVICE_INSTANCE_ID));
         assertEquals(serviceInstanceId, bundle.getInt(ReadDescriptorTask.KEY_SERVICE_INSTANCE_ID));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(ReadDescriptorTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, UUID.fromString(bundle.getString(ReadDescriptorTask.KEY_CHARACTERISTIC_UUID)));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertEquals(characteristicInstanceId, bundle.getInt(ReadDescriptorTask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_DESCRIPTOR_UUID));
-        assertEquals(descriptorUUID, bundle.getSerializable(ReadDescriptorTask.KEY_DESCRIPTOR_UUID));
+        assertEquals(descriptorUUID, UUID.fromString(bundle.getString(ReadDescriptorTask.KEY_DESCRIPTOR_UUID)));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_DESCRIPTOR_INSTANCE_ID));
         assertEquals(descriptorInstanceId, bundle.getInt(ReadDescriptorTask.KEY_DESCRIPTOR_INSTANCE_ID));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_VALUES));
@@ -100,15 +100,15 @@ public class ReadDescriptorTaskTest extends AbstractCentralTest {
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_SERVICE_UUID));
-        assertEquals(serviceUUID, bundle.getSerializable(ReadDescriptorTask.KEY_SERVICE_UUID));
+        assertEquals(serviceUUID, UUID.fromString(bundle.getString(ReadDescriptorTask.KEY_SERVICE_UUID)));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_SERVICE_INSTANCE_ID));
         assertEquals(serviceInstanceId, bundle.getInt(ReadDescriptorTask.KEY_SERVICE_INSTANCE_ID));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_CHARACTERISTIC_UUID));
-        assertEquals(characteristicUUID, bundle.getSerializable(ReadDescriptorTask.KEY_CHARACTERISTIC_UUID));
+        assertEquals(characteristicUUID, UUID.fromString(bundle.getString(ReadDescriptorTask.KEY_CHARACTERISTIC_UUID)));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertEquals(characteristicInstanceId, bundle.getInt(ReadDescriptorTask.KEY_CHARACTERISTIC_INSTANCE_ID));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_DESCRIPTOR_UUID));
-        assertEquals(descriptorUUID, bundle.getSerializable(ReadDescriptorTask.KEY_DESCRIPTOR_UUID));
+        assertEquals(descriptorUUID, UUID.fromString(bundle.getString(ReadDescriptorTask.KEY_DESCRIPTOR_UUID)));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_DESCRIPTOR_INSTANCE_ID));
         assertEquals(descriptorInstanceId, bundle.getInt(ReadDescriptorTask.KEY_DESCRIPTOR_INSTANCE_ID));
         assertTrue(bundle.containsKey(ReadDescriptorTask.KEY_STATUS));

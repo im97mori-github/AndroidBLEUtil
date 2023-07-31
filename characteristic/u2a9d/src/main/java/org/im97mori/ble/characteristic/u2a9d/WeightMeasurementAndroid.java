@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_MEASUREMENT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Weight Measurement (Characteristics UUID: 0x2A9D)
@@ -44,9 +44,7 @@ public class WeightMeasurementAndroid extends WeightMeasurement implements Parce
          */
         @NonNull
         public WeightMeasurementAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WEIGHT_MEASUREMENT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new WeightMeasurementAndroid(bluetoothGattCharacteristic);
+            return new WeightMeasurementAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class WeightMeasurementAndroid extends WeightMeasurement implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A9D
      */
+    @Deprecated
     public WeightMeasurementAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public WeightMeasurementAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -87,8 +95,7 @@ public class WeightMeasurementAndroid extends WeightMeasurement implements Parce
      * @param in Parcel
      */
     private WeightMeasurementAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

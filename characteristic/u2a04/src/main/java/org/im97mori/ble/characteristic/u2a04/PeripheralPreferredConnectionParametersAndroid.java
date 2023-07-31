@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Peripheral Preferred Connection Parameters (Characteristics UUID: 0x2A04)
@@ -44,9 +44,7 @@ public class PeripheralPreferredConnectionParametersAndroid extends PeripheralPr
          */
         @NonNull
         public PeripheralPreferredConnectionParametersAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PERIPHERAL_PREFERRED_CONNECTION_PARAMETERS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new PeripheralPreferredConnectionParametersAndroid(bluetoothGattCharacteristic);
+            return new PeripheralPreferredConnectionParametersAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class PeripheralPreferredConnectionParametersAndroid extends PeripheralPr
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A04
      */
+    @Deprecated
     public PeripheralPreferredConnectionParametersAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public PeripheralPreferredConnectionParametersAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -78,8 +86,7 @@ public class PeripheralPreferredConnectionParametersAndroid extends PeripheralPr
      * @param in Parcel
      */
     private PeripheralPreferredConnectionParametersAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

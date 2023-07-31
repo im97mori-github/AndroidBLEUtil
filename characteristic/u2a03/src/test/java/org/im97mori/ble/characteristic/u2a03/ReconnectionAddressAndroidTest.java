@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a03;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -32,10 +30,7 @@ public class ReconnectionAddressAndroidTest {
         data[ 5] = 0x06;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionAddressAndroid result1 = new ReconnectionAddressAndroid(bluetoothGattCharacteristic);
+        ReconnectionAddressAndroid result1 = new ReconnectionAddressAndroid(data);
         assertEquals(0x060504030201L, result1.getAddress());
     }
 
@@ -51,10 +46,7 @@ public class ReconnectionAddressAndroidTest {
         data[ 5] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionAddressAndroid result1 = new ReconnectionAddressAndroid(bluetoothGattCharacteristic);
+        ReconnectionAddressAndroid result1 = new ReconnectionAddressAndroid(data);
         assertEquals(0xff0504030201L, result1.getAddress());
     }
 
@@ -78,10 +70,7 @@ public class ReconnectionAddressAndroidTest {
         data[ 5] = 0x06;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionAddressAndroid result1 = new ReconnectionAddressAndroid(bluetoothGattCharacteristic);
+        ReconnectionAddressAndroid result1 = new ReconnectionAddressAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -102,10 +91,7 @@ public class ReconnectionAddressAndroidTest {
         data[ 5] = 0x06;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionAddressAndroid result1 = new ReconnectionAddressAndroid(bluetoothGattCharacteristic);
+        ReconnectionAddressAndroid result1 = new ReconnectionAddressAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -121,10 +107,7 @@ public class ReconnectionAddressAndroidTest {
         data[ 5] = 0x06;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionAddressAndroid result1 = new ReconnectionAddressAndroid(bluetoothGattCharacteristic);
+        ReconnectionAddressAndroid result1 = new ReconnectionAddressAndroid(data);
         ReconnectionAddressAndroid result2 = ReconnectionAddressAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ad2;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -616,9 +614,9 @@ public class IndoorBikeDataPacketAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -632,10 +630,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(IndoorBikeDataUtils.isFlagsMoreDataFalse(result1.getFlags()));
         assertFalse(IndoorBikeDataUtils.isFlagsMoreDataTrue(result1.getFlags()));
@@ -646,10 +641,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(IndoorBikeDataUtils.isFlagsMoreDataFalse(result1.getFlags()));
         assertTrue(IndoorBikeDataUtils.isFlagsMoreDataTrue(result1.getFlags()));
@@ -659,10 +651,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(IndoorBikeDataUtils.isFlagsAverageSpeedNotPresent(result1.getFlags()));
         assertFalse(IndoorBikeDataUtils.isFlagsAverageSpeedPresent(result1.getFlags()));
@@ -672,10 +661,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(IndoorBikeDataUtils.isFlagsAverageSpeedNotPresent(result1.getFlags()));
         assertTrue(IndoorBikeDataUtils.isFlagsAverageSpeedPresent(result1.getFlags()));
@@ -686,10 +672,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(IndoorBikeDataUtils.isFlagsInstantaneousCadenceNotPresent(result1.getFlags()));
         assertFalse(IndoorBikeDataUtils.isFlagsInstantaneousCadencePresent(result1.getFlags()));
@@ -699,10 +682,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(IndoorBikeDataUtils.isFlagsInstantaneousCadenceNotPresent(result1.getFlags()));
         assertTrue(IndoorBikeDataUtils.isFlagsInstantaneousCadencePresent(result1.getFlags()));
@@ -713,10 +693,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(IndoorBikeDataUtils.isFlagsAverageCandenceNotPresent(result1.getFlags()));
         assertFalse(IndoorBikeDataUtils.isFlagsAverageCandencePresent(result1.getFlags()));
@@ -726,10 +703,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(IndoorBikeDataUtils.isFlagsAverageCandenceNotPresent(result1.getFlags()));
         assertTrue(IndoorBikeDataUtils.isFlagsAverageCandencePresent(result1.getFlags()));
@@ -740,10 +714,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(IndoorBikeDataUtils.isFlagsTotalDistanceNotPresent(result1.getFlags()));
         assertFalse(IndoorBikeDataUtils.isFlagsTotalDistancePresent(result1.getFlags()));
@@ -753,10 +724,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(IndoorBikeDataUtils.isFlagsTotalDistanceNotPresent(result1.getFlags()));
         assertTrue(IndoorBikeDataUtils.isFlagsTotalDistancePresent(result1.getFlags()));
@@ -767,10 +735,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(IndoorBikeDataUtils.isFlagsResistanceLevelNotPresent(result1.getFlags()));
         assertFalse(IndoorBikeDataUtils.isFlagsResistanceLevelPresent(result1.getFlags()));
@@ -780,10 +745,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(IndoorBikeDataUtils.isFlagsResistanceLevelNotPresent(result1.getFlags()));
         assertTrue(IndoorBikeDataUtils.isFlagsResistanceLevelPresent(result1.getFlags()));
@@ -794,10 +756,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(IndoorBikeDataUtils.isFlagsInstantaneousPowerNotPresent(result1.getFlags()));
         assertFalse(IndoorBikeDataUtils.isFlagsInstantaneousPowerPresent(result1.getFlags()));
@@ -807,10 +766,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(IndoorBikeDataUtils.isFlagsInstantaneousPowerNotPresent(result1.getFlags()));
         assertTrue(IndoorBikeDataUtils.isFlagsInstantaneousPowerPresent(result1.getFlags()));
@@ -821,10 +777,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(IndoorBikeDataUtils.isFlagsAveragePowerNotPresent(result1.getFlags()));
         assertFalse(IndoorBikeDataUtils.isFlagsAveragePowerPresent(result1.getFlags()));
@@ -834,10 +787,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(IndoorBikeDataUtils.isFlagsAveragePowerNotPresent(result1.getFlags()));
         assertTrue(IndoorBikeDataUtils.isFlagsAveragePowerPresent(result1.getFlags()));
@@ -848,10 +798,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(IndoorBikeDataUtils.isFlagsExpendedEnergyNotPresent(result1.getFlags()));
         assertFalse(IndoorBikeDataUtils.isFlagsExpendedEnergyPresent(result1.getFlags()));
@@ -861,10 +808,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(IndoorBikeDataUtils.isFlagsExpendedEnergyNotPresent(result1.getFlags()));
         assertTrue(IndoorBikeDataUtils.isFlagsExpendedEnergyPresent(result1.getFlags()));
@@ -877,10 +821,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(IndoorBikeDataUtils.isFlagsHeartRateNotPresent(result1.getFlags()));
         assertFalse(IndoorBikeDataUtils.isFlagsHeartRatePresent(result1.getFlags()));
@@ -890,10 +831,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(IndoorBikeDataUtils.isFlagsHeartRateNotPresent(result1.getFlags()));
         assertTrue(IndoorBikeDataUtils.isFlagsHeartRatePresent(result1.getFlags()));
@@ -904,10 +842,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(IndoorBikeDataUtils.isFlagsMetabolicEquivalentNotPresent(result1.getFlags()));
         assertFalse(IndoorBikeDataUtils.isFlagsMetabolicEquivalentPresent(result1.getFlags()));
@@ -917,10 +852,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(IndoorBikeDataUtils.isFlagsMetabolicEquivalentNotPresent(result1.getFlags()));
         assertTrue(IndoorBikeDataUtils.isFlagsMetabolicEquivalentPresent(result1.getFlags()));
@@ -931,10 +863,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(IndoorBikeDataUtils.isFlagsElapsedTimeNotPresent(result1.getFlags()));
         assertFalse(IndoorBikeDataUtils.isFlagsElapsedTimePresent(result1.getFlags()));
@@ -944,10 +873,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(IndoorBikeDataUtils.isFlagsElapsedTimeNotPresent(result1.getFlags()));
         assertTrue(IndoorBikeDataUtils.isFlagsElapsedTimePresent(result1.getFlags()));
@@ -958,10 +884,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(IndoorBikeDataUtils.isFlagsRemainingTimeNotPresent(result1.getFlags()));
         assertFalse(IndoorBikeDataUtils.isFlagsRemainingTimePresent(result1.getFlags()));
@@ -971,10 +894,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_constructor_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(IndoorBikeDataUtils.isFlagsRemainingTimeNotPresent(result1.getFlags()));
         assertTrue(IndoorBikeDataUtils.isFlagsRemainingTimePresent(result1.getFlags()));
@@ -1023,10 +943,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1053,10 +970,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1083,10 +997,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1113,10 +1024,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1143,10 +1051,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1173,10 +1078,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1203,10 +1105,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1233,10 +1132,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1263,10 +1159,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1293,10 +1186,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1323,10 +1213,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1353,10 +1240,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1383,10 +1267,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1413,10 +1294,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1443,10 +1321,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1473,10 +1348,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1503,10 +1375,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1533,10 +1402,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1563,10 +1429,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1593,10 +1456,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1623,10 +1483,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1653,10 +1510,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1683,10 +1537,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1713,10 +1564,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1743,10 +1591,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1773,10 +1618,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_1_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1803,10 +1645,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1814,10 +1653,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1825,10 +1661,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1836,10 +1669,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1847,10 +1677,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1858,10 +1685,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1869,10 +1693,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1880,10 +1701,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1891,10 +1709,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1902,10 +1717,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1913,10 +1725,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1924,10 +1733,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1935,10 +1741,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1946,10 +1749,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1957,10 +1757,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1968,10 +1765,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1979,10 +1773,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1990,10 +1781,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2001,10 +1789,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2012,10 +1797,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2023,10 +1805,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2034,10 +1813,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2045,10 +1821,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2056,10 +1829,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2067,10 +1837,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2078,10 +1845,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_2_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2089,10 +1853,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2101,10 +1862,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2113,10 +1871,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2125,10 +1880,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2137,10 +1889,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2149,10 +1898,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2161,10 +1907,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2173,10 +1916,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2185,10 +1925,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2197,10 +1934,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2209,10 +1943,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2221,10 +1952,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2233,10 +1961,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2245,10 +1970,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2257,10 +1979,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2269,10 +1988,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2281,10 +1997,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2293,10 +2006,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2305,10 +2015,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2317,10 +2024,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2329,10 +2033,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2341,10 +2042,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2353,10 +2051,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2365,10 +2060,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2377,10 +2069,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2389,10 +2078,7 @@ public class IndoorBikeDataPacketAndroidTest {
     public void test_parcelable_3_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(bluetoothGattCharacteristic);
+        IndoorBikeDataPacketAndroid result1 = new IndoorBikeDataPacketAndroid(data);
         IndoorBikeDataPacketAndroid result2 = IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BATTERY_HEALTH_STATUS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Battery Health Status (Characteristics UUID: 0x2BEA)
@@ -45,9 +45,7 @@ public class BatteryHealthStatusAndroid extends BatteryHealthStatus implements P
          */
         @NonNull
         public BatteryHealthStatusAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_HEALTH_STATUS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BatteryHealthStatusAndroid(bluetoothGattCharacteristic);
+            return new BatteryHealthStatusAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BatteryHealthStatusAndroid extends BatteryHealthStatus implements P
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BEA
      */
+    @Deprecated
     public BatteryHealthStatusAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BatteryHealthStatusAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class BatteryHealthStatusAndroid extends BatteryHealthStatus implements P
      * @param in Parcel
      */
     private BatteryHealthStatusAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.LOCATION_NAME_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Location Name (Characteristics UUID: 0x2AB5)
@@ -44,9 +44,7 @@ public class LocationNameAndroid extends LocationName implements Parcelable {
          */
         @NonNull
         public LocationNameAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LOCATION_NAME_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new LocationNameAndroid(bluetoothGattCharacteristic);
+            return new LocationNameAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class LocationNameAndroid extends LocationName implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AB5
      */
+    @Deprecated
     public LocationNameAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public LocationNameAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class LocationNameAndroid extends LocationName implements Parcelable {
      * @param in Parcel
      */
     private LocationNameAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

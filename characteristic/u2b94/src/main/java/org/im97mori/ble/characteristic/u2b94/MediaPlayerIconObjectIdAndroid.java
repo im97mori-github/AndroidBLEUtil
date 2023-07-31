@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.MEDIA_PLAYER_ICON_OBJECT_ID_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Media Player Icon Object ID (Characteristics UUID: 0x2B94)
@@ -45,9 +45,7 @@ public class MediaPlayerIconObjectIdAndroid extends MediaPlayerIconObjectId impl
          */
         @NonNull
         public MediaPlayerIconObjectIdAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MEDIA_PLAYER_ICON_OBJECT_ID_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new MediaPlayerIconObjectIdAndroid(bluetoothGattCharacteristic);
+            return new MediaPlayerIconObjectIdAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class MediaPlayerIconObjectIdAndroid extends MediaPlayerIconObjectId impl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B94
      */
+    @Deprecated
     public MediaPlayerIconObjectIdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public MediaPlayerIconObjectIdAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class MediaPlayerIconObjectIdAndroid extends MediaPlayerIconObjectId impl
      * @param in Parcel
      */
     private MediaPlayerIconObjectIdAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -126,7 +126,7 @@ public class DescriptorData implements Parcelable, ByteArrayInterface {
      * @param in Parcel
      */
     public DescriptorData(@NonNull Parcel in) {
-        uuid = (UUID) in.readSerializable();
+        uuid = UUID.fromString(in.readString());
         permission = in.readInt();
         responseCode = in.readInt();
         delay = in.readLong();
@@ -221,7 +221,7 @@ public class DescriptorData implements Parcelable, ByteArrayInterface {
      */
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeSerializable(uuid);
+        dest.writeString(uuid.toString());
         dest.writeInt(permission);
         dest.writeInt(responseCode);
         dest.writeLong(delay);

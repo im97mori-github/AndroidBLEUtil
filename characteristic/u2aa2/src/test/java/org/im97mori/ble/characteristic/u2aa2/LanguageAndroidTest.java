@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2aa2;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -24,10 +22,7 @@ public class LanguageAndroidTest {
     public void test_constructor001() {
         String languageCode = "ja";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(languageCode.getBytes());
-
-        LanguageAndroid result1 = new LanguageAndroid(bluetoothGattCharacteristic);
+        LanguageAndroid result1 = new LanguageAndroid(languageCode.getBytes());
         assertEquals(languageCode, result1.getLanguage());
     }
 
@@ -35,10 +30,7 @@ public class LanguageAndroidTest {
     public void test_constructor002() {
         String languageCode = "ab";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(languageCode.getBytes());
-
-        LanguageAndroid result1 = new LanguageAndroid(bluetoothGattCharacteristic);
+        LanguageAndroid result1 = new LanguageAndroid(languageCode.getBytes());
         assertEquals(languageCode, result1.getLanguage());
     }
 
@@ -54,10 +46,7 @@ public class LanguageAndroidTest {
     public void test_parcelable001() {
         String languageCode = "ja";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(languageCode.getBytes());
-
-        LanguageAndroid result1 = new LanguageAndroid(bluetoothGattCharacteristic);
+        LanguageAndroid result1 = new LanguageAndroid(languageCode.getBytes());
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -70,10 +59,7 @@ public class LanguageAndroidTest {
     public void test_parcelable002() {
         String languageCode = "ab";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(languageCode.getBytes());
-
-        LanguageAndroid result1 = new LanguageAndroid(bluetoothGattCharacteristic);
+        LanguageAndroid result1 = new LanguageAndroid(languageCode.getBytes());
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -86,10 +72,7 @@ public class LanguageAndroidTest {
     public void test_parcelable003() {
         String languageCode = "ab";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(languageCode.getBytes());
-
-        LanguageAndroid result1 = new LanguageAndroid(bluetoothGattCharacteristic);
+        LanguageAndroid result1 = new LanguageAndroid(languageCode.getBytes());
         byte[] resultData = result1.getBytes();
         assertArrayEquals(languageCode.getBytes(), resultData);
     }
@@ -98,10 +81,7 @@ public class LanguageAndroidTest {
     public void test_parcelable004() {
         String languageCode = "ab";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(languageCode.getBytes());
-
-        LanguageAndroid result1 = new LanguageAndroid(bluetoothGattCharacteristic);
+        LanguageAndroid result1 = new LanguageAndroid(languageCode.getBytes());
         LanguageAndroid result2 = LanguageAndroid.CREATOR.createFromByteArray(languageCode.getBytes());
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

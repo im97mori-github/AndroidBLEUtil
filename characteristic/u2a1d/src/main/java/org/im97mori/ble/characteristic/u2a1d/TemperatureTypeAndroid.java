@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TEMPERATURE_TYPE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Temperature Type (Characteristics UUID: 0x2A1D)
@@ -44,9 +44,7 @@ public class TemperatureTypeAndroid extends TemperatureType implements Parcelabl
          */
         @NonNull
         public TemperatureTypeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TEMPERATURE_TYPE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TemperatureTypeAndroid(bluetoothGattCharacteristic);
+            return new TemperatureTypeAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class TemperatureTypeAndroid extends TemperatureType implements Parcelabl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A1D
      */
+    @Deprecated
     public TemperatureTypeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TemperatureTypeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class TemperatureTypeAndroid extends TemperatureType implements Parcelabl
      * @param in Parcel
      */
     private TemperatureTypeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

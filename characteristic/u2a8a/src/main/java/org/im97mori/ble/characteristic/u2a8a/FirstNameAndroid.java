@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import org.im97mori.ble.characteristic.core.MultiplePacketCreator;
 import org.im97mori.ble.characteristic.u2b37.RegisteredUser;
 
+import java.util.Objects;
+
 /**
  * First Name (Characteristics UUID: 0x2A8A)
  */
@@ -72,8 +74,7 @@ public class FirstNameAndroid extends FirstName implements Parcelable {
      * @param in Parcel
      */
     private FirstNameAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(new RegisteredUser(in.createByteArray()));
+        super(new RegisteredUser(Objects.requireNonNull(in.createByteArray())));
     }
 
     /**

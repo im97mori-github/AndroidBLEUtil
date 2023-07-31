@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ADVERTISING_CONSTANT_TONE_EXTENSION_MINIMUM_TRANSMIT_COUNT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Advertising Constant Tone Extension Minimum Transmit Count (Characteristics UUID: 0x2BAF)
@@ -45,9 +45,7 @@ public class AdvertisingConstantToneExtensionMinimumTransmitCountAndroid extends
          */
         @NonNull
         public AdvertisingConstantToneExtensionMinimumTransmitCountAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ADVERTISING_CONSTANT_TONE_EXTENSION_MINIMUM_TRANSMIT_COUNT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AdvertisingConstantToneExtensionMinimumTransmitCountAndroid(bluetoothGattCharacteristic);
+            return new AdvertisingConstantToneExtensionMinimumTransmitCountAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class AdvertisingConstantToneExtensionMinimumTransmitCountAndroid extends
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BAF
      */
+    @Deprecated
     public AdvertisingConstantToneExtensionMinimumTransmitCountAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AdvertisingConstantToneExtensionMinimumTransmitCountAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class AdvertisingConstantToneExtensionMinimumTransmitCountAndroid extends
      * @param in Parcel
      */
     private AdvertisingConstantToneExtensionMinimumTransmitCountAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

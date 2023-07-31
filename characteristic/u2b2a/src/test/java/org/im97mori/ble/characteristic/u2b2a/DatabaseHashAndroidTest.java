@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b2a;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -42,10 +40,7 @@ public class DatabaseHashAndroidTest {
         data[15] = 0x10;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DatabaseHashAndroid result1 = new DatabaseHashAndroid(bluetoothGattCharacteristic);
+        DatabaseHashAndroid result1 = new DatabaseHashAndroid(data);
         assertArrayEquals(data, result1.getDatabaseHash());
         assertEquals(0x04030201, result1.getDatabaseHashBigInteger().intValue());
         assertEquals(0x08070605, result1.getDatabaseHashBigInteger().shiftRight(32).intValue());
@@ -75,10 +70,7 @@ public class DatabaseHashAndroidTest {
         data[15] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DatabaseHashAndroid result1 = new DatabaseHashAndroid(bluetoothGattCharacteristic);
+        DatabaseHashAndroid result1 = new DatabaseHashAndroid(data);
         assertArrayEquals(data, result1.getDatabaseHash());
         assertEquals(0x04030201, result1.getDatabaseHashBigInteger().intValue());
         assertEquals(0x08070605, result1.getDatabaseHashBigInteger().shiftRight(32).intValue());
@@ -108,10 +100,7 @@ public class DatabaseHashAndroidTest {
         data[15] = 0x10;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DatabaseHashAndroid result1 = new DatabaseHashAndroid(bluetoothGattCharacteristic);
+        DatabaseHashAndroid result1 = new DatabaseHashAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -142,10 +131,7 @@ public class DatabaseHashAndroidTest {
         data[15] = 0x10;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DatabaseHashAndroid result1 = new DatabaseHashAndroid(bluetoothGattCharacteristic);
+        DatabaseHashAndroid result1 = new DatabaseHashAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -171,10 +157,7 @@ public class DatabaseHashAndroidTest {
         data[15] = 0x10;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DatabaseHashAndroid result1 = new DatabaseHashAndroid(bluetoothGattCharacteristic);
+        DatabaseHashAndroid result1 = new DatabaseHashAndroid(data);
         DatabaseHashAndroid result2 = DatabaseHashAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

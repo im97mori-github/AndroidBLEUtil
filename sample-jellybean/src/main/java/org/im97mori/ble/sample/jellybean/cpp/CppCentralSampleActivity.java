@@ -18,7 +18,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.core.SensorLocationUtils;
 import org.im97mori.ble.characteristic.u2a66.CyclingPowerControlPoint;
 import org.im97mori.ble.profile.central.task.BondTask;
@@ -245,21 +244,17 @@ public class CppCentralSampleActivity extends BaseActivity implements View.OnCli
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else {
-            mConnectDisconnectButton.setVisibility(View.VISIBLE);
-            if (mCyclingPowerProfile.isConnected()) {
-                mConnectDisconnectButton.setText(R.string.disconnect);
-            } else if (mBluetoothDevice != null) {
-                if (BluetoothDevice.BOND_BONDED == mBluetoothDevice.getBondState()) {
-                    mConnectDisconnectButton.setText(R.string.connect);
-                } else {
-                    mConnectDisconnectButton.setText(R.string.bond);
-                }
+        mConnectDisconnectButton.setVisibility(View.VISIBLE);
+        if (mCyclingPowerProfile.isConnected()) {
+            mConnectDisconnectButton.setText(R.string.disconnect);
+        } else if (mBluetoothDevice != null) {
+            if (BluetoothDevice.BOND_BONDED == mBluetoothDevice.getBondState()) {
+                mConnectDisconnectButton.setText(R.string.connect);
             } else {
-                mConnectDisconnectButton.setText(R.string.scan_start);
+                mConnectDisconnectButton.setText(R.string.bond);
             }
+        } else {
+            mConnectDisconnectButton.setText(R.string.scan_start);
         }
         invalidateOptionsMenu();
     }

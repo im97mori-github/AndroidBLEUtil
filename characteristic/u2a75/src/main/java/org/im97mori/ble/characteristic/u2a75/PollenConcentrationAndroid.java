@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.POLLEN_CONCENTRATION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Pollen Concentration (Characteristics UUID: 0x2A75)
@@ -44,9 +44,7 @@ public class PollenConcentrationAndroid extends PollenConcentration implements P
          */
         @NonNull
         public PollenConcentrationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(POLLEN_CONCENTRATION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new PollenConcentrationAndroid(bluetoothGattCharacteristic);
+            return new PollenConcentrationAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class PollenConcentrationAndroid extends PollenConcentration implements P
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A75
      */
+    @Deprecated
     public PollenConcentrationAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public PollenConcentrationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class PollenConcentrationAndroid extends PollenConcentration implements P
      * @param in Parcel
      */
     private PollenConcentrationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

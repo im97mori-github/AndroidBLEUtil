@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ab8;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,13 +8,13 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
+/** @noinspection DataFlowIssue*/
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -143,9 +142,9 @@ public class HTTPStatusCodeAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -159,10 +158,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertEquals(200, result1.getStatusCode());
         assertTrue(result1.isDataStatusHeadersNotReceived());
         assertFalse(result1.isDataStatusHeadersReceived());
@@ -172,10 +168,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertEquals(200, result1.getStatusCode());
         assertFalse(result1.isDataStatusHeadersNotReceived());
         assertTrue(result1.isDataStatusHeadersReceived());
@@ -185,10 +178,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertEquals(200, result1.getStatusCode());
         assertTrue(result1.isDataStatusHeadersNotTruncated());
         assertFalse(result1.isDataStatusHeadersTruncated());
@@ -198,10 +188,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertEquals(200, result1.getStatusCode());
         assertFalse(result1.isDataStatusHeadersNotTruncated());
         assertTrue(result1.isDataStatusHeadersTruncated());
@@ -211,10 +198,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertEquals(200, result1.getStatusCode());
         assertTrue(result1.isDataStatusBodysNotReceived());
         assertFalse(result1.isDataStatusBodysReceived());
@@ -224,10 +208,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertEquals(200, result1.getStatusCode());
         assertFalse(result1.isDataStatusBodysNotReceived());
         assertTrue(result1.isDataStatusBodysReceived());
@@ -237,10 +218,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertEquals(200, result1.getStatusCode());
         assertTrue(result1.isDataStatusBodysNotTruncated());
         assertFalse(result1.isDataStatusBodysTruncated());
@@ -250,10 +228,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_constructor_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertEquals(200, result1.getStatusCode());
         assertFalse(result1.isDataStatusBodysNotTruncated());
         assertTrue(result1.isDataStatusBodysTruncated());
@@ -273,10 +248,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -289,10 +261,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -305,10 +274,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -321,10 +287,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -337,10 +300,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -353,10 +313,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_1_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -369,10 +326,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -385,10 +339,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_1_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -401,10 +352,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -412,10 +360,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -423,10 +368,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -434,10 +376,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -445,10 +384,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -456,10 +392,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -467,10 +400,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -478,10 +408,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_2_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -489,10 +416,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         HTTPStatusCodeAndroid result2 = HTTPStatusCodeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -501,10 +425,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         HTTPStatusCodeAndroid result2 = HTTPStatusCodeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -513,10 +434,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         HTTPStatusCodeAndroid result2 = HTTPStatusCodeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -525,10 +443,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         HTTPStatusCodeAndroid result2 = HTTPStatusCodeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -537,10 +452,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         HTTPStatusCodeAndroid result2 = HTTPStatusCodeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -549,10 +461,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         HTTPStatusCodeAndroid result2 = HTTPStatusCodeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -561,10 +470,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         HTTPStatusCodeAndroid result2 = HTTPStatusCodeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -573,10 +479,7 @@ public class HTTPStatusCodeAndroidTest {
     public void test_parcelable_3_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(bluetoothGattCharacteristic);
+        HTTPStatusCodeAndroid result1 = new HTTPStatusCodeAndroid(data);
         HTTPStatusCodeAndroid result2 = HTTPStatusCodeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

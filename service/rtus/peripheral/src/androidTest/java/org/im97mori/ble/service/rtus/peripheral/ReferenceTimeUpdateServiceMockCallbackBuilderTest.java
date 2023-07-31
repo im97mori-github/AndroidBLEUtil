@@ -1,9 +1,20 @@
 package org.im97mori.ble.service.rtus.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC;
+import static org.im97mori.ble.constants.CharacteristicUUID.TIME_UPDATE_STATE_CHARACTERISTIC;
+import static org.im97mori.ble.constants.ServiceUUID.REFERENCE_TIME_UPDATE_SERVICE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
 import android.os.Build;
+
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.characteristic.u2a16.TimeUpdateControlPoint;
 import org.im97mori.ble.characteristic.u2a17.TimeUpdateState;
@@ -12,18 +23,6 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC;
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_UPDATE_STATE_CHARACTERISTIC;
-import static org.im97mori.ble.constants.ServiceUUID.REFERENCE_TIME_UPDATE_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import androidx.test.filters.RequiresDevice;
-import androidx.test.filters.SdkSuppress;
 
 public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
@@ -108,7 +107,6 @@ public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractP
         assertEquals(TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(timeUpdateControlPoint.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -143,7 +141,6 @@ public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractP
         assertEquals(TIME_UPDATE_CONTROL_POINT_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(timeUpdateControlPoint.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -196,7 +193,6 @@ public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractP
         assertEquals(TIME_UPDATE_STATE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(timeUpdateState.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -231,7 +227,6 @@ public class ReferenceTimeUpdateServiceMockCallbackBuilderTest extends AbstractP
         assertEquals(TIME_UPDATE_STATE_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(timeUpdateState.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test

@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b07;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -34,10 +32,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = (byte) (ElectricCurrentUtils.CURRENT_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result = new RelativeRuntimeInACurrentRangeAndroid(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result.getRelativeRuntimeValue());
         assertEquals(BLEUtils.createUInt16(data, 1), result.getMinimumCurrent());
         assertEquals(BLEUtils.createUInt16(data, 3), result.getMaximumCurrent());
@@ -54,10 +49,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result = new RelativeRuntimeInACurrentRangeAndroid(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result.getRelativeRuntimeValue());
         assertEquals(BLEUtils.createUInt16(data, 1), result.getMinimumCurrent());
         assertEquals(BLEUtils.createUInt16(data, 3), result.getMaximumCurrent());
@@ -74,10 +66,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = (byte) (65534 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result = new RelativeRuntimeInACurrentRangeAndroid(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result.getRelativeRuntimeValue());
         assertEquals(BLEUtils.createUInt16(data, 1), result.getMinimumCurrent());
         assertEquals(BLEUtils.createUInt16(data, 3), result.getMaximumCurrent());
@@ -94,10 +83,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result = new RelativeRuntimeInACurrentRangeAndroid(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result.getRelativeRuntimeValue());
         assertEquals(BLEUtils.createUInt16(data, 1), result.getMinimumCurrent());
         assertEquals(BLEUtils.createUInt16(data, 3), result.getMaximumCurrent());
@@ -162,10 +148,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = (byte) (ElectricCurrentUtils.CURRENT_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -187,10 +170,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -212,10 +192,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = (byte) (65534 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -237,10 +214,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -262,10 +236,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = (byte) (ElectricCurrentUtils.CURRENT_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -280,10 +251,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -298,10 +266,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = (byte) (65534 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -316,10 +281,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -334,10 +296,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = (byte) (ElectricCurrentUtils.CURRENT_VALUE_IS_NOT_KNOWN >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(data);
         RelativeRuntimeInACurrentRangeAndroid result2 = RelativeRuntimeInACurrentRangeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -353,10 +312,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(data);
         RelativeRuntimeInACurrentRangeAndroid result2 = RelativeRuntimeInACurrentRangeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -372,10 +328,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = (byte) (65534 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(data);
         RelativeRuntimeInACurrentRangeAndroid result2 = RelativeRuntimeInACurrentRangeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -391,10 +344,7 @@ public class RelativeRuntimeInACurrentRangeAndroidTest {
         data[ 4] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(bluetoothGattCharacteristic);
+        RelativeRuntimeInACurrentRangeAndroid result1 = new RelativeRuntimeInACurrentRangeAndroid(data);
         RelativeRuntimeInACurrentRangeAndroid result2 = RelativeRuntimeInACurrentRangeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

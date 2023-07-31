@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.VOLTAGE_STATISTICS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Voltage Statistics (Characteristics UUID: 0x2B1A)
@@ -44,9 +44,7 @@ public class VoltageStatisticsAndroid extends VoltageStatistics implements Parce
          */
         @NonNull
         public VoltageStatisticsAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(VOLTAGE_STATISTICS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new VoltageStatisticsAndroid(bluetoothGattCharacteristic);
+            return new VoltageStatisticsAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class VoltageStatisticsAndroid extends VoltageStatistics implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B1A
      */
+    @Deprecated
     public VoltageStatisticsAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public VoltageStatisticsAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -79,8 +87,7 @@ public class VoltageStatisticsAndroid extends VoltageStatistics implements Parce
      * @param in Parcel
      */
     private VoltageStatisticsAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TRACK_SEGMENTS_OBJECT_TYPE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Track Segments Object Type (Characteristics UUID: 0x2BAA)
@@ -45,9 +45,7 @@ public class TrackSegmentsObjectTypeAndroid extends TrackSegmentsObjectType impl
          */
         @NonNull
         public TrackSegmentsObjectTypeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRACK_SEGMENTS_OBJECT_TYPE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TrackSegmentsObjectTypeAndroid(bluetoothGattCharacteristic);
+            return new TrackSegmentsObjectTypeAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class TrackSegmentsObjectTypeAndroid extends TrackSegmentsObjectType impl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BAA
      */
+    @Deprecated
     public TrackSegmentsObjectTypeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TrackSegmentsObjectTypeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class TrackSegmentsObjectTypeAndroid extends TrackSegmentsObjectType impl
      * @param in Parcel
      */
     private TrackSegmentsObjectTypeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -13,7 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.u2a31.ScanRefresh;
 import org.im97mori.ble.characteristic.u2a4f.ScanIntervalWindow;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
@@ -90,9 +89,7 @@ public class ScppPeripheralSampleActivity extends BaseActivity implements View.O
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else if (mScanParametersProfileMockCallback.isStarted()) {
+        if (mScanParametersProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {
             mConnectDisconnectButton.setText(R.string.start);

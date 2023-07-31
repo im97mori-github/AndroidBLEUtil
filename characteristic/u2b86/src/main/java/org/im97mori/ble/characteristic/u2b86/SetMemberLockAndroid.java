@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SET_MEMBER_LOCK_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Set Member Lock (Characteristics UUID: 0x2B86)
@@ -44,9 +44,7 @@ public class SetMemberLockAndroid extends SetMemberLock implements Parcelable {
          */
         @NonNull
         public SetMemberLockAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SET_MEMBER_LOCK_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new SetMemberLockAndroid(bluetoothGattCharacteristic);
+            return new SetMemberLockAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class SetMemberLockAndroid extends SetMemberLock implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B86
      */
+    @Deprecated
     public SetMemberLockAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public SetMemberLockAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class SetMemberLockAndroid extends SetMemberLock implements Parcelable {
      * @param in Parcel
      */
     private SetMemberLockAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

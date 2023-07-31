@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.APPARENT_ENERGY_32_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Apparent Energy 32 (Characteristics UUID: 0x2B89)
@@ -45,9 +45,7 @@ public class ApparentEnergy32Android extends ApparentEnergy32 implements Parcela
          */
         @NonNull
         public ApparentEnergy32Android createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(APPARENT_ENERGY_32_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ApparentEnergy32Android(bluetoothGattCharacteristic);
+            return new ApparentEnergy32Android(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class ApparentEnergy32Android extends ApparentEnergy32 implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B89
      */
+    @Deprecated
     public ApparentEnergy32Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ApparentEnergy32Android(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class ApparentEnergy32Android extends ApparentEnergy32 implements Parcela
      * @param in Parcel
      */
     private ApparentEnergy32Android(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

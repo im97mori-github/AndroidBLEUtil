@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CALL_FRIENDLY_NAME_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Call Friendly Name (Characteristics UUID: 0x2BC2)
@@ -45,9 +45,7 @@ public class CallFriendlyNameAndroid extends CallFriendlyName implements Parcela
          */
         @NonNull
         public CallFriendlyNameAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CALL_FRIENDLY_NAME_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new CallFriendlyNameAndroid(bluetoothGattCharacteristic);
+            return new CallFriendlyNameAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class CallFriendlyNameAndroid extends CallFriendlyName implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BC2
      */
+    @Deprecated
     public CallFriendlyNameAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public CallFriendlyNameAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class CallFriendlyNameAndroid extends CallFriendlyName implements Parcela
      * @param in Parcel
      */
     private CallFriendlyNameAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

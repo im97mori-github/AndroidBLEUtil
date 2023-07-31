@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2af7;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
@@ -25,10 +23,7 @@ public class FixedString36AndroidTest {
     public void test_constructor_00001() {
         String fixedString = "012345678901234567890123456789012345";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
-
-        FixedString36Android result1 = new FixedString36Android(bluetoothGattCharacteristic);
+        FixedString36Android result1 = new FixedString36Android(fixedString.getBytes());
         assertEquals(fixedString, result1.getFixedString());
     }
 
@@ -36,10 +31,7 @@ public class FixedString36AndroidTest {
     public void test_constructor_00002() {
         String fixedString = "012345678901234567890123456789012345 ";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
-
-        FixedString36Android result1 = new FixedString36Android(bluetoothGattCharacteristic);
+        FixedString36Android result1 = new FixedString36Android(fixedString.getBytes());
         assertEquals(fixedString.substring(0, 36), result1.getFixedString());
     }
 
@@ -47,11 +39,8 @@ public class FixedString36AndroidTest {
     public void test_constructor_00003() {
         String fixedString = "01234567890123456789012345678901234";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
-
         assertThrows(IndexOutOfBoundsException.class, (
-        ) -> new FixedString36Android(bluetoothGattCharacteristic));
+        ) -> new FixedString36Android(fixedString.getBytes()));
     }
 
     @Test
@@ -82,10 +71,7 @@ public class FixedString36AndroidTest {
     public void test_parcelable_00001() {
         String fixedString = "012345678901234567890123456789012345";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
-
-        FixedString36Android result1 = new FixedString36Android(bluetoothGattCharacteristic);
+        FixedString36Android result1 = new FixedString36Android(fixedString.getBytes());
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -98,10 +84,7 @@ public class FixedString36AndroidTest {
     public void test_parcelable_00002() {
         String fixedString = "012345678901234567890123456789012345 ";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
-
-        FixedString36Android result1 = new FixedString36Android(bluetoothGattCharacteristic);
+        FixedString36Android result1 = new FixedString36Android(fixedString.getBytes());
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -114,10 +97,7 @@ public class FixedString36AndroidTest {
     public void test_parcelable_00101() {
         String fixedString = "012345678901234567890123456789012345";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
-
-        FixedString36Android result1 = new FixedString36Android(bluetoothGattCharacteristic);
+        FixedString36Android result1 = new FixedString36Android(fixedString.getBytes());
         assertArrayEquals(fixedString.getBytes(), result1.getBytes());
     }
 
@@ -125,10 +105,7 @@ public class FixedString36AndroidTest {
     public void test_parcelable_00102() {
         String fixedString = "012345678901234567890123456789012345 ";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
-
-        FixedString36Android result1 = new FixedString36Android(bluetoothGattCharacteristic);
+        FixedString36Android result1 = new FixedString36Android(fixedString.getBytes());
         assertArrayEquals(fixedString.substring(0, 36).getBytes(), result1.getBytes());
     }
 
@@ -136,10 +113,7 @@ public class FixedString36AndroidTest {
     public void test_parcelable_00201() {
         String fixedString = "012345678901234567890123456789012345";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
-
-        FixedString36Android result1 = new FixedString36Android(bluetoothGattCharacteristic);
+        FixedString36Android result1 = new FixedString36Android(fixedString.getBytes());
         FixedString36Android result2 = FixedString36Android.CREATOR.createFromByteArray(fixedString.getBytes());
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -148,10 +122,7 @@ public class FixedString36AndroidTest {
     public void test_parcelable_00202() {
         String fixedString = "012345678901234567890123456789012345 ";
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(fixedString.getBytes());
-
-        FixedString36Android result1 = new FixedString36Android(bluetoothGattCharacteristic);
+        FixedString36Android result1 = new FixedString36Android(fixedString.getBytes());
         FixedString36Android result2 = FixedString36Android.CREATOR.createFromByteArray(fixedString.getBytes());
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

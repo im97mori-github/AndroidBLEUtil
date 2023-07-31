@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ae3;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -29,10 +27,7 @@ public class ChromaticDistanceFromPlanckianAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticDistanceFromPlanckianAndroid result = new ChromaticDistanceFromPlanckianAndroid(bluetoothGattCharacteristic);
+        ChromaticDistanceFromPlanckianAndroid result = new ChromaticDistanceFromPlanckianAndroid(data);
         assertEquals(BLEUtils.createSInt16(data, 0), result.getDistanceFromPlanckian());
     }
 
@@ -52,10 +47,7 @@ public class ChromaticDistanceFromPlanckianAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticDistanceFromPlanckianAndroid result1 = new ChromaticDistanceFromPlanckianAndroid(bluetoothGattCharacteristic);
+        ChromaticDistanceFromPlanckianAndroid result1 = new ChromaticDistanceFromPlanckianAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -72,10 +64,7 @@ public class ChromaticDistanceFromPlanckianAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticDistanceFromPlanckianAndroid result1 = new ChromaticDistanceFromPlanckianAndroid(bluetoothGattCharacteristic);
+        ChromaticDistanceFromPlanckianAndroid result1 = new ChromaticDistanceFromPlanckianAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -87,10 +76,7 @@ public class ChromaticDistanceFromPlanckianAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticDistanceFromPlanckianAndroid result1 = new ChromaticDistanceFromPlanckianAndroid(bluetoothGattCharacteristic);
+        ChromaticDistanceFromPlanckianAndroid result1 = new ChromaticDistanceFromPlanckianAndroid(data);
         ChromaticDistanceFromPlanckianAndroid result2 = ChromaticDistanceFromPlanckianAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

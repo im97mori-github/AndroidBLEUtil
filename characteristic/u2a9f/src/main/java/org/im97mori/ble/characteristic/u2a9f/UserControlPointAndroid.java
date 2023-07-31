@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.USER_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * User Control Point (Characteristics UUID: 0x2A9F)
@@ -44,9 +44,7 @@ public class UserControlPointAndroid extends UserControlPoint implements Parcela
          */
         @NonNull
         public UserControlPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(USER_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new UserControlPointAndroid(bluetoothGattCharacteristic);
+            return new UserControlPointAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class UserControlPointAndroid extends UserControlPoint implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A95
      */
+    @Deprecated
     public UserControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public UserControlPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -80,8 +88,7 @@ public class UserControlPointAndroid extends UserControlPoint implements Parcela
      * @param in Parcel
      */
     private UserControlPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

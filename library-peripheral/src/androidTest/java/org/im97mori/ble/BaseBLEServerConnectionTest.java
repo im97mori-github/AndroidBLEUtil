@@ -26,7 +26,8 @@ import org.junit.Test;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-@SuppressWarnings({"ConstantConditions", "BusyWait"})
+/** @noinspection DataFlowIssue*/
+@SuppressWarnings({"BusyWait"})
 abstract class BaseBLEServerConnectionTest extends AbstractPeripheralTest {
 
     private static final long SLEEP_DURATION = 50;
@@ -183,6 +184,7 @@ abstract class BaseBLEServerConnectionTest extends AbstractPeripheralTest {
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
 
             @Override
+            @Deprecated
             public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
                 result.set(true);
                 return super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
@@ -192,6 +194,7 @@ abstract class BaseBLEServerConnectionTest extends AbstractPeripheralTest {
         BaseBLEServerCallback secondCallback = new BaseBLEServerCallback() {
 
             @Override
+            @Deprecated
             public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
                 result.set(true);
                 return super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
@@ -203,6 +206,7 @@ abstract class BaseBLEServerConnectionTest extends AbstractPeripheralTest {
         MockBLETask task = new MockBLETask() {
 
             @Override
+            @Deprecated
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_SERVER_CONNECTION.getBLEServerCallback().onServiceAddSuccess(getTaskId(), MOCK_BLE_SERVER_CONNECTION, null, argument);
                 isProcessing.set(false);
@@ -221,6 +225,7 @@ abstract class BaseBLEServerConnectionTest extends AbstractPeripheralTest {
         BaseBLEServerCallback firstCallback = new BaseBLEServerCallback() {
 
             @Override
+            @Deprecated
             public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
                 result.set(true);
                 return super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
@@ -230,6 +235,7 @@ abstract class BaseBLEServerConnectionTest extends AbstractPeripheralTest {
         BaseBLEServerCallback secondCallback = new BaseBLEServerCallback() {
 
             @Override
+            @Deprecated
             public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
                 result.set(true);
                 return super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
@@ -239,7 +245,9 @@ abstract class BaseBLEServerConnectionTest extends AbstractPeripheralTest {
 
         final Bundle argument = BLEServerCallbackDistributor.wrapArgument(null, firstCallback);
         MockBLETask task = new MockBLETask() {
+
             @Override
+            @Deprecated
             public boolean doProcess(@NonNull Message message) {
                 MOCK_BLE_SERVER_CONNECTION.getBLEServerCallback().onServiceAddSuccess(getTaskId(), MOCK_BLE_SERVER_CONNECTION, null, argument);
                 isProcessing.set(false);
@@ -742,13 +750,13 @@ abstract class BaseBLEServerConnectionTest extends AbstractPeripheralTest {
             @Override
             public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
                 result.set(true);
-                isProccesing.set(false);
+                isProcessing.set(false);
             }
 
         };
         MOCK_BLE_SERVER_CONNECTION.attach(firstCallback);
         MOCK_BLE_SERVER_CONNECTION.startAdvertising();
-        while (firstCallback.isProccesing.get()) {
+        while (firstCallback.isProcessing.get()) {
             try {
                 Thread.sleep(SLEEP_DURATION);
             } catch (InterruptedException e) {
@@ -767,14 +775,14 @@ abstract class BaseBLEServerConnectionTest extends AbstractPeripheralTest {
             @Override
             public void onAdvertisingStartFailed(Integer errorCode) {
                 result.set(true);
-                isProccesing.set(false);
+                isProcessing.set(false);
             }
 
         };
         MOCK_BLE_SERVER_CONNECTION.startAdvertising();
         MOCK_BLE_SERVER_CONNECTION.attach(firstCallback);
         MOCK_BLE_SERVER_CONNECTION.startAdvertising();
-        while (firstCallback.isProccesing.get()) {
+        while (firstCallback.isProcessing.get()) {
             try {
                 Thread.sleep(SLEEP_DURATION);
             } catch (InterruptedException e) {
@@ -800,7 +808,7 @@ abstract class BaseBLEServerConnectionTest extends AbstractPeripheralTest {
             @Override
             public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
                 result.set(true);
-                isProccesing.set(false);
+                isProcessing.set(false);
             }
 
         };
@@ -809,14 +817,14 @@ abstract class BaseBLEServerConnectionTest extends AbstractPeripheralTest {
             @Override
             public void onAdvertisingFinished() {
                 result.set(true);
-                isProccesing.set(false);
+                isProcessing.set(false);
             }
 
         };
         MOCK_BLE_SERVER_CONNECTION.start();
         MOCK_BLE_SERVER_CONNECTION.attach(firstCallback);
         MOCK_BLE_SERVER_CONNECTION.startAdvertising();
-        while (firstCallback.isProccesing.get()) {
+        while (firstCallback.isProcessing.get()) {
             try {
                 Thread.sleep(SLEEP_DURATION);
             } catch (InterruptedException e) {
@@ -825,7 +833,7 @@ abstract class BaseBLEServerConnectionTest extends AbstractPeripheralTest {
         }
         MOCK_BLE_SERVER_CONNECTION.attach(secondCallback);
         MOCK_BLE_SERVER_CONNECTION.stopAdvertising();
-        while (secondCallback.isProccesing.get()) {
+        while (secondCallback.isProcessing.get()) {
             try {
                 Thread.sleep(SLEEP_DURATION);
             } catch (InterruptedException e) {

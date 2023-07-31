@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.RECORD_ACCESS_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Record Access Control Point (Characteristics UUID: 0x2A52)
@@ -44,9 +44,7 @@ public class RecordAccessControlPointAndroid extends RecordAccessControlPoint im
          */
         @NonNull
         public RecordAccessControlPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RECORD_ACCESS_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new RecordAccessControlPointAndroid(bluetoothGattCharacteristic);
+            return new RecordAccessControlPointAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class RecordAccessControlPointAndroid extends RecordAccessControlPoint im
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A52
      */
+    @Deprecated
     public RecordAccessControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public RecordAccessControlPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class RecordAccessControlPointAndroid extends RecordAccessControlPoint im
      * @param in Parcel
      */
     private RecordAccessControlPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

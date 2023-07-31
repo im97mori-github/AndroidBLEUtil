@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a9e;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -38,10 +36,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getWeightScaleFeature());
         assertFalse(result1.isWeightScaleFeatureTimeStampSupported());
         assertTrue(result1.isWeightScaleFeatureTimeStampNotSupported());
@@ -78,10 +73,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getWeightScaleFeature());
         assertTrue(result1.isWeightScaleFeatureTimeStampSupported());
         assertFalse(result1.isWeightScaleFeatureTimeStampNotSupported());
@@ -118,10 +110,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getWeightScaleFeature());
         assertFalse(result1.isWeightScaleFeatureTimeStampSupported());
         assertTrue(result1.isWeightScaleFeatureTimeStampNotSupported());
@@ -158,10 +147,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getWeightScaleFeature());
         assertFalse(result1.isWeightScaleFeatureTimeStampSupported());
         assertTrue(result1.isWeightScaleFeatureTimeStampNotSupported());
@@ -198,10 +184,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getWeightScaleFeature());
         assertFalse(result1.isWeightScaleFeatureTimeStampSupported());
         assertTrue(result1.isWeightScaleFeatureTimeStampNotSupported());
@@ -238,10 +221,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getWeightScaleFeature());
         assertFalse(result1.isWeightScaleFeatureTimeStampSupported());
         assertTrue(result1.isWeightScaleFeatureTimeStampNotSupported());
@@ -278,10 +258,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getWeightScaleFeature());
         assertFalse(result1.isWeightScaleFeatureTimeStampSupported());
         assertTrue(result1.isWeightScaleFeatureTimeStampNotSupported());
@@ -318,10 +295,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getWeightScaleFeature());
         assertFalse(result1.isWeightScaleFeatureTimeStampSupported());
         assertTrue(result1.isWeightScaleFeatureTimeStampNotSupported());
@@ -358,10 +332,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getWeightScaleFeature());
         assertFalse(result1.isWeightScaleFeatureTimeStampSupported());
         assertTrue(result1.isWeightScaleFeatureTimeStampNotSupported());
@@ -398,10 +369,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getWeightScaleFeature());
         assertFalse(result1.isWeightScaleFeatureTimeStampSupported());
         assertTrue(result1.isWeightScaleFeatureTimeStampNotSupported());
@@ -438,10 +406,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getWeightScaleFeature());
         assertFalse(result1.isWeightScaleFeatureTimeStampSupported());
         assertTrue(result1.isWeightScaleFeatureTimeStampNotSupported());
@@ -478,10 +443,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getWeightScaleFeature());
         assertFalse(result1.isWeightScaleFeatureTimeStampSupported());
         assertTrue(result1.isWeightScaleFeatureTimeStampNotSupported());
@@ -518,10 +480,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getWeightScaleFeature());
         assertFalse(result1.isWeightScaleFeatureTimeStampSupported());
         assertTrue(result1.isWeightScaleFeatureTimeStampNotSupported());
@@ -558,10 +517,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = (byte) (flags >> 24);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getWeightScaleFeature());
         assertFalse(result1.isWeightScaleFeatureTimeStampSupported());
         assertTrue(result1.isWeightScaleFeatureTimeStampNotSupported());
@@ -901,10 +857,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -941,10 +894,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -958,10 +908,7 @@ public class WeightScaleFeatureAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+        WeightScaleFeatureAndroid result1 = new WeightScaleFeatureAndroid(data);
         WeightScaleFeatureAndroid result2 = WeightScaleFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

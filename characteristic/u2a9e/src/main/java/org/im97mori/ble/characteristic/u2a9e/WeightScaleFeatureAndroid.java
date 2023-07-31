@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_SCALE_FEATURE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Weight Scale Feature (Characteristics UUID: 0x2A9E)
@@ -44,9 +44,7 @@ public class WeightScaleFeatureAndroid extends WeightScaleFeature implements Par
          */
         @NonNull
         public WeightScaleFeatureAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(WEIGHT_SCALE_FEATURE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new WeightScaleFeatureAndroid(bluetoothGattCharacteristic);
+            return new WeightScaleFeatureAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class WeightScaleFeatureAndroid extends WeightScaleFeature implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A9E
      */
+    @Deprecated
     public WeightScaleFeatureAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public WeightScaleFeatureAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -89,8 +97,7 @@ public class WeightScaleFeatureAndroid extends WeightScaleFeature implements Par
      * @param in Parcel
      */
     private WeightScaleFeatureAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

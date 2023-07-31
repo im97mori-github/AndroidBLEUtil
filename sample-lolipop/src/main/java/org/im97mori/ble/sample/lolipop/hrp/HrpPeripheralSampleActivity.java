@@ -13,7 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.u2a37.HeartRateMeasurement;
 import org.im97mori.ble.characteristic.u2a38.BodySensorLocation;
 import org.im97mori.ble.characteristic.u2a39.HeartRateControlPoint;
@@ -99,9 +98,7 @@ public class HrpPeripheralSampleActivity extends BaseActivity implements View.On
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else if (mHeartRateProfileMockCallback.isStarted()) {
+        if (mHeartRateProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {
             mConnectDisconnectButton.setText(R.string.start);

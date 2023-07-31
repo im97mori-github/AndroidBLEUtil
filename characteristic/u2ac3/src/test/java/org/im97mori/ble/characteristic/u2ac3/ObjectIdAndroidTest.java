@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ac3;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -36,10 +34,7 @@ public class ObjectIdAndroidTest {
         data[ 5] = (byte) (ObjectId.OBJECT_ID_DIRECTORY_LISTING_OBJECT >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectIdAndroid result1 = new ObjectIdAndroid(bluetoothGattCharacteristic);
+        ObjectIdAndroid result1 = new ObjectIdAndroid(data);
         assertEquals(BLEUtils.createUInt48(data, 0), result1.getObjectId());
         assertTrue(result1.isObjectIdDirectoryListingObject());
     }
@@ -56,10 +51,7 @@ public class ObjectIdAndroidTest {
         data[ 5] = (byte) (0x000000000100 >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectIdAndroid result1 = new ObjectIdAndroid(bluetoothGattCharacteristic);
+        ObjectIdAndroid result1 = new ObjectIdAndroid(data);
         assertEquals(BLEUtils.createUInt48(data, 0), result1.getObjectId());
         assertFalse(result1.isObjectIdDirectoryListingObject());
     }
@@ -76,10 +68,7 @@ public class ObjectIdAndroidTest {
         data[ 5] = (byte) (0xFFFFFFFFFFFFL  >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectIdAndroid result1 = new ObjectIdAndroid(bluetoothGattCharacteristic);
+        ObjectIdAndroid result1 = new ObjectIdAndroid(data);
         assertEquals(BLEUtils.createUInt48(data, 0), result1.getObjectId());
         assertFalse(result1.isObjectIdDirectoryListingObject());
     }
@@ -120,10 +109,7 @@ public class ObjectIdAndroidTest {
         data[ 5] = (byte) (ObjectId.OBJECT_ID_DIRECTORY_LISTING_OBJECT >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectIdAndroid result1 = new ObjectIdAndroid(bluetoothGattCharacteristic);
+        ObjectIdAndroid result1 = new ObjectIdAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -144,10 +130,7 @@ public class ObjectIdAndroidTest {
         data[ 5] = (byte) (0x000000000100 >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectIdAndroid result1 = new ObjectIdAndroid(bluetoothGattCharacteristic);
+        ObjectIdAndroid result1 = new ObjectIdAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -168,10 +151,7 @@ public class ObjectIdAndroidTest {
         data[ 5] = (byte) (0xFFFFFFFFFFFFL  >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectIdAndroid result1 = new ObjectIdAndroid(bluetoothGattCharacteristic);
+        ObjectIdAndroid result1 = new ObjectIdAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -192,10 +172,7 @@ public class ObjectIdAndroidTest {
         data[ 5] = (byte) (ObjectId.OBJECT_ID_DIRECTORY_LISTING_OBJECT >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectIdAndroid result1 = new ObjectIdAndroid(bluetoothGattCharacteristic);
+        ObjectIdAndroid result1 = new ObjectIdAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -211,10 +188,7 @@ public class ObjectIdAndroidTest {
         data[ 5] = (byte) (0x000000000100 >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectIdAndroid result1 = new ObjectIdAndroid(bluetoothGattCharacteristic);
+        ObjectIdAndroid result1 = new ObjectIdAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -230,10 +204,7 @@ public class ObjectIdAndroidTest {
         data[ 5] = (byte) (0xFFFFFFFFFFFFL  >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectIdAndroid result1 = new ObjectIdAndroid(bluetoothGattCharacteristic);
+        ObjectIdAndroid result1 = new ObjectIdAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -249,10 +220,7 @@ public class ObjectIdAndroidTest {
         data[ 5] = (byte) (ObjectId.OBJECT_ID_DIRECTORY_LISTING_OBJECT >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectIdAndroid result1 = new ObjectIdAndroid(bluetoothGattCharacteristic);
+        ObjectIdAndroid result1 = new ObjectIdAndroid(data);
         ObjectIdAndroid result2 = ObjectIdAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -269,10 +237,7 @@ public class ObjectIdAndroidTest {
         data[ 5] = (byte) (0x000000000100 >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectIdAndroid result1 = new ObjectIdAndroid(bluetoothGattCharacteristic);
+        ObjectIdAndroid result1 = new ObjectIdAndroid(data);
         ObjectIdAndroid result2 = ObjectIdAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -289,10 +254,7 @@ public class ObjectIdAndroidTest {
         data[ 5] = (byte) (0xFFFFFFFFFFFFL  >> 40);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ObjectIdAndroid result1 = new ObjectIdAndroid(bluetoothGattCharacteristic);
+        ObjectIdAndroid result1 = new ObjectIdAndroid(data);
         ObjectIdAndroid result2 = ObjectIdAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

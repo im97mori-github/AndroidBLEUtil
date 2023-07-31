@@ -3,6 +3,7 @@ package org.im97mori.ble.service.cps.peripheral;
 import static org.im97mori.ble.constants.ServiceUUID.CYCLING_POWER_SERVICE;
 
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,9 @@ public class CyclingPowerServiceData extends ServiceData {
          */
         @Override
         @NonNull
+        @Deprecated
         public CyclingPowerServiceData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new CyclingPowerServiceData(in);
         }
 
@@ -111,13 +114,22 @@ public class CyclingPowerServiceData extends ServiceData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public CyclingPowerServiceData(@NonNull Parcel in) {
         super(in);
-        cyclingPowerFeature = in.readParcelable(this.getClass().getClassLoader());
-        cyclingPowerMeasurement = in.readParcelable(this.getClass().getClassLoader());
-        sensorLocation = in.readParcelable(this.getClass().getClassLoader());
-        cyclingPowerControlPoint = in.readParcelable(this.getClass().getClassLoader());
-        cyclingPowerVector = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            cyclingPowerFeature = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            cyclingPowerMeasurement = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            sensorLocation = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            cyclingPowerControlPoint = in.readParcelable(this.getClass().getClassLoader(), CyclingPowerControlPointCharacteristicData.class);
+            cyclingPowerVector = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+        } else {
+            cyclingPowerFeature = in.readParcelable(this.getClass().getClassLoader());
+            cyclingPowerMeasurement = in.readParcelable(this.getClass().getClassLoader());
+            sensorLocation = in.readParcelable(this.getClass().getClassLoader());
+            cyclingPowerControlPoint = in.readParcelable(this.getClass().getClassLoader());
+            cyclingPowerVector = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

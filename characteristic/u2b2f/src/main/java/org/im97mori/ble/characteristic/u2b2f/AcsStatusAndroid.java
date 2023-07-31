@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ACS_STATUS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * ACS Status (Characteristics UUID: 0x2B2F)
@@ -45,9 +45,7 @@ public class AcsStatusAndroid extends AcsStatus implements Parcelable {
          */
         @NonNull
         public AcsStatusAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ACS_STATUS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AcsStatusAndroid(bluetoothGattCharacteristic);
+            return new AcsStatusAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class AcsStatusAndroid extends AcsStatus implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B2F
      */
+    @Deprecated
     public AcsStatusAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AcsStatusAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class AcsStatusAndroid extends AcsStatus implements Parcelable {
      * @param in Parcel
      */
     private AcsStatusAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

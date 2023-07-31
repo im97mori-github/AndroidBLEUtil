@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a42;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,10 +9,9 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -28,10 +26,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 0] = (byte) AlertCategoryIdBitMaskUtils.CATEGORY_ID_BIT_MASK_0_SIMPLE_ALERT_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         assertArrayEquals(data, result1.getCategoryIdBitMask());
     }
 
@@ -42,10 +37,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 0] = (byte) AlertCategoryIdBitMaskUtils.CATEGORY_ID_BIT_MASK_0_EMAIL_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         assertArrayEquals(data, result1.getCategoryIdBitMask());
     }
 
@@ -56,10 +48,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 0] = (byte) AlertCategoryIdBitMaskUtils.CATEGORY_ID_BIT_MASK_0_NEWS_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         assertArrayEquals(data, result1.getCategoryIdBitMask());
     }
 
@@ -70,10 +59,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 0] = (byte) AlertCategoryIdBitMaskUtils.CATEGORY_ID_BIT_MASK_0_CALL_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         assertArrayEquals(data, result1.getCategoryIdBitMask());
     }
 
@@ -84,10 +70,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 0] = (byte) AlertCategoryIdBitMaskUtils.CATEGORY_ID_BIT_MASK_0_MISSED_CALL_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         assertArrayEquals(data, result1.getCategoryIdBitMask());
     }
 
@@ -98,10 +81,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 0] = (byte) AlertCategoryIdBitMaskUtils.CATEGORY_ID_BIT_MASK_0_SMS_MMS_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         assertArrayEquals(data, result1.getCategoryIdBitMask());
     }
 
@@ -112,10 +92,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 0] = (byte) AlertCategoryIdBitMaskUtils.CATEGORY_ID_BIT_MASK_0_VOICE_MAIL_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         assertArrayEquals(data, result1.getCategoryIdBitMask());
     }
 
@@ -126,10 +103,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 0] = (byte) AlertCategoryIdBitMaskUtils.CATEGORY_ID_BIT_MASK_0_SCHEDULE_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         assertArrayEquals(data, result1.getCategoryIdBitMask());
     }
 
@@ -141,10 +115,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 1] = (byte) AlertCategoryIdBitMaskUtils.CATEGORY_ID_BIT_MASK_1_HIGH_PRIORITIZED_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         assertArrayEquals(data, result1.getCategoryIdBitMask());
     }
 
@@ -156,10 +127,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 1] = (byte) AlertCategoryIdBitMaskUtils.CATEGORY_ID_BIT_MASK_1_INSTANT_MESSAGE_SUPPORTED;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         assertArrayEquals(data, result1.getCategoryIdBitMask());
     }
 
@@ -170,10 +138,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -189,10 +154,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -207,10 +169,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -222,10 +181,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -236,10 +192,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         AlertCategoryIdBitMaskAndroid result2 = AlertCategoryIdBitMaskAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -252,10 +205,7 @@ public class AlertCategoryIdBitMaskAndroidTest {
         data[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(bluetoothGattCharacteristic);
+        AlertCategoryIdBitMaskAndroid result1 = new AlertCategoryIdBitMaskAndroid(data);
         AlertCategoryIdBitMaskAndroid result2 = AlertCategoryIdBitMaskAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

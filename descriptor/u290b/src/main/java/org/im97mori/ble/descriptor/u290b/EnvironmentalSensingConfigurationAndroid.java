@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.DescriptorUUID.ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR;
+import java.util.Objects;
 
 /**
  * Environmental Sensing Configuration (Descriptor UUID: 0x290B)
@@ -42,9 +42,7 @@ public class EnvironmentalSensingConfigurationAndroid extends EnvironmentalSensi
          */
         @NonNull
         public EnvironmentalSensingConfigurationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(ENVIRONMENTAL_SENSING_CONFIGURATION_DESCRIPTOR, 0);
-            bluetoothGattDescriptor.setValue(values);
-            return new EnvironmentalSensingConfigurationAndroid(bluetoothGattDescriptor);
+            return new EnvironmentalSensingConfigurationAndroid(values);
         }
 
     };
@@ -54,8 +52,18 @@ public class EnvironmentalSensingConfigurationAndroid extends EnvironmentalSensi
      *
      * @param bluetoothGattDescriptor Characteristics UUID: 0x290B
      */
+    @Deprecated
     public EnvironmentalSensingConfigurationAndroid(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         super(bluetoothGattDescriptor.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattDescriptor#getValue()">BluetoothGattDescriptor#getValue()</a>
+     */
+    public EnvironmentalSensingConfigurationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -73,8 +81,7 @@ public class EnvironmentalSensingConfigurationAndroid extends EnvironmentalSensi
      * @param in Parcel
      */
     private EnvironmentalSensingConfigurationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

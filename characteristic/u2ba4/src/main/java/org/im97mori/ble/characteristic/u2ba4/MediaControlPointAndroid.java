@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.MEDIA_CONTROL_POINT_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Media Control Point (Characteristics UUID: 0x2BA4)
@@ -45,9 +45,7 @@ public class MediaControlPointAndroid extends MediaControlPoint implements Parce
          */
         @NonNull
         public MediaControlPointAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MEDIA_CONTROL_POINT_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new MediaControlPointAndroid(bluetoothGattCharacteristic);
+            return new MediaControlPointAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class MediaControlPointAndroid extends MediaControlPoint implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BA4
      */
+    @Deprecated
     public MediaControlPointAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public MediaControlPointAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class MediaControlPointAndroid extends MediaControlPoint implements Parce
      * @param in Parcel
      */
     private MediaControlPointAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

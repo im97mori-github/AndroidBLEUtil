@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothStatusCodes;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.format.DateUtils;
@@ -61,11 +63,6 @@ public class WriteCharacteristicTask extends AbstractBLETask {
     public static final String KEY_CHARACTERISTIC_INSTANCE_ID = "KEY_CHARACTERISTIC_INSTANCE_ID";
 
     /**
-     * KEY:VALUES
-     */
-    public static final String KEY_VALUES = "KEY_VALUES";
-
-    /**
      * KEY:STATUS
      */
     public static final String KEY_STATUS = "KEY_STATUS";
@@ -107,17 +104,15 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      * @param serviceInstanceId        task target service instance id {@link BluetoothGattService#getInstanceId()}
      * @param characteristicUUID       target characteristic UUID
      * @param characteristicInstanceId task target characteristic instance id {@link BluetoothGattCharacteristic#getInstanceId()}
-     * @param values                   {@link BluetoothGattCharacteristic#getValue()}
      * @return write characteristic success {@link Message} instance
      */
     @NonNull
-    public static Message createWriteCharacteristicSuccessMessage(@NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull byte[] values) {
+    public static Message createWriteCharacteristicSuccessMessage(@NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
+        bundle.putString(KEY_SERVICE_UUID, serviceUUID.toString());
         bundle.putInt(KEY_SERVICE_INSTANCE_ID, serviceInstanceId);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
+        bundle.putString(KEY_CHARACTERISTIC_UUID, characteristicUUID.toString());
         bundle.putInt(KEY_CHARACTERISTIC_INSTANCE_ID, characteristicInstanceId);
-        bundle.putByteArray(KEY_VALUES, values);
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_CHARACTERISTIC_WRITE_SUCCESS);
         Message message = new Message();
         message.setData(bundle);
@@ -137,9 +132,9 @@ public class WriteCharacteristicTask extends AbstractBLETask {
     @NonNull
     public static Message createWriteCharacteristicErrorMessage(@NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int status) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, serviceUUID);
+        bundle.putString(KEY_SERVICE_UUID, serviceUUID.toString());
         bundle.putInt(KEY_SERVICE_INSTANCE_ID, serviceInstanceId);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, characteristicUUID);
+        bundle.putString(KEY_CHARACTERISTIC_UUID, characteristicUUID.toString());
         bundle.putInt(KEY_CHARACTERISTIC_INSTANCE_ID, characteristicInstanceId);
         bundle.putInt(KEY_STATUS, status);
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_CHARACTERISTIC_WRITE_ERROR);
@@ -247,8 +242,8 @@ public class WriteCharacteristicTask extends AbstractBLETask {
     @Override
     public Message createInitialMessage() {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(KEY_SERVICE_UUID, mServiceUUID);
-        bundle.putSerializable(KEY_CHARACTERISTIC_UUID, mCharacteristicUUID);
+        bundle.putString(KEY_SERVICE_UUID, mServiceUUID.toString());
+        bundle.putString(KEY_CHARACTERISTIC_UUID, mCharacteristicUUID.toString());
         bundle.putString(KEY_NEXT_PROGRESS, PROGRESS_CHARACTERISTIC_WRITE_START);
         Message message = new Message();
         message.setData(bundle);
@@ -261,12 +256,13 @@ public class WriteCharacteristicTask extends AbstractBLETask {
      */
     @SuppressLint("MissingPermission")
     @Override
+    @Deprecated
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();
         if (bundle.containsKey(KEY_NEXT_PROGRESS)) {
-            UUID serviceUUID = (UUID) bundle.getSerializable(KEY_SERVICE_UUID);
+            UUID serviceUUID = UUID.fromString(bundle.getString(KEY_SERVICE_UUID));
             int serviceInstanceId = bundle.getInt(KEY_SERVICE_INSTANCE_ID);
-            UUID characteristicUUID = (UUID) bundle.getSerializable(KEY_CHARACTERISTIC_UUID);
+            UUID characteristicUUID = UUID.fromString(bundle.getString(KEY_CHARACTERISTIC_UUID));
             int characteristicInstanceId = bundle.getInt(KEY_CHARACTERISTIC_INSTANCE_ID);
             String nextProgress = bundle.getString(KEY_NEXT_PROGRESS);
 
@@ -300,6 +296,8 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                             }
                         }
                     }
+
+                    int status = STATUS_WRITE_CHARACTERISTIC_NOT_FOUND;
                     if (bluetoothGattService != null) {
                         if (mCharacteristicInstanceId == null) {
                             bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(mCharacteristicUUID);
@@ -314,14 +312,18 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                             }
                         }
                         if (bluetoothGattCharacteristic != null) {
-                            bluetoothGattCharacteristic.setValue(mByteArray);
-                            bluetoothGattCharacteristic.setWriteType(mWriteType);
-
                             // write characteristic
                             mServiceInstanceId = bluetoothGattService.getInstanceId();
                             mCharacteristicInstanceId = bluetoothGattCharacteristic.getInstanceId();
                             try {
-                                result = mBluetoothGatt.writeCharacteristic(bluetoothGattCharacteristic);
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                                    status = mBluetoothGatt.writeCharacteristic(bluetoothGattCharacteristic, mByteArray, mWriteType);
+                                    result = status == BluetoothStatusCodes.SUCCESS;
+                                } else {
+                                    bluetoothGattCharacteristic.setValue(mByteArray);
+                                    bluetoothGattCharacteristic.setWriteType(mWriteType);
+                                    result = mBluetoothGatt.writeCharacteristic(bluetoothGattCharacteristic);
+                                }
                             } catch (Exception e) {
                                 BLELogUtils.stackLog(e);
                             }
@@ -350,7 +352,7 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                                     , mServiceInstanceId
                                     , mCharacteristicUUID
                                     , mCharacteristicInstanceId
-                                    , STATUS_WRITE_CHARACTERISTIC_NOT_FOUND
+                                    , status
                                     , mArgument);
                         }
                     }
@@ -360,15 +362,13 @@ public class WriteCharacteristicTask extends AbstractBLETask {
                 if (mServiceUUID.equals(serviceUUID) && mServiceInstanceId == serviceInstanceId && mCharacteristicUUID.equals(characteristicUUID) && mCharacteristicInstanceId == characteristicInstanceId) {
                     // current:write characteristic start, next:write characteristic success
                     if (PROGRESS_CHARACTERISTIC_WRITE_SUCCESS.equals(nextProgress)) {
-                        byte[] value = bundle.getByteArray(KEY_VALUES);
-                        //noinspection ConstantConditions
                         mBLEConnection.getBLECallback().onCharacteristicWriteSuccess(getTaskId()
                                 , mBLEConnection.getBluetoothDevice()
                                 , mServiceUUID
                                 , mServiceInstanceId
                                 , mCharacteristicUUID
                                 , mCharacteristicInstanceId
-                                , value
+                                , mByteArray
                                 , mArgument);
                     } else if (PROGRESS_CHARACTERISTIC_WRITE_ERROR.equals(nextProgress)) {
                         // current:write characteristic start, next:write characteristic error

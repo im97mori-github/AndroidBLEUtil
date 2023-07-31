@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a0e;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -28,10 +26,7 @@ public class TimeZoneAndroidTest {
         data[ 0] = TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeZoneAndroid result1 = new TimeZoneAndroid(bluetoothGattCharacteristic);
+        TimeZoneAndroid result1 = new TimeZoneAndroid(data);
         assertEquals(TimeZoneUtils.TIME_ZONE_IS_NOT_KNOWN, result1.getTimeZone());
     }
 
@@ -42,10 +37,7 @@ public class TimeZoneAndroidTest {
         data[ 0] = -48;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeZoneAndroid result1 = new TimeZoneAndroid(bluetoothGattCharacteristic);
+        TimeZoneAndroid result1 = new TimeZoneAndroid(data);
         assertEquals(-48, result1.getTimeZone());
     }
 
@@ -56,10 +48,7 @@ public class TimeZoneAndroidTest {
         data[ 0] = 56;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeZoneAndroid result1 = new TimeZoneAndroid(bluetoothGattCharacteristic);
+        TimeZoneAndroid result1 = new TimeZoneAndroid(data);
         assertEquals(56, result1.getTimeZone());
     }
 
@@ -78,10 +67,7 @@ public class TimeZoneAndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeZoneAndroid result1 = new TimeZoneAndroid(bluetoothGattCharacteristic);
+        TimeZoneAndroid result1 = new TimeZoneAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -97,10 +83,7 @@ public class TimeZoneAndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeZoneAndroid result1 = new TimeZoneAndroid(bluetoothGattCharacteristic);
+        TimeZoneAndroid result1 = new TimeZoneAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -111,10 +94,7 @@ public class TimeZoneAndroidTest {
         data[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeZoneAndroid result1 = new TimeZoneAndroid(bluetoothGattCharacteristic);
+        TimeZoneAndroid result1 = new TimeZoneAndroid(data);
         TimeZoneAndroid result2 = TimeZoneAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

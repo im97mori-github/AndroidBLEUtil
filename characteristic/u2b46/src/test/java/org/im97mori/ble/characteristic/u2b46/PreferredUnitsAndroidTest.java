@@ -1,10 +1,8 @@
 package org.im97mori.ble.characteristic.u2b46;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -48,10 +46,7 @@ public class PreferredUnitsAndroidTest extends TestBase {
 	public void test_constructor_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(bluetoothGattCharacteristic);
+		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(data);
 		assertArrayEquals(data, result1.getUnits());
 		assertEquals(1, result1.getUnitCount());
 		assertEquals(BLEUtils.convert128to16(UnitUUID.UNITLESS_UNIT), result1.getUnit(0));
@@ -61,10 +56,7 @@ public class PreferredUnitsAndroidTest extends TestBase {
 	public void test_constructor_00002() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(bluetoothGattCharacteristic);
+		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(data);
 		assertArrayEquals(data, result1.getUnits());
 		assertEquals(2, result1.getUnitCount());
 		assertEquals(BLEUtils.convert128to16(UnitUUID.UNITLESS_UNIT), result1.getUnit(0));
@@ -118,10 +110,7 @@ public class PreferredUnitsAndroidTest extends TestBase {
 	public void test_parcelable_1_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(bluetoothGattCharacteristic);
+		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(data);
 		Parcel parcel = Parcel.obtain();
 		result1.writeToParcel(parcel, 0);
 		parcel.setDataPosition(0);
@@ -133,10 +122,7 @@ public class PreferredUnitsAndroidTest extends TestBase {
 	public void test_parcelable_1_00002() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(bluetoothGattCharacteristic);
+		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(data);
 		Parcel parcel = Parcel.obtain();
 		result1.writeToParcel(parcel, 0);
 		parcel.setDataPosition(0);
@@ -148,10 +134,7 @@ public class PreferredUnitsAndroidTest extends TestBase {
 	public void test_parcelable_2_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(bluetoothGattCharacteristic);
+		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -159,10 +142,7 @@ public class PreferredUnitsAndroidTest extends TestBase {
 	public void test_parcelable_2_00002() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(bluetoothGattCharacteristic);
+		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -173,10 +153,7 @@ public class PreferredUnitsAndroidTest extends TestBase {
 		data[ 0] = (byte) 0xff;
 		//@formatter:on
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(bluetoothGattCharacteristic);
+		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(data);
 		PreferredUnitsAndroid result2 = PreferredUnitsAndroid.CREATOR.createFromByteArray(data);
 		assertArrayEquals(result1.getBytes(), result2.getBytes());
 	}
@@ -188,10 +165,7 @@ public class PreferredUnitsAndroidTest extends TestBase {
 		data[ 0] = (byte) 0xff;
 		//@formatter:on
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(bluetoothGattCharacteristic);
+		PreferredUnitsAndroid result1 = new PreferredUnitsAndroid(data);
 		PreferredUnitsAndroid result2 = PreferredUnitsAndroid.CREATOR.createFromByteArray(data);
 		assertArrayEquals(result1.getBytes(), result2.getBytes());
 	}

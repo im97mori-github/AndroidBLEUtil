@@ -45,6 +45,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -481,6 +482,11 @@ public class BLESyncConnection implements BLECallback {
     protected final Map<Pair<Pair<UUID, Integer>, Pair<UUID, Integer>>, List<List<byte[]>>> mNotificationListenerMap = new LinkedHashMap<>();
 
     /**
+     * service changed listener map
+     */
+    protected final Map<BluetoothDevice, List<AtomicBoolean>> mServiceChangedListenerMap = new LinkedHashMap<>();
+
+    /**
      * {@link BLEConnection} instance
      */
     protected BLEConnection mBLEConnection;
@@ -497,7 +503,7 @@ public class BLESyncConnection implements BLECallback {
     /**
      * @param context         {@link Context} instance
      * @param bluetoothDevice BLE device
-     * @param bleConnection {@link BLEConnection} instance
+     * @param bleConnection   {@link BLEConnection} instance
      */
     public BLESyncConnection(@NonNull Context context
             , @NonNull BluetoothDevice bluetoothDevice
@@ -1373,6 +1379,64 @@ public class BLESyncConnection implements BLECallback {
         return listener;
     }
 
+    /**
+     * Watch Service Changed
+     *
+     * @param duration listen duration(millis)
+     * @return {@code true}:Service Changed, {@code false}:Service not Changed
+     */
+    @Nullable
+    public Boolean watchServiceChanged(long duration) {
+        AtomicBoolean listener = new AtomicBoolean(false);
+        try {
+            mBLEConnection.attach(this);
+            List<AtomicBoolean> listenerList;
+            synchronized (mServiceChangedListenerMap) {
+                listenerList = mServiceChangedListenerMap.get(mBluetoothDevice);
+                if (listenerList == null) {
+                    listenerList = new LinkedList<>();
+                    mServiceChangedListenerMap.put(mBluetoothDevice, listenerList);
+                }
+                listenerList.add(listener);
+                mServiceChangedListenerMap.notifyAll();
+            }
+
+            long end = SystemClock.elapsedRealtime() + duration;
+            do {
+                try {
+                    //noinspection BusyWait
+                    Thread.sleep(end - SystemClock.elapsedRealtime());
+                } catch (InterruptedException e) {
+                    BLELogUtils.stackLog(e);
+                }
+            } while (end > SystemClock.elapsedRealtime());
+
+            synchronized (mServiceChangedListenerMap) {
+                listenerList.remove(listener);
+                mServiceChangedListenerMap.notifyAll();
+            }
+        } finally {
+            mBLEConnection.detach(this);
+        }
+        return listener.get();
+    }
+
+    /**
+     * instant watch Service Changed
+     *
+     * @see #watchServiceChanged(long)
+     */
+    @Nullable
+    public static Boolean watchServiceChanged(@NonNull BLEConnection bleConnection
+            , long duration) {
+        Boolean listener = null;
+        if (bleConnection.isConnected()) {
+            BLESyncConnection bleSyncConnection = new BLESyncConnection();
+            bleSyncConnection.mBLEConnection = bleConnection;
+            listener = bleSyncConnection.watchServiceChanged(duration);
+        }
+        return listener;
+    }
 
     /**
      * Create request mtu task with synchronous
@@ -2403,6 +2467,22 @@ public class BLESyncConnection implements BLECallback {
             , int status
             , @SuppressWarnings("NullableProblems") @NonNull Bundle argument) {
         unlock(argument, new BLEResult(taskId, RESULT_SUCCESS, null, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, null, null, 0, 0, 0, 0, 0, notificationStatus, status, null, argument.getBundle(KEY_WRAPPED)));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        synchronized (mServiceChangedListenerMap) {
+            List<AtomicBoolean> list = mServiceChangedListenerMap.get(bluetoothDevice);
+            if (list != null) {
+                for (AtomicBoolean listener : list) {
+                    listener.set(true);
+                }
+            }
+            mServiceChangedListenerMap.notifyAll();
+        }
     }
 
     /**

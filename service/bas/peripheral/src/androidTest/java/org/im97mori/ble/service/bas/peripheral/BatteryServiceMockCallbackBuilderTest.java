@@ -1,9 +1,20 @@
 package org.im97mori.ble.service.bas.peripheral;
 
+import static org.im97mori.ble.constants.CharacteristicUUID.BATTERY_LEVEL_CHARACTERISTIC;
+import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
+import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.os.Build;
+
+import androidx.test.filters.RequiresDevice;
+import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.characteristic.u2a19.BatteryLevel;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
@@ -13,18 +24,6 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.List;
-
-import static org.im97mori.ble.constants.CharacteristicUUID.BATTERY_LEVEL_CHARACTERISTIC;
-import static org.im97mori.ble.constants.DescriptorUUID.CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR;
-import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import androidx.test.filters.RequiresDevice;
-import androidx.test.filters.SdkSuppress;
 
 public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTest {
 
@@ -62,7 +61,6 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(batteryLevel1.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -85,12 +83,10 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(batteryLevel1.getBytes(), bluetoothGattCharacteristic.getValue());
         bluetoothGattCharacteristic = bluetoothGattServiceList.get(1).getCharacteristic(BATTERY_LEVEL_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(batteryLevel2.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -112,7 +108,6 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(property1, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(data1, bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -137,12 +132,10 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(property1, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(data1, bluetoothGattCharacteristic.getValue());
         bluetoothGattCharacteristic = bluetoothGattServiceList.get(1).getCharacteristic(BATTERY_LEVEL_CHARACTERISTIC);
         assertNotNull(bluetoothGattCharacteristic);
         assertEquals(property2, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(data2, bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -224,7 +217,6 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicPresentationFormat.getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattService = bluetoothGattServiceList.get(1);
         bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BATTERY_LEVEL_CHARACTERISTIC);
@@ -232,7 +224,6 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UTF_8_STRING, 0, 0, CharacteristicPresentationFormat.NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS, new byte[]{0, 0}).getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -278,7 +269,6 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(characteristicPresentationFormat.getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattService = bluetoothGattServiceList.get(1);
         bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BATTERY_LEVEL_CHARACTERISTIC);
@@ -286,7 +276,6 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UTF_8_STRING, 0, 0, CharacteristicPresentationFormat.NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS, new byte[]{0, 0}).getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -313,7 +302,6 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UTF_8_STRING, 0, 0, CharacteristicPresentationFormat.NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS, new byte[]{0, 0}).getBytes(), bluetoothGattDescriptor.getValue());
 
         bluetoothGattService = bluetoothGattServiceList.get(1);
         bluetoothGattCharacteristic = bluetoothGattService.getCharacteristic(BATTERY_LEVEL_CHARACTERISTIC);
@@ -321,7 +309,6 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CHARACTERISTIC_PRESENTATION_FORMAT_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(new CharacteristicPresentationFormat(CharacteristicPresentationFormat.FORMAT_UTF_8_STRING, 0, 0, CharacteristicPresentationFormat.NAMESPACE_BLUETOOTH_SIG_ASSIGNED_NUMBERS, new byte[]{0, 0}).getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -345,7 +332,6 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -411,7 +397,6 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -435,7 +420,6 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -501,7 +485,6 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -527,7 +510,6 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -553,7 +535,6 @@ public class BatteryServiceMockCallbackBuilderTest extends AbstractPeripheralTes
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE, bluetoothGattDescriptor.getValue());
     }
 
 }

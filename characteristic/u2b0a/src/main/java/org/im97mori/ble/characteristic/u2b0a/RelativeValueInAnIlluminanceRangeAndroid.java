@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.RELATIVE_VALUE_IN_AN_ILLUMINANCE_RANGE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Relative Value In An Illuminance Range (Characteristics UUID: 0x2B0A)
@@ -44,9 +44,7 @@ public class RelativeValueInAnIlluminanceRangeAndroid extends RelativeValueInAnI
          */
         @NonNull
         public RelativeValueInAnIlluminanceRangeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RELATIVE_VALUE_IN_AN_ILLUMINANCE_RANGE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new RelativeValueInAnIlluminanceRangeAndroid(bluetoothGattCharacteristic);
+            return new RelativeValueInAnIlluminanceRangeAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class RelativeValueInAnIlluminanceRangeAndroid extends RelativeValueInAnI
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B0A
      */
+    @Deprecated
     public RelativeValueInAnIlluminanceRangeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public RelativeValueInAnIlluminanceRangeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -77,8 +85,7 @@ public class RelativeValueInAnIlluminanceRangeAndroid extends RelativeValueInAnI
      * @param in Parcel
      */
     private RelativeValueInAnIlluminanceRangeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -1,12 +1,10 @@
 package org.im97mori.ble.characteristic.u2bf5;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -107,10 +105,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getSecurityLevelRequirements());
         assertFalse(result1.isMode1Level1Supported());
         assertFalse(result1.isMode1Level2Supported());
@@ -127,10 +122,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getSecurityLevelRequirements());
         assertTrue(result1.isMode1Level1Supported());
         assertFalse(result1.isMode1Level2Supported());
@@ -147,10 +139,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getSecurityLevelRequirements());
         assertFalse(result1.isMode1Level1Supported());
         assertTrue(result1.isMode1Level2Supported());
@@ -167,10 +156,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_constructor_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getSecurityLevelRequirements());
         assertFalse(result1.isMode1Level1Supported());
         assertFalse(result1.isMode1Level2Supported());
@@ -187,10 +173,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_constructor_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getSecurityLevelRequirements());
         assertFalse(result1.isMode1Level1Supported());
         assertFalse(result1.isMode1Level2Supported());
@@ -207,10 +190,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_constructor_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getSecurityLevelRequirements());
         assertFalse(result1.isMode1Level1Supported());
         assertFalse(result1.isMode1Level2Supported());
@@ -227,10 +207,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_constructor_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getSecurityLevelRequirements());
         assertFalse(result1.isMode1Level1Supported());
         assertFalse(result1.isMode1Level2Supported());
@@ -247,10 +224,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_constructor_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getSecurityLevelRequirements());
         assertFalse(result1.isMode1Level1Supported());
         assertFalse(result1.isMode1Level2Supported());
@@ -267,10 +241,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_constructor_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getSecurityLevelRequirements());
         assertFalse(result1.isMode1Level1Supported());
         assertFalse(result1.isMode1Level2Supported());
@@ -287,10 +258,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_constructor_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getSecurityLevelRequirements());
         assertFalse(result1.isMode1Level1Supported());
         assertFalse(result1.isMode1Level2Supported());
@@ -596,10 +564,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -620,10 +585,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -644,10 +606,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -668,10 +627,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_1_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -692,10 +648,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_1_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -716,10 +669,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_1_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -740,10 +690,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_1_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -764,10 +711,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_1_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -788,10 +732,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_1_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -812,10 +753,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_1_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -836,10 +774,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -847,10 +782,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -858,10 +790,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -869,10 +798,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_2_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -880,10 +806,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_2_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -891,10 +814,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_2_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -902,10 +822,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_2_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -913,10 +830,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_2_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -924,10 +838,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_2_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -935,10 +846,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_2_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -946,10 +854,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         LeGattSecurityLevelsAndroid result2 = LeGattSecurityLevelsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -958,10 +863,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         LeGattSecurityLevelsAndroid result2 = LeGattSecurityLevelsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -970,10 +872,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         LeGattSecurityLevelsAndroid result2 = LeGattSecurityLevelsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -982,10 +881,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_3_00004() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         LeGattSecurityLevelsAndroid result2 = LeGattSecurityLevelsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -994,10 +890,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_3_00005() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         LeGattSecurityLevelsAndroid result2 = LeGattSecurityLevelsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1006,10 +899,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_3_00006() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         LeGattSecurityLevelsAndroid result2 = LeGattSecurityLevelsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1018,10 +908,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_3_00007() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         LeGattSecurityLevelsAndroid result2 = LeGattSecurityLevelsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1030,10 +917,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_3_00008() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         LeGattSecurityLevelsAndroid result2 = LeGattSecurityLevelsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1042,10 +926,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_3_00009() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         LeGattSecurityLevelsAndroid result2 = LeGattSecurityLevelsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1054,10 +935,7 @@ public class LeGattSecurityLevelsAndroidTest extends TestBase {
     public void test_parcelable_3_00010() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(bluetoothGattCharacteristic);
+        LeGattSecurityLevelsAndroid result1 = new LeGattSecurityLevelsAndroid(data);
         LeGattSecurityLevelsAndroid result2 = LeGattSecurityLevelsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

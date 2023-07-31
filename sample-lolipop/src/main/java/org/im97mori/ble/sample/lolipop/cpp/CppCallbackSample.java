@@ -401,6 +401,11 @@ public class CppCallbackSample extends CyclingPowerProfileMockCallback implement
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }

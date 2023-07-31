@@ -367,6 +367,11 @@ public class RscpCallbackSample implements RunningSpeedAndCadenceProfileCallback
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onRSCFeatureReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull RSCFeatureAndroid rscFeatureAndroid, @Nullable Bundle argument) {
         callback(Arrays.toString(rscFeatureAndroid.getRscFeature()), argument);
     }

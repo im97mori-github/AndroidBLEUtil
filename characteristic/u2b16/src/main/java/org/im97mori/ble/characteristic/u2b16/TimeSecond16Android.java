@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_SECOND_16_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Time Second 16 (Characteristics UUID: 0x2B16)
@@ -44,9 +44,7 @@ public class TimeSecond16Android extends TimeSecond16 implements Parcelable {
          */
         @NonNull
         public TimeSecond16Android createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TIME_SECOND_16_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TimeSecond16Android(bluetoothGattCharacteristic);
+            return new TimeSecond16Android(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class TimeSecond16Android extends TimeSecond16 implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B16
      */
+    @Deprecated
     public TimeSecond16Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TimeSecond16Android(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class TimeSecond16Android extends TimeSecond16 implements Parcelable {
      * @param in Parcel
      */
     private TimeSecond16Android(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

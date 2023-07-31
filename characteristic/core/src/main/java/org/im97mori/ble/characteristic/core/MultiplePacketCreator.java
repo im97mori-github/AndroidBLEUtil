@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
  * Multiple Packet array Creator
  *
  * @param <T1> T1 must have constructor with T2 array
+ * @noinspection unused
  */
 public interface MultiplePacketCreator<T1, T2> extends Parcelable.Creator<T1> {
 

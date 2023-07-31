@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.GLOBAL_TRADE_ITEM_NUMBER_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Global Trade Item Number (Characteristics UUID: 0x2AFA)
@@ -44,9 +44,7 @@ public class GlobalTradeItemNumberAndroid extends GlobalTradeItemNumber implemen
          */
         @NonNull
         public GlobalTradeItemNumberAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(GLOBAL_TRADE_ITEM_NUMBER_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new GlobalTradeItemNumberAndroid(bluetoothGattCharacteristic);
+            return new GlobalTradeItemNumberAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class GlobalTradeItemNumberAndroid extends GlobalTradeItemNumber implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AFA
      */
+    @Deprecated
     public GlobalTradeItemNumberAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public GlobalTradeItemNumberAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class GlobalTradeItemNumberAndroid extends GlobalTradeItemNumber implemen
      * @param in Parcel
      */
     private GlobalTradeItemNumberAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

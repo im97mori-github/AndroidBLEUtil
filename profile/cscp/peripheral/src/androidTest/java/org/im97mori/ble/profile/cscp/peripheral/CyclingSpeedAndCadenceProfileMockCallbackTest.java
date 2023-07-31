@@ -7,9 +7,9 @@ import org.junit.Test;
 import static org.im97mori.ble.constants.ServiceUUID.CYCLING_SPEED_AND_CADENCE_SERVICE;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings("ConstantConditions")
 public class CyclingSpeedAndCadenceProfileMockCallbackTest {
 
+    /** @noinspection DataFlowIssue*/
     @Test
     public void test_getServiceUUID_00001() {
         assertEquals(CYCLING_SPEED_AND_CADENCE_SERVICE, new CyclingSpeedAndCadenceProfileMockCallback(ApplicationProvider.getApplicationContext(), null, null).getServiceUUID());

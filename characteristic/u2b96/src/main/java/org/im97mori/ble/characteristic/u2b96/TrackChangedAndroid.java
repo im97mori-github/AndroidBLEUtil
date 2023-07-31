@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TRACK_CHANGED_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Track Changed (Characteristics UUID: 0x2B96)
@@ -45,9 +45,7 @@ public class TrackChangedAndroid extends TrackChanged implements Parcelable {
          */
         @NonNull
         public TrackChangedAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TRACK_CHANGED_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TrackChangedAndroid(bluetoothGattCharacteristic);
+            return new TrackChangedAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class TrackChangedAndroid extends TrackChanged implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B96
      */
+    @Deprecated
     public TrackChangedAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TrackChangedAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class TrackChangedAndroid extends TrackChanged implements Parcelable {
      * @param in Parcel
      */
     private TrackChangedAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

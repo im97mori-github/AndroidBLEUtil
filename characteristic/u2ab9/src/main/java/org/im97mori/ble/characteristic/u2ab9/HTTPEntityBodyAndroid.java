@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.HTTP_ENTITY_BODY_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * HTTP Entity Body (Characteristics UUID: 0x2AB9)
@@ -44,9 +44,7 @@ public class HTTPEntityBodyAndroid extends HTTPEntityBody implements Parcelable 
          */
         @NonNull
         public HTTPEntityBodyAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(HTTP_ENTITY_BODY_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new HTTPEntityBodyAndroid(bluetoothGattCharacteristic);
+            return new HTTPEntityBodyAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class HTTPEntityBodyAndroid extends HTTPEntityBody implements Parcelable 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AB9
      */
+    @Deprecated
     public HTTPEntityBodyAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public HTTPEntityBodyAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class HTTPEntityBodyAndroid extends HTTPEntityBody implements Parcelable 
      * @param in Parcel
      */
     private HTTPEntityBodyAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

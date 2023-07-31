@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ad2;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -614,9 +612,9 @@ public class IndoorBikeDataAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -836,9 +834,6 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -865,9 +860,6 @@ public class IndoorBikeDataAndroidTest {
     @Test
     public void test_parcelable_1_00002() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -896,9 +888,6 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -925,9 +914,6 @@ public class IndoorBikeDataAndroidTest {
     @Test
     public void test_parcelable_1_00102() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -956,9 +942,6 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -985,9 +968,6 @@ public class IndoorBikeDataAndroidTest {
     @Test
     public void test_parcelable_1_00202() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -1016,9 +996,6 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -1045,9 +1022,6 @@ public class IndoorBikeDataAndroidTest {
     @Test
     public void test_parcelable_1_00302() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -1076,9 +1050,6 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -1105,9 +1076,6 @@ public class IndoorBikeDataAndroidTest {
     @Test
     public void test_parcelable_1_00402() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -1136,9 +1104,6 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -1165,9 +1130,6 @@ public class IndoorBikeDataAndroidTest {
     @Test
     public void test_parcelable_1_00502() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -1196,9 +1158,6 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -1225,9 +1184,6 @@ public class IndoorBikeDataAndroidTest {
     @Test
     public void test_parcelable_1_00602() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -1256,9 +1212,6 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -1285,9 +1238,6 @@ public class IndoorBikeDataAndroidTest {
     @Test
     public void test_parcelable_1_00702() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -1316,9 +1266,6 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -1345,9 +1292,6 @@ public class IndoorBikeDataAndroidTest {
     @Test
     public void test_parcelable_1_00802() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -1376,9 +1320,6 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_1_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -1405,9 +1346,6 @@ public class IndoorBikeDataAndroidTest {
     @Test
     public void test_parcelable_1_00902() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -1436,9 +1374,6 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_1_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -1465,9 +1400,6 @@ public class IndoorBikeDataAndroidTest {
     @Test
     public void test_parcelable_1_01002() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -1496,9 +1428,6 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_1_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -1525,9 +1454,6 @@ public class IndoorBikeDataAndroidTest {
     @Test
     public void test_parcelable_1_01102() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
@@ -1556,9 +1482,6 @@ public class IndoorBikeDataAndroidTest {
     public void test_parcelable_1_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
@@ -1585,9 +1508,6 @@ public class IndoorBikeDataAndroidTest {
     @Test
     public void test_parcelable_1_01202() {
         byte[] data = getData();
-
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
 
         IndoorBikeDataAndroid result1 = new IndoorBikeDataAndroid(IndoorBikeDataPacketAndroid.CREATOR.createFromByteArray(data));
         Parcel parcel = Parcel.obtain();

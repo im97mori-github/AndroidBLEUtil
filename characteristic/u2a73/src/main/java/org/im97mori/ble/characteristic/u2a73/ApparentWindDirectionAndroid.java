@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.APPARENT_WIND_DIRECTION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Apparent Wind Direction (Characteristics UUID: 0x2A73)
@@ -44,9 +44,7 @@ public class ApparentWindDirectionAndroid extends ApparentWindDirection implemen
          */
         @NonNull
         public ApparentWindDirectionAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(APPARENT_WIND_DIRECTION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ApparentWindDirectionAndroid(bluetoothGattCharacteristic);
+            return new ApparentWindDirectionAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ApparentWindDirectionAndroid extends ApparentWindDirection implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A73
      */
+    @Deprecated
     public ApparentWindDirectionAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ApparentWindDirectionAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class ApparentWindDirectionAndroid extends ApparentWindDirection implemen
      * @param in Parcel
      */
     private ApparentWindDirectionAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

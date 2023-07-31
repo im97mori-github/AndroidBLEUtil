@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.LOCAL_NORTH_COORDINATE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Local North Coordinate (Characteristics UUID: 0x2AB0)
@@ -44,9 +44,7 @@ public class LocalNorthCoordinateAndroid extends LocalNorthCoordinate implements
          */
         @NonNull
         public LocalNorthCoordinateAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LOCAL_NORTH_COORDINATE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new LocalNorthCoordinateAndroid(bluetoothGattCharacteristic);
+            return new LocalNorthCoordinateAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class LocalNorthCoordinateAndroid extends LocalNorthCoordinate implements
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AB0
      */
+    @Deprecated
     public LocalNorthCoordinateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public LocalNorthCoordinateAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -66,8 +74,7 @@ public class LocalNorthCoordinateAndroid extends LocalNorthCoordinate implements
      * @param in Parcel
      */
     private LocalNorthCoordinateAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

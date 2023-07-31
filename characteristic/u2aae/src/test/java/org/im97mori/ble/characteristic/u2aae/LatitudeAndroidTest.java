@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2aae;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -47,9 +45,9 @@ public class LatitudeAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -63,10 +61,7 @@ public class LatitudeAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LatitudeAndroid result1 = new LatitudeAndroid(bluetoothGattCharacteristic);
+        LatitudeAndroid result1 = new LatitudeAndroid(data);
         assertEquals(0x04030201, result1.getLatitude());
     }
 
@@ -82,10 +77,7 @@ public class LatitudeAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LatitudeAndroid result1 = new LatitudeAndroid(bluetoothGattCharacteristic);
+        LatitudeAndroid result1 = new LatitudeAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -97,10 +89,7 @@ public class LatitudeAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LatitudeAndroid result1 = new LatitudeAndroid(bluetoothGattCharacteristic);
+        LatitudeAndroid result1 = new LatitudeAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -108,10 +97,7 @@ public class LatitudeAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        LatitudeAndroid result1 = new LatitudeAndroid(bluetoothGattCharacteristic);
+        LatitudeAndroid result1 = new LatitudeAndroid(data);
         LatitudeAndroid result2 = LatitudeAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

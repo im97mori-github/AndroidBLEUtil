@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.DIRECTORY_LISTING_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Directory Listing (Characteristics UUID: 0x2ACB)
@@ -45,9 +45,7 @@ public class DirectoryListingAndroid extends DirectoryListing implements Parcela
          */
         @NonNull
         public DirectoryListingAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DIRECTORY_LISTING_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new DirectoryListingAndroid(bluetoothGattCharacteristic);
+            return new DirectoryListingAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class DirectoryListingAndroid extends DirectoryListing implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2ACB
      */
+    @Deprecated
     public DirectoryListingAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public DirectoryListingAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class DirectoryListingAndroid extends DirectoryListing implements Parcela
      * @param in Parcel
      */
     private DirectoryListingAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

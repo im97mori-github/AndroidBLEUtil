@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.HTTP_HEADERS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * HTTP Headers (Characteristics UUID: 0x2AB7)
@@ -44,9 +44,7 @@ public class HTTPHeadersAndroid extends HTTPHeaders implements Parcelable {
          */
         @NonNull
         public HTTPHeadersAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(HTTP_HEADERS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new HTTPHeadersAndroid(bluetoothGattCharacteristic);
+            return new HTTPHeadersAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class HTTPHeadersAndroid extends HTTPHeaders implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AB7
      */
+    @Deprecated
     public HTTPHeadersAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public HTTPHeadersAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class HTTPHeadersAndroid extends HTTPHeaders implements Parcelable {
      * @param in Parcel
      */
     private HTTPHeadersAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

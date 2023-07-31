@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.PERCEIVED_LIGHTNESS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Perceived Lightness (Characteristics UUID: 0x2B03)
@@ -44,9 +44,7 @@ public class PerceivedLightnessAndroid extends PerceivedLightness implements Par
          */
         @NonNull
         public PerceivedLightnessAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(PERCEIVED_LIGHTNESS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new PerceivedLightnessAndroid(bluetoothGattCharacteristic);
+            return new PerceivedLightnessAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class PerceivedLightnessAndroid extends PerceivedLightness implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B03
      */
+    @Deprecated
     public PerceivedLightnessAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public PerceivedLightnessAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class PerceivedLightnessAndroid extends PerceivedLightness implements Par
      * @param in Parcel
      */
     private PerceivedLightnessAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

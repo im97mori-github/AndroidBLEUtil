@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BLUETOOTH_SIG_DATA_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Bluetooth SIG Data (Characteristics UUID: 0x2B39)
@@ -45,9 +45,7 @@ public class BluetoothSigDataAndroid extends BluetoothSigData implements Parcela
          */
         @NonNull
         public BluetoothSigDataAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BLUETOOTH_SIG_DATA_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BluetoothSigDataAndroid(bluetoothGattCharacteristic);
+            return new BluetoothSigDataAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BluetoothSigDataAndroid extends BluetoothSigData implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B39
      */
+    @Deprecated
     public BluetoothSigDataAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BluetoothSigDataAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class BluetoothSigDataAndroid extends BluetoothSigData implements Parcela
      * @param in Parcel
      */
     private BluetoothSigDataAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

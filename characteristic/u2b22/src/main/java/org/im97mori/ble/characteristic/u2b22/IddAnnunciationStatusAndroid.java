@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.IDD_ANNUNCIATION_STATUS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * IDD Annunciation Status (Characteristics UUID: 0x2B22)
@@ -45,9 +45,7 @@ public class IddAnnunciationStatusAndroid extends IddAnnunciationStatus implemen
          */
         @NonNull
         public IddAnnunciationStatusAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(IDD_ANNUNCIATION_STATUS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new IddAnnunciationStatusAndroid(bluetoothGattCharacteristic);
+            return new IddAnnunciationStatusAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class IddAnnunciationStatusAndroid extends IddAnnunciationStatus implemen
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B22
      */
+    @Deprecated
     public IddAnnunciationStatusAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public IddAnnunciationStatusAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class IddAnnunciationStatusAndroid extends IddAnnunciationStatus implemen
      * @param in Parcel
      */
     private IddAnnunciationStatusAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

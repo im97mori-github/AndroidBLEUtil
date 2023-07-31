@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2af4;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -13,7 +12,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -36,10 +34,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result = new EventStatisticsAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result.getNumberOfEvents());
         assertEquals(BLEUtils.createUInt16(data, 2), result.getAverageEventDuration());
         assertEquals(BLEUtils.createUInt8(data, 4), result.getTimeElapsedSinceLastEvent());
@@ -58,10 +53,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result = new EventStatisticsAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result.getNumberOfEvents());
         assertEquals(BLEUtils.createUInt16(data, 2), result.getAverageEventDuration());
         assertEquals(BLEUtils.createUInt8(data, 4), result.getTimeElapsedSinceLastEvent());
@@ -80,10 +72,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result = new EventStatisticsAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result.getNumberOfEvents());
         assertEquals(BLEUtils.createUInt16(data, 2), result.getAverageEventDuration());
         assertEquals(BLEUtils.createUInt8(data, 4), result.getTimeElapsedSinceLastEvent());
@@ -102,10 +91,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = 0x06;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result = new EventStatisticsAndroid(data);
         assertEquals(BLEUtils.createUInt16(data, 0), result.getNumberOfEvents());
         assertEquals(BLEUtils.createUInt16(data, 2), result.getAverageEventDuration());
         assertEquals(BLEUtils.createUInt8(data, 4), result.getTimeElapsedSinceLastEvent());
@@ -180,10 +166,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result1 = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result1 = new EventStatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -207,10 +190,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result1 = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result1 = new EventStatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -234,10 +214,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result1 = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result1 = new EventStatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -261,10 +238,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = 0x06;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result1 = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result1 = new EventStatisticsAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -288,10 +262,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result1 = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result1 = new EventStatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -307,10 +278,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result1 = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result1 = new EventStatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -326,10 +294,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result1 = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result1 = new EventStatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -345,10 +310,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = 0x06;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result1 = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result1 = new EventStatisticsAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -364,10 +326,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_VALUE_IS_NOT_KNOWN;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result1 = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result1 = new EventStatisticsAndroid(data);
         EventStatisticsAndroid result2 = EventStatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -384,10 +343,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_TOTAL_LIFE_OF_THE_DEVICE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result1 = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result1 = new EventStatisticsAndroid(data);
         EventStatisticsAndroid result2 = EventStatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -404,10 +360,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = (byte) TimeExponential8Utils.TIME_EXPONENTIAL_8_ZERO_SECONDS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result1 = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result1 = new EventStatisticsAndroid(data);
         EventStatisticsAndroid result2 = EventStatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -424,10 +377,7 @@ public class EventStatisticsAndroidTest {
         data[ 5] = 0x06;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EventStatisticsAndroid result1 = new EventStatisticsAndroid(bluetoothGattCharacteristic);
+        EventStatisticsAndroid result1 = new EventStatisticsAndroid(data);
         EventStatisticsAndroid result2 = EventStatisticsAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

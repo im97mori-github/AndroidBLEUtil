@@ -108,6 +108,7 @@ public class AbortReliableWriteTask extends AbstractBLETask {
      * {@inheritDoc}
      */
     @SuppressLint("MissingPermission")
+    @Deprecated
     @Override
     public boolean doProcess(@NonNull Message message) {
         Bundle bundle = message.getData();

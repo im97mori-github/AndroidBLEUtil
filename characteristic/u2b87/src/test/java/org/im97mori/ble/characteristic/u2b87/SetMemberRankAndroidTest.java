@@ -1,10 +1,8 @@
 package org.im97mori.ble.characteristic.u2b87;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -36,10 +34,7 @@ public class SetMemberRankAndroidTest extends TestBase {
 	public void test_constructor_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetMemberRankAndroid result1 = new SetMemberRankAndroid(bluetoothGattCharacteristic);
+		SetMemberRankAndroid result1 = new SetMemberRankAndroid(data);
 		assertEquals(BLEUtils.createUInt8(data, 0), result1.getSetMemberRank());
 	}
 
@@ -55,10 +50,7 @@ public class SetMemberRankAndroidTest extends TestBase {
 	public void test_parcelable_1_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetMemberRankAndroid result1 = new SetMemberRankAndroid(bluetoothGattCharacteristic);
+		SetMemberRankAndroid result1 = new SetMemberRankAndroid(data);
 		Parcel parcel = Parcel.obtain();
 		result1.writeToParcel(parcel, 0);
 		parcel.setDataPosition(0);
@@ -70,10 +62,7 @@ public class SetMemberRankAndroidTest extends TestBase {
 	public void test_parcelable_2_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetMemberRankAndroid result1 = new SetMemberRankAndroid(bluetoothGattCharacteristic);
+		SetMemberRankAndroid result1 = new SetMemberRankAndroid(data);
 		assertArrayEquals(data, result1.getBytes());
 	}
 
@@ -81,10 +70,7 @@ public class SetMemberRankAndroidTest extends TestBase {
 	public void test_parcelable_3_00001() {
 		byte[] data = getData();
 
-		BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-		bluetoothGattCharacteristic.setValue(data);
-
-		SetMemberRankAndroid result1 = new SetMemberRankAndroid(bluetoothGattCharacteristic);
+		SetMemberRankAndroid result1 = new SetMemberRankAndroid(data);
 		SetMemberRankAndroid result2 = SetMemberRankAndroid.CREATOR.createFromByteArray(data);
 		assertArrayEquals(result1.getBytes(), result2.getBytes());
 	}

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.MASS_FLOW_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Mass Flow (Characteristics UUID: 0x2B02)
@@ -44,9 +44,7 @@ public class MassFlowAndroid extends MassFlow implements Parcelable {
          */
         @NonNull
         public MassFlowAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(MASS_FLOW_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new MassFlowAndroid(bluetoothGattCharacteristic);
+            return new MassFlowAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class MassFlowAndroid extends MassFlow implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B02
      */
+    @Deprecated
     public MassFlowAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public MassFlowAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class MassFlowAndroid extends MassFlow implements Parcelable {
      * @param in Parcel
      */
     private MassFlowAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

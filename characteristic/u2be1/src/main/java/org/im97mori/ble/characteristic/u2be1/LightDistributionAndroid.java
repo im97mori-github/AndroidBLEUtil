@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.LIGHT_DISTRIBUTION_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Light Distribution (Characteristics UUID: 0x2BE1)
@@ -45,9 +45,7 @@ public class LightDistributionAndroid extends LightDistribution implements Parce
          */
         @NonNull
         public LightDistributionAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LIGHT_DISTRIBUTION_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new LightDistributionAndroid(bluetoothGattCharacteristic);
+            return new LightDistributionAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class LightDistributionAndroid extends LightDistribution implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BE1
      */
+    @Deprecated
     public LightDistributionAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public LightDistributionAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class LightDistributionAndroid extends LightDistribution implements Parce
      * @param in Parcel
      */
     private LightDistributionAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

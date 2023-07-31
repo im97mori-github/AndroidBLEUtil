@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a73;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -45,9 +43,9 @@ public class ApparentWindDirectionAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -61,10 +59,7 @@ public class ApparentWindDirectionAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ApparentWindDirectionAndroid result1 = new ApparentWindDirectionAndroid(bluetoothGattCharacteristic);
+        ApparentWindDirectionAndroid result1 = new ApparentWindDirectionAndroid(data);
         assertEquals(0x0201, result1.getApparentWindDirection());
         assertEquals(ApparentWindDirection.APPARENT_WIND_DIRECTION_RESOLUTION * 0x0201, result1.getApparentWindDirectionDegrees(), 0);
     }
@@ -81,10 +76,7 @@ public class ApparentWindDirectionAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ApparentWindDirectionAndroid result1 = new ApparentWindDirectionAndroid(bluetoothGattCharacteristic);
+        ApparentWindDirectionAndroid result1 = new ApparentWindDirectionAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -96,10 +88,7 @@ public class ApparentWindDirectionAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ApparentWindDirectionAndroid result1 = new ApparentWindDirectionAndroid(bluetoothGattCharacteristic);
+        ApparentWindDirectionAndroid result1 = new ApparentWindDirectionAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -107,10 +96,7 @@ public class ApparentWindDirectionAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ApparentWindDirectionAndroid result1 = new ApparentWindDirectionAndroid(bluetoothGattCharacteristic);
+        ApparentWindDirectionAndroid result1 = new ApparentWindDirectionAndroid(data);
         ApparentWindDirectionAndroid result2 = ApparentWindDirectionAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

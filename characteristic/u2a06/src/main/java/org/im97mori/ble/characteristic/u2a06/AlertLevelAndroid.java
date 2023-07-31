@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ALERT_LEVEL_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Alert Level (Characteristics UUID: 0x2A06)
@@ -44,9 +44,7 @@ public class AlertLevelAndroid extends AlertLevel implements Parcelable {
          */
         @NonNull
         public AlertLevelAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ALERT_LEVEL_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AlertLevelAndroid(bluetoothGattCharacteristic);
+            return new AlertLevelAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class AlertLevelAndroid extends AlertLevel implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A06
      */
+    @Deprecated
     public AlertLevelAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AlertLevelAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class AlertLevelAndroid extends AlertLevel implements Parcelable {
      * @param in Parcel
      */
     private AlertLevelAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

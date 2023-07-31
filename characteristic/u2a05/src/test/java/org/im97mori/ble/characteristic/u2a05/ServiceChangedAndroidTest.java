@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a05;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -30,10 +28,7 @@ public class ServiceChangedAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ServiceChangedAndroid result1 = new ServiceChangedAndroid(bluetoothGattCharacteristic);
+        ServiceChangedAndroid result1 = new ServiceChangedAndroid(data);
         assertEquals(0x0201, result1.getStartOfAffectedAttributeHandleRange());
         assertEquals(0x0403, result1.getEndOfAffectedAttributeHandleRange());
     }
@@ -48,10 +43,7 @@ public class ServiceChangedAndroidTest {
         data[ 3] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ServiceChangedAndroid result1 = new ServiceChangedAndroid(bluetoothGattCharacteristic);
+        ServiceChangedAndroid result1 = new ServiceChangedAndroid(data);
         assertEquals(0xff01, result1.getStartOfAffectedAttributeHandleRange());
         assertEquals(0xff03, result1.getEndOfAffectedAttributeHandleRange());
     }
@@ -76,10 +68,7 @@ public class ServiceChangedAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ServiceChangedAndroid result1 = new ServiceChangedAndroid(bluetoothGattCharacteristic);
+        ServiceChangedAndroid result1 = new ServiceChangedAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -99,10 +88,7 @@ public class ServiceChangedAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ServiceChangedAndroid result1 = new ServiceChangedAndroid(bluetoothGattCharacteristic);
+        ServiceChangedAndroid result1 = new ServiceChangedAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -116,10 +102,7 @@ public class ServiceChangedAndroidTest {
         data[ 3] = 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ServiceChangedAndroid result1 = new ServiceChangedAndroid(bluetoothGattCharacteristic);
+        ServiceChangedAndroid result1 = new ServiceChangedAndroid(data);
         ServiceChangedAndroid result2 = ServiceChangedAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

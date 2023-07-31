@@ -14,7 +14,7 @@ import org.junit.Test;
 
 public class BondTaskTest {
 
-    @SuppressWarnings("ConstantConditions")
+    /** @noinspection DataFlowIssue*/
     @Test
     public void test_createInitialMessage_00001() {
         BondTask task = new BondTask(null, null, null, null, null, 0, null);
@@ -37,7 +37,7 @@ public class BondTaskTest {
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertEquals(BondTask.PROGRESS_BOND_SUCCESS, bundle.getString(BondTask.KEY_NEXT_PROGRESS));
-        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(BondTask.KEY_BLUETOOTH_DEVICE));
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0.getAddress(), bundle.getString(BondTask.KEY_BLUETOOTH_DEVICE));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class BondTaskTest {
         Bundle bundle = message.getData();
         assertNotNull(bundle);
         assertEquals(BondTask.PROGRESS_BOND_ERROR, bundle.getString(BondTask.KEY_NEXT_PROGRESS));
-        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0, bundle.getParcelable(BondTask.KEY_BLUETOOTH_DEVICE));
+        assertEquals(BLETestUtilsAndroid.MOCK_DEVICE_0.getAddress(), bundle.getString(BondTask.KEY_BLUETOOTH_DEVICE));
     }
 
 }

@@ -737,6 +737,11 @@ public class HtpCallbackSample extends HealthThermometerProfileMockCallback impl
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }

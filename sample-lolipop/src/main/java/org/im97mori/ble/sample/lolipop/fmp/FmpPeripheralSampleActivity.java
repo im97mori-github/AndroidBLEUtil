@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.profile.fmp.peripheral.FindMeProfileMockCallback;
 import org.im97mori.ble.sample.lolipop.AlertDialogFragment;
@@ -86,9 +85,7 @@ public class FmpPeripheralSampleActivity extends BaseActivity implements View.On
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else if (mFindMeProfileMockCallback.isStarted()) {
+        if (mFindMeProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {
             mConnectDisconnectButton.setText(R.string.start);

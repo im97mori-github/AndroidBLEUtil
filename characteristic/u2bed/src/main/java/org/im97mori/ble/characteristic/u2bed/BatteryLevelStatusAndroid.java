@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BATTERY_LEVEL_STATUS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Battery Level Status (Characteristics UUID: 0x2BED)
@@ -45,9 +45,7 @@ public class BatteryLevelStatusAndroid extends BatteryLevelStatus implements Par
          */
         @NonNull
         public BatteryLevelStatusAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BATTERY_LEVEL_STATUS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BatteryLevelStatusAndroid(bluetoothGattCharacteristic);
+            return new BatteryLevelStatusAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class BatteryLevelStatusAndroid extends BatteryLevelStatus implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BED
      */
+    @Deprecated
     public BatteryLevelStatusAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BatteryLevelStatusAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class BatteryLevelStatusAndroid extends BatteryLevelStatus implements Par
      * @param in Parcel
      */
     private BatteryLevelStatusAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

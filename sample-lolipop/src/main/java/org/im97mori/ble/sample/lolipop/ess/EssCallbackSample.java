@@ -652,6 +652,11 @@ public class EssCallbackSample extends EnvironmentalSensingServiceMockCallback i
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }
@@ -678,7 +683,9 @@ public class EssCallbackSample extends EnvironmentalSensingServiceMockCallback i
                 , device);
     }
 
+    /** @noinspection deprecation*/
     @Override
+    @Deprecated
     public boolean onServiceAddSuccess(@NonNull Integer taskId
             , @NonNull BLEServerConnection bleServerConnection
             , @NonNull BluetoothGattService bluetoothGattService
@@ -708,7 +715,9 @@ public class EssCallbackSample extends EnvironmentalSensingServiceMockCallback i
         callback(argument);
     }
 
+    /** @noinspection deprecation*/
     @Override
+    @Deprecated
     public void onServiceRemoveSuccess(@NonNull Integer taskId
             , @NonNull BLEServerConnection bleServerConnection
             , @NonNull BluetoothGattService bluetoothGattService

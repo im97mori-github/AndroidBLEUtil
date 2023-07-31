@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CONTENT_CONTROL_ID_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Content Control ID (Characteristics UUID: 0x2BBA)
@@ -44,9 +44,7 @@ public class ContentControlIdAndroid extends ContentControlId implements Parcela
          */
         @NonNull
         public ContentControlIdAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CONTENT_CONTROL_ID_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ContentControlIdAndroid(bluetoothGattCharacteristic);
+            return new ContentControlIdAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ContentControlIdAndroid extends ContentControlId implements Parcela
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BBA
      */
+    @Deprecated
     public ContentControlIdAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ContentControlIdAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class ContentControlIdAndroid extends ContentControlId implements Parcela
      * @param in Parcel
      */
     private ContentControlIdAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

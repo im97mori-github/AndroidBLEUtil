@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 abstract class BaseTimeProfileMockCallbackTest {
 
     @Test

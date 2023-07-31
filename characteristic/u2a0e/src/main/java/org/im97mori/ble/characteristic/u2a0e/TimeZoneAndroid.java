@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_ZONE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Time Zone (Characteristics UUID: 0x2A0E)
@@ -44,9 +44,7 @@ public class TimeZoneAndroid extends TimeZone implements Parcelable {
          */
         @NonNull
         public TimeZoneAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TIME_ZONE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TimeZoneAndroid(bluetoothGattCharacteristic);
+            return new TimeZoneAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class TimeZoneAndroid extends TimeZone implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A0E
      */
+    @Deprecated
     public TimeZoneAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TimeZoneAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class TimeZoneAndroid extends TimeZone implements Parcelable {
      * @param in Parcel
      */
     private TimeZoneAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

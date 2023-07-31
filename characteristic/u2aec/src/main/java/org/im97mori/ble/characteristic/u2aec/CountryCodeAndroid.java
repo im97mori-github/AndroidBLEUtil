@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.COUNTRY_CODE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Country Code (Characteristics UUID: 0x2AEC)
@@ -44,9 +44,7 @@ public class CountryCodeAndroid extends CountryCode implements Parcelable {
          */
         @NonNull
         public CountryCodeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(COUNTRY_CODE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new CountryCodeAndroid(bluetoothGattCharacteristic);
+            return new CountryCodeAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class CountryCodeAndroid extends CountryCode implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AEC
      */
+    @Deprecated
     public CountryCodeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public CountryCodeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class CountryCodeAndroid extends CountryCode implements Parcelable {
      * @param in Parcel
      */
     private CountryCodeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

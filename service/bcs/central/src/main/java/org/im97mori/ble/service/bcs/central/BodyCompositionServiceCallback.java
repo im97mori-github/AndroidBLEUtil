@@ -20,7 +20,6 @@ import java.util.UUID;
 /**
  * Body Composition Service (Service UUID: 0x181B) callback
  */
-@SuppressWarnings("unused")
 public interface BodyCompositionServiceCallback {
 
     /**

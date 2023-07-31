@@ -3,6 +3,7 @@ package org.im97mori.ble.service.uds.peripheral;
 import static org.im97mori.ble.constants.ServiceUUID.USER_DATA_SERVICE;
 
 import android.bluetooth.BluetoothGattService;
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,9 @@ public class UserDataServiceData extends ServiceData {
          */
         @Override
         @NonNull
+        @Deprecated
         public UserDataServiceData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new UserDataServiceData(in);
         }
 
@@ -354,40 +357,76 @@ public class UserDataServiceData extends ServiceData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public UserDataServiceData(@NonNull Parcel in) {
         super(in);
-        firstName = in.readParcelable(this.getClass().getClassLoader());
-        lastName = in.readParcelable(this.getClass().getClassLoader());
-        emailAddress = in.readParcelable(this.getClass().getClassLoader());
-        age = in.readParcelable(this.getClass().getClassLoader());
-        dateOfBirth = in.readParcelable(this.getClass().getClassLoader());
-        gender = in.readParcelable(this.getClass().getClassLoader());
-        weight = in.readParcelable(this.getClass().getClassLoader());
-        height = in.readParcelable(this.getClass().getClassLoader());
-        vo2Max = in.readParcelable(this.getClass().getClassLoader());
-        heartRateMax = in.readParcelable(this.getClass().getClassLoader());
-        restingHeartRate = in.readParcelable(this.getClass().getClassLoader());
-        maximumRecommendedHeartRate = in.readParcelable(this.getClass().getClassLoader());
-        aerobicThreshold = in.readParcelable(this.getClass().getClassLoader());
-        anaerobicThreshold = in.readParcelable(this.getClass().getClassLoader());
-        sportTypeForAerobicAndAnaerobicThresholds = in.readParcelable(this.getClass().getClassLoader());
-        dateOfThresholdAssessment = in.readParcelable(this.getClass().getClassLoader());
-        waistCircumference = in.readParcelable(this.getClass().getClassLoader());
-        hipCircumference = in.readParcelable(this.getClass().getClassLoader());
-        fatBurnHeartRateLowerLimit = in.readParcelable(this.getClass().getClassLoader());
-        fatBurnHeartRateUpperLimit = in.readParcelable(this.getClass().getClassLoader());
-        aerobicHeartRateLowerLimit = in.readParcelable(this.getClass().getClassLoader());
-        aerobicHeartRateUpperLimit = in.readParcelable(this.getClass().getClassLoader());
-        anaerobicHeartRateLowerLimit = in.readParcelable(this.getClass().getClassLoader());
-        anaerobicHeartRateUpperLimit = in.readParcelable(this.getClass().getClassLoader());
-        fiveZoneHeartRateLimits = in.readParcelable(this.getClass().getClassLoader());
-        threeZoneHeartRateLimits = in.readParcelable(this.getClass().getClassLoader());
-        twoZoneHeartRateLimit = in.readParcelable(this.getClass().getClassLoader());
-        language = in.readParcelable(this.getClass().getClassLoader());
-        databaseChangeIncrement = in.readParcelable(this.getClass().getClassLoader());
-        userIndex = in.readParcelable(this.getClass().getClassLoader());
-        userControlPoint = in.readParcelable(this.getClass().getClassLoader());
-        registeredUser = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            firstName = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            lastName = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            emailAddress = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            age = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            dateOfBirth = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            gender = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            weight = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            height = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            vo2Max = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            heartRateMax = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            restingHeartRate = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            maximumRecommendedHeartRate = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            aerobicThreshold = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            anaerobicThreshold = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            sportTypeForAerobicAndAnaerobicThresholds = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            dateOfThresholdAssessment = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            waistCircumference = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            hipCircumference = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            fatBurnHeartRateLowerLimit = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            fatBurnHeartRateUpperLimit = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            aerobicHeartRateLowerLimit = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            aerobicHeartRateUpperLimit = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            anaerobicHeartRateLowerLimit = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            anaerobicHeartRateUpperLimit = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            fiveZoneHeartRateLimits = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            threeZoneHeartRateLimits = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            twoZoneHeartRateLimit = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            language = in.readParcelable(this.getClass().getClassLoader(), UDSCharacteristicData.class);
+            databaseChangeIncrement = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            userIndex = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+            userControlPoint = in.readParcelable(this.getClass().getClassLoader(), UserControlPointCharacteristicData.class);
+            registeredUser = in.readParcelable(this.getClass().getClassLoader(), CharacteristicData.class);
+        } else {
+            firstName = in.readParcelable(this.getClass().getClassLoader());
+            lastName = in.readParcelable(this.getClass().getClassLoader());
+            emailAddress = in.readParcelable(this.getClass().getClassLoader());
+            age = in.readParcelable(this.getClass().getClassLoader());
+            dateOfBirth = in.readParcelable(this.getClass().getClassLoader());
+            gender = in.readParcelable(this.getClass().getClassLoader());
+            weight = in.readParcelable(this.getClass().getClassLoader());
+            height = in.readParcelable(this.getClass().getClassLoader());
+            vo2Max = in.readParcelable(this.getClass().getClassLoader());
+            heartRateMax = in.readParcelable(this.getClass().getClassLoader());
+            restingHeartRate = in.readParcelable(this.getClass().getClassLoader());
+            maximumRecommendedHeartRate = in.readParcelable(this.getClass().getClassLoader());
+            aerobicThreshold = in.readParcelable(this.getClass().getClassLoader());
+            anaerobicThreshold = in.readParcelable(this.getClass().getClassLoader());
+            sportTypeForAerobicAndAnaerobicThresholds = in.readParcelable(this.getClass().getClassLoader());
+            dateOfThresholdAssessment = in.readParcelable(this.getClass().getClassLoader());
+            waistCircumference = in.readParcelable(this.getClass().getClassLoader());
+            hipCircumference = in.readParcelable(this.getClass().getClassLoader());
+            fatBurnHeartRateLowerLimit = in.readParcelable(this.getClass().getClassLoader());
+            fatBurnHeartRateUpperLimit = in.readParcelable(this.getClass().getClassLoader());
+            aerobicHeartRateLowerLimit = in.readParcelable(this.getClass().getClassLoader());
+            aerobicHeartRateUpperLimit = in.readParcelable(this.getClass().getClassLoader());
+            anaerobicHeartRateLowerLimit = in.readParcelable(this.getClass().getClassLoader());
+            anaerobicHeartRateUpperLimit = in.readParcelable(this.getClass().getClassLoader());
+            fiveZoneHeartRateLimits = in.readParcelable(this.getClass().getClassLoader());
+            threeZoneHeartRateLimits = in.readParcelable(this.getClass().getClassLoader());
+            twoZoneHeartRateLimit = in.readParcelable(this.getClass().getClassLoader());
+            language = in.readParcelable(this.getClass().getClassLoader());
+            databaseChangeIncrement = in.readParcelable(this.getClass().getClassLoader());
+            userIndex = in.readParcelable(this.getClass().getClassLoader());
+            userControlPoint = in.readParcelable(this.getClass().getClassLoader());
+            registeredUser = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

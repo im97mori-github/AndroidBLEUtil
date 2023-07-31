@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.im97mori.ble.BLEUtilsAndroid;
 import org.im97mori.ble.characteristic.core.AlertCategoryIdBitMaskUtils;
 import org.im97mori.ble.characteristic.u2a47.SupportedNewAlertCategory;
 import org.im97mori.ble.characteristic.u2a48.SupportedUnreadAlertCategory;
@@ -155,9 +154,7 @@ public class AnpPeripheralSampleActivity extends BaseActivity implements View.On
     }
 
     protected void updateLayout() {
-        if (!BLEUtilsAndroid.isBluetoothEnabled(this)) {
-            BLEUtilsAndroid.bluetoothEnable(this);
-        } else if (mAlertNotificationProfileMockCallback.isStarted()) {
+        if (mAlertNotificationProfileMockCallback.isStarted()) {
             mConnectDisconnectButton.setText(R.string.stop);
         } else {
             mConnectDisconnectButton.setText(R.string.start);

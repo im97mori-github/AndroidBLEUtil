@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b37;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,13 +11,12 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings({"ConstantConditions", "unused"})
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -212,6 +210,7 @@ public class RegisteredUserAndroidTest {
     private static final byte[] data_00404;
     static {
         byte[] additionalData = new byte[3];
+        //noinspection DataFlowIssue
         additionalData[0] = RegisteredUser.FLAGS_REGISTERED_USER_NAME_PRESENT_FALSE
                 | RegisteredUser.FLAGS_USER_NAME_TRUNCATED_FALSE;
         additionalData[1] = 0x01;
@@ -242,9 +241,9 @@ public class RegisteredUserAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -258,10 +257,7 @@ public class RegisteredUserAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertFalse(result1.isSegmentationHeaderNotFirstSegment());
         assertTrue(result1.isSegmentationHeaderFirstSegment());
@@ -280,10 +276,7 @@ public class RegisteredUserAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertFalse(result1.isSegmentationHeaderNotFirstSegment());
         assertTrue(result1.isSegmentationHeaderFirstSegment());
@@ -302,10 +295,7 @@ public class RegisteredUserAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertTrue(result1.isSegmentationHeaderNotFirstSegment());
         assertFalse(result1.isSegmentationHeaderFirstSegment());
@@ -319,10 +309,7 @@ public class RegisteredUserAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertTrue(result1.isSegmentationHeaderNotFirstSegment());
         assertFalse(result1.isSegmentationHeaderFirstSegment());
@@ -336,10 +323,7 @@ public class RegisteredUserAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertFalse(result1.isSegmentationHeaderNotFirstSegment());
         assertTrue(result1.isSegmentationHeaderFirstSegment());
@@ -358,10 +342,7 @@ public class RegisteredUserAndroidTest {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertFalse(result1.isSegmentationHeaderNotFirstSegment());
         assertTrue(result1.isSegmentationHeaderFirstSegment());
@@ -380,10 +361,7 @@ public class RegisteredUserAndroidTest {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertTrue(result1.isSegmentationHeaderNotFirstSegment());
         assertFalse(result1.isSegmentationHeaderFirstSegment());
@@ -397,10 +375,7 @@ public class RegisteredUserAndroidTest {
     public void test_constructor_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertTrue(result1.isSegmentationHeaderNotFirstSegment());
         assertFalse(result1.isSegmentationHeaderFirstSegment());
@@ -414,10 +389,7 @@ public class RegisteredUserAndroidTest {
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertFalse(result1.isSegmentationHeaderNotFirstSegment());
         assertTrue(result1.isSegmentationHeaderFirstSegment());
@@ -436,10 +408,7 @@ public class RegisteredUserAndroidTest {
     public void test_constructor_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertFalse(result1.isSegmentationHeaderNotFirstSegment());
         assertTrue(result1.isSegmentationHeaderFirstSegment());
@@ -458,10 +427,7 @@ public class RegisteredUserAndroidTest {
     public void test_constructor_00403() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertFalse(result1.isSegmentationHeaderNotFirstSegment());
         assertTrue(result1.isSegmentationHeaderFirstSegment());
@@ -480,10 +446,7 @@ public class RegisteredUserAndroidTest {
     public void test_constructor_00404() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         assertEquals(data[0], result1.getSegmentationHeader());
         assertFalse(result1.isSegmentationHeaderNotFirstSegment());
         assertTrue(result1.isSegmentationHeaderFirstSegment());
@@ -502,10 +465,7 @@ public class RegisteredUserAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -521,10 +481,7 @@ public class RegisteredUserAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -532,10 +489,7 @@ public class RegisteredUserAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RegisteredUserAndroid result1 = new RegisteredUserAndroid(bluetoothGattCharacteristic);
+        RegisteredUserAndroid result1 = new RegisteredUserAndroid(data);
         RegisteredUserAndroid result2 = RegisteredUserAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

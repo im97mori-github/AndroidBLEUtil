@@ -1,6 +1,9 @@
 package org.im97mori.ble.descriptor.u2900;
 
-import android.bluetooth.BluetoothGattDescriptor;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import android.os.Build;
 import android.os.Parcel;
 
@@ -8,11 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
@@ -74,9 +72,9 @@ public class CharacteristicExtendedPropertiesAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -90,10 +88,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result = new CharacteristicExtendedPropertiesAndroid(data);
         assertArrayEquals(data, result.getProperties());
         assertTrue(result.isPropertiesReliableWriteDisabled());
         assertFalse(result.isPropertiesReliableWriteEnabled());
@@ -103,10 +98,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result = new CharacteristicExtendedPropertiesAndroid(data);
         assertArrayEquals(data, result.getProperties());
         assertFalse(result.isPropertiesReliableWriteDisabled());
         assertTrue(result.isPropertiesReliableWriteEnabled());
@@ -116,10 +108,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_constructor_00003() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result = new CharacteristicExtendedPropertiesAndroid(data);
         assertArrayEquals(data, result.getProperties());
         assertTrue(result.isPropertiesWritableAuxiliariesDisabled());
         assertFalse(result.isPropertiesWritableAuxiliariesEnabled());
@@ -129,10 +118,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_constructor_00004() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result = new CharacteristicExtendedPropertiesAndroid(data);
         assertArrayEquals(data, result.getProperties());
         assertFalse(result.isPropertiesWritableAuxiliariesDisabled());
         assertTrue(result.isPropertiesWritableAuxiliariesEnabled());
@@ -194,10 +180,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -210,10 +193,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -226,10 +206,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_parcelable_1_00003() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -242,10 +219,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_parcelable_1_00004() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -258,10 +232,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -269,10 +240,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -280,10 +248,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_parcelable_2_00003() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -291,10 +256,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_parcelable_2_00004() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -302,10 +264,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(data);
         CharacteristicExtendedPropertiesAndroid result2 = CharacteristicExtendedPropertiesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -314,10 +273,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(data);
         CharacteristicExtendedPropertiesAndroid result2 = CharacteristicExtendedPropertiesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -326,10 +282,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_parcelable_3_00003() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(data);
         CharacteristicExtendedPropertiesAndroid result2 = CharacteristicExtendedPropertiesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -338,10 +291,7 @@ public class CharacteristicExtendedPropertiesAndroidTest {
     public void test_parcelable_3_00004() {
         byte[] data = getData();
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(data);
-
-        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(bluetoothGattDescriptor);
+        CharacteristicExtendedPropertiesAndroid result1 = new CharacteristicExtendedPropertiesAndroid(data);
         CharacteristicExtendedPropertiesAndroid result2 = CharacteristicExtendedPropertiesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

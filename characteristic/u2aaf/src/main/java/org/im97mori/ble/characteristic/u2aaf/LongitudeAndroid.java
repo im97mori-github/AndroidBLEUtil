@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.LONGITUDE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Longitude (Characteristics UUID: 0x2AAF)
@@ -44,9 +44,7 @@ public class LongitudeAndroid extends Longitude implements Parcelable {
          */
         @NonNull
         public LongitudeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(LONGITUDE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new LongitudeAndroid(bluetoothGattCharacteristic);
+            return new LongitudeAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class LongitudeAndroid extends Longitude implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AAF
      */
+    @Deprecated
     public LongitudeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public LongitudeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class LongitudeAndroid extends Longitude implements Parcelable {
      * @param in Parcel
      */
     private LongitudeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

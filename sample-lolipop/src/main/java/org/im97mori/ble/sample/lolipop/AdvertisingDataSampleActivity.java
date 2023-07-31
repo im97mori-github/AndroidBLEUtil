@@ -473,7 +473,6 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
     private ArrayAdapter<Pair<String, String>> mAdapter;
     private ListView mListView;
 
-    private BluetoothAdapter mBluetoothAdapter;
     private BluetoothLeScanner mBluetoothLeScanner;
 
     private FilteredScanCallback mFilteredScanCallback;
@@ -506,9 +505,9 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
 
         mConnectDisconnectButton.setOnClickListener(this);
 
-        mBluetoothAdapter = ((BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
-        if (mBluetoothAdapter != null) {
-            mBluetoothLeScanner = mBluetoothAdapter.getBluetoothLeScanner();
+        BluetoothAdapter bluetoothAdapter = ((BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
+        if (bluetoothAdapter != null) {
+            mBluetoothLeScanner = bluetoothAdapter.getBluetoothLeScanner();
         }
     }
 
@@ -525,9 +524,7 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
     }
 
     protected void updateLayout() {
-        if (mBluetoothAdapter != null && !mBluetoothAdapter.isEnabled()) {
-            mBluetoothAdapter.enable();
-        } else if (mBluetoothLeScanner == null) {
+        if (mBluetoothLeScanner == null) {
             mConnectDisconnectButton.setVisibility(View.GONE);
         } else {
             mConnectDisconnectButton.setVisibility(View.VISIBLE);

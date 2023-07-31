@@ -23,7 +23,7 @@ import org.junit.Test;
 
 import java.util.Random;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue */
 public class ExecuteReliableWriteTaskTest extends AbstractCentralTest {
 
     @Test

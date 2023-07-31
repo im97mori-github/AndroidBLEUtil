@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b29;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -28,10 +26,7 @@ public class ClientSupportedFeaturesAndroidTest {
         data[ClientSupportedFeatures.CLIENT_FEATYRES_ROBUST_CACHING_OCTET] = ClientSupportedFeatures.CLIENT_FEATYRES_ROBUST_CACHING_BIT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ClientSupportedFeaturesAndroid result1 = new ClientSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ClientSupportedFeaturesAndroid result1 = new ClientSupportedFeaturesAndroid(data);
         assertArrayEquals(data, result1.getClientFeatures());
         assertTrue(result1.isClientFeatresRobustCachingSuppreted());
     }
@@ -43,10 +38,7 @@ public class ClientSupportedFeaturesAndroidTest {
         data[ClientSupportedFeatures.CLIENT_FEATYRES_ROBUST_CACHING_OCTET] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ClientSupportedFeaturesAndroid result1 = new ClientSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ClientSupportedFeaturesAndroid result1 = new ClientSupportedFeaturesAndroid(data);
         assertArrayEquals(data, result1.getClientFeatures());
         assertTrue(result1.isClientFeatresRobustCachingSuppreted());
     }
@@ -58,10 +50,7 @@ public class ClientSupportedFeaturesAndroidTest {
         data[ClientSupportedFeatures.CLIENT_FEATYRES_ROBUST_CACHING_OCTET] = ~ClientSupportedFeatures.CLIENT_FEATYRES_ROBUST_CACHING_BIT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ClientSupportedFeaturesAndroid result1 = new ClientSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ClientSupportedFeaturesAndroid result1 = new ClientSupportedFeaturesAndroid(data);
         assertArrayEquals(data, result1.getClientFeatures());
         assertFalse(result1.isClientFeatresRobustCachingSuppreted());
     }
@@ -74,10 +63,7 @@ public class ClientSupportedFeaturesAndroidTest {
         data[ClientSupportedFeatures.CLIENT_FEATYRES_ROBUST_CACHING_OCTET + 1] = ClientSupportedFeatures.CLIENT_FEATYRES_ROBUST_CACHING_BIT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ClientSupportedFeaturesAndroid result1 = new ClientSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ClientSupportedFeaturesAndroid result1 = new ClientSupportedFeaturesAndroid(data);
         assertArrayEquals(data, result1.getClientFeatures());
         assertFalse(result1.isClientFeatresRobustCachingSuppreted());
     }
@@ -89,10 +75,7 @@ public class ClientSupportedFeaturesAndroidTest {
         data[ClientSupportedFeatures.CLIENT_FEATYRES_ROBUST_CACHING_OCTET] = ~ClientSupportedFeatures.CLIENT_FEATYRES_ROBUST_CACHING_BIT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ClientSupportedFeaturesAndroid result1 = new ClientSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ClientSupportedFeaturesAndroid result1 = new ClientSupportedFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -108,10 +91,7 @@ public class ClientSupportedFeaturesAndroidTest {
         data[ClientSupportedFeatures.CLIENT_FEATYRES_ROBUST_CACHING_OCTET] = ~ClientSupportedFeatures.CLIENT_FEATYRES_ROBUST_CACHING_BIT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ClientSupportedFeaturesAndroid result1 = new ClientSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ClientSupportedFeaturesAndroid result1 = new ClientSupportedFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -120,10 +100,7 @@ public class ClientSupportedFeaturesAndroidTest {
         byte[] data = new byte[ClientSupportedFeatures.CLIENT_FEATYRES_ROBUST_CACHING_OCTET + 1];
         data[ClientSupportedFeatures.CLIENT_FEATYRES_ROBUST_CACHING_OCTET] = ~ClientSupportedFeatures.CLIENT_FEATYRES_ROBUST_CACHING_BIT;
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ClientSupportedFeaturesAndroid result1 = new ClientSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ClientSupportedFeaturesAndroid result1 = new ClientSupportedFeaturesAndroid(data);
         ClientSupportedFeaturesAndroid result2 = ClientSupportedFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

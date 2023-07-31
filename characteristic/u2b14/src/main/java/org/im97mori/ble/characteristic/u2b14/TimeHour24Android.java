@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_HOUR_24_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Time Hour 24 (Characteristics UUID: 0x2B14)
@@ -44,9 +44,7 @@ public class TimeHour24Android extends TimeHour24 implements Parcelable {
          */
         @NonNull
         public TimeHour24Android createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TIME_HOUR_24_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TimeHour24Android(bluetoothGattCharacteristic);
+            return new TimeHour24Android(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class TimeHour24Android extends TimeHour24 implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B14
      */
+    @Deprecated
     public TimeHour24Android(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TimeHour24Android(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class TimeHour24Android extends TimeHour24 implements Parcelable {
      * @param in Parcel
      */
     private TimeHour24Android(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

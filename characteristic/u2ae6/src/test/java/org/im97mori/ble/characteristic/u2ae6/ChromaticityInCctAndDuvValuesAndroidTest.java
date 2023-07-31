@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ae6;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,17 +9,16 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class ChromaticityinCctAndDuvValuesAndroidTest {
+public class ChromaticityInCctAndDuvValuesAndroidTest {
 
     @Test
     public void test_constructor_00001() {
@@ -29,10 +27,7 @@ public class ChromaticityinCctAndDuvValuesAndroidTest {
         data[ 0] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticityToleranceAndroid result = new ChromaticityToleranceAndroid(bluetoothGattCharacteristic);
+        ChromaticityToleranceAndroid result = new ChromaticityToleranceAndroid(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result.getChromaticityTolerance());
         assertEquals(BLEUtils.createUInt8(data, 0) * ChromaticityTolerance.CHROMATICITY_VALUE_UNIT, result.getChromaticityToleranceWithUnit(), 0);
     }
@@ -44,10 +39,7 @@ public class ChromaticityinCctAndDuvValuesAndroidTest {
         data[ 0] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticityToleranceAndroid result = new ChromaticityToleranceAndroid(bluetoothGattCharacteristic);
+        ChromaticityToleranceAndroid result = new ChromaticityToleranceAndroid(data);
         assertEquals(BLEUtils.createUInt8(data, 0), result.getChromaticityTolerance());
         assertEquals(BLEUtils.createUInt8(data, 0) * ChromaticityTolerance.CHROMATICITY_VALUE_UNIT, result.getChromaticityToleranceWithUnit(), 0);
     }
@@ -77,10 +69,7 @@ public class ChromaticityinCctAndDuvValuesAndroidTest {
         data[ 0] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticityToleranceAndroid result1 = new ChromaticityToleranceAndroid(bluetoothGattCharacteristic);
+        ChromaticityToleranceAndroid result1 = new ChromaticityToleranceAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -96,10 +85,7 @@ public class ChromaticityinCctAndDuvValuesAndroidTest {
         data[ 0] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticityToleranceAndroid result1 = new ChromaticityToleranceAndroid(bluetoothGattCharacteristic);
+        ChromaticityToleranceAndroid result1 = new ChromaticityToleranceAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -115,10 +101,7 @@ public class ChromaticityinCctAndDuvValuesAndroidTest {
         data[ 0] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticityToleranceAndroid result1 = new ChromaticityToleranceAndroid(bluetoothGattCharacteristic);
+        ChromaticityToleranceAndroid result1 = new ChromaticityToleranceAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -129,10 +112,7 @@ public class ChromaticityinCctAndDuvValuesAndroidTest {
         data[ 0] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticityToleranceAndroid result1 = new ChromaticityToleranceAndroid(bluetoothGattCharacteristic);
+        ChromaticityToleranceAndroid result1 = new ChromaticityToleranceAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -143,10 +123,7 @@ public class ChromaticityinCctAndDuvValuesAndroidTest {
         data[ 0] = 0x00;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticityToleranceAndroid result1 = new ChromaticityToleranceAndroid(bluetoothGattCharacteristic);
+        ChromaticityToleranceAndroid result1 = new ChromaticityToleranceAndroid(data);
         ChromaticityToleranceAndroid result2 = ChromaticityToleranceAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -158,10 +135,7 @@ public class ChromaticityinCctAndDuvValuesAndroidTest {
         data[ 0] = (byte) 0xff;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ChromaticityToleranceAndroid result1 = new ChromaticityToleranceAndroid(bluetoothGattCharacteristic);
+        ChromaticityToleranceAndroid result1 = new ChromaticityToleranceAndroid(data);
         ChromaticityToleranceAndroid result2 = ChromaticityToleranceAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

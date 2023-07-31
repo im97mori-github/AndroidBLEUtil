@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Barometric Pressure Trend (Characteristics UUID: 0x2AA3)
@@ -44,9 +44,7 @@ public class BarometricPressureTrendAndroid extends BarometricPressureTrend impl
          */
         @NonNull
         public BarometricPressureTrendAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BAROMETRIC_PRESSURE_TREND_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new BarometricPressureTrendAndroid(bluetoothGattCharacteristic);
+            return new BarometricPressureTrendAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class BarometricPressureTrendAndroid extends BarometricPressureTrend impl
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2AA3
      */
+    @Deprecated
     public BarometricPressureTrendAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public BarometricPressureTrendAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class BarometricPressureTrendAndroid extends BarometricPressureTrend impl
      * @param in Parcel
      */
     private BarometricPressureTrendAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

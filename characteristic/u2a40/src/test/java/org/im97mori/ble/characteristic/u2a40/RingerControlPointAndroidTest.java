@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a40;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -29,10 +27,7 @@ public class RingerControlPointAndroidTest {
         data[ 0] = RingerControlPoint.RINGER_CONTROL_POINT_SILENT_MODE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RingerControlPointAndroid result1 = new RingerControlPointAndroid(bluetoothGattCharacteristic);
+        RingerControlPointAndroid result1 = new RingerControlPointAndroid(data);
         assertEquals(RingerControlPoint.RINGER_CONTROL_POINT_SILENT_MODE, result1.getRingerControlPoint());
         assertTrue(result1.isRingerControlPointSilentMode());
         assertFalse(result1.isRingerControlPointMuteOnce());
@@ -46,10 +41,7 @@ public class RingerControlPointAndroidTest {
         data[ 0] = RingerControlPoint.RINGER_CONTROL_POINT_MUTE_ONCE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RingerControlPointAndroid result1 = new RingerControlPointAndroid(bluetoothGattCharacteristic);
+        RingerControlPointAndroid result1 = new RingerControlPointAndroid(data);
         assertEquals(RingerControlPoint.RINGER_CONTROL_POINT_MUTE_ONCE, result1.getRingerControlPoint());
         assertFalse(result1.isRingerControlPointSilentMode());
         assertTrue(result1.isRingerControlPointMuteOnce());
@@ -63,10 +55,7 @@ public class RingerControlPointAndroidTest {
         data[ 0] = RingerControlPoint.RINGER_CONTROL_POINT_CANCEL_SILENT_MODE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RingerControlPointAndroid result1 = new RingerControlPointAndroid(bluetoothGattCharacteristic);
+        RingerControlPointAndroid result1 = new RingerControlPointAndroid(data);
         assertEquals(RingerControlPoint.RINGER_CONTROL_POINT_CANCEL_SILENT_MODE, result1.getRingerControlPoint());
         assertFalse(result1.isRingerControlPointSilentMode());
         assertFalse(result1.isRingerControlPointMuteOnce());
@@ -88,10 +77,7 @@ public class RingerControlPointAndroidTest {
         data[ 0] = RingerControlPoint.RINGER_CONTROL_POINT_SILENT_MODE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RingerControlPointAndroid result1 = new RingerControlPointAndroid(bluetoothGattCharacteristic);
+        RingerControlPointAndroid result1 = new RingerControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -106,24 +92,18 @@ public class RingerControlPointAndroidTest {
         data[ 0] = RingerControlPoint.RINGER_CONTROL_POINT_SILENT_MODE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RingerControlPointAndroid result1 = new RingerControlPointAndroid(bluetoothGattCharacteristic);
+        RingerControlPointAndroid result1 = new RingerControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
     @Test
-    public void test_parcelabl003() {
+    public void test_parcelable003() {
         //@formatter:off
         byte[] data = new byte[1];
         data[ 0] = RingerControlPoint.RINGER_CONTROL_POINT_SILENT_MODE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RingerControlPointAndroid result1 = new RingerControlPointAndroid(bluetoothGattCharacteristic);
+        RingerControlPointAndroid result1 = new RingerControlPointAndroid(data);
         RingerControlPointAndroid result2 = RingerControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -334,6 +334,11 @@ public class BasCallbackSample extends BatteryServiceMockCallback implements Bat
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }
@@ -356,7 +361,9 @@ public class BasCallbackSample extends BatteryServiceMockCallback implements Bat
         super.onDeviceDisconnected(bleServerConnection, device);
     }
 
+    /** @noinspection deprecation*/
     @Override
+    @Deprecated
     public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
         callback(bluetoothGattService.getUuid());
         return super.onServiceAddSuccess(taskId, bleServerConnection, bluetoothGattService, argument);
@@ -372,7 +379,9 @@ public class BasCallbackSample extends BatteryServiceMockCallback implements Bat
         callback(argument);
     }
 
+    /** @noinspection deprecation*/
     @Override
+    @Deprecated
     public void onServiceRemoveSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
         callback(argument);
         super.onServiceRemoveSuccess(taskId, bleServerConnection, bluetoothGattService, argument);

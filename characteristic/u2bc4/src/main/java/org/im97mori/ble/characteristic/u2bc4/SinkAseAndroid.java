@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SINK_ASE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Sink ASE (Characteristics UUID: 0x2BC4)
@@ -45,9 +45,7 @@ public class SinkAseAndroid extends SinkAse implements Parcelable {
          */
         @NonNull
         public SinkAseAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SINK_ASE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new SinkAseAndroid(bluetoothGattCharacteristic);
+            return new SinkAseAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class SinkAseAndroid extends SinkAse implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BC4
      */
+    @Deprecated
     public SinkAseAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public SinkAseAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class SinkAseAndroid extends SinkAse implements Parcelable {
      * @param in Parcel
      */
     private SinkAseAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

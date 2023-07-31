@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a16;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -29,10 +27,7 @@ public class TimeUpdateControlPointAndroidTest {
         data[ 0] = TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_GET_REFERENCE_UPDATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(bluetoothGattCharacteristic);
+        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(data);
         assertEquals(TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_GET_REFERENCE_UPDATE, result1.getTimeUpdateControlPoint());
         assertTrue(result1.isTimeUpdateControlPointGetReferenceUpdate());
         assertFalse(result1.isTimeUpdateControlPointCancelReferenceUpdate());
@@ -45,10 +40,7 @@ public class TimeUpdateControlPointAndroidTest {
         data[ 0] = TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_CANCEL_REFERENCE_UPDATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(bluetoothGattCharacteristic);
+        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(data);
         assertEquals(TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_CANCEL_REFERENCE_UPDATE, result1.getTimeUpdateControlPoint());
         assertFalse(result1.isTimeUpdateControlPointGetReferenceUpdate());
         assertTrue(result1.isTimeUpdateControlPointCancelReferenceUpdate());
@@ -70,10 +62,7 @@ public class TimeUpdateControlPointAndroidTest {
         data[ 0] = TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_GET_REFERENCE_UPDATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(bluetoothGattCharacteristic);
+        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -89,10 +78,7 @@ public class TimeUpdateControlPointAndroidTest {
         data[ 0] = TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_CANCEL_REFERENCE_UPDATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(bluetoothGattCharacteristic);
+        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -108,10 +94,7 @@ public class TimeUpdateControlPointAndroidTest {
         data[ 0] = TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_GET_REFERENCE_UPDATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(bluetoothGattCharacteristic);
+        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -122,10 +105,7 @@ public class TimeUpdateControlPointAndroidTest {
         data[ 0] = TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_CANCEL_REFERENCE_UPDATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(bluetoothGattCharacteristic);
+        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -136,10 +116,7 @@ public class TimeUpdateControlPointAndroidTest {
         data[ 0] = TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_GET_REFERENCE_UPDATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(bluetoothGattCharacteristic);
+        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(data);
         TimeUpdateControlPointAndroid result2 = TimeUpdateControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -151,10 +128,7 @@ public class TimeUpdateControlPointAndroidTest {
         data[ 0] = TimeUpdateControlPoint.TIME_UPDATE_CONTROL_POINT_CANCEL_REFERENCE_UPDATE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(bluetoothGattCharacteristic);
+        TimeUpdateControlPointAndroid result1 = new TimeUpdateControlPointAndroid(data);
         TimeUpdateControlPointAndroid result2 = TimeUpdateControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

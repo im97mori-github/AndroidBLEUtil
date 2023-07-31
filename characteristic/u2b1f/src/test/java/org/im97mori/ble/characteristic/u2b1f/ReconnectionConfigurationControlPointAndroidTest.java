@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2b1f;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,7 +10,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -19,7 +17,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings({"unused", "ConstantConditions"})
+/** @noinspection DataFlowIssue*/
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -1562,9 +1561,9 @@ public class ReconnectionConfigurationControlPointAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -1578,10 +1577,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_ENABLE_DISCONNECT, result1.getOpcode());
         assertTrue(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -1607,10 +1603,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_ENABLE_DISCONNECT, result1.getOpcode());
         assertTrue(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -1637,10 +1630,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_GET_ACTUAL_COMMUNICATION_PARAMETERS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertTrue(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -1666,10 +1656,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_GET_ACTUAL_COMMUNICATION_PARAMETERS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertTrue(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -1696,10 +1683,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROPOSE_SETTINGS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -1746,10 +1730,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROPOSE_SETTINGS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -1796,10 +1777,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROPOSE_SETTINGS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -1846,10 +1824,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROPOSE_SETTINGS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -1895,10 +1870,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00205() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROPOSE_SETTINGS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -1944,10 +1916,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00206() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROPOSE_SETTINGS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -1994,10 +1963,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00207() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROPOSE_SETTINGS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2043,10 +2009,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00208() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROPOSE_SETTINGS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2092,10 +2055,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00209() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROPOSE_SETTINGS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2142,10 +2102,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00210() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROPOSE_SETTINGS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2192,10 +2149,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00211() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROPOSE_SETTINGS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2243,10 +2197,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_ACTIVATE_STORED_SETTINGS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2273,10 +2224,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_ACTIVATE_STORED_SETTINGS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2304,10 +2252,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_GET_MAX_VALUES, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2333,10 +2278,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_GET_MAX_VALUES, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2363,10 +2305,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_GET_MIN_VALUES, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2392,10 +2331,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_GET_MIN_VALUES, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2422,10 +2358,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_GET_STORED_VALUES, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2452,10 +2385,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_GET_STORED_VALUES, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2483,10 +2413,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_SET_WHITE_LIST_TIMER, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2515,10 +2442,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_SET_WHITE_LIST_TIMER, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2547,10 +2471,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_SET_WHITE_LIST_TIMER, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2579,10 +2500,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_SET_WHITE_LIST_TIMER, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2612,10 +2530,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_GET_WHITE_LIST_TIMER, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2641,10 +2556,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_GET_WHITE_LIST_TIMER, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2671,10 +2583,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_SET_ADVERTISEMENT_CONFIGURATION, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2704,10 +2613,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_SET_ADVERTISEMENT_CONFIGURATION, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2737,10 +2643,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00903() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_SET_ADVERTISEMENT_CONFIGURATION, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2770,10 +2673,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00904() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_SET_ADVERTISEMENT_CONFIGURATION, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2803,10 +2703,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_00905() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_SET_ADVERTISEMENT_CONFIGURATION, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2837,10 +2734,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_UPGRADE_TO_LESC_ONLY, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2868,10 +2762,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_UPGRADE_TO_LESC_ONLY, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2899,10 +2790,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_UPGRADE_TO_LESC_ONLY, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2931,10 +2819,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_SWITCH_OOB_PAIRING, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2962,10 +2847,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_SWITCH_OOB_PAIRING, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -2993,10 +2875,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_SWITCH_OOB_PAIRING, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3025,10 +2904,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_LIMITED_ACCESS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3056,10 +2932,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_LIMITED_ACCESS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3087,10 +2960,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_LIMITED_ACCESS, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3119,10 +2989,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3176,10 +3043,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3233,10 +3097,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3290,10 +3151,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3347,10 +3205,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01305() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3404,10 +3259,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01306() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3461,10 +3313,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01307() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3534,10 +3383,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01308() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3607,10 +3453,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01309() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3680,10 +3523,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01310() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3753,10 +3593,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01311() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3826,10 +3663,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01312() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3899,10 +3733,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01313() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -3972,10 +3803,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01314() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4045,10 +3873,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01315() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4118,10 +3943,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01316() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4191,10 +4013,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01317() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4264,10 +4083,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01318() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4337,10 +4153,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01319() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4410,10 +4223,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01320() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4483,10 +4293,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01321() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4556,10 +4363,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01322() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4629,10 +4433,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01323() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4686,10 +4487,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01324() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4743,10 +4541,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01325() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4800,10 +4595,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01326() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4857,10 +4649,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01327() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4914,10 +4703,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01328() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -4971,10 +4757,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01329() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5028,10 +4811,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01330() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5085,10 +4865,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01331() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5142,10 +4919,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01332() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5199,10 +4973,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01333() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5256,10 +5027,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01334() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5313,10 +5081,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01335() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5370,10 +5135,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01336() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5427,10 +5189,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01337() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5484,10 +5243,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01338() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5541,10 +5297,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01339() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5598,10 +5351,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01340() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5655,10 +5405,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01341() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5712,10 +5459,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01342() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5769,10 +5513,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01343() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5826,10 +5567,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01344() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5883,10 +5621,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01345() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5940,10 +5675,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01346() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -5997,10 +5729,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01347() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6054,10 +5783,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01348() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6111,10 +5837,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01349() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6168,10 +5891,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01350() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6225,10 +5945,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01351() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6282,10 +5999,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01352() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6339,10 +6053,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01353() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6396,10 +6107,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01354() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6453,10 +6161,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01355() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6510,10 +6215,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01356() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6567,10 +6269,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01357() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6624,10 +6323,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01358() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6681,10 +6377,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01359() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6738,10 +6431,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01360() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6795,10 +6485,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01361() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6852,10 +6539,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01362() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6909,10 +6593,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01363() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -6967,10 +6648,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01364() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -7041,10 +6719,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01365() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_PROCEDURE_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -7115,10 +6790,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_COMMUNICATION_PARAMETER_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -7184,10 +6856,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_COMMUNICATION_PARAMETER_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -7253,10 +6922,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01403() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_COMMUNICATION_PARAMETER_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -7322,10 +6988,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01404() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_COMMUNICATION_PARAMETER_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -7392,10 +7055,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_WHITE_LIST_TIMER_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -7427,10 +7087,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_WHITE_LIST_TIMER_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -7462,10 +7119,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_WHITE_LIST_TIMER_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -7497,10 +7151,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_WHITE_LIST_TIMER_RESPONSE, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -7533,10 +7184,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_CLIENT_PARAMETER_INDICATION, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -7583,10 +7231,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_CLIENT_PARAMETER_INDICATION, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -7633,10 +7278,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_constructor_01603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertEquals(ReconnectionConfigurationControlPoint.OPCODE_CLIENT_PARAMETER_INDICATION, result1.getOpcode());
         assertFalse(result1.isOpcodeEnableDisconnect(result1.getOpcode()));
         assertFalse(result1.isOpcodeGetActualCommunicationParameters(result1.getOpcode()));
@@ -7702,10 +7344,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7721,10 +7360,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7740,10 +7376,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7759,10 +7392,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7778,10 +7408,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7797,10 +7424,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7816,10 +7440,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7835,10 +7456,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7854,10 +7472,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00205() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7873,10 +7488,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00206() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7892,10 +7504,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00207() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7911,10 +7520,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00208() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7930,10 +7536,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00209() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7949,10 +7552,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00210() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7968,10 +7568,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00211() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -7987,10 +7584,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8006,10 +7600,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8025,10 +7616,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8044,10 +7632,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8063,10 +7648,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8082,10 +7664,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8101,10 +7680,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8120,10 +7696,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8139,10 +7712,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8158,10 +7728,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8177,10 +7744,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8196,10 +7760,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8215,10 +7776,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8234,10 +7792,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8253,10 +7808,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8272,10 +7824,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8291,10 +7840,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00903() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8310,10 +7856,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00904() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8329,10 +7872,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_00905() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8348,10 +7888,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8367,10 +7904,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8386,10 +7920,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8405,10 +7936,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8424,10 +7952,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8443,10 +7968,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8462,10 +7984,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8481,10 +8000,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8500,10 +8016,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8519,10 +8032,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8538,10 +8048,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8557,10 +8064,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8576,10 +8080,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8595,10 +8096,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01305() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8614,10 +8112,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01306() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8633,10 +8128,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01307() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8652,10 +8144,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01308() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8671,10 +8160,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01309() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8690,10 +8176,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01310() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8709,10 +8192,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01311() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8728,10 +8208,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01312() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8747,10 +8224,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01313() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8766,10 +8240,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01314() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8785,10 +8256,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01315() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8804,10 +8272,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01316() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8823,10 +8288,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01317() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8842,10 +8304,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01318() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8861,10 +8320,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01319() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8880,10 +8336,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01320() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8899,10 +8352,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01321() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8918,10 +8368,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01322() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8937,10 +8384,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01323() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8956,10 +8400,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01324() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8975,10 +8416,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01325() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -8994,10 +8432,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01326() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9013,10 +8448,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01327() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9032,10 +8464,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01328() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9051,10 +8480,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01329() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9070,10 +8496,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01330() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9089,10 +8512,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01331() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9108,10 +8528,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01332() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9127,10 +8544,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01333() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9146,10 +8560,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01334() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9165,10 +8576,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01335() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9184,10 +8592,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01336() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9203,10 +8608,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01337() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9222,10 +8624,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01338() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9241,10 +8640,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01339() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9260,10 +8656,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01340() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9279,10 +8672,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01341() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9298,10 +8688,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01342() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9317,10 +8704,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01343() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9336,10 +8720,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01344() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9355,10 +8736,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01345() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9374,10 +8752,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01346() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9393,10 +8768,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01347() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9412,10 +8784,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01348() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9431,10 +8800,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01349() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9450,10 +8816,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01350() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9469,10 +8832,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01351() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9488,10 +8848,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01352() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9507,10 +8864,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01353() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9526,10 +8880,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01354() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9545,10 +8896,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01355() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9564,10 +8912,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01356() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9583,10 +8928,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01357() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9602,10 +8944,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01358() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9621,10 +8960,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01359() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9640,10 +8976,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01360() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9659,10 +8992,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01361() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9678,10 +9008,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01362() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9697,10 +9024,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01363() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9716,10 +9040,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01364() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9735,10 +9056,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01365() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9754,10 +9072,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9773,10 +9088,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9792,10 +9104,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01403() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9811,10 +9120,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01404() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9830,10 +9136,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9849,10 +9152,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9868,10 +9168,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9887,10 +9184,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9906,10 +9200,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9925,10 +9216,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9944,10 +9232,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_1_01603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -9963,10 +9248,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9974,10 +9256,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9985,10 +9264,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -9996,10 +9272,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10007,10 +9280,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10018,10 +9288,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10029,10 +9296,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10040,10 +9304,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10051,10 +9312,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00205() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10062,10 +9320,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00206() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10073,10 +9328,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00207() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10084,10 +9336,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00208() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10095,10 +9344,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00209() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10106,10 +9352,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00210() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10117,10 +9360,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00211() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10128,10 +9368,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10139,10 +9376,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10150,10 +9384,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10161,10 +9392,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10172,10 +9400,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10183,10 +9408,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10194,10 +9416,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10205,10 +9424,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10216,10 +9432,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10227,10 +9440,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10238,10 +9448,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10249,10 +9456,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10260,10 +9464,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10271,10 +9472,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10282,10 +9480,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10293,10 +9488,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10304,10 +9496,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00903() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10315,10 +9504,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00904() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10326,10 +9512,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_00905() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10337,10 +9520,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10348,10 +9528,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10359,10 +9536,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10370,10 +9544,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10381,10 +9552,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10392,10 +9560,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10403,10 +9568,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10414,10 +9576,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10425,10 +9584,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10436,10 +9592,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10447,10 +9600,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10458,10 +9608,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10469,10 +9616,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10480,10 +9624,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01305() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10491,10 +9632,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01306() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10502,10 +9640,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01307() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10513,10 +9648,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01308() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10524,10 +9656,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01309() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10535,10 +9664,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01310() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10546,10 +9672,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01311() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10557,10 +9680,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01312() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10568,10 +9688,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01313() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10579,10 +9696,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01314() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10590,10 +9704,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01315() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10601,10 +9712,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01316() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10612,10 +9720,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01317() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10623,10 +9728,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01318() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10634,10 +9736,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01319() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10645,10 +9744,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01320() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10656,10 +9752,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01321() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10667,10 +9760,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01322() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10678,10 +9768,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01323() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10689,10 +9776,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01324() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10700,10 +9784,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01325() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10711,10 +9792,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01326() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10722,10 +9800,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01327() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10733,10 +9808,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01328() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10744,10 +9816,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01329() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10755,10 +9824,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01330() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10766,10 +9832,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01331() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10777,10 +9840,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01332() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10788,10 +9848,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01333() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10799,10 +9856,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01334() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10810,10 +9864,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01335() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10821,10 +9872,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01336() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10832,10 +9880,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01337() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10843,10 +9888,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01338() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10854,10 +9896,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01339() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10865,10 +9904,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01340() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10876,10 +9912,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01341() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10887,10 +9920,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01342() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10898,10 +9928,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01343() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10909,10 +9936,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01344() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10920,10 +9944,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01345() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10931,10 +9952,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01346() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10942,10 +9960,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01347() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10953,10 +9968,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01348() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10964,10 +9976,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01349() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10975,10 +9984,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01350() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10986,10 +9992,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01351() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -10997,10 +10000,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01352() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11008,10 +10008,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01353() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11019,10 +10016,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01354() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11030,10 +10024,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01355() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11041,10 +10032,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01356() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11052,10 +10040,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01357() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11063,10 +10048,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01358() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11074,10 +10056,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01359() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11085,10 +10064,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01360() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11096,10 +10072,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01361() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11107,10 +10080,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01362() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11118,10 +10088,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01363() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11129,10 +10096,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01364() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11140,10 +10104,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01365() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11151,10 +10112,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11162,10 +10120,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11173,10 +10128,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01403() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11184,10 +10136,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01404() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11195,10 +10144,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11206,10 +10152,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11217,10 +10160,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11228,10 +10168,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11239,10 +10176,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11250,10 +10184,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11261,10 +10192,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_2_01603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -11272,10 +10200,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11284,10 +10209,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11296,10 +10218,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11308,10 +10227,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11320,10 +10236,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11332,10 +10245,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11344,10 +10254,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11356,10 +10263,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00204() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11368,10 +10272,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00205() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11380,10 +10281,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00206() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11392,10 +10290,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00207() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11404,10 +10299,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00208() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11416,10 +10308,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00209() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11428,10 +10317,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00210() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11440,10 +10326,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00211() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11452,10 +10335,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11464,10 +10344,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11476,10 +10353,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11488,10 +10362,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11500,10 +10371,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11512,10 +10380,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11524,10 +10389,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11536,10 +10398,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11548,10 +10407,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11560,10 +10416,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11572,10 +10425,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00703() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11584,10 +10434,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00704() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11596,10 +10443,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11608,10 +10452,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11620,10 +10461,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11632,10 +10470,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11644,10 +10479,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00903() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11656,10 +10488,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00904() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11668,10 +10497,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_00905() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11680,10 +10506,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11692,10 +10515,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11704,10 +10524,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01003() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11716,10 +10533,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11728,10 +10542,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11740,10 +10551,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01103() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11752,10 +10560,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11764,10 +10569,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11776,10 +10578,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01203() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11788,10 +10587,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11800,10 +10596,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11812,10 +10605,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01303() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11824,10 +10614,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01304() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11836,10 +10623,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01305() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11848,10 +10632,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01306() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11860,10 +10641,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01307() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11872,10 +10650,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01308() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11884,10 +10659,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01309() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11896,10 +10668,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01310() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11908,10 +10677,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01311() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11920,10 +10686,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01312() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11932,10 +10695,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01313() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11944,10 +10704,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01314() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11956,10 +10713,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01315() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11968,10 +10722,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01316() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11980,10 +10731,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01317() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -11992,10 +10740,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01318() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12004,10 +10749,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01319() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12016,10 +10758,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01320() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12028,10 +10767,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01321() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12040,10 +10776,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01322() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12052,10 +10785,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01323() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12064,10 +10794,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01324() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12076,10 +10803,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01325() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12088,10 +10812,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01326() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12100,10 +10821,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01327() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12112,10 +10830,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01328() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12124,10 +10839,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01329() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12136,10 +10848,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01330() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12148,10 +10857,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01331() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12160,10 +10866,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01332() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12172,10 +10875,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01333() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12184,10 +10884,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01334() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12196,10 +10893,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01335() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12208,10 +10902,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01336() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12220,10 +10911,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01337() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12232,10 +10920,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01338() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12244,10 +10929,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01339() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12256,10 +10938,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01340() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12268,10 +10947,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01341() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12280,10 +10956,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01342() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12292,10 +10965,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01343() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12304,10 +10974,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01344() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12316,10 +10983,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01345() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12328,10 +10992,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01346() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12340,10 +11001,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01347() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12352,10 +11010,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01348() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12364,10 +11019,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01349() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12376,10 +11028,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01350() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12388,10 +11037,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01351() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12400,10 +11046,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01352() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12412,10 +11055,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01353() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12424,10 +11064,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01354() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12436,10 +11073,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01355() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12448,10 +11082,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01356() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12460,10 +11091,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01357() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12472,10 +11100,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01358() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12484,10 +11109,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01359() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12496,10 +11118,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01360() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12508,10 +11127,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01361() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12520,10 +11136,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01362() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12532,10 +11145,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01363() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12544,10 +11154,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01364() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12556,10 +11163,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01365() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12568,10 +11172,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12580,10 +11181,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12592,10 +11190,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01403() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12604,10 +11199,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01404() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12616,10 +11208,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12628,10 +11217,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12640,10 +11226,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01503() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12652,10 +11235,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01504() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12664,10 +11244,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12676,10 +11253,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -12688,10 +11262,7 @@ public class ReconnectionConfigurationControlPointAndroidTest {
     public void test_parcelable_3_01603() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(bluetoothGattCharacteristic);
+        ReconnectionConfigurationControlPointAndroid result1 = new ReconnectionConfigurationControlPointAndroid(data);
         ReconnectionConfigurationControlPointAndroid result2 = ReconnectionConfigurationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -1,6 +1,10 @@
 package org.im97mori.ble.descriptor.u290c;
 
-import android.bluetooth.BluetoothGattDescriptor;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,12 +14,6 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
-
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
@@ -41,10 +39,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertArrayEquals(Arrays.copyOfRange(value, 0, 2), result.getFlags());
         assertEquals(value[2], result.getSamplingFunction());
         assertEquals(0x060504, result.getMeasurementPeriod());
@@ -70,10 +65,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertTrue(result.isSamplingFunctionUnspecified());
         assertFalse(result.isSamplingFunctionInstantaneous());
         assertFalse(result.isSamplingFunctionArithmeticMean());
@@ -101,10 +93,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isSamplingFunctionUnspecified());
         assertTrue(result.isSamplingFunctionInstantaneous());
         assertFalse(result.isSamplingFunctionArithmeticMean());
@@ -132,10 +121,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isSamplingFunctionUnspecified());
         assertFalse(result.isSamplingFunctionInstantaneous());
         assertTrue(result.isSamplingFunctionArithmeticMean());
@@ -163,10 +149,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isSamplingFunctionUnspecified());
         assertFalse(result.isSamplingFunctionInstantaneous());
         assertFalse(result.isSamplingFunctionArithmeticMean());
@@ -194,10 +177,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isSamplingFunctionUnspecified());
         assertFalse(result.isSamplingFunctionInstantaneous());
         assertFalse(result.isSamplingFunctionArithmeticMean());
@@ -225,10 +205,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isSamplingFunctionUnspecified());
         assertFalse(result.isSamplingFunctionInstantaneous());
         assertFalse(result.isSamplingFunctionArithmeticMean());
@@ -256,10 +233,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isSamplingFunctionUnspecified());
         assertFalse(result.isSamplingFunctionInstantaneous());
         assertFalse(result.isSamplingFunctionArithmeticMean());
@@ -287,10 +261,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isSamplingFunctionUnspecified());
         assertFalse(result.isSamplingFunctionInstantaneous());
         assertFalse(result.isSamplingFunctionArithmeticMean());
@@ -318,10 +289,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertTrue(result.isMeasurementPeriodNotInUse());
     }
 
@@ -342,10 +310,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isMeasurementPeriodNotInUse());
     }
 
@@ -366,10 +331,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertTrue(result.isInternalUpdateIntervalNotInUse());
     }
 
@@ -390,10 +352,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isInternalUpdateIntervalNotInUse());
     }
 
@@ -414,10 +373,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertTrue(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -471,10 +427,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertTrue(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -528,10 +481,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertTrue(result.isApplicationWater());
@@ -585,10 +535,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -642,10 +589,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -699,10 +643,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -756,10 +697,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -813,10 +751,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -870,10 +805,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -927,10 +859,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -984,10 +913,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1041,10 +967,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1098,10 +1021,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1155,10 +1075,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1212,10 +1129,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1269,10 +1183,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1326,10 +1237,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1383,10 +1291,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1440,10 +1345,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1497,10 +1399,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1554,10 +1453,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1611,10 +1507,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1668,10 +1561,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1725,10 +1615,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1782,10 +1669,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1839,10 +1723,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1896,10 +1777,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -1953,10 +1831,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -2010,10 +1885,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -2067,10 +1939,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -2124,10 +1993,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -2181,10 +2047,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -2238,10 +2101,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -2295,10 +2155,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isApplicationUnspecified());
         assertFalse(result.isApplicationAir());
         assertFalse(result.isApplicationWater());
@@ -2352,10 +2209,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = (byte) EnvironmentalSensingMeasurementAndroid.MEASUREMENT_UNCERTAINTY_INFORMATION_NOT_AVAILABLE;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertTrue(result.isMeasurementUncertaintyInformationNotAvailable());
     }
 
@@ -2376,10 +2230,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = (byte) EnvironmentalSensingMeasurementAndroid.MEASUREMENT_UNCERTAINTY_INFORMATION_NOT_AVAILABLE + 1;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(value);
         assertFalse(result.isMeasurementUncertaintyInformationNotAvailable());
     }
 
@@ -2388,15 +2239,15 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         byte[] flags = new byte[]{1};
         int samplingFunction = 2;
         int measurementPeriod = 3;
-        int internalUpdateInterva = 4;
+        int internalUpdateInterval = 4;
         int application = 5;
         int measurementUncertainty = 6;
 
-        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(flags, samplingFunction, measurementPeriod, internalUpdateInterva, application, measurementUncertainty);
+        EnvironmentalSensingMeasurementAndroid result = new EnvironmentalSensingMeasurementAndroid(flags, samplingFunction, measurementPeriod, internalUpdateInterval, application, measurementUncertainty);
         assertArrayEquals(flags, result.getFlags());
         assertEquals(samplingFunction, result.getSamplingFunction());
         assertEquals(measurementPeriod, result.getMeasurementPeriod());
-        assertEquals(internalUpdateInterva, result.getInternalUpdateInterval());
+        assertEquals(internalUpdateInterval, result.getInternalUpdateInterval());
         assertEquals(application, result.getApplication());
         assertEquals(measurementUncertainty, result.getMeasurementUncertainty());
     }
@@ -2418,10 +2269,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result1 = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result1 = new EnvironmentalSensingMeasurementAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -2452,10 +2300,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result1 = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result1 = new EnvironmentalSensingMeasurementAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -2476,10 +2321,7 @@ public class EnvironmentalSensingMeasurementAndroidTest {
         value[10] = 0x0b;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingMeasurementAndroid result1 = new EnvironmentalSensingMeasurementAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingMeasurementAndroid result1 = new EnvironmentalSensingMeasurementAndroid(value);
         EnvironmentalSensingMeasurementAndroid result2 = EnvironmentalSensingMeasurementAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.HEART_RATE_MAX_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Heart Rate Max (Characteristics UUID: 0x2A8D)
@@ -44,9 +44,7 @@ public class HeartRateMaxAndroid extends HeartRateMax implements Parcelable {
          */
         @NonNull
         public HeartRateMaxAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(HEART_RATE_MAX_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new HeartRateMaxAndroid(bluetoothGattCharacteristic);
+            return new HeartRateMaxAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class HeartRateMaxAndroid extends HeartRateMax implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A8D
      */
+    @Deprecated
     public HeartRateMaxAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public HeartRateMaxAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class HeartRateMaxAndroid extends HeartRateMax implements Parcelable {
      * @param in Parcel
      */
     private HeartRateMaxAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

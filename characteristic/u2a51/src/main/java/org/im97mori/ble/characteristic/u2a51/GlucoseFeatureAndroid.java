@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.GLUCOSE_FEATURE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Glucose Feature (Characteristics UUID: 0x2A51)
@@ -45,9 +45,7 @@ public class GlucoseFeatureAndroid extends GlucoseFeature implements Parcelable 
          */
         @NonNull
         public GlucoseFeatureAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(GLUCOSE_FEATURE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new GlucoseFeatureAndroid(bluetoothGattCharacteristic);
+            return new GlucoseFeatureAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class GlucoseFeatureAndroid extends GlucoseFeature implements Parcelable 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A51
      */
+    @Deprecated
     public GlucoseFeatureAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public GlucoseFeatureAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class GlucoseFeatureAndroid extends GlucoseFeature implements Parcelable 
      * @param in Parcel
      */
     private GlucoseFeatureAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

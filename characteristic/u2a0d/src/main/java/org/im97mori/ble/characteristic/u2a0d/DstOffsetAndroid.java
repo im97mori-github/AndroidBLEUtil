@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.DST_OFFSET_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * DST Offset (Characteristics UUID: 0x2A0D)
@@ -44,9 +44,7 @@ public class DstOffsetAndroid extends DstOffset implements Parcelable {
          */
         @NonNull
         public DstOffsetAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(DST_OFFSET_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new DstOffsetAndroid(bluetoothGattCharacteristic);
+            return new DstOffsetAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class DstOffsetAndroid extends DstOffset implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A0D
      */
+    @Deprecated
     public DstOffsetAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public DstOffsetAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class DstOffsetAndroid extends DstOffset implements Parcelable {
      * @param in Parcel
      */
     private DstOffsetAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

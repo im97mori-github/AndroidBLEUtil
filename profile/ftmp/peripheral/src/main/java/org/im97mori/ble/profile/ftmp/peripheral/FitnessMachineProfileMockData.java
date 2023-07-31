@@ -1,5 +1,6 @@
 package org.im97mori.ble.profile.ftmp.peripheral;
 
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -32,7 +33,9 @@ public class FitnessMachineProfileMockData extends MockData {
          */
         @Override
         @NonNull
+        @Deprecated
         public FitnessMachineProfileMockData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new FitnessMachineProfileMockData(in);
         }
 
@@ -90,11 +93,18 @@ public class FitnessMachineProfileMockData extends MockData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public FitnessMachineProfileMockData(@NonNull Parcel in) {
         super(in);
-        fitnessMachine = in.readParcelable(this.getClass().getClassLoader());
-        userData = in.readParcelable(this.getClass().getClassLoader());
-        deviceInformation = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            fitnessMachine = in.readParcelable(this.getClass().getClassLoader(), FitnessMachineServiceData.class);
+            userData = in.readParcelable(this.getClass().getClassLoader(), UserDataServiceData.class);
+            deviceInformation = in.readParcelable(this.getClass().getClassLoader(), ServiceData.class);
+        } else {
+            fitnessMachine = in.readParcelable(this.getClass().getClassLoader());
+            userData = in.readParcelable(this.getClass().getClassLoader());
+            deviceInformation = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

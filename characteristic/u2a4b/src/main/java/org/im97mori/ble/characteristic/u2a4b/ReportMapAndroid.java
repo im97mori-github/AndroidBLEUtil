@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.REPORT_MAP_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Report Map (Characteristics UUID: 0x2A4B)
@@ -44,9 +44,7 @@ public class ReportMapAndroid extends ReportMap implements Parcelable {
          */
         @NonNull
         public ReportMapAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(REPORT_MAP_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ReportMapAndroid(bluetoothGattCharacteristic);
+            return new ReportMapAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ReportMapAndroid extends ReportMap implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A4B
      */
+    @Deprecated
     public ReportMapAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ReportMapAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -66,8 +74,7 @@ public class ReportMapAndroid extends ReportMap implements Parcelable {
      * @param in Parcel
      */
     private ReportMapAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

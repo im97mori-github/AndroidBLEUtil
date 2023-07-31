@@ -1,6 +1,10 @@
 package org.im97mori.ble.descriptor.u290d;
 
-import android.bluetooth.BluetoothGattDescriptor;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import android.os.Build;
 import android.os.Parcel;
 
@@ -8,12 +12,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
@@ -29,25 +27,19 @@ public class EnvironmentalSensingTriggerSettingAndroidTest {
         value[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(value);
         assertEquals(0x01, result.getConditions());
     }
 
-    @SuppressWarnings("ConstantConditions")
     @Test
     public void test_constructor002() {
         //@formatter:off
         byte[] value = new byte[1];
+        //noinspection DataFlowIssue
         value[ 0] = (byte) EnvironmentalSensingTriggerSettingAndroid.CONDITIONS_TRIGGER_INACTIVE;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(value);
         assertTrue(result.isConditionsTriggerInactive());
         assertFalse(result.isConditionsTriggerUsedAFixedTimeIntervalBetweenTransmissions());
         assertFalse(result.isConditionsTriggerNoLessThanTheSpecifiedTimeBetweenTransmissions());
@@ -67,10 +59,7 @@ public class EnvironmentalSensingTriggerSettingAndroidTest {
         value[ 0] = (byte) EnvironmentalSensingTriggerSettingAndroid.CONDITIONS_TRIGGER_USE_A_FIXED_TIME_INTERVAL_BETWEEN_TRANSMISSIONS;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(value);
         assertFalse(result.isConditionsTriggerInactive());
         assertTrue(result.isConditionsTriggerUsedAFixedTimeIntervalBetweenTransmissions());
         assertFalse(result.isConditionsTriggerNoLessThanTheSpecifiedTimeBetweenTransmissions());
@@ -90,10 +79,7 @@ public class EnvironmentalSensingTriggerSettingAndroidTest {
         value[ 0] = (byte) EnvironmentalSensingTriggerSettingAndroid.CONDITIONS_TRIGGER_NO_LESS_THAN_THE_SPECIFIED_TIME_BETWEEN_TRANSMISSIONS;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(value);
         assertFalse(result.isConditionsTriggerInactive());
         assertFalse(result.isConditionsTriggerUsedAFixedTimeIntervalBetweenTransmissions());
         assertTrue(result.isConditionsTriggerNoLessThanTheSpecifiedTimeBetweenTransmissions());
@@ -113,10 +99,7 @@ public class EnvironmentalSensingTriggerSettingAndroidTest {
         value[ 0] = (byte) EnvironmentalSensingTriggerSettingAndroid.CONDITIONS_TRIGGER_WHEN_VALUE_CHANGES_COMPARED_TO_PREVIOUS_VALUE;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(value);
         assertFalse(result.isConditionsTriggerInactive());
         assertFalse(result.isConditionsTriggerUsedAFixedTimeIntervalBetweenTransmissions());
         assertFalse(result.isConditionsTriggerNoLessThanTheSpecifiedTimeBetweenTransmissions());
@@ -136,10 +119,7 @@ public class EnvironmentalSensingTriggerSettingAndroidTest {
         value[ 0] = (byte) EnvironmentalSensingTriggerSettingAndroid.CONDITIONS_TRIGGER_WHILE_LESS_THAN_THE_SPECIFIED_VALUE;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(value);
         assertFalse(result.isConditionsTriggerInactive());
         assertFalse(result.isConditionsTriggerUsedAFixedTimeIntervalBetweenTransmissions());
         assertFalse(result.isConditionsTriggerNoLessThanTheSpecifiedTimeBetweenTransmissions());
@@ -159,10 +139,7 @@ public class EnvironmentalSensingTriggerSettingAndroidTest {
         value[ 0] = (byte) EnvironmentalSensingTriggerSettingAndroid.CONDITIONS_TRIGGER_WHILE_LESS_THAN_OR_EQUAL_TO_THE_SPECIFIED_VALUE;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(value);
         assertFalse(result.isConditionsTriggerInactive());
         assertFalse(result.isConditionsTriggerUsedAFixedTimeIntervalBetweenTransmissions());
         assertFalse(result.isConditionsTriggerNoLessThanTheSpecifiedTimeBetweenTransmissions());
@@ -182,10 +159,7 @@ public class EnvironmentalSensingTriggerSettingAndroidTest {
         value[ 0] = (byte) EnvironmentalSensingTriggerSettingAndroid.CONDITIONS_TRIGGER_WHILE_GREATER_THAN_THE_SPECIFIED_VALUE;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(value);
         assertFalse(result.isConditionsTriggerInactive());
         assertFalse(result.isConditionsTriggerUsedAFixedTimeIntervalBetweenTransmissions());
         assertFalse(result.isConditionsTriggerNoLessThanTheSpecifiedTimeBetweenTransmissions());
@@ -205,10 +179,7 @@ public class EnvironmentalSensingTriggerSettingAndroidTest {
         value[ 0] = (byte) EnvironmentalSensingTriggerSettingAndroid.CONDITIONS_TRIGGER_WHILE_GREATER_THAN_OR_EQUAL_TO_THE_SPECIFIED_VALUE;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(value);
         assertFalse(result.isConditionsTriggerInactive());
         assertFalse(result.isConditionsTriggerUsedAFixedTimeIntervalBetweenTransmissions());
         assertFalse(result.isConditionsTriggerNoLessThanTheSpecifiedTimeBetweenTransmissions());
@@ -228,10 +199,7 @@ public class EnvironmentalSensingTriggerSettingAndroidTest {
         value[ 0] = (byte) EnvironmentalSensingTriggerSettingAndroid.CONDITIONS_TRIGGER_WHILE_EQUAL_TO_THE_SPECIFIED_VALUE;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(value);
         assertFalse(result.isConditionsTriggerInactive());
         assertFalse(result.isConditionsTriggerUsedAFixedTimeIntervalBetweenTransmissions());
         assertFalse(result.isConditionsTriggerNoLessThanTheSpecifiedTimeBetweenTransmissions());
@@ -251,10 +219,7 @@ public class EnvironmentalSensingTriggerSettingAndroidTest {
         value[ 0] = (byte) EnvironmentalSensingTriggerSettingAndroid.CONDITIONS_TRIGGER_WHILE_NOT_EQUAL_TO_THE_SPECIFIED_VALUE;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingTriggerSettingAndroid result = new EnvironmentalSensingTriggerSettingAndroid(value);
         assertFalse(result.isConditionsTriggerInactive());
         assertFalse(result.isConditionsTriggerUsedAFixedTimeIntervalBetweenTransmissions());
         assertFalse(result.isConditionsTriggerNoLessThanTheSpecifiedTimeBetweenTransmissions());
@@ -282,10 +247,7 @@ public class EnvironmentalSensingTriggerSettingAndroidTest {
         value[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingTriggerSettingAndroid result1 = new EnvironmentalSensingTriggerSettingAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingTriggerSettingAndroid result1 = new EnvironmentalSensingTriggerSettingAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -301,10 +263,7 @@ public class EnvironmentalSensingTriggerSettingAndroidTest {
         value[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingTriggerSettingAndroid result1 = new EnvironmentalSensingTriggerSettingAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingTriggerSettingAndroid result1 = new EnvironmentalSensingTriggerSettingAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -315,10 +274,7 @@ public class EnvironmentalSensingTriggerSettingAndroidTest {
         value[ 0] = 0x01;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        EnvironmentalSensingTriggerSettingAndroid result1 = new EnvironmentalSensingTriggerSettingAndroid(bluetoothGattDescriptor);
+        EnvironmentalSensingTriggerSettingAndroid result1 = new EnvironmentalSensingTriggerSettingAndroid(value);
         EnvironmentalSensingTriggerSettingAndroid result2 = EnvironmentalSensingTriggerSettingAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

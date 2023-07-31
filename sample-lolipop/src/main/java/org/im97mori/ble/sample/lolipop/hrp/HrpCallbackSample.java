@@ -607,6 +607,11 @@ public class HrpCallbackSample extends HeartRateProfileMockCallback implements H
     }
 
     @Override
+    public void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice) {
+        callback(bluetoothDevice);
+    }
+
+    @Override
     public void onServerStarted() {
         callback();
     }

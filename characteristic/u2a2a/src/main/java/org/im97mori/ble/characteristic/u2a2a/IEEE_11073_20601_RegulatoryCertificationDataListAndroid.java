@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_CHARACTERISTIC;
+import java.util.Objects;
 
 // TODO
 
@@ -46,9 +46,7 @@ public class IEEE_11073_20601_RegulatoryCertificationDataListAndroid extends IEE
          */
         @NonNull
         public IEEE_11073_20601_RegulatoryCertificationDataListAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(IEEE_11073_20601_REGULATORY_CERTIFICATION_DATA_LIST_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new IEEE_11073_20601_RegulatoryCertificationDataListAndroid(bluetoothGattCharacteristic);
+            return new IEEE_11073_20601_RegulatoryCertificationDataListAndroid(values);
         }
 
     };
@@ -59,8 +57,18 @@ public class IEEE_11073_20601_RegulatoryCertificationDataListAndroid extends IEE
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A2A
      */
+    @Deprecated
     public IEEE_11073_20601_RegulatoryCertificationDataListAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public IEEE_11073_20601_RegulatoryCertificationDataListAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -69,8 +77,7 @@ public class IEEE_11073_20601_RegulatoryCertificationDataListAndroid extends IEE
      * @param in Parcel
      */
     private IEEE_11073_20601_RegulatoryCertificationDataListAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

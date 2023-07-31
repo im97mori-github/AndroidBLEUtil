@@ -1,5 +1,6 @@
 package org.im97mori.ble.profile.cscp.peripheral;
 
+import android.os.Build;
 import android.os.Parcel;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,9 @@ public class CyclingSpeedAndCadenceProfileMockData extends MockData {
          */
         @Override
         @NonNull
+        @Deprecated
         public CyclingSpeedAndCadenceProfileMockData createFromParcel(@NonNull Parcel in) {
+            //noinspection deprecation
             return new CyclingSpeedAndCadenceProfileMockData(in);
         }
 
@@ -80,10 +83,16 @@ public class CyclingSpeedAndCadenceProfileMockData extends MockData {
      *
      * @param in Parcel
      */
+    @Deprecated
     public CyclingSpeedAndCadenceProfileMockData(@NonNull Parcel in) {
         super(in);
-        cyclingSpeedAndCadence = in.readParcelable(this.getClass().getClassLoader());
-        deviceInformation = in.readParcelable(this.getClass().getClassLoader());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            cyclingSpeedAndCadence = in.readParcelable(this.getClass().getClassLoader(), CyclingSpeedAndCadenceServiceData.class);
+            deviceInformation = in.readParcelable(this.getClass().getClassLoader(), ServiceData.class);
+        } else {
+            cyclingSpeedAndCadence = in.readParcelable(this.getClass().getClassLoader());
+            deviceInformation = in.readParcelable(this.getClass().getClassLoader());
+        }
     }
 
     /**

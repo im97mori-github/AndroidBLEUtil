@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.CARDIO_RESPIRATORY_ACTIVITY_INSTANTANEOUS_DATA_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * CardioRespiratory Activity Instantaneous Data (Characteristics UUID: 0x2B3E)
@@ -45,9 +45,7 @@ public class CardioRespiratoryActivityInstantaneousDataAndroid extends CardioRes
          */
         @NonNull
         public CardioRespiratoryActivityInstantaneousDataAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(CARDIO_RESPIRATORY_ACTIVITY_INSTANTANEOUS_DATA_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new CardioRespiratoryActivityInstantaneousDataAndroid(bluetoothGattCharacteristic);
+            return new CardioRespiratoryActivityInstantaneousDataAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class CardioRespiratoryActivityInstantaneousDataAndroid extends CardioRes
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B3E
      */
+    @Deprecated
     public CardioRespiratoryActivityInstantaneousDataAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public CardioRespiratoryActivityInstantaneousDataAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class CardioRespiratoryActivityInstantaneousDataAndroid extends CardioRes
      * @param in Parcel
      */
     private CardioRespiratoryActivityInstantaneousDataAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

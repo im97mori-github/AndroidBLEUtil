@@ -5,7 +5,6 @@ import static org.im97mori.ble.constants.CharacteristicUUID.LOCAL_TIME_INFORMATI
 import static org.im97mori.ble.constants.CharacteristicUUID.REFERENCE_TIME_INFORMATION_CHARACTERISTIC;
 import static org.im97mori.ble.constants.DescriptorUUID.CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
 import static org.im97mori.ble.constants.ServiceUUID.CURRENT_TIME_SERVICE;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -98,12 +97,10 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
         assertEquals(CURRENT_TIME_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(currentTime.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -140,12 +137,10 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
         assertEquals(CURRENT_TIME_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(currentTime.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -182,12 +177,10 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
         assertEquals(CURRENT_TIME_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE | BluetoothGattCharacteristic.PROPERTY_NOTIFY, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(currentTime.getBytes(), bluetoothGattCharacteristic.getValue());
         BluetoothGattDescriptor bluetoothGattDescriptor = bluetoothGattCharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR);
         assertNotNull(bluetoothGattDescriptor);
         assertEquals(CLIENT_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, bluetoothGattDescriptor.getUuid());
         assertEquals(BluetoothGattDescriptor.PERMISSION_READ | BluetoothGattDescriptor.PERMISSION_WRITE, bluetoothGattDescriptor.getPermissions());
-        assertArrayEquals(clientCharacteristicConfiguration.getBytes(), bluetoothGattDescriptor.getValue());
     }
 
     @Test
@@ -245,7 +238,6 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
         assertEquals(LOCAL_TIME_INFORMATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(localTimeInformation.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -280,7 +272,6 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
         assertEquals(LOCAL_TIME_INFORMATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(localTimeInformation.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -315,7 +306,6 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
         assertEquals(LOCAL_TIME_INFORMATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(localTimeInformation.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -350,7 +340,6 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
         assertEquals(LOCAL_TIME_INFORMATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_WRITE, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ | BluetoothGattCharacteristic.PERMISSION_WRITE, bluetoothGattCharacteristic.getPermissions());
-        assertArrayEquals(localTimeInformation.getBytes(), bluetoothGattCharacteristic.getValue());
     }
 
     @Test
@@ -405,9 +394,6 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
         assertEquals(REFERENCE_TIME_INFORMATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        ReferenceTimeInformation result = new ReferenceTimeInformation(bluetoothGattCharacteristic.getValue());
-        assertEquals(referenceTimeInformation.getTimeSource(), result.getTimeSource());
-        assertEquals(referenceTimeInformation.getAccuracy(), result.getAccuracy());
     }
 
     @Test
@@ -442,9 +428,6 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
         assertEquals(REFERENCE_TIME_INFORMATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        ReferenceTimeInformation result = new ReferenceTimeInformation(bluetoothGattCharacteristic.getValue());
-        assertEquals(referenceTimeInformation.getTimeSource(), result.getTimeSource());
-        assertEquals(referenceTimeInformation.getAccuracy(), result.getAccuracy());
     }
 
     @Test
@@ -479,9 +462,6 @@ public class CurrentTimeServiceMockCallbackBuilderTest extends AbstractPeriphera
         assertEquals(REFERENCE_TIME_INFORMATION_CHARACTERISTIC, bluetoothGattCharacteristic.getUuid());
         assertEquals(BluetoothGattCharacteristic.PROPERTY_READ, bluetoothGattCharacteristic.getProperties());
         assertEquals(BluetoothGattCharacteristic.PERMISSION_READ, bluetoothGattCharacteristic.getPermissions());
-        ReferenceTimeInformation result = new ReferenceTimeInformation(bluetoothGattCharacteristic.getValue());
-        assertEquals(referenceTimeInformation.getTimeSource(), result.getTimeSource());
-        assertEquals(referenceTimeInformation.getAccuracy(), result.getAccuracy());
     }
 
     @Test

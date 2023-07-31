@@ -1,11 +1,9 @@
 package org.im97mori.ble.characteristic.u2b35;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -19,7 +17,7 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -42,10 +40,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 2] = (byte) (0x0001 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertEquals(EnhancedBloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | EnhancedBloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | EnhancedBloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -71,10 +66,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 2] = (byte) (0x0001 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertEquals(EnhancedBloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_KPA
                 | EnhancedBloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | EnhancedBloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -100,10 +92,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 2] = (byte) (0x0001 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertEquals(EnhancedBloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | EnhancedBloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | EnhancedBloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -132,10 +121,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 6] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertEquals(EnhancedBloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | EnhancedBloodPressureMeasurementUtils.FLAG_TIME_STAMP_PRESENT
                 | EnhancedBloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -161,10 +147,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 2] = (byte) (0x0001 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertEquals(EnhancedBloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | EnhancedBloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | EnhancedBloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -193,10 +176,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 4] = (byte) 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertEquals(EnhancedBloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | EnhancedBloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | EnhancedBloodPressureMeasurementUtils.FLAG_PULSE_RATE_PRESENT
@@ -223,10 +203,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 2] = (byte) (0x0001 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertEquals(EnhancedBloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | EnhancedBloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | EnhancedBloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -253,10 +230,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 3] = (byte) 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertEquals(EnhancedBloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | EnhancedBloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | EnhancedBloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -282,10 +256,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 2] = (byte) (0x0001 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertEquals(EnhancedBloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | EnhancedBloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | EnhancedBloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -313,10 +284,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 4] = (byte) 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertEquals(EnhancedBloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | EnhancedBloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | EnhancedBloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -342,10 +310,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 2] = (byte) (0x0001 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertEquals(EnhancedBloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | EnhancedBloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | EnhancedBloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -375,10 +340,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 6] = (byte) 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertEquals(EnhancedBloodPressureMeasurementUtils.FLAG_BLOOD_PRESSURE_UNITS_MMHG
                 | EnhancedBloodPressureMeasurementUtils.FLAG_TIME_STAMP_NOT_PRESENT
                 | EnhancedBloodPressureMeasurementUtils.FLAG_PULSE_RATE_NOT_PRESENT
@@ -430,10 +392,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 2] = (byte) (0x0001 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -468,10 +427,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 6] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -504,10 +460,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 4] = (byte) 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -539,10 +492,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 3] = (byte) 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -575,10 +525,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 4] = (byte) 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -613,10 +560,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 6] = (byte) 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -647,10 +591,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 2] = (byte) (0x0001 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -673,10 +614,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 6] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -697,10 +635,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 4] = (byte) 0x04;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -720,10 +655,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 3] = (byte) 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -744,10 +676,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 4] = (byte) 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -770,10 +699,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 6] = (byte) 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -792,10 +718,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 2] = (byte) (0x0001 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         EnhancedIntermediateCuffPressureAndroid result2 = EnhancedIntermediateCuffPressureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -819,10 +742,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 6] = 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         EnhancedIntermediateCuffPressureAndroid result2 = EnhancedIntermediateCuffPressureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -843,10 +763,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 3] = (byte) 0x02;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         EnhancedIntermediateCuffPressureAndroid result2 = EnhancedIntermediateCuffPressureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -870,10 +787,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 6] = (byte) (0x0003 >> 8);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         EnhancedIntermediateCuffPressureAndroid result2 = EnhancedIntermediateCuffPressureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -895,10 +809,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 4] = (byte) 0x03;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         EnhancedIntermediateCuffPressureAndroid result2 = EnhancedIntermediateCuffPressureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -922,10 +833,7 @@ public class EnhancedIntermediateCuffPressureAndroidTest {
         data[ 6] = (byte) 0x05;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(bluetoothGattCharacteristic);
+        EnhancedIntermediateCuffPressureAndroid result1 = new EnhancedIntermediateCuffPressureAndroid(data);
         EnhancedIntermediateCuffPressureAndroid result2 = EnhancedIntermediateCuffPressureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

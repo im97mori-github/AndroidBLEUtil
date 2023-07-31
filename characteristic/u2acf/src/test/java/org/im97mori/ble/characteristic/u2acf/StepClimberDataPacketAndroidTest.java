@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2acf;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -369,9 +367,9 @@ public class StepClimberDataPacketAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -385,10 +383,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(StepClimberDataUtils.isFlagsMoreDataFalse(result1.getFlags()));
         assertFalse(StepClimberDataUtils.isFlagsMoreDataTrue(result1.getFlags()));
@@ -400,10 +395,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(StepClimberDataUtils.isFlagsMoreDataFalse(result1.getFlags()));
         assertTrue(StepClimberDataUtils.isFlagsMoreDataTrue(result1.getFlags()));
@@ -413,10 +405,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(StepClimberDataUtils.isFlagsStepPerMinuteNotPresent(result1.getFlags()));
         assertFalse(StepClimberDataUtils.isFlagsStepPerMinutePresent(result1.getFlags()));
@@ -426,10 +415,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(StepClimberDataUtils.isFlagsStepPerMinuteNotPresent(result1.getFlags()));
         assertTrue(StepClimberDataUtils.isFlagsStepPerMinutePresent(result1.getFlags()));
@@ -440,10 +426,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(StepClimberDataUtils.isFlagsAverageStepRateNotPresent(result1.getFlags()));
         assertFalse(StepClimberDataUtils.isFlagsAverageStepRatePresent(result1.getFlags()));
@@ -453,10 +436,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(StepClimberDataUtils.isFlagsAverageStepRateNotPresent(result1.getFlags()));
         assertTrue(StepClimberDataUtils.isFlagsAverageStepRatePresent(result1.getFlags()));
@@ -467,10 +447,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(StepClimberDataUtils.isFlagsPositiveElevationGainNotPresent(result1.getFlags()));
         assertFalse(StepClimberDataUtils.isFlagsPositiveElevationGainPresent(result1.getFlags()));
@@ -480,10 +457,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(StepClimberDataUtils.isFlagsPositiveElevationGainNotPresent(result1.getFlags()));
         assertTrue(StepClimberDataUtils.isFlagsPositiveElevationGainPresent(result1.getFlags()));
@@ -494,10 +468,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(StepClimberDataUtils.isFlagsExpendedEnergyNotPresent(result1.getFlags()));
         assertFalse(StepClimberDataUtils.isFlagsExpendedEnergyPresent(result1.getFlags()));
@@ -507,10 +478,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(StepClimberDataUtils.isFlagsExpendedEnergyNotPresent(result1.getFlags()));
         assertTrue(StepClimberDataUtils.isFlagsExpendedEnergyPresent(result1.getFlags()));
@@ -523,10 +491,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(StepClimberDataUtils.isFlagsHeartRateNotPresent(result1.getFlags()));
         assertFalse(StepClimberDataUtils.isFlagsHeartRatePresent(result1.getFlags()));
@@ -536,10 +501,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(StepClimberDataUtils.isFlagsHeartRateNotPresent(result1.getFlags()));
         assertTrue(StepClimberDataUtils.isFlagsHeartRatePresent(result1.getFlags()));
@@ -550,10 +512,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(StepClimberDataUtils.isFlagsMetabolicEquivalentNotPresent(result1.getFlags()));
         assertFalse(StepClimberDataUtils.isFlagsMetabolicEquivalentPresent(result1.getFlags()));
@@ -563,10 +522,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(StepClimberDataUtils.isFlagsMetabolicEquivalentNotPresent(result1.getFlags()));
         assertTrue(StepClimberDataUtils.isFlagsMetabolicEquivalentPresent(result1.getFlags()));
@@ -577,10 +533,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(StepClimberDataUtils.isFlagsElapsedTimeNotPresent(result1.getFlags()));
         assertFalse(StepClimberDataUtils.isFlagsElapsedTimePresent(result1.getFlags()));
@@ -590,10 +543,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(StepClimberDataUtils.isFlagsElapsedTimeNotPresent(result1.getFlags()));
         assertTrue(StepClimberDataUtils.isFlagsElapsedTimePresent(result1.getFlags()));
@@ -604,10 +554,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(StepClimberDataUtils.isFlagsRemainingTimeNotPresent(result1.getFlags()));
         assertFalse(StepClimberDataUtils.isFlagsRemainingTimePresent(result1.getFlags()));
@@ -617,10 +564,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_constructor_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(StepClimberDataUtils.isFlagsRemainingTimeNotPresent(result1.getFlags()));
         assertTrue(StepClimberDataUtils.isFlagsRemainingTimePresent(result1.getFlags()));
@@ -663,10 +607,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -690,10 +631,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -717,10 +655,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -744,10 +679,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -771,10 +703,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -798,10 +727,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -825,10 +751,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -852,10 +775,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -879,10 +799,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -906,10 +823,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -933,10 +847,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -960,10 +871,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -987,10 +895,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1014,10 +919,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1041,10 +943,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1068,10 +967,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1095,10 +991,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1122,10 +1015,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_1_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1149,10 +1039,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1160,10 +1047,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1171,10 +1055,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1182,10 +1063,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1193,10 +1071,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1204,10 +1079,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1215,10 +1087,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1226,10 +1095,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1237,10 +1103,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1248,10 +1111,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1259,10 +1119,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1270,10 +1127,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1281,10 +1135,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1292,10 +1143,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1303,10 +1151,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1314,10 +1159,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1325,10 +1167,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1336,10 +1175,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_2_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1347,10 +1183,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1359,10 +1192,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1371,10 +1201,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1383,10 +1210,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1395,10 +1219,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1407,10 +1228,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1419,10 +1237,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1431,10 +1246,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1443,10 +1255,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1455,10 +1264,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1467,10 +1273,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1479,10 +1282,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1491,10 +1291,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1503,10 +1300,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1515,10 +1309,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1527,10 +1318,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1539,10 +1327,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -1551,10 +1336,7 @@ public class StepClimberDataPacketAndroidTest {
     public void test_parcelable_3_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(bluetoothGattCharacteristic);
+        StepClimberDataPacketAndroid result1 = new StepClimberDataPacketAndroid(data);
         StepClimberDataPacketAndroid result2 = StepClimberDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

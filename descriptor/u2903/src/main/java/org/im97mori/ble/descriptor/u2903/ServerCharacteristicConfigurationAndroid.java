@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.DescriptorUUID.SERVER_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR;
+import java.util.Objects;
 
 /**
  * Server Characteristic Configuration (Descriptor UUID: 0x2903)
@@ -52,9 +52,7 @@ public class ServerCharacteristicConfigurationAndroid extends ServerCharacterist
          */
         @NonNull
         public ServerCharacteristicConfigurationAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(SERVER_CHARACTERISTIC_CONFIGURATION_DESCRIPTOR, 0);
-            bluetoothGattDescriptor.setValue(values);
-            return new ServerCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+            return new ServerCharacteristicConfigurationAndroid(values);
         }
 
     };
@@ -64,8 +62,18 @@ public class ServerCharacteristicConfigurationAndroid extends ServerCharacterist
      *
      * @param bluetoothGattDescriptor Characteristics UUID: 0x2903
      */
+    @Deprecated
     public ServerCharacteristicConfigurationAndroid(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         super(bluetoothGattDescriptor.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattDescriptor#getValue()">BluetoothGattDescriptor#getValue()</a>
+     */
+    public ServerCharacteristicConfigurationAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -74,8 +82,7 @@ public class ServerCharacteristicConfigurationAndroid extends ServerCharacterist
      * @param in Parcel
      */
     private ServerCharacteristicConfigurationAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

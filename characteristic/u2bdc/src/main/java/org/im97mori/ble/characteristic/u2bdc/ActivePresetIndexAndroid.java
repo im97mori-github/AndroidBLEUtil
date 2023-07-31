@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ACTIVE_PRESET_INDEX_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Active Preset Index (Characteristics UUID: 0x2BDC)
@@ -45,9 +45,7 @@ public class ActivePresetIndexAndroid extends ActivePresetIndex implements Parce
          */
         @NonNull
         public ActivePresetIndexAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ACTIVE_PRESET_INDEX_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ActivePresetIndexAndroid(bluetoothGattCharacteristic);
+            return new ActivePresetIndexAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class ActivePresetIndexAndroid extends ActivePresetIndex implements Parce
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BDC
      */
+    @Deprecated
     public ActivePresetIndexAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ActivePresetIndexAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class ActivePresetIndexAndroid extends ActivePresetIndex implements Parce
      * @param in Parcel
      */
     private ActivePresetIndexAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

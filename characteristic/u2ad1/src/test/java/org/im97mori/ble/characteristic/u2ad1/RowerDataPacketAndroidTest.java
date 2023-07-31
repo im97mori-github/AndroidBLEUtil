@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2ad1;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -12,7 +11,6 @@ import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -616,9 +614,9 @@ public class RowerDataPacketAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -632,10 +630,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(RowerDataUtils.isFlagsMoreDataFalse(result1.getFlags()));
         assertFalse(RowerDataUtils.isFlagsMoreDataTrue(result1.getFlags()));
@@ -647,10 +642,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(RowerDataUtils.isFlagsMoreDataFalse(result1.getFlags()));
         assertTrue(RowerDataUtils.isFlagsMoreDataTrue(result1.getFlags()));
@@ -660,10 +652,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(RowerDataUtils.isFlagsAverageStrokeNotPresent(result1.getFlags()));
         assertFalse(RowerDataUtils.isFlagsAverageStrokePresent(result1.getFlags()));
@@ -673,10 +662,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(RowerDataUtils.isFlagsAverageStrokeNotPresent(result1.getFlags()));
         assertTrue(RowerDataUtils.isFlagsAverageStrokePresent(result1.getFlags()));
@@ -687,10 +673,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(RowerDataUtils.isFlagsTotalDistanceNotPresent(result1.getFlags()));
         assertFalse(RowerDataUtils.isFlagsTotalDistancePresent(result1.getFlags()));
@@ -700,10 +683,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(RowerDataUtils.isFlagsTotalDistanceNotPresent(result1.getFlags()));
         assertTrue(RowerDataUtils.isFlagsTotalDistancePresent(result1.getFlags()));
@@ -714,10 +694,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(RowerDataUtils.isFlagsInstantaneousPaceNotPresent(result1.getFlags()));
         assertFalse(RowerDataUtils.isFlagsInstantaneousPacePresent(result1.getFlags()));
@@ -727,10 +704,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(RowerDataUtils.isFlagsInstantaneousPaceNotPresent(result1.getFlags()));
         assertTrue(RowerDataUtils.isFlagsInstantaneousPacePresent(result1.getFlags()));
@@ -741,10 +715,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(RowerDataUtils.isFlagsAveragePaceNotPresent(result1.getFlags()));
         assertFalse(RowerDataUtils.isFlagsAveragePacePresent(result1.getFlags()));
@@ -754,10 +725,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(RowerDataUtils.isFlagsAveragePaceNotPresent(result1.getFlags()));
         assertTrue(RowerDataUtils.isFlagsAveragePacePresent(result1.getFlags()));
@@ -768,10 +736,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(RowerDataUtils.isFlagsInstantaneousPowerNotPresent(result1.getFlags()));
         assertFalse(RowerDataUtils.isFlagsInstantaneousPowerPresent(result1.getFlags()));
@@ -781,10 +746,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(RowerDataUtils.isFlagsInstantaneousPowerNotPresent(result1.getFlags()));
         assertTrue(RowerDataUtils.isFlagsInstantaneousPowerPresent(result1.getFlags()));
@@ -795,10 +757,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(RowerDataUtils.isFlagsAveragePowerNotPresent(result1.getFlags()));
         assertFalse(RowerDataUtils.isFlagsAveragePowerPresent(result1.getFlags()));
@@ -808,10 +767,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(RowerDataUtils.isFlagsAveragePowerNotPresent(result1.getFlags()));
         assertTrue(RowerDataUtils.isFlagsAveragePowerPresent(result1.getFlags()));
@@ -822,10 +778,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(RowerDataUtils.isFlagsResistanceLevelNotPresent(result1.getFlags()));
         assertFalse(RowerDataUtils.isFlagsResistanceLevelPresent(result1.getFlags()));
@@ -835,10 +788,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(RowerDataUtils.isFlagsResistanceLevelNotPresent(result1.getFlags()));
         assertTrue(RowerDataUtils.isFlagsResistanceLevelPresent(result1.getFlags()));
@@ -849,10 +799,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(RowerDataUtils.isFlagsExpendedEnergyNotPresent(result1.getFlags()));
         assertFalse(RowerDataUtils.isFlagsExpendedEnergyPresent(result1.getFlags()));
@@ -862,10 +809,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(RowerDataUtils.isFlagsExpendedEnergyNotPresent(result1.getFlags()));
         assertTrue(RowerDataUtils.isFlagsExpendedEnergyPresent(result1.getFlags()));
@@ -878,10 +822,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(RowerDataUtils.isFlagsHeartRateNotPresent(result1.getFlags()));
         assertFalse(RowerDataUtils.isFlagsHeartRatePresent(result1.getFlags()));
@@ -891,10 +832,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(RowerDataUtils.isFlagsHeartRateNotPresent(result1.getFlags()));
         assertTrue(RowerDataUtils.isFlagsHeartRatePresent(result1.getFlags()));
@@ -905,10 +843,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(RowerDataUtils.isFlagsMetabolicEquivalentNotPresent(result1.getFlags()));
         assertFalse(RowerDataUtils.isFlagsMetabolicEquivalentPresent(result1.getFlags()));
@@ -918,10 +853,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(RowerDataUtils.isFlagsMetabolicEquivalentNotPresent(result1.getFlags()));
         assertTrue(RowerDataUtils.isFlagsMetabolicEquivalentPresent(result1.getFlags()));
@@ -932,10 +864,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(RowerDataUtils.isFlagsElapsedTimeNotPresent(result1.getFlags()));
         assertFalse(RowerDataUtils.isFlagsElapsedTimePresent(result1.getFlags()));
@@ -945,10 +874,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(RowerDataUtils.isFlagsElapsedTimeNotPresent(result1.getFlags()));
         assertTrue(RowerDataUtils.isFlagsElapsedTimePresent(result1.getFlags()));
@@ -959,10 +885,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertTrue(RowerDataUtils.isFlagsRemainingTimeNotPresent(result1.getFlags()));
         assertFalse(RowerDataUtils.isFlagsRemainingTimePresent(result1.getFlags()));
@@ -972,10 +895,7 @@ public class RowerDataPacketAndroidTest {
     public void test_constructor_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(Arrays.copyOfRange(data, 0, 2), result1.getFlags());
         assertFalse(RowerDataUtils.isFlagsRemainingTimeNotPresent(result1.getFlags()));
         assertTrue(RowerDataUtils.isFlagsRemainingTimePresent(result1.getFlags()));
@@ -1026,10 +946,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1057,10 +974,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1088,10 +1002,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1119,10 +1030,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1150,10 +1058,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1181,10 +1086,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1212,10 +1114,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1243,10 +1142,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1274,10 +1170,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1305,10 +1198,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1336,10 +1226,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1367,10 +1254,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1398,10 +1282,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1429,10 +1310,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1460,10 +1338,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1491,10 +1366,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1522,10 +1394,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1553,10 +1422,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1584,10 +1450,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1615,10 +1478,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1646,10 +1506,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1677,10 +1534,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1708,10 +1562,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1739,10 +1590,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1770,10 +1618,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1801,10 +1646,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_1_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -1832,10 +1674,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1843,10 +1682,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1854,10 +1690,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1865,10 +1698,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1876,10 +1706,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1887,10 +1714,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1898,10 +1722,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1909,10 +1730,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1920,10 +1738,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1931,10 +1746,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1942,10 +1754,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1953,10 +1762,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1964,10 +1770,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1975,10 +1778,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1986,10 +1786,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -1997,10 +1794,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2008,10 +1802,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2019,10 +1810,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2030,10 +1818,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2041,10 +1826,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2052,10 +1834,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2063,10 +1842,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2074,10 +1850,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2085,10 +1858,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2096,10 +1866,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2107,10 +1874,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_2_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -2118,10 +1882,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2130,10 +1891,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2142,10 +1900,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2154,10 +1909,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2166,10 +1918,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2178,10 +1927,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2190,10 +1936,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00301() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2202,10 +1945,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00302() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2214,10 +1954,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00401() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2226,10 +1963,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00402() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2238,10 +1972,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00501() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2250,10 +1981,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00502() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2262,10 +1990,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00601() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2274,10 +1999,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00602() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2286,10 +2008,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00701() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2298,10 +2017,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00702() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2310,10 +2026,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00801() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2322,10 +2035,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00802() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2334,10 +2044,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00901() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2346,10 +2053,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_00902() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2358,10 +2062,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_01001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2370,10 +2071,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_01002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2382,10 +2080,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_01101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2394,10 +2089,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_01102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2406,10 +2098,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_01201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -2418,10 +2107,7 @@ public class RowerDataPacketAndroidTest {
     public void test_parcelable_3_01202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(bluetoothGattCharacteristic);
+        RowerDataPacketAndroid result1 = new RowerDataPacketAndroid(data);
         RowerDataPacketAndroid result2 = RowerDataPacketAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

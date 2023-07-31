@@ -90,7 +90,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("UnnecessaryLocalVariable")
-public class UserDataServiceTest_2 extends AbstractCentralTest {
+public class UserDataService002Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice

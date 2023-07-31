@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2af2;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -11,11 +10,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings({"ConstantConditions"})
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -32,10 +30,7 @@ public class EnergyAndroidTest {
         data[ 2] = (byte) (EnergyUtils.ENERGY_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyAndroid result = new EnergyAndroid(bluetoothGattCharacteristic);
+        EnergyAndroid result = new EnergyAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getEnergy());
     }
 
@@ -48,10 +43,7 @@ public class EnergyAndroidTest {
         data[ 2] = (byte) (EnergyUtils.ENERGY_VALUE_MINIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyAndroid result = new EnergyAndroid(bluetoothGattCharacteristic);
+        EnergyAndroid result = new EnergyAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getEnergy());
     }
 
@@ -64,10 +56,7 @@ public class EnergyAndroidTest {
         data[ 2] = (byte) (EnergyUtils.ENERGY_VALUE_MAXIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyAndroid result = new EnergyAndroid(bluetoothGattCharacteristic);
+        EnergyAndroid result = new EnergyAndroid(data);
         assertEquals(BLEUtils.createUInt24(data, 0), result.getEnergy());
     }
 
@@ -104,10 +93,7 @@ public class EnergyAndroidTest {
         data[ 2] = (byte) (EnergyUtils.ENERGY_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyAndroid result1 = new EnergyAndroid(bluetoothGattCharacteristic);
+        EnergyAndroid result1 = new EnergyAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -125,10 +111,7 @@ public class EnergyAndroidTest {
         data[ 2] = (byte) (EnergyUtils.ENERGY_VALUE_MINIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyAndroid result1 = new EnergyAndroid(bluetoothGattCharacteristic);
+        EnergyAndroid result1 = new EnergyAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -146,10 +129,7 @@ public class EnergyAndroidTest {
         data[ 2] = (byte) (EnergyUtils.ENERGY_VALUE_MAXIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyAndroid result1 = new EnergyAndroid(bluetoothGattCharacteristic);
+        EnergyAndroid result1 = new EnergyAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -167,10 +147,7 @@ public class EnergyAndroidTest {
         data[ 2] = (byte) (EnergyUtils.ENERGY_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyAndroid result1 = new EnergyAndroid(bluetoothGattCharacteristic);
+        EnergyAndroid result1 = new EnergyAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -183,10 +160,7 @@ public class EnergyAndroidTest {
         data[ 2] = (byte) (EnergyUtils.ENERGY_VALUE_MINIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyAndroid result1 = new EnergyAndroid(bluetoothGattCharacteristic);
+        EnergyAndroid result1 = new EnergyAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -199,10 +173,7 @@ public class EnergyAndroidTest {
         data[ 2] = (byte) (EnergyUtils.ENERGY_VALUE_MAXIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyAndroid result1 = new EnergyAndroid(bluetoothGattCharacteristic);
+        EnergyAndroid result1 = new EnergyAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -215,10 +186,7 @@ public class EnergyAndroidTest {
         data[ 2] = (byte) (EnergyUtils.ENERGY_VALUE_IS_NOT_KNOWN >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyAndroid result1 = new EnergyAndroid(bluetoothGattCharacteristic);
+        EnergyAndroid result1 = new EnergyAndroid(data);
         EnergyAndroid result2 = EnergyAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -232,10 +200,7 @@ public class EnergyAndroidTest {
         data[ 2] = (byte) (EnergyUtils.ENERGY_VALUE_MINIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyAndroid result1 = new EnergyAndroid(bluetoothGattCharacteristic);
+        EnergyAndroid result1 = new EnergyAndroid(data);
         EnergyAndroid result2 = EnergyAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -249,10 +214,7 @@ public class EnergyAndroidTest {
         data[ 2] = (byte) (EnergyUtils.ENERGY_VALUE_MAXIMUM >> 16);
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        EnergyAndroid result1 = new EnergyAndroid(bluetoothGattCharacteristic);
+        EnergyAndroid result1 = new EnergyAndroid(data);
         EnergyAndroid result2 = EnergyAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

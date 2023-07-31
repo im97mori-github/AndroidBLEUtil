@@ -1,12 +1,10 @@
 package org.im97mori.ble.characteristic.u2b3a;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -19,7 +17,7 @@ import org.robolectric.annotation.Config;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings({"ConstantConditions", "unused"})
+@SuppressWarnings({"unused"})
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -31,6 +29,7 @@ public class ServerSupportedFeaturesAndroidTest extends TestBase {
     private static final byte[] data_00001;
     static {
         byte[] data = new byte[1];
+        //noinspection DataFlowIssue
         data[0] = 0;
         data_00001 = data;
     }
@@ -47,10 +46,7 @@ public class ServerSupportedFeaturesAndroidTest extends TestBase {
     public void test_constructor_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(data);
         assertEquals(1, result1.getServerSupportedFeaturesList().size());
         assertEquals(0b00000000, result1.getServerSupportedFeaturesList().get(0).intValue());
         assertFalse(result1.isEattSupported());
@@ -60,10 +56,7 @@ public class ServerSupportedFeaturesAndroidTest extends TestBase {
     public void test_constructor_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(data);
         assertEquals(1, result1.getServerSupportedFeaturesList().size());
         assertEquals(0b00000001, result1.getServerSupportedFeaturesList().get(0).intValue());
         assertTrue(result1.isEattSupported());
@@ -101,10 +94,7 @@ public class ServerSupportedFeaturesAndroidTest extends TestBase {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -117,10 +107,7 @@ public class ServerSupportedFeaturesAndroidTest extends TestBase {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -133,10 +120,7 @@ public class ServerSupportedFeaturesAndroidTest extends TestBase {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -144,10 +128,7 @@ public class ServerSupportedFeaturesAndroidTest extends TestBase {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -155,10 +136,7 @@ public class ServerSupportedFeaturesAndroidTest extends TestBase {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(data);
         ServerSupportedFeaturesAndroid result2 = ServerSupportedFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -167,10 +145,7 @@ public class ServerSupportedFeaturesAndroidTest extends TestBase {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(bluetoothGattCharacteristic);
+        ServerSupportedFeaturesAndroid result1 = new ServerSupportedFeaturesAndroid(data);
         ServerSupportedFeaturesAndroid result2 = ServerSupportedFeaturesAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

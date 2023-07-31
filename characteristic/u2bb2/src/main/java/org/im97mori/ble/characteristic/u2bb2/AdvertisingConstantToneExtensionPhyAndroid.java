@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ADVERTISING_CONSTANT_TONE_EXTENSION_PHY_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Advertising Constant Tone Extension PHY (Characteristics UUID: 0x2BB2)
@@ -45,9 +45,7 @@ public class AdvertisingConstantToneExtensionPhyAndroid extends AdvertisingConst
          */
         @NonNull
         public AdvertisingConstantToneExtensionPhyAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ADVERTISING_CONSTANT_TONE_EXTENSION_PHY_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AdvertisingConstantToneExtensionPhyAndroid(bluetoothGattCharacteristic);
+            return new AdvertisingConstantToneExtensionPhyAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class AdvertisingConstantToneExtensionPhyAndroid extends AdvertisingConst
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2BB2
      */
+    @Deprecated
     public AdvertisingConstantToneExtensionPhyAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AdvertisingConstantToneExtensionPhyAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class AdvertisingConstantToneExtensionPhyAndroid extends AdvertisingConst
      * @param in Parcel
      */
     private AdvertisingConstantToneExtensionPhyAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

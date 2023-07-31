@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a0d;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,11 +9,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -29,10 +27,7 @@ public class DstOffsetAndroidTest {
         data[ 0] = DstOffsetUtils.DST_OFFSET_STANDARD_TIME;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DstOffsetAndroid result1 = new DstOffsetAndroid(bluetoothGattCharacteristic);
+        DstOffsetAndroid result1 = new DstOffsetAndroid(data);
         assertEquals(DstOffsetUtils.DST_OFFSET_STANDARD_TIME, result1.getDstOffset());
     }
 
@@ -43,10 +38,7 @@ public class DstOffsetAndroidTest {
         data[ 0] = DstOffsetUtils.DST_OFFSET_HALF_AN_HOUR_DAYLIGHT_TIME;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DstOffsetAndroid result1 = new DstOffsetAndroid(bluetoothGattCharacteristic);
+        DstOffsetAndroid result1 = new DstOffsetAndroid(data);
         assertEquals(DstOffsetUtils.DST_OFFSET_HALF_AN_HOUR_DAYLIGHT_TIME, result1.getDstOffset());
     }
 
@@ -57,10 +49,7 @@ public class DstOffsetAndroidTest {
         data[ 0] = DstOffsetUtils.DST_OFFSET_DAYLIGHT_TIME;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DstOffsetAndroid result1 = new DstOffsetAndroid(bluetoothGattCharacteristic);
+        DstOffsetAndroid result1 = new DstOffsetAndroid(data);
         assertEquals(DstOffsetUtils.DST_OFFSET_DAYLIGHT_TIME, result1.getDstOffset());
     }
 
@@ -71,10 +60,7 @@ public class DstOffsetAndroidTest {
         data[ 0] = DstOffsetUtils.DST_OFFSET_DOUBLE_DAYLIGHT_TIME;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DstOffsetAndroid result1 = new DstOffsetAndroid(bluetoothGattCharacteristic);
+        DstOffsetAndroid result1 = new DstOffsetAndroid(data);
         assertEquals(DstOffsetUtils.DST_OFFSET_DOUBLE_DAYLIGHT_TIME, result1.getDstOffset());
     }
 
@@ -93,10 +79,7 @@ public class DstOffsetAndroidTest {
         data[ 0] = DstOffsetUtils.DST_OFFSET_STANDARD_TIME;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DstOffsetAndroid result1 = new DstOffsetAndroid(bluetoothGattCharacteristic);
+        DstOffsetAndroid result1 = new DstOffsetAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -112,10 +95,7 @@ public class DstOffsetAndroidTest {
         data[ 0] = DstOffsetUtils.DST_OFFSET_STANDARD_TIME;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DstOffsetAndroid result1 = new DstOffsetAndroid(bluetoothGattCharacteristic);
+        DstOffsetAndroid result1 = new DstOffsetAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -126,10 +106,7 @@ public class DstOffsetAndroidTest {
         data[ 0] = DstOffsetUtils.DST_OFFSET_STANDARD_TIME;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        DstOffsetAndroid result1 = new DstOffsetAndroid(bluetoothGattCharacteristic);
+        DstOffsetAndroid result1 = new DstOffsetAndroid(data);
         DstOffsetAndroid result2 = DstOffsetAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

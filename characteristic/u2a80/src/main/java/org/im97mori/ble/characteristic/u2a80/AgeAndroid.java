@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.AGE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Age (Characteristics UUID: 0x2A80)
@@ -44,9 +44,7 @@ public class AgeAndroid extends Age implements Parcelable {
          */
         @NonNull
         public AgeAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(AGE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AgeAndroid(bluetoothGattCharacteristic);
+            return new AgeAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class AgeAndroid extends Age implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A80
      */
+    @Deprecated
     public AgeAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AgeAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class AgeAndroid extends Age implements Parcelable {
      * @param in Parcel
      */
     private AgeAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

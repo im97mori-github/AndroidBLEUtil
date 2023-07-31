@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.TIME_WITH_DST_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Time with DST (Characteristics UUID: 0x2A11)
@@ -44,9 +44,7 @@ public class TimeWithDstAndroid extends TimeWithDst implements Parcelable {
          */
         @NonNull
         public TimeWithDstAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(TIME_WITH_DST_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new TimeWithDstAndroid(bluetoothGattCharacteristic);
+            return new TimeWithDstAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class TimeWithDstAndroid extends TimeWithDst implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A11
      */
+    @Deprecated
     public TimeWithDstAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public TimeWithDstAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -81,8 +89,7 @@ public class TimeWithDstAndroid extends TimeWithDst implements Parcelable {
      * @param in Parcel
      */
     private TimeWithDstAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

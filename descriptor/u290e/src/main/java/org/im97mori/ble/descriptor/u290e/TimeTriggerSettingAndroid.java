@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.DescriptorUUID.TIME_TRIGGER_SETTING_DESCRIPTOR;
+import java.util.Objects;
 
 /**
  * Time Trigger Setting (Descriptor UUID: 0x290E)
@@ -42,9 +42,7 @@ public class TimeTriggerSettingAndroid extends TimeTriggerSetting implements Par
          */
         @NonNull
         public TimeTriggerSettingAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(TIME_TRIGGER_SETTING_DESCRIPTOR, 0);
-            bluetoothGattDescriptor.setValue(values);
-            return new TimeTriggerSettingAndroid(bluetoothGattDescriptor);
+            return new TimeTriggerSettingAndroid(values);
         }
 
     };
@@ -54,8 +52,18 @@ public class TimeTriggerSettingAndroid extends TimeTriggerSetting implements Par
      *
      * @param bluetoothGattDescriptor Characteristics UUID: 0x290E
      */
+    @Deprecated
     public TimeTriggerSettingAndroid(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         super(bluetoothGattDescriptor.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattDescriptor#getValue()">BluetoothGattDescriptor#getValue()</a>
+     */
+    public TimeTriggerSettingAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -76,8 +84,7 @@ public class TimeTriggerSettingAndroid extends TimeTriggerSetting implements Par
      * @param in Parcel
      */
     private TimeTriggerSettingAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

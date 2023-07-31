@@ -1,6 +1,10 @@
 package org.im97mori.ble.descriptor.u2903;
 
-import android.bluetooth.BluetoothGattDescriptor;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,18 +13,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-@SuppressWarnings("ConstantConditions")
 public class ServerCharacteristicConfigurationAndroidTest {
 
     @Test
@@ -31,10 +29,7 @@ public class ServerCharacteristicConfigurationAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ServerCharacteristicConfigurationAndroid result = new ServerCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ServerCharacteristicConfigurationAndroid result = new ServerCharacteristicConfigurationAndroid(value);
         assertEquals(0x0201, result.getProperties());
     }
 
@@ -46,10 +41,7 @@ public class ServerCharacteristicConfigurationAndroidTest {
         value[ 1] = (byte) ServerCharacteristicConfigurationAndroid.PROPERTIES_BROADCASTS_DISABLED >> 8;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ServerCharacteristicConfigurationAndroid result = new ServerCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ServerCharacteristicConfigurationAndroid result = new ServerCharacteristicConfigurationAndroid(value);
         assertTrue(result.isPropertiesBroadcastsDisabled());
         assertFalse(result.isPropertiesBroadcastsEnabled());
     }
@@ -62,10 +54,7 @@ public class ServerCharacteristicConfigurationAndroidTest {
         value[ 1] = (byte) ServerCharacteristicConfigurationAndroid.PROPERTIES_BROADCASTS_ENABLED >> 8;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ServerCharacteristicConfigurationAndroid result = new ServerCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ServerCharacteristicConfigurationAndroid result = new ServerCharacteristicConfigurationAndroid(value);
         assertFalse(result.isPropertiesBroadcastsDisabled());
         assertTrue(result.isPropertiesBroadcastsEnabled());
     }
@@ -78,10 +67,7 @@ public class ServerCharacteristicConfigurationAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ServerCharacteristicConfigurationAndroid result1 = new ServerCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ServerCharacteristicConfigurationAndroid result1 = new ServerCharacteristicConfigurationAndroid(value);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -98,10 +84,7 @@ public class ServerCharacteristicConfigurationAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ServerCharacteristicConfigurationAndroid result1 = new ServerCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ServerCharacteristicConfigurationAndroid result1 = new ServerCharacteristicConfigurationAndroid(value);
         assertArrayEquals(value, result1.getBytes());
     }
 
@@ -113,10 +96,7 @@ public class ServerCharacteristicConfigurationAndroidTest {
         value[ 1] = 0x02;
         //@formatter:on
 
-        BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(BASE_UUID, 0);
-        bluetoothGattDescriptor.setValue(value);
-
-        ServerCharacteristicConfigurationAndroid result1 = new ServerCharacteristicConfigurationAndroid(bluetoothGattDescriptor);
+        ServerCharacteristicConfigurationAndroid result1 = new ServerCharacteristicConfigurationAndroid(value);
         ServerCharacteristicConfigurationAndroid result2 = ServerCharacteristicConfigurationAndroid.CREATOR.createFromByteArray(value);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

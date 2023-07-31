@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Supported New Alert Category (Characteristics UUID: 0x2A47)
@@ -44,9 +44,7 @@ public class SupportedNewAlertCategoryAndroid extends SupportedNewAlertCategory 
          */
         @NonNull
         public SupportedNewAlertCategoryAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SUPPORTED_NEW_ALERT_CATEGORY_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new SupportedNewAlertCategoryAndroid(bluetoothGattCharacteristic);
+            return new SupportedNewAlertCategoryAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class SupportedNewAlertCategoryAndroid extends SupportedNewAlertCategory 
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A47
      */
+    @Deprecated
     public SupportedNewAlertCategoryAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public SupportedNewAlertCategoryAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -96,8 +104,7 @@ public class SupportedNewAlertCategoryAndroid extends SupportedNewAlertCategory 
      * @param in Parcel
      */
     private SupportedNewAlertCategoryAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

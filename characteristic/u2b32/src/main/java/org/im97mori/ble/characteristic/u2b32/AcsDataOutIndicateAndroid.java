@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.ACS_DATA_OUT_INDICATE_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * ACS Data Out Indicate (Characteristics UUID: 0x2B32)
@@ -45,9 +45,7 @@ public class AcsDataOutIndicateAndroid extends AcsDataOutIndicate implements Par
          */
         @NonNull
         public AcsDataOutIndicateAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(ACS_DATA_OUT_INDICATE_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new AcsDataOutIndicateAndroid(bluetoothGattCharacteristic);
+            return new AcsDataOutIndicateAndroid(values);
         }
 
     };
@@ -57,8 +55,18 @@ public class AcsDataOutIndicateAndroid extends AcsDataOutIndicate implements Par
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B32
      */
+    @Deprecated
     public AcsDataOutIndicateAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public AcsDataOutIndicateAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -67,8 +75,7 @@ public class AcsDataOutIndicateAndroid extends AcsDataOutIndicate implements Par
      * @param in Parcel
      */
     private AcsDataOutIndicateAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

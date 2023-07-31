@@ -4,7 +4,6 @@ import android.Manifest;
 import android.os.Build;
 
 import androidx.test.filters.SdkSuppress;
-import androidx.test.filters.Suppress;
 import androidx.test.rule.GrantPermissionRule;
 
 import org.junit.Rule;

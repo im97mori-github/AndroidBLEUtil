@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a5c;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -9,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -104,9 +102,9 @@ public class CSCFeatureAndroidTest {
         }
         if (index >= 0 && index < stackTraceElementArray.length) {
             StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] splitted = stackTraceElement.getMethodName().split("_");
+            String[] stringArray = stackTraceElement.getMethodName().split("_");
             try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + splitted[splitted.length - 1]).get(null);
+                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -120,10 +118,7 @@ public class CSCFeatureAndroidTest {
     public void test_constructor_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         assertArrayEquals(data, result1.getCscFeature());
         assertTrue(result1.isCscFeatureWheelRevolutionDataNotSupported());
         assertFalse(result1.isCscFeatureWheelRevolutionDataSupported());
@@ -133,10 +128,7 @@ public class CSCFeatureAndroidTest {
     public void test_constructor_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         assertArrayEquals(data, result1.getCscFeature());
         assertFalse(result1.isCscFeatureWheelRevolutionDataNotSupported());
         assertTrue(result1.isCscFeatureWheelRevolutionDataSupported());
@@ -146,10 +138,7 @@ public class CSCFeatureAndroidTest {
     public void test_constructor_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         assertArrayEquals(data, result1.getCscFeature());
         assertTrue(result1.isCscFeatureCrankRevolutionDataSupportedNotSupported());
         assertFalse(result1.isCscFeatureCrankRevolutionDataSupportedSupported());
@@ -159,10 +148,7 @@ public class CSCFeatureAndroidTest {
     public void test_constructor_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         assertArrayEquals(data, result1.getCscFeature());
         assertFalse(result1.isCscFeatureCrankRevolutionDataSupportedNotSupported());
         assertTrue(result1.isCscFeatureCrankRevolutionDataSupportedSupported());
@@ -172,10 +158,7 @@ public class CSCFeatureAndroidTest {
     public void test_constructor_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         assertArrayEquals(data, result1.getCscFeature());
         assertTrue(result1.isCscFeatureMultipleSensorLocationsSupportedNotSupported());
         assertFalse(result1.isCscFeatureMultipleSensorLocationsSupportedSupported());
@@ -185,10 +168,7 @@ public class CSCFeatureAndroidTest {
     public void test_constructor_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         assertArrayEquals(data, result1.getCscFeature());
         assertFalse(result1.isCscFeatureMultipleSensorLocationsSupportedNotSupported());
         assertTrue(result1.isCscFeatureMultipleSensorLocationsSupportedSupported());
@@ -198,10 +178,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_1_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -213,10 +190,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_1_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -228,10 +202,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_1_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         assertArrayEquals(data, result1.getCscFeature());
         assertTrue(result1.isCscFeatureCrankRevolutionDataSupportedNotSupported());
         assertFalse(result1.isCscFeatureCrankRevolutionDataSupportedSupported());
@@ -241,10 +212,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_1_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -256,10 +224,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_1_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -271,10 +236,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_1_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -286,10 +248,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_2_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -297,10 +256,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_2_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -308,10 +264,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_2_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -319,10 +272,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_2_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -330,10 +280,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_2_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -341,10 +288,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_2_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -352,10 +296,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_3_00001() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         CSCFeatureAndroid result2 = CSCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -364,10 +305,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_3_00002() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         CSCFeatureAndroid result2 = CSCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -376,10 +314,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_3_00101() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         CSCFeatureAndroid result2 = CSCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -388,10 +323,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_3_00102() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         CSCFeatureAndroid result2 = CSCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -400,10 +332,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_3_00201() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         CSCFeatureAndroid result2 = CSCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -412,10 +341,7 @@ public class CSCFeatureAndroidTest {
     public void test_parcelable_3_00202() {
         byte[] data = getData();
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        CSCFeatureAndroid result1 = new CSCFeatureAndroid(bluetoothGattCharacteristic);
+        CSCFeatureAndroid result1 = new CSCFeatureAndroid(data);
         CSCFeatureAndroid result2 = CSCFeatureAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

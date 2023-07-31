@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.SCAN_REFRESH_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Scan Refresh (Characteristics UUID: 0x2A31)
@@ -44,9 +44,7 @@ public class ScanRefreshAndroid extends ScanRefresh implements Parcelable {
          */
         @NonNull
         public ScanRefreshAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(SCAN_REFRESH_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new ScanRefreshAndroid(bluetoothGattCharacteristic);
+            return new ScanRefreshAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class ScanRefreshAndroid extends ScanRefresh implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A31
      */
+    @Deprecated
     public ScanRefreshAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public ScanRefreshAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class ScanRefreshAndroid extends ScanRefresh implements Parcelable {
      * @param in Parcel
      */
     private ScanRefreshAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

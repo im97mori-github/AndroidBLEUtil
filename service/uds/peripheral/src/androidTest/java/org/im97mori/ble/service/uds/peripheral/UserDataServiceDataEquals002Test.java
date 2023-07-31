@@ -39,7 +39,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class UserDataServiceDataTest_equals_2 {
+public class UserDataServiceDataEquals002Test {
 
     @Test
     public void test_equals_00101() {

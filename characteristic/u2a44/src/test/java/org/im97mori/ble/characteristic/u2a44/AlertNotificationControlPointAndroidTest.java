@@ -1,6 +1,5 @@
 package org.im97mori.ble.characteristic.u2a44;
 
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.os.Build;
 import android.os.Parcel;
 
@@ -10,13 +9,12 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-import static org.im97mori.ble.BLEUtils.BASE_UUID;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 @RunWith(RobolectricTestRunner.class)
 @Config(instrumentedPackages = {
         // required to access final members on androidx.loader.content.ModernAsyncTask
@@ -32,10 +30,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_SIMPLE_ALERT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertEquals(AlertNotificationControlPointAndroid.COMMAND_ID_ENABLE_NEW_IMCOMING_ALERT_NOTIFICATION, result1.getCommandId());
         assertTrue(result1.isCommandIdEnableNewIncomingAlertNotification());
         assertFalse(result1.isCommandIdEnableUnreadCategoryStatusNotification());
@@ -54,10 +49,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_EMAIL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertEquals(AlertNotificationControlPointAndroid.COMMAND_ID_ENABLE_UNREAD_CATEGORY_STATUS_NOTIFICATION, result1.getCommandId());
         assertFalse(result1.isCommandIdEnableNewIncomingAlertNotification());
         assertTrue(result1.isCommandIdEnableUnreadCategoryStatusNotification());
@@ -76,10 +68,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_NEWS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertEquals(AlertNotificationControlPointAndroid.COMMAND_ID_DISABLE_NEW_IMCOMING_ALERT_NOTIFICATION, result1.getCommandId());
         assertFalse(result1.isCommandIdEnableNewIncomingAlertNotification());
         assertFalse(result1.isCommandIdEnableUnreadCategoryStatusNotification());
@@ -98,10 +87,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_CALL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertEquals(AlertNotificationControlPointAndroid.COMMAND_ID_DISABLE_UNREAD_CATEGORY_STATUS_NOTIFICATION, result1.getCommandId());
         assertFalse(result1.isCommandIdEnableNewIncomingAlertNotification());
         assertFalse(result1.isCommandIdEnableUnreadCategoryStatusNotification());
@@ -120,10 +106,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_MISSED_CALL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertEquals(AlertNotificationControlPointAndroid.COMMAND_ID_NOTIFY_NEW_INCOMING_ALERT_IMMEDIATELY, result1.getCommandId());
         assertFalse(result1.isCommandIdEnableNewIncomingAlertNotification());
         assertFalse(result1.isCommandIdEnableUnreadCategoryStatusNotification());
@@ -142,10 +125,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_SMS_MMS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertEquals(AlertNotificationControlPointAndroid.COMMAND_ID_NOTIFY_UNREAD_CATEGORY_STATUS_IMMEDIATELY, result1.getCommandId());
         assertFalse(result1.isCommandIdEnableNewIncomingAlertNotification());
         assertFalse(result1.isCommandIdEnableUnreadCategoryStatusNotification());
@@ -164,10 +144,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_VOICE_MAIL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertEquals(AlertNotificationControlPointAndroid.COMMAND_ID_NOTIFY_UNREAD_CATEGORY_STATUS_IMMEDIATELY, result1.getCommandId());
         assertFalse(result1.isCommandIdEnableNewIncomingAlertNotification());
         assertFalse(result1.isCommandIdEnableUnreadCategoryStatusNotification());
@@ -186,10 +163,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_SCHEDULE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertEquals(AlertNotificationControlPointAndroid.COMMAND_ID_NOTIFY_UNREAD_CATEGORY_STATUS_IMMEDIATELY, result1.getCommandId());
         assertFalse(result1.isCommandIdEnableNewIncomingAlertNotification());
         assertFalse(result1.isCommandIdEnableUnreadCategoryStatusNotification());
@@ -208,10 +182,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_HIGH_PRIORITIZED_ALERT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertEquals(AlertNotificationControlPointAndroid.COMMAND_ID_NOTIFY_UNREAD_CATEGORY_STATUS_IMMEDIATELY, result1.getCommandId());
         assertFalse(result1.isCommandIdEnableNewIncomingAlertNotification());
         assertFalse(result1.isCommandIdEnableUnreadCategoryStatusNotification());
@@ -230,10 +201,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_INSTANT_MESSAGE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertEquals(AlertNotificationControlPointAndroid.COMMAND_ID_NOTIFY_UNREAD_CATEGORY_STATUS_IMMEDIATELY, result1.getCommandId());
         assertFalse(result1.isCommandIdEnableNewIncomingAlertNotification());
         assertFalse(result1.isCommandIdEnableUnreadCategoryStatusNotification());
@@ -262,10 +230,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_SIMPLE_ALERT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -282,10 +247,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_EMAIL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -302,10 +264,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_NEWS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -322,10 +281,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_CALL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -342,10 +298,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_MISSED_CALL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -362,10 +315,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_SMS_MMS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -382,10 +332,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_VOICE_MAIL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -402,10 +349,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_SCHEDULE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -422,10 +366,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_HIGH_PRIORITIZED_ALERT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -442,10 +383,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_EMAIL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         Parcel parcel = Parcel.obtain();
         result1.writeToParcel(parcel, 0);
         parcel.setDataPosition(0);
@@ -462,10 +400,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_SIMPLE_ALERT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -477,10 +412,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_EMAIL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -492,10 +424,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_NEWS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -507,10 +436,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_CALL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -522,10 +448,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_MISSED_CALL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -537,10 +460,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_SMS_MMS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -552,10 +472,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_VOICE_MAIL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -567,10 +484,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_SCHEDULE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -582,10 +496,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_HIGH_PRIORITIZED_ALERT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -597,10 +508,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_EMAIL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         assertArrayEquals(data, result1.getBytes());
     }
 
@@ -612,10 +520,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_SIMPLE_ALERT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         AlertNotificationControlPointAndroid result2 = AlertNotificationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -628,10 +533,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_EMAIL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         AlertNotificationControlPointAndroid result2 = AlertNotificationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -644,10 +546,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_NEWS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         AlertNotificationControlPointAndroid result2 = AlertNotificationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -660,10 +559,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_CALL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         AlertNotificationControlPointAndroid result2 = AlertNotificationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -676,10 +572,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_MISSED_CALL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         AlertNotificationControlPointAndroid result2 = AlertNotificationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -692,10 +585,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_SMS_MMS;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         AlertNotificationControlPointAndroid result2 = AlertNotificationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -708,10 +598,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_VOICE_MAIL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         AlertNotificationControlPointAndroid result2 = AlertNotificationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -724,10 +611,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_SCHEDULE;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         AlertNotificationControlPointAndroid result2 = AlertNotificationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -740,10 +624,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_HIGH_PRIORITIZED_ALERT;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         AlertNotificationControlPointAndroid result2 = AlertNotificationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }
@@ -756,10 +637,7 @@ public class AlertNotificationControlPointAndroidTest {
         data[ 1] = AlertCategoryIdUtils.CATEGORY_ID_EMAIL;
         //@formatter:on
 
-        BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(BASE_UUID, 0, 0);
-        bluetoothGattCharacteristic.setValue(data);
-
-        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(bluetoothGattCharacteristic);
+        AlertNotificationControlPointAndroid result1 = new AlertNotificationControlPointAndroid(data);
         AlertNotificationControlPointAndroid result2 = AlertNotificationControlPointAndroid.CREATOR.createFromByteArray(data);
         assertArrayEquals(result1.getBytes(), result2.getBytes());
     }

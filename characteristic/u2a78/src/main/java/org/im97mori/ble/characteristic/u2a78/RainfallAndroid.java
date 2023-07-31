@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.RAINFALL_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Rainfall (Characteristics UUID: 0x2A78)
@@ -44,9 +44,7 @@ public class RainfallAndroid extends Rainfall implements Parcelable {
          */
         @NonNull
         public RainfallAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(RAINFALL_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new RainfallAndroid(bluetoothGattCharacteristic);
+            return new RainfallAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class RainfallAndroid extends Rainfall implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2A78
      */
+    @Deprecated
     public RainfallAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public RainfallAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class RainfallAndroid extends Rainfall implements Parcelable {
      * @param in Parcel
      */
     private RainfallAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

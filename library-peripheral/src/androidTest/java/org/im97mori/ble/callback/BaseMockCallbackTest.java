@@ -29,7 +29,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
-@SuppressWarnings("ConstantConditions")
+/** @noinspection DataFlowIssue*/
 public class BaseMockCallbackTest extends AbstractPeripheralTest {
 
     static class BaseMockCallbackInner extends BaseMockCallback {
@@ -222,7 +222,9 @@ public class BaseMockCallbackTest extends AbstractPeripheralTest {
         assertEquals(descriptorPermission, bluetoothGattDescriptor.getPermissions());
     }
 
+    /** @noinspection deprecation*/
     @Test
+    @Deprecated
     public void test_tearDown_001() {
         UUID serviceUUID = UUID.randomUUID();
         int serviceType = 1;
@@ -275,7 +277,9 @@ public class BaseMockCallbackTest extends AbstractPeripheralTest {
         assertEquals(bluetoothGattService, bluetoothGattServiceList.get(0));
     }
 
+    /** @noinspection deprecation*/
     @Test
+    @Deprecated
     public void test_onServiceAddSuccess_001() {
         UUID serviceUUID = UUID.randomUUID();
         int serviceType = 1;
@@ -322,7 +326,9 @@ public class BaseMockCallbackTest extends AbstractPeripheralTest {
         assertTrue(baseMockCallback.onServiceAddSuccess(null, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle));
     }
 
+    /** @noinspection deprecation*/
     @Test
+    @Deprecated
     public void test_onServiceAddSuccess_002() {
         UUID serviceUUID = UUID.randomUUID();
         int serviceType = 1;
@@ -370,7 +376,9 @@ public class BaseMockCallbackTest extends AbstractPeripheralTest {
         assertFalse(baseMockCallback.onServiceAddSuccess(null, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle));
     }
 
+    /** @noinspection deprecation*/
     @Test
+    @Deprecated
     public void test_onServiceAddSuccess_003() {
         UUID serviceUUID = UUID.randomUUID();
         int serviceType = 1;
@@ -397,7 +405,9 @@ public class BaseMockCallbackTest extends AbstractPeripheralTest {
         assertFalse(baseMockCallback.onServiceAddSuccess(null, MOCK_BLE_SERVER_CONNECTION, bluetoothGattService, bundle));
     }
 
+    /** @noinspection deprecation*/
     @Test
+    @Deprecated
     public void test_onServiceRemoveSuccess_001() {
         UUID serviceUUID = UUID.randomUUID();
         int serviceType = 1;

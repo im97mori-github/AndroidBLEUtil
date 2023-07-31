@@ -61,7 +61,6 @@ import org.im97mori.ble.advertising.ListOf128BitServiceSolicitationUUIDsAndroid;
 import org.im97mori.ble.advertising.ListOf16BitServiceSolicitationUUIDsAndroid;
 import org.im97mori.ble.advertising.ListOf32BitServiceSolicitationUUIDsAndroid;
 import org.im97mori.ble.advertising.ManufacturerSpecificDataAndroid;
-import org.im97mori.ble.advertising.PeriodicAdvertisingResponseTimingInformation;
 import org.im97mori.ble.advertising.PeriodicAdvertisingResponseTimingInformationAndroid;
 import org.im97mori.ble.advertising.PeripheralConnectionIntervalRangeAndroid;
 import org.im97mori.ble.advertising.PublicTargetAddressAndroid;

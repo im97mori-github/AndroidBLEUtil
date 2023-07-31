@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.CharacteristicUUID.HANDEDNESS_CHARACTERISTIC;
+import java.util.Objects;
 
 /**
  * Handedness (Characteristics UUID: 0x2B4A)
@@ -44,9 +44,7 @@ public class HandednessAndroid extends Handedness implements Parcelable {
          */
         @NonNull
         public HandednessAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattCharacteristic bluetoothGattCharacteristic = new BluetoothGattCharacteristic(HANDEDNESS_CHARACTERISTIC, 0, 0);
-            bluetoothGattCharacteristic.setValue(values);
-            return new HandednessAndroid(bluetoothGattCharacteristic);
+            return new HandednessAndroid(values);
         }
 
     };
@@ -56,8 +54,18 @@ public class HandednessAndroid extends Handedness implements Parcelable {
      *
      * @param bluetoothGattCharacteristic Characteristics UUID: 0x2B4A
      */
+    @Deprecated
     public HandednessAndroid(@NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic) {
         super(bluetoothGattCharacteristic.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattCharacteristic#getValue()">BluetoothGattCharacteristic#getValue()</a>
+     */
+    public HandednessAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -75,8 +83,7 @@ public class HandednessAndroid extends Handedness implements Parcelable {
      * @param in Parcel
      */
     private HandednessAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**

@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.ByteArrayCreator;
 
-import static org.im97mori.ble.constants.DescriptorUUID.COMPLETE_BR_EDR_TRANSPORT_BLOCK_DATA_DESCRIPTOR;
+import java.util.Objects;
 
 /**
  * Complete BR-EDR Transport Block Data (Descriptor UUID: 0x290F)
@@ -42,9 +42,7 @@ public class CompleteBrEdrTransportBlockDataAndroid extends CompleteBrEdrTranspo
          */
         @NonNull
         public CompleteBrEdrTransportBlockDataAndroid createFromByteArray(@NonNull byte[] values) {
-            BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(COMPLETE_BR_EDR_TRANSPORT_BLOCK_DATA_DESCRIPTOR, 0);
-            bluetoothGattDescriptor.setValue(values);
-            return new CompleteBrEdrTransportBlockDataAndroid(bluetoothGattDescriptor);
+            return new CompleteBrEdrTransportBlockDataAndroid(values);
         }
 
     };
@@ -54,8 +52,18 @@ public class CompleteBrEdrTransportBlockDataAndroid extends CompleteBrEdrTranspo
      *
      * @param bluetoothGattDescriptor Characteristics UUID: 0x2909
      */
+    @Deprecated
     public CompleteBrEdrTransportBlockDataAndroid(@NonNull BluetoothGattDescriptor bluetoothGattDescriptor) {
         super(bluetoothGattDescriptor.getValue());
+    }
+
+    /**
+     * Constructor from byte array
+     *
+     * @param values byte array from <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGattDescriptor#getValue()">BluetoothGattDescriptor#getValue()</a>
+     */
+    public CompleteBrEdrTransportBlockDataAndroid(@NonNull byte[] values) {
+        super(values);
     }
 
     /**
@@ -64,8 +72,7 @@ public class CompleteBrEdrTransportBlockDataAndroid extends CompleteBrEdrTranspo
      * @param in Parcel
      */
     private CompleteBrEdrTransportBlockDataAndroid(@NonNull Parcel in) {
-        //noinspection ConstantConditions
-        super(in.createByteArray());
+        super(Objects.requireNonNull(in.createByteArray()));
     }
 
     /**
