@@ -4,6 +4,7 @@ import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_NOTIFY_CHARA
 import static org.im97mori.ble.sample.lolipop.SampleMockData.SAMPLE_PRIMARY_SERVICE_1;
 
 import android.bluetooth.BluetoothDevice;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.Menu;
@@ -20,6 +21,8 @@ import androidx.annotation.Nullable;
 
 import org.im97mori.ble.BLEServerConnection;
 import org.im97mori.ble.task.NotifyTask;
+import org.im97mori.ble.task.ReadPhyPeripheralTask;
+import org.im97mori.ble.task.SetPreferredPhyPeripheralTask;
 
 import java.util.LinkedList;
 
@@ -95,11 +98,12 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        BluetoothDevice bluetoothDevice = mLatestConnectedBluetoothDevice;
+        if (bluetoothDevice == null) return false;
         if (R.id.notification == item.getItemId()) {
-            BluetoothDevice bluetoothDevice = mLatestConnectedBluetoothDevice;
             Integer serviceInstanceId = mLatestNotifyServiceInstanceId;
             Integer characteristicInstanceId = mLatestNotifyCharacteristicInstanceId;
-            if (bluetoothDevice != null && serviceInstanceId != null && characteristicInstanceId != null) {
+            if (serviceInstanceId != null && characteristicInstanceId != null) {
                 mBLEServerConnection.createNotifyTask(bluetoothDevice
                         , SAMPLE_PRIMARY_SERVICE_1
                         , serviceInstanceId
@@ -113,10 +117,9 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
                         , null);
             }
         } else if (R.id.indication == item.getItemId()) {
-            BluetoothDevice bluetoothDevice = mLatestConnectedBluetoothDevice;
             Integer serviceInstanceId = mLatestNotifyServiceInstanceId;
             Integer characteristicInstanceId = mLatestNotifyCharacteristicInstanceId;
-            if (bluetoothDevice != null && serviceInstanceId != null && characteristicInstanceId != null) {
+            if (serviceInstanceId != null && characteristicInstanceId != null) {
                 mBLEServerConnection.createNotifyTask(bluetoothDevice
                         , SAMPLE_PRIMARY_SERVICE_1
                         , serviceInstanceId
@@ -126,6 +129,23 @@ public class PeripheralSampleActivity extends BaseActivity implements View.OnCli
                         , true
                         , NotifyTask.TIMEOUT_MILLIS
                         , 0
+                        , null
+                        , null);
+            }
+        } else if (R.id.readPhyPeripheral == item.getItemId()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                mBLEServerConnection.createReadPhyTask(bluetoothDevice
+                        , ReadPhyPeripheralTask.TIMEOUT_MILLIS
+                        , null
+                        , null);
+            }
+        } else if (R.id.setPreferredPhyPeripheral == item.getItemId()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                mBLEServerConnection.createSetPreferredPhyTask(bluetoothDevice
+                        , BluetoothDevice.PHY_LE_1M_MASK | BluetoothDevice.PHY_LE_2M_MASK
+                        , BluetoothDevice.PHY_LE_1M_MASK | BluetoothDevice.PHY_LE_2M_MASK
+                        , BluetoothDevice.PHY_OPTION_S2
+                        , SetPreferredPhyPeripheralTask.TIMEOUT_MILLIS
                         , null
                         , null);
             }

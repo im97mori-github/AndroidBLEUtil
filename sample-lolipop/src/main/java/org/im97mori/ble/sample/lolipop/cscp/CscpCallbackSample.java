@@ -501,8 +501,38 @@ public class CscpCallbackSample extends CyclingSpeedAndCadenceProfileMockCallbac
     }
 
     @Override
-    public void onMtuChanged(BluetoothDevice device, int mtu) {
+    public void onMtuChanged(@NonNull BluetoothDevice device, int mtu) {
         callback(device, mtu);
+    }
+
+    @Override
+    public void onPhyReadSuccess(@NonNull Integer integer, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int txPhy, int rxPhy, @Nullable Bundle argument) {
+        callback(device, txPhy, rxPhy);
+    }
+
+    @Override
+    public void onPhyReadFailed(@NonNull Integer integer, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int status, @Nullable Bundle bundle) {
+        callback(device, status);
+    }
+
+    @Override
+    public void onPhyReadTimeout(@NonNull Integer integer, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, long timeout, @Nullable Bundle bundle) {
+        callback(device, timeout);
+    }
+
+    @Override
+    public void onSetPreferredPhySuccess(@NonNull Integer integer, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int txPhy, int rxPhy, int phyOptions, @Nullable Bundle bundle) {
+        callback(device, txPhy, rxPhy, phyOptions);
+    }
+
+    @Override
+    public void onSetPreferredPhyFailed(@NonNull Integer integer, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int status, @Nullable Bundle bundle) {
+        callback(device, status);
+    }
+
+    @Override
+    public void onSetPreferredPhyTimeout(@NonNull Integer integer, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, long timeout, @Nullable Bundle bundle) {
+        callback(device, timeout);
     }
 
     @Override

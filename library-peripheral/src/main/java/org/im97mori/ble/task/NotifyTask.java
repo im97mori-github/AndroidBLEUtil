@@ -100,7 +100,7 @@ public class NotifyTask extends AbstractBLETask {
     }
 
     /**
-     * create notification sent success message
+     * create notification sent error message
      *
      * @param bluetoothDevice BLE device
      * @param status          {@link android.bluetooth.BluetoothGattServerCallback#onNotificationSent(BluetoothDevice, int)} 2nd argument

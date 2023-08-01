@@ -20,21 +20,29 @@ import android.bluetooth.le.AdvertiseData;
 import android.bluetooth.le.AdvertiseSettings;
 import android.bluetooth.le.BluetoothLeAdvertiser;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.ParcelUuid;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble.task.AddServiceTask;
 import org.im97mori.ble.task.NotifyTask;
+import org.im97mori.ble.task.ReadPhyPeripheralTask;
 import org.im97mori.ble.task.RemoveServiceTask;
+import org.im97mori.ble.task.SetPreferredPhyPeripheralTask;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -42,6 +50,170 @@ import java.util.UUID;
  */
 @SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
 public class BLEServerConnection extends BluetoothGattServerCallback implements BLEServerCallbackDistributor.SubscriberInterface {
+
+    private class BLEServerCallbackInner implements BLEServerCallback {
+
+        @Override
+        public void onServerStarted() {
+
+        }
+
+        @Override
+        public synchronized void onServerStopped() {
+            mDeviceSpecifiedTaskIdMap.clear();
+        }
+
+        @Override
+        public void onDeviceConnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
+
+        }
+
+        @Override
+        public void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device) {
+            synchronized (BLEServerConnection.this) {
+                Set<Integer> taskSet = mDeviceSpecifiedTaskIdMap.get(device.getAddress());
+                if (taskSet != null) {
+                    taskSet.forEach(taskId -> mTaskHandler.cancelTask(taskId));
+                    taskSet.clear();
+                }
+            }
+        }
+
+        @Override
+        public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
+            return false;
+        }
+
+        @Override
+        public void onServiceAddFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument) {
+
+        }
+
+        @Override
+        public void onServiceAddTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument) {
+
+        }
+
+        @Override
+        public void onServiceRemoveSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
+
+        }
+
+        @Override
+        public void onServiceRemoveFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument) {
+
+        }
+
+        @Override
+        public void onServiceRemoveTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument) {
+
+        }
+
+        @Override
+        public boolean onCharacteristicReadRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force) {
+            return false;
+        }
+
+        @Override
+        public boolean onCharacteristicWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force) {
+            return false;
+        }
+
+        @Override
+        public boolean onDescriptorReadRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattDescriptor bluetoothGattDescriptor, boolean force) {
+            return false;
+        }
+
+        @Override
+        public boolean onDescriptorWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattDescriptor bluetoothGattDescriptor, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force) {
+            return false;
+        }
+
+        @Override
+        public void onNotificationSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull byte[] value, @Nullable Bundle argument) {
+
+        }
+
+        @Override
+        public synchronized void onNotificationFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int status, @Nullable Bundle argument) {
+
+        }
+
+        @Override
+        public void onNotificationTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, long timeout, @Nullable Bundle argument) {
+
+        }
+
+        @Override
+        public boolean onExecuteWrite(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, boolean execute, boolean force) {
+            return false;
+        }
+
+        @Override
+        public void onMtuChanged(@NonNull BluetoothDevice device, int mtu) {
+
+        }
+
+        @Override
+        public synchronized void onPhyReadSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int txPhy, int rxPhy, @Nullable Bundle argument) {
+            removeTaskId(device, taskId);
+        }
+
+        @Override
+        public synchronized void onPhyReadFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int status, @Nullable Bundle argument) {
+            removeTaskId(device, taskId);
+        }
+
+        @Override
+        public synchronized void onPhyReadTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, long timeout, @Nullable Bundle argument) {
+            removeTaskId(device, taskId);
+        }
+
+        @Override
+        public synchronized void onSetPreferredPhySuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int txPhy, int rxPhy, int phyOptions, @Nullable Bundle argument) {
+            removeTaskId(device, taskId);
+        }
+
+        @Override
+        public synchronized void onSetPreferredPhyFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int status, @Nullable Bundle argument) {
+            removeTaskId(device, taskId);
+        }
+
+        @Override
+        public synchronized void onSetPreferredPhyTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, long timeout, @Nullable Bundle argument) {
+            removeTaskId(device, taskId);
+        }
+
+        @Override
+        public void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings) {
+
+        }
+
+        @Override
+        public void onAdvertisingStartFailed(@Nullable Integer errorCode) {
+
+        }
+
+        @Override
+        public void onAdvertisingFinished() {
+
+        }
+
+        @Override
+        public void setup(@NonNull BLEServerConnection bleServerConnection) {
+
+        }
+
+        @Override
+        public void tearDown(@NonNull BLEServerConnection bleServerConnection) {
+
+        }
+
+        @Override
+        public boolean isFallback() {
+            return false;
+        }
+    }
 
     /**
      * Default(Minimum) MTU size
@@ -102,6 +274,11 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     protected final List<BLEServerCallback> mAttachedBLEServerCallbackList = new LinkedList<>();
 
     /**
+     * device specified task id map
+     */
+    protected final Map<String, Set<Integer>> mDeviceSpecifiedTaskIdMap = new HashMap<>();
+
+    /**
      * @param context {@link Context} instance
      */
     public BLEServerConnection(@NonNull Context context) {
@@ -120,6 +297,7 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      *
      * @return {@code true}:{@link BluetoothGattServer} and {@link BluetoothLeAdvertiser} started, {@code false}: server stopped
      */
+    @SuppressWarnings("unused")
     public boolean isStarted() {
         return mBluetoothGattServer != null;
     }
@@ -167,6 +345,8 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
             mTaskHandler.quit();
             mTaskHandler = null;
         }
+
+        mDeviceSpecifiedTaskIdMap.clear();
     }
 
     /**
@@ -344,6 +524,36 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
     }
 
     /**
+     * {@inheritDoc}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void onPhyUpdate(BluetoothDevice device, int txPhy, int rxPhy, int status) {
+        if (mBluetoothGattServer != null) {
+            if (BluetoothGatt.GATT_SUCCESS == status) {
+                mTaskHandler.sendProcessingMessage(SetPreferredPhyPeripheralTask.createSetPreferredPhySuccessMessage(device, txPhy, rxPhy));
+            } else {
+                mTaskHandler.sendProcessingMessage(SetPreferredPhyPeripheralTask.createSetPreferredPhyErrorMessage(device, status));
+            }
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void onPhyRead(BluetoothDevice device, int txPhy, int rxPhy, int status) {
+        if (mBluetoothGattServer != null) {
+            if (BluetoothGatt.GATT_SUCCESS == status) {
+                mTaskHandler.sendProcessingMessage(ReadPhyPeripheralTask.createReadPhySuccessMessage(device, txPhy, rxPhy));
+            } else {
+                mTaskHandler.sendProcessingMessage(ReadPhyPeripheralTask.createReadPhyErrorMessage(device, status));
+            }
+        }
+    }
+
+    /**
      * @return {@link BLEServerCallback} instance
      */
     @NonNull
@@ -359,7 +569,10 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
      */
     @Override
     public List<BLEServerCallback> getSubscriberCallbackList() {
-        return Collections.synchronizedList(new LinkedList<>(mAttachedBLEServerCallbackList));
+        // add device specified task cleaner at last
+        LinkedList<BLEServerCallback> list = new LinkedList<>(mAttachedBLEServerCallbackList);
+        list.add(new BLEServerCallbackInner());
+        return Collections.synchronizedList(list);
     }
 
     /**
@@ -480,6 +693,104 @@ public class BLEServerConnection extends BluetoothGattServerCallback implements 
                     , BLEServerCallbackDistributor.wrapArgument(argument, bleServerCallback));
             mTaskHandler.addTaskDelayed(task, delay);
             taskId = task.getTaskId();
+            addTaskId(device, taskId);
+        }
+        return taskId;
+    }
+
+    /**
+     * add device specified task id
+     *
+     * @param device target device
+     * @param taskId task id
+     */
+    private synchronized void addTaskId(@NonNull BluetoothDevice device, @NonNull Integer taskId) {
+        Set<Integer> taskIdSet = mDeviceSpecifiedTaskIdMap.get(device.getAddress());
+        if (taskIdSet == null) {
+            taskIdSet = new HashSet<>();
+            mDeviceSpecifiedTaskIdMap.put(device.getAddress(), taskIdSet);
+        }
+        taskIdSet.add(taskId);
+    }
+
+    /**
+     * remove device specified task id
+     *
+     * @param device target device
+     * @param taskId task id
+     */
+    private synchronized void removeTaskId(@NonNull BluetoothDevice device, @NonNull Integer taskId) {
+        Set<Integer> taskSet = mDeviceSpecifiedTaskIdMap.get(device.getAddress());
+        if (taskSet != null) {
+            taskSet.remove(taskId);
+        }
+    }
+
+    /**
+     * Create read phy task
+     *
+     * @param device            target device
+     * @param timeout           timeout(millis)
+     * @param argument          callback argument
+     * @param bleServerCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @return task id. if {@code null} returned, task was not registered
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Nullable
+    public synchronized Integer createReadPhyTask(@NonNull BluetoothDevice device
+            , long timeout
+            , @Nullable Bundle argument
+            , @Nullable BLEServerCallback bleServerCallback) {
+        Integer taskId = null;
+        if (mBluetoothGattServer != null) {
+            ReadPhyPeripheralTask task = new ReadPhyPeripheralTask(this
+                    , mBluetoothGattServer
+                    , device
+                    , mTaskHandler
+                    , timeout
+                    , BLEServerCallbackDistributor.wrapArgument(argument, bleServerCallback));
+            mTaskHandler.addTask(task);
+            taskId = task.getTaskId();
+            addTaskId(device, taskId);
+        }
+        return taskId;
+    }
+
+    /**
+     * Create set preferred phy task
+     *
+     * @param device            target device
+     * @param txPhy             new txPhy for {@link BluetoothGattServer#setPreferredPhy(BluetoothDevice, int, int, int)}} 2nd argument
+     * @param rxPhy             new rxPhy for {@link BluetoothGattServer#setPreferredPhy(BluetoothDevice, int, int, int)}} 3rd argument
+     * @param phyOptions        new phyOptions for {@link BluetoothGattServer#setPreferredPhy(BluetoothDevice, int, int, int)}} 4th argument
+     * @param timeout           timeout(millis)
+     * @param argument          callback argument
+     * @param bleServerCallback {@code null}:task result is communicated to all attached callbacks, {@code non-null}:the task result is communicated to the specified callback
+     * @return task id. if {@code null} returned, task was not registered
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Nullable
+    public synchronized Integer createSetPreferredPhyTask(@NonNull BluetoothDevice device
+            , int txPhy
+            , int rxPhy
+            , int phyOptions
+            , long timeout
+            , @Nullable Bundle argument
+            , @Nullable BLEServerCallback bleServerCallback) {
+        Integer taskId = null;
+        if (mBluetoothGattServer != null) {
+            SetPreferredPhyPeripheralTask task = new SetPreferredPhyPeripheralTask(this
+                    , mBluetoothGattServer
+                    , device
+                    , mTaskHandler
+                    , txPhy
+                    , rxPhy
+                    , phyOptions
+                    , timeout
+                    , BLEServerCallbackDistributor.wrapArgument(argument, bleServerCallback));
+            mTaskHandler.addTask(task);
+            taskId = task.getTaskId();
+            addTaskId(device, taskId);
         }
         return taskId;
     }

@@ -6,4 +6,10 @@
     <item
         android:id="@+id/indication"
         android:title="@string/menu_indication" />
+    <item
+        android:id="@+id/readPhyPeripheral"
+        android:title="@string/menu_read_phy_peripheral" />
+    <item
+        android:id="@+id/setPreferredPhyPeripheral"
+        android:title="@string/menu_set_preferred_phy_peripheral" />
 </menu>

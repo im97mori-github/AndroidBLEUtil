@@ -362,7 +362,9 @@ public class BLECallbackSample extends BaseMockCallback implements BLECallback {
         }
     }
 
-    /** @noinspection deprecation*/
+    /**
+     * @noinspection deprecation
+     */
     @Override
     @Deprecated
     public boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
@@ -386,7 +388,9 @@ public class BLECallbackSample extends BaseMockCallback implements BLECallback {
         callback(argument);
     }
 
-    /** @noinspection deprecation*/
+    /**
+     * @noinspection deprecation
+     */
     @Override
     @Deprecated
     public void onServiceRemoveSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument) {
@@ -450,6 +454,36 @@ public class BLECallbackSample extends BaseMockCallback implements BLECallback {
     public boolean onExecuteWrite(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, boolean execute, boolean force) {
         callback(device, execute);
         return super.onExecuteWrite(bleServerConnection, device, requestId, execute, force);
+    }
+
+    @Override
+    public void onPhyReadSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int txPhy, int rxPhy, @Nullable Bundle argument) {
+        callback(device, taskId, bleServerConnection, device, txPhy, rxPhy, argument);
+    }
+
+    @Override
+    public void onPhyReadFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int status, @Nullable Bundle argument) {
+        callback(taskId, bleServerConnection, device, status, argument);
+    }
+
+    @Override
+    public void onPhyReadTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, long timeout, @Nullable Bundle argument) {
+        callback(taskId, bleServerConnection, device, timeout, argument);
+    }
+
+    @Override
+    public void onSetPreferredPhySuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int txPhy, int rxPhy, int phyOptions, @Nullable Bundle argument) {
+        callback(taskId, bleServerConnection, device, txPhy, rxPhy, phyOptions, argument);
+    }
+
+    @Override
+    public void onSetPreferredPhyFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int status, @Nullable Bundle argument) {
+        callback(taskId, bleServerConnection, device, status, argument);
+    }
+
+    @Override
+    public void onSetPreferredPhyTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, long timeout, @Nullable Bundle argument) {
+        callback(taskId, bleServerConnection, device, timeout, argument);
     }
 
     @Override

@@ -87,6 +87,19 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="-940058478">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Tests" value="360" />
+                  <entry key="motorola motorola edge 20 fusion" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="-745385667">
           <value>
             <AndroidTestResultsTableState>
@@ -246,6 +259,19 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="343084445">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Tests" value="360" />
+                  <entry key="motorola motorola edge 20 fusion" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="631097779">
           <value>
             <AndroidTestResultsTableState>
@@ -312,6 +338,19 @@
                   <entry key="Tests" value="360" />
                   <entry key="ZY22F8N7JB" value="120" />
                   <entry key="motorola&#10; motorola edge 20 fusion" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
+        <entry key="1605848306">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Tests" value="360" />
+                  <entry key="motorola motorola edge 20 fusion" value="120" />
                 </map>
               </option>
             </AndroidTestResultsTableState>

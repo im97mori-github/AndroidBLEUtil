@@ -139,6 +139,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      * {@inheritDoc}
      */
     @Override
+    @SuppressWarnings("unused")
     public synchronized void setup(@NonNull BLEServerConnection bleServerConnection) {
         mRemappedServiceCharacteristicMap.clear();
         mRemappedCharacteristicDescriptorMap.clear();
@@ -792,8 +793,56 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      * {@inheritDoc}
      */
     @Override
-    public synchronized void onMtuChanged(BluetoothDevice device, int mtu) {
+    public synchronized void onMtuChanged(@NonNull BluetoothDevice device, int mtu) {
         mConnectedDeviceMap.put(device, mtu);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onPhyReadSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int txPhy, int rxPhy, @Nullable Bundle argument) {
+        // do nothing
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onPhyReadFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int status, @Nullable Bundle argument) {
+        // do nothing
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onPhyReadTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, long timeout, @Nullable Bundle argument) {
+        // do nothing
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onSetPreferredPhySuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int txPhy, int rxPhy, int phyOptions, @Nullable Bundle argument) {
+        // do nothing
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onSetPreferredPhyFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int status, @Nullable Bundle argument) {
+        // do nothing
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onSetPreferredPhyTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, long timeout, @Nullable Bundle argument) {
+        // do nothing
     }
 
     /**
@@ -833,6 +882,7 @@ public abstract class BaseMockCallback implements BLEServerCallback {
      * @see #findCharacteristicData(Map, UUID, Class)
      */
     @Nullable
+    @SuppressWarnings("unused")
     protected <T extends CharacteristicData> T findCharacteristicData(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @NonNull Class<T> clazz) {
         T target = null;
         for (Map.Entry<Pair<UUID, Integer>, Map<Pair<UUID, Integer>, CharacteristicData>> serviceDataEntry : mRemappedServiceCharacteristicMap.entrySet()) {

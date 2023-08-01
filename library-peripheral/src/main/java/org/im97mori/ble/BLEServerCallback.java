@@ -1,6 +1,7 @@
 package org.im97mori.ble;
 
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattServerCallback;
@@ -51,7 +52,8 @@ public interface BLEServerCallback {
      * @param bleServerConnection {@link BLEServerConnection} instance
      * @param device              central BLE device
      */
-    void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device);
+    void onDeviceDisconnected(@NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device);
 
     /**
      * Peripheral service add success callback
@@ -62,7 +64,10 @@ public interface BLEServerCallback {
      * @param argument             callback argument
      * @return {@code true}:handled, {@code false}:not handled
      */
-    boolean onServiceAddSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument);
+    boolean onServiceAddSuccess(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothGattService bluetoothGattService
+            , @Nullable Bundle argument);
 
     /**
      * Peripheral service add error callback
@@ -76,7 +81,11 @@ public interface BLEServerCallback {
      * @param argument             callback argument
      * @see org.im97mori.ble.task.AddServiceTask
      */
-    void onServiceAddFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument);
+    void onServiceAddFailed(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothGattService bluetoothGattService
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Peripheral service add timeout callback
@@ -88,7 +97,11 @@ public interface BLEServerCallback {
      * @param argument             callback argument
      * @see org.im97mori.ble.task.AddServiceTask
      */
-    void onServiceAddTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument);
+    void onServiceAddTimeout(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothGattService bluetoothGattService
+            , long timeout
+            , @Nullable Bundle argument);
 
     /**
      * Peripheral service remove success callback
@@ -99,7 +112,10 @@ public interface BLEServerCallback {
      * @param argument             callback argument
      * @see org.im97mori.ble.task.RemoveServiceTask
      */
-    void onServiceRemoveSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, @Nullable Bundle argument);
+    void onServiceRemoveSuccess(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothGattService bluetoothGattService
+            , @Nullable Bundle argument);
 
     /**
      * Peripheral service remove error callback
@@ -113,7 +129,11 @@ public interface BLEServerCallback {
      * @param argument             callback argument
      * @see org.im97mori.ble.task.RemoveServiceTask
      */
-    void onServiceRemoveFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, int status, @Nullable Bundle argument);
+    void onServiceRemoveFailed(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothGattService bluetoothGattService
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Peripheral service remove timeout callback
@@ -125,35 +145,65 @@ public interface BLEServerCallback {
      * @param argument             callback argument
      * @see org.im97mori.ble.task.RemoveServiceTask
      */
-    void onServiceRemoveTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothGattService bluetoothGattService, long timeout, @Nullable Bundle argument);
+    void onServiceRemoveTimeout(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothGattService bluetoothGattService
+            , long timeout
+            , @Nullable Bundle argument);
 
     /**
      * @param force {@code true}:callback must be handle, {@code false}:not must
      * @return {@code true}:handled, {@code false}:not handled
      * @see BluetoothGattServerCallback#onCharacteristicReadRequest(BluetoothDevice, int, int, BluetoothGattCharacteristic)
      */
-    boolean onCharacteristicReadRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean force);
+    boolean onCharacteristicReadRequest(@NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , int requestId
+            , int offset
+            , @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic
+            , boolean force);
 
     /**
      * @param force {@code true}:callback must be handle, {@code false}:not must
      * @return {@code true}:handled, {@code false}:not handled
      * @see BluetoothGattServerCallback#onCharacteristicWriteRequest(BluetoothDevice, int, BluetoothGattCharacteristic, boolean, boolean, int, byte[])
      */
-    boolean onCharacteristicWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force);
+    boolean onCharacteristicWriteRequest(@NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , int requestId
+            , @NonNull BluetoothGattCharacteristic bluetoothGattCharacteristic
+            , boolean preparedWrite
+            , boolean responseNeeded
+            , int offset
+            , @NonNull byte[] value
+            , boolean force);
 
     /**
      * @param force {@code true}:callback must be handle, {@code false}:not must
      * @return {@code true}:handled, {@code false}:not handled
      * @see BluetoothGattServerCallback#onDescriptorReadRequest(BluetoothDevice, int, int, BluetoothGattDescriptor)
      */
-    boolean onDescriptorReadRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, int offset, @NonNull BluetoothGattDescriptor bluetoothGattDescriptor, boolean force);
+    boolean onDescriptorReadRequest(@NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , int requestId
+            , int offset
+            , @NonNull BluetoothGattDescriptor bluetoothGattDescriptor
+            , boolean force);
 
     /**
      * @param force {@code true}:callback must be handle, {@code false}:not must
      * @return {@code true}:handled, {@code false}:not handled
      * @see BluetoothGattServerCallback#onDescriptorWriteRequest(BluetoothDevice, int, BluetoothGattDescriptor, boolean, boolean, int, byte[])
      */
-    boolean onDescriptorWriteRequest(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, @NonNull BluetoothGattDescriptor bluetoothGattDescriptor, boolean preparedWrite, boolean responseNeeded, int offset, @NonNull byte[] value, boolean force);
+    boolean onDescriptorWriteRequest(@NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , int requestId
+            , @NonNull BluetoothGattDescriptor bluetoothGattDescriptor
+            , boolean preparedWrite
+            , boolean responseNeeded
+            , int offset
+            , @NonNull byte[] value
+            , boolean force);
 
     /**
      * Notification(Indication) success callback
@@ -171,7 +221,15 @@ public interface BLEServerCallback {
      * @param argument                 callback argument
      * @see NotifyTask
      */
-    void onNotificationSuccess(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, @NonNull byte[] value, @Nullable Bundle argument);
+    void onNotificationSuccess(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , @NonNull UUID serviceUUID
+            , int serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , int characteristicInstanceId
+            , @NonNull byte[] value
+            , @Nullable Bundle argument);
 
     /**
      * Notification(Indication) error callback
@@ -189,7 +247,15 @@ public interface BLEServerCallback {
      * @param argument                 callback argument
      * @see NotifyTask
      */
-    void onNotificationFailed(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, int status, @Nullable Bundle argument);
+    void onNotificationFailed(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , @NonNull UUID serviceUUID
+            , int serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , int characteristicInstanceId
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Notification(Indication) timeout callback
@@ -205,21 +271,26 @@ public interface BLEServerCallback {
      * @param argument                 callback argument
      * @see NotifyTask
      */
-    void onNotificationTimeout(@NonNull Integer taskId, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, @NonNull UUID serviceUUID, int serviceInstanceId, @NonNull UUID characteristicUUID, int characteristicInstanceId, long timeout, @Nullable Bundle argument);
+    void onNotificationTimeout(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , @NonNull UUID serviceUUID
+            , int serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , int characteristicInstanceId
+            , long timeout
+            , @Nullable Bundle argument);
 
     /**
      * @param force {@code true}:callback must be handle, {@code false}:not must
      * @return {@code true}:handled, {@code false}:not handled
      * @see BluetoothGattServerCallback#onExecuteWrite(BluetoothDevice, int, boolean)
      */
-    boolean onExecuteWrite(@NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice device, int requestId, boolean execute, boolean force);
-
-    /**
-     * Advertising start success callback
-     *
-     * @param advertiseSettings {@link AdvertiseCallback#onStartSuccess(AdvertiseSettings)} 1st parameter
-     */
-    void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings);
+    boolean onExecuteWrite(@NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , int requestId
+            , boolean execute
+            , boolean force);
 
     /**
      * MTU changed callback
@@ -228,7 +299,119 @@ public interface BLEServerCallback {
      * @param mtu    The new MTU size
      * @see BluetoothGattServerCallback#onMtuChanged(BluetoothDevice, int)
      */
-    void onMtuChanged(BluetoothDevice device, int mtu);
+    void onMtuChanged(@NonNull BluetoothDevice device
+            , int mtu);
+
+    /**
+     * Read phy success callback
+     *
+     * @param taskId              task id
+     * @param bleServerConnection {@link BLEServerConnection} instance
+     * @param device              BLE device
+     * @param txPhy               {@link android.bluetooth.BluetoothGattCallback#onPhyRead(BluetoothGatt, int, int, int)} 2nd argument
+     * @param rxPhy               {@link android.bluetooth.BluetoothGattCallback#onPhyRead(BluetoothGatt, int, int, int)} 3rd argument
+     * @param argument            callback argument
+     * @see org.im97mori.ble.task.ReadPhyPeripheralTask
+     */
+    void onPhyReadSuccess(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , int txPhy
+            , int rxPhy
+            , @Nullable Bundle argument);
+
+    /**
+     * Read phy error callback
+     *
+     * @param taskId              task id
+     * @param bleServerConnection {@link BLEServerConnection} instance
+     * @param device              BLE device
+     * @param status              {@link BLEServerConnection#onPhyRead(BluetoothDevice, int, int, int)} 4th parameter
+     *                            {@link org.im97mori.ble.task.ReadPhyPeripheralTask#STATUS_CANCEL}
+     * @param argument            callback argument
+     * @see org.im97mori.ble.task.ReadPhyPeripheralTask
+     */
+    void onPhyReadFailed(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , int status
+            , @Nullable Bundle argument);
+
+    /**
+     * Read phy timeout callback
+     *
+     * @param taskId              task id
+     * @param bleServerConnection {@link BLEServerConnection} instance
+     * @param device              BLE device
+     * @param timeout             timeout(millis)
+     * @param argument            callback argument
+     * @see org.im97mori.ble.task.ReadPhyPeripheralTask
+     */
+    void onPhyReadTimeout(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , long timeout
+            , @Nullable Bundle argument);
+
+    /**
+     * Set preferred phy success callback
+     *
+     * @param taskId              task id
+     * @param bleServerConnection {@link BLEServerConnection} instance
+     * @param device              BLE device
+     * @param txPhy               {@link android.bluetooth.BluetoothGattCallback#onPhyUpdate(BluetoothGatt, int, int, int)} 2nd argument
+     * @param rxPhy               {@link android.bluetooth.BluetoothGattCallback#onPhyUpdate(BluetoothGatt, int, int, int)} 3rd argument
+     * @param phyOptions          {@link android.bluetooth.BluetoothGatt#setPreferredPhy(int, int, int)} 3rd argument
+     * @param argument            callback argument
+     * @see org.im97mori.ble.task.SetPreferredPhyPeripheralTask
+     */
+    void onSetPreferredPhySuccess(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , int txPhy
+            , int rxPhy
+            , int phyOptions
+            , @Nullable Bundle argument);
+
+    /**
+     * Set preferred phy error callback
+     *
+     * @param taskId              task id
+     * @param bleServerConnection {@link BLEServerConnection} instance
+     * @param device              BLE device
+     * @param status              {@link BLEServerConnection#onPhyUpdate(BluetoothDevice, int, int, int)} 4th parameter
+     *                            {@link org.im97mori.ble.task.SetPreferredPhyPeripheralTask#STATUS_CANCEL}
+     * @param argument            callback argument
+     * @see org.im97mori.ble.task.SetPreferredPhyPeripheralTask
+     */
+    void onSetPreferredPhyFailed(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , int status
+            , @Nullable Bundle argument);
+
+    /**
+     * Set preferred phy timeout callback
+     *
+     * @param taskId              task id
+     * @param bleServerConnection {@link BLEServerConnection} instance
+     * @param device              BLE device
+     * @param timeout             timeout(millis)
+     * @param argument            callback argument
+     * @see org.im97mori.ble.task.SetPreferredPhyPeripheralTask
+     */
+    void onSetPreferredPhyTimeout(@NonNull Integer taskId
+            , @NonNull BLEServerConnection bleServerConnection
+            , @NonNull BluetoothDevice device
+            , long timeout
+            , @Nullable Bundle argument);
+
+    /**
+     * Advertising start success callback
+     *
+     * @param advertiseSettings {@link AdvertiseCallback#onStartSuccess(AdvertiseSettings)} 1st parameter
+     */
+    void onAdvertisingStartSuccess(@NonNull AdvertiseSettings advertiseSettings);
 
     /**
      * Advertising start error callback

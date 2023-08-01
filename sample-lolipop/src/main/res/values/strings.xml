@@ -89,6 +89,8 @@
 
     <string name="menu_notification">Notification</string>
     <string name="menu_indication">Indication</string>
+    <string name="menu_read_phy_peripheral">Read phy</string>
+    <string name="menu_set_preferred_phy_peripheral">Set preferred phy</string>
 
     <string name="menu_add_task_sync">Add Task(Synchronous)</string>
 

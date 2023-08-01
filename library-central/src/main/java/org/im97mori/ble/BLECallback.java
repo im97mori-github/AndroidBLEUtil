@@ -32,7 +32,9 @@ public interface BLECallback {
      * @see BLEConnection#onServicesDiscovered(BluetoothGatt, int)
      * @see org.im97mori.ble.task.ConnectTask
      */
-    void onBLEConnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument);
+    void onBLEConnected(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @Nullable Bundle argument);
 
     /**
      * Connect error callback
@@ -47,7 +49,10 @@ public interface BLECallback {
      * @see BLEConnection#onConnectionStateChange(BluetoothGatt, int, int)
      * @see org.im97mori.ble.task.ConnectTask
      */
-    void onBLEConnectFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+    void onBLEConnectFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Connect task timeout callback
@@ -58,7 +63,9 @@ public interface BLECallback {
      * @see BluetoothGatt#connect()
      * @see org.im97mori.ble.task.ConnectTask
      */
-    void onBLEConnectTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument);
+    void onBLEConnectTimeout(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @Nullable Bundle argument);
 
     /**
      * Disconnected callback
@@ -75,7 +82,10 @@ public interface BLECallback {
      * @see BLEConnection#quit()
      * @see org.im97mori.ble.task.DisconnectTask
      */
-    void onBLEDisconnected(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+    void onBLEDisconnected(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Discover service success callback
@@ -86,7 +96,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.DiscoverServiceTask
      */
-    void onDiscoverServiceSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull List<BluetoothGattService> serviceList, @Nullable Bundle argument);
+    void onDiscoverServiceSuccess(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull List<BluetoothGattService> serviceList
+            , @Nullable Bundle argument);
 
     /**
      * Discover service error callback
@@ -99,7 +112,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.DiscoverServiceTask
      */
-    void onDiscoverServiceFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+    void onDiscoverServiceFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Discover service timeout callback
@@ -110,7 +126,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.DiscoverServiceTask
      */
-    void onDiscoverServiceTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
+    void onDiscoverServiceTimeout(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , long timeout
+            , @Nullable Bundle argument);
 
     /**
      * Request mtu success callback
@@ -121,7 +140,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.RequestMtuTask
      */
-    void onRequestMtuSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int mtu, @Nullable Bundle argument);
+    void onRequestMtuSuccess(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , int mtu
+            , @Nullable Bundle argument);
 
     /**
      * Request mtu error callback
@@ -134,7 +156,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.RequestMtuTask
      */
-    void onRequestMtuFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+    void onRequestMtuFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Request mtu timeout callback
@@ -145,7 +170,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.RequestMtuTask
      */
-    void onRequestMtuTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
+    void onRequestMtuTimeout(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , long timeout
+            , @Nullable Bundle argument);
 
     /**
      * Read characteristic success callback
@@ -160,7 +188,14 @@ public interface BLECallback {
      * @param argument                 callback argument
      * @see org.im97mori.ble.task.ReadCharacteristicTask
      */
-    void onCharacteristicReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument);
+    void onCharacteristicReadSuccess(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @NonNull Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @NonNull Integer characteristicInstanceId
+            , @NonNull byte[] values
+            , @Nullable Bundle argument);
 
     /**
      * Read characteristic error callback
@@ -178,7 +213,14 @@ public interface BLECallback {
      * @param argument                 callback argument
      * @see org.im97mori.ble.task.ReadCharacteristicTask
      */
-    void onCharacteristicReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument);
+    void onCharacteristicReadFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Read characteristic timeout callback
@@ -193,7 +235,14 @@ public interface BLECallback {
      * @param argument                 callback argument
      * @see org.im97mori.ble.task.ReadCharacteristicTask
      */
-    void onCharacteristicReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument);
+    void onCharacteristicReadTimeout(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
+            , long timeout
+            , @Nullable Bundle argument);
 
     /**
      * Write characteristic success callback
@@ -208,7 +257,14 @@ public interface BLECallback {
      * @param argument                 callback argument
      * @see org.im97mori.ble.task.WriteCharacteristicTask
      */
-    void onCharacteristicWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values, @Nullable Bundle argument);
+    void onCharacteristicWriteSuccess(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @NonNull Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @NonNull Integer characteristicInstanceId
+            , @NonNull byte[] values
+            , @Nullable Bundle argument);
 
     /**
      * Write characteristic error callback
@@ -227,7 +283,14 @@ public interface BLECallback {
      * @param argument                 callback argument
      * @see org.im97mori.ble.task.WriteCharacteristicTask
      */
-    void onCharacteristicWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, int status, @Nullable Bundle argument);
+    void onCharacteristicWriteFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Write characteristic timeout callback
@@ -242,7 +305,14 @@ public interface BLECallback {
      * @param argument                 callback argument
      * @see org.im97mori.ble.task.WriteCharacteristicTask
      */
-    void onCharacteristicWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, long timeout, @Nullable Bundle argument);
+    void onCharacteristicWriteTimeout(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
+            , long timeout
+            , @Nullable Bundle argument);
 
     /**
      * Read descriptor success callback
@@ -258,7 +328,16 @@ public interface BLECallback {
      * @param values                   {@link BluetoothGattDescriptor#getValue()}
      * @see org.im97mori.ble.task.ReadDescriptorTask
      */
-    void onDescriptorReadSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument);
+    void onDescriptorReadSuccess(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @NonNull Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @NonNull Integer characteristicInstanceId
+            , @NonNull UUID descriptorUUID
+            , @NonNull Integer descriptorInstanceId
+            , @NonNull byte[] values
+            , @Nullable Bundle argument);
 
     /**
      * Read descriptor error callback
@@ -279,7 +358,16 @@ public interface BLECallback {
      * @param argument                 callback argument
      * @see org.im97mori.ble.task.ReadDescriptorTask
      */
-    void onDescriptorReadFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument);
+    void onDescriptorReadFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
+            , @NonNull UUID descriptorUUID
+            , @Nullable Integer descriptorInstanceId
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Read descriptor timeout callback
@@ -295,7 +383,16 @@ public interface BLECallback {
      * @param timeout                  timeout(millis)
      * @see org.im97mori.ble.task.ReadDescriptorTask
      */
-    void onDescriptorReadTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument);
+    void onDescriptorReadTimeout(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
+            , @NonNull UUID descriptorUUID
+            , @Nullable Integer descriptorInstanceId
+            , long timeout
+            , @Nullable Bundle argument);
 
     /**
      * Write descriptor success callback
@@ -312,7 +409,16 @@ public interface BLECallback {
      * @param argument                 callback argument
      * @see org.im97mori.ble.task.WriteDescriptorTask
      */
-    void onDescriptorWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @NonNull Integer descriptorInstanceId, @NonNull byte[] values, @Nullable Bundle argument);
+    void onDescriptorWriteSuccess(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @NonNull Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @NonNull Integer characteristicInstanceId
+            , @NonNull UUID descriptorUUID
+            , @NonNull Integer descriptorInstanceId
+            , @NonNull byte[] values
+            , @Nullable Bundle argument);
 
     /**
      * Write descriptor error callback
@@ -332,7 +438,16 @@ public interface BLECallback {
      * @param argument                 callback argument
      * @see org.im97mori.ble.task.WriteDescriptorTask
      */
-    void onDescriptorWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, int status, @Nullable Bundle argument);
+    void onDescriptorWriteFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
+            , @NonNull UUID descriptorUUID
+            , @Nullable Integer descriptorInstanceId
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Write descriptor timeout callback
@@ -349,7 +464,16 @@ public interface BLECallback {
      * @param argument                 callback argument
      * @see org.im97mori.ble.task.WriteDescriptorTask
      */
-    void onDescriptorWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, @NonNull UUID descriptorUUID, @Nullable Integer descriptorInstanceId, long timeout, @Nullable Bundle argument);
+    void onDescriptorWriteTimeout(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
+            , @NonNull UUID descriptorUUID
+            , @Nullable Integer descriptorInstanceId
+            , long timeout
+            , @Nullable Bundle argument);
 
     /**
      * Notification characteristic callback
@@ -362,7 +486,12 @@ public interface BLECallback {
      * @param values                   {@link BluetoothGattCharacteristic#getValue()}
      * @see NotifiedTask
      */
-    void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, @NonNull byte[] values);
+    void onCharacteristicNotified(@NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @NonNull Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @NonNull Integer characteristicInstanceId
+            , @NonNull byte[] values);
 
     /**
      * Read phy success callback
@@ -374,7 +503,11 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.ReadPhyTask
      */
-    void onReadPhySuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int txPhy, int rxPhy, @Nullable Bundle argument);
+    void onReadPhySuccess(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , int txPhy
+            , int rxPhy
+            , @Nullable Bundle argument);
 
     /**
      * Read phy error callback
@@ -386,7 +519,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.ReadPhyTask
      */
-    void onReadPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+    void onReadPhyFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Read phy timeout callback
@@ -397,7 +533,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.ReadPhyTask
      */
-    void onReadPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
+    void onReadPhyTimeout(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , long timeout
+            , @Nullable Bundle argument);
 
     /**
      * Set preferred phy success callback
@@ -410,19 +549,27 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.SetPreferredPhyTask
      */
-    void onSetPreferredPhySuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int txPhy, int rxPhy, int phyOptions, @Nullable Bundle argument);
+    void onSetPreferredPhySuccess(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , int txPhy
+            , int rxPhy
+            , int phyOptions
+            , @Nullable Bundle argument);
 
     /**
      * Set preferred phy error callback
      *
      * @param taskId          task id
      * @param bluetoothDevice BLE device
-     * @param status          {@link BLEConnection#onPhyRead(BluetoothGatt, int, int, int)} 4th parameter
+     * @param status          {@link BLEConnection#onPhyUpdate(BluetoothGatt, int, int, int)} 4th parameter
      *                        {@link org.im97mori.ble.task.SetPreferredPhyTask#STATUS_CANCEL}
      * @param argument        callback argument
      * @see org.im97mori.ble.task.SetPreferredPhyTask
      */
-    void onSetPreferredPhyFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+    void onSetPreferredPhyFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Set preferred phy timeout callback
@@ -433,7 +580,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.SetPreferredPhyTask
      */
-    void onSetPreferredPhyTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
+    void onSetPreferredPhyTimeout(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , long timeout
+            , @Nullable Bundle argument);
 
     /**
      * Read remote rssi success callback
@@ -444,7 +594,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.ReadRemoteRssiTask
      */
-    void onReadRemoteRssiSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int rssi, @Nullable Bundle argument);
+    void onReadRemoteRssiSuccess(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , int rssi
+            , @Nullable Bundle argument);
 
     /**
      * Read remote rssi error callback
@@ -457,7 +610,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.ReadRemoteRssiTask
      */
-    void onReadRemoteRssiFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+    void onReadRemoteRssiFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Read remote rssi timeout callback
@@ -468,7 +624,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.ReadRemoteRssiTask
      */
-    void onReadRemoteRssiTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
+    void onReadRemoteRssiTimeout(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , long timeout
+            , @Nullable Bundle argument);
 
     /**
      * Begin reliable write success callback
@@ -478,7 +637,9 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.BeginReliableWriteTask
      */
-    void onBeginReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument);
+    void onBeginReliableWriteSuccess(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @Nullable Bundle argument);
 
     /**
      * Begin reliable write error callback
@@ -490,7 +651,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.BeginReliableWriteTask
      */
-    void onBeginReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+    void onBeginReliableWriteFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Execute reliable write success callback
@@ -500,7 +664,9 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.ExecuteReliableWriteTask
      */
-    void onExecuteReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument);
+    void onExecuteReliableWriteSuccess(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @Nullable Bundle argument);
 
     /**
      * Execute reliable write error callback
@@ -513,7 +679,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.ExecuteReliableWriteTask
      */
-    void onExecuteReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+    void onExecuteReliableWriteFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Execute reliable write timeout callback
@@ -524,7 +693,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.ExecuteReliableWriteTask
      */
-    void onExecuteReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
+    void onExecuteReliableWriteTimeout(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , long timeout
+            , @Nullable Bundle argument);
 
     /**
      * Abort reliable write success callback
@@ -534,7 +706,9 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.AbortReliableWriteTask
      */
-    void onAbortReliableWriteSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @Nullable Bundle argument);
+    void onAbortReliableWriteSuccess(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @Nullable Bundle argument);
 
     /**
      * Abort reliable write error callback
@@ -546,7 +720,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.AbortReliableWriteTask
      */
-    void onAbortReliableWriteFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, int status, @Nullable Bundle argument);
+    void onAbortReliableWriteFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Abort reliable write timeout callback
@@ -557,7 +734,10 @@ public interface BLECallback {
      * @param argument        callback argument
      * @see org.im97mori.ble.task.AbortReliableWriteTask
      */
-    void onAbortReliableWriteTimeout(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, long timeout, @Nullable Bundle argument);
+    void onAbortReliableWriteTimeout(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , long timeout
+            , @Nullable Bundle argument);
 
     /**
      * Set Notification success callback
@@ -572,7 +752,14 @@ public interface BLECallback {
      * @param argument                 callback argument
      * @see org.im97mori.ble.task.SetNotifyTask
      */
-    void onSetNotificationSuccess(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @NonNull Integer serviceInstanceId, @NonNull UUID characteristicUUID, @NonNull Integer characteristicInstanceId, boolean notificationStatus, @Nullable Bundle argument);
+    void onSetNotificationSuccess(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @NonNull Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @NonNull Integer characteristicInstanceId
+            , boolean notificationStatus
+            , @Nullable Bundle argument);
 
     /**
      * Set Notification error callback
@@ -589,12 +776,20 @@ public interface BLECallback {
      * @param argument                 callback argument
      * @see org.im97mori.ble.task.SetNotifyTask
      */
-    void onSetNotificationFailed(@NonNull Integer taskId, @NonNull BluetoothDevice bluetoothDevice, @NonNull UUID serviceUUID, @Nullable Integer serviceInstanceId, @NonNull UUID characteristicUUID, @Nullable Integer characteristicInstanceId, boolean notificationStatus, int status, @Nullable Bundle argument);
+    void onSetNotificationFailed(@NonNull Integer taskId
+            , @NonNull BluetoothDevice bluetoothDevice
+            , @NonNull UUID serviceUUID
+            , @Nullable Integer serviceInstanceId
+            , @NonNull UUID characteristicUUID
+            , @Nullable Integer characteristicInstanceId
+            , boolean notificationStatus
+            , int status
+            , @Nullable Bundle argument);
 
     /**
      * Service Changed callback
      *
-     * @param bluetoothDevice          BLE device
+     * @param bluetoothDevice BLE device
      * @see org.im97mori.ble.task.ServiceChangedTask
      */
     void onServiceChanged(@NonNull BluetoothDevice bluetoothDevice);
