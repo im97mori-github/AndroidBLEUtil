@@ -97,9 +97,17 @@ public class ObjectTypeAndroidTest {
         //@formatter:on
 
         ByteBuffer bb = ByteBuffer.wrap(value, 0, 16).order(ByteOrder.LITTLE_ENDIAN);
-        long lsb = bb.getLong();
-        long msb = bb.getLong();
+        long msb = 0;
+        long lsb = 0;
 
+        msb |= ((long) bb.getInt()) << 32;
+        msb |= ((long) bb.getShort()) << 16;
+        msb |= (long) bb.getShort();
+
+        lsb |= ((long) bb.get()) << 56;
+        lsb |= ((long) bb.get()) << 48;
+        lsb |= ((long) bb.getShort());
+        lsb |= ((long) bb.getInt()) << 16;
         UUID uuid = new UUID(msb, lsb);
 
         ObjectTypeAndroid result = new ObjectTypeAndroid(uuid);

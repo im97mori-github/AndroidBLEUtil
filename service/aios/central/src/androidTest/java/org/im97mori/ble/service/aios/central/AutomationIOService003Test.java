@@ -38,7 +38,9 @@ import java.util.Collections;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/** @noinspection DataFlowIssue, SameReturnValue */
+/**
+ * @noinspection DataFlowIssue, SameReturnValue
+ */
 @SuppressWarnings({"WrapperTypeMayBePrimitive", "UnnecessaryLocalVariable"})
 public class AutomationIOService003Test extends AbstractCentralTest {
 
@@ -74,7 +76,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         Integer count = automationIOService.getDigitalCount();
         assertNotNull(count);
@@ -92,8 +94,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         Integer count = automationIOService.getDigitalCount();
         assertNotNull(count);
@@ -102,7 +104,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicReadable_00001() {
+    public void test_isDigitalReadable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isDigitalReadable());
@@ -110,7 +112,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicReadable_00002() {
+    public void test_isDigitalReadable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -120,14 +122,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isDigitalReadable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicReadable_00003() {
+    public void test_isDigitalReadable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -137,14 +139,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.isDigitalReadable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicReadable_00004() {
+    public void test_isDigitalReadable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -154,15 +156,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isDigitalReadable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicReadable_00101() {
+    public void test_isDigitalReadable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isDigitalReadable(1));
@@ -170,7 +172,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicReadable_00102() {
+    public void test_isDigitalReadable_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -180,14 +182,31 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
+        automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
+        assertFalse(automationIOService.isDigitalReadable(originalCharacteristicInstanceId));
+    }
+
+    @Test
+    @RequiresDevice
+    public void test_isDigitalReadable_00103() {
+        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
+        final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
+        final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
+        final Integer originalCharacteristicInstanceId = 3;
+
+        MOCK_BLE_CONNECTION.setConnected(true);
+
+        AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
+        BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isDigitalReadable(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicReadable_00103() {
+    public void test_isDigitalReadable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -197,32 +216,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
-        automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(automationIOService.isDigitalReadable(1));
-    }
-
-    @Test
-    @RequiresDevice
-    public void test_isDigitalCharacteristicReadable_00104() {
-        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
-        final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
-        final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
-        final Integer originalCharacteristicInstanceId = 3;
-
-        MOCK_BLE_CONNECTION.setConnected(true);
-
-        AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.isDigitalReadable(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritable_00001() {
+    public void test_isDigitalWritable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isDigitalWritable());
@@ -230,7 +232,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritable_00002() {
+    public void test_isDigitalWritable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -240,14 +242,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isDigitalWritable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritable_00003() {
+    public void test_isDigitalWritable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -257,14 +259,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.isDigitalWritable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritable_00004() {
+    public void test_isDigitalWritable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -274,15 +276,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isDigitalWritable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritable_00101() {
+    public void test_isDigitalWritable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isDigitalWritable(1));
@@ -290,7 +292,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritable_00102() {
+    public void test_isDigitalWritable_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -300,14 +302,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isDigitalWritable(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritable_00103() {
+    public void test_isDigitalWritable_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -317,14 +319,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isDigitalWritable(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritable_00104() {
+    public void test_isDigitalWritable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -334,15 +336,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.isDigitalWritable(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritableWithNoResponse_00001() {
+    public void test_isDigitalWritableWithNoResponse_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isDigitalWritableWithNoResponse());
@@ -350,7 +352,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritableWithNoResponse_00002() {
+    public void test_isDigitalWritableWithNoResponse_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -360,14 +362,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isDigitalWritableWithNoResponse());
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritableWithNoResponse_00003() {
+    public void test_isDigitalWritableWithNoResponse_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -377,14 +379,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.isDigitalWritableWithNoResponse());
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritableWithNoResponse_00004() {
+    public void test_isDigitalWritableWithNoResponse_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -394,15 +396,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isDigitalWritableWithNoResponse());
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritableWithNoResponse_00101() {
+    public void test_isDigitalWritableWithNoResponse_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isDigitalWritableWithNoResponse(1));
@@ -410,7 +412,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritableWithNoResponse_00102() {
+    public void test_isDigitalWritableWithNoResponse_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -420,14 +422,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isDigitalWritableWithNoResponse(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritableWithNoResponse_00103() {
+    public void test_isDigitalWritableWithNoResponse_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -437,14 +439,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isDigitalWritableWithNoResponse(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicWritableWithNoResponse_00104() {
+    public void test_isDigitalWritableWithNoResponse_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -454,15 +456,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.isDigitalWritableWithNoResponse(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicNotify_00001() {
+    public void test_canDigitalNotify_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.canDigitalNotify());
@@ -470,7 +472,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicNotify_00002() {
+    public void test_canDigitalNotify_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -480,14 +482,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canDigitalNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicNotify_00003() {
+    public void test_canDigitalNotify_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -497,14 +499,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.canDigitalNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicNotify_00004() {
+    public void test_canDigitalNotify_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -514,23 +516,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canDigitalNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicNotify_00101() {
-        MOCK_BLE_CONNECTION.setConnected(true);
-        AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
-        assertFalse(automationIOService.isDigitalReadable(1));
-    }
-
-    @Test
-    @RequiresDevice
-    public void test_canDigitalCharacteristicNotify_00102() {
+    public void test_canDigitalNotify_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -540,14 +534,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canDigitalNotify(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicNotify_00103() {
+    public void test_canDigitalNotify_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -557,14 +551,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canDigitalNotify(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicNotify_00104() {
+    public void test_canDigitalNotify_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -574,15 +568,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.canDigitalNotify(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicIndicate_00001() {
+    public void test_canDigitalIndicate_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.canDigitalIndicate());
@@ -590,7 +584,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicIndicate_00002() {
+    public void test_canDigitalIndicate_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -600,14 +594,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canDigitalIndicate());
     }
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicIndicate_00003() {
+    public void test_canDigitalIndicate_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -617,14 +611,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.canDigitalIndicate());
     }
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicIndicate_00004() {
+    public void test_canDigitalIndicate_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -634,15 +628,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canDigitalIndicate());
     }
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicIndicate_00101() {
+    public void test_canDigitalIndicate_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.canDigitalIndicate(1));
@@ -650,7 +644,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicIndicate_00102() {
+    public void test_canDigitalIndicate_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -660,14 +654,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canDigitalIndicate(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicIndicate_00103() {
+    public void test_canDigitalIndicate_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -677,14 +671,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canDigitalIndicate(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_canDigitalCharacteristicIndicate_00104() {
+    public void test_canDigitalIndicate_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -694,15 +688,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.canDigitalIndicate(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00001() {
+    public void test_hasDigitalCharacteristicPresentationFormat_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasDigitalCharacteristicPresentationFormat());
@@ -710,7 +704,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00002() {
+    public void test_hasDigitalCharacteristicPresentationFormat_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -720,14 +714,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasDigitalCharacteristicPresentationFormat());
     }
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00003() {
+    public void test_hasDigitalCharacteristicPresentationFormat_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -747,7 +741,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00004() {
+    public void test_hasDigitalCharacteristicPresentationFormat_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -758,7 +752,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -769,7 +763,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00101() {
+    public void test_hasDigitalCharacteristicPresentationFormat_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasDigitalCharacteristicPresentationFormat(1));
@@ -777,7 +771,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00102() {
+    public void test_hasDigitalCharacteristicPresentationFormat_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -787,14 +781,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasDigitalCharacteristicPresentationFormat(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00103() {
+    public void test_hasDigitalCharacteristicPresentationFormat_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -814,7 +808,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicPresentationFormatDescriptor_00104() {
+    public void test_hasDigitalCharacteristicPresentationFormat_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -825,7 +819,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -836,7 +830,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00001() {
+    public void test_hasDigitalCharacteristicUserDescription_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasDigitalCharacteristicUserDescription());
@@ -844,7 +838,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00002() {
+    public void test_hasDigitalCharacteristicUserDescription_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -854,14 +848,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasDigitalCharacteristicUserDescription());
     }
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00003() {
+    public void test_hasDigitalCharacteristicUserDescription_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -881,7 +875,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00004() {
+    public void test_hasDigitalCharacteristicUserDescription_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -892,7 +886,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -903,7 +897,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00101() {
+    public void test_hasDigitalCharacteristicUserDescription_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasDigitalCharacteristicUserDescription(1));
@@ -911,7 +905,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00102() {
+    public void test_hasDigitalCharacteristicUserDescription_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -921,14 +915,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasDigitalCharacteristicUserDescription(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00103() {
+    public void test_hasDigitalCharacteristicUserDescription_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -948,7 +942,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicUserDescriptionDescriptor_00104() {
+    public void test_hasDigitalCharacteristicUserDescription_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -959,7 +953,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -970,7 +964,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicCharacteristicUserDescriptionDescriptorWritable_00001() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isDigitalCharacteristicUserDescriptionWritable());
@@ -978,24 +972,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicCharacteristicUserDescription_00002() {
-        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
-        final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
-        final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
-        final Integer originalCharacteristicInstanceId = 3;
-
-        MOCK_BLE_CONNECTION.setConnected(true);
-
-        AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
-        automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(automationIOService.hasDigitalCharacteristicUserDescription());
-    }
-
-    @Test
-    @RequiresDevice
-    public void test_isDigitalCharacteristicCharacteristicUserDescription_00003() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1015,7 +992,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicCharacteristicUserDescription_00004() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1036,7 +1013,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicCharacteristicUserDescription_00005() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00005() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1058,7 +1035,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicCharacteristicUserDescription_00006() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00006() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1075,12 +1052,22 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         bluetoothGattCharacteristic.addDescriptor(bluetoothGattDescriptor);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
+        automationIOService.onDescriptorReadSuccess(1
+                , originalBluetoothDevice
+                , AUTOMATION_IO_SERVICE
+                , 0
+                , originalCharacteristicUUID
+                , originalCharacteristicInstanceId
+                , CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR
+                , 1
+                , new byte[]{0b00000010, 0b00000000}
+                , null);
         assertTrue(automationIOService.isDigitalCharacteristicUserDescriptionWritable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicCharacteristicUserDescription_00007() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00007() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1091,7 +1078,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, 0);
@@ -1103,7 +1090,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicCharacteristicUserDescriptionDescriptorWritable_00101() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isDigitalCharacteristicUserDescriptionWritable(1));
@@ -1111,24 +1098,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicCharacteristicUserDescription_00102() {
-        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
-        final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
-        final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
-        final Integer originalCharacteristicInstanceId = 3;
-
-        MOCK_BLE_CONNECTION.setConnected(true);
-
-        AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
-        automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(automationIOService.hasDigitalCharacteristicUserDescription(1));
-    }
-
-    @Test
-    @RequiresDevice
-    public void test_isDigitalCharacteristicCharacteristicUserDescription_00103() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1148,7 +1118,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicCharacteristicUserDescription_00104() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1169,7 +1139,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicCharacteristicUserDescription_00105() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00105() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1191,7 +1161,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicCharacteristicUserDescription_00106() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00106() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1213,7 +1183,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isDigitalCharacteristicCharacteristicUserDescription_00107() {
+    public void test_isDigitalCharacteristicUserDescriptionWritable_00107() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1224,19 +1194,29 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, 0);
         bluetoothGattCharacteristic.addDescriptor(bluetoothGattDescriptor);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
+        automationIOService.onDescriptorReadSuccess(1
+                , originalBluetoothDevice
+                , AUTOMATION_IO_SERVICE
+                , 0
+                , originalCharacteristicUUID
+                , originalCharacteristicInstanceId
+                , CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR
+                , 1
+                , new byte[]{0b00000010, 0b00000000}
+                , null);
         assertTrue(automationIOService.isDigitalCharacteristicUserDescriptionWritable(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00001() {
+    public void test_hasDigitalCharacteristicExtendedProperties_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasDigitalCharacteristicExtendedProperties());
@@ -1244,7 +1224,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00002() {
+    public void test_hasDigitalCharacteristicExtendedProperties_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1254,14 +1234,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasDigitalCharacteristicExtendedProperties());
     }
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00003() {
+    public void test_hasDigitalCharacteristicExtendedProperties_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1281,7 +1261,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00004() {
+    public void test_hasDigitalCharacteristicExtendedProperties_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1292,7 +1272,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -1303,7 +1283,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00101() {
+    public void test_hasDigitalCharacteristicExtendedProperties_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasDigitalCharacteristicExtendedProperties(1));
@@ -1311,7 +1291,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00102() {
+    public void test_hasDigitalCharacteristicExtendedProperties_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1321,14 +1301,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasDigitalCharacteristicExtendedProperties(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00103() {
+    public void test_hasDigitalCharacteristicExtendedProperties_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1348,7 +1328,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicCharacteristicExtendedPropertiesDescriptor_00104() {
+    public void test_hasDigitalCharacteristicExtendedProperties_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1359,7 +1339,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -1370,7 +1350,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00001() {
+    public void test_hasDigitalValueTriggerSetting_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasDigitalValueTriggerSetting());
@@ -1378,7 +1358,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00002() {
+    public void test_hasDigitalValueTriggerSetting_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1388,14 +1368,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasDigitalValueTriggerSetting());
     }
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00003() {
+    public void test_hasDigitalValueTriggerSetting_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1415,7 +1395,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00004() {
+    public void test_hasDigitalValueTriggerSetting_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1435,7 +1415,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00005() {
+    public void test_hasDigitalValueTriggerSetting_00005() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1455,7 +1435,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00006() {
+    public void test_hasDigitalValueTriggerSetting_00006() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1466,7 +1446,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -1477,7 +1457,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00007() {
+    public void test_hasDigitalValueTriggerSetting_00007() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1488,7 +1468,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -1499,7 +1479,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00101() {
+    public void test_hasDigitalValueTriggerSetting_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasDigitalValueTriggerSetting(1));
@@ -1507,7 +1487,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00102() {
+    public void test_hasDigitalValueTriggerSetting_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1517,14 +1497,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasDigitalValueTriggerSetting(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00103() {
+    public void test_hasDigitalValueTriggerSetting_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1544,7 +1524,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00104() {
+    public void test_hasDigitalValueTriggerSetting_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1564,7 +1544,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00105() {
+    public void test_hasDigitalValueTriggerSetting_00105() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1584,7 +1564,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00106() {
+    public void test_hasDigitalValueTriggerSetting_00106() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1595,7 +1575,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -1606,7 +1586,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicValueTriggerSettingDescriptor_00107() {
+    public void test_hasDigitalValueTriggerSetting_00107() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1617,7 +1597,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -1628,7 +1608,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00001() {
+    public void test_hasDigitalTimeTriggerSetting_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasDigitalTimeTriggerSetting());
@@ -1636,7 +1616,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00002() {
+    public void test_hasDigitalTimeTriggerSetting_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1646,14 +1626,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasDigitalTimeTriggerSetting());
     }
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00003() {
+    public void test_hasDigitalTimeTriggerSetting_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1673,7 +1653,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00004() {
+    public void test_hasDigitalTimeTriggerSetting_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1698,7 +1678,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00005() {
+    public void test_hasDigitalTimeTriggerSetting_00005() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1714,7 +1694,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
             }
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -1725,7 +1705,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00101() {
+    public void test_hasDigitalTimeTriggerSetting_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasDigitalTimeTriggerSetting(1));
@@ -1733,7 +1713,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00102() {
+    public void test_hasDigitalTimeTriggerSetting_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1743,14 +1723,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasDigitalTimeTriggerSetting(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00103() {
+    public void test_hasDigitalTimeTriggerSetting_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1770,7 +1750,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00104() {
+    public void test_hasDigitalTimeTriggerSetting_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1795,7 +1775,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasDigitalCharacteristicTimeTriggerSettingDescriptor_00105() {
+    public void test_hasDigitalTimeTriggerSetting_00105() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = DIGITAL_CHARACTERISTIC;
@@ -1811,7 +1791,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
             }
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -1852,7 +1832,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         Integer count = automationIOService.getAnalogCount();
         assertNotNull(count);
@@ -1870,8 +1850,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         Integer count = automationIOService.getAnalogCount();
         assertNotNull(count);
@@ -1880,7 +1860,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicReadable_00001() {
+    public void test_isAnalogReadable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isAnalogReadable());
@@ -1888,7 +1868,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicReadable_00002() {
+    public void test_isAnalogReadable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -1898,14 +1878,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isAnalogReadable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicReadable_00003() {
+    public void test_isAnalogReadable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -1915,14 +1895,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.isAnalogReadable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicReadable_00004() {
+    public void test_isAnalogReadable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -1932,15 +1912,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isAnalogReadable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicReadable_00101() {
+    public void test_isAnalogReadable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isAnalogReadable(1));
@@ -1948,7 +1928,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicReadable_00102() {
+    public void test_isAnalogReadable_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -1958,14 +1938,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isAnalogReadable(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicReadable_00103() {
+    public void test_isAnalogReadable_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -1975,14 +1955,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isAnalogReadable(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicReadable_00104() {
+    public void test_isAnalogReadable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -1992,15 +1972,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.isAnalogReadable(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritable_00001() {
+    public void test_isAnalogWritable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isAnalogWritable());
@@ -2008,7 +1988,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritable_00002() {
+    public void test_isAnalogWritable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2018,14 +1998,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isAnalogWritable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritable_00003() {
+    public void test_isAnalogWritable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2035,14 +2015,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.isAnalogWritable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritable_00004() {
+    public void test_isAnalogWritable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2052,15 +2032,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isAnalogWritable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritable_00101() {
+    public void test_isAnalogWritable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isAnalogWritable(1));
@@ -2068,7 +2048,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritable_00102() {
+    public void test_isAnalogWritable_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2078,14 +2058,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isAnalogWritable(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritable_00103() {
+    public void test_isAnalogWritable_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2095,14 +2075,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isAnalogWritable(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritable_00104() {
+    public void test_isAnalogWritable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2112,15 +2092,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.isAnalogWritable(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritableWithNoResponse_00001() {
+    public void test_isAnalogWritableWithNoResponse_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isAnalogWritableWithNoResponse());
@@ -2128,7 +2108,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritableWithNoResponse_00002() {
+    public void test_isAnalogWritableWithNoResponse_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2138,14 +2118,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isAnalogWritableWithNoResponse());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritableWithNoResponse_00003() {
+    public void test_isAnalogWritableWithNoResponse_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2155,14 +2135,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.isAnalogWritableWithNoResponse());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritableWithNoResponse_00004() {
+    public void test_isAnalogWritableWithNoResponse_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2172,15 +2152,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isAnalogWritableWithNoResponse());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritableWithNoResponse_00101() {
+    public void test_isAnalogWritableWithNoResponse_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isAnalogWritableWithNoResponse(1));
@@ -2188,7 +2168,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritableWithNoResponse_00102() {
+    public void test_isAnalogWritableWithNoResponse_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2198,14 +2178,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isAnalogWritableWithNoResponse(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritableWithNoResponse_00103() {
+    public void test_isAnalogWritableWithNoResponse_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2215,14 +2195,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.isAnalogWritableWithNoResponse(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicWritableWithNoResponse_00104() {
+    public void test_isAnalogWritableWithNoResponse_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2232,15 +2212,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.isAnalogWritableWithNoResponse(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicNotify_00001() {
+    public void test_canAnalogNotify_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.canAnalogNotify());
@@ -2248,7 +2228,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicNotify_00002() {
+    public void test_canAnalogNotify_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2258,14 +2238,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canAnalogNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicNotify_00003() {
+    public void test_canAnalogNotify_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2275,14 +2255,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.canAnalogNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicNotify_00004() {
+    public void test_canAnalogNotify_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2292,23 +2272,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canAnalogNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicNotify_00101() {
-        MOCK_BLE_CONNECTION.setConnected(true);
-        AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
-        assertFalse(automationIOService.isAnalogReadable(1));
-    }
-
-    @Test
-    @RequiresDevice
-    public void test_canAnalogCharacteristicNotify_00102() {
+    public void test_canAnalogNotify_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2318,14 +2290,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canAnalogNotify(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicNotify_00103() {
+    public void test_canAnalogNotify_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2335,14 +2307,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canAnalogNotify(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicNotify_00104() {
+    public void test_canAnalogNotify_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2352,15 +2324,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.canAnalogNotify(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicIndicate_00001() {
+    public void test_canAnalogIndicate_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.canAnalogIndicate());
@@ -2368,7 +2340,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicIndicate_00002() {
+    public void test_canAnalogIndicate_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2378,14 +2350,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canAnalogIndicate());
     }
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicIndicate_00003() {
+    public void test_canAnalogIndicate_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2395,14 +2367,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.canAnalogIndicate());
     }
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicIndicate_00004() {
+    public void test_canAnalogIndicate_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2412,15 +2384,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canAnalogIndicate());
     }
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicIndicate_00101() {
+    public void test_canAnalogIndicate_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.canAnalogIndicate(1));
@@ -2428,7 +2400,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicIndicate_00102() {
+    public void test_canAnalogIndicate_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2438,14 +2410,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canAnalogIndicate(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicIndicate_00103() {
+    public void test_canAnalogIndicate_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2455,14 +2427,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.canAnalogIndicate(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_canAnalogCharacteristicIndicate_00104() {
+    public void test_canAnalogIndicate_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2472,15 +2444,15 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertTrue(automationIOService.canAnalogIndicate(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00001() {
+    public void test_hasAnalogCharacteristicPresentationFormat_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasAnalogCharacteristicPresentationFormat());
@@ -2488,7 +2460,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00002() {
+    public void test_hasAnalogCharacteristicPresentationFormat_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2498,14 +2470,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasAnalogCharacteristicPresentationFormat());
     }
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00003() {
+    public void test_hasAnalogCharacteristicPresentationFormat_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2525,7 +2497,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00004() {
+    public void test_hasAnalogCharacteristicPresentationFormat_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2536,7 +2508,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -2547,7 +2519,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00101() {
+    public void test_hasAnalogCharacteristicPresentationFormat_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasAnalogCharacteristicPresentationFormat(1));
@@ -2555,7 +2527,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00102() {
+    public void test_hasAnalogCharacteristicPresentationFormat_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2565,14 +2537,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasAnalogCharacteristicPresentationFormat(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00103() {
+    public void test_hasAnalogCharacteristicPresentationFormat_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2592,7 +2564,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicPresentationFormatDescriptor_00104() {
+    public void test_hasAnalogCharacteristicPresentationFormat_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2603,7 +2575,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -2614,7 +2586,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00001() {
+    public void test_hasAnalogCharacteristicUserDescription_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasAnalogCharacteristicUserDescription());
@@ -2622,7 +2594,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00002() {
+    public void test_hasAnalogCharacteristicUserDescription_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2632,14 +2604,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasAnalogCharacteristicUserDescription());
     }
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00003() {
+    public void test_hasAnalogCharacteristicUserDescription_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2659,7 +2631,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00004() {
+    public void test_hasAnalogCharacteristicUserDescription_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2670,7 +2642,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -2681,7 +2653,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00101() {
+    public void test_hasAnalogCharacteristicUserDescription_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasAnalogCharacteristicUserDescription(1));
@@ -2689,7 +2661,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00102() {
+    public void test_hasAnalogCharacteristicUserDescription_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2699,14 +2671,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasAnalogCharacteristicUserDescription(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00103() {
+    public void test_hasAnalogCharacteristicUserDescription_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2726,7 +2698,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicUserDescriptionDescriptor_00104() {
+    public void test_hasAnalogCharacteristicUserDescription_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2737,7 +2709,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -2748,7 +2720,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00001() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isAnalogCharacteristicUserDescriptionWritable());
@@ -2756,24 +2728,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00002() {
-        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
-        final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
-        final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
-        final Integer originalCharacteristicInstanceId = 3;
-
-        MOCK_BLE_CONNECTION.setConnected(true);
-
-        AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
-        automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(automationIOService.hasAnalogCharacteristicUserDescription());
-    }
-
-    @Test
-    @RequiresDevice
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00003() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2793,7 +2748,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00004() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2814,7 +2769,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00005() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00005() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2836,7 +2791,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00006() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00006() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2853,12 +2808,22 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         bluetoothGattCharacteristic.addDescriptor(bluetoothGattDescriptor);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
+        automationIOService.onDescriptorReadSuccess(1
+                , originalBluetoothDevice
+                , AUTOMATION_IO_SERVICE
+                , 0
+                , originalCharacteristicUUID
+                , originalCharacteristicInstanceId
+                , CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR
+                , 1
+                , new byte[]{0b00000010, 0b00000000}
+                , null);
         assertTrue(automationIOService.isAnalogCharacteristicUserDescriptionWritable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00007() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00007() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2869,7 +2834,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, 0);
@@ -2881,7 +2846,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00101() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isAnalogCharacteristicUserDescriptionWritable(1));
@@ -2889,24 +2854,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00102() {
-        final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
-        final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
-        final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
-        final Integer originalCharacteristicInstanceId = 3;
-
-        MOCK_BLE_CONNECTION.setConnected(true);
-
-        AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
-        BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
-        automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
-        assertFalse(automationIOService.hasAnalogCharacteristicUserDescription(1));
-    }
-
-    @Test
-    @RequiresDevice
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00103() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2926,7 +2874,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00104() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2947,7 +2895,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00105() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00105() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2969,7 +2917,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00106() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00106() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -2991,7 +2939,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAnalogCharacteristicCharacteristicUserDescriptionDescriptorWritable_00107() {
+    public void test_isAnalogCharacteristicUserDescriptionWritable_00107() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3002,19 +2950,29 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, 0);
         bluetoothGattCharacteristic.addDescriptor(bluetoothGattDescriptor);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
+        automationIOService.onDescriptorReadSuccess(1
+                , originalBluetoothDevice
+                , AUTOMATION_IO_SERVICE
+                , 0
+                , originalCharacteristicUUID
+                , originalCharacteristicInstanceId
+                , CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR
+                , 1
+                , new byte[]{0b00000010, 0b00000000}
+                , null);
         assertTrue(automationIOService.isAnalogCharacteristicUserDescriptionWritable(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00001() {
+    public void test_hasAnalogCharacteristicExtendedProperties_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasAnalogCharacteristicExtendedProperties());
@@ -3022,7 +2980,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00002() {
+    public void test_hasAnalogCharacteristicExtendedProperties_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3032,14 +2990,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasAnalogCharacteristicExtendedProperties());
     }
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00003() {
+    public void test_hasAnalogCharacteristicExtendedProperties_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3059,7 +3017,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00004() {
+    public void test_hasAnalogCharacteristicExtendedProperties_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3070,7 +3028,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -3081,7 +3039,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00101() {
+    public void test_hasAnalogCharacteristicExtendedProperties_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasAnalogCharacteristicExtendedProperties(1));
@@ -3089,7 +3047,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00102() {
+    public void test_hasAnalogCharacteristicExtendedProperties_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3099,14 +3057,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasAnalogCharacteristicExtendedProperties(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00103() {
+    public void test_hasAnalogCharacteristicExtendedProperties_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3126,7 +3084,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicCharacteristicExtendedPropertiesDescriptor_00104() {
+    public void test_hasAnalogCharacteristicExtendedProperties_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3137,7 +3095,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -3148,7 +3106,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00001() {
+    public void test_hasAnalogValueTriggerSetting_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasAnalogValueTriggerSetting());
@@ -3156,7 +3114,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00002() {
+    public void test_hasAnalogValueTriggerSetting_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3166,14 +3124,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasAnalogValueTriggerSetting());
     }
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00003() {
+    public void test_hasAnalogValueTriggerSetting_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3193,7 +3151,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00004() {
+    public void test_hasAnalogValueTriggerSetting_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3213,7 +3171,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00005() {
+    public void test_hasAnalogValueTriggerSetting_00005() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3233,7 +3191,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00006() {
+    public void test_hasAnalogValueTriggerSetting_00006() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3244,7 +3202,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -3255,7 +3213,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00007() {
+    public void test_hasAnalogValueTriggerSetting_00007() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3266,7 +3224,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -3277,7 +3235,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00101() {
+    public void test_hasAnalogValueTriggerSetting_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasAnalogValueTriggerSetting(1));
@@ -3285,7 +3243,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00102() {
+    public void test_hasAnalogValueTriggerSetting_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3295,14 +3253,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasAnalogValueTriggerSetting(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00103() {
+    public void test_hasAnalogValueTriggerSetting_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3322,7 +3280,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00104() {
+    public void test_hasAnalogValueTriggerSetting_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3342,7 +3300,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00105() {
+    public void test_hasAnalogValueTriggerSetting_00105() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3362,7 +3320,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00106() {
+    public void test_hasAnalogValueTriggerSetting_00106() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3373,7 +3331,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -3384,7 +3342,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicValueTriggerSettingDescriptor_00107() {
+    public void test_hasAnalogValueTriggerSetting_00107() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3395,7 +3353,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -3406,7 +3364,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00001() {
+    public void test_hasAnalogTimeTriggerSetting_00001() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasAnalogTimeTriggerSetting());
@@ -3414,7 +3372,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00002() {
+    public void test_hasAnalogTimeTriggerSetting_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3424,14 +3382,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasAnalogTimeTriggerSetting());
     }
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00003() {
+    public void test_hasAnalogTimeTriggerSetting_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3451,7 +3409,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00004() {
+    public void test_hasAnalogTimeTriggerSetting_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3476,7 +3434,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00005() {
+    public void test_hasAnalogTimeTriggerSetting_00005() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3492,7 +3450,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
             }
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -3503,7 +3461,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00101() {
+    public void test_hasAnalogTimeTriggerSetting_00101() {
         MOCK_BLE_CONNECTION.setConnected(true);
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.hasAnalogTimeTriggerSetting(1));
@@ -3511,7 +3469,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00102() {
+    public void test_hasAnalogTimeTriggerSetting_00102() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3521,14 +3479,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
         assertFalse(automationIOService.hasAnalogTimeTriggerSetting(1));
     }
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00103() {
+    public void test_hasAnalogTimeTriggerSetting_00103() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3548,7 +3506,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00104() {
+    public void test_hasAnalogTimeTriggerSetting_00104() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3573,7 +3531,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_hasAnalogCharacteristicTimeTriggerSettingDescriptor_00105() {
+    public void test_hasAnalogTimeTriggerSetting_00105() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = ANALOG_CHARACTERISTIC;
@@ -3589,7 +3547,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
             }
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
@@ -3600,14 +3558,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAggregateCharacteristicSupported_00001() {
+    public void test_isAggregateSupported_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isAggregateSupported());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAggregateCharacteristicSupported_00002() {
+    public void test_isAggregateSupported_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
@@ -3615,7 +3573,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(automationIOService.isAggregateSupported());
@@ -3623,14 +3581,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAggregateCharacteristicReadable_00001() {
+    public void test_isAggregateReadable_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.isAggregateReadable());
     }
 
     @Test
     @RequiresDevice
-    public void test_isAggregateCharacteristicReadable_00002() {
+    public void test_isAggregateReadable_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
@@ -3638,7 +3596,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(automationIOService.isAggregateReadable());
@@ -3646,7 +3604,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_isAggregateCharacteristicReadable_00003() {
+    public void test_isAggregateReadable_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
@@ -3654,7 +3612,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         assertTrue(automationIOService.isAggregateReadable());
@@ -3662,14 +3620,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_canAggregateCharacteristicNotify_00001() {
+    public void test_canAggregateNotify_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.canAggregateNotify());
     }
 
     @Test
     @RequiresDevice
-    public void test_canAggregateCharacteristicNotify_00002() {
+    public void test_canAggregateNotify_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
@@ -3677,7 +3635,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(automationIOService.canAggregateNotify());
@@ -3685,7 +3643,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_canAggregateCharacteristicNotify_00003() {
+    public void test_canAggregateNotify_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
@@ -3693,7 +3651,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(automationIOService.canAggregateNotify());
@@ -3701,7 +3659,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_canAggregateCharacteristicNotify_00004() {
+    public void test_canAggregateNotify_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
@@ -3719,14 +3677,14 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_canAggregateCharacteristicIndicate_00001() {
+    public void test_canAggregateIndicate_00001() {
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         assertFalse(automationIOService.canAggregateIndicate());
     }
 
     @Test
     @RequiresDevice
-    public void test_canAggregateCharacteristicIndicate_00002() {
+    public void test_canAggregateIndicate_00002() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
@@ -3734,7 +3692,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(automationIOService.canAggregateIndicate());
@@ -3742,7 +3700,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_canAggregateCharacteristicIndicate_00003() {
+    public void test_canAggregateIndicate_00003() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
@@ -3750,7 +3708,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         AutomationIOService automationIOService = new AutomationIOService(MOCK_BLE_CONNECTION, new MockAutomationIOServiceCallback(), null);
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         assertFalse(automationIOService.canAggregateIndicate());
@@ -3758,7 +3716,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
     @Test
     @RequiresDevice
-    public void test_canAggregateCharacteristicIndicate_00004() {
+    public void test_canAggregateIndicate_00004() {
         final BluetoothDevice originalBluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         final UUID originalServiceUUID = AUTOMATION_IO_SERVICE;
         final UUID originalCharacteristicUUID = AGGREGATE_CHARACTERISTIC;
@@ -3839,7 +3797,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigital();
@@ -3893,7 +3851,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigital(1);
@@ -3921,8 +3879,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigital(1);
@@ -3995,7 +3953,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setDigital(null);
@@ -4049,7 +4007,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setDigital(1, null);
@@ -4077,8 +4035,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setDigital(1, null);
@@ -4151,7 +4109,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setDigitalWithNoResponse(null);
@@ -4205,7 +4163,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setDigitalWithNoResponse(1, null);
@@ -4233,8 +4191,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setDigitalWithNoResponse(1, null);
@@ -4304,7 +4262,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalClientCharacteristicConfiguration();
@@ -4332,7 +4290,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalClientCharacteristicConfiguration();
@@ -4361,7 +4319,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalClientCharacteristicConfiguration();
@@ -4412,7 +4370,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalClientCharacteristicConfiguration(1);
@@ -4440,8 +4398,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalClientCharacteristicConfiguration(1);
@@ -4470,8 +4428,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalClientCharacteristicConfiguration(1);
@@ -4541,7 +4499,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startDigitalNotification();
@@ -4569,7 +4527,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startDigitalNotification();
@@ -4620,7 +4578,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startDigitalNotification(1);
@@ -4648,8 +4606,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startDigitalNotification(1);
@@ -4719,7 +4677,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopDigitalNotification();
@@ -4747,7 +4705,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopDigitalNotification();
@@ -4798,7 +4756,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopDigitalNotification(1);
@@ -4826,8 +4784,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopDigitalNotification(1);
@@ -4897,7 +4855,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startDigitalIndication();
@@ -4925,7 +4883,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startDigitalIndication();
@@ -4976,7 +4934,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startDigitalIndication(1);
@@ -5004,8 +4962,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startDigitalIndication(1);
@@ -5075,7 +5033,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopDigitalIndication();
@@ -5103,7 +5061,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopDigitalIndication();
@@ -5154,7 +5112,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopDigitalIndication(1);
@@ -5182,8 +5140,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopDigitalIndication(1);
@@ -5261,7 +5219,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalCharacteristicPresentationFormat();
@@ -5319,8 +5277,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalCharacteristicPresentationFormat(1);
@@ -5398,7 +5356,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalCharacteristicUserDescription();
@@ -5456,8 +5414,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalCharacteristicUserDescription(1);
@@ -5535,7 +5493,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setDigitalCharacteristicUserDescription(null);
@@ -5575,6 +5533,16 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         bluetoothGattCharacteristic.addDescriptor(bluetoothGattDescriptor);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
+        automationIOService.onDescriptorReadSuccess(1
+                , originalBluetoothDevice
+                , AUTOMATION_IO_SERVICE
+                , 0
+                , originalCharacteristicUUID
+                , originalCharacteristicInstanceId
+                , CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR
+                , 1
+                , new byte[]{0b00000010, 0b00000000}
+                , null);
 
         Integer taskId = automationIOService.setDigitalCharacteristicUserDescription(null);
         assertNotNull(taskId);
@@ -5631,8 +5599,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setDigitalCharacteristicUserDescription(1, null);
@@ -5665,13 +5633,23 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, 0);
         bluetoothGattCharacteristic.addDescriptor(bluetoothGattDescriptor);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
+        automationIOService.onDescriptorReadSuccess(1
+                , originalBluetoothDevice
+                , AUTOMATION_IO_SERVICE
+                , 0
+                , originalCharacteristicUUID
+                , originalCharacteristicInstanceId
+                , CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR
+                , 1
+                , new byte[]{0b00000010, 0b00000000}
+                , null);
 
         Integer taskId = automationIOService.setDigitalCharacteristicUserDescription(1, null);
         assertNotNull(taskId);
@@ -5748,7 +5726,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalCharacteristicExtendedProperties();
@@ -5806,8 +5784,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalCharacteristicExtendedProperties(1);
@@ -5885,7 +5863,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalValueTriggerSetting();
@@ -5943,8 +5921,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalValueTriggerSetting(1);
@@ -6022,7 +6000,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setDigitalValueTriggerSetting(null);
@@ -6080,8 +6058,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setDigitalValueTriggerSetting(1, null);
@@ -6159,7 +6137,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalTimeTriggerSetting();
@@ -6217,8 +6195,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalTimeTriggerSetting(1);
@@ -6296,7 +6274,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setDigitalTimeTriggerSetting(null);
@@ -6354,8 +6332,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setDigitalTimeTriggerSetting(1, null);
@@ -6428,7 +6406,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalNumberOfDigitals();
@@ -6481,8 +6459,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getDigitalNumberOfDigitals(1);
@@ -6555,7 +6533,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalog();
@@ -6609,7 +6587,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalog(1);
@@ -6637,8 +6615,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalog(1);
@@ -6711,7 +6689,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setAnalog(null);
@@ -6765,7 +6743,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setAnalog(1, null);
@@ -6793,8 +6771,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setAnalog(1, null);
@@ -6867,7 +6845,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setAnalogWithNoResponse(null);
@@ -6921,7 +6899,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setAnalogWithNoResponse(1, null);
@@ -6949,8 +6927,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setAnalogWithNoResponse(1, null);
@@ -7020,7 +6998,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogClientCharacteristicConfiguration();
@@ -7048,7 +7026,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogClientCharacteristicConfiguration();
@@ -7077,7 +7055,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogClientCharacteristicConfiguration();
@@ -7128,7 +7106,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogClientCharacteristicConfiguration(1);
@@ -7156,8 +7134,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogClientCharacteristicConfiguration(1);
@@ -7186,8 +7164,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogClientCharacteristicConfiguration(1);
@@ -7257,7 +7235,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startAnalogNotification();
@@ -7285,7 +7263,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startAnalogNotification();
@@ -7336,7 +7314,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startAnalogNotification(1);
@@ -7364,8 +7342,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startAnalogNotification(1);
@@ -7435,7 +7413,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopAnalogNotification();
@@ -7463,7 +7441,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopAnalogNotification();
@@ -7514,7 +7492,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopAnalogNotification(1);
@@ -7542,8 +7520,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopAnalogNotification(1);
@@ -7613,7 +7591,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startAnalogIndication();
@@ -7641,7 +7619,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startAnalogIndication();
@@ -7692,7 +7670,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startAnalogIndication(1);
@@ -7720,8 +7698,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startAnalogIndication(1);
@@ -7791,7 +7769,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopAnalogIndication();
@@ -7819,7 +7797,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopAnalogIndication();
@@ -7870,7 +7848,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopAnalogIndication(1);
@@ -7898,8 +7876,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopAnalogIndication(1);
@@ -7977,7 +7955,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogCharacteristicPresentationFormat();
@@ -8035,8 +8013,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogCharacteristicPresentationFormat(1);
@@ -8114,7 +8092,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogCharacteristicUserDescription();
@@ -8172,8 +8150,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogCharacteristicUserDescription(1);
@@ -8251,7 +8229,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setAnalogCharacteristicUserDescription(null);
@@ -8291,6 +8269,16 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         bluetoothGattCharacteristic.addDescriptor(bluetoothGattDescriptor);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
+        automationIOService.onDescriptorReadSuccess(1
+                , originalBluetoothDevice
+                , AUTOMATION_IO_SERVICE
+                , 0
+                , originalCharacteristicUUID
+                , originalCharacteristicInstanceId
+                , CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR
+                , 1
+                , new byte[]{0b00000010, 0b00000000}
+                , null);
 
         Integer taskId = automationIOService.setAnalogCharacteristicUserDescription(null);
         assertNotNull(taskId);
@@ -8347,8 +8335,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setAnalogCharacteristicUserDescription(1, null);
@@ -8381,13 +8369,23 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
         BluetoothGattCharacteristic bluetoothGattCharacteristic = BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList());
         bluetoothGattCharacteristic.addDescriptor(new BluetoothGattDescriptor(originalDescriptorUUID, 0));
         BluetoothGattDescriptor bluetoothGattDescriptor = new BluetoothGattDescriptor(CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR, 0);
         bluetoothGattCharacteristic.addDescriptor(bluetoothGattDescriptor);
         bluetoothGattService.addCharacteristic(bluetoothGattCharacteristic);
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
+        automationIOService.onDescriptorReadSuccess(1
+                , originalBluetoothDevice
+                , AUTOMATION_IO_SERVICE
+                , 0
+                , originalCharacteristicUUID
+                , originalCharacteristicInstanceId
+                , CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR
+                , 1
+                , new byte[]{0b00000010, 0b00000000}
+                , null);
 
         Integer taskId = automationIOService.setAnalogCharacteristicUserDescription(1, null);
         assertNotNull(taskId);
@@ -8464,7 +8462,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogCharacteristicExtendedProperties();
@@ -8522,8 +8520,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogCharacteristicExtendedProperties(1);
@@ -8601,7 +8599,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogValueTriggerSetting();
@@ -8659,8 +8657,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogValueTriggerSetting(1);
@@ -8738,7 +8736,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setAnalogValueTriggerSetting(null);
@@ -8796,8 +8794,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setAnalogValueTriggerSetting(1, null);
@@ -8875,7 +8873,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogTimeTriggerSetting();
@@ -8933,8 +8931,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogTimeTriggerSetting(1);
@@ -9012,7 +9010,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setAnalogTimeTriggerSetting(null);
@@ -9070,8 +9068,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.setAnalogTimeTriggerSetting(1, null);
@@ -9144,7 +9142,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogValidRange();
@@ -9197,8 +9195,8 @@ public class AutomationIOService003Test extends AbstractCentralTest {
 
         };
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0,  Collections.emptyList()));
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId + 1, 0, 0, 0, 0, Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, 0, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAnalogValidRange(1);
@@ -9252,7 +9250,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAggregate();
@@ -9303,7 +9301,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAggregateClientCharacteristicConfiguration();
@@ -9331,7 +9329,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_NOTIFY, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAggregateClientCharacteristicConfiguration();
@@ -9359,7 +9357,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.getAggregateClientCharacteristicConfiguration();
@@ -9471,7 +9469,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startAggregateNotification();
@@ -9499,7 +9497,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startAggregateNotification();
@@ -9580,7 +9578,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopAggregateNotification();
@@ -9608,7 +9606,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopAggregateNotification();
@@ -9689,7 +9687,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startAggregateIndication();
@@ -9717,7 +9715,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.startAggregateIndication();
@@ -9798,7 +9796,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopAggregateIndication();
@@ -9826,7 +9824,7 @@ public class AutomationIOService003Test extends AbstractCentralTest {
         };
 
         BluetoothGattService bluetoothGattService = new BluetoothGattService(originalServiceUUID, 0);
-        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0,  Collections.emptyList()));
+        bluetoothGattService.addCharacteristic(BLETestUtilsAndroid.createBluetoothCharacteristic(originalCharacteristicUUID, originalCharacteristicInstanceId, BluetoothGattCharacteristic.PROPERTY_READ | BluetoothGattCharacteristic.PROPERTY_INDICATE, 0, 0, 0, Collections.emptyList()));
         automationIOService.onDiscoverServiceSuccess(1, originalBluetoothDevice, Collections.singletonList(bluetoothGattService), null);
 
         Integer taskId = automationIOService.stopAggregateIndication();

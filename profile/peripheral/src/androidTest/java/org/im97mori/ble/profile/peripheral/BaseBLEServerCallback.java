@@ -115,7 +115,37 @@ public class BaseBLEServerCallback implements BLEServerCallback {
     }
 
     @Override
-    public void onMtuChanged(BluetoothDevice device, int mtu) {
+    public void onMtuChanged(@NonNull BluetoothDevice device, int mtu) {
+
+    }
+
+    @Override
+    public void onPhyReadSuccess(@NonNull Integer integer, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice bluetoothDevice, int i, int i1, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onPhyReadFailed(@NonNull Integer integer, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice bluetoothDevice, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onPhyReadTimeout(@NonNull Integer integer, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice bluetoothDevice, long l, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSetPreferredPhySuccess(@NonNull Integer integer, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice bluetoothDevice, int i, int i1, int i2, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSetPreferredPhyFailed(@NonNull Integer integer, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice bluetoothDevice, int i, @Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onSetPreferredPhyTimeout(@NonNull Integer integer, @NonNull BLEServerConnection bleServerConnection, @NonNull BluetoothDevice bluetoothDevice, long l, @Nullable Bundle bundle) {
 
     }
 

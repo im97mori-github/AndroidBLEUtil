@@ -16,15 +16,24 @@ import androidx.test.core.app.ApplicationProvider;
 import androidx.test.filters.RequiresDevice;
 import androidx.test.filters.SdkSuppress;
 
+import org.junit.AfterClass;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
-/** @noinspection deprecation*/
+/**
+ * @noinspection deprecation
+ */
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.JELLY_BEAN_MR2, maxSdkVersion = Build.VERSION_CODES.S_V2)
 public class BLEUtilsAndroid18To32Test extends BaseBLEUtilsAndroidTest {
+
+    @AfterClass
+    public static void afterClass() {
+        Context context = ApplicationProvider.getApplicationContext();
+        BLEUtilsAndroid.isBluetoothEnabled(context);
+    }
 
     @Test
     @RequiresDevice

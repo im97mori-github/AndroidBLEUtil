@@ -330,7 +330,7 @@ public class AutomationIOService extends AbstractCentralService {
                     mAutomationIOServiceCallback.onDigitalCharacteristicUserDescriptionReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, CharacteristicUserDescriptionAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR.equals(descriptorUUID)) {
                     CharacteristicExtendedPropertiesAndroid characteristicExtendedPropertiesAndroid = CharacteristicExtendedPropertiesAndroid.CREATOR.createFromByteArray(values);
-                    mDigitalCharacteristicUserDescriptionWritable.put(descriptorInstanceId, characteristicExtendedPropertiesAndroid.isPropertiesWritableAuxiliariesEnabled());
+                    mDigitalCharacteristicUserDescriptionWritable.put(getCharacteristicIndex(mDigitalList, characteristicInstanceId), characteristicExtendedPropertiesAndroid.isPropertiesWritableAuxiliariesEnabled());
                     mAutomationIOServiceCallback.onDigitalCharacteristicExtendedPropertiesReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, characteristicExtendedPropertiesAndroid, argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
                     mAutomationIOServiceCallback.onDigitalValueTriggerSettingReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, ValueTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);
@@ -349,7 +349,7 @@ public class AutomationIOService extends AbstractCentralService {
                     mAutomationIOServiceCallback.onAnalogCharacteristicUserDescriptionReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, CharacteristicUserDescriptionAndroid.CREATOR.createFromByteArray(values), argument);
                 } else if (CHARACTERISTIC_EXTENDED_PROPERTIES_DESCRIPTOR.equals(descriptorUUID)) {
                     CharacteristicExtendedPropertiesAndroid characteristicExtendedPropertiesAndroid = CharacteristicExtendedPropertiesAndroid.CREATOR.createFromByteArray(values);
-                    mAnalogCharacteristicUserDescriptionWritable.put(descriptorInstanceId, characteristicExtendedPropertiesAndroid.isPropertiesWritableAuxiliariesEnabled());
+                    mAnalogCharacteristicUserDescriptionWritable.put(getCharacteristicIndex(mAnalogList, characteristicInstanceId), characteristicExtendedPropertiesAndroid.isPropertiesWritableAuxiliariesEnabled());
                     mAutomationIOServiceCallback.onAnalogCharacteristicExtendedPropertiesReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, characteristicExtendedPropertiesAndroid, argument);
                 } else if (VALUE_TRIGGER_SETTING_DESCRIPTOR.equals(descriptorUUID)) {
                     mAutomationIOServiceCallback.onAnalogValueTriggerSettingReadSuccess(taskId, bluetoothDevice, serviceUUID, serviceInstanceId, characteristicUUID, characteristicInstanceId, characteristicIndex, descriptorInstanceId, ValueTriggerSettingAndroid.CREATOR.createFromByteArray(values), argument);

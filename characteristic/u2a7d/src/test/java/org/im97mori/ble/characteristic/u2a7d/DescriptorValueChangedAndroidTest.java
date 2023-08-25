@@ -375,8 +375,17 @@ public class DescriptorValueChangedAndroidTest {
         assertArrayEquals(Arrays.copyOfRange(data, 2, 18), result1.getCharacteristicUUID());
 
         ByteBuffer bb = ByteBuffer.wrap(data, 2, 16).order(ByteOrder.LITTLE_ENDIAN);
-        long lsb = bb.getLong();
-        long msb = bb.getLong();
+        long msb = 0;
+        long lsb = 0;
+
+        msb |= ((long) bb.getInt()) << 32;
+        msb |= ((long) bb.getShort()) << 16;
+        msb |= (long) bb.getShort();
+
+        lsb |= ((long) bb.get()) << 56;
+        lsb |= ((long) bb.get()) << 48;
+        lsb |= ((long) bb.getShort());
+        lsb |= ((long) bb.getInt()) << 16;
         UUID uuid = new UUID(msb, lsb);
 
         assertEquals(uuid, result1.createCharacteristicUUID());

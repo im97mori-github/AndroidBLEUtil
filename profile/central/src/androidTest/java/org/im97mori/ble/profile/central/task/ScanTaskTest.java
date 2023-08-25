@@ -91,7 +91,7 @@ public class ScanTaskTest {
 
     @Test
     @RequiresDevice
-    @SdkSuppress(maxSdkVersion = Build.VERSION_CODES.TIRAMISU)
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU)
     public void test_createDeviceFoundMessage_33_00001() {
         ScanResult scanResult = BLETestUtilsAndroidLolipop.createScanResult(BLETestUtilsAndroid.MOCK_DEVICE_0, 1, 2, 3, 4, 5, 6, 7, null, 8);
         Message message = ScanTask.createDeviceFoundMessage(scanResult);
@@ -107,7 +107,7 @@ public class ScanTaskTest {
 
     @Test
     @RequiresDevice
-    @SdkSuppress(maxSdkVersion = Build.VERSION_CODES.TIRAMISU)
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU)
     public void test_createDeviceFoundMessage_33_00002() {
         ScanResult scanResult1 = BLETestUtilsAndroidLolipop.createScanResult(BLETestUtilsAndroid.MOCK_DEVICE_0, 1, 2, 3, 4, 5, 6, 7, null, 8);
         ScanResult scanResult2 = BLETestUtilsAndroidLolipop.createScanResult(BLETestUtilsAndroid.MOCK_DEVICE_1, 11, 22, 33, 44, 55, 66, 77, null, 88);
@@ -159,7 +159,7 @@ public class ScanTaskTest {
 
     @Test
     @RequiresDevice
-    @SdkSuppress(maxSdkVersion = Build.VERSION_CODES.TIRAMISU)
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU)
     public void test_createDeviceFoundMessage_33_00101() {
         BluetoothDevice bluetoothDevice = BLETestUtilsAndroid.MOCK_DEVICE_0;
         Message message = ScanTask.createDeviceFoundMessage(bluetoothDevice);
@@ -175,7 +175,7 @@ public class ScanTaskTest {
 
     @Test
     @RequiresDevice
-    @SdkSuppress(maxSdkVersion = Build.VERSION_CODES.TIRAMISU)
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU)
     public void test_createDeviceFoundMessage_33_00102() {
         BluetoothDevice bluetoothDevice1 = BLETestUtilsAndroid.MOCK_DEVICE_0;
         BluetoothDevice bluetoothDevice2 = BLETestUtilsAndroid.MOCK_DEVICE_1;
