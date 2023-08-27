@@ -13,6 +13,7 @@ import java.util.Arrays;
 import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.characteristic.core.DateTimeUtils;
 import org.im97mori.ble.test.TestBase;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;

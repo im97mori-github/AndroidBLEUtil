@@ -20,11 +20,12 @@ import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormat;
 import org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
 import org.im97mori.ble.service.ess.peripheral.EnvironmentalSensingServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class EnvironmentalSensingProfileMockCallbackBuilderTest {
+public class EnvironmentalSensingProfileMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

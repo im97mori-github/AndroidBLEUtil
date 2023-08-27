@@ -8,6 +8,7 @@ import android.os.Build;
 
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.advertising.RandomTargetAddressAndroid;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -22,7 +23,7 @@ import java.util.LinkedList;
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class RandomTargetAddressFilterTest {
+public class RandomTargetAddressFilterTest extends TestBase {
 
     @Test
     public void test_001() {

@@ -21,6 +21,7 @@ import org.im97mori.ble.characteristic.u2a66.CyclingPowerControlPointAndroid;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.Collections;

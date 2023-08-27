@@ -10,6 +10,7 @@ import android.os.Parcel;
 import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.characteristic.core.EnhancedBloodPressureMeasurementUtils;
 import org.im97mori.ble.characteristic.core.IEEE_11073_20601_SFLOAT;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -23,7 +24,7 @@ import java.util.Arrays;
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class EnhancedIntermediateCuffPressureAndroidTest {
+public class EnhancedIntermediateCuffPressureAndroidTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

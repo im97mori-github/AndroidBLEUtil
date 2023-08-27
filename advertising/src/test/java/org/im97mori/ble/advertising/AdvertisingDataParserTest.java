@@ -48,6 +48,7 @@ import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.TransportDiscoveryServiceUtils;
 import org.im97mori.ble.constants.AppearanceValues;
 import org.im97mori.ble.constants.Scheme;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -63,7 +64,7 @@ import java.util.UUID;
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 @SuppressWarnings("ALL")
-public class AdvertisingDataParserTest {
+public class AdvertisingDataParserTest extends TestBase {
 
     @Test
     public void builderTest0001() {

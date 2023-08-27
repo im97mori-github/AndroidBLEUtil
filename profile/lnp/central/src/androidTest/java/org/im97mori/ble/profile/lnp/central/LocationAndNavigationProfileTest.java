@@ -21,6 +21,7 @@ import org.im97mori.ble.service.lns.central.LocationAndNavigationService;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.central.AbstractCentralTest;
 import org.im97mori.ble.test.central.MockBLEConnection;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.Collections;

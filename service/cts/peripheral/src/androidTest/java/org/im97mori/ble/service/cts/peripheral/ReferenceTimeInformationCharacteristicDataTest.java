@@ -12,9 +12,10 @@ import android.text.format.DateUtils;
 import com.google.gson.Gson;
 
 import org.im97mori.ble.characteristic.u2a14.ReferenceTimeInformation;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
-public class ReferenceTimeInformationCharacteristicDataTest {
+public class ReferenceTimeInformationCharacteristicDataTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

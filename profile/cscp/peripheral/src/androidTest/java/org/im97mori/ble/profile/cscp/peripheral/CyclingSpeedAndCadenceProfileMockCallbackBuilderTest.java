@@ -15,6 +15,7 @@ import org.im97mori.ble.characteristic.u2a5d.SensorLocation;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.cscs.peripheral.CyclingSpeedAndCadenceServiceMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -25,7 +26,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class CyclingSpeedAndCadenceProfileMockCallbackBuilderTest {
+public class CyclingSpeedAndCadenceProfileMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

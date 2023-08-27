@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNull;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.filters.Suppress;
 
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;

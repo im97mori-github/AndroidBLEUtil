@@ -11,12 +11,13 @@ import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /** @noinspection DataFlowIssue*/
-public class FtmpUserDataServiceMockCallbackTest {
+public class FtmpUserDataServiceMockCallbackTest extends TestBase {
 
     private static class TestFtmpUserDataServiceMockCallback extends FtmpUserDataServiceMockCallback {
 

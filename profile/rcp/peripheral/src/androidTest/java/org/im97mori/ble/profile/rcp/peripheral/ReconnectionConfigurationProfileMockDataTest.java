@@ -19,6 +19,7 @@ import org.im97mori.ble.service.bms.peripheral.BondManagementControlPointCharact
 import org.im97mori.ble.service.bms.peripheral.BondManagementServiceData;
 import org.im97mori.ble.service.rcs.peripheral.ReconnectionConfigurationControlPointCharacteristicData;
 import org.im97mori.ble.service.rcs.peripheral.ReconnectionConfigurationServiceData;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class ReconnectionConfigurationProfileMockDataTest {
+public class ReconnectionConfigurationProfileMockDataTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

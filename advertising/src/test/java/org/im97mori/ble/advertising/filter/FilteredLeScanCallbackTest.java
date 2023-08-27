@@ -11,6 +11,7 @@ import android.os.Build;
 import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -24,7 +25,7 @@ import java.util.List;
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class FilteredLeScanCallbackTest {
+public class FilteredLeScanCallbackTest extends TestBase {
 
     @RequiresDevice
     @Test

@@ -64,6 +64,7 @@ import org.im97mori.ble.service.ftms.peripheral.FitnessMachineStatusCharacterist
 import org.im97mori.ble.service.uds.peripheral.UDSCharacteristicData;
 import org.im97mori.ble.service.uds.peripheral.UserControlPointCharacteristicData;
 import org.im97mori.ble.service.uds.peripheral.UserDataServiceData;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -71,7 +72,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class FitnessMachineProfileMockDataTest {
+public class FitnessMachineProfileMockDataTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

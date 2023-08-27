@@ -3,6 +3,7 @@ package org.im97mori.ble.characteristic.u2a02;
 import android.os.Build;
 import android.os.Parcel;
 
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -18,7 +19,7 @@ import static org.junit.Assert.assertTrue;
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class PeripheralPrivacyFlagAndroidTest {
+public class PeripheralPrivacyFlagAndroidTest extends TestBase {
 
     @Test
     public void test_constructor001() {

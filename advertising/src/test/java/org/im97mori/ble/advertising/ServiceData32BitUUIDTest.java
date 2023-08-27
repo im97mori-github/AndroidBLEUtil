@@ -8,6 +8,7 @@ import static org.junit.Assert.assertEquals;
 import android.os.Build;
 import android.os.Parcel;
 
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -22,7 +23,7 @@ import java.util.UUID;
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 @SuppressWarnings({"unused", "IntegerMultiplicationImplicitCastToLong"})
-public class ServiceData32BitUUIDTest {
+public class ServiceData32BitUUIDTest extends TestBase {
 
     //@formatter:off
     private static final byte[] data_00001;
@@ -268,32 +269,6 @@ public class ServiceData32BitUUIDTest {
         data_00016 = data;
     }
     //@formatter:on
-
-    private byte[] getData() {
-        int index = -1;
-        byte[] data = null;
-
-        StackTraceElement[] stackTraceElementArray = Thread.currentThread().getStackTrace();
-        for (int i = 0; i < stackTraceElementArray.length; i++) {
-            StackTraceElement stackTraceElement = stackTraceElementArray[i];
-            if ("getData".equals(stackTraceElement.getMethodName())) {
-                index = i + 1;
-                break;
-            }
-        }
-        if (index >= 0 && index < stackTraceElementArray.length) {
-            StackTraceElement stackTraceElement = stackTraceElementArray[index];
-            String[] stringArray = stackTraceElement.getMethodName().split("_");
-            try {
-                data = (byte[]) this.getClass().getDeclaredField("data_" + stringArray[stringArray.length - 1]).get(null);
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-        return data;
-    }
 
     @Test
     public void test_constructor_1_00001() {

@@ -19,6 +19,7 @@ import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.service.cscs.peripheral.CyclingSpeedAndCadenceServiceData;
 import org.im97mori.ble.service.cscs.peripheral.SCControlPointCharacteristicData;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class CyclingSpeedAndCadenceProfileMockDataTest {
+public class CyclingSpeedAndCadenceProfileMockDataTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

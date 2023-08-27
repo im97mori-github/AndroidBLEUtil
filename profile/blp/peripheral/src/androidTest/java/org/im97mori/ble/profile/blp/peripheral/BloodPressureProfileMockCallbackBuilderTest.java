@@ -22,11 +22,12 @@ import org.im97mori.ble.characteristic.u2a49.BloodPressureFeature;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.bls.peripheral.BloodPressureServiceMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class BloodPressureProfileMockCallbackBuilderTest {
+public class BloodPressureProfileMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

@@ -31,6 +31,7 @@ import org.im97mori.ble.characteristic.u2a99.DatabaseChangeIncrement;
 import org.im97mori.ble.characteristic.u2a9f.UserControlPoint;
 import org.im97mori.ble.characteristic.u2aa2.Language;
 import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

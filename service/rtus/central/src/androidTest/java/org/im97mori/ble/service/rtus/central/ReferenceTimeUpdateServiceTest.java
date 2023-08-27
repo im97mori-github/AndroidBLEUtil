@@ -13,6 +13,7 @@ import org.im97mori.ble.characteristic.u2a17.TimeUpdateState;
 import org.im97mori.ble.characteristic.u2a17.TimeUpdateStateAndroid;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.UUID;

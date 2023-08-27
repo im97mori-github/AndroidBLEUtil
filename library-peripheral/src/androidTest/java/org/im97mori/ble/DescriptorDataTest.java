@@ -12,6 +12,7 @@ import android.os.Parcel;
 
 import com.google.gson.Gson;
 
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -19,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class DescriptorDataTest {
+public class DescriptorDataTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertArrayEquals;
 import android.os.Build;
 import android.os.Parcel;
 
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -15,7 +16,7 @@ import org.robolectric.annotation.Config;
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class CompleteBrEdrTransportBlockDataAndroidTest {
+public class CompleteBrEdrTransportBlockDataAndroidTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

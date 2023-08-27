@@ -17,6 +17,7 @@ import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.characteristic.u2a11.TimeWithDst;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.LinkedList;

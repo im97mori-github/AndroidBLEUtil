@@ -17,8 +17,6 @@ import android.os.ParcelUuid;
 
 import androidx.test.core.app.ApplicationProvider;
 
-import org.junit.AfterClass;
-
 import java.lang.reflect.Field;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;

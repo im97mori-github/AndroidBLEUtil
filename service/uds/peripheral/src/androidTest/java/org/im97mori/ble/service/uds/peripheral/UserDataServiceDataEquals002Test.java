@@ -34,6 +34,7 @@ import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_CHARACTERISTI
 import static org.junit.Assert.assertEquals;
 
 import org.im97mori.ble.CharacteristicData;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;

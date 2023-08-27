@@ -14,6 +14,7 @@ import org.im97mori.ble.descriptor.u290d.EnvironmentalSensingTriggerSetting;
 import org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
 import org.im97mori.ble.service.ess.peripheral.EnvironmentalSensingServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -22,7 +23,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class EnvironmentalSensingProfileMockCallbackBuilderAmmoniaConcentrationTest {
+public class EnvironmentalSensingProfileMockCallbackBuilderAmmoniaConcentrationTest extends TestBase {
 
     @Test
     public void test_addAmmoniaConcentration_00001() {

@@ -312,6 +312,19 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="666121523">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Tests" value="360" />
+                  <entry key="motorola motorola edge 20 fusion" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="873963705">
           <value>
             <AndroidTestResultsTableState>

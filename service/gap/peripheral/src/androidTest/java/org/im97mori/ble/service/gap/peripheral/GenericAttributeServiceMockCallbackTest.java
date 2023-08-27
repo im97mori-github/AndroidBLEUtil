@@ -26,6 +26,7 @@ import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.Arrays;

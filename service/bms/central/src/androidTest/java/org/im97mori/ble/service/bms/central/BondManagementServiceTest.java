@@ -12,6 +12,7 @@ import org.im97mori.ble.characteristic.u2aa4.BondManagementControlPointAndroid;
 import org.im97mori.ble.characteristic.u2aa5.BondManagementFeaturesAndroid;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.UUID;

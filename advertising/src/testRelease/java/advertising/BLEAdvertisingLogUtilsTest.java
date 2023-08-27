@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import android.os.Build;
 
 import org.junit.Before;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -17,7 +18,7 @@ import org.robolectric.shadows.ShadowLog;
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class BLEAdvertisingLogUtilsTest {
+public class BLEAdvertisingLogUtilsTest extends TestBase {
 
     @Before
     public void setup() {

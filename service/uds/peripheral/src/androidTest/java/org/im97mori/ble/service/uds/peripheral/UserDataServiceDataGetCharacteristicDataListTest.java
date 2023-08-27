@@ -34,13 +34,14 @@ import static org.im97mori.ble.constants.CharacteristicUUID.WEIGHT_CHARACTERISTI
 import static org.junit.Assert.assertArrayEquals;
 
 import org.im97mori.ble.CharacteristicData;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class UserDataServiceDataGetCharacteristicDataListTest {
+public class UserDataServiceDataGetCharacteristicDataListTest extends TestBase {
 
     @Test
     public void test_getCharacteristicDataList_00001() {

@@ -15,6 +15,7 @@ import org.im97mori.ble.descriptor.u290b.EnvironmentalSensingConfiguration;
 import org.im97mori.ble.descriptor.u290c.EnvironmentalSensingMeasurement;
 import org.im97mori.ble.descriptor.u290d.EnvironmentalSensingTriggerSetting;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.LinkedList;

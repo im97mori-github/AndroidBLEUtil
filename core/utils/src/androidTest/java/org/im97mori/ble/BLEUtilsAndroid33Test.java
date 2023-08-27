@@ -4,6 +4,7 @@ import androidx.test.filters.RequiresDevice;
 import androidx.test.rule.GrantPermissionRule;
 
 import org.junit.Rule;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 //@SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU)

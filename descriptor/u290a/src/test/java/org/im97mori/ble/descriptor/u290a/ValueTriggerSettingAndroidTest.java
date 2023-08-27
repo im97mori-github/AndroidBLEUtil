@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 import android.os.Build;
 import android.os.Parcel;
 
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -21,7 +22,7 @@ import java.util.Arrays;
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class ValueTriggerSettingAndroidTest {
+public class ValueTriggerSettingAndroidTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

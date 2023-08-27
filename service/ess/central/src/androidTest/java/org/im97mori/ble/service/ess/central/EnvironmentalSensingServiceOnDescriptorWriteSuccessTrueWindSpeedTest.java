@@ -17,6 +17,7 @@ import org.im97mori.ble.descriptor.u290b.EnvironmentalSensingConfigurationAndroi
 import org.im97mori.ble.descriptor.u290d.EnvironmentalSensingTriggerSettingAndroid;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.Arrays;

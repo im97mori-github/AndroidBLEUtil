@@ -13,6 +13,7 @@ import org.im97mori.ble.characteristic.u2a6b.LNControlPoint;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroid;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.LinkedList;

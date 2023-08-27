@@ -35,12 +35,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 import org.im97mori.ble.CharacteristicData;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class UserDataServiceDataEquals001Test {
+public class UserDataServiceDataEquals001Test extends TestBase {
 
     @Test
     public void test_equals_00001() {

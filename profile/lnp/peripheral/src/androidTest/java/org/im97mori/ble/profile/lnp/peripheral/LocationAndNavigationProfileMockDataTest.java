@@ -21,6 +21,7 @@ import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.ServiceData;
 import org.im97mori.ble.service.lns.peripheral.LNControlPointCharacteristicData;
 import org.im97mori.ble.service.lns.peripheral.LocationAndNavigationServiceData;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class LocationAndNavigationProfileMockDataTest {
+public class LocationAndNavigationProfileMockDataTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

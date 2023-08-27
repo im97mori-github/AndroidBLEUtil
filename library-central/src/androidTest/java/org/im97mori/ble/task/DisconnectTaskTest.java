@@ -15,6 +15,7 @@ import androidx.test.filters.RequiresDevice;
 import org.im97mori.ble.BLECallbackDistributor;
 import org.im97mori.ble.BaseBLECallback;
 import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 /** @noinspection DataFlowIssue */

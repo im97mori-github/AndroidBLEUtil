@@ -18,6 +18,7 @@ import androidx.test.filters.SdkSuppress;
 
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.LinkedList;

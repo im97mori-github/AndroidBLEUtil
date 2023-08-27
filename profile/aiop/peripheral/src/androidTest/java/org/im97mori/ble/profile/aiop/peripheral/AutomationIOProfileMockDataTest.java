@@ -14,12 +14,13 @@ import com.google.gson.Gson;
 import org.im97mori.ble.CharacteristicData;
 import org.im97mori.ble.service.aios.peripheral.AutomationIOServiceData;
 import org.im97mori.ble.service.aios.peripheral.DigitalCharacteristicData;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.Collections;
 import java.util.Objects;
 
-public class AutomationIOProfileMockDataTest {
+public class AutomationIOProfileMockDataTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

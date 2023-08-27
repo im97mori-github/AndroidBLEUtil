@@ -10,9 +10,10 @@ import android.os.Message;
 import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
-public class BondTaskTest {
+public class BondTaskTest extends TestBase {
 
     /** @noinspection DataFlowIssue*/
     @Test

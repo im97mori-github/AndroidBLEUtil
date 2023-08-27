@@ -6,6 +6,7 @@ import android.os.Looper;
 import android.os.Message;
 
 import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;

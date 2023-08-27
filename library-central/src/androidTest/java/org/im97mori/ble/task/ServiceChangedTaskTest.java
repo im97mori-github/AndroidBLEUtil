@@ -11,6 +11,7 @@ import android.os.Message;
 import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 public class ServiceChangedTaskTest extends AbstractCentralTest {

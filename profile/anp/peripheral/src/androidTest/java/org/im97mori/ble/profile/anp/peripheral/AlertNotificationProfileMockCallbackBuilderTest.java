@@ -15,11 +15,12 @@ import androidx.test.core.app.ApplicationProvider;
 import org.im97mori.ble.characteristic.u2a47.SupportedNewAlertCategory;
 import org.im97mori.ble.characteristic.u2a48.SupportedUnreadAlertCategory;
 import org.im97mori.ble.service.ans.peripheral.AlertNotificationServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class AlertNotificationProfileMockCallbackBuilderTest {
+public class AlertNotificationProfileMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

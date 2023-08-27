@@ -16,6 +16,7 @@ import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.cts.peripheral.CurrentTimeServiceMockCallback;
 import org.im97mori.ble.service.ndcs.peripheral.NextDstChangeServiceMockCallback;
 import org.im97mori.ble.service.rtus.peripheral.ReferenceTimeUpdateServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -26,7 +27,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class TimeProfileMockCallbackBuilderTest {
+public class TimeProfileMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

@@ -2,12 +2,13 @@ package org.im97mori.ble.profile.pasp.peripheral;
 
 import androidx.test.core.app.ApplicationProvider;
 
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import static org.im97mori.ble.constants.ServiceUUID.PHONE_ALERT_STATUS_SERVICE;
 import static org.junit.Assert.assertEquals;
 
-public class PhoneAlertStatusProfileMockCallbackTest {
+public class PhoneAlertStatusProfileMockCallbackTest extends TestBase {
 
     /** @noinspection DataFlowIssue*/
     @Test

@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Parcel;
 
 import org.im97mori.ble.test.TestBase;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;

@@ -43,12 +43,13 @@ import android.bluetooth.BluetoothGattService;
 import com.google.gson.Gson;
 
 import org.im97mori.ble.CharacteristicData;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class UserDataServiceDataConstructorTest {
+public class UserDataServiceDataConstructorTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

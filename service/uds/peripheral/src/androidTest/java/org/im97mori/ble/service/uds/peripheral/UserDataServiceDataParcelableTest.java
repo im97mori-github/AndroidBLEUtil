@@ -41,12 +41,13 @@ import android.bluetooth.BluetoothGattService;
 import android.os.Parcel;
 
 import org.im97mori.ble.CharacteristicData;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class UserDataServiceDataParcelableTest {
+public class UserDataServiceDataParcelableTest extends TestBase {
 
     @Test
     public void test_parcelable_00001() {

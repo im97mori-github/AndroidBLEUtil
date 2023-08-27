@@ -10,6 +10,7 @@ import org.im97mori.ble.characteristic.u2a07.TxPowerLevel;
 import org.im97mori.ble.service.ias.peripheral.ImmediateAlertServiceMockCallback;
 import org.im97mori.ble.service.lls.peripheral.LinkLossServiceMockCallback;
 import org.im97mori.ble.service.tps.peripheral.TxPowerServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -20,7 +21,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class ProximityProfileMockCallbackBuilderTest {
+public class ProximityProfileMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 
 import org.im97mori.ble.task.AbstractBLETask;
 import org.im97mori.ble.task.AbstractBLETaskBase;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -18,7 +19,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-public class TaskHandlerTest {
+public class TaskHandlerTest extends TestBase {
 
     @Test
     public void test_addTask_00001() {

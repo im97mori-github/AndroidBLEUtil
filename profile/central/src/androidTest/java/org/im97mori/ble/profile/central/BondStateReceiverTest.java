@@ -10,6 +10,7 @@ import androidx.test.filters.RequiresDevice;
 import org.im97mori.ble.profile.central.db.BaseBondedDeviceDatabaseHelper;
 import org.im97mori.ble.profile.central.db.BondedDeviceDatabaseHelper;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicReference;
@@ -18,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class BondStateReceiverTest {
+public class BondStateReceiverTest extends TestBase {
 
     /** @noinspection deprecation*/
     @Test

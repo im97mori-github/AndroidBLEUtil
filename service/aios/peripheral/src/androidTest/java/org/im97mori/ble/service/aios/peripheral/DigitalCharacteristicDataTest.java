@@ -13,11 +13,12 @@ import com.google.gson.Gson;
 
 import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.descriptor.u2909.NumberOfDigitals;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.Arrays;
 
-public class DigitalCharacteristicDataTest {
+public class DigitalCharacteristicDataTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

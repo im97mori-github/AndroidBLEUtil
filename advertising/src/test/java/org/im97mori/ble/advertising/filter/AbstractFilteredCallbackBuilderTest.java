@@ -73,6 +73,7 @@ import org.im97mori.ble.advertising.TransportDiscoveryDataAndroid;
 import org.im97mori.ble.advertising.TxPowerLevelAndroid;
 import org.im97mori.ble.advertising.UniformResourceIdentifierAndroid;
 import org.im97mori.ble.constants.AppearanceValues;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -88,7 +89,7 @@ import java.util.List;
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 @SuppressWarnings("ConstantConditions")
-public class AbstractFilteredCallbackBuilderTest {
+public class AbstractFilteredCallbackBuilderTest extends TestBase {
 
     private static class MockFilteredCallbackBuilder extends AbstractFilteredCallbackBuilder<List<AdvertisingDataFilter<AdvertisingDataParser.AdvertisingDataParseResult>>> {
 

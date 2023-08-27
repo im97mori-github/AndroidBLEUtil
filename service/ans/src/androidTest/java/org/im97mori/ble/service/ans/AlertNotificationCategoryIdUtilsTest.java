@@ -1,11 +1,12 @@
 package org.im97mori.ble.service.ans;
 
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class AlertNotificationCategoryIdUtilsTest {
+public class AlertNotificationCategoryIdUtilsTest extends TestBase {
 
     @Test
     public void test_isCategoryIdAll_00001() {

@@ -15,6 +15,7 @@ import org.im97mori.ble.characteristic.u2b1f.ReconnectionConfigurationControlPoi
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.bms.peripheral.BondManagementServiceMockCallback;
 import org.im97mori.ble.service.rcs.peripheral.ReconnectionConfigurationServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -25,7 +26,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class ReconnectionConfigurationProfileMockCallbackBuilderTest {
+public class ReconnectionConfigurationProfileMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

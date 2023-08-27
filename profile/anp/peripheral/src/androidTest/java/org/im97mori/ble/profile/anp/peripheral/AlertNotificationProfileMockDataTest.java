@@ -16,13 +16,14 @@ import org.im97mori.ble.service.ans.peripheral.AlertNotificationControlPointChar
 import org.im97mori.ble.service.ans.peripheral.AlertNotificationServiceData;
 import org.im97mori.ble.service.ans.peripheral.NewAlertCharacteristicData;
 import org.im97mori.ble.service.ans.peripheral.UnreadAlertStatusCharacteristicData;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 
-public class AlertNotificationProfileMockDataTest {
+public class AlertNotificationProfileMockDataTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

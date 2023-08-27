@@ -18,6 +18,7 @@ import org.im97mori.ble.advertising.filter.FilteredLeScanCallback;
 import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.BLETestUtilsAndroidLolipop;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 /** @noinspection DataFlowIssue*/
-public class ScanTaskTest {
+public class ScanTaskTest extends TestBase {
 
     @Test
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.LOLLIPOP)

@@ -37,13 +37,14 @@ import static org.junit.Assert.assertEquals;
 import android.bluetooth.BluetoothGattService;
 
 import org.im97mori.ble.CharacteristicData;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 
-public class UserDataServiceDataHashCodeTest {
+public class UserDataServiceDataHashCodeTest extends TestBase {
 
     @Test
     public void test_hashCode_00001() {

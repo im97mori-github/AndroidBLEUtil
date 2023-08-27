@@ -19,6 +19,7 @@ import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormat;
 import org.im97mori.ble.service.bas.peripheral.BatteryServiceMockCallback;
 import org.im97mori.ble.service.cps.peripheral.CyclingPowerServiceMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -29,7 +30,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class CyclingPowerProfileMockCallbackBuilderTest {
+public class CyclingPowerProfileMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

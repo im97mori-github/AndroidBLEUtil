@@ -13,6 +13,7 @@ import org.im97mori.ble.characteristic.u2a39.HeartRateControlPoint;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
 import org.im97mori.ble.service.hrs.peripheral.HeartRateServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -23,7 +24,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class HeartRateProfileMockCallbackBuilderTest {
+public class HeartRateProfileMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

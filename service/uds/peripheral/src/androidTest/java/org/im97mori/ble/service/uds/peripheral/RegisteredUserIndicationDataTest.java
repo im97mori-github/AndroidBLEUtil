@@ -1,11 +1,12 @@
 package org.im97mori.ble.service.uds.peripheral;
 
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class RegisteredUserIndicationDataTest {
+public class RegisteredUserIndicationDataTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

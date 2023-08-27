@@ -20,6 +20,7 @@ import org.im97mori.ble.characteristic.u2a2a.IEEE_11073_20601_RegulatoryCertific
 import org.im97mori.ble.characteristic.u2a50.PnpIdAndroid;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.Collections;

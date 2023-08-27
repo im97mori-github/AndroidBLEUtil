@@ -1,6 +1,12 @@
+call .\gradlew.bat :test:publish
+call .\gradlew.bat :test:central:publish
+call .\gradlew.bat :test:peripheral:publish
+
 call .\gradlew.bat :core:utils:publish
 call .\gradlew.bat :core:publish
+
 call .\gradlew.bat :advertising:publish
+
 call .\gradlew.bat :descriptor:u2900:publish
 call .\gradlew.bat :descriptor:u2901:publish
 call .\gradlew.bat :descriptor:u2902:publish
@@ -471,10 +477,6 @@ call .\gradlew.bat :characteristic:publish
 call .\gradlew.bat :library-handler:publish
 call .\gradlew.bat :library-central:publish
 call .\gradlew.bat :library-peripheral:publish
-
-call .\gradlew.bat :test:publish
-call .\gradlew.bat :test:central:publish
-call .\gradlew.bat :test:peripheral:publish
 
 call .\gradlew.bat :service:aios:publish
 call .\gradlew.bat :service:aios:central:publish

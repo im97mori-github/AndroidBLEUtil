@@ -11,6 +11,7 @@ import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.characteristic.u2a06.AlertLevelAndroid;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.UUID;

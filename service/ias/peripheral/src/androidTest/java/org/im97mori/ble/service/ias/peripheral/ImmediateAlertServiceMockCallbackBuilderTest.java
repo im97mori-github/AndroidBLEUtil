@@ -6,6 +6,7 @@ import android.os.Build;
 
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.LinkedList;

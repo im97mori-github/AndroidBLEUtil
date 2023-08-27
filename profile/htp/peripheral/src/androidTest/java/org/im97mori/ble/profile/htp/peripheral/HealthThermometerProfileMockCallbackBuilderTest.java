@@ -17,6 +17,7 @@ import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.descriptor.u2906.ValidRange;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
 import org.im97mori.ble.service.hts.peripheral.HealthThermometerServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -27,7 +28,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class HealthThermometerProfileMockCallbackBuilderTest {
+public class HealthThermometerProfileMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

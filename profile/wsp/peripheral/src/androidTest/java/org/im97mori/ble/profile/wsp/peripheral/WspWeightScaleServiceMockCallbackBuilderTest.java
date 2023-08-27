@@ -11,9 +11,10 @@ import org.im97mori.ble.characteristic.u2a9d.WeightMeasurement;
 import org.im97mori.ble.characteristic.u2a9e.WeightScaleFeature;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
-public class WspWeightScaleServiceMockCallbackBuilderTest {
+public class WspWeightScaleServiceMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_setUserDataServiceMockCallback_00001() {

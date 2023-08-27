@@ -19,6 +19,7 @@ import androidx.test.filters.SdkSuppress;
 import org.im97mori.ble.characteristic.u2a16.TimeUpdateControlPoint;
 import org.im97mori.ble.characteristic.u2a17.TimeUpdateState;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.LinkedList;

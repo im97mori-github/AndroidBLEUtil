@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.test.core.app.ApplicationProvider;
 
 import org.im97mori.ble.service.aios.peripheral.AutomationIOServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -15,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class AutomationIOProfileMockCallbackBuilderTest {
+public class AutomationIOProfileMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

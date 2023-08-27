@@ -7,6 +7,7 @@ import android.os.Parcel;
 import com.google.gson.Gson;
 
 import org.im97mori.ble.DescriptorData;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class FitnessMachineStatusCharacteristicDataTest {
+public class FitnessMachineStatusCharacteristicDataTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

@@ -3,6 +3,7 @@ package org.im97mori.ble.characteristic.u2a9c;
 import android.os.Build;
 
 import org.im97mori.ble.characteristic.core.DateTimeUtils;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -21,7 +22,7 @@ import static org.junit.Assert.assertTrue;
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class BodyCompositionMeasurementPacketAndroidConstructorTest {
+public class BodyCompositionMeasurementPacketAndroidConstructorTest extends TestBase {
 
     @Test
     public void test_constructor0001() {

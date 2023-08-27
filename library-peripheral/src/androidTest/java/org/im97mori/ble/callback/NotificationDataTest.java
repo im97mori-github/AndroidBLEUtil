@@ -1,6 +1,7 @@
 package org.im97mori.ble.callback;
 
 import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -10,7 +11,7 @@ import static org.junit.Assert.assertNotEquals;
 
 import androidx.test.filters.RequiresDevice;
 
-public class NotificationDataTest {
+public class NotificationDataTest extends TestBase {
 
     @Test
     @RequiresDevice

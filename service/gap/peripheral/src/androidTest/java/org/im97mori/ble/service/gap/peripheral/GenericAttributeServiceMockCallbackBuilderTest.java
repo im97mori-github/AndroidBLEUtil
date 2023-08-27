@@ -11,6 +11,7 @@ import org.im97mori.ble.characteristic.u2b29.ClientSupportedFeatures;
 import org.im97mori.ble.characteristic.u2b2a.DatabaseHash;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.LinkedList;

@@ -6,12 +6,13 @@ import android.bluetooth.BluetoothGattDescriptor;
 import org.im97mori.ble.characteristic.u2a9f.UserControlPoint;
 import org.im97mori.ble.characteristic.u2acc.FitnessMachineFeature;
 import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class FtmpUserDataServiceMockCallbackBuilderTest {
+public class FtmpUserDataServiceMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_isUserDataRetentionFeatureSupported_00001() {

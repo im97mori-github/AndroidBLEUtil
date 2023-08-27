@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 
 import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.characteristic.u2a55.SCControlPoint;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class SCControlPointCharacteristicDataTest {
+public class SCControlPointCharacteristicDataTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

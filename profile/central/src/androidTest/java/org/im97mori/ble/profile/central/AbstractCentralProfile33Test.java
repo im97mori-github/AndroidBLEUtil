@@ -16,6 +16,7 @@ import org.im97mori.ble.advertising.filter.FilteredScanCallback;
 import org.im97mori.ble.advertising.filter.FilteredScanCallbackInterface;
 import org.im97mori.ble.profile.central.task.ScanTask;
 import org.junit.Rule;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.List;

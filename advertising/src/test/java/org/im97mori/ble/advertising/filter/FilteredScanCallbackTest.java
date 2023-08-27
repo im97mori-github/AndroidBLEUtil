@@ -12,6 +12,7 @@ import androidx.test.filters.RequiresDevice;
 
 import org.im97mori.ble.advertising.AdvertisingDataParser;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -29,7 +30,7 @@ import java.util.concurrent.atomic.AtomicInteger;
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.LOLLIPOP)
 @SuppressWarnings("unused")
-public class FilteredScanCallbackTest {
+public class FilteredScanCallbackTest extends TestBase {
 
     @Test
     @RequiresDevice

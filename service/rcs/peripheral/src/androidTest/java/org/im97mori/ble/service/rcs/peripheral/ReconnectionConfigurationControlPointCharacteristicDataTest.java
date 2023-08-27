@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import org.im97mori.ble.BLEUtils;
 import org.im97mori.ble.DescriptorData;
 import org.im97mori.ble.characteristic.u2b1f.ReconnectionConfigurationControlPoint;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.nio.ByteBuffer;
@@ -29,7 +30,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @SuppressWarnings("ConstantConditions")
-public class ReconnectionConfigurationControlPointCharacteristicDataTest {
+public class ReconnectionConfigurationControlPointCharacteristicDataTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

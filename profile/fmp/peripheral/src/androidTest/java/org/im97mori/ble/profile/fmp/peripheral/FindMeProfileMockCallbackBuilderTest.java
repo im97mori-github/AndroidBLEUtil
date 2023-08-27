@@ -7,6 +7,7 @@ import androidx.test.core.app.ApplicationProvider;
 
 import org.im97mori.ble.characteristic.u2a06.AlertLevel;
 import org.im97mori.ble.service.ias.peripheral.ImmediateAlertServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -16,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class FindMeProfileMockCallbackBuilderTest {
+public class FindMeProfileMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

@@ -3,6 +3,7 @@ package org.im97mori.ble.characteristic.u2a04;
 import android.os.Build;
 import android.os.Parcel;
 
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -17,7 +18,7 @@ import static org.junit.Assert.assertEquals;
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 @SuppressWarnings("PointlessBitwiseExpression")
-public class PeripheralPreferredConnectionParametersAndroidTest {
+public class PeripheralPreferredConnectionParametersAndroidTest extends TestBase {
 
     @Test
     public void test_constructor001() {

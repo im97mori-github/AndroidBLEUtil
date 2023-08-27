@@ -17,6 +17,7 @@ import android.os.Parcel;
 import com.google.gson.Gson;
 
 import org.im97mori.ble.CharacteristicData;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Objects;
 
-public class CyclingSpeedAndCadenceServiceDataTest {
+public class CyclingSpeedAndCadenceServiceDataTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

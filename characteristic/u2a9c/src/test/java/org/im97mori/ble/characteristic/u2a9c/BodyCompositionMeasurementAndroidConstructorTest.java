@@ -1,5 +1,6 @@
 package org.im97mori.ble.characteristic.u2a9c;
 
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -17,7 +18,7 @@ import android.os.Build;
         // required to access final members on androidx.loader.content.ModernAsyncTask
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class BodyCompositionMeasurementAndroidConstructorTest {
+public class BodyCompositionMeasurementAndroidConstructorTest extends TestBase {
 
     @Test
     public void test_constructor001() {

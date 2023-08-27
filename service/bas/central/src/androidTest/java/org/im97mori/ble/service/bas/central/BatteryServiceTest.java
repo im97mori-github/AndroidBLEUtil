@@ -15,6 +15,7 @@ import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfigurationAndroi
 import org.im97mori.ble.descriptor.u2904.CharacteristicPresentationFormatAndroid;
 import org.im97mori.ble.test.BLETestUtilsAndroid;
 import org.im97mori.ble.test.central.AbstractCentralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.Arrays;

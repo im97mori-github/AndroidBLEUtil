@@ -59,6 +59,7 @@ import org.im97mori.ble.descriptor.u2902.ClientCharacteristicConfiguration;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
 import org.im97mori.ble.service.ftms.peripheral.FitnessMachineServiceMockCallback;
 import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -70,7 +71,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @SuppressWarnings("ConstantConditions")
-public class FitnessMachineProfileMockCallbackBuilderTest {
+public class FitnessMachineProfileMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {

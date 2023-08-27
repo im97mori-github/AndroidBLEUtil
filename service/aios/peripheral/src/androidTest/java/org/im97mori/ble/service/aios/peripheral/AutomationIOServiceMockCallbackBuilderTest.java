@@ -37,6 +37,7 @@ import org.im97mori.ble.descriptor.u2909.NumberOfDigitals;
 import org.im97mori.ble.descriptor.u290a.ValueTriggerSetting;
 import org.im97mori.ble.descriptor.u290e.TimeTriggerSetting;
 import org.im97mori.ble.test.peripheral.AbstractPeripheralTest;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.LinkedList;

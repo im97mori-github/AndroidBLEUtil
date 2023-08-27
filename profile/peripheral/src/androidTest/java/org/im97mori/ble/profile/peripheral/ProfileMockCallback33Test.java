@@ -9,7 +9,7 @@ import androidx.test.rule.GrantPermissionRule;
 import org.junit.Rule;
 
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU)
-public class AbstractProfileMockCallback33Test extends BaseAbstractProfileMockCallbackTest {
+public class ProfileMockCallback33Test extends BaseAbstractProfileMockCallbackTest {
 
     @Rule
     public GrantPermissionRule mRuntimePermissionRule = GrantPermissionRule

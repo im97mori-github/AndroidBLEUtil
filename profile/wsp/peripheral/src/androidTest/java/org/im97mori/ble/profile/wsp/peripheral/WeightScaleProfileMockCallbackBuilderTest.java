@@ -27,6 +27,7 @@ import org.im97mori.ble.service.cts.peripheral.CurrentTimeServiceMockCallback;
 import org.im97mori.ble.service.dis.peripheral.DeviceInformationServiceMockCallback;
 import org.im97mori.ble.service.uds.peripheral.UserDataServiceMockCallback;
 import org.im97mori.ble.service.wss.peripheral.WeightScaleServiceMockCallback;
+import org.im97mori.ble.test.TestBase;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -37,7 +38,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class WeightScaleProfileMockCallbackBuilderTest {
+public class WeightScaleProfileMockCallbackBuilderTest extends TestBase {
 
     @Test
     public void test_constructor_00001() {
