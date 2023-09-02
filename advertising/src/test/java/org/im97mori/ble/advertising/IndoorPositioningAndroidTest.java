@@ -21,7 +21,7 @@ import org.robolectric.annotation.Config;
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 @SuppressWarnings({"unused"})
-public class IndoorPositioningTest extends TestBase {
+public class IndoorPositioningAndroidTest extends TestBase {
 
     //@formatter:off
     private static final byte[] data_00001;

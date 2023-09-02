@@ -23,7 +23,7 @@ import java.util.Arrays;
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 @SuppressWarnings({"unused"})
-public class ManufacturerSpecificDataTest extends TestBase {
+public class ManufacturerSpecificDataAndroidTest extends TestBase {
 
     // google
     private static final int COMPANY_ID = 0x000000E0;

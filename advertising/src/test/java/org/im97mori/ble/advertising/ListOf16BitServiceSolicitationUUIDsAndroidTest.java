@@ -24,7 +24,7 @@ import java.util.UUID;
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 @SuppressWarnings("unused")
-public class ListOf16BitServiceSolicitationUUIDsTest extends TestBase {
+public class ListOf16BitServiceSolicitationUUIDsAndroidTest extends TestBase {
 
     //@formatter:off
     private static final byte[] data_00001;

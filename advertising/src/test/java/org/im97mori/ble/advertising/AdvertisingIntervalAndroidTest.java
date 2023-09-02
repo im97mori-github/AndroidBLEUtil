@@ -21,7 +21,7 @@ import org.robolectric.annotation.Config;
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 @SuppressWarnings("unused")
-public class AdvertisingIntervalTest extends TestBase {
+public class AdvertisingIntervalAndroidTest extends TestBase {
 
     //@formatter:off
     private static final byte[] data_00001;

@@ -22,7 +22,7 @@ import java.util.UUID;
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 @SuppressWarnings("unused")
-public class IncompleteListOf32BitServiceUUIDsTest extends TestBase {
+public class IncompleteListOf32BitServiceUUIDsAndroidTest extends TestBase {
 
     //@formatter:off
     private static final byte[] data_00001;

@@ -23,7 +23,7 @@ import java.util.UUID;
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 @SuppressWarnings({"unused", "IntegerMultiplicationImplicitCastToLong"})
-public class ServiceData32BitUUIDTest extends TestBase {
+public class ServiceData32BitUUIDAndroidTest extends TestBase {
 
     //@formatter:off
     private static final byte[] data_00001;

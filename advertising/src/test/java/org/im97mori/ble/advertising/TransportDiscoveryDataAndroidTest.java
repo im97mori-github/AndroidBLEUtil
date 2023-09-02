@@ -26,7 +26,7 @@ import java.util.List;
         "androidx.loader.content"}
         , sdk = Build.VERSION_CODES.JELLY_BEAN_MR2)
 @SuppressWarnings("unused")
-public class TransportDiscoveryDataTest extends TestBase {
+public class TransportDiscoveryDataAndroidTest extends TestBase {
 
     //@formatter:off
     private static final byte[] data_00001;
