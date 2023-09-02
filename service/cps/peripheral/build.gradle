@@ -31,6 +31,7 @@ android {
 
     publishing {
         singleVariant("staging") {
+            withSourcesJar()
         }
         singleVariant("release") {
             withSourcesJar()

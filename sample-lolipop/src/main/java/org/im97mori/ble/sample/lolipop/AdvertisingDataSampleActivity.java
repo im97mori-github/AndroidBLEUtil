@@ -368,8 +368,8 @@ public class AdvertisingDataSampleActivity extends BaseActivity implements View.
                 if (leSupportedFeatures.isLlPrivacySupported()) {
                     sb.append("LL Privacy\n");
                 }
-                if (leSupportedFeatures.isExtendedScannerFilterPoliciesSupported()) {
-                    sb.append("Extended Scanner Filter Policies\n");
+                if (leSupportedFeatures.isExtendedScanningFilterPoliciesSupported()) {
+                    sb.append("Extended Scanning Filter Policies\n");
                 }
                 if (leSupportedFeatures.isLe2mPhySupported()) {
                     sb.append("LE 2M PHY\n");
