@@ -15,7 +15,7 @@ allprojects {
     gradle.projectsEvaluated {
         tasks.withType(JavaCompile).tap {
             configureEach {
-                options.compilerArgs << "-Xlint:deprecation"
+                options.compilerArgs << "-Xlint:deprecation,unchecked"
             }
         }
     }
@@ -35,7 +35,7 @@ ext.globalTargetSdkVersion = 33
 ext.myGroupId = 'org.im97mori'
 ext.loadVersion = '0.8.14'
 ext.uploadVersion = '0.8.14'
-ext.staging = true
+ext.staging = false
 
 ext.coreUtilsAndroid = [
         artifactId  : 'ble-core-utils-android'

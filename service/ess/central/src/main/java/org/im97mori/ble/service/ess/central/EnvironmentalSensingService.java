@@ -170,6 +170,7 @@ public class EnvironmentalSensingService extends AbstractCentralService {
      * @param environmentalSensingServiceCallback {@link EnvironmentalSensingServiceCallback} instance
      * @param bleCallback                         {@link BLECallback} instance (optional)
      */
+    @SuppressWarnings("unchecked")
     public EnvironmentalSensingService(@NonNull BLEConnection bleConnection, @NonNull EnvironmentalSensingServiceCallback environmentalSensingServiceCallback, @Nullable BLECallback bleCallback) {
         super(bleConnection, bleCallback);
         mEnvironmentalSensingServiceCallback = environmentalSensingServiceCallback;
@@ -178,7 +179,6 @@ public class EnvironmentalSensingService extends AbstractCentralService {
             EssData essData = new EssData();
             essData.mUpperCamelCaseName = upperCase;
             try {
-                //noinspection unchecked
                 essData.mClazz = (Class<? extends Parcelable>) Class.forName(String.format("org.im97mori.ble.characteristic.u%1$04x.%2$sAndroid", BLEUtils.convert128to16(uuid), upperCase));
                 essData.mCreator = (ByteArrayCreator<?>) essData.mClazz.getDeclaredField("CREATOR").get(null);
             } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException e) {
